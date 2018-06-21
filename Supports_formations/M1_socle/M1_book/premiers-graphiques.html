@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Découvrir R et RStudio</title>
+  <meta name="description" content="Formation R socle">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Découvrir R et RStudio" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R socle" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Découvrir R et RStudio" />
+  
+  <meta name="twitter:description" content="Formation R socle" />
+  
+
+<meta name="author" content="Groupe des référents R">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="premiers-traitements-statistiques.html">
+<link rel="next" href="sauvegarder-son-travail.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Débuter avec R et Rstudio</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html"><i class="fa fa-check"></i><b>2</b> R, son écosystème et ses possibilités</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#le-groupe-de-referents"><i class="fa fa-check"></i><b>2.1</b> Le groupe de référents</a></li>
+<li class="chapter" data-level="2.2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#r-cest-quoi"><i class="fa fa-check"></i><b>2.2</b> R c’est quoi ?</a></li>
+<li class="chapter" data-level="2.3" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-peu-dhistoire"><i class="fa fa-check"></i><b>2.3</b> Un peu d’histoire</a></li>
+<li class="chapter" data-level="2.4" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-logiciel-libre"><i class="fa fa-check"></i><b>2.4</b> Un logiciel libre</a></li>
+<li class="chapter" data-level="2.5" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#que-peut-on-faire-avec-r"><i class="fa fa-check"></i><b>2.5</b> Que peut-on faire avec R ?</a></li>
+<li class="chapter" data-level="2.6" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-logiciel-modulaire"><i class="fa fa-check"></i><b>2.6</b> Un logiciel modulaire</a></li>
+<li class="chapter" data-level="2.7" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#des-exemples-de-ce-quon-peut-faire-avec-r"><i class="fa fa-check"></i><b>2.7</b> Des exemples de ce qu’on peut faire avec R :</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html"><i class="fa fa-check"></i><b>3</b> Présentation de l’interface et premières manipulations</a><ul>
+<li class="chapter" data-level="3.1" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#une-interface-particuliere-rstudio"><i class="fa fa-check"></i><b>3.1</b> Une interface particulière : RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#session-et-repertoire-de-travail"><i class="fa fa-check"></i><b>3.2</b> Session et répertoire de travail</a></li>
+<li class="chapter" data-level="3.3" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice"><i class="fa fa-check"></i><b>3.3</b> Exercice</a></li>
+<li class="chapter" data-level="3.4" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#prise-en-main-de-la-console"><i class="fa fa-check"></i><b>3.4</b> Prise en main de la console</a></li>
+<li class="chapter" data-level="3.5" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#creation-dune-variable"><i class="fa fa-check"></i><b>3.5</b> Création d’une variable</a></li>
+<li class="chapter" data-level="3.6" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice-1"><i class="fa fa-check"></i><b>3.6</b> Exercice</a></li>
+<li class="chapter" data-level="3.7" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#utilite-des-scripts"><i class="fa fa-check"></i><b>3.7</b> Utilité des scripts</a></li>
+<li class="chapter" data-level="3.8" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice-utiliser-un-script"><i class="fa fa-check"></i><b>3.8</b> Exercice : utiliser un script</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html"><i class="fa fa-check"></i><b>4</b> Mon premier jeu de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-types-de-valeurs-dans-r"><i class="fa fa-check"></i><b>4.1</b> Les types de valeurs dans R</a></li>
+<li class="chapter" data-level="4.2" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#avant-de-manipuler-le-data.frame-installer-et-charger-un-package"><i class="fa fa-check"></i><b>4.2</b> Avant de manipuler le data.frame : installer et charger un package</a></li>
+<li class="chapter" data-level="4.3" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#importation-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Importation de données</a></li>
+<li class="chapter" data-level="4.4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#structure-des-donnees-le-dataframe"><i class="fa fa-check"></i><b>4.4</b> Structure des données : le <em>dataframe</em></a></li>
+<li class="chapter" data-level="4.5" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#gerer-le-type-des-variables"><i class="fa fa-check"></i><b>4.5</b> Gérer le type des variables</a></li>
+<li class="chapter" data-level="4.6" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-valeurs-particulieres"><i class="fa fa-check"></i><b>4.6</b> Les valeurs particulières</a></li>
+<li class="chapter" data-level="4.7" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#exercice-importer-les-donnees-et-premier-coup-doeil"><i class="fa fa-check"></i><b>4.7</b> Exercice : Importer les données et premier coup d’oeil</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html"><i class="fa fa-check"></i><b>5</b> Première manipulation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#afficher-les-valeurs-et-manipuler-les-variables"><i class="fa fa-check"></i><b>5.1</b> Afficher les valeurs et manipuler les variables</a></li>
+<li class="chapter" data-level="5.2" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#selectionner-des-variables"><i class="fa fa-check"></i><b>5.2</b> Sélectionner des variables</a></li>
+<li class="chapter" data-level="5.3" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#selectionner-des-observations"><i class="fa fa-check"></i><b>5.3</b> Sélectionner des observations</a></li>
+<li class="chapter" data-level="5.4" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#les-tests-logiques-dans-r"><i class="fa fa-check"></i><b>5.4</b> Les tests logiques dans R</a></li>
+<li class="chapter" data-level="5.5" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#renommer-des-colonnes"><i class="fa fa-check"></i><b>5.5</b> Renommer des colonnes</a></li>
+<li class="chapter" data-level="5.6" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#exercice-creer-filtrer-selectionner"><i class="fa fa-check"></i><b>5.6</b> Exercice : Créer, filtrer, sélectionner</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html"><i class="fa fa-check"></i><b>6</b> Premiers traitements statistiques</a><ul>
+<li class="chapter" data-level="6.1" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#la-fonction-summary"><i class="fa fa-check"></i><b>6.1</b> La fonction <code>summary</code></a></li>
+<li class="chapter" data-level="6.2" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#calculer-des-statistiques-specifiques"><i class="fa fa-check"></i><b>6.2</b> Calculer des statistiques spécifiques</a></li>
+<li class="chapter" data-level="6.3" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#agreger-des-donnees-selon-un-facteur"><i class="fa fa-check"></i><b>6.3</b> Agréger des données selon un facteur</a></li>
+<li class="chapter" data-level="6.4" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#une-autre-maniere-de-selectionner-une-variable"><i class="fa fa-check"></i><b>6.4</b> Une autre manière de sélectionner une variable : $</a></li>
+<li class="chapter" data-level="6.5" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#tableau-de-contingence"><i class="fa fa-check"></i><b>6.5</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="6.6" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#tableau-de-proportions"><i class="fa fa-check"></i><b>6.6</b> Tableau de proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#exercice-calcul-de-statistiques"><i class="fa fa-check"></i><b>6.7</b> Exercice : calcul de statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html"><i class="fa fa-check"></i><b>7</b> Premiers graphiques</a><ul>
+<li class="chapter" data-level="7.1" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#package-ggplot2"><i class="fa fa-check"></i><b>7.1</b> Package ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#histogramme"><i class="fa fa-check"></i><b>7.2</b> Histogramme</a></li>
+<li class="chapter" data-level="7.3" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#nuages-de-points"><i class="fa fa-check"></i><b>7.3</b> Nuages de points</a></li>
+<li class="chapter" data-level="7.4" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#matrice-de-nuages"><i class="fa fa-check"></i><b>7.4</b> Matrice de nuages</a></li>
+<li class="chapter" data-level="7.5" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#bonus-faire-un-graphique-dynamique"><i class="fa fa-check"></i><b>7.5</b> Bonus : faire un graphique “dynamique”</a></li>
+<li class="chapter" data-level="7.6" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#exercices-creer-des-graphiques"><i class="fa fa-check"></i><b>7.6</b> Exercices : créer des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html"><i class="fa fa-check"></i><b>8</b> Sauvegarder son travail</a><ul>
+<li class="chapter" data-level="8.1" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#exportation-des-resultats"><i class="fa fa-check"></i><b>8.1</b> Exportation des résultats</a></li>
+<li class="chapter" data-level="8.2" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#environnement-et-rdata"><i class="fa fa-check"></i><b>8.2</b> Environnement et RData</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><i class="fa fa-check"></i><b>9</b> Aller plus loin avec les objets, crochets et la programmation fonctionnelle</a><ul>
+<li class="chapter" data-level="9.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-objets-dans-r"><i class="fa fa-check"></i><b>9.1</b> Les objets dans R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-des-vecteurs"><i class="fa fa-check"></i><b>9.1.1</b> Créer des vecteurs</a></li>
+<li class="chapter" data-level="9.1.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-une-matrice"><i class="fa fa-check"></i><b>9.1.2</b> Créer une matrice</a></li>
+<li class="chapter" data-level="9.1.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#visualiser-ces-objets-et-leurs-attributs"><i class="fa fa-check"></i><b>9.1.3</b> Visualiser ces objets et leurs attributs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#selectionner-des-lignes-et-des-colonnes"><i class="fa fa-check"></i><b>9.2</b> Sélectionner des lignes et des colonnes</a></li>
+<li class="chapter" data-level="9.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-une-nouvelle-fonction-en-r"><i class="fa fa-check"></i><b>9.3</b> Créer une nouvelle fonction en R</a></li>
+<li class="chapter" data-level="9.4" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-boucles-conditionnelles"><i class="fa fa-check"></i><b>9.4</b> Les boucles conditionnelles</a></li>
+<li class="chapter" data-level="9.5" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-boucles"><i class="fa fa-check"></i><b>9.5</b> Les boucles</a></li>
+<li class="chapter" data-level="9.6" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#exercices"><i class="fa fa-check"></i><b>9.6</b> Exercices</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#vecteurs-simples"><i class="fa fa-check"></i><b>9.6.1</b> Vecteurs simples</a></li>
+<li class="chapter" data-level="9.6.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#dataframes-et-listes"><i class="fa fa-check"></i><b>9.6.2</b> Dataframes et listes</a></li>
+<li class="chapter" data-level="9.6.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#pour-aller-plus-loin-matrices-et-arrays"><i class="fa fa-check"></i><b>9.6.3</b> Pour aller plus loin : matrices et arrays</a></li>
+<li class="chapter" data-level="9.6.4" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#inspection-dun-objet-la-regression"><i class="fa fa-check"></i><b>9.6.4</b> Inspection d’un objet : la régression</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Découvrir R et RStudio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="premiers-graphiques" class="section level1">
+<h1><span class="header-section-number">Chapitre 7</span> Premiers graphiques</h1>
+<div id="package-ggplot2" class="section level2">
+<h2><span class="header-section-number">7.1</span> Package ggplot2</h2>
+<p>Pour réaliser des graphiques, nous choisissons de nous servir du package <code>ggplot2</code>, qui permet de faire de meilleures réalisations que les fonctions basiques. Il est intégré dans le méta-package <code>tidyverse</code> donc il n’est pas utile de le re-charger dans notre session. Mais si vous devez le faire, le code est le suivant :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span> (<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">library</span> (<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<p>La fonction <code>ggplot()</code> fonctionne d’une manière particulière. En général, la structure ressemblera à ceci :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (TableEnEntree, <span class="kw">aes</span> (VariablesATracer)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_FonctionAChoisir</span> ()</code></pre></div>
+<p>Pour plus de possibilités que ce qui est <em>abordé</em> ici, vous pouvez consulter les sites suivants :</p>
+<ul>
+<li><a href="http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization">Version anglaise</a></li>
+<li><a href="http://www.sthda.com/french/wiki/ggplot2">Version française</a></li>
+</ul>
+<p>La fonction <code>aes ()</code> (pour “aesthetics”), utilisée dans l’instrution <code>ggplot ()</code> permet de définir les données à tracer. On y indique les dimensions que l’on veut représenter sur le graphique. On peut représenter jusqu’à 5 dimensions sur un même graphique, mais attention à la lisibilité !</p>
+<ul>
+<li>x en fonction de y <span class="math inline">\(\rightarrow\)</span> 2 dimensions de base (quanti) <span class="math inline">\(\rightarrow\)</span> nuage de points</li>
+<li>taille du point <span class="math inline">\(\rightarrow\)</span> 3e dimension (quanti)</li>
+<li>couleur des points <span class="math inline">\(\rightarrow\)</span> 4e dimension (quali)</li>
+<li>juxtaposer des graphiques en fonction d’une variable quali <span class="math inline">\(\rightarrow\)</span> 5e dimension !</li>
+</ul>
+</div>
+<div id="histogramme" class="section level2">
+<h2><span class="header-section-number">7.2</span> Histogramme</h2>
+<p>Si on désire un histogramme de log_SUPERF, on fera appel à la fonction <code>geom_histogram ()</code>. Ce graphique ne présente qu’une seule dimension (la variable quanti dont on veut visualiser la distribution)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span> (<span class="dt">list =</span> <span class="kw">ls</span> ())
+
+base &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="st">&quot;Data/Base_synth_territoires.csv&quot;</span>,
+                  <span class="dt">header =</span> T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">24</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span> (<span class="dt">log_SUPERF =</span> <span class="kw">log</span> (SUPERF),
+          <span class="dt">REG =</span> <span class="kw">as.factor</span> (REG),
+          <span class="dt">densite =</span> P14_POP <span class="op">/</span><span class="st"> </span>SUPERF,
+          <span class="dt">tx_natal =</span> <span class="dv">1000</span> <span class="op">*</span><span class="st"> </span>NAISD15 <span class="op">/</span><span class="st"> </span>P14_POP,
+          <span class="dt">tx_mort =</span> DECESD15 <span class="op">/</span><span class="st"> </span>P14_POP)
+
+<span class="kw">ggplot</span> (base, <span class="kw">aes</span> (<span class="dt">x =</span> log_SUPERF)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-51-1.png" width="576" /></p>
+</div>
+<div id="nuages-de-points" class="section level2">
+<h2><span class="header-section-number">7.3</span> Nuages de points</h2>
+<p>Selon les graphiques que l’on veut tracer, on peut renseigner plusieurs variables. Dans le cas d’un nuage de points, par exemple :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (base, <span class="kw">aes</span> (<span class="dt">x=</span>P14_EMPLT, <span class="dt">y=</span>MED13)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span> (<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-52-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (base, <span class="kw">aes</span> (<span class="dt">x=</span><span class="kw">log</span> (P14_EMPLT), <span class="dt">y=</span><span class="kw">log</span> (MED13))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span> (<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-52-2.png" width="576" /></p>
+</div>
+<div id="matrice-de-nuages" class="section level2">
+<h2><span class="header-section-number">7.4</span> Matrice de nuages</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages (&quot;GGally&quot;)</span>
+<span class="kw">library</span> (<span class="st">&quot;GGally&quot;</span>) <span class="co"># pour des graphiques plus jolis</span>
+num &lt;-<span class="st"> </span><span class="kw">select</span> (base, P14_LOGVAC<span class="op">:</span>PIMP13) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span> (<span class="dv">10000</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span> () 
+<span class="kw">ggpairs</span> (num) ## fonction ggpairs() de GGally</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-53-1.png" width="576" /></p>
+</div>
+<div id="bonus-faire-un-graphique-dynamique" class="section level2">
+<h2><span class="header-section-number">7.5</span> Bonus : faire un graphique “dynamique”</h2>
+<p>Une fois qu’on a généré un graphique avec ggplot, on peut le passer dans la fonction <code>ggplotly()</code> (package <code>plotly</code>) qui permet de le rendre dynamique.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span> (plotly)
+g &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span> (<span class="dt">x =</span> REG, <span class="dt">fill =</span> REG)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span> ()
+
+<span class="kw">ggplotly</span> (g)</code></pre></div>
+<div id="16f0325d3e1" style="width:576px;height:576px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="16f0325d3e1">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[32],"text":"count:   32<br />REG: 1<br />REG: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[34],"text":"count:   34<br />REG: 2<br />REG: 2","type":"bar","marker":{"autocolorscale":false,"color":"rgba(231,133,30,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2","legendgroup":"2","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[22],"text":"count:   22<br />REG: 3<br />REG: 3","type":"bar","marker":{"autocolorscale":false,"color":"rgba(208,148,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"3","legendgroup":"3","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[24],"text":"count:   24<br />REG: 4<br />REG: 4","type":"bar","marker":{"autocolorscale":false,"color":"rgba(178,161,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"4","legendgroup":"4","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[1281],"text":"count: 1281<br />REG: 11<br />REG: 11","type":"bar","marker":{"autocolorscale":false,"color":"rgba(137,172,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"11","legendgroup":"11","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[6],"y":[1842],"text":"count: 1842<br />REG: 24<br />REG: 24","type":"bar","marker":{"autocolorscale":false,"color":"rgba(69,181,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"24","legendgroup":"24","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[7],"y":[3831],"text":"count: 3831<br />REG: 27<br />REG: 27","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,188,81,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"27","legendgroup":"27","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[8],"y":[3233],"text":"count: 3233<br />REG: 28<br />REG: 28","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,192,135,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"28","legendgroup":"28","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[9],"y":[3838],"text":"count: 3838<br />REG: 32<br />REG: 32","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,192,178,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"32","legendgroup":"32","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[10],"y":[5198],"text":"count: 5198<br />REG: 44<br />REG: 44","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,188,214,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"44","legendgroup":"44","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[11],"y":[1502],"text":"count: 1502<br />REG: 52<br />REG: 52","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,179,242,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"52","legendgroup":"52","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[12],"y":[1270],"text":"count: 1270<br />REG: 53<br />REG: 53","type":"bar","marker":{"autocolorscale":false,"color":"rgba(41,163,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"53","legendgroup":"53","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[13],"y":[4505],"text":"count: 4505<br />REG: 75<br />REG: 75","type":"bar","marker":{"autocolorscale":false,"color":"rgba(156,141,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"75","legendgroup":"75","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[14],"y":[4565],"text":"count: 4565<br />REG: 76<br />REG: 76","type":"bar","marker":{"autocolorscale":false,"color":"rgba(210,119,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"76","legendgroup":"76","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[15],"y":[4189],"text":"count: 4189<br />REG: 84<br />REG: 84","type":"bar","marker":{"autocolorscale":false,"color":"rgba(241,102,232,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"84","legendgroup":"84","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[16],"y":[963],"text":"count:  963<br />REG: 93<br />REG: 93","type":"bar","marker":{"autocolorscale":false,"color":"rgba(255,97,199,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"93","legendgroup":"93","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[17],"y":[360],"text":"count:  360<br />REG: 94<br />REG: 94","type":"bar","marker":{"autocolorscale":false,"color":"rgba(255,104,158,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"94","legendgroup":"94","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.3059360730594,"r":7.30593607305936,"b":37.2602739726027,"l":48.9497716894977},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.4,17.6],"ticktext":["1","2","3","4","11","24","27","28","32","44","52","53","75","76","84","93","94"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"REG","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-259.9,5457.9],"ticktext":["0","1000","2000","3000","4000","5000"],"tickvals":[0,1000,2000,3000,4000,5000],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"count","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.927821522309711},"annotations":[{"text":"REG","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"barmode":"stack","hovermode":"closest"},"source":"A","attrs":{"16f0353e7150":{"x":{},"fill":{},"type":"ggplotly"}},"cur_data":"16f0353e7150","visdat":{"16f0353e7150":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+</div>
+<div id="exercices-creer-des-graphiques" class="section level2">
+<h2><span class="header-section-number">7.6</span> Exercices : créer des graphiques</h2>
+<p>A l’aide de l’aide mémoire ggplot2 :</p>
+<ul>
+<li>Réaliser un histogramme de la population communale</li>
+<li>Transformer les données avec la fonction log pour y voir plus clair</li>
+<li>Faire un barplot du nombre de communes par type ZAU</li>
+<li>Utiliser le paramètre fill de la fonction <code>aes()</code> pour améliorer le graphique</li>
+<li>Réaliser un graphique (nuage de points) croisant la densité de population et le taux de mortalité</li>
+<li>Ajouter une dimension supplémentaire avec la couleur des points (paramètre color de <code>aes()</code>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span> (<span class="dt">x =</span> P14_POP)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-55-1.png" width="576" /></p>
+<p>Ce n’est pas très informatif, mais on peut faire une transformation log pour y voir plus clair !</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="kw">log</span> (P14_POP))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-56-1.png" width="576" /></p>
+<p>Faites maintenant un barplot (qui n’est pas un histogramme !!!! ) du nombre de communes par type ZAU</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span> (<span class="dt">x =</span> REG)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-57-1.png" width="576" /></p>
+<p>On va essayer d’y voir plus clair avec le paramètre <code>fill</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span>( <span class="dt">x =</span> REG, <span class="dt">fill =</span> REG)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-58-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="kw">log</span> (P14_POP), <span class="dt">y =</span> <span class="kw">log</span> (P14_LOGVAC))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-59-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> base, <span class="kw">aes</span>( <span class="dt">x =</span> densite, <span class="dt">y =</span> tx_mort, <span class="dt">color =</span> REG)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-60-1.png" width="576" /></p>
+<p>Là encore il faudrait faire une transformation logarithmique, mais tout ça est abordé dans le module 3 !</p>
+<p><strong>Note</strong> : avec les fonctions de base, on peut obtenir de nombreux graphiques avec très peu de code, mais moins jolis :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span> (iris)</code></pre></div>
+<p><img src="Débuter_avec_R_et_Rstudio_files/figure-html/unnamed-chunk-61-1.png" width="576" /></p>
+<p>Des possibilités infinies à approfondir dans les modules 3 et 5 !!!!!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="premiers-traitements-statistiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sauvegarder-son-travail.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

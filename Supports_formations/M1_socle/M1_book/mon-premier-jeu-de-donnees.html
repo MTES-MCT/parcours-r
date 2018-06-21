@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Découvrir R et RStudio</title>
+  <meta name="description" content="Formation R socle">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Découvrir R et RStudio" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R socle" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Découvrir R et RStudio" />
+  
+  <meta name="twitter:description" content="Formation R socle" />
+  
+
+<meta name="author" content="Groupe des référents R">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="presentation-de-linterface-et-premieres-manipulations.html">
+<link rel="next" href="premiere-manipulation-des-donnees.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Débuter avec R et Rstudio</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html"><i class="fa fa-check"></i><b>2</b> R, son écosystème et ses possibilités</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#le-groupe-de-referents"><i class="fa fa-check"></i><b>2.1</b> Le groupe de référents</a></li>
+<li class="chapter" data-level="2.2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#r-cest-quoi"><i class="fa fa-check"></i><b>2.2</b> R c’est quoi ?</a></li>
+<li class="chapter" data-level="2.3" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-peu-dhistoire"><i class="fa fa-check"></i><b>2.3</b> Un peu d’histoire</a></li>
+<li class="chapter" data-level="2.4" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-logiciel-libre"><i class="fa fa-check"></i><b>2.4</b> Un logiciel libre</a></li>
+<li class="chapter" data-level="2.5" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#que-peut-on-faire-avec-r"><i class="fa fa-check"></i><b>2.5</b> Que peut-on faire avec R ?</a></li>
+<li class="chapter" data-level="2.6" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#un-logiciel-modulaire"><i class="fa fa-check"></i><b>2.6</b> Un logiciel modulaire</a></li>
+<li class="chapter" data-level="2.7" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#des-exemples-de-ce-quon-peut-faire-avec-r"><i class="fa fa-check"></i><b>2.7</b> Des exemples de ce qu’on peut faire avec R :</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html"><i class="fa fa-check"></i><b>3</b> Présentation de l’interface et premières manipulations</a><ul>
+<li class="chapter" data-level="3.1" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#une-interface-particuliere-rstudio"><i class="fa fa-check"></i><b>3.1</b> Une interface particulière : RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#session-et-repertoire-de-travail"><i class="fa fa-check"></i><b>3.2</b> Session et répertoire de travail</a></li>
+<li class="chapter" data-level="3.3" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice"><i class="fa fa-check"></i><b>3.3</b> Exercice</a></li>
+<li class="chapter" data-level="3.4" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#prise-en-main-de-la-console"><i class="fa fa-check"></i><b>3.4</b> Prise en main de la console</a></li>
+<li class="chapter" data-level="3.5" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#creation-dune-variable"><i class="fa fa-check"></i><b>3.5</b> Création d’une variable</a></li>
+<li class="chapter" data-level="3.6" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice-1"><i class="fa fa-check"></i><b>3.6</b> Exercice</a></li>
+<li class="chapter" data-level="3.7" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#utilite-des-scripts"><i class="fa fa-check"></i><b>3.7</b> Utilité des scripts</a></li>
+<li class="chapter" data-level="3.8" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice-utiliser-un-script"><i class="fa fa-check"></i><b>3.8</b> Exercice : utiliser un script</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html"><i class="fa fa-check"></i><b>4</b> Mon premier jeu de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-types-de-valeurs-dans-r"><i class="fa fa-check"></i><b>4.1</b> Les types de valeurs dans R</a></li>
+<li class="chapter" data-level="4.2" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#avant-de-manipuler-le-data.frame-installer-et-charger-un-package"><i class="fa fa-check"></i><b>4.2</b> Avant de manipuler le data.frame : installer et charger un package</a></li>
+<li class="chapter" data-level="4.3" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#importation-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Importation de données</a></li>
+<li class="chapter" data-level="4.4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#structure-des-donnees-le-dataframe"><i class="fa fa-check"></i><b>4.4</b> Structure des données : le <em>dataframe</em></a></li>
+<li class="chapter" data-level="4.5" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#gerer-le-type-des-variables"><i class="fa fa-check"></i><b>4.5</b> Gérer le type des variables</a></li>
+<li class="chapter" data-level="4.6" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-valeurs-particulieres"><i class="fa fa-check"></i><b>4.6</b> Les valeurs particulières</a></li>
+<li class="chapter" data-level="4.7" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#exercice-importer-les-donnees-et-premier-coup-doeil"><i class="fa fa-check"></i><b>4.7</b> Exercice : Importer les données et premier coup d’oeil</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html"><i class="fa fa-check"></i><b>5</b> Première manipulation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#afficher-les-valeurs-et-manipuler-les-variables"><i class="fa fa-check"></i><b>5.1</b> Afficher les valeurs et manipuler les variables</a></li>
+<li class="chapter" data-level="5.2" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#selectionner-des-variables"><i class="fa fa-check"></i><b>5.2</b> Sélectionner des variables</a></li>
+<li class="chapter" data-level="5.3" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#selectionner-des-observations"><i class="fa fa-check"></i><b>5.3</b> Sélectionner des observations</a></li>
+<li class="chapter" data-level="5.4" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#les-tests-logiques-dans-r"><i class="fa fa-check"></i><b>5.4</b> Les tests logiques dans R</a></li>
+<li class="chapter" data-level="5.5" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#renommer-des-colonnes"><i class="fa fa-check"></i><b>5.5</b> Renommer des colonnes</a></li>
+<li class="chapter" data-level="5.6" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#exercice-creer-filtrer-selectionner"><i class="fa fa-check"></i><b>5.6</b> Exercice : Créer, filtrer, sélectionner</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html"><i class="fa fa-check"></i><b>6</b> Premiers traitements statistiques</a><ul>
+<li class="chapter" data-level="6.1" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#la-fonction-summary"><i class="fa fa-check"></i><b>6.1</b> La fonction <code>summary</code></a></li>
+<li class="chapter" data-level="6.2" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#calculer-des-statistiques-specifiques"><i class="fa fa-check"></i><b>6.2</b> Calculer des statistiques spécifiques</a></li>
+<li class="chapter" data-level="6.3" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#agreger-des-donnees-selon-un-facteur"><i class="fa fa-check"></i><b>6.3</b> Agréger des données selon un facteur</a></li>
+<li class="chapter" data-level="6.4" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#une-autre-maniere-de-selectionner-une-variable"><i class="fa fa-check"></i><b>6.4</b> Une autre manière de sélectionner une variable : $</a></li>
+<li class="chapter" data-level="6.5" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#tableau-de-contingence"><i class="fa fa-check"></i><b>6.5</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="6.6" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#tableau-de-proportions"><i class="fa fa-check"></i><b>6.6</b> Tableau de proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="premiers-traitements-statistiques.html"><a href="premiers-traitements-statistiques.html#exercice-calcul-de-statistiques"><i class="fa fa-check"></i><b>6.7</b> Exercice : calcul de statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html"><i class="fa fa-check"></i><b>7</b> Premiers graphiques</a><ul>
+<li class="chapter" data-level="7.1" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#package-ggplot2"><i class="fa fa-check"></i><b>7.1</b> Package ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#histogramme"><i class="fa fa-check"></i><b>7.2</b> Histogramme</a></li>
+<li class="chapter" data-level="7.3" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#nuages-de-points"><i class="fa fa-check"></i><b>7.3</b> Nuages de points</a></li>
+<li class="chapter" data-level="7.4" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#matrice-de-nuages"><i class="fa fa-check"></i><b>7.4</b> Matrice de nuages</a></li>
+<li class="chapter" data-level="7.5" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#bonus-faire-un-graphique-dynamique"><i class="fa fa-check"></i><b>7.5</b> Bonus : faire un graphique “dynamique”</a></li>
+<li class="chapter" data-level="7.6" data-path="premiers-graphiques.html"><a href="premiers-graphiques.html#exercices-creer-des-graphiques"><i class="fa fa-check"></i><b>7.6</b> Exercices : créer des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html"><i class="fa fa-check"></i><b>8</b> Sauvegarder son travail</a><ul>
+<li class="chapter" data-level="8.1" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#exportation-des-resultats"><i class="fa fa-check"></i><b>8.1</b> Exportation des résultats</a></li>
+<li class="chapter" data-level="8.2" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#environnement-et-rdata"><i class="fa fa-check"></i><b>8.2</b> Environnement et RData</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><i class="fa fa-check"></i><b>9</b> Aller plus loin avec les objets, crochets et la programmation fonctionnelle</a><ul>
+<li class="chapter" data-level="9.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-objets-dans-r"><i class="fa fa-check"></i><b>9.1</b> Les objets dans R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-des-vecteurs"><i class="fa fa-check"></i><b>9.1.1</b> Créer des vecteurs</a></li>
+<li class="chapter" data-level="9.1.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-une-matrice"><i class="fa fa-check"></i><b>9.1.2</b> Créer une matrice</a></li>
+<li class="chapter" data-level="9.1.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#visualiser-ces-objets-et-leurs-attributs"><i class="fa fa-check"></i><b>9.1.3</b> Visualiser ces objets et leurs attributs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#selectionner-des-lignes-et-des-colonnes"><i class="fa fa-check"></i><b>9.2</b> Sélectionner des lignes et des colonnes</a></li>
+<li class="chapter" data-level="9.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#creer-une-nouvelle-fonction-en-r"><i class="fa fa-check"></i><b>9.3</b> Créer une nouvelle fonction en R</a></li>
+<li class="chapter" data-level="9.4" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-boucles-conditionnelles"><i class="fa fa-check"></i><b>9.4</b> Les boucles conditionnelles</a></li>
+<li class="chapter" data-level="9.5" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-boucles"><i class="fa fa-check"></i><b>9.5</b> Les boucles</a></li>
+<li class="chapter" data-level="9.6" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#exercices"><i class="fa fa-check"></i><b>9.6</b> Exercices</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#vecteurs-simples"><i class="fa fa-check"></i><b>9.6.1</b> Vecteurs simples</a></li>
+<li class="chapter" data-level="9.6.2" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#dataframes-et-listes"><i class="fa fa-check"></i><b>9.6.2</b> Dataframes et listes</a></li>
+<li class="chapter" data-level="9.6.3" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#pour-aller-plus-loin-matrices-et-arrays"><i class="fa fa-check"></i><b>9.6.3</b> Pour aller plus loin : matrices et arrays</a></li>
+<li class="chapter" data-level="9.6.4" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#inspection-dun-objet-la-regression"><i class="fa fa-check"></i><b>9.6.4</b> Inspection d’un objet : la régression</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Découvrir R et RStudio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mon-premier-jeu-de-donnees" class="section level1">
+<h1><span class="header-section-number">Chapitre 4</span> Mon premier jeu de données</h1>
+<div id="les-types-de-valeurs-dans-r" class="section level2">
+<h2><span class="header-section-number">4.1</span> Les types de valeurs dans R</h2>
+<p>Une valeur constitue l’unité de base des données pour R. Comme pour la plupart des logiciels, elles peuvent être de trois <strong>types</strong> :</p>
+<ul>
+<li><strong>Numérique</strong> : entier, double</li>
+<li><strong>Caractère</strong> : texte ou code</li>
+<li><strong>Logique</strong> : booléens</li>
+</ul>
+<p>Ces valeurs sont ensuites structurées au sein de vecteur qui sont compilés dans des <em>dataframes</em>.</p>
+</div>
+<div id="avant-de-manipuler-le-data.frame-installer-et-charger-un-package" class="section level2">
+<h2><span class="header-section-number">4.2</span> Avant de manipuler le data.frame : installer et charger un package</h2>
+<p>Pour manipuler notre base de données, nous allons nous servir de fonctionnalités présentes dans le package <code>tidyverse</code>.</p>
+<p>La première fois que l’on veut utiliser un package, il faut le télécharger, avec <code>install.packages()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span> (<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>Puis à l’ouverture de R, le charger (si on a besoin de ses fonctions), avec <code>library()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>Le package est prêt à être utilisé !</p>
+</div>
+<div id="importation-de-donnees" class="section level2">
+<h2><span class="header-section-number">4.3</span> Importation de données</h2>
+<p>Conseil : exporter les données au format .csv ; c’est le format le plus interopérable (supporté par tous les logiciels stat). Utiliser ensuite la fonction <code>read.csv</code> après avoir défini le répertoire de travail (ou en donnant le chemin complet) <!-- setwd('D:/users/vivien.roussez/Documents/Groupe référents R/Module socle/referentsR') --> <!-- setwd("D:/users/solene-c.colin/Documents/latest") --> <!-- setwd("C:/Users/pirz/GitHub/parcours-r/m1_socle_book") --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="st">&quot;Data/Base_synth_territoires.csv&quot;</span>,
+                  <span class="dt">header =</span> T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</code></pre></div>
+<ul>
+<li><code>header=</code>indique la présence des noms de variable sur la première ligne</li>
+<li><code>sep=</code> indique le séparateur de champ : ‘;’ ‘/t’ pour tabulation.</li>
+<li><code>dec=</code> indique le séparateur de décimale (‘.’ par défaut)</li>
+<li><code>colClasses=</code>permet de préciser le type de la données en entrée</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> <code>?read.csv</code> pour plus d’options</p>
+<p>Autres façons d’importer les données</p>
+<ul>
+<li>Fonction <code>read_delim</code>, du package <code>readr</code>, plus rapide</li>
+<li>Fonction <code>fread</code>, du package <code>data.table</code>, beaucoup plus rapide !!</li>
+<li>Pour importer les fichiers XLS, ODT ou DBF, il existe des fonctions et des packages spécifiques</li>
+<li><strong>Le passage par un fichier csv est très recommandé</strong></li>
+</ul>
+</div>
+<div id="structure-des-donnees-le-dataframe" class="section level2">
+<h2><span class="header-section-number">4.4</span> Structure des données : le <em>dataframe</em></h2>
+<center>
+<img src="Figures/DF1.png" />
+</center>
+<ul>
+<li>n lignes (observations)</li>
+<li>p colonnes (variables)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span> (base)</code></pre></div>
+<pre><code>## [1] 36689</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span> (base)</code></pre></div>
+<pre><code>## [1] 38</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span> (base)</code></pre></div>
+<pre><code>## [1] 36689    38</code></pre>
+</div>
+<div id="gerer-le-type-des-variables" class="section level2">
+<h2><span class="header-section-number">4.5</span> Gérer le type des variables</h2>
+<p>À chaque type de variable (numéric, factor,…) correspond une utilisation. Lors de l’import de données, un type est affecté automatiquement par R. Mais le type peut être erronné. Il suffit alors de de les convertir :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base &lt;-<span class="st"> </span><span class="kw">mutate</span>  (base, <span class="dt">LIBGEO =</span> <span class="kw">as.character</span> (LIBGEO))</code></pre></div>
+<p>ou <code>as.factor</code>, <code>as.numeric()</code>, etc…</p>
+<p>La fonction <code>typeof()</code> permet de connaître le type de la variable.</p>
+<p>Pour être sûr de ne pas faire de bêtise, il vaut mieux gérer les types au moment de l’importation avec le paramètre <code>colClasses</code> <span class="math inline">\(\rightarrow\)</span> exercice !</p>
+</div>
+<div id="les-valeurs-particulieres" class="section level2">
+<h2><span class="header-section-number">4.6</span> Les valeurs particulières</h2>
+<ul>
+<li>NA : Valeur manquante (<em>Not Available</em>)</li>
+<li>NaN : Pas un nombre (<em>Not a Number</em>, e.g., 0/0)</li>
+<li>-Inf, Inf : Inﬁni positif ou négatif, e.g. 1/0</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">V1 &lt;-<span class="st"> </span><span class="kw">c</span> (<span class="dv">1</span> , <span class="dv">14</span> , <span class="ot">NA</span> , <span class="fl">32.7</span>)
+<span class="kw">mean</span> (V1)              <span class="co"># renvoie NA. Not good !</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span> (V1, <span class="dt">na.rm =</span> T)   <span class="co"># renvoie 15.9   - OK !</span></code></pre></div>
+<pre><code>## [1] 15.9</code></pre>
+<p><span class="math inline">\(\Rightarrow\)</span> Le module 2 “préparation des données” aborde la gestion de ces valeurs particulières</p>
+</div>
+<div id="exercice-importer-les-donnees-et-premier-coup-doeil" class="section level2">
+<h2><span class="header-section-number">4.7</span> Exercice : Importer les données et premier coup d’oeil</h2>
+<p>On peut importer n’importe quel format de données en R (Excel, SAT, Stata, SQL…) <span class="math inline">\(\rightarrow\)</span> module 2. Pour ce module, nous ne voyons que l’importation de fichier .CSV. Si vous avez une base de données en Excel ou LibreOffice Calc, sauvegardez l’onglet que vous souhaitez en faisant “enregistrer sous” <span class="math inline">\(\rightarrow\)</span> “délimité CSV”. Ici, nous travaillerons sur une base de données communales fournie par l’Insee, dite “comparateur de territoires”. Le fichier source (Excel) figure dans le sous-répertoire “Data” et contient toutes les métadonnées.</p>
+<ul>
+<li>Utiliser la fonction read.csv pour importer ce fichier et stockez le dans un objet df. <strong>Veillez à ce que la région soit bien importée comme un facteur et non un entier</strong>.</li>
+<li>Inspecter le dataframe avec les fonctions vues auparavant … et plus !</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="dt">file =</span> <span class="st">&quot;Data/Base_synth_territoires.csv&quot;</span>,
+                <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>,
+                <span class="dt">colClasses =</span> <span class="kw">c</span> (<span class="ot">NA</span>, <span class="st">&quot;NULL&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;NULL&quot;</span>,<span class="st">&quot;NULL&quot;</span>,<span class="st">&quot;NULL&quot;</span>,
+                                <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="kw">rep</span> (<span class="st">&quot;NULL&quot;</span>, <span class="dv">28</span>)))
+
+<span class="kw">str</span> (df)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    36689 obs. of  6 variables:
+##  $ CODGEO  : Factor w/ 36689 levels &quot;01001&quot;,&quot;01002&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ REG     : chr  &quot;84&quot; &quot;84&quot; &quot;84&quot; &quot;84&quot; ...
+##  $ P14_POP : int  767 239 14022 1627 109 2570 743 338 1142 397 ...
+##  $ P09_POP : int  787 207 13350 1592 120 2328 660 336 960 352 ...
+##  $ SUPERF  : num  15.95 9.15 24.6 15.92 5.88 ...
+##  $ NAIS0914: int  40 16 1051 117 8 175 59 12 56 25 ...</code></pre>
+<p>On peut également gérer les problèmes d’encodage de caractères (si on passe de Windows à un système Unix, par exemple)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span> (df)</code></pre></div>
+<pre><code>##   CODGEO REG P14_POP P09_POP SUPERF NAIS0914
+## 1  01001  84     767     787  15.95       40
+## 2  01002  84     239     207   9.15       16
+## 3  01004  84   14022   13350  24.60     1051
+## 4  01005  84    1627    1592  15.92      117
+## 5  01006  84     109     120   5.88        8
+## 6  01007  84    2570    2328  33.55      175</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span> (df)</code></pre></div>
+<pre><code>##       CODGEO REG P14_POP P09_POP SUPERF NAIS0914
+## 36684  97419  04    6722    6822 177.60      519
+## 36685  97420  04   22406   22437  57.84     1963
+## 36686  97421  04    7132    7406 103.82      661
+## 36687  97422  04   76796   72658 165.43     6663
+## 36688  97423  04    7198    7057  42.58      531
+## 36689  97424  04    5295    5989  84.40      430</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span> (df)</code></pre></div>
+<pre><code>## [1] &quot;CODGEO&quot;   &quot;REG&quot;      &quot;P14_POP&quot;  &quot;P09_POP&quot;  &quot;SUPERF&quot;   &quot;NAIS0914&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span> (df) <span class="co"># la classe de l&#39;objet (du point de vue langage orienté objet)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span> (df) <span class="co"># le type d&#39;objet du point de vue &quot;interne&quot; à R</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Accéder a une variable directement (on obtient un vecteur) :</span>
+df<span class="op">$</span>CODGEO [<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>] <span class="co"># Captain crochet poweeeeerr !!!</span></code></pre></div>
+<pre><code>##  [1] 01001 01002 01004 01005 01006 01007 01008 01009 01010 01011
+## 36689 Levels: 01001 01002 01004 01005 01006 01007 01008 01009 01010 ... 97424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span> (df<span class="op">$</span>CODGEO)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span> (df<span class="op">$</span>CODGEO)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span> (df)</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span> (df<span class="op">$</span>REG)</code></pre></div>
+<pre><code>## [1] 36689</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="presentation-de-linterface-et-premieres-manipulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="premiere-manipulation-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

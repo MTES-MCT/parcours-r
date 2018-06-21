@@ -1,0 +1,5 @@
+book_filename: "Débuter avec R et Rstudio"
+delete_merged_file: TRUE
+language:
+  ui:
+    chapter_name: "Chapitre "

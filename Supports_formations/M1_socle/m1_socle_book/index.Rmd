@@ -1,0 +1,36 @@
+
+--- 
+title: "Découvrir R et RStudio"
+author: "Groupe des référents R"
+date: '`r format(Sys.time(), "%d %B %Y")`'
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Formation R socle"
+---
+
+<style> body {text-align: justify}  </style>
+
+# Introduction
+
+![](Figures/Rlogo.jpg){width=60%}
+
+Ce module vise à faire découvrir :
+
+- R et son écosystème
+- L'interface de RStudio
+- Les méthodes élémentaires d'importation des données
+- Des premières statistiques
+- Des premières représentations graphiques
+
+L'objectif est d'avoir les clefs pour commencer à travailler rapidement sur R en complément, voire en remplacement d'autres outils (Excel, SAS...). Les concepts de programmation sont également abordés pour pouvoir comprendre les syntaxes proposées dans les différents forums d'aide.
+
+```{r setup, include=FALSE}
+rm(list=ls())
+knitr::opts_chunk$set(echo = T, message=F, error=F,warning=F,fig.width=6, fig.height=6)
+```
+
+
+

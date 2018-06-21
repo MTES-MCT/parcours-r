@@ -1,0 +1,276 @@
+# Aller plus loin avec les objets, crochets et la programmation fonctionnelle
+
+Ce qui a été présenté dans ce module reposer sur les fonctions du package `tidyverse`. Cette approche tend à se généraliser depuis quelques années, mais quand on cherche la réponse à un problème sur Internet, on trouve d'autres façons de programmer en R, qui appellent aux éléments du package `base` et non du `tidyverse`
+$\rightarrow$ Cete partie donne quelques clés de compréhension.
+
+## Les objets dans R
+
+Rappel : en informatique, un objet est défini par : ses *attributs* et ses *méthodes* (fonctions). On prend l'exemple du jeu d'échec : chaque pièce peut-être vue comme un objet :
+
+- sa position sur le plateau constitue ses attributs
+- sa façon de se déplacer peut-être vue comme une fonction qui ne s'applique qu'à ce type de pièce, donc une méthode
+
+R est un langage orienté objet ; ces objets permettent de structurer les données selon leurs caractéristiques $\rightarrow$ on retrouve les données dans les attributs. Les méthodes sont en général transparentes pour l'utilisateur (cf utilisation des fonctions `summary`, `plot`...). Les objets les plus courants sont les suivants :
+
+- **Vecteurs** : suite unidimensionnelle de **valeurs** ayant le même type.
+- **Facteurs** : vecteur qui prend un nombre limité de modalités (exemple : sexe). Il est défini par les niveaux (*levels*) et les libellés associés (*labels*)
+- **Matrice** et **arrays** : suites multidimensionnelles de **valeurs** (matrices=dimension 2 ; array=dimension n)
+- **Liste** : ensemble d'**objets** différents. On peut stocker un vecteur alphanumérique avec matrice numérique dans une liste
+
+- **Tableaux** (data.frame) : Objet qui ressemble le plus aux tables Excel, SAS ou SPSS... : description d'individus statistiques (observations, en ligne) par des caractéristiques (variables, en colonnes)
+* **Fonctions** : Objets particuliers qui donnent un *résultat* à partir de paramètres en entrée. Cela sera au programme d'un autre module de formation.
+- **Autres objets** : Il existe un très grand nombre d'objets *ad hoc* dans R. Par exemple 
+    + *ts* (time serie) pour les séries temporelles, 
+    + *lm* (linear model) qui contient tous les résultats d'une régression linéraire... 
+    + On peut même en définir de nouveaux soi-même !
+
+On utilise `<-` ou `=` pour stocker un objet.
+La fonction `c` permet de lister simplement les valeurs que l'on veut stocker dans l'objet ; la fonction `seq` génére une suite incrémentée. Il existe aussi la fonction `rep` qui réplique n fois la même valeur.
+
+### Créer des vecteurs
+```{r}
+v1 <- seq(1 : 10)
+v2 <- c ("lundi", "mardi", "mercredi", "jeudi",
+        "vendredi", "samedi", "dimanche")
+```
+### Créer une matrice 
+```{r}
+m <- matrix (v1, nrow = 10, ncol = 7)
+l <- list (v1, v2, m)
+```
+
+
+
+### Visualiser ces objets et leurs attributs
+
+Quelques fonctions simples : `print`, `View`, `names`, `colnames`, `rownames`, `typeof`, `str`, `dim`
+
+```{r}
+v1
+print (v2)
+typeof (v2) # Permet de visualiser le type 
+dim (m)
+str (l)    # Permet de visualiser les attributs 
+```
+
+
+## Sélectionner des lignes et des colonnes
+
+Il est aussi possible d'accéder aux éléments d’un dataframe à partir du numéro de ligne et de colonne, grâce aux crochets :
+
+<center>![](Figures/DF2.png)</center>
+
+- `base[1,3]` $\rightarrow$ <span style="color:red">valeur de la première ligne et de la troisième colonne </span>
+- `base[2,]` $\rightarrow$ <span style="color:blue">toutes les variables pour la 2e observation</span>
+- `base[,4]` $\rightarrow$ <span style="color:green">toutes les observations de la quatrième colonne  </span>
+- `base[,’V6’]` $\rightarrow$ <span style="color:cyan">toutes les observations de la variable V6</span>
+- $\Rightarrow$ Utile pour sélectionner une partie d'une table : `base[1:4, c(3, 6)]`
+
+
+## Créer une nouvelle fonction en R
+
+La fonction est un objet comme les autres, qu'on crée avec l'opérateur d'affectation. Elle est définie par des paramètres et elle se termine par la fonction `return()`. On reprend l'exemple du calcul de l'IMC
+
+```{r}
+
+calcul_IMC <- function (poids, taille)
+{
+  ## La taille est exprimée en mètres
+  imc <- poids / taille ^ 2
+  return (imc)
+}
+calcul_IMC (poids=80,taille=1.89)
+calcul_IMC (poids=60,taille=1.55)
+```
+
+## Les boucles conditionnelles
+
+Les commandes `if` et `else` sont bien entendues utilisables. Le "then" n'existe pas : il est implicite après les accolades.
+
+```{r}
+diag_IMC <- function(poids,taille)
+{
+  imc <- poids / taille ^ 2
+  if (imc < 18.5) {diag <- "maigre"}
+  else if (imc < 25) {diag <- "normal"}
+       else {diag <- "surpoids"}
+  return (diag)
+}
+diag_IMC (poids=60,taille=1.89)
+diag_IMC (poids=80,taille=1.89)
+diag_IMC (poids=80,taille=1.55)
+```
+
+
+## Les boucles
+
+On peut utiliser les boucles classiques : `repeat`, `while`, `for` :
+
+```{r}
+for (pp in seq(from = 50, to = 100, by = 5))
+{
+  print(paste ("Taille = 1,70m, poids =", pp, "Diagnotic :",
+               diag_IMC (poids = pp, taille = 1.70)))
+}
+```
+
+
+## Exercices
+
+### Vecteurs simples
+
+- Créer trois vecteurs : un numérique, un caractère et un facteur. Vous pouvez vous aider des fonctions `c()`, `rnorm()` (génération d'une variable aléatoire selon une loi normale), `seq()` ou `rep()`
+- Regrouper ces variables dans un dataframe, puis dans une liste. Dans les deux configurations, afficher la variable contenant les tailles (vtaille). Pour la liste, utiliser les [] et [[]].
+
+```{r}
+rm (list = ls ())
+
+x <- c (1, 160, 2, 9, 60)
+x1 <- c("Je", "programme", "en", "R") # Guillemets pour indiquer que c'est une variable textuelle
+y <- seq (from = 1, to = 10, by = 1)
+z <- rep (x = 1, times = 100)
+x <- rnorm (n = 30)
+
+# création de vecteurs avec la fonction c() = combine
+v1 <- c( 3, 4, 12, 15, 32, 6, 1, 2, 3, 9)
+
+# avec la fonction seq() = sequence, g?n?ralisation de la syntaxe ci-dessus
+v2 <- seq(from = 1 , to = 15 , by = 1.5)
+
+# syntaxe équivalente mais préférable car plus lisible :
+
+v2b <- seq (from=1, to=15, by=1.5)
+v3 <- 1:10
+
+# avec la fonction rep() = répétition
+v4 <- rep (x = 4, times = 10)
+
+# ces commandes peuvent être combinées. Pratique pour cr?er des variables "facteur"
+v5 <- rep (x = c(3, 4, 1.2, 8, 9), times = 2)
+v6 <- rep (x = 1:5, times = 2)
+
+# vecteurs de type texte ou factor
+vtaille <- rep (x = c ("S", "L"), times = 5)
+vtaille <- factor (vtaille)
+
+# concaténation de vecteurs
+gtaille <- paste("X", vtaille, sep = "")
+gtaille <- factor (gtaille)
+toutes_taille <- c (as.character (vtaille), as.character (gtaille)) 
+toutes_taille <- as.factor (toutes_taille)
+levels (toutes_taille)
+```
+
+### Dataframes et listes
+
+```{r}
+dataf <- data.frame (vtaille, v1, v2, v3, v4, v5, v6)
+liste <- list (vtaille, v1, v2, v3, v4, v5, v6)
+names(liste) <- c ("vtaille", "v1", "v2", "v3", "v4", "v5", "v6")
+
+dataf$vtaille
+liste$vtaille
+rm (dataf, vtaille, v1, v2, v2b, v3, v4, v5, v6)
+```
+
+
+### Pour aller plus loin : matrices et arrays
+
+Les matrices et les arrays permettent des calculs rapides et efficaces, et peuvent être très pratiques et optimisent le stockage des données. Ils demandent cependant plus de réflexion en amont quant à leur utilisation, mais . On accède aux éléments avec les []. 
+
+- Créer une matrice à 10 lignes et 10 colonnes remplie avec un tirage aléatoire selon une loi normale centrée réduit.
+- Créer un hypercube avec la fonction `array()` avec 10 lignes, 5 colonnes et de profondeur 3, toujours avec un tirage aléatoire selon une loi normale
+
+Un hypercube de trois dimensions peut être représenté comme suit :
+![](Figures/grille.jpg){width=50%}
+
+
+```{r}
+mat <- matrix(rnorm(50), ncol = 5, nrow = 10)
+arr <- array(rnorm(150),dim = c(10,5,3))
+mat
+arr
+```
+
+*Pourquoi s'embêter avec ça ?* Parce qu'on peut appliquer des fonctions facilement sur les lignes, colonnes et autres dimensions grâce à la fonction  ```apply()```.
+Exemple : résultats de validations croisées par bloc, simulations de loi selon différents paramètres. Et on calcule facilement des statistiques "marginales".
+
+Par, exemple, sur une matrice, on peut calculer des statistiques par lignes :
+
+```{r}
+apply(mat, MARGIN = 1, FUN=mean)
+```
+
+Ou par colonnes :
+
+```{r}
+apply(mat, MARGIN = 2, FUN=mean)
+```
+
+Sur notre hypercube de type ```array```, on peut aussi calculer des stats sur ses différentes dimensions :
+
+```{r}
+apply (arr, MARGIN = 3, FUN=mean)
+apply (arr, MARGIN = c(2,3), FUN = mean)
+```
+
+**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+
+Le crochet, c'est comme le capitaine du même nom : personne ne l'aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s'en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.
+
+- Matrices et arrays
+
+```{r}
+mat [1,1]
+mat [1,]
+mat [,1]
+arr [1,1,1]
+arr [1,,]
+arr [,,1]
+```
+
+- dataframes et listes :
+
+Pour les dataframes, le fonctionnement est le même que pour les matrices. Pour les listes, une paire de crochet renvoie un résultat sous forme de liste, un double crochet renvoie le résultat sous sa forme naturelle (ex : vecteur ou matrice).
+
+```{r}
+str (liste [1])
+str (liste [[1]])
+```
+
+### Inspection d'un objet : la régression
+
+```{r,echo=FALSE}
+library ("ggplot2")
+reg <- lm (data = iris, formula = Sepal.Length ~ Petal.Length)
+ggplot (data = iris, aes(x = Petal.Length, y = Sepal.Length)) +
+  geom_point ()  +
+  geom_smooth (method = "lm", se = FALSE) +
+  ggtitle ("Illustration de la régression linéaire simple")
+```
+
+
+La régression linéaire consiste à exprimer une variable Y en fonction d'une variable X dans une fonction linéaire. C'est à dire qu'on cherche a et b tels que : $$ Y = a \cdot X + b + \epsilon$$ 
+où $\epsilon$ est le résidu de la régression. On utilise dans cet exemple la table des iris de Fisher, existant dans R base qu'il suffit d'appeler avec `data(iris)` (il existe d'autres dataframe inclus dans les packages et qui sont utilisés en exemple dans l'aide).
+
+```{r}
+data ("iris")
+str (iris)
+```
+
+Faire la régression de la Sepal.Length sur Petal.length à l'aide de la fonction `lm()`
+
+```{r}
+lm (data = iris, formula = Sepal.Length ~ Petal.Length)
+```
+On a les paramètres a et b mais on aimerait en savoir plus... Au moins la qualité d'ajustement (le $R^2$ par exemple), et un graphique des résidus pour détecter une éventuelle structure. Pour cela, stocker le résultat dans un nouvel objet, et explorez-le avec les fonctions `str()`, `summary()` et `plot()`
+
+
+```{r}
+reg <- lm(data = iris, formula = Sepal.Length ~ Petal.Length)
+str (reg)
+summary (reg)
+plot (reg)
+```
+
+Les **méthodes** summary, print et plot sont implémentées pour tous les objets en R, et on peut les utiliser pour avoir un premier aperçu de ce que l'on obtient avec la fonction.

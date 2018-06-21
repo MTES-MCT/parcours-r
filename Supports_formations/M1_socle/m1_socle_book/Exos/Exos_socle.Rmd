@@ -1,0 +1,380 @@
+---
+title: "Module Socle - Exercice"
+output:
+  html_notebook:
+    code_folding: hide
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+---
+
+<style> body {text-align: justify}  </style>
+
+
+Ces exercices de mise en oeuvre des notions vues pendant la présentation se déroulent en deux parties :
+
+- Manipulation des objets R sans recours à une base de données
+- Importation d'une base de données à partir d'un fichier CSV et premières manipulations
+- Premiers graphiques et statistiques.
+
+Par défaut, les résultats attendus sont affichés, et, si vous séchez, vous pouvez afficher le code les ayant généré en cliquant sur "code".
+A tout moment, vous pouvez donc copier / coller le code dans l'éditeur de script ou la console pour exécuter les commandes présentées.
+Ces exercices nécessitent les packages de base et le package `tidyverse`, qui regroupe un ensemble de packages à la syntaxe très simple.
+
+```{r}
+require(tidyverse)       # ou library(tidyverse)
+```
+
+
+# Création et manipulation d'objets dans R
+
+## Génération de vecteurs
+
+Créez trois vecteur : un numérique, un caractère et un facteur. Vous pouvez vous aider des fonctions `c()`, `rnorm()` (génération d'une variable aléatoire selon une loi normale), `seq()` ou `rep()`
+
+```{r}
+rm(list=ls())
+
+x <- c(1,160,2,9,60)
+x1 <- c("Je","programme","en","R") # Guillemets pour indiquer que c'est une variable textuelle
+y <- seq(1,10)
+z <- rep(1,100)
+x <- rnorm(n = 30)
+
+# création de vecteurs avec la fonction c() = combine
+v1 <- c(3,4,12,15,32,6,1,2,3,9)
+
+# avec la fonction seq() = sequence, g?n?ralisation de la syntaxe ci-dessus
+v2 <- seq(1 , 15 , 1.5)
+
+# syntaxe équivalente mais préférable car plus lisible :
+
+v2b<-seq(from=1 , to=15 , by=1.5)
+v3<-1:10
+
+# avec la fonction rep() = répétition
+v4<-rep(4,10)
+
+# ces commandes peuvent être combinées. Pratique pour cr?er des variables "facteur"
+v5 <- rep(c(3,4,1.2,8,9),2)
+v6 <- rep(1:5,2)
+
+# vecteurs de type texte ou factor
+vtaille <- rep(c("S","L"),5)
+vtaille <- factor(vtaille)
+
+# concaténation de vecteurs
+gtaille <- paste("X",vtaille,sep="")
+gtaille <- factor(gtaille)
+toutes_taille <- c(as.character(vtaille),as.character(gtaille)) 
+toutes_taille <- as.factor(toutes_taille)
+levels(toutes_taille)
+```
+
+
+Regroupez ces variables dans un dataframe, puis dans une liste. Dans les deux configurations, affichez la variable contenant les tailles (vtaille). Pour la liste, vous pouvez utiliser les [] et [[]].
+
+##  Génération d'autres objets
+
+### Dataframes et listes
+
+```{r}
+dataf <- data.frame(vtaille,v1,v2,v3,v4,v5,v6)
+liste <- list(vtaille,v1,v2,v3,v4,v5,v6)
+names(liste) <- c("vtaille","v1","v2","v3","v4","v5","v6")
+
+dataf$vtaille
+liste$vtaille
+rm(dataf,vtaille,v1,v2,v2b,v3,v4,v5,v6)
+```
+
+
+### Pour aller plus loin : matrices et arrays
+
+Les matrices et les arrays permettent des calculs rapides et efficaces, et peuvent être très pratiques et optimisent le stockage des données. Ils demandent cependant plus de réflexion en amont quant à leur utilisation, mais . On accède aux éléments avec les []. 
+
+- Créer une matrice à 10 lignes et 10 colonnes remplie avec un tirage aléatoire selon une loi normale centrée réduit.
+- Créer un hypercube avec la fonction `array()` avec 10 lignes, colonnes et de profondeur 3, toujours avec un tirage aléatoire selon une loi normale
+
+```{r}
+mat <- matrix(rnorm(100),ncol = 10, nrow = 10)
+arr <- array(rnorm(300),dim = c(10,10,3))
+mat
+arr
+```
+
+*Pourquoi s'embêter avec ça ?* Parce qu'on peut appliquer des fonctions facilement sur les lignes, colonnes et autres dimensions. Exemple : résultats de validations croisées par bloc, simulations de loi selon différents paramètres. Et on calcule facilement des statistiques "marginales".
+
+```{r}
+apply(arr,MARGIN = 3,FUN=mean)
+apply(arr,MARGIN = c(2,3),FUN = mean)
+```
+
+**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+
+Le crochet, c'est comme le capitaine du même nom : personne ne l'aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s'en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.
+
+- Matrices et arrays
+
+```{r}
+mat[1,1]
+mat[1,]
+mat[,1]
+arr[1,1,1]
+arr[1,,]
+arr[,,1]
+```
+
+- dataframes et listes :
+
+Pour les dataframes, le fonctionnement est le même que pour les matrices. Pour les listes, une paire de crochet renvoie un résultat sous forme de liste, un double crochet renvoie le résultat sous sa forme naturelle (ex : vecteur ou matrice).
+
+```{r}
+str(liste[1])
+str(liste[[1]])
+```
+
+## Inspection d'un objet : la régression
+
+```{r,echo=FALSE}
+reg <- lm(data=iris,formula = Sepal.Length~Petal.Length)
+ggplot(data=iris,aes(x=Petal.Length,y=Sepal.Length)) + geom_point()  +
+          geom_smooth(method = "lm", se = FALSE) + ggtitle("Illustration de la régression linéaire simple")
+```
+
+
+La régression linéaire consiste à exprimer une variable Y en fonction d'une variable X dans une fonction linéaire. C'est à dire qu'on cherche a et b tels que : $$ Y = a \cdot X + b + \epsilon$$ 
+où $\epsilon$ est le résidu de la régression. On utilise dans cet exemple la table des iris de Fisher, existant dans R base qu'il suffit d'appeler avec `data(iris)` (il existe d'autres dataframe inclus dans les packages et qui sont utilisés en exemple dans l'aide).
+
+```{r}
+data("iris")
+str(iris)
+```
+
+Faire la régression de la Sepal.Length sur Petal.length à l'aide de la fonction `lm()`
+
+```{r}
+lm(data=iris,formula = Sepal.Length~Petal.Length)
+```
+On a les paramètres a et b mais on aimerait en savoir plus... Au moins la qualité d'ajustement (le $R^2$ par exemple), et un graphique des résidus pour détecter une éventuelle structure. Pour cela, stocker le résultat dans un nouvel objet, et explorez-le avec les fonctions `str()`, `summary()` et `plot()`
+
+
+```{r}
+reg <- lm(data=iris,formula = Sepal.Length~Petal.Length)
+str(reg)
+summary(reg)
+plot(reg)
+```
+
+Les **méthodes** summary, print et plot sont implémentées pour tous les objets en R, et on peut les utiliser pour avoir un premier aperçu de ce que l'on obtient avec la fonction.
+
+# Premier jeu de données, premières statistiques
+
+## Importer les données et premier coup d'oeil
+
+On peut importer n'importe quel format de données en R (excel, sas, stata, SQL...) et ceci est abordé dans le module 2. Pour ce module, nous ne voyons que l'importation de fichier .CSV. Si vous avez une base de données en excel ou libreOffice, sauvegardez l'onglet que vous souhaitez en faisant "enregistrer sous" $\rightarrow$ "délimité CSV". Ici, nous travaillerons sur une base de données communales fournies par l'Insee, dite "comparateur de territoires". Le fichier (excel) source figure sous le répertoire "data" et contient toutes les métadonnées ; nous avons ajouté une colonne correspondant au type ZAU de la commune concernée.
+
+
+Utilisez la fonction read.csv pour importer ce fichier et stockez le dans un objet df. Veillez à ce que la région soit bien importée comme un facteur et non un entier. Inspectez ce nouvel objet.
+
+```{r}
+df <- read.csv(file = "../Data/Base_synth_territoires.csv",sep=";",dec=",")
+str(df)
+```
+
+
+```{r}
+df <- read.csv(file = "../Data/Base_synth_territoires.csv",sep=";",dec=",",colClasses = c("REG"="factor"))
+str(df)
+```
+
+Inspectez le dataframe avec les fonctions vues en cours... et plus !
+
+```{r}
+dim(df)
+head(df)
+tail(df)
+
+str(df)
+names(df)
+class(df)
+typeof(df)
+
+# Accéder a une variable directement (on obtient un vecteur) :
+df$CODGEO[1:10] # Captain crochet poweeeeerr !!!
+class(df$CODGEO)
+typeof(df$CODGEO)
+length(df)
+length(df$region)
+```
+
+## Créer, filtrer, sélectionner 
+
+En utilisant la fonction `mutate()`, créer une nouvelle variable correspondant à la densité de population (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)
+
+```{r}
+df <- mutate(df,densite=P14_POP/SUPERF,tx_natal=1000*NAISD15/P14_POP,tx_mort=DECESD15/P14_POP)
+```
+
+A l'aide de la fonction `select()`, créez une nouvelle table dans laquelle vous ne gardez que le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.
+
+
+```{r}
+selection <- select(df,CODGEO,ZAU,REG,DEP,densite,tx_natal,tx_mort)
+```
+
+Enfin, ne retenez les communes correspondant à votre département de naissance et stocker. Faites attention au type de la variable département !
+
+```{r}
+S0 <- filter(selection,DEP=="62")
+```
+
+On va maintenant jouer avec les opérateurs logiques pour sélectionner des échantillons différents !
+
+```{r}
+S1 <- filter(selection,DEP!="62") # tout sauf le 62 :(
+S2 <- filter(selection,DEP %in% c("59","62")) # L'ancien NPdC :)
+S3 <- filter(selection,!(DEP %in% c("59","62"))) # Le "sud" de la France
+S4 <- filter(selection,densite>100) # l'urbain
+S5 <- filter(selection,DEP=="62" & densite>100) # le PdC urbain
+S6 <- filter(selection, DEP=="62" | densite > 100) # le PdC et l'urbain
+```
+
+**Nom d'un pipe `%>%` !**
+
+On peut combiner les opérations en une seule ligne à l'aide du pipe `%>%` :
+
+```{r}
+selection <- select(df,CODGEO,ZAU,REG,DEP,densite,tx_natal,tx_mort) %>%
+             filter(DEP=="62")
+```
+
+**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+
+Pour sélectionner les données, on peut également utiliser les crochets couplés aux dollars et aux `c()`, sans passer par les numéros de lignes et colonnes ! On rencontre assez souvent cette syntaxe sur les forums.
+
+```{r}
+selection <- df[df$DEP=="62",c("CODGEO","ZAU","REG","DEP","densite","tx_natal","tx_mort")]
+```
+
+*Note* : dans la syntaxe `tidyverse`, on ne met pas (obligatoirement) de guillemets pour les noms de variable, alors qu'on le fait pour la version [ ]
+
+# Mes premiers graphiques et statistiques
+
+## Statistiques univariées
+
+Utilisdez la fonction `summary` pour obtenir un résumé de l'ensemble des variables de la table df
+
+```{r}
+df <- mutate(df,ZAU2=as.factor(substr(ZAU,1,3)))
+### Parce que la variable originale est trop longue et caractères bizarres
+summary(df)
+```
+
+Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population
+
+```{r}
+mean(df$densite)
+sd(df$densite)
+median(df$densite)
+var(df$densite)
+```
+
+Il y a des valeurs manquantes, qui sont absorbantes ! On ajoute un paramètre pour calculer uniquement sur les valeurs renseignées
+
+```{r}
+mean(df$densite,na.rm = T)
+sd(df$densite,na.rm = T)
+median(df$densite,na.rm = T)
+var(df$densite,na.rm = T)
+```
+
+
+**Application** : calculez la version centrée réduite de la variable de densité. Rappel : on calcule la version centrée réduite d'une variable X en lui appliquant la transformation suivante : $$ STD_X = \dfrac{X-\bar{X}}{\sigma_X}$$ 
+où $\bar{X}$ est la moyenne empirique de X et $\sigma_X$ son écart-type
+Avantage : on élimine les effets d'unité (d'ordre de grandeur)
+
+```{r}
+df <- mutate(df,std_dens=(densite-mean(densite,na.rm = T))/sd(densite,na.rm = T))
+mean(df$std_dens,na.rm = T)
+sd(df$std_dens, na.rm = T)
+```
+
+Calulez à présent les quartiles puis déciles de cette variables
+
+```{r}
+quantile(df$densite,na.rm = T)
+```
+
+```{r}
+quantile(df$densite,probs = seq(0,1,.1),na.rm = T)
+```
+
+## Tableaux croisés
+
+- Une variable 
+
+Calculez le nombre de communes par type d'espace à l'aide de la fonction table, et le pourcentage associé
+
+```{r}
+t <- table(df$ZAU2)
+t
+100*prop.table(t) %>% round(digits = 4)
+```
+
+- Deux variables
+```{r}
+t <- table(df$REG,df$ZAU2)
+t
+100*prop.table(t) %>% round(digits = 4)
+```
+
+Pour aller plus loin et ajouter des variables de pondération, calculer les profils-ligne ou profils-colonne, rendez-vous au module 3, ou demandez à votre GF (Gentil Formateur)
+
+## Les graphiques avec ggplot2
+
+On reprend la base non filtrée. A l'aide de la cheat sheet ggplot2, réalisez un histogramme de la densite de population.
+
+```{r}
+ggplot(data = df,aes(x=densite)) + geom_histogram()
+```
+
+C'est pas très informatif, mais on peut faire une transformation log pour y voir plus clair !
+
+```{r}
+ggplot(data = df,aes(x=log(densite))) + geom_histogram()
+```
+
+Faites maintenant un barplot (qui n'est pas un histogramme !!!! ) du nombre de communes par type ZAU
+
+```{r}
+ggplot(data=df,aes(x=ZAU)) + geom_bar()
+```
+
+On va essayer d'y voir plus clair avec le paramètre `fill`
+
+```{r}
+ggplot(data=df,aes(x=ZAU2,fill=ZAU2)) + geom_bar()
+```
+
+Réalisez un graphique (unage de points) croisant la densité de population et le taux de mortalité
+
+```{r}
+ggplot(data=df,aes(x=densite,y=tx_mort)) + geom_point()
+```
+
+On peut ajouter une dimension supplémentaire avec la couleur des points
+```{r}
+ggplot(data=df,aes(x=densite,y=tx_mort,color=ZAU2)) + geom_point()
+```
+
+Là encore il faudrait faire une transformation logarithmique, mais tout ça est abordé dans le module 3 !
+
+Avec les fonctions de base, on peut obtenir de nombreux graphiques avec très peu de code, mais moins jolis :
+
+```{r}
+plot(iris)
+```
+
+Des possibilités infinies à approfondir dans les modules 3 et 5 !!!!!

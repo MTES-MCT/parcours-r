@@ -1,0 +1,35 @@
+# Structurer ses tables
+
+## Pourquoi se pencher sur la structuration des tables ?
+
+Pour bien manipuler des données, leur structuration est fondamentales.
+
+- Qu'est ce qu'une ligne de notre table ?
+
+- Qu'est ce qu'une colonne de notre table ?
+
+Sur une table non aggrégée (un répertoire, une table d'enquête...), la structuration naturelle est une ligne par observation (un individu, une entreprise...), une colonne par variables (age, taille...) sur cette observation. 
+
+Mais dès qu'on aggrège une telle table pour construire des tables structurées par dimensions d'analyse et indicateurs, se pose toujours la question de savoir ce qu'on va considérer comme des dimensions et comme des indicateurs. 
+
+La bonne réponse, c'est que ça dépend de ce que l'on veut en faire.
+L'important est de pouvoir facilement passer de l'un à l'autre suivant ce que l'on doit faire. C'est l'intérêt du module *tidyr*.
+
+## Les deux fonctions clefs de Tidyr
+
+- **Gather()** permet transformer plusieurs colonnes en dimension d'une variable associée à une variable de comptage. Format de table *long*
+
+- **Spread()** fait l'inverse, cette fonction créer autant de colonnes que de modalités d'une variable donnée en remplissant chacune par le contenu d'une variable de comptage. Format de table *large*
+
+Un exemple : obtenir un fichier avec une ligne par région, et une colonne par année qui donne l'évolution en % de la construction neuve par rapport à l'année précédente
+
+```{r, echo = TRUE,eval=T}
+sitadel<-read_excel("../data/ROES_201702.xls","AUT_REG") %>%
+  mutate(ANNEE=str_sub(date,1,4)) %>%
+  group_by(REG,ANNEE) %>%
+  summarise_if(is.numeric,funs(sum(.,na.rm=T))) %>%
+  mutate_if(is.numeric,funs(evo=100*./lag(.)-100)) %>%
+  select(REG,ANNEE,log_AUT_evo)
+sitadel %>% spread(ANNEE,log_AUT_evo,sep="_")
+```
+

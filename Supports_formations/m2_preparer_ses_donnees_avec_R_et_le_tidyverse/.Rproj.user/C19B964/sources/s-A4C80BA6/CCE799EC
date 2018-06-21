@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521452312829.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CCE799EC",
+    "lastKnownWriteTime" : 1521452342,
+    "last_content_update" : 1521452342330,
+    "path" : "~/Documents/boulot/Dreal/Formations R/PreparationDesDonneesV2/Préparer ses données avec R et le Tidyverse/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "cursorPosition" : "15,4",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

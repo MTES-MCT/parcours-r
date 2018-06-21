@@ -1,0 +1,10 @@
+"0","pire_cumul<-exercice %>% 
+  filter(code_remarque==1,year(date_prelevement)==2016) %>% 
+  group_by(libelle_station,code_station,code_prelevement) %>% 
+  summmarise(resultat_analyse=sum(resultat_analyse)) %>% 
+  ungroup() %>% 
+  filter(resultat_analyse==max(resultat_analyse))
+"
+"2","Error in summmarise(., resultat_analyse = sum(resultat_analyse)) : 
+  impossible de trouver la fonction ""summmarise""
+"

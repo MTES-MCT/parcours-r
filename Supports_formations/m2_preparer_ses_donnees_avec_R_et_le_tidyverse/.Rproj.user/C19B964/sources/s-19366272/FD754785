@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1511257579555.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FD754785",
+    "lastKnownWriteTime" : 71777218572845056,
+    "last_content_update" : 1511257579555,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C6FA0076",
+        "caption" : "Carte_EPCI_France",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Carte_EPCI_France&cache_key=C6FA0076",
+        "displayedObservations" : 1244,
+        "environment" : "",
+        "object" : "Carte_EPCI_France",
+        "preview" : 0,
+        "totalObservations" : 1244,
+        "variables" : 27
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

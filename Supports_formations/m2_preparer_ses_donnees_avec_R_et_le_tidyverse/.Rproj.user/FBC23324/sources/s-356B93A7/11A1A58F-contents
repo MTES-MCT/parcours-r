@@ -1,0 +1,158 @@
+# Lire des données
+
+## Readxl : lire des données excel 
+La fonction *read_excel()* permet d'importer les données d'un fichier excel. On peut spécifier : 
+
+- la feuille, les colonnes, les lignes ou la zone à importer
+- les lignes à supprimer avant importation
+- si on souhaite importe la première ligne comme des noms de variables ou non
+- le format des variables importées
+- la valeur qui sera interprétée comme étant la valeur manquantelibrary(dplyr)
+library(tidyr)
+library(forcats)
+library(lubridate)
+library(stringr)
+library(RcppRoll)
+library(DT)
+library(readxl)
+library(dbplyr)
+library(RPostgreSQL)
+library(rsdmx)
+library(sf)
+
+
+```{r}
+sitadel<-read_excel("../data/ROES_201702.xls",sheet="AUT_REG",
+                    col_types=c("text","text","numeric","numeric","numeric","numeric"))
+datatable(sitadel)
+```
+
+## Read_delim : lire des fichiers plats 
+
+La fonction *read_delim()* permet d'importer les données d'un fichier csv. Elle fonctionne de la même façon que *read_excel()* On peut spécifier : 
+
+- le délimiteur de colonne
+- les lignes à supprimer avant importation
+- si on souhaite importer la première ligne comme des noms de variables ou non
+- le *locale* du fichier
+- la valeur qui sera interprétée comme étant la valeur manquante
+
+*read_csv()*,*read_csv2()* et *read_tsv()* sont des implémentation prérenseignée de read_delim pour lire des fichiers plats avec séparateurs **,** **;** et **tabulaire**.
+
+## Télécharger des données disponibles sur le web
+
+Parfois, les données que nous exploitons sont disponible sur le web.
+Il est possible directement de R de télécharger ces données et si nécessaire de les décompresser.
+un exemple sur les données SEQUOIA de l'ACOSS.
+
+```{r, eval=F}
+url<-"http://www.acoss.fr/files/Donnees_statistiques/SEQUOIA_TRIM_REGION.zip"
+download.file(url, destfile="../data/SEQUOIA_TRIM_REGION.zip",method="auto")
+unzip(zipfile="../data/SEQUOIA_TRIM_REGION.zip",exdir="../data/")
+SEQUOIA<-read_excel("../data/SEQUOIA_TRIM_REGION_BRUT.xls",sheet="PAYS_DE_LA_LOIRE")
+datatable(SEQUOIA)
+```
+
+## Lire des fichiers avec une dimension spatiale
+
+Le package sf (pour simple feature) permet d'importer dans R un fichier ayant une dimension spatiale Après importation, le fichier est un dataframe avec une variable d'un type nouveau : la géométrie. Deux exemple ici pour lire des données au format shape et geojson.
+
+```{r, eval=F,message=F,warning=F}
+Carte_EPCI_France <- st_read(dsn="../data/refgeo2017/", layer="Contour_epci_2017_region")
+communes2017 <- st_read(dsn="../data/refgeo2017/communes2017.geojson")
+```
+
+Le package sf contient l'ensemble des fonctions permettant des manipulations sur fichier géomatique.
+On ne traitera pas ici de toutes ces fonctions en détail, mais la documentation se trouve [ici](https://r-spatial.github.io/sf/).
+
+## Lire des données sous PostgreSQL
+
+Deux approches possibles pour lire les données du patrimoine de la dreal : 
+
+- *Importer* toutes ces données dans l'environnement R
+- se *connecter* à ces données et utiliser un interpréteur permettant de traduire du code R comme une requête SQL. 
+
+### Lire des données sous PostgreSQL : première approche
+
+```{r, eval=F}
+
+#Définition du driver
+drv <- dbDriver("PostgreSQL") 
+
+#Définition de la base de données
+con <- dbConnect(drv, dbname="dbname",host="ip",port=numero_du_port,user="user_name",password="pwd") 
+
+#Spécification de l'encodage, obligatoire avec Windows
+postgresqlpqExec(con, "SET client_encoding = 'windows-1252'") 
+
+#Téléchargement de la table analyse du schéma pesticide
+parametre <- dbGetQuery(con, "SELECT * FROM pesticides.parametre") 
+
+#Téléchargement de données avec dimension spatiale via la fonction st_read_db du package simple feature
+station = st_read_db(con,query="SELECT * FROM pesticides.station")
+```
+On voit que pour importer notre table analyse, on a simplement lancé une requête SQL.
+On peut bien sur avec la même fonction lancer n'importe quelle requête sur la base et reccueillir le résultat.
+
+### Lire des données sous PostgreSQL : seconde approche
+
+```{r, eval=F,message=F,warning=F}
+#définition du driver
+drv <- dbDriver("PostgreSQL") 
+#définition de la base de données
+con <- dbConnect(drv, dbname="dbname",host="ip",port=numero_du_port,user="user_name",password="pwd") 
+#spécification de l'encodage, obligatoire avec windows
+postgresqlpqExec(con, "SET client_encoding = 'windows-1252'") 
+#téléchargement de la table analyse du schéma pesticide
+analyse_db <- tbl(con,in_schema("pesticides", "analyse"))
+```
+
+Ici la table *analyse* n'est pas chargée dans l'environnement R, R s'est juste *connecté* à notre base de donnée.
+
+On peut réaliser des opérations sur la table analyse avec du code R très simplement, par exemple ici pour filtrer sur les analyses relative au Glyphosate : 
+
+```{r, eval=F,message=F,warning=F}
+analyse_db<-  filter(analyse_db,code_parametre==1506)
+```
+
+Attention, ce code ne touche pas la base de donnée, il n'est pas exécuté.
+Pour l'exécuter, il faut par exemple afficher la table.
+
+```{r, eval=F}
+analyse_db
+```
+
+Même exécuté, cette base ne sera pas encore un dataframe.
+Pour importer ensuite une table, on utile la fonction **collect()**
+
+```{r, eval=F}
+analyse_db<-collect(analyse_db)
+```
+
+Cette approche est à conseiller sur d'importante bases de données, et sans dimension spatiale, car dbplyr ne sait pas encore lire ce type de variable (ce qui ne serait tarder).
+
+## Lire des données du webservice Insee
+
+L'insee met à disposition un webservice d'accès à des données de référence sous un format appelé [sdmx](https://sdmx.org/).
+Un package r, [rsdmx](https://github.com/opensdmx/rsdmx) permet de se connecter directement à ces données. 
+Deux approches sont possibles. La première permet d'accéder à une série particulère.
+
+```{r, eval=F}
+url <- "https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471"
+datainsee<-as.data.frame(readSDMX(url))
+```
+
+Cette approche peut être utilisée pour télécharger plusieurs séries en même temps. Ici par exemple nous téléchargeons l'ensemble des données sur les créations et défaillances d'entreprises pour les secteurs de la construction et de l'immobilier sur les Pays de la Loire.
+
+```{r, eval=F}
+url <- "https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471+001564503+001564799+001564823+001582441+001582578+001582597+001582745+001656155+001656161+001655989+001655995"
+datainsee<-as.data.frame(readSDMX(url))
+```
+
+L'autre approche permet de téléchargée un ensemble de données d'une thématique appelée dataflow. ici par exemple on va télécharger l'ensemble des données relative à la construction neuve.
+
+```{r, eval=F}
+url <- "https://bdm.insee.fr/series/sdmx/data/CONSTRUCTION-LOGEMENTS"
+datainsee<-as.data.frame(readSDMX(url))
+```
+

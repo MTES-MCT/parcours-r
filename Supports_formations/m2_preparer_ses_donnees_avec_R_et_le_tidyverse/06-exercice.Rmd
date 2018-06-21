@@ -1,0 +1,17 @@
+# Exercice : Les données majic
+
+Calculer à partir des tables fournies dans le fichier *majic.RData* issues des [fichiers fonciers](http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10) et du recensement de la population un indicateur d’étalement urbain entre 2009 et 2014 à la commune et à l’epci sur la région Pays de la Loire. La méthode utilisée sera celle du CEREMA. On peut consulter le rapport [ici](pic/Rapport_final_SOeS_phase_2_v8_cle01f492.pdf).
+
+Le référentiel des communes a changé sur la période, dans un seul sens : il y a eu des fusions.
+
+La table *com2017* permet de rattacher toute commune ayant existé sur la région à sa commune de rattachement dans la carte communale 2017.
+
+Les surface artificialisé se calculent comme cela à partir de la typologie d'occupation du sol de majic : SA=dcnt07+dcnt09+ dcnt10+dcnt11+dcnt12+dcnt13.
+
+Deux indices à calculer : 
+
+- un indice d’étalement urbain simple= Evolution de la surface artificialisée  /  Evolution de la population
+
+- un indice d’étalement urbain avancé en classes
+
+<center>![](pic/etalementurbain.png)</center>

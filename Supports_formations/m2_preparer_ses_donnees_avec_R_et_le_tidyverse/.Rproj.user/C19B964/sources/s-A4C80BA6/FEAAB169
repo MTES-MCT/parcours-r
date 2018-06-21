@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521446122431.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2538422534",
+    "id" : "FEAAB169",
+    "lastKnownWriteTime" : 1521456933,
+    "last_content_update" : 1521456933734,
+    "path" : "~/Documents/boulot/Dreal/Formations R/PreparationDesDonneesV2/Préparer ses données avec R et le Tidyverse/04-manipuler-plusieurs-tables.Rmd",
+    "project_path" : "04-manipuler-plusieurs-tables.Rmd",
+    "properties" : {
+        "cursorPosition" : "10,16",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

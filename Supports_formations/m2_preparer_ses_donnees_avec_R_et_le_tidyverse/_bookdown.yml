@@ -1,0 +1,5 @@
+book_filename: "Préparer-ses-données-avec-R-et-le-Tidyverse"
+delete_merged_file: TRUE
+language:
+  ui:
+    chapter_name: "Chapitre "

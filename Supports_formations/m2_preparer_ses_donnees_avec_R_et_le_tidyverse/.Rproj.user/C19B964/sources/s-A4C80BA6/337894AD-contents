@@ -1,0 +1,17 @@
+# Manipuler plusieurs tables
+
+Dplyr possède également plusieurs fonctions permettant de travailler sur deux tables.
+On va pouvoir regrouper ces fonctions en plusieurs catégories : 
+
+- Des manipulations permettant de fusionner des informations de deux tables entre elles : jointures transformantes
+- Des manipulations visant à sélectionner des observations d'une table en fonction de celles présentes dans une autre table  : jointures filtrantes
+- Des manipulations visant à traiter deux tables ayant les mêmes colonnes pour sélectionner sur celles ci des observations de l'une et l'autre : opérations ensemblistes
+- Des manipulations visants à additionner deux tables ensembles : assemblages
+
+<center>![](../pic/cheatsheetv2.png)</center>
+
+## Exercices
+
+- refaire la table **exercice** à partir des données originelles
+- calculer le nombre d'analyses réalisées sur des molécules présentes dans le référentiel, produire une liste des molécules non retrouvées.
+- calculer le nombre d'analyses pour lesquels on retrouve pas le prélèvement associé, produire une table des analyses en anomalie.

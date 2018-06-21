@@ -1,0 +1,50 @@
+# Le Tidyverse
+
+![le tidyverse](../pic/tidyverse.png "le tidyverse")
+
+## Présentation des packages
+
+### Des packages pour lire des données
+- [readr](http://readr.tidyverse.org/) regroupe un ensemble de fonction pour lire des fichiers plats ou 
+- [readxl](http://readxl.tidyverse.org/) regroupe un ensemble de fonction pour lire des tableurs excel
+- [haven](http://haven.tidyverse.org/) pour lire des données stockées sous des formats propriétaires (SAS, SPSS, ...)
+- [odbc](http://db.rstudio.com/odbc/) / [Rposgresql](https://cran.r-project.org/web/packages/RPostgreSQL/index.html) permettent d'accéder à des données stockées sous forme de base de données
+- [sf](https://r-spatial.github.io/sf/) permet de lire des données spatiales
+- [rsdmx](https://github.com/opensdmx/rsdmx) permet de lire des données sdmx
+
+### Des packages pour manipuler des données
+- [dplyr](http://dplyr.tidyverse.org/) regroupe un ensemble de fonctions correspondant à des "verbes" pour manipuler ses données
+- [tidyr](http://tidyr.tidyverse.org/) regroupe un ensemble de fonctions pour  modifier l'agencement de nos tables entre les lignes et les colonnes
+
+### Des packages pour nettoyer des données
+- [forcats](http://forcats.tidyverse.org/) permet de manipuler les variables de type catégorielle (ou factor en R)
+- [stringr](http://stringr.tidyverse.org/) permet de manipuler des chaines de caractère
+- [lubridate](http://lubridate.tidyverse.org/) permet de manipuler des dates
+
+## Activer les packages
+
+```{r setup, eval=F}
+library(dplyr)
+library(tidyr)
+library(forcats)
+library(lubridate)
+library(stringr)
+library(RcppRoll)
+library(DT)
+library(readxl)
+library(dbplyr)
+library(RPostgreSQL)
+library(rsdmx)
+library(sf)
+```
+
+## Les spécificités du tidyverse
+
+Quelques spécificités des fonctions de ce package : 
+
+- Ces packages sont orientés manipulation de *dataframes* et non de *vecteurs*.
+- En conséquence, on utilise jamais l'indexation des colonnes de tables (le "$") pour appeler une variable
+- Chaque fonction ne fait qu'une chose et une seule (c'est une opération élémentaire)
+- L'ensemble des fonctions obéissent à la même logique, ce qui permet de simplifier l'apprentissage.
+- l'ensemble de ces opérations élémentaires peuvent s'enchainer à la manière d'un ETL avec le pipe.
+

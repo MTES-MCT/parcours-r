@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521446137385.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "389276839",
+    "id" : "8430F856",
+    "lastKnownWriteTime" : 1521456912,
+    "last_content_update" : 1521456912456,
+    "path" : "~/Documents/boulot/Dreal/Formations R/PreparationDesDonneesV2/Préparer ses données avec R et le Tidyverse/03-manipuler-des-données.Rmd",
+    "project_path" : "03-manipuler-des-données.Rmd",
+    "properties" : {
+        "cursorPosition" : "380,49",
+        "scrollLine" : "365"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

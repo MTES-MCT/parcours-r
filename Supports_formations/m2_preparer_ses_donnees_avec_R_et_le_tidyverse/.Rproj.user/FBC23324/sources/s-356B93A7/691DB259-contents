@@ -1,0 +1,80 @@
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(hrbrthemes)
+
+etude<-analyse %>% 
+  group_by(code_prelevement) %>%
+  tally() %>%
+  full_join(prelevement %>%
+              select(code_prelevement,date_prelevement)) %>%
+  mutate(n=ifelse(is.na(n),0,n),
+         annee=year(date_prelevement))
+
+seuil <-etude %>%
+  group_by(annee) %>%
+  summarise(code_prelevement_min=min(code_prelevement),
+            code_prelevement_max=max(code_prelevement))
+seuil_annee <-etude %>%
+  group_by(annee) %>%
+  summarise(date_min=min(date_prelevement),
+            date_max=max(date_prelevement))
+
+etude<-etude%>%
+  mutate(
+    anneeg=case_when(
+    annee<=2011 ~ "<=2011",
+    annee<=2016 ~ as.character(annee),
+    code_prelevement<=28000 ~ "<=2011",
+    code_prelevement<=35210 ~ "2012",
+    code_prelevement<=36939 ~ "2013",
+    code_prelevement<=38418 ~ "2014",
+    code_prelevement<=41158 ~ "2015",
+    code_prelevement<=43010 ~ "2016",
+    T~""
+      )
+    )
+
+analyse_orphelin_par_annee<-etude %>%
+  mutate(Orphelin=ifelse(is.na(annee),"Non retrouvé dans la table des prélèvements","Retrouvé dans la table des prélèvements") %>% as.factor()) %>%
+  group_by(orphelin,anneeg) %>%
+  count() %>%
+  ungroup() %>%
+  group_by(anneeg) %>%
+  mutate(rel=nn*100/sum(nn))
+  
+
+
+ggplot(etude %>% filter(!is.na(annee))) +
+  geom_violin(aes(x=factor(annee),y=code_prelevement))+
+  theme_minimal()+
+  labs(title="Répartion des codes prélèvement retrouvés dans la table prélèvement \nobservés par année",x="Année",y="Code prélèvement")
+ggsave("graphique1.png")
+ggplot(seuil) +
+  geom_point(aes(x=annee,y=code_prelevement_min),col="blue")+
+  geom_point(aes(x=annee,y=code_prelevement_max),col="red")+
+  theme_minimal()+
+  labs(title="Codes prélèvement minimum et maximum observés par année",caption="bleu : minimum, rouge: maximum",x="Année",y="Code prélèvement")
+ggsave("graphique2.png")
+ggplot(etude %>% filter(is.na(annee))) +
+  geom_boxplot(aes(x=0,y=code_prelevement))+
+  theme_minimal()+
+  labs(title="Répartion des codes prélèvement présents dans la table analyse \nmais non présent dans la table prélèvement",x="",y="Code prélèvement")
+ggsave("graphique3.png")
+
+summary(etude %>% filter(is.na(annee)) %>% pull(code_prelevement))
+
+
+
+ggplot(analyse_orphelin_par_annee) +
+  geom_bar(aes(x=anneeg,weight=nn,fill=orphelin))+
+  theme_minimal()+
+  theme(legend.title = element_blank(),legend.position="bottom")+
+  labs(title="Répartition des codes prélèvements de la table analyse \nsuivant qu'ils ont été retrouvés dans la table des prélèvements ou non",subtitle="En valeur absolue",x="année",y="")
+ggsave("graphique4.png")
+ggplot(analyse_orphelin_par_annee) +
+  geom_bar(aes(x=anneeg,weight=rel,fill=orphelin)) +
+  theme_minimal()+
+  theme(legend.title = element_blank(),legend.position="bottom")+
+  labs(title="Répartition des codes prélèvements de la table analyse \nsuivant qu'ils ont été retrouvés dans la table des prélèvements ou non",subtitle="En %",x="année",y="")
+ggsave("graphique5.png")

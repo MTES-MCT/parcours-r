@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1513759451131.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "11A1A58F",
+    "lastKnownWriteTime" : 1513759671,
+    "last_content_update" : 1513759671314,
+    "path" : "~/G2R/PreparationDesDonneesV2/Préparer ses données avec R et le Tidyverse/02-lire-des-données.Rmd",
+    "project_path" : "02-lire-des-données.Rmd",
+    "properties" : {
+        "cursorPosition" : "151,9",
+        "scrollLine" : "140"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

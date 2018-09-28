@@ -1,1 +1,2 @@
 qspaiu
+<?php echo "bonjour"; ?>

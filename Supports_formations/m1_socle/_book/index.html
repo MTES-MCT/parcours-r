@@ -46,13 +46,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -109,7 +109,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Débuter avec R et Rstudio</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html"><i class="fa fa-check"></i><b>2</b> R, son écosystème et ses possibilités</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#le-groupe-de-referents"><i class="fa fa-check"></i><b>2.1</b> Le groupe de référents</a></li>
 <li class="chapter" data-level="2.2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#r-cest-quoi"><i class="fa fa-check"></i><b>2.2</b> R c’est quoi ?</a></li>
@@ -209,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Découvrir R et RStudio</h1>
 <h4 class="author"><em>Groupe des référents R</em></h4>
-<h4 class="date"><em>11 décembre 2018</em></h4>
+<h4 class="date"><em>11 février 2019</em></h4>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Introduction</h1>
@@ -217,6 +220,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="Figures/Rlogo.jpg" style="width:60.0%" />
 
 </div>
+<div id="le-parcours-de-formation" class="section level2">
+<h2><span class="header-section-number">1.1</span> Le parcours de formation</h2>
+<p>Le parcours de formation proposé est structuré en modules de 2 jours chacun :</p>
+<ul>
+<li>1 : Socle de base</li>
+<li>2 : Préparer ses données avec le tidyverse</li>
+<li>3 : Statistiques descriptives</li>
+<li>4 : Analyses multivariées</li>
+</ul>
+<p>… et d’autres encore à venir :</p>
+<ul>
+<li>5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux</li>
+<li>6 : Documents reproductibles avec RMarkdown</li>
+</ul>
+<p>… en perspective : analyse spatiale, applis interactives avec Shiny, etc.</p>
+<p>Pour vous tenir au courant de l’offre de formation proposée par le réseau des CVRH, <a href="http://oups-cmvrh.e2.rie.gouv.fr/">consultez la plateforme OUPS</a>. Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.</p>
+<p>Il existe une liste pour diffuser de l’information, échanger autour de R ou lever des points de blocage. Pour s’insrire, envoyer un message vide avec le titre “subscribe labo.communaute-r” à l’adresse <a href="mailto:sympa@developpement-durable.gouv.fr">sympa@developpement-durable.gouv.fr</a>.</p>
+</div>
+<div id="objectifs-du-module" class="section level2">
+<h2><span class="header-section-number">1.2</span> Objectifs du module</h2>
 <p>Ce module vise à faire découvrir :</p>
 <ul>
 <li>R et son écosystème</li>
@@ -225,9 +248,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Des premières statistiques</li>
 <li>Des premières représentations graphiques</li>
 </ul>
-<p>L’objectif est d’avoir les clefs pour commencer à travailler rapidement sur R en complément, voire en remplacement d’autres outils (Excel, SAS…). Les concepts de programmation sont également abordés pour pouvoir comprendre les syntaxes proposées dans les différents forums d’aide.</p>
-<p>Il esiste une liste pour diffuser de l’information, échanger autour de R ou lever des points de blocage. Pour s’insrire, envoyer un message vide avec le titre “subscribe labo.communaute-r” à l’adresse <a href="mailto:sympa@developpement-durable.gouv.fr">sympa@developpement-durable.gouv.fr</a> ou cliquer directement sur <a href="mailto:sympa@developpement-durable.gouv.fr?subject=subscribe%20labo.communaute-r">ce lien</a></p>
+<p>Il s’agit d’avoir les clefs pour commencer à travailler rapidement sur R en complément, voire en remplacement d’autres outils (Excel, SAS…). Les concepts de programmation sont également abordés pour pouvoir comprendre les syntaxes proposées dans les différents forums d’aide.</p>
 
+</div>
 </div>
             </section>
 

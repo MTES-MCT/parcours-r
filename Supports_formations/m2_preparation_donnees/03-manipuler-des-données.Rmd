@@ -1,0 +1,629 @@
+# Manipuler des données
+
+## Les principes des packages dplyr
+
+Le but de dplyr est d'identifier et de rassembler dans un seul package les outils de manipulation de données les plus importantes pour l'analyse des données. Ce package rassemble donc des fonctions correspondant à un ensemble d'opérations élémentaires (ou *verbes*) qui permettent de : 
+
+- Sélectionner un ensemble de variables : ***select()***
+- Sélectionner un ensemble de lignes : ***filter()***
+- Ajouter/modifier/renommer des variables : ***mutate()*** ou ***rename()***
+- Produire des statistiques aggrégées sur les dimensions d'une table : ***summarise()***
+- Trier une table : ***arrange()***
+- Manipuler plusieurs tables : ***left_join()***, ***right_join()***, ***full_join()***, ***inner_join()***...
+
+D'appliquer cela sur des données, quel que soit leur format : data frames, data.table, base de données sql, big data...
+
+D'appliquer cela en articulation avec **group_by()** qui change la façon d'interpréter chaque fonction : d'une interprétation *globale* sur l'ensemble d'une table, on passe alors à une approche *groupe par groupe* : chaque groupe étant défini par un ensemble des modalités des variables défini dans l'instruction **group_by()**.
+
+## Présentation des données
+
+On va travailler sur ce module principalement à partir des données sitadel en date réelle estimée et à partir des données de qualité des eaux de surface.
+
+![](pic/MCD_pesticides.png)
+
+
+## Chargement des données
+
+```{r echo = F,warning = F,error = F,eval = F}
+drv <- dbDriver ("PostgreSQL")
+con <- dbConnect (drv, dbname = "production", host = "10.44.128.174", port = 5432,
+                  user = "dreal", password = "rtIX>7d[5P/0")
+postgresqlpqExec (con, "SET client_encoding = 'windows-1252'")
+
+analyse <- dbGetQuery(con, "SELECT * FROM pesticides.analyse")
+parametre <- dbGetQuery(con, "SELECT * FROM pesticides.parametre")
+prelevement <- dbGetQuery(con, "SELECT * FROM pesticides.prelevement")
+station <- st_read_db(con,query="SELECT * FROM pesticides.station")
+```
+
+```{r load, include = TRUE}
+load (file = "data/FormationPreparationDesDonnées.RData")
+```
+
+## Les verbes clefs de dplyr pour manipuler une table
+
+### Sélectionner des variables : **select()**
+<center>![](pic/select.png)</center>
+
+Nous allons ici sélectionner un ensemble de variables de la table des prélèvements
+
+```{r, warning = F}
+prelevementb <- select (prelevement, date_prelevement, code_prelevement,
+                        code_reseau, code_station)
+datatable (prelevementb)
+
+prelevementb <- select (prelevement, -commentaire)
+names (prelevementb)
+```
+
+**select()** possède ce qu'on appelle des [helpers](http://dplyr.tidyverse.org/reference/select_helpers.html) qui permettent de gagner du temps dans l'écriture de notre select. A partir du moment où les conventions de nommage sont correctement effectuées, cela permet de gagner également en reproductibilité d'une année sur l'autre.
+
+Exemple d'usage : récupérer toutes les variables qui commencent par "code" : 
+
+```{r}
+prelevementb <- select (prelevement, starts_with ("code_"))
+```
+
+Exemple d'usage : récupérer toutes les variables qui commencent par "code" et date_prelevement :
+```{r}
+prelevementb <- select (prelevement, starts_with ("code_"), one_of ("date_prelevement"))
+```
+
+### Trier une table : **arrange()**
+
+```{r}
+prelevementb <- arrange (prelevementb, date_prelevement)
+```
+
+### Renommer une variable : **rename()**
+
+```{r}
+prelevementb <- rename (prelevementb, date_p = date_prelevement)
+```
+
+On peut aussi directement renommer une variable dans l'opération **select()**
+
+```{r}
+prelevementb <- select (prelevement, date_p = date_prelevement, code_prelevement,
+                        code_reseau, code_station)
+```
+
+### Filter une table : **filter()**
+<center>![](pic/filter.png)</center>
+
+On va ici récupérer les analyses produites par l'ARS
+
+```{r}
+ars <- filter (prelevement, code_reseau == "ARS")
+```
+
+L'exemple ci-dessus n'exerce un filtre que sur une condition unique.
+
+Pour des conditions cumulatives (toutes les conditions doivent être remplies), le "&" ou la ","
+
+```{r}
+ars <- filter (prelevement, code_reseau == "ARS", code_intervenant == "44")
+```
+
+Pour des conditions non cumulatives (au moins une des conditions doit être remplie), le "|"
+
+```{r}
+ars <- filter (prelevement, code_reseau == "ARS" | code_reseau == "FREDON")
+```
+
+Si une condition non cumulative s'applique sur une même variable, privilégier un test de sélection dans une liste avec le %in%
+
+```{r}
+ars <- filter (prelevement, code_reseau %in% c ("ARS", "FREDON"))
+```
+
+Pour sélectionner des observations qui ne répondent pas à la condition, le !
+
+Toutes les observations ayant été réalisées par un autre réseau que l'ARS
+
+```{r}
+non_ars <- filter (prelevement, !(code_reseau == "ARS"))
+```
+
+### Modifier/rajouter une variable : **mutate()**
+
+**mutate()** est le verbe qui permet la transformation d’une variable existante ou la création d’une nouvelle variable dans le jeu de données. 
+
+<center>![](pic/mutate.png)</center>
+
+Création de nouvelles variables
+```{r}
+prelevementb <- mutate (prelevementb,
+                        code_prelevement_caract = as.character (code_prelevement),
+                        code_reseau_fact = as.factor (code_reseau))
+```
+
+Modification de variables existantes
+```{r}
+prelevementb <- mutate (prelevementb,
+                        code_prelevement = as.character (code_prelevement),
+                        code_reseau = as.factor (code_reseau))
+```
+
+
+
+
+**mutate()** possède une variante, **transmute()**, qui fonctionne de la même façon que **mutate()**, mais ne garde que les variables modifiées ou crées par le verbe.
+
+### Extraire un vecteur : **pull()**
+
+**pull()** permet d'extraire une variable d'un dataframe comme un vecteur
+
+```{r}
+stations_de_la_table_prelevement <- pull (prelevement, code_station)
+stations_de_la_table_prelevement <- unique (stations_de_la_table_prelevement)
+```
+
+## La boîte à outils pour créer et modifier des variables avec R
+
+### Manipuler des variables numériques
+
+Vous pouvez utiliser beaucoup de fonction pour créer des variables avec **mutate()**.
+
+- Les opérations arithmétiques : *+*,*-*,***,*/*,*^*
+
+- Arithmétique modulaire : *%/%* (division entière) et *%%* (le reste), où x == y * (x %/% y) + (x %% y)
+
+- Logarithmes : *log()*, *log2()*, *log10()*
+
+- Navigations entre les lignes : *lead()* et *lag()* qui permettent d'avoir accès à la valeur suivante et précédente d'une variable.
+
+```{r, echo = TRUE, eval=TRUE}
+x <- sample (1:10)
+lagx <- lag (x)
+leadx <- lead (x)
+lag2x <- lag (x, n = 2)
+lead2x <- lead (x, n = 2)
+cbind (x = x, lagx = lagx, lag2x = lag2x, leadx = leadx, lead2x = lead2x)
+```
+
+- opérations cumulatives ou glissantes : 
+
+    - R fournit des fonctions pour obtenir **opérations cumulatives** les somme, produit, minimum et maximum cumulés, dplyr fournit l'équivalent pour les moyennes : *cumsum()*, *cumprod()*, *cummin()*, *cummax()*, *cummean()*
+  
+    - Pour appliquer des **opérations glissantes**, on peut soit créer l'opération avec l'instruction *lag()*, soit exploiter le package **RcppRoll** qui permet d'exploiter des fonctions prédéfinies.
+
+Exemple de somme glissante sur un pas de 2 observations.
+
+```{r,eval=T}
+x <- sample (1:10)
+cumsumx <- cumsum (x)
+rollsumx <- roll_sum (x, n=2)
+rollsumx
+```
+
+La fonction ```roll_sumr()``` fait en sorte d'obtenir un vecteur de même dimension que l'entrée x
+
+```{r,eval=T}
+rollsumrx <- roll_sumr (x, n=2)
+rollsumrx
+length(rollsumrx) == length(x)
+```
+
+Nous pouvons obtenir une matrice des différenntes valeurs calculées :
+
+```{r,eval=T}
+  cbind (x = x, cumsumx = cumsum (x), rollsumx = rollsumx, rollsumrx = roll_sumr (x, n=2))
+```
+
+
+- Comparaisons logiques : *<*, *<=*, *>*, *>=*, *!=*
+
+- Rangs : **min_rank()** devrait être la plus utile, il existe aussi notamment **row_number()**, **dense_rank()**, **percent_rank()**, **cume_dist()**, **ntile()**.
+
+- **coalesce (x, y)** : permet de remplacer les valeurs manquantes de x par celle de y
+
+- ***variable = ifelse (condition (x), valeursi, valeursinon)*** permet d'affecter *valeursi* ou  *valeursinon* à *variable* en fonction du fait que *x* répond à *condition*.
+Exemple : création d'une variable résultat pour savoir si le résultat de nos analyses est bon ou non.
+
+```{r}
+analyseb <- mutate (analyse,
+                    resultat_ok = ifelse (code_remarque %in% c (1,2,7,10),
+                                          yes = TRUE, no = FALSE))
+```
+
+- ***case_when()*** permet d'étendre la logique de ifelse à des cas plus complexes.
+Les conditions mises dans un ***case_when()*** ne sont pas exclusives. De ce fait, il faut pouvoir déterminer l'ordre d'évaluation des conditions qui y sont posées. Cet ordre s'effectue de bas en haut, c'est à dire que la dernière condition évaluée (celle qui primera sur toutes les autres) sera la première à écrire.
+Exemple: On va ici recalculer des seuils fictifs sur les analyses.
+
+```{r}
+analyseb <- mutate (analyse, classe_resultat_analyse = case_when (
+                        resultat_analyse == 0  ~ "1",
+                        resultat_analyse <= 0.001  ~ "2",
+                        resultat_analyse <= 0.01  ~ "3",
+                        resultat_analyse <= 0.1  ~ "4",
+                        resultat_analyse > 0.1  ~ "5",
+                        TRUE ~ ""
+                    ))
+```
+
+### Exercice : Les données mensuelles sitadel
+
+A partir du fichier sitadel de février 2017 (ROES_201702.xls), sur la région Pays de la Loire (code région 52), livrer un fichier contenant pour chaque mois, pour les logements individuels (i_AUT = ip_AUT + ig_AUT) :
+
+- le cumul des autorisations sur 12 mois glissants(i_AUT_cum12)
+
+- le taux d'évolution du cumul sur 12 mois (i_AUT_cum_evo, en %)
+
+- la part de ce cumul dans celui de l'ensemble des logements autorisés (log_AUT), en pourcentage
+
+```{r}
+sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
+                    col_types = c ("text","text","numeric","numeric","numeric","numeric"))
+```
+
+
+<center>![](pic/exercice1_enonce_v3.png)</center>
+
+
+
+### Manipuler des dates
+
+Parmi l'ensemble des manipulations de variables, celle des dates et des heures est toujours une affaire complexe.
+Le framework tidyverse propose le package ***lubridate*** qui permet de gérer ces informations de façon cohérente.
+
+- gestion des dates :
+
+```{r, echo = TRUE, eval = T, results = 'hide'}
+dmy ("jeudi 21 novembre 2017")
+dmy ("21112017")
+ymd ("20171121")
+```
+
+- gestion des dates/heures : 
+
+```{r, echo = TRUE, eval = T, results = 'hide'}
+dmy_hms ("mardi 21 novembre 2017 9:30:00")
+```
+
+- combien de jours avant Noël ?
+
+```{r, echo = TRUE, eval = T, results = 'hide'}
+dmy ("25 décembre 2018") - dmy ("16 avril 2018")
+```
+
+- le jour de la semaine d'une date : 
+
+```{r, echo = TRUE, eval = T, results = 'hide'}
+wday (dmy ("19012038"), label = TRUE)
+```
+
+La fonction make_date et make_datetime vous permettent de transformer un ensemble de variables en un format date ou date heure. Utile par exemple lorsque l'on a une variable pour l'année, le mois et le jour.
+
+Exercice : convertir les données de la table exercice pertinentes au format date.
+
+### Manipuler des chaînes de caractères
+
+Le package *stringr* compile l'ensemble des fonctions de manipulation de chaînes de caractère utiles sur ce type de données.
+
+On peut diviser les manipulations de chaîne de caractère en 4 catégories : 
+
+- manipulations des caractères eux-mêmes
+- gestion des espaces
+- opérations liées à la langue
+- manipulations de "pattern", notamment des expressions régulières.
+
+#### Manipulations sur les caractères
+
+Obtenir la longueur d'une chaîne
+
+```{r}
+str_length ("abc")
+```
+
+Extraire une chaîne de caractère
+
+str_sub prend 3 arguments : une chaîne de caractère, une position de début, une position de fin.
+Les positions peuvent être positives, et dans ce cas, on compte à partir de la gauche, ou négatives, et dans ce cas on compte à partir de la droite.
+
+```{r}
+x <- c ("abcdefg", "hijklmnop")
+str_sub (string = x, start = 3, end = 4)
+str_sub (string = x, start = 3, end = -2)
+```
+
+str_sub peut être utilisé pour remplacer un caractère
+
+```{r}
+str_sub (x, start = 3, end = 4) <- "CC"
+x
+```
+
+#### Gestion des espaces
+
+la fonction **str_pad()** permet de compléter une chaîne de caractère pour qu'elle atteigne une taille fixe. Le cas typique d'usage est la gestion des codes communes Insee.
+
+```{r}
+code_insee <- 1001
+str_pad (code_insee, 5, pad = "0")
+```
+
+On peut choisir de compléter à gauche, à droite, et on peut choisir le "pad". Par défaut, celui-ci est l'espace.
+
+La fonction inverse de **str_pad()** est **str_trim()** qui permet de supprimer les espaces aux extrémités de notre chaîne de caractères.
+
+```{r}
+proust <- "   Les paradoxes d'aujourd'hui sont les préjugés de demain.  "
+str_trim (proust)
+str_trim (proust, side = "left")
+```
+
+Les **expressions régulières** permettent la détection de "patterns" sur des chaîne de caractères.
+
+
+```{r}
+txt <- c ("voiture","train", "voilier", "bus", "avion", "tram", "trotinette")
+str_detect (string = txt, pattern = "^tr") # les éléments qui commencent pas les lettre "tr"
+txt [str_detect (string = txt, pattern = "^tr")]
+
+str_detect (string = txt, pattern = "e$") # les éléments qui terminent par la lettre e
+txt [str_detect (string = txt, pattern = "e$")]
+
+```
+
+
+#### Opérations liées à la langue
+
+Ces différentes fonctions ne donneront pas le même résultat en fonction de la langue par défaut utilisée.
+La gestion des majuscules/minuscules :
+
+```{r}
+proust <- "Les paradoxes d'aujourd'hui sont LES préjugés de Demain."
+str_to_upper (proust)
+str_to_lower (proust)
+str_to_title (proust)
+```
+
+La gestion de l'ordre : 
+
+```{r}
+x <- c ("y", "i", "k")
+str_order (x)
+str_sort (x)
+```
+
+Suppression des accents (base::iconv) : 
+
+```{r}
+proust2 <- "Les paradoxes d'aujourd'hui sont les préjugés de demain ; et ça c'est embêtant"
+iconv (proust2, to = "ASCII//TRANSLIT")
+```
+
+Malgré des tentatives d'humour discutables un petit aide-mémoire illustré, assez visuel, est dispo [ici](http://perso.ens-lyon.fr/lise.vaudor/manipuler-des-strings-avec-r/). 
+
+### Manipuler des variables factorielles (=qualitatives)
+
+Les fonctions du module [forcats](https://cran.r-project.org/web/packages/forcats/forcats.pdf) permettent de modifier les modalités d'une variable factorielle, notamment : 
+
+- Changer les modalités des facteurs et/ou leur ordre
+
+- Regrouper des modalités
+
+
+On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d'apparition dans la table "prelevement""
+
+```{r, echo = F, warning = F, results = 'hide'}
+library (forcats)
+prelevementb <- mutate (prelevement, code_station = factor (code_station))
+head (levels (prelevementb$code_station))
+prelevementb <- mutate (prelevementb,
+                        code_station = fct_infreq (code_station)
+                        )
+head (levels (prelevementb$code_station))
+```
+
+
+forcats permet beaucoup d'autres possibilités de tri : 
+
+- manuellement des facteurs (***fct_relevel()***);
+
+- en fonction de la valeur d'une autre variable (***fct_reorder()***);
+
+- en fonction de l'ordre d'apparition des modalités (***fct_inorder()***).
+
+Consulter la [doc](https://cran.r-project.org/web/packages/forcats/forcats.pdf) du module pour voir toutes les possibilités très riches de ce module.
+
+En quoi ces fonctions sont utiles ?
+
+Elles permettent notamment : 
+
+- lorsqu'on fait des graphiques, d'afficher les occurences les plus importantes d'abord ;
+
+- de lier l'ordre d'une variable en fonction d'une autre (par exemple les code Insee des communes en 
+fonction des régions).
+
+Exemple : ordonner les modalités d'un facteur pour améliorer l'aspect d'un graphique
+
+```{r, echo = TRUE}
+library (ggplot2)
+library (forcats)
+num <- c (1, 8, 4, 3, 6, 7, 5, 2, 11, 3)
+cat <- c (letters [1:10])
+data <- data.frame (num, cat) 
+
+ggplot (data, aes (x = cat, num)) +
+  geom_bar (stat = "identity") +
+    xlab (label = "Facteur") + ylab (label ="Valeur")
+
+ggplot (data, aes (x = fct_reorder (cat, -num), num)) +
+  geom_bar (stat = "identity") +
+  xlab (label = "Facteur ordonné") + ylab (label ="Valeur")
+```
+
+
+
+## Aggréger des données : **summarise()**
+
+<center>![](pic/summarise.png)</center>
+
+La fonction ***summarise()*** permet d'aggréger des données, en appliquant une fonction sur les variables pour construire une statistique sur les observations de la table.
+**summarise()** est une fonction dite de “résumé”. À l’inverse de **mutate()**, quand une fonction summarise est appelée, elle retourne une seule information. La moyenne, la variance, l’effectif…sont des informations qui condensent la variable étudiée en une seule information.
+<left>![](pic/summarise.jpg)</left><left>![](pic/mutate.jpg)</left>
+
+La syntaxe de summarise est classique. Le resultat est un dataframe
+
+```{r, echo = T,results='hide'}
+summarise (exercice, 
+           mesure_moyenne = mean (resultat_analyse, na.rm = T))
+```
+
+On peut calculer plusieurs statistiques sur une aggrégation
+
+```{r, echo = T,results='hide'}
+summarise (exercice, 
+          mesure_moyenne = mean (resultat_analyse, na.rm = T),
+          mesure_total = sum (resultat_analyse, na.rm = T)
+          )
+```
+
+### Quelques fonctions d'aggrégations utiles
+
+- compter : *n()*
+- sommer : *sum()*
+- compter des valeurs non manquantes *sum(!is.na())*
+- moyenne : *mean()*, moyenne pondérée : *weighted.mean()*
+- écart-type : *sd()*
+- médiane : *median()*, quantile : *quantile(.,quantile)*
+- minimum : *min()*, maximum : *max()*
+- position : *first()*, *nth(., position)*, *last()*
+
+
+## Aggréger des données par dimension : **group_by()**
+
+<center>![](pic/groupby.png)</center>
+
+Summarise est utile, mais la plupart du temps, nous avons besoin non pas d'aggréger des données d'une table entière, mais de construire des aggrégations sur des sous-ensembles : par années, départements...
+La fonction ***group_by()*** va permettre *d'éclater* notre table en fonction de dimensions de celle-ci.
+
+Ainsi, si on veut construire des statistiques agrégées non sur l'ensemble de la table, mais pour chacune des modalités d'une ou de plusieurs variables de la table. Il faut deux étapes :
+
+- Utiliser prélablement la fonction ***group_by()*** pour définir les variables sur lesquelles on souhaite aggréger les données.
+
+- Utiliser ***summarise()*** ou ***summarise_XX()*** sur la table en sortie de l'étape précédente
+
+Découper un jeu de données pour réaliser des opérations sur chacun des sous-ensembles afin de les restituer ensuite de façon organisée est appelée stratégie du split – apply – combine schématiquement, c’est cette opération qui est réalisée par dplyr dès qu'un ***group_by()*** est introduit sur une table.
+
+<center>![](pic/split_apply_combine-1024x570.png)</center>
+
+Exemple pour calculer les statistiques précédentes par mois : 
+
+```{r, echo = TRUE}
+exercice <- mutate (exercice,
+                    annee = year (date_prelevement))
+
+paran <- group_by (exercice, annee)
+
+summarise (paran, 
+           mesure_moyenne = mean (resultat_analyse, na.rm = T),
+           mesure_total = sum (resultat_analyse, na.rm = T)
+          )
+```
+
+Pour reprendre des traitements "table entière", il faut mettre fin au ***group_by()*** par un ***ungroup()***
+
+## Le pipe
+![](pic/pipe.png)
+
+Le pipe est la fonction qui va vous permettre d'écrire votre code de façon plus lisible pour vous et les utilisateurs.
+Comment ?
+En se rapprochant de l'usage usuel en grammaire.
+
+```verbe(sujet,complement)``` devient ```sujet %>% verbe(complement)```
+
+Quand on enchaîne plusieurs verbes, l'avantage devient encore plus évident : 
+
+```verbe2(verbe1(sujet,complement1),complement2)``` devient ```sujet %>% verbe1(complement1) %>% verbe2(complement2)```
+
+En reprenant l'exemple précédent, sans passer par les étapes intermédiaires, le code aurait cette tête :
+
+```{r, echo = TRUE,eval=T}
+summarise (
+  group_by (
+    mutate (
+      exercice,
+      annee = year (date_prelevement)
+            ),
+      annee
+            ), 
+          mesure_moyenne = mean (resultat_analyse, na.rm = T),
+          mesure_total = sum (resultat_analyse, na.rm = T)
+          )
+```
+
+Avec l'utilisation du pipe (raccourci clavier CTrl + Maj + M), il devient : 
+
+```{r, echo = TRUE,eval=T}
+exercice %>%
+  mutate (annee = year (date_prelevement)) %>%
+  group_by (annee) %>%
+    summarise (mesure_moyenne = mean (resultat_analyse, na.rm = T),
+               mesure_total = sum (resultat_analyse, na.rm = T))
+```
+
+## La magie des opérations groupées
+
+L'opération **group_by()** que nous venons de voir est très utile pour les aggrégations, mais elle peut aussi servir pour créer des variables ou filtrer une table, puisque **group_by()** permet de traiter notre table en entrée comme *autant de tables séparées* par les modalités des variables de regroupement.
+
+
+## Exercice
+
+Sur les données "sitadel", effectuer les opérations suivantes en utilisant l'opérateur %>% :
+
+- les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions
+- les aggrégations par année civile pour chacune des régions, puis leur taux d'évolution d'une année sur l'autre (exemple : (val2015-val2014)/val2014)
+
+## Exercice
+
+Sur les données "FormationPreparationDesDonnées.RData", table "exercice" : 
+
+- calculer le taux de quantification pour chaque molécule (code_parametre), chacune des année : nombre de fois où elle a été retrouvée (code_remarque=1) sur le nombre de fois où elle a été cherchée (code_remarque = 1,2,7 ou 10)
+
+    - créer la variable "annee"
+    - créer la variable de comptage des présences pour chaque analyse (1=présent, 0=absent)
+    - créer la variable de comptage des recherches pour chaque analyse (1=recherchée, 0=non recherchée)
+    - pour chaque combinaison année x code_parametre, calculer le taux de quantification
+    
+- trouver pour chaque station, sur l'année 2016, le prélèvement pour lequel la concentration cumulée, toutes substances confondues, est la plus élevée (~ le prélèvement le plus pollué)
+
+    - filtrer les concentrations quantifiées (code_remarque=1) et l'année 2016
+    - sommer les concentrations (resultat_analyse) par combinaison code_station x code_prelevement
+    - ne conserver que le prélèvement avec le concentration maximale
+
+## Les armes non conventionnelles de la préparation des donnéees
+
+Nous venons de voir les verbes de manipulation d'une table les plus fréquents de dplyr. Ces verbes sont pour la plupart déclinés dans des versions encore plus puissantes, que l'on pourrait appeler conditionnelles. Dans l'univers dplyr, ces verbes sont appelés des *scoped variants* 
+
+- **xx_at()**, ou xx est l'un des verbes précédents, permet d'appliquer une opération sur un ensemble de variables définies
+
+- **xx_if()**, ou xx est l'un des verbes précédents, permet d'appliquer une opération sur toutes les variable de la table en entrée remplissant une condition particulière
+
+- **xx_all()**, ou xx est l'un des verbes précédents, permet d'appliquer une opération sur toutes les variables de la table en entrée
+
+
+La syntaxe diffère un peu sur ces versions.
+On peut la globaliser ainsi :  fonction(***selectiondevariables***,***funs(opérationaréalisersurcesvariables)***)
+La sélection de variable diffère ensuite des fonctions : 
+
+- **xx_at()**, on donne une liste de variables
+
+- **xx_if()**, on donne une condition que doivent remplir ces variables
+
+- **xx_all()**, on prend toutes les variables
+
+Exemple sur l'exercice sur les données sitadel.
+
+```{r, echo = TRUE, eval = T}
+sitadel <- read_excel ("data/ROES_201702.xls", "AUT_REG") %>%
+  group_by (REG) %>%
+  mutate_if (is.numeric, funs (cumul12 = roll_sumr (., n = 12))) %>%
+  mutate_at (vars (ends_with ("cumul12")), funs (evo = 100 * . / lag (., 12) - 100)) %>%
+  mutate_at (vars (ends_with ("cumul12")), funs (part = 100 *./ log_AUT_cumul12))
+```
+
+Les verbes ayant ces variantes sont les suivants : select(), arrange(), rename(), filter(), mutate(), transmute(), group_by(), summarise().
+

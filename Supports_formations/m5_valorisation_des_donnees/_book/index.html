@@ -153,7 +153,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Valoriser ses données avec R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#le-module-5"><i class="fa fa-check"></i><b>1.2</b> Le module 5</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="un-typologie-des-representations-graphiques.html"><a href="un-typologie-des-representations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Un typologie des représentations graphiques</a></li>
 <li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
 <li class="chapter" data-level="3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Présentation du package ggplot2</a><ul>
@@ -264,10 +267,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Introduction</h1>
+<div id="le-parcours-de-formation" class="section level2">
+<h2><span class="header-section-number">1.1</span> Le parcours de formation</h2>
+<p>Le parcours de formation proposé est structuré en modules de 2 jours chacun :</p>
+<ul>
+<li>1 : Socle de base <span class="math inline">\(\Rightarrow\)</span> <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m1_socle/_book/index.html">support</a></li>
+<li>2 : Préparer ses données avec le tidyverse <span class="math inline">\(\Rightarrow\)</span> <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html">support</a></li>
+<li>3 : Statistiques descriptives <span class="math inline">\(\Rightarrow\)</span> <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html">support</a></li>
+<li>4 : Analyses multivariées <span class="math inline">\(\Rightarrow\)</span> <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m4_analyse_donnees/_book/index.html">support</a></li>
+<li>5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux <span class="math inline">\(\Rightarrow\)</span> <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m5_valorisation_des_donnees/_book/index.html">support</a></li>
+<li>6 : Documents reproductibles avec RMarkdown (2<sup>ème</sup> semestre 2019)</li>
+</ul>
+<p>… et en perspective : analyse spatiale, applis interactives avec Shiny, big data, etc.</p>
+<p>Pour vous tenir au courant de l’offre de formation proposée par le réseau des CVRH, <a href="http://oups-cmvrh.e2.rie.gouv.fr/">consultez la plateforme OUPS</a>. Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.</p>
+<p>Il existe une liste pour diffuser de l’information, échanger autour de R ou lever des points de blocage. Pour s’insrire, envoyer un message vide avec le titre “subscribe labo.communaute-r” à l’adresse <a href="mailto:sympa@developpement-durable.gouv.fr">sympa@developpement-durable.gouv.fr</a>.</p>
 <div class="figure">
 <img src="pic/data-visualization-660x330.jpg" id="id" class="class" width="800" />
 
 </div>
+</div>
+<div id="le-module-5" class="section level2">
+<h2><span class="header-section-number">1.2</span> Le module 5</h2>
 <p>Ce module va vous permettre de découvrir un ensemble de méthodes sous R afin de valoriser vos données. Valoriser ces données, ça veut dire créer :</p>
 <ul>
 <li><p>Des tableaux</p></li>
@@ -284,6 +304,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>à partir des mêmes données mises à jour.</p></li>
 </ul>
 
+</div>
 </div>
             </section>
 
@@ -336,6 +357,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

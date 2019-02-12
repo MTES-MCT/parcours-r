@@ -153,7 +153,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Valoriser ses données avec R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#le-module-5"><i class="fa fa-check"></i><b>1.2</b> Le module 5</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="un-typologie-des-representations-graphiques.html"><a href="un-typologie-des-representations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Un typologie des représentations graphiques</a></li>
 <li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
 <li class="chapter" data-level="3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Présentation du package ggplot2</a><ul>
@@ -345,6 +348,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

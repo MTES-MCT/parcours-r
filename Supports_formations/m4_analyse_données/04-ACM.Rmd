@@ -1,0 +1,179 @@
+# L'ACM
+
+## Principe de l'ACM
+
+L'ACM permet d'analyser les liens entre $p$ variables **qualitatives**. C'est une généralisation de l'AFC pour $p > 2$ variables qualitatives.
+
+On peut y mettre des variable quantitatives, à condition de les discrétiser (donc de les transformer en variables qualitatives).
+
+L'ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu'une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu'une autre avec peu de modalités. A l'inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument `row.w` de la fonction `MCA`). 
+
+Le résultat d'une ACM, comme pour les autres analyses factorielles, est consitué des coordonnées des individus et des variables dans le nouvel espace construit. On peut donc utiliser cette technique pour **transformer des variables qualitatives en variables continues**.
+
+
+
+
+
+### Le tableau disjonctif complet
+
+On (enfin, R le fait tout seul) transforme les modalités des variables qualitatives en autant de variables binaires.
+
+**Table ordonnée**
+ 
+```{r, warning = FALSE, echo = FALSE}
+table_ordonnee <- data.frame (Identifiant = c ('0001', '0002', '0003', '0004'),
+                                 Sexe = c('H', 'F', 'F', 'H'),
+                                 Age = c('<20', '20-60', '>60', '<20'))
+
+datatable (table_ordonnee, options = list(
+  columnDefs = list (list (className = 'dt-center', targets = 0:3))))
+```
+
+**Tableau disjonctif complet**
+
+```{r, warning = FALSE, echo = FALSE}
+tableau_disjonctif <- data.frame (Identifiant = c ('0001', '0002', '0003', '0004'),
+                                  Sexe_H = c("1","0","0","1"),
+                                  Sexe_F = c("0","1","1","0"),
+                                  Age_Inf_20 = c("1","0","0","1"),
+                                  Age_20_60 = c("0","1","0","0"),
+                                  Age_Sup_60 = c("0","0","1","0"))
+
+datatable (tableau_disjonctif, options = list(
+  columnDefs = list(list(className = 'dt-center', targets = 1:6))))
+```
+
+
+La "dernière" des colonnes correspondant à une variable peut être déduite des valeurs observées dans les autres. Par exemple si Sexe_H=1, alors Sexe_F=0 et vice versa.
+
+## Ressources
+
+Un cours assez détaillé sur l'ACM sur [ce fichier pdf](https://www.math.u-bordeaux.fr/~machaven/wordpress/wp-content/uploads/2013/10/ACM.pdf), et sur l'ACM avec Factominer sur [cette page](http://factominer.free.fr/factomethods/analyse-des-correspondances-multiples.html).
+
+## L'ACM avec FactoMiner
+
+### Exemple
+
+#### Données utilisées
+
+Le jeu de donnée est pris directement dans le package `FactoMineR` : il s'agit d'un *dataframe* rassemblant des données concernant les hobbies des personnes interrogées. Pour l'analyse, on ne retient que les variables concernant ces pratiques, en mettant de côté les variables décrivant les individus eux-mêmes, soit les variables 19 à 23 du *dataframe.*
+
+Chargement des données :
+
+```{r}
+data (hobbies)
+```
+
+Examen rapide :
+
+```{r, eval = FALSE}
+summary (hobbies)
+```
+
+### Réalisation de l'ACM
+
+Analyse et création de l'objet :
+
+```{r}
+acm <- select (hobbies, -(19:23)) %>% MCA (graph = F)
+names (acm)
+```
+
+Si l'on veut en savoir plus :
+
+```{r, eval = FALSE}
+str (acm)
+```
+
+#### Nombre d'axes retenus
+
+On reprend les méthodes vues pour l'ACP et l'AFC.
+
+```{r}
+# Valeurs propres et inertie moyenne
+head (acm$eig)
+```
+
+La première dimension est au-dessus des autres.
+
+```{r}
+eig <- as.data.frame (acm$eig)
+mean (eig$`percentage of variance`)
+```
+
+Ici, le critère de l'inertie moyenne conduirait à retenir 5 voire 6 axes factoriels qui portent 40 à 45% de l'hétérogénéité. 
+
+```{r}
+acm$eig[,1] %>% diff() %>% diff()
+
+```
+
+Le critère du coude est lui nettement plus parcimonieux et conduit à retenir 3 axes : la dérivée seconde change de signe entre les axes 3 et 4. Mais dans ce cas, seule 30% de l'inertie est conservée.
+
+
+```{r}
+
+mm <- mean (eig$`percentage of variance`)
+ggplot (eig, aes(x = 1:nrow(eig), weight = `percentage of variance`)) +
+  geom_bar (fill = "lightblue") + 
+  coord_flip() + ggtitle ("Eboulis des valeurs propres") + 
+  theme (axis.title = element_blank()) +
+  geom_hline (yintercept = mm)
+```
+
+Dans une ACM, on n'a pas forcément de "décrochage" évident dans l'éboulis des valeurs propres : il est plus difficile de concentrer l'inertie de variables qualitatives que quantitatives. On doit donc généralement retenir plus d'axes ou renoncer à une part significative de l'inertie.
+
+En raison de cette dilution de l'information dans l'ACM, quand on dispose de variables qualitatives et quantitatives, il est souvent préférable de faire une ACP en introduisant les variable qualitatives en variables illustratives (si elles ne sont pas cruciales, évidemment).
+
+On peut aussi retenir un nombre d'axes assez élevé, puis dans un second temps ne conserver que ceux qui sont bien interprétables.
+
+#### Interprétation des axes
+
+```{r}
+as.data.frame (acm$var$eta2) %>% datatable ()
+```
+
+
+```{r summary_acm}
+summary (acm)
+
+plot.MCA (acm, axes = 1:2, cex = 0.7, invisible = "ind")
+plot.MCA (acm, axes = 3:4, cex = 0.7, invisible = "ind", selectMod = "cos2 15")
+```
+
+Les résultats sur le premier plan factoriel sont assez parlants : le premier axe sépare les modalités "pratique" versus "non pratique" de l'acitivité. Le second axe semble opposer les activités manuelles ou physiques (coordonnées positives sur l'axe 2) aux activités plus culturelles (cinéma, musique...).
+
+Sur le deuxième plan factoriel, l'axe 3 permet de distinguer les individus qui pêchent et écoutent de la musique des individus qui font de la couture et de la cuisine. Le 4^ème axe factoriel met en évidence les individus qui ne regardent pas la télévision et qui s'impliquent dans le volontariat.
+
+### Variables supplémentaires
+
+Dans cet exemple, il est particulièrement judicieux d'utiliser les variables concernant les individus comme variables supplémentaires pour voir quel type de personne a quel type de hooby. On voit notamment que ce sont les moins qualifiés et les plus âgés qui ont moins de hobby, alors que les managers sont plutôt dans le cadrant des loisirs "culturels".
+
+```{r}
+acm <- MCA(hobbies,quali.sup = 19:22,quanti.sup = 23,ncp=4,graph = F)
+plot.MCA(acm,axes=1:2,cex=.7,selectMod = "cos2 10",select = "contrib 10", invisible = "ind")
+```
+
+Les sorties de la fonction `summary` donnent en outre les coordonnées sur les axes factoriels des modalités des variables ainsi que sa qualité, sa contribution et le test de significativité associé (est-elle non nulle ?)
+Elle donne également le rapport de corrélation (eta2, voir module 3 pour un rappel de ce qu'il signifie) entre le facteur et chacune de ces variables, ce qui permet d'apprécier l'intensité du lien entre la variable, toutes modalités confondues, et chaque facteur.
+
+
+## Exercice 
+
+A partir de ce qui vient d'être vu, complétez l'interprétation des résultats :
+
+- Quelles sont les variables les plus contributrices aux 3 premiers axes ?
+- Quel est le hobby le plus courant ? Le plus discriminant ?
+- Affichez les individus dans les 2 premiers plans factoriels, en sélectionnant les 50 plus forts contributeurs à l'inertie.
+- Y a-t-il un lien entre hobbies et genre ?
+- Refaites l'ACM en ajoutant la variable sexe en variable active. Que constatez-vous ?
+
+```{r plot_acm}
+plot.MCA (acm, axes = 1:2, invisible = "var", select = "contrib 50")
+plot.MCA (acm, axes = 3:4, invisible = "var", select = "contrib 50")
+
+acm2 <- MCA (hobbies, quali.sup = 20:22, quanti.sup = 23, graph = F)
+plot.MCA (acm2, invisible = "ind", selectMod = "contrib 20")
+```
+
+*Elément de réponse à la dernière question : rajouter la variable change complètement l'analyse et l'opposition H/F emporte une bonne partie de l'inertie* $\Rightarrow$ *il faut bien réfléchir à ce qu'on introduit comme variable dans l'analyse et la problématique à laquelle on veut répondre. Ici, on centre l'analyse sur les pratiques en termes de loisirs, donc introduire des variables sur les individus n'est pas pertinent*.

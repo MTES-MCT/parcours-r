@@ -1,0 +1,131 @@
+
+# L'AFC
+
+## Principe de l'AFC
+
+L'AFC sert à analyser le lien entre deux variables qualitatives. On l'utilise quand le nombre de modalités des variables est tel que la lecture du tableau de contingence (comptage des effectifs d'individus dans les cases du tableau croisé) devient complexe, voire impossible.
+
+S'il y a indépendance etre les deux variables qualitatives, réaliser l'AFC n'a guère de sens $\Rightarrow$ commencer par un test du $\chi^2$.
+
+On considère ici des variables qualitatives "pures" ou nominales. Si l'on utilise une variable ordinale (exemple : avec les modalités 'petit', 'moyen' et 'grand' codées 1, 2 et 3), l'ordre des modalités est perdu.
+
+Lors de la construction du tableau de contingence, pour chacune des variables, les modalités sont exclusives : chacun des individus possède une modalité et une seule pour chacune des deux variables. Les modalités avec des effectifs nuls sont écartées.
+
+Exemple d'une enquête réalisée au niveau national, dans laquelle on pose des questions avec quatre modalités possibles de réponses.
+
+<center>![](Figures/tableau_contingence.png)</center>
+
+
+L'AFC permet simultanément de :
+
+- Comparer les profils-lignes entre	eux	(les distributions de	réponses	entre les différentes régions).		
+- Comparer les profils-colonnes	entre	eux	(les distributions de	régions	parmi les réponses).		
+- Repérer	les	cases	du tableau de	contingence où les effectifs observés	$n_{i,j}$	sont nettement différents	des	effectifs	théoriques (effectifs	sous l’hypothèse d’indépendance) pour	mettre en	évidence les	modalités	$i$	de $X$ et $j$	de $Y$ qui tendent à être présentes simultanément ($f_{i,j}	>	p_{i,j}$) et celles qui	tendent à s'exclure mutuellement	($f_{i,j}	<	p_{i,j}$).	
+
+Remarque : statistique du $\chi^2$ $\Rightarrow$ module 3 "Statistiques descriptives".
+
+L'AFC consiste donc à synthétiser un tableau de contingence trop grand. Au plan mathématique, elle revient à faire une ACP du tableau de contingence avec la métrique du $\chi^2$.
+
+Dans le tableau de contingence, on continue à désigner les colonnes sous le nom de *variables* et les lignes sous le nom d'*individus*, afin de conserver un parallélisme dans les présentations de l'AFC et de l'ACP. Cependant, il faut garder en tête que les lignes, comme les colonnes, représentent les modalités des deux variables qui sont analysées, et qu'on désignera par la suite par *caractères*.
+
+L'inertie totale du tableau de contingence vaut $\frac{\chi^2}{n}$, et, contrairement au cas de l'ACP, on peut représenter les *individus* et les *variables* sur le même graphique car l'espace des *individus* et l'espace des *variables* sont les mêmes.
+
+$\Rightarrow$ En **ACP**, on cherche à conserver au mieux la **variance** de la population ; en **AFC**, l'**écart à l'indépendance**.
+
+Pour que chacune des modalités des deux *caractères* soit correctement représentée dans l'analyse, il faut avoir des effectifs suffisants dans les cases du tableau de contingence. Cela peut signifier la nécessité d'exclure certaines modalités trop rares, ou de regrouper des modalités pour en augmenter les effectifs.
+
+Pour une explication en vidéo par l'auteur du package FactoMiner, [cliquer ici](https://www.youtube.com/watch?v=f_lgjXVdTAk).
+Pour un cours en pdf, rendez-vous sur [cette page](http://factominer.free.fr/docs/cours_afc.pdf).
+
+## L'AFC avec FactoMiner
+
+Un exemple est donné, dans lequel on veut savoir s'il existe un lien entre les caractéristiques des voitures immatriculées et l'endroit où elles le sont (le département).
+
+### Données utilisées
+
+Il s'agit des [immatriculations des voitures particulières d'occasion par département, région et carrosserie](http://www.statistiques.developpement-durable.gouv.fr/fileadmin/documents/Themes/Transports/Vehicules_routiers/Immatriculations/resultats_detailles/2015/immatriculations-2015-2ir2.xls). 
+
+Le fichier de départ a été converti au format *.csv*.
+
+```{r chargement_immat}
+immat <- read.csv2 (file = 'Exercices/AFC_immat.csv', dec=',',
+                    header = T, encoding = "latin1") %>% 
+  rename (dep = `Départements`) %>% 
+  filter (dep != "Total") %>% 
+  select (-1, -Total) %>%
+  mutate_if (is.numeric, funs (replace (., is.na(.), 0))) %>% 
+  column_to_rownames (var = "dep")
+
+head (immat)
+```
+
+**Attention : **notez que dans cet exemple, la base de données est déjà sous forme de tableau de contingence : les lignes correspondent aux modalités du *caractère* "département" et les colonnes aux modalités *du caractère* "type de voiture".
+
+Si l'on partait d'un classique tableau individus (en lignes) / variables (en colonnes), il faudra construire au préalable le tableau de contingence à l'aide de la fonction `table` (cf. module 2).
+
+
+### Réalisation de l'AFC
+
+```{r}
+afc <- CA (immat, graph = FALSE)
+names (afc)
+summary (afc)
+```
+
+La structure de l'objet est très comparable à l'objet ACP.
+
+### Nombre d'axes à retenir
+
+Le choix du nombre d'axes se fait exactement comme pour l'ACP. Ici on en retiendrait... Combien ? (dur...)
+
+```{r}
+eig <- as.data.frame (afc$eig)
+mm <- mean (eig$`percentage of variance`)
+ggplot (eig, aes (x = 1:nrow(eig), weight = `percentage of variance`)) +
+  geom_bar (fill = "lightblue") + 
+  coord_flip () +
+  ggtitle ("Eboulis des valeurs propres") + 
+  theme (axis.title = element_blank ())+
+  geom_hline (yintercept = mm)
+```
+
+
+### Interprétation des axes
+
+Pour l'interprétation des positions des *individus* et des *variables* (dans le même espace), on retiendra :
+
+- les *variables* et *individus* interprétables sont ceux qui sont éloignés su centre du nuage de points.
+- La proximité de deux modalités (bien projetées) d'une même variable indique que les individus (au sens du tableau de départ) qui prennent ces modalités ont des profils similaires sur le reste des autres variables.
+- La proximité de deux modalités de variables différentes tend à indiquer que ce sont (à peu près) les mêmes individus qui prennent ces modalités, mais ce n'est pas toujours le cas.
+
+Si une modalité soit graphiquement très éloignée des autres, c'est qu’elle possède dans le tableau de départ un profil tout à fait spécifique. Sa position dans le plan factoriel étant isolée, elle empêche une étude précise des positions des autres points qui se retrouvent « en paquet ». Il est recommandé dans ce cas de rendre cette modalité inactive (on la met en individu et variable supplémentaire), ce qui revient à réaliser l’AFC du tableau de départ en éliminant la ligne ou la colonne représentant cette modalité.
+
+Remarque : La position moyenne des modalités de chacun des *caractères* est au centre du plan factoriel, quel que soit le couple d'axes représenté (ex : $F_1, F_2$). 
+
+On peut s'aider des graphiques avec sélections des profils lignes/colonne selon leur contribution et qualité de représentation.
+
+```{r plot_ca}
+plot.CA (afc, selectRow = "contrib 10")  
+plot.CA (afc, selectRow = "cos2 10")  
+```
+
+Et approfondir avec dimdesc et le contenu des éléments de l'objet résultat :
+
+```{r}
+a <- dimdesc (afc, axes = 1:2)
+a$`Dim 1`$col
+a$`Dim 2`$col
+print (a)
+```
+
+**Interprétation de l'exemple** : 
+
+- Les modalités fortement contributives à la formation des deux premiers axes ont presque toutes une bonne qualité de représentation (ce n'est pas toujours le cas).
+- Concernant les modalités du "type de voiture", on remarque une distinction nette entre les cabriolets d'un côté, et les "autres" d'un... autre côté. 
+- Concernant les modalités "département", on remarque une opposition entre les départements du nord et de l'Île de France (quart sud-ouest), les Alpes Maritimes et le Var (quart nord ouest), mais également la Savoie et la Haute-Savoie (Est).
+- Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les "autres" (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloignés des types "standard". On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu'ils comptent peu des autres types).
+- Les types conduite intérieure, break et véhicules pour handicapés sont proches du barycentre du nuage, ce qui en fait un type "standard", sans appartenance géographique particulière.
+
+## Exercice
+
+Refaire pas à pas [cet exercice](http://www.sthda.com/french/articles/38-methodes-des-composantes-principales-dans-r-guide-pratique/74-afc-analyse-factorielle-des-correspondances-avec-r-l-essentiel/)

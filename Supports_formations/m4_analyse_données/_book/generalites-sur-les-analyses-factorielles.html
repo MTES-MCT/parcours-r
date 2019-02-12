@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Analyse des données multi-dimensionnelles</title>
+  <meta name="description" content="Parcours de formation R - module 4">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Analyse des données multi-dimensionnelles" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Parcours de formation R - module 4" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analyse des données multi-dimensionnelles" />
+  
+  <meta name="twitter:description" content="Parcours de formation R - module 4" />
+  
+
+<meta name="author" content="Groupe des référents R">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="le-package-factominer.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploration avancée des données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-4"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 4</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Les analyses multivariées</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#objectifs"><i class="fa fa-check"></i><b>2.1</b> Objectifs</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#comment-synthetiser"><i class="fa fa-check"></i><b>2.2</b> Comment synthétiser ?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#quelles-methodes"><i class="fa fa-check"></i><b>2.3</b> Quelles méthodes ?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#lien-entre-ces-methodes"><i class="fa fa-check"></i><b>2.4</b> Lien entre ces méthodes</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#comment-faire-sous-r"><i class="fa fa-check"></i><b>2.5</b> Comment faire sous R ?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generalites-sur-les-analyses-factorielles.html"><a href="generalites-sur-les-analyses-factorielles.html"><i class="fa fa-check"></i><b>3</b> Généralités sur les analyses factorielles</a><ul>
+<li class="chapter" data-level="3.1" data-path="generalites-sur-les-analyses-factorielles.html"><a href="generalites-sur-les-analyses-factorielles.html#la-notion-de-distance"><i class="fa fa-check"></i><b>3.1</b> La notion de distance</a></li>
+<li class="chapter" data-level="3.2" data-path="generalites-sur-les-analyses-factorielles.html"><a href="generalites-sur-les-analyses-factorielles.html#les-questions-a-se-poser"><i class="fa fa-check"></i><b>3.2</b> Les questions à se poser</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="le-package-factominer.html"><a href="le-package-factominer.html"><i class="fa fa-check"></i><b>4</b> Le package FactoMineR</a></li>
+<li class="chapter" data-level="5" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html"><i class="fa fa-check"></i><b>5</b> L’analyse en composantes principales</a><ul>
+<li class="chapter" data-level="5.1" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#principe-de-lacp"><i class="fa fa-check"></i><b>5.1</b> Principe de l’ACP</a></li>
+<li class="chapter" data-level="5.2" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#variables-centrees---reduites"><i class="fa fa-check"></i><b>5.2</b> variables centrées - réduites ?</a></li>
+<li class="chapter" data-level="5.3" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#tuto-et-sources"><i class="fa fa-check"></i><b>5.3</b> Tuto et sources</a></li>
+<li class="chapter" data-level="5.4" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#exemple"><i class="fa fa-check"></i><b>5.4</b> Exemple</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#donnees-utilisees"><i class="fa fa-check"></i><b>5.4.1</b> Données utilisées</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#importation-et-exploration-rapide"><i class="fa fa-check"></i><b>5.5</b> Importation et exploration rapide</a></li>
+<li class="chapter" data-level="5.6" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-0-realiser-lacp"><i class="fa fa-check"></i><b>5.6</b> Etape 0 : réaliser l’ACP</a></li>
+<li class="chapter" data-level="5.7" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-1-le-nombre-daxes-a-retenir"><i class="fa fa-check"></i><b>5.7</b> Etape 1 : le nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="5.8" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-2-interpreter-les-axes"><i class="fa fa-check"></i><b>5.8</b> Etape 2 : interpréter les axes</a></li>
+<li class="chapter" data-level="5.9" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#savoir-utiliser-les-variables-supplementaires"><i class="fa fa-check"></i><b>5.9</b> Savoir utiliser les variables supplémentaires</a></li>
+<li class="chapter" data-level="5.10" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#savoir-reperer-un-effet-taille"><i class="fa fa-check"></i><b>5.10</b> Savoir repérer un effet taille</a></li>
+<li class="chapter" data-level="5.11" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#exercice"><i class="fa fa-check"></i><b>5.11</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html"><i class="fa fa-check"></i><b>6</b> L’analyse factorielle des correspondances</a><ul>
+<li class="chapter" data-level="6.1" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#principe-de-lafc"><i class="fa fa-check"></i><b>6.1</b> Principe de l’AFC</a></li>
+<li class="chapter" data-level="6.2" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#donnees-utilisees-1"><i class="fa fa-check"></i><b>6.2</b> Données utilisées</a></li>
+<li class="chapter" data-level="6.3" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-0-lafc"><i class="fa fa-check"></i><b>6.3</b> Etape 0 : l’AFC</a></li>
+<li class="chapter" data-level="6.4" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-1-choix-du-nombre-daxes"><i class="fa fa-check"></i><b>6.4</b> Etape 1 : choix du nombre d’axes</a></li>
+<li class="chapter" data-level="6.5" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-2-interpretation-des-axes"><i class="fa fa-check"></i><b>6.5</b> Etape 2 : Interprétation des axes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html"><i class="fa fa-check"></i><b>7</b> L’analyse des correspondances multiples</a><ul>
+<li class="chapter" data-level="7.1" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#principe-de-lacm"><i class="fa fa-check"></i><b>7.1</b> Principe de l’ACM</a></li>
+<li class="chapter" data-level="7.2" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#le-tableau-disjonctif-complet"><i class="fa fa-check"></i><b>7.2</b> Le tableau disjonctif complet</a></li>
+<li class="chapter" data-level="7.3" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#donnees-utilisees-2"><i class="fa fa-check"></i><b>7.3</b> Données utilisées</a></li>
+<li class="chapter" data-level="7.4" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-0-lacm"><i class="fa fa-check"></i><b>7.4</b> Etape 0 : l’ACM</a></li>
+<li class="chapter" data-level="7.5" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-1-choix-du-nombre-daxes-1"><i class="fa fa-check"></i><b>7.5</b> Etape 1 : choix du nombre d’axes</a></li>
+<li class="chapter" data-level="7.6" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-2-interpretation-des-axes-1"><i class="fa fa-check"></i><b>7.6</b> Etape 2 : interprétation des axes</a></li>
+<li class="chapter" data-level="7.7" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#savoir-utiliser-les-variables-supplementaires-1"><i class="fa fa-check"></i><b>7.7</b> Savoir utiliser les variables supplémentaires</a></li>
+<li class="chapter" data-level="7.8" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#exercice-1"><i class="fa fa-check"></i><b>7.8</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="classification-clustering.html"><a href="classification-clustering.html"><i class="fa fa-check"></i><b>8</b> Classification (clustering)</a><ul>
+<li class="chapter" data-level="8.1" data-path="classification-clustering.html"><a href="classification-clustering.html#les-k-moyennes"><i class="fa fa-check"></i><b>8.1</b> Les k moyennes</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="classification-clustering.html"><a href="classification-clustering.html#principe"><i class="fa fa-check"></i><b>8.1.1</b> Principe</a></li>
+<li class="chapter" data-level="8.1.2" data-path="classification-clustering.html"><a href="classification-clustering.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>8.1.2</b> Mise en oeuvre</a></li>
+<li class="chapter" data-level="8.1.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils"><i class="fa fa-check"></i><b>8.1.3</b> Quelques conseils</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="classification-clustering.html"><a href="classification-clustering.html#la-classification-ascendante-hierarchique-cah"><i class="fa fa-check"></i><b>8.2</b> La classification ascendante hiérarchique (CAH)</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="classification-clustering.html"><a href="classification-clustering.html#determination-du-nombre-de-classes"><i class="fa fa-check"></i><b>8.2.1</b> Détermination du nombre de classes</a></li>
+<li class="chapter" data-level="8.2.2" data-path="classification-clustering.html"><a href="classification-clustering.html#description-des-classes"><i class="fa fa-check"></i><b>8.2.2</b> Description des classes</a></li>
+<li class="chapter" data-level="8.2.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils-pratiques"><i class="fa fa-check"></i><b>8.2.3</b> Quelques conseils pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="classification-clustering.html"><a href="classification-clustering.html#exercice-2"><i class="fa fa-check"></i><b>8.3</b> Exercice</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse des données multi-dimensionnelles</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generalites-sur-les-analyses-factorielles" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Généralités sur les analyses factorielles</h1>
+<div id="la-notion-de-distance" class="section level2">
+<h2><span class="header-section-number">3.1</span> La notion de distance</h2>
+<p>On parle de proximité entre les individus <span class="math inline">\(\Rightarrow\)</span> comment la mesurer ? Par une distance. Exemple de la distance euclidienne en 3D : <span class="math inline">\(D = \sqrt{(x_{b}-x_{a})^2+(y_{b}-y_{a})^2+(z_{b}-z_{a})^2}\)</span></p>
+<p>Il existe de nombreuses autres distances qui répondent à différents usages. En restant dans le domaine des distances géographiques, il existe par exemple la distance orthodromique, utilisée par les marins, qui est la plus courte à la surface du globe terrestre entre deux points (calculable avec les packages <a href="https://cran.r-project.org/web/packages/geosphere/geosphere.pdf">geosphere</a> ou <a href="https://cran.r-project.org/web/packages/fields/fields.pdf">fields</a>), ou la distance curviligne le long d’un réseau hydrographique utilisée par les hydrologues (calculable avec le <a href="https://cran.r-project.org/web/packages/riverdist/riverdist.pdf">package riverdist</a>).</p>
+<p>En génétique des populations, on utilise la distance génétique pour mesurer le degré de dissemblance entre deux génomes.</p>
+<p>En écologie des communautés, l’indice de Jaccard permet de comparer la composition en espèces de deux communautés A et B. C’est le pourcentage du nomble total d’espèces présentes dans au moins un des échantillons qui est commun aux deux échantillons :</p>
+<p><span class="math inline">\(J(A,B) = \frac{|A \cap B|}{|A \cup B|}\)</span></p>
+<center>
+<img src="Figures/jaccard.png" style="width:50.0%" />
+</center>
+<p>C’est donc un indice de proximité qui varie de 0% (aucune espèce n’est commune aux deux échantillons) à 100% (toutes les espèces sont communes à A et à B).</p>
+<p>La distance de Jaccard est <span class="math inline">\(D_j = 1 - J\)</span>.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Il existe de nombreuses autres distances correspondant à différents usages et métiers.</p>
+<p>En statistiques, on est amené à utiliser des distances “exotiques” en plus de la distance euclidienne et de la distance de Jaccard : Distance du <span class="math inline">\({\chi}^2\)</span> (en AFC et ACM), Mahalanobis, Bray-Curtis …</p>
+</div>
+<div id="les-questions-a-se-poser" class="section level2">
+<h2><span class="header-section-number">3.2</span> Les questions à se poser</h2>
+<p>Mon objectif est de :</p>
+<ol style="list-style-type: decimal">
+<li>Déterminer une typologie <span class="math inline">\(\Rightarrow\)</span> classification / partitionnement.</li>
+<li>Explorer des liens entre variables et entre individus <span class="math inline">\(\Rightarrow\)</span> analyses factorielles.</li>
+</ol>
+<p>Puis, si l’on est dans le cas n°2, <a href="https://youtu.be/aiqGyLGrQ48">cette petite vidéo</a> (en anglais, mais l’accent de l’auteur aide à la compréhension) donne un rapide aperçu des questions à se poser avant de se lancer dans les analyses. On peut la résumer ainsi :</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Que représente mon tableau de données ?</li>
+</ol>
+<ul>
+<li>Un tableau de contingence <span class="math inline">\(\Rightarrow\)</span> AFC</li>
+<li>Un tableau de <span class="math inline">\(n\)</span> individus x <span class="math inline">\(p\)</span> variables <span class="math inline">\(\Rightarrow\)</span> aller au point 4.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Quels sont les éléments (lignes, colonnes) qui seront “actifs”, c’est-à-dire qui participeront à la constitution des axes, donc à la détermination des distances entre les individus ? Les autres éléments, dits “supplémentaires”, pourront être positionnés après coup sur les axes.</p></li>
+<li>Les variables sont-elles quantitatives ou qualitatives ?</li>
+</ol>
+<ul>
+<li>Quantitatives <span class="math inline">\(\Rightarrow\)</span> ACP</li>
+<li>Qualitatives, 2 variables et tableau de contingence <span class="math inline">\(\Rightarrow\)</span> AFC</li>
+<li>Qualitatives, autres cas <span class="math inline">\(\Rightarrow\)</span> ACM</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Si l’on est dans le cas de l’ACP, doit-on standardiser les variables ?</p></li>
+<li><p>Y a-t-il des valeurs manquantes dans le tableau à analyses ? Si oui, comment les gérer ?</p></li>
+</ol>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="le-package-factominer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"download": ["exploration_avancee.pdf", "exploration_avancee.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

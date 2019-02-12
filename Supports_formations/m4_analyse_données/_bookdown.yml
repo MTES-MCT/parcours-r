@@ -1,0 +1,5 @@
+book_filename: "exploration_avancee"
+language:
+  ui:
+    chapter_name: "Chapitre "
+delete_merged_file: true

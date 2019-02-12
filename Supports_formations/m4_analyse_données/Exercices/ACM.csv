@@ -1,0 +1,131 @@
+Source;Quel est l'organisme pour lequel vous travaillez ?;Qui etes-vous ?;Si autre, merci de preciser;Quels elements du compte (et du rapport) consultez- vous ? [Analyses redigees];Quels elements du compte (et du rapport) consultez- vous ? [Tableaux annexes du rapport];Quels elements du compte (et du rapport) consultez- vous ? [Tableaux telecharges sur le site du SOeS];Quels elements du compte (et du rapport) consultez- vous ? [Encadres methodologiques];Quels elements du compte (et du rapport) consultez- vous ? [Graphiques];Quels elements du compte (et du rapport) consultez- vous ? [Demande directe à l'equipe];Quels elements du compte (et du rapport) consultez- vous ? [Autre(s)];Preciser;Quelles fiches consultez-vous ? [Vue d'ensemble (synthèse)];Quelles fiches consultez-vous ? [Fiches R (premiers resultats)];Quelles fiches consultez-vous ? [Fiches E (le logement dans l'economie)];Quelles fiches consultez-vous ? [Fiches D (depenses courantes)];Quelles fiches consultez-vous ? [Fiches P (la production de service de logement)];Quelles fiches consultez-vous ? [Fiches I (activite immobilière)];Quelles fiches consultez-vous ? [Fiches A (aides au logement)];Pour ces fiches, consultez-vous...;"Consultez-vous les chiffres concernant les ""loges gratuit"" ?";"Consultez-vous les donnees sur les ""loges gratuit"" [Loges gratuits des bailleurs personnes physiques]";"Consultez-vous les donnees sur les ""loges gratuit"" [Loges gratuit des bailleurs HLM]";"Consultez-vous les donnees sur les ""loges gratuit"" [Loges gratuit des bailleurs autres sociaux]";"Consultez-vous les donnees sur les ""loges gratuit"" [Loges gratuit des bailleurs autres personnes morales]";Quelle methode adopter pour un programme d'etudes sur le logement ? [Une planification triennale des travaux d'etudes vous paraît-elle  adaptee ?];Quelle methode adopter pour un programme d'etudes sur le logement ? [Souhaitez-vous participer à la selection des etudes presentees à la commission ?];Quelle methode adopter pour un programme d'etudes sur le logement ? [Seriez-vous prets à contribuer à des etudes programmees dans le cadre de la commission ?];Quelle methode adopter pour un programme d'etudes sur le logement ? [Considerez-vous l'evaluation de politiques publiques comme faisatn partie des missions de la commission ?];Faites-nous part de toute remarque sur ce questionnaire !
+source;orga;qui;autre;rapport_analyses;rapport_annexes;rapport_tableaux_internet;rapport_methodo;rapport_graphes;rapport_dde_adhoc;rapport_autre;rapport_preciser;fiche_synthese;fiche_R;fiche_E;fiche_D;fiche_P;fiche_I;fiche_A;fiche_elements;LG_global;LG_BPP;LG_HLM;LG_AutSoc;LG_AutBPM;etudes_planif_triennale;etudes_selection;etudes_contrib;etudes_EPP;remarques
+Questionnaire CCL;Ecole d'urbanisme de Paris;Personnalite qualifiee de la commission;;De facon approfondie;De facon approfondie;De facon approfondie;Rapidement;Rapidement;Rapidement;Pas du tout;;Toutes;Toutes;Toutes;Quelques-unes;Quelques-unes;Quelques-unes;Toutes;Textes et figures;Non;;;;;Oui;Oui;Oui;Oui;
+Questionnaire CCL;Ancols;Autre utilisateur;Charge etudes;;;De facon approfondie;;;;;;Toutes;;;;;;;Textes et figures;Non;;;;;;;;;
+Questionnaire CCL;CGEDD;Membre de droit de la commission representant une administration;;Rapidement;De facon approfondie;De facon approfondie;De facon approfondie;Rapidement;Rapidement;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Oui;Oui;;;;Oui;Oui;Oui;Non;Je pense que les etudes devraient etre recentrees sur la comptabilite (ex: pourquoi le poids de la depense de logement dans le revenu des menages est-il le meme en France, en Allemagne et au Royaume-Uni?), et qu'il faudrait que le SOeS mène les etudes qu'iul souhaite mener sur la formation des prix (ex: effet du prolongement d'une ligne de metro sur les prix) dans un autre cadre que la commission des comptes du logement.  Je pense que la ministre qui a demande à la commission des comptes de travailler sur la formation des prix a fait une erreur.  Il y a trop de points flous dans la comptabilite retracee par le compte du logement pour que la commission des comptes se disperse dans d'autres domaines.
+Questionnaire CCL;ANCOLS;Autre utilisateur;;;De facon approfondie;;;;;;;;;;;;;;Textes et figures;Non;;;;;;;;;
+Questionnaire CCL;ANCOLS;Membre de droit de la commission representant une administration;;De facon approfondie;De facon approfondie;Rapidement;De facon approfondie;Rapidement;De facon approfondie;;;Toutes;Toutes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Toutes;Textes et figures;Non;;;;;Oui;Oui;Oui;Non;
+Questionnaire CCL;insee;Autre utilisateur;charge de compte construction;Rapidement;Rapidement;;De facon approfondie;Rapidement;;;;;Quelques-unes;Quelques-unes;Quelques-unes;Aucune;Toutes;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire CCL;insee;Membre de droit de la commission representant une administration;;Rapidement;Rapidement;De facon approfondie;De facon approfondie;Rapidement;De facon approfondie;Pas du tout;;Toutes;Toutes;Quelques-unes;Quelques-unes;Aucune;Toutes;Quelques-unes;Textes et figures;Oui;Oui;Oui;Oui;Oui;Oui;Non;Non;Oui;
+Questionnaire CCL;Universite de Lille;Personnalite qualifiee de la commission;;Rapidement;;De facon approfondie;De facon approfondie;Rapidement;;;;Quelques-unes;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Textes et figures;Non;;;;;Non;Non;Oui;Non;
+Questionnaire CCL;Banque de France;Suppleant d'un membre de droit;;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Oui;Oui;Oui;Oui;Oui;Oui;Oui;Oui;Oui;
+Questionnaire CCL;Anah;Membre de droit de la commission representant une administration;;De facon approfondie;Rapidement;De facon approfondie;Rapidement;Rapidement;Pas du tout;;;Toutes;Quelques-unes;Toutes;Toutes;Une seule;Toutes;Toutes;Textes et figures;Non;;;;;Oui;Oui;Oui;Oui;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;SOeS;;statisticien au SOeS;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;aucun;;particulier voulant monter une startup;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;LA MAIF (mutuelle d'assurance);;representant d'un organisme prive;De facon approfondie;De facon approfondie;Pas du tout;Rapidement;Pas du tout;Pas du tout;Pas du tout;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Textes et figures;Oui;Oui;Non;Non;Non;;;;;Les donnees detaillee sur le parc de logements (reidences principales, secondaires, logements vacants) en metropole comme dans toute la France nous sont indispensables avec rappel d'historique.
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Universite;;Professeur;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Non;;;;;;;;;R.A.S.
+Questionnaire internet;OFCE;;Economiste;Rapidement;Rapidement;De facon approfondie;De facon approfondie;Rapidement;;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;BIPE;;BIPE;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;cerema;;charge d'etudes;Rapidement;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;;Quelques-unes;Toutes;;Toutes;;;;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;DREES;;Statisticien;Rapidement;Pas du tout;Rapidement;Pas du tout;Pas du tout;Pas du tout;;;Aucune;Aucune;Aucune;Aucune;Aucune;Aucune;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;credit foncier;;responsable d'etudes;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;Pas du tout;Pas du tout;;Toutes;Toutes;Toutes;Quelques-unes;Quelques-unes;;;Textes et figures;Oui;Oui;Oui;Oui;Oui;;;;;ras
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;DG Tresor;;;De facon approfondie;Rapidement;De facon approfondie;De facon approfondie;De facon approfondie;Pas du tout;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;EVEA COURTAGE;;gerant;Rapidement;De facon approfondie;De facon approfondie;;Rapidement;;;;Quelques-unes;;Quelques-unes;;;Toutes;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;DG Tresor;;;De facon approfondie;De facon approfondie;De facon approfondie;Rapidement;De facon approfondie;Pas du tout;;;Quelques-unes;Quelques-unes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Oui;;;;;;;;;
+Questionnaire internet;assureur;;souscription;Rapidement;De facon approfondie;Rapidement;;De facon approfondie;Pas du tout;Pas du tout;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;CGDD;;divers;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Lycee general et technologique;;professeur;De facon approfondie;;Rapidement;Rapidement;Rapidement;;;;Quelques-unes;Quelques-unes;;Quelques-unes;Quelques-unes;;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;INRA;;chercheur;Rapidement;Pas du tout;Rapidement;;Rapidement;Pas du tout;Pas du tout;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;cofrelec;;responsable commercial;;;De facon approfondie;;;;;;Quelques-unes;Toutes;Toutes;;;;;Uniquement le texte;Non;;;;;;;;;J'utilise vos donnees en tableaux pour les mises en chantier et autorises par departement par trimestre et par an en collectif. Ces chiffre nous servent  �des fins d'objectifs commerciaux et strat
+Questionnaire internet;EXPERTISE COMPTABLE;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Anaxago - plateforme de crowdfunding;;un analyste;Rapidement;De facon approfondie;De facon approfondie;Rapidement;Rapidement;Pas du tout;;;Toutes;;;;;Toutes;;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;Lycee prive sous contrat;;Etudiant;De facon approfondie;De facon approfondie;;;De facon approfondie;;;;Toutes;;Toutes;;;;;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;DDT;;UTILISATEUR;De facon approfondie;Rapidement;;;De facon approfondie;;;;Toutes;;;;;;;Textes et figures;Non;;;;;;;;;Manque d'indicateurs durables sur les logements
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;cabinet de conseil;;consultant;De facon approfondie;Rapidement;De facon approfondie;Rapidement;Rapidement;Pas du tout;;;Toutes;Aucune;Toutes;;Toutes;Toutes;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;etudiant;;etudiant;De facon approfondie;Rapidement;Pas du tout;Rapidement;De facon approfondie;Pas du tout;;;Toutes;Quelques-unes;Quelques-unes;Aucune;Aucune;Toutes;Toutes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;particulier;;recherches sur le marche de l'emploi dans la construction dans le but de faire une formation dans ce domaine;Rapidement;;Rapidement;;Rapidement;;;;Une seule;;;;;;;Textes et figures;Non;;;;;;;;;j'effectue des recherches sur le marche de la construction en loire atlantique afin de faire une formation dans le batiment.
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;aucun;;particulier;Rapidement;Rapidement;Rapidement;Rapidement;Rapidement;;Rapidement;;Quelques-unes;Quelques-unes;;;Quelques-unes;Quelques-unes;;Textes et figures;Non
+Questionnaire internet;Groupe atlantic;;employee;Rapidement;De facon approfondie;De facon approfondie;Pas du tout;Pas du tout;Rapidement;;;Quelques-unes;Toutes;Aucune;Aucune;Aucune;Aucune;Aucune;Textes et figures;Non
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;Etat -DREAL;;agent Etat;Rapidement;Rapidement;Rapidement;De facon approfondie;De facon approfondie;Pas du tout;Pas du tout;;;;;;;;;;N/A
+Questionnaire internet;MEEM;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;cour des comptes;;cour des comptes;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;;;;;;;;;;N/A
+Questionnaire internet;DGALN/DHUP;;service metier;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;entreprise privee;;marketing;;;;;;;;;Quelques-unes;;;;;;;Uniquement le texte;Non;;;;;;;;;
+Questionnaire internet;AUCUN;;ETUDIANT;Rapidement;;;;;;;;Quelques-unes;;;;;;;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;Agence d'urbanisme de l'agglomeration orleanaise;;;Rapidement;Rapidement;De facon approfondie;Rapidement;Rapidement;Pas du tout;;;Toutes;Aucune;Toutes;Aucune;Toutes;Quelques-unes;Quelques-unes;Textes et figures;Non;;;;;;;;;peut-etre pourriez-vous vous interesser a nos centres d'interet..., pas forcement identiques aux votres!
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Communaute de Communes;;;Rapidement;De facon approfondie;De facon approfondie;Pas du tout;De facon approfondie;Pas du tout;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Oui;Oui;Oui;Oui;Oui;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;universite;;particulier;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Aucun;;Particulier curieux;Rapidement;Rapidement;Rapidement;Rapidement;De facon approfondie;Pas du tout;Pas du tout;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;ANIL;;utilisateur simple;Rapidement;Pas du tout;Pas du tout;De facon approfondie;Rapidement;Pas du tout;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;GCL;;Stagiaire;Rapidement;Rapidement;Rapidement;Rapidement;Rapidement;Rapidement;Rapidement;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Aucune;Quelques-unes;Aucune;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;entreprise privee;;salarie;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;SCURE;;chargee d'etudes;;;;;;;;;Quelques-unes;;Quelques-unes;;;Quelques-unes;;Uniquement le texte;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;L'ANCOLS;;fonctionnaire;Rapidement;De facon approfondie;De facon approfondie;Rapidement;;;;;Toutes;Quelques-unes;;Quelques-unes;;Quelques-unes;Toutes;Textes et figures;Oui;Oui;Oui;Oui;Oui;;;;;Il est veritablement court: BRAVO
+Questionnaire internet;CNAF;;;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;De facon approfondie;;;;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Toutes;Textes et figures;Oui;Oui;Non;Oui;Non;;;;;Les comptes du logement sont un doc de reference pour mon travail et leur presentation editoriale me semble tres claire.
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;Je suis a la retraite.;;curieux;De facon approfondie;Rapidement;Rapidement;Rapidement;Rapidement;Rapidement;;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Textes et figures;Non;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;INSEE;;charge d'etudes;;;De facon approfondie;Rapidement;Rapidement;;;;;;;;;;;;Non;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;Siplast;;Societe privee;De facon approfondie;Rapidement;Rapidement;Pas du tout;Rapidement;Pas du tout;Pas du tout;;Toutes;Quelques-unes;Quelques-unes;Une seule;Quelques-unes;Quelques-unes;Une seule;Textes et figures;Non;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;
+Questionnaire internet;FNAIM;;economiste;Rapidement;De facon approfondie;De facon approfondie;De facon approfondie;Rapidement;De facon approfondie;;;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;Quelques-unes;;Toutes;Textes et figures;Oui;Oui;Non;Non;Oui
+Questionnaire internet;agence d'urbanisme;;Charge d'etudes;Rapidement;Pas du tout;De facon approfondie;Rapidement;Rapidement;Pas du tout;Pas du tout;;Quelques-unes;Aucune;Aucune;Aucune;Aucune;Une seule;Une seule;Textes et figures;Non;;;;;;;;;L'outil BEYOND est pratique mais parfois connait quelques blocages qui induisent a� recommencer toutes les selections ou filtres.
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;
+Questionnaire internet;;;;;;;;;;;;;;;;;;;;N/A;;;;;;;;;

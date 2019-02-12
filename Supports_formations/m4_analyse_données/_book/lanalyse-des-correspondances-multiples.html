@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Analyse des données multi-dimensionnelles</title>
+  <meta name="description" content="Parcours de formation R - module 4">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Analyse des données multi-dimensionnelles" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Parcours de formation R - module 4" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analyse des données multi-dimensionnelles" />
+  
+  <meta name="twitter:description" content="Parcours de formation R - module 4" />
+  
+
+<meta name="author" content="Groupe des référents R">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="lafc.html">
+<link rel="next" href="classification-clustering.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploration avancée des données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-4"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 4</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Les analyses multivariées</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#objectifs"><i class="fa fa-check"></i><b>2.1</b> Objectifs</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#comment-synthetiser"><i class="fa fa-check"></i><b>2.2</b> Comment synthétiser ?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#quelles-methodes"><i class="fa fa-check"></i><b>2.3</b> Quelles méthodes ?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#lien-entre-ces-methodes"><i class="fa fa-check"></i><b>2.4</b> Lien entre ces méthodes</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#la-notion-de-distance"><i class="fa fa-check"></i><b>2.5</b> La notion de distance</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#les-questions-a-se-poser"><i class="fa fa-check"></i><b>2.6</b> Les questions à se poser</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#le-package-factominer"><i class="fa fa-check"></i><b>2.7</b> Le package FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lacp.html"><a href="lacp.html"><i class="fa fa-check"></i><b>3</b> L’ACP</a><ul>
+<li class="chapter" data-level="3.1" data-path="lacp.html"><a href="lacp.html#principe-de-lacp"><i class="fa fa-check"></i><b>3.1</b> Principe de l’ACP</a></li>
+<li class="chapter" data-level="3.2" data-path="lacp.html"><a href="lacp.html#centrer---reduire"><i class="fa fa-check"></i><b>3.2</b> Centrer - réduire ?</a></li>
+<li class="chapter" data-level="3.3" data-path="lacp.html"><a href="lacp.html#lacp-avec-factominer-ressources"><i class="fa fa-check"></i><b>3.3</b> L’ACP avec FactoMiner : ressources</a></li>
+<li class="chapter" data-level="3.4" data-path="lacp.html"><a href="lacp.html#exemple"><i class="fa fa-check"></i><b>3.4</b> Exemple</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="lacp.html"><a href="lacp.html#donnees-utilisees"><i class="fa fa-check"></i><b>3.4.1</b> Données utilisées</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lacp.html"><a href="lacp.html#importation-et-exploration-rapide"><i class="fa fa-check"></i><b>3.4.2</b> Importation et exploration rapide</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lacp.html"><a href="lacp.html#realiser-lacp"><i class="fa fa-check"></i><b>3.4.3</b> Réaliser l’ACP</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lacp.html"><a href="lacp.html#nombre-daxes-a-retenir"><i class="fa fa-check"></i><b>3.4.4</b> Nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lacp.html"><a href="lacp.html#interpreter-les-axes"><i class="fa fa-check"></i><b>3.4.5</b> Interpréter les axes</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lacp.html"><a href="lacp.html#les-variables-supplementaires"><i class="fa fa-check"></i><b>3.4.6</b> Les variables supplémentaires</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lacp.html"><a href="lacp.html#reperer-un-effet-taille"><i class="fa fa-check"></i><b>3.5</b> Repérer un effet taille</a></li>
+<li class="chapter" data-level="3.6" data-path="lacp.html"><a href="lacp.html#exercice"><i class="fa fa-check"></i><b>3.6</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lafc.html"><a href="lafc.html"><i class="fa fa-check"></i><b>4</b> L’AFC</a><ul>
+<li class="chapter" data-level="4.1" data-path="lafc.html"><a href="lafc.html#principe-de-lafc"><i class="fa fa-check"></i><b>4.1</b> Principe de l’AFC</a></li>
+<li class="chapter" data-level="4.2" data-path="lafc.html"><a href="lafc.html#exemple-1"><i class="fa fa-check"></i><b>4.2</b> Exemple</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lafc.html"><a href="lafc.html#donnees-utilisees-1"><i class="fa fa-check"></i><b>4.2.1</b> Données utilisées</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lafc.html"><a href="lafc.html#lafc-avec-factominer"><i class="fa fa-check"></i><b>4.2.2</b> L’AFC avec FactoMiner</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lafc.html"><a href="lafc.html#nombre-daxes-a-retenir-1"><i class="fa fa-check"></i><b>4.2.3</b> Nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lafc.html"><a href="lafc.html#interpretation-des-axes"><i class="fa fa-check"></i><b>4.2.4</b> Interprétation des axes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html"><i class="fa fa-check"></i><b>5</b> L’analyse des correspondances multiples</a><ul>
+<li class="chapter" data-level="5.1" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#principe-de-lacm"><i class="fa fa-check"></i><b>5.1</b> Principe de l’ACM</a></li>
+<li class="chapter" data-level="5.2" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#le-tableau-disjonctif-complet"><i class="fa fa-check"></i><b>5.2</b> Le tableau disjonctif complet</a></li>
+<li class="chapter" data-level="5.3" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#exemple-2"><i class="fa fa-check"></i><b>5.3</b> Exemple</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#donnees-utilisees-2"><i class="fa fa-check"></i><b>5.3.1</b> Données utilisées</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#lacm-avec-factominer"><i class="fa fa-check"></i><b>5.4</b> L’ACM avec FactoMiner</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#nombre-daxes-retenus"><i class="fa fa-check"></i><b>5.4.1</b> Nombre d’axes retenus</a></li>
+<li class="chapter" data-level="5.4.2" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#interpretation-des-axes-1"><i class="fa fa-check"></i><b>5.4.2</b> Interprétation des axes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#savoir-utiliser-les-variables-supplementaires"><i class="fa fa-check"></i><b>5.5</b> Savoir utiliser les variables supplémentaires</a></li>
+<li class="chapter" data-level="5.6" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#exercice-1"><i class="fa fa-check"></i><b>5.6</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="classification-clustering.html"><a href="classification-clustering.html"><i class="fa fa-check"></i><b>6</b> Classification (clustering)</a><ul>
+<li class="chapter" data-level="6.1" data-path="classification-clustering.html"><a href="classification-clustering.html#les-k-moyennes"><i class="fa fa-check"></i><b>6.1</b> Les k moyennes</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="classification-clustering.html"><a href="classification-clustering.html#principe"><i class="fa fa-check"></i><b>6.1.1</b> Principe</a></li>
+<li class="chapter" data-level="6.1.2" data-path="classification-clustering.html"><a href="classification-clustering.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>6.1.2</b> Mise en oeuvre</a></li>
+<li class="chapter" data-level="6.1.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils"><i class="fa fa-check"></i><b>6.1.3</b> Quelques conseils</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="classification-clustering.html"><a href="classification-clustering.html#la-classification-ascendante-hierarchique-cah"><i class="fa fa-check"></i><b>6.2</b> La classification ascendante hiérarchique (CAH)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="classification-clustering.html"><a href="classification-clustering.html#determination-du-nombre-de-classes"><i class="fa fa-check"></i><b>6.2.1</b> Détermination du nombre de classes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="classification-clustering.html"><a href="classification-clustering.html#description-des-classes"><i class="fa fa-check"></i><b>6.2.2</b> Description des classes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils-pratiques"><i class="fa fa-check"></i><b>6.2.3</b> Quelques conseils pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="classification-clustering.html"><a href="classification-clustering.html#exercice-2"><i class="fa fa-check"></i><b>6.3</b> Exercice</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse des données multi-dimensionnelles</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lanalyse-des-correspondances-multiples" class="section level1">
+<h1><span class="header-section-number">Chapitre 5</span> L’analyse des correspondances multiples</h1>
+<div id="principe-de-lacm" class="section level2">
+<h2><span class="header-section-number">5.1</span> Principe de l’ACM</h2>
+<p>Plus de détails sur l’ACM sur <a href="https://www.math.u-bordeaux.fr/~machaven/wordpress/wp-content/uploads/2013/10/ACM.pdf">ce fichier pdf</a>, et sur l’ACM avec Factominer sur <a href="http://factominer.free.fr/factomethods/analyse-des-correspondances-multiples.html">cette page</a>.</p>
+<p>L’ACM permet d’analyser les liens entre <span class="math inline">\(p\)</span> variables <strong>qualitatives</strong>. C’est une généralisation de l’AFC pour <span class="math inline">\(p &gt; 2\)</span> variables qualitatives.</p>
+<p>On peut y mettre des variable quantitatives, à condition de les discrétiser (donc de les transformer en variables qualitatives).</p>
+<p>L’ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu’une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu’une autre avec peu de modalités. A l’inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument <code>row.w</code> de la fonction <code>MCA</code>).</p>
+<p>Le résultat d’une ACM, comme pour les autres analyses factorielles, est consitué des coordonnées des individus et des variables dans le nouvel espace construit. On peut donc utiliser cette technique pour <strong>transformer des variables qualitatives en variables continues</strong>.</p>
+</div>
+<div id="le-tableau-disjonctif-complet" class="section level2">
+<h2><span class="header-section-number">5.2</span> Le tableau disjonctif complet</h2>
+<p>On (enfin, R le fait tout seul) transforme les modalités des variables qualitatives en autant de variables binaires.</p>
+<p><strong>Table ordonnée</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table_ordonnee &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">Identifiant =</span> <span class="kw">c</span> (<span class="st">&#39;0001&#39;</span>, <span class="st">&#39;0002&#39;</span>, <span class="st">&#39;0003&#39;</span>, <span class="st">&#39;0004&#39;</span>),
+                                 <span class="dt">Sexe =</span> <span class="kw">c</span>(<span class="st">&#39;H&#39;</span>, <span class="st">&#39;F&#39;</span>, <span class="st">&#39;F&#39;</span>, <span class="st">&#39;H&#39;</span>),
+                                 <span class="dt">Age =</span> <span class="kw">c</span>(<span class="st">&#39;&lt;20&#39;</span>, <span class="st">&#39;20-60&#39;</span>, <span class="st">&#39;&gt;60&#39;</span>, <span class="st">&#39;&lt;20&#39;</span>))
+
+<span class="kw">datatable</span> (table_ordonnee, <span class="dt">options =</span> <span class="kw">list</span>(
+  <span class="dt">columnDefs =</span> <span class="kw">list</span> (<span class="kw">list</span> (<span class="dt">className =</span> <span class="st">&#39;dt-center&#39;</span>, <span class="dt">targets =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">3</span>))))</code></pre></div>
+<div id="htmlwidget-f0fc743bb28e956f6d98" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f0fc743bb28e956f6d98">{"x":{"filter":"none","data":[["1","2","3","4"],["0001","0002","0003","0004"],["H","F","F","H"],["&lt;20","20-60","&gt;60","&lt;20"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Identifiant<\/th>\n      <th>Sexe<\/th>\n      <th>Age<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-center","targets":[0,1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Tableau disjonctif complet</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tableau_disjonctif &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">Identifiant =</span> <span class="kw">c</span> (<span class="st">&#39;0001&#39;</span>, <span class="st">&#39;0002&#39;</span>, <span class="st">&#39;0003&#39;</span>, <span class="st">&#39;0004&#39;</span>),
+                                  <span class="dt">Sexe_H =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>),
+                                  <span class="dt">Sexe_F =</span> <span class="kw">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;0&quot;</span>),
+                                  <span class="dt">Age_Inf_20 =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>),
+                                  <span class="dt">Age_20_60 =</span> <span class="kw">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;0&quot;</span>),
+                                  <span class="dt">Age_Sup_30 =</span> <span class="kw">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;0&quot;</span>))
+
+<span class="kw">datatable</span> (tableau_disjonctif, <span class="dt">options =</span> <span class="kw">list</span>(
+  <span class="dt">columnDefs =</span> <span class="kw">list</span>(<span class="kw">list</span>(<span class="dt">className =</span> <span class="st">&#39;dt-center&#39;</span>, <span class="dt">targets =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>))))</code></pre></div>
+<div id="htmlwidget-73f4d8396b6b05616c31" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-73f4d8396b6b05616c31">{"x":{"filter":"none","data":[["1","2","3","4"],["0001","0002","0003","0004"],["1","0","0","1"],["0","1","1","0"],["1","0","0","1"],["0","1","0","0"],["0","0","1","0"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Identifiant<\/th>\n      <th>Sexe_H<\/th>\n      <th>Sexe_F<\/th>\n      <th>Age_Inf_20<\/th>\n      <th>Age_20_60<\/th>\n      <th>Age_Sup_30<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-center","targets":[1,2,3,4,5,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<table>
+<thead>
+<tr class="header">
+<th>Identifiant</th>
+<th>Sexe_H</th>
+<th>Sexe_F</th>
+<th>Age_20</th>
+<th>Age_25</th>
+<th>Age_30</th>
+<th>Age_35</th>
+<th>Age_40+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0001</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0002</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0003</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>La “dernière” des colonnes correspondant à une variable peut être déduite des valeurs observées dans les autres. Par exemple si Sexe_H=1, alors Sexe_F=0 et vice versa.</p>
+</div>
+<div id="exemple-2" class="section level2">
+<h2><span class="header-section-number">5.3</span> Exemple</h2>
+<div id="donnees-utilisees-2" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Données utilisées</h3>
+<p>Le jeu de donnée est pris directement dans le package <code>FactoMineR</code> : il s’agit d’un <em>dataframe</em> rassemblant des données concernant les hobbies des personnes interrogées. Pour l’analyse, on ne retient que les variables concernant ces pratiques, en mettant de côté les variables décrivant les individus eux-mêmes, soit les variables 19 à 23 du <em>dataframe.</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span> (hobbies)
+<span class="kw">summary</span> (hobbies)</code></pre></div>
+<pre><code>##  Reading  Listening music Cinema   Show     Exhibition Computer Sport   
+##  0:2757   0:2456          0:5044   0:5978   0:5808     0:5245   0:5308  
+##  1:5646   1:5947          1:3359   1:2425   1:2595     1:3158   1:3095  
+##                                                                         
+##                                                                         
+##                                                                         
+##                                                                         
+##                                                                         
+##  Walking  Travelling Playing music Collecting Volunteering Mechanic
+##  0:4228   0:5040     0:6943        0:7541     0:7118       0:4864  
+##  1:4175   1:3363     1:1460        1: 862     1:1285       1:3539  
+##                                                                    
+##                                                                    
+##                                                                    
+##                                                                    
+##                                                                    
+##  Gardening Knitting Cooking  Fishing  TV       Sex           Age      
+##  0:5047    0:6990   0:4717   0:7458   0:1017   M:3787   (45,55]:1837  
+##  1:3356    1:1413   1:3686   1: 945   1:1223   F:4616   (35,45]:1646  
+##                                       2:2156            (25,35]:1302  
+##                                       3:1775            (55,65]:1257  
+##                                       4:2232            (65,75]: 937  
+##                                                         [15,25]: 857  
+##                                                         (Other): 567  
+##    Marital status            Profession   nb.activitees   
+##  Single   :2140   Employee        :2552   Min.   : 0.000  
+##  Married  :4333   Manual labourer :1161   1st Qu.: 4.000  
+##  Widower  : 734   Management      :1052   Median : 7.000  
+##  Divorcee : 792   Unskilled worker: 792   Mean   : 6.866  
+##  Remarried: 404   Foreman         : 735   3rd Qu.: 9.000  
+##                   (Other)         : 613   Max.   :16.000  
+##                   NA&#39;s            :1498</code></pre>
+</div>
+</div>
+<div id="lacm-avec-factominer" class="section level2">
+<h2><span class="header-section-number">5.4</span> L’ACM avec FactoMiner</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acm &lt;-<span class="st"> </span><span class="kw">select</span> (hobbies, <span class="op">-</span>(<span class="dv">19</span><span class="op">:</span><span class="dv">23</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">MCA</span> (<span class="dt">graph =</span> F)
+<span class="kw">str</span> (acm)</code></pre></div>
+<pre><code>## List of 5
+##  $ eig : num [1:21, 1:3] 0.1977 0.0806 0.072 0.0629 0.0585 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:21] &quot;dim 1&quot; &quot;dim 2&quot; &quot;dim 3&quot; &quot;dim 4&quot; ...
+##   .. ..$ : chr [1:3] &quot;eigenvalue&quot; &quot;percentage of variance&quot; &quot;cumulative percentage of variance&quot;
+##  $ call:List of 10
+##   ..$ X        :&#39;data.frame&#39;:    8403 obs. of  18 variables:
+##   .. ..$ Reading        : Factor w/ 2 levels &quot;Reading_0&quot;,&quot;Reading_1&quot;: 2 2 2 2 2 1 1 2 2 2 ...
+##   .. ..$ Listening music: Factor w/ 2 levels &quot;Listening music_0&quot;,..: 2 1 2 1 2 1 2 2 2 2 ...
+##   .. ..$ Cinema         : Factor w/ 2 levels &quot;Cinema_0&quot;,&quot;Cinema_1&quot;: 2 1 1 1 2 1 1 2 2 2 ...
+##   .. ..$ Show           : Factor w/ 2 levels &quot;Show_0&quot;,&quot;Show_1&quot;: 2 1 1 1 2 1 1 2 2 1 ...
+##   .. ..$ Exhibition     : Factor w/ 2 levels &quot;Exhibition_0&quot;,..: 2 2 2 2 1 1 1 2 1 2 ...
+##   .. ..$ Computer       : Factor w/ 2 levels &quot;Computer_0&quot;,&quot;Computer_1&quot;: 1 1 1 1 1 1 2 2 2 1 ...
+##   .. ..$ Sport          : Factor w/ 2 levels &quot;Sport_0&quot;,&quot;Sport_1&quot;: 2 2 1 2 1 1 2 1 2 1 ...
+##   .. ..$ Walking        : Factor w/ 2 levels &quot;Walking_0&quot;,&quot;Walking_1&quot;: 2 2 1 1 2 1 1 1 2 1 ...
+##   .. ..$ Travelling     : Factor w/ 2 levels &quot;Travelling_0&quot;,..: 2 1 2 2 1 1 1 2 2 1 ...
+##   .. ..$ Playing music  : Factor w/ 2 levels &quot;Playing music_0&quot;,..: 1 1 1 1 1 1 1 1 2 2 ...
+##   .. ..$ Collecting     : Factor w/ 2 levels &quot;Collecting_0&quot;,..: 1 2 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Volunteering   : Factor w/ 2 levels &quot;Volunteering_0&quot;,..: 2 2 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Mechanic       : Factor w/ 2 levels &quot;Mechanic_0&quot;,&quot;Mechanic_1&quot;: 2 2 1 1 1 2 2 1 1 2 ...
+##   .. ..$ Gardening      : Factor w/ 2 levels &quot;Gardening_0&quot;,..: 1 2 1 1 1 1 1 1 1 2 ...
+##   .. ..$ Knitting       : Factor w/ 2 levels &quot;Knitting_0&quot;,&quot;Knitting_1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Cooking        : Factor w/ 2 levels &quot;Cooking_0&quot;,&quot;Cooking_1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Fishing        : Factor w/ 2 levels &quot;Fishing_0&quot;,&quot;Fishing_1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ TV             : Factor w/ 5 levels &quot;TV_0&quot;,&quot;TV_1&quot;,..: 3 5 5 2 4 4 4 1 2 2 ...
+##   ..$ marge.col: Named num [1:39] 0.0182 0.0373 0.0162 0.0393 0.0333 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:39] &quot;Reading_0&quot; &quot;Reading_1&quot; &quot;Listening music_0&quot; &quot;Listening music_1&quot; ...
+##   ..$ marge.row: Named num [1:8403] 0.000119 0.000119 0.000119 0.000119 0.000119 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:8403] &quot;11000210&quot; &quot;11000410&quot; &quot;11000610&quot; &quot;11000710&quot; ...
+##   ..$ ncp      : num 5
+##   ..$ row.w    : num [1:8403] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..$ excl     : NULL
+##   ..$ call     : language MCA(X = ., graph = F)
+##   ..$ Xtot     :&#39;data.frame&#39;:    8403 obs. of  39 variables:
+##   .. ..$ Reading_0        : num [1:8403] 0 0 0 0 0 1 1 0 0 0 ...
+##   .. ..$ Reading_1        : num [1:8403] 1 1 1 1 1 0 0 1 1 1 ...
+##   .. ..$ Listening music_0: num [1:8403] 0 1 0 1 0 1 0 0 0 0 ...
+##   .. ..$ Listening music_1: num [1:8403] 1 0 1 0 1 0 1 1 1 1 ...
+##   .. ..$ Cinema_0         : num [1:8403] 0 1 1 1 0 1 1 0 0 0 ...
+##   .. ..$ Cinema_1         : num [1:8403] 1 0 0 0 1 0 0 1 1 1 ...
+##   .. ..$ Show_0           : num [1:8403] 0 1 1 1 0 1 1 0 0 1 ...
+##   .. ..$ Show_1           : num [1:8403] 1 0 0 0 1 0 0 1 1 0 ...
+##   .. ..$ Exhibition_0     : num [1:8403] 0 0 0 0 1 1 1 0 1 0 ...
+##   .. ..$ Exhibition_1     : num [1:8403] 1 1 1 1 0 0 0 1 0 1 ...
+##   .. ..$ Computer_0       : num [1:8403] 1 1 1 1 1 1 0 0 0 1 ...
+##   .. ..$ Computer_1       : num [1:8403] 0 0 0 0 0 0 1 1 1 0 ...
+##   .. ..$ Sport_0          : num [1:8403] 0 0 1 0 1 1 0 1 0 1 ...
+##   .. ..$ Sport_1          : num [1:8403] 1 1 0 1 0 0 1 0 1 0 ...
+##   .. ..$ Walking_0        : num [1:8403] 0 0 1 1 0 1 1 1 0 1 ...
+##   .. ..$ Walking_1        : num [1:8403] 1 1 0 0 1 0 0 0 1 0 ...
+##   .. ..$ Travelling_0     : num [1:8403] 0 1 0 0 1 1 1 0 0 1 ...
+##   .. ..$ Travelling_1     : num [1:8403] 1 0 1 1 0 0 0 1 1 0 ...
+##   .. ..$ Playing music_0  : num [1:8403] 1 1 1 1 1 1 1 1 0 0 ...
+##   .. ..$ Playing music_1  : num [1:8403] 0 0 0 0 0 0 0 0 1 1 ...
+##   .. ..$ Collecting_0     : num [1:8403] 1 0 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Collecting_1     : num [1:8403] 0 1 0 0 0 0 0 0 0 0 ...
+##   .. ..$ Volunteering_0   : num [1:8403] 0 0 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Volunteering_1   : num [1:8403] 1 1 0 0 0 0 0 0 0 0 ...
+##   .. ..$ Mechanic_0       : num [1:8403] 0 0 1 1 1 0 0 1 1 0 ...
+##   .. ..$ Mechanic_1       : num [1:8403] 1 1 0 0 0 1 1 0 0 1 ...
+##   .. ..$ Gardening_0      : num [1:8403] 1 0 1 1 1 1 1 1 1 0 ...
+##   .. ..$ Gardening_1      : num [1:8403] 0 1 0 0 0 0 0 0 0 1 ...
+##   .. ..$ Knitting_0       : num [1:8403] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Knitting_1       : num [1:8403] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ Cooking_0        : num [1:8403] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Cooking_1        : num [1:8403] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ Fishing_0        : num [1:8403] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ Fishing_1        : num [1:8403] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ TV_0             : num [1:8403] 0 0 0 0 0 0 0 1 0 0 ...
+##   .. ..$ TV_1             : num [1:8403] 0 0 0 1 0 0 0 0 1 1 ...
+##   .. ..$ TV_2             : num [1:8403] 1 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ TV_3             : num [1:8403] 0 0 0 0 1 1 1 0 0 0 ...
+##   .. ..$ TV_4             : num [1:8403] 0 1 1 0 0 0 0 0 0 0 ...
+##   ..$ N        : num 151254
+##   ..$ quali    : int [1:18] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ ind :List of 3
+##   ..$ coord  : num [1:8403, 1:5] 0.6669 0.1397 -0.1553 -0.1078 -0.0215 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:8403] &quot;11000210&quot; &quot;11000410&quot; &quot;11000610&quot; &quot;11000710&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ contrib: num [1:8403, 1:5] 2.68e-02 1.17e-03 1.45e-03 6.99e-04 2.78e-05 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:8403] &quot;11000210&quot; &quot;11000410&quot; &quot;11000610&quot; &quot;11000710&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ cos2   : num [1:8403, 1:5] 0.335743 0.011164 0.031778 0.010507 0.000558 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:8403] &quot;11000210&quot; &quot;11000410&quot; &quot;11000610&quot; &quot;11000710&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##  $ var :List of 5
+##   ..$ coord  : num [1:39, 1:5] -0.699 0.341 -0.817 0.337 -0.509 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:39] &quot;Reading_0&quot; &quot;Reading_1&quot; &quot;Listening music_0&quot; &quot;Listening music_1&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ contrib: num [1:39, 1:5] 4.5 2.2 5.48 2.26 4.37 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:39] &quot;Reading_0&quot; &quot;Reading_1&quot; &quot;Listening music_0&quot; &quot;Listening music_1&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ cos2   : num [1:39, 1:5] 0.239 0.239 0.275 0.275 0.389 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:39] &quot;Reading_0&quot; &quot;Reading_1&quot; &quot;Listening music_0&quot; &quot;Listening music_1&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ v.test : num [1:39, 1:5] -44.8 44.8 -48.1 48.1 -57.2 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:39] &quot;Reading_0&quot; &quot;Reading_1&quot; &quot;Listening music_0&quot; &quot;Listening music_1&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##   ..$ eta2   : num [1:18, 1:5] 0.239 0.275 0.389 0.383 0.399 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:18] &quot;Reading&quot; &quot;Listening music&quot; &quot;Cinema&quot; &quot;Show&quot; ...
+##   .. .. ..$ : chr [1:5] &quot;Dim 1&quot; &quot;Dim 2&quot; &quot;Dim 3&quot; &quot;Dim 4&quot; ...
+##  $ svd :List of 3
+##   ..$ vs: num [1:39] 0.445 0.284 0.268 0.251 0.242 ...
+##   ..$ U : num [1:8403, 1:5] 1.4999 0.3142 -0.3492 -0.2424 -0.0484 ...
+##   ..$ V : num [1:39, 1:5] -1.572 0.768 -1.837 0.759 -1.145 ...
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;MCA&quot; &quot;list&quot;</code></pre>
+<div id="nombre-daxes-retenus" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Nombre d’axes retenus</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Valeurs propres et inertie moyenne</span>
+<span class="kw">head</span> (acm<span class="op">$</span>eig)</code></pre></div>
+<pre><code>##       eigenvalue percentage of variance cumulative percentage of variance
+## dim 1 0.19771155              16.946704                          16.94670
+## dim 2 0.08064911               6.912781                          23.85948
+## dim 3 0.07202181               6.173298                          30.03278
+## dim 4 0.06287244               5.389066                          35.42185
+## dim 5 0.05846003               5.010860                          40.43271
+## dim 6 0.05581245               4.783924                          45.21663</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eig &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (acm<span class="op">$</span>eig)
+<span class="kw">mean</span> (eig<span class="op">$</span><span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)</code></pre></div>
+<pre><code>## [1] 4.761905</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dérivées secondes</span>
+acm<span class="op">$</span>eig[,<span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>()</code></pre></div>
+<pre><code>##         dim 3         dim 4         dim 5         dim 6         dim 7 
+##  0.1084351542 -0.0005220826  0.0047369634  0.0017648268  0.0023585191 
+##         dim 8         dim 9        dim 10        dim 11        dim 12 
+## -0.0019260770  0.0019513049 -0.0036504504  0.0012774599  0.0012178535 
+##        dim 13        dim 14        dim 15        dim 16        dim 17 
+## -0.0001422951  0.0014088702 -0.0024082694 -0.0002577355  0.0021717212 
+##        dim 18        dim 19        dim 20        dim 21 
+## -0.0004689857 -0.0001353936 -0.0013750132  0.0003297842</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># graphique</span>
+mm &lt;-<span class="st"> </span><span class="kw">mean</span> (eig<span class="op">$</span><span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)
+<span class="kw">ggplot</span> (eig, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(eig), <span class="dt">weight =</span> <span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span> (<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span> (<span class="st">&quot;Eboulis des valeurs propres&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.title =</span> <span class="kw">element_blank</span>()) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> mm)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-26-1.png" width="576" /></p>
+<p>Dans une ACM, on n’a pas forcément de “décrochage” évident dans l’éboulis des valeurs propres : il est plus difficile de concentrer l’inertie de variables qualitatives que quantitatives. On doit donc généralement retenir plus d’axes ou renoncer à une part significative de l’inertie.</p>
+<p>Ici, le critère de l’inertie moyenne conduirait à retenir 5 voire 6 axes factoriels qui portent à peine 40% de l’hétérogénéité.</p>
+<p>Le critère du coude est lui nettement plus parcimonieux et conduit à retenir 3 axes : la dérivée seconde change de signe entre les axes 3 et 4. Mais dans ce cas, seule 30% de l’inertie est conservée.</p>
+<p>En raison de cette dilution de l’information dans l’ACM, quand on dispose de variables qualitatives et quantitatives, il est souvent préférable de faire une ACP en introduisant les variable qualitatives en variables illustratives (si elles ne sont pas cruciales, évidemment).</p>
+</div>
+<div id="interpretation-des-axes-1" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Interprétation des axes</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(acm)</code></pre></div>
+<pre><code>## 
+## Call:
+## MCA(X = ., graph = F) 
+## 
+## 
+## Eigenvalues
+##                        Dim.1   Dim.2   Dim.3   Dim.4   Dim.5   Dim.6
+## Variance               0.198   0.081   0.072   0.063   0.058   0.056
+## % of var.             16.947   6.913   6.173   5.389   5.011   4.784
+## Cumulative % of var.  16.947  23.859  30.033  35.422  40.433  45.217
+##                        Dim.7   Dim.8   Dim.9  Dim.10  Dim.11  Dim.12
+## Variance               0.056   0.053   0.053   0.049   0.046   0.045
+## % of var.              4.759   4.569   4.547   4.211   3.985   3.864
+## Cumulative % of var.  49.976  54.545  59.092  63.303  67.288  71.152
+##                       Dim.13  Dim.14  Dim.15  Dim.16  Dim.17  Dim.18
+## Variance               0.044   0.043   0.041   0.038   0.037   0.036
+## % of var.              3.730   3.717   3.497   3.256   3.200   3.105
+## Cumulative % of var.  74.881  78.598  82.095  85.351  88.551  91.655
+##                       Dim.19  Dim.20  Dim.21
+## Variance               0.035   0.032   0.030
+## % of var.              2.997   2.772   2.575
+## Cumulative % of var.  94.652  97.425 100.000
+## 
+## Individuals (the 10 first)
+##                      Dim.1    ctr   cos2    Dim.2    ctr   cos2    Dim.3
+## 11000210          |  0.667  0.027  0.336 | -0.191  0.005  0.027 |  0.147
+## 11000410          |  0.140  0.001  0.011 |  0.434  0.028  0.108 |  0.163
+## 11000610          | -0.155  0.001  0.032 | -0.244  0.009  0.079 | -0.293
+## 11000710          | -0.108  0.001  0.011 | -0.285  0.012  0.073 |  0.000
+## 11000810          | -0.022  0.000  0.001 | -0.268  0.011  0.087 | -0.225
+## 11000910          | -0.636  0.024  0.449 |  0.019  0.000  0.000 |  0.192
+## 11001010          | -0.206  0.003  0.046 | -0.239  0.008  0.063 |  0.319
+## 11001110          |  0.284  0.005  0.065 | -0.611  0.055  0.304 | -0.066
+## 11001210          |  0.598  0.021  0.261 | -0.577  0.049  0.243 |  0.028
+## 11001310          |  0.204  0.003  0.033 | -0.015  0.000  0.000 |  0.089
+##                      ctr   cos2  
+## 11000210           0.004  0.016 |
+## 11000410           0.004  0.015 |
+## 11000610           0.014  0.113 |
+## 11000710           0.000  0.000 |
+## 11000810           0.008  0.061 |
+## 11000910           0.006  0.041 |
+## 11001010           0.017  0.111 |
+## 11001110           0.001  0.004 |
+## 11001210           0.000  0.001 |
+## 11001310           0.001  0.006 |
+## 
+## Categories (the 10 first)
+##                       Dim.1     ctr    cos2  v.test     Dim.2     ctr
+## Reading_0         |  -0.699   4.503   0.239 -44.766 |  -0.051   0.058
+## Reading_1         |   0.341   2.199   0.239  44.766 |   0.025   0.028
+## Listening music_0 |  -0.817   5.478   0.275 -48.111 |   0.241   1.170
+## Listening music_1 |   0.337   2.262   0.275  48.111 |  -0.100   0.483
+## Cinema_0          |  -0.509   4.369   0.389 -57.170 |   0.287   3.398
+## Cinema_1          |   0.764   6.561   0.389  57.170 |  -0.430   5.103
+## Show_0            |  -0.394   3.109   0.383 -56.753 |   0.109   0.586
+## Show_1            |   0.972   7.663   0.383  56.753 |  -0.270   1.444
+## Exhibition_0      |  -0.422   3.461   0.399 -57.885 |  -0.005   0.001
+## Exhibition_1      |   0.945   7.745   0.399  57.885 |   0.012   0.003
+##                      cos2  v.test     Dim.3     ctr    cos2  v.test  
+## Reading_0           0.001  -3.255 |   0.460   5.367   0.104  29.496 |
+## Reading_1           0.001   3.255 |  -0.225   2.621   0.104 -29.496 |
+## Listening music_0   0.024  14.202 |   0.231   1.207   0.022  13.630 |
+## Listening music_1   0.024 -14.202 |  -0.096   0.498   0.022 -13.630 |
+## Cinema_0            0.123  32.200 |  -0.045   0.093   0.003  -5.030 |
+## Cinema_1            0.123 -32.200 |   0.067   0.139   0.003   5.030 |
+## Show_0              0.029  15.735 |   0.032   0.056   0.002   4.582 |
+## Show_1              0.029 -15.735 |  -0.078   0.137   0.002  -4.582 |
+## Exhibition_0        0.000  -0.748 |   0.076   0.306   0.013  10.384 |
+## Exhibition_1        0.000   0.748 |  -0.169   0.684   0.013 -10.384 |
+## 
+## Categorical variables (eta2)
+##                     Dim.1 Dim.2 Dim.3  
+## Reading           | 0.239 0.001 0.104 |
+## Listening music   | 0.275 0.024 0.022 |
+## Cinema            | 0.389 0.123 0.003 |
+## Show              | 0.383 0.029 0.002 |
+## Exhibition        | 0.399 0.000 0.013 |
+## Computer          | 0.327 0.058 0.041 |
+## Sport             | 0.287 0.053 0.062 |
+## Walking           | 0.172 0.107 0.002 |
+## Travelling        | 0.355 0.000 0.000 |
+## Playing music     | 0.209 0.005 0.002 |</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/summary_acm-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">selectMod =</span> <span class="st">&quot;cos2 15&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/summary_acm-2.png" width="576" /></p>
+<p>Les résultats sur le premier plan factoriel sont assez parlants : le premier axe sépare les modalités “pratique” versus “non pratique” de l’acitivité. Le second axe semble opposer les activités manuelles ou physiques (coordonnées positives sur l’axe 2) aux activités plus culturelles (cinéma, musique…).</p>
+<p>Sur le deuxième plan factoriel, l’axe 3 permet de distinguer les individus qui pêchent et écoutent de la musique des individus qui font de la couture et de la cuisine. Le 4^ème axe factoriel met en évidence les individus qui ne regardent pas la télévision et qui s’impliquent dans le volontariat.</p>
+</div>
+</div>
+<div id="savoir-utiliser-les-variables-supplementaires" class="section level2">
+<h2><span class="header-section-number">5.5</span> Savoir utiliser les variables supplémentaires</h2>
+<p>Dans cet exemple, il est particulièrement judicieux d’utiliser les variables concernant les individus comme variables supplémentaires pour voir quel type de personne a quel type de hooby. On voit notamment que ce sont les moins qualifiés et les plus âgés qui ont moins de hobby, alors que les managers sont plutôt dans le cadrant des loisirs “culturels”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acm &lt;-<span class="st"> </span><span class="kw">MCA</span>(hobbies,<span class="dt">quali.sup =</span> <span class="dv">19</span><span class="op">:</span><span class="dv">22</span>,<span class="dt">quanti.sup =</span> <span class="dv">23</span>,<span class="dt">ncp=</span><span class="dv">4</span>,<span class="dt">graph =</span> F)
+<span class="kw">plot.MCA</span>(acm,<span class="dt">axes=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">cex=</span>.<span class="dv">7</span>,<span class="dt">selectMod =</span> <span class="st">&quot;cos2 10&quot;</span>,<span class="dt">select =</span> <span class="st">&quot;contrib 10&quot;</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-27-1.png" width="576" /></p>
+<p>Les sorties de la fonction <code>summary</code> donnent en outre les coordonnées sur les axes factoriels des modalités des variables ainsi que sa qualité, sa contribution et le test de significativité associé (est-elle non nulle ?) Elle donne également le rapport de corrélation (eta2, voir module 3 pour un rappel de ce qu’il signifie) entre le facteur et chacune de ces variables, ce qui permet d’apprécier l’intensité du lien entre la variable, toutes modalités confondues, et chaque facteur.</p>
+</div>
+<div id="exercice-1" class="section level2">
+<h2><span class="header-section-number">5.6</span> Exercice</h2>
+<p>A partir de ce qui vient d’être vu, complétez l’interprétation des résultats :</p>
+<ul>
+<li>Quelles sont les variables les plus contributrices aux 3 premiers axes ?</li>
+<li>Quel est le hobby le plus courant ? Le plus discriminant ?</li>
+<li>Affichez les individus dans les 2 premiers plans factoriels, en sélectionnant les 50 plus forts contributeurs à l’inertie.</li>
+<li>Y a-t-il un lien entre hobbies et genre ?</li>
+<li>Refaites l’ACM en ajoutant la variable sexe en variable active. Que constatez-vous ?</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">invisible =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;contrib 50&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_acm-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">invisible =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;contrib 50&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_acm-2.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acm2 &lt;-<span class="st"> </span><span class="kw">MCA</span> (hobbies, <span class="dt">quali.sup =</span> <span class="dv">20</span><span class="op">:</span><span class="dv">22</span>, <span class="dt">quanti.sup =</span> <span class="dv">23</span>, <span class="dt">graph =</span> F)
+<span class="kw">plot.MCA</span> (acm2, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">selectMod =</span> <span class="st">&quot;contrib 20&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_acm-3.png" width="576" /></p>
+<p><em>Elément de réponse à la dernière question : rajouter la variable change complètement l’analyse et l’opposition H/F emporte une bonne partie de l’inertie</em> <span class="math inline">\(\Rightarrow\)</span> <em>il faut bien réfléchir à ce qu’on introduit comme variable dans l’analyse et la problématique à laquelle on veut répondre. Ici, on centre l’analyse sur les pratiques en termes de loisirs, donc introduire des variables sur les individus n’est pas pertinent</em>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lafc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="classification-clustering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-ACM.Rmd",
+"text": "Edit"
+},
+"download": ["exploration_avancee.pdf", "exploration_avancee.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

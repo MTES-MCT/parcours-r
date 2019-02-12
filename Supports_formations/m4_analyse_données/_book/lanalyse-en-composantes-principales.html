@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Analyse des données multi-dimensionnelles</title>
+  <meta name="description" content="Parcours de formation R - module 4">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Analyse des données multi-dimensionnelles" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Parcours de formation R - module 4" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analyse des données multi-dimensionnelles" />
+  
+  <meta name="twitter:description" content="Parcours de formation R - module 4" />
+  
+
+<meta name="author" content="Groupe des référents R">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="lanalyse-factorielle-des-correspondances.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploration avancée des données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-4"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 4</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Les analyses multivariées</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#objectifs"><i class="fa fa-check"></i><b>2.1</b> Objectifs</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#comment-synthetiser"><i class="fa fa-check"></i><b>2.2</b> Comment synthétiser ?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#quelles-methodes"><i class="fa fa-check"></i><b>2.3</b> Quelles méthodes ?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#lien-entre-ces-methodes"><i class="fa fa-check"></i><b>2.4</b> Lien entre ces méthodes</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#la-notion-de-distance"><i class="fa fa-check"></i><b>2.5</b> La notion de distance</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#les-questions-a-se-poser"><i class="fa fa-check"></i><b>2.6</b> Les questions à se poser</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#le-package-factominer"><i class="fa fa-check"></i><b>2.7</b> Le package FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html"><i class="fa fa-check"></i><b>3</b> L’analyse en composantes principales</a><ul>
+<li class="chapter" data-level="3.1" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#principe-de-lacp"><i class="fa fa-check"></i><b>3.1</b> Principe de l’ACP</a></li>
+<li class="chapter" data-level="3.2" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#variables-centrees---reduites"><i class="fa fa-check"></i><b>3.2</b> variables centrées - réduites ?</a></li>
+<li class="chapter" data-level="3.3" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#tuto-et-sources"><i class="fa fa-check"></i><b>3.3</b> Tuto et sources</a></li>
+<li class="chapter" data-level="3.4" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#exemple"><i class="fa fa-check"></i><b>3.4</b> Exemple</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#donnees-utilisees"><i class="fa fa-check"></i><b>3.4.1</b> Données utilisées</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#importation-et-exploration-rapide"><i class="fa fa-check"></i><b>3.5</b> Importation et exploration rapide</a></li>
+<li class="chapter" data-level="3.6" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-0-realiser-lacp"><i class="fa fa-check"></i><b>3.6</b> Etape 0 : réaliser l’ACP</a></li>
+<li class="chapter" data-level="3.7" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-1-le-nombre-daxes-a-retenir"><i class="fa fa-check"></i><b>3.7</b> Etape 1 : le nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="3.8" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#etape-2-interpreter-les-axes"><i class="fa fa-check"></i><b>3.8</b> Etape 2 : interpréter les axes</a></li>
+<li class="chapter" data-level="3.9" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#savoir-utiliser-les-variables-supplementaires"><i class="fa fa-check"></i><b>3.9</b> Savoir utiliser les variables supplémentaires</a></li>
+<li class="chapter" data-level="3.10" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#savoir-reperer-un-effet-taille"><i class="fa fa-check"></i><b>3.10</b> Savoir repérer un effet taille</a></li>
+<li class="chapter" data-level="3.11" data-path="lanalyse-en-composantes-principales.html"><a href="lanalyse-en-composantes-principales.html#exercice"><i class="fa fa-check"></i><b>3.11</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html"><i class="fa fa-check"></i><b>4</b> L’analyse factorielle des correspondances</a><ul>
+<li class="chapter" data-level="4.1" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#principe-de-lafc"><i class="fa fa-check"></i><b>4.1</b> Principe de l’AFC</a></li>
+<li class="chapter" data-level="4.2" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#donnees-utilisees-1"><i class="fa fa-check"></i><b>4.2</b> Données utilisées</a></li>
+<li class="chapter" data-level="4.3" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-0-lafc"><i class="fa fa-check"></i><b>4.3</b> Etape 0 : l’AFC</a></li>
+<li class="chapter" data-level="4.4" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-1-choix-du-nombre-daxes"><i class="fa fa-check"></i><b>4.4</b> Etape 1 : choix du nombre d’axes</a></li>
+<li class="chapter" data-level="4.5" data-path="lanalyse-factorielle-des-correspondances.html"><a href="lanalyse-factorielle-des-correspondances.html#etape-2-interpretation-des-axes"><i class="fa fa-check"></i><b>4.5</b> Etape 2 : Interprétation des axes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html"><i class="fa fa-check"></i><b>5</b> L’analyse des correspondances multiples</a><ul>
+<li class="chapter" data-level="5.1" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#principe-de-lacm"><i class="fa fa-check"></i><b>5.1</b> Principe de l’ACM</a></li>
+<li class="chapter" data-level="5.2" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#le-tableau-disjonctif-complet"><i class="fa fa-check"></i><b>5.2</b> Le tableau disjonctif complet</a></li>
+<li class="chapter" data-level="5.3" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#donnees-utilisees-2"><i class="fa fa-check"></i><b>5.3</b> Données utilisées</a></li>
+<li class="chapter" data-level="5.4" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-0-lacm"><i class="fa fa-check"></i><b>5.4</b> Etape 0 : l’ACM</a></li>
+<li class="chapter" data-level="5.5" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-1-choix-du-nombre-daxes-1"><i class="fa fa-check"></i><b>5.5</b> Etape 1 : choix du nombre d’axes</a></li>
+<li class="chapter" data-level="5.6" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#etape-2-interpretation-des-axes-1"><i class="fa fa-check"></i><b>5.6</b> Etape 2 : interprétation des axes</a></li>
+<li class="chapter" data-level="5.7" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#savoir-utiliser-les-variables-supplementaires-1"><i class="fa fa-check"></i><b>5.7</b> Savoir utiliser les variables supplémentaires</a></li>
+<li class="chapter" data-level="5.8" data-path="lanalyse-des-correspondances-multiples.html"><a href="lanalyse-des-correspondances-multiples.html#exercice-1"><i class="fa fa-check"></i><b>5.8</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="classification-clustering.html"><a href="classification-clustering.html"><i class="fa fa-check"></i><b>6</b> Classification (clustering)</a><ul>
+<li class="chapter" data-level="6.1" data-path="classification-clustering.html"><a href="classification-clustering.html#les-k-moyennes"><i class="fa fa-check"></i><b>6.1</b> Les k moyennes</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="classification-clustering.html"><a href="classification-clustering.html#principe"><i class="fa fa-check"></i><b>6.1.1</b> Principe</a></li>
+<li class="chapter" data-level="6.1.2" data-path="classification-clustering.html"><a href="classification-clustering.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>6.1.2</b> Mise en oeuvre</a></li>
+<li class="chapter" data-level="6.1.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils"><i class="fa fa-check"></i><b>6.1.3</b> Quelques conseils</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="classification-clustering.html"><a href="classification-clustering.html#la-classification-ascendante-hierarchique-cah"><i class="fa fa-check"></i><b>6.2</b> La classification ascendante hiérarchique (CAH)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="classification-clustering.html"><a href="classification-clustering.html#determination-du-nombre-de-classes"><i class="fa fa-check"></i><b>6.2.1</b> Détermination du nombre de classes</a></li>
+<li class="chapter" data-level="6.2.2" data-path="classification-clustering.html"><a href="classification-clustering.html#description-des-classes"><i class="fa fa-check"></i><b>6.2.2</b> Description des classes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils-pratiques"><i class="fa fa-check"></i><b>6.2.3</b> Quelques conseils pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="classification-clustering.html"><a href="classification-clustering.html#exercice-2"><i class="fa fa-check"></i><b>6.3</b> Exercice</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse des données multi-dimensionnelles</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lanalyse-en-composantes-principales" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> L’analyse en composantes principales</h1>
+<div id="principe-de-lacp" class="section level2">
+<h2><span class="header-section-number">3.1</span> Principe de l’ACP</h2>
+<p>On dispose d’un tableau de <span class="math inline">\(n\)</span> lignes et <span class="math inline">\(p\)</span> colonnes actives qui sont uniquement des variables quantitatives (au sens large, des binaires codées 0/1 ou des variables ordinales passent).</p>
+<center>
+<img src="Figures/DF1.png" />
+</center>
+<p>Une ACP peut permettre de :</p>
+<ul>
+<li>Résumer l’information.</li>
+<li>Identifier les corrélations entre variables actives.</li>
+<li>Identifier les proximités entre les individus.</li>
+</ul>
+<p>L’ACP va déterminer, dans un espace à <span class="math inline">\(p\)</span> dimensions (sous l’hypothèse qu’aucune des variables n’est une combinaison linéaire des autres), l’axe le long duquel les points représentant les individus sont les plus “étalés”. Cet axe <span class="math inline">\(F_1\)</span> est une combinaison linéaire des variables de départ.</p>
+<p>Dans l’exemple graphique ci-dessous et en 2D, la dispersion des points est essentiellement le long de l’axe bleu. L’axe rouge est orthogonal au bleu. Dans le repère <span class="math inline">\((O, x, y)\)</span>, la variance est à peu près équivalente sur <span class="math inline">\(x\)</span> et sur <span class="math inline">\(y\)</span>. A l’inverse, dane le repère constitué des axes de couleur, la variance est portée essentiellement sur le bleu tandis que le rouge ne porte qu’une faible partie de l’inertie du nuage de point. En gros, l’axe bleu est la première composante principale, généralement notée <span class="math inline">\(PC_1\)</span> ou <span class="math inline">\(F_1\)</span>, et le rouge <span class="math inline">\(PC_2\)</span> ou <span class="math inline">\(F_2\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (ggExtra)
+
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span> (<span class="dv">300</span>, <span class="dv">50</span>, <span class="dv">10</span>)
+y &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span> (<span class="dv">300</span>, <span class="dv">50</span>, <span class="dv">3</span>)
+mod &lt;-<span class="st"> </span><span class="kw">lm</span> (y <span class="op">~</span><span class="st"> </span>x)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">lwd =</span> <span class="fl">1.2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span> (<span class="dt">slope =</span> <span class="op">-</span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>mod<span class="op">$</span>coefficients[<span class="dv">2</span>], <span class="dt">intercept =</span> <span class="dv">150</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_fixed</span> (<span class="dt">ratio =</span> <span class="dv">1</span>)
+ggExtra<span class="op">::</span><span class="kw">ggMarginal</span>(p, <span class="dt">type =</span> <span class="st">&quot;histogram&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/graph_pca-1.png" width="576" /></p>
+<p>Ce changement de repère peut être visualisé ainsi :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">F1 =</span> mod<span class="op">$</span>fitted, <span class="dt">F2 =</span> mod<span class="op">$</span>residuals)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> df, <span class="kw">aes</span> (<span class="dt">x =</span> F1, <span class="dt">y =</span> F2)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> <span class="kw">mean</span> (mod<span class="op">$</span>fitted, <span class="dt">na.rm =</span> T), <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_fixed</span> (<span class="dt">ratio =</span> <span class="dv">1</span>)
+ggExtra<span class="op">::</span><span class="kw">ggMarginal</span> (p, <span class="dt">type =</span> <span class="st">&quot;histogram&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<p>Dans ce nouveau repère, l’essentiel de la dispersion des points peut être “résumé” par leur position sur <span class="math inline">\(F_1\)</span>.</p>
+<p>Pour un nombre de variables <span class="math inline">\(p&gt;2\)</span>, on généralise. <span class="math inline">\(F_1\)</span> est l’axe qui porte le plus d’inertie, puis <span class="math inline">\(F_2\)</span> est, dans le sous-espace orthogonal à <span class="math inline">\(F_1\)</span>, celui qui porte le plus d’inertie, et ainsi de suite. Le nombre total d’axes est <span class="math inline">\(p\)</span> (sauf à avoir des variables qui sont des combinaisons linéaires les unes des autres, ce qui intervient par exemple quand la somme des colonnes fait 100%).</p>
+<p>Faire une ACP revient donc à effectuer un changement de repère. Dans notre <em>dataframe</em> de départ, chaque colonne peut être vue comme une coordonnée de chacun des individus. Ce n’est pas un repère orthonormé car les variables sont plus ou moins corrélées les unes aux autres. Quand on représente le nuage de points dans le repère <span class="math inline">\((O, F_1, F_2)\)</span>, les axes sont indépendants (corrélation nulle).</p>
+<p>En d’autres termes, l’ACP consiste à construire un nouvel espace vectoriel orthonormé (les variables construites sont non-corrélées 2 à 2) de même dimension que l’espace de départ, mais où l’inertie sera concentrée sur les premiers <em>axes factoriels</em>. Mathématiquement, cela conduit à diagonaliser la matrice de variance-covariance ; les valeurs propres correspondent à la part de l’inertie totale portée par chaque axe factoriel.</p>
+</div>
+<div id="variables-centrees---reduites" class="section level2">
+<h2><span class="header-section-number">3.2</span> variables centrées - réduites ?</h2>
+<p>Si l’on a des variables de dispersion (variance) très différentes, ou d’unités différentes, en général il fait centrer (retrancher la moyenne) et réduire (diviser par l’écart-type) chacune des variables avant d’effectuer l’ACP. Dans ce cas chacune des variables a la même importance (variance de 1) <span class="math inline">\(\Rightarrow\)</span> l’inertie du nuage vaut <span class="math inline">\(p\)</span>.</p>
+<p>C’est l’option par défaut dans la fonction <code>PCA</code> de FactoMineR (<code>scale.unit = TRUE</code>), qui réalise donc une ACP dite “normée”.</p>
+<p><strong>Note :</strong> Les espaces des variables et des individus ne sont pas les mêmes en ACP <span class="math inline">\(\Rightarrow\)</span> on ne peut pas les représenter simultanément. Dans les autres analyses, on le peut.</p>
+</div>
+<div id="tuto-et-sources" class="section level2">
+<h2><span class="header-section-number">3.3</span> Tuto et sources</h2>
+<ul>
+<li>Une <a href="https://www.youtube.com/watch?v=1QPRsg3Bxok">explication en vidéo par l’auteur du package FactoMiner</a></li>
+<li>Un <a href="http://factominer.free.fr/course/doc/AnaDo_ACP_Facto_Decathlon_Markdown.pdf">tuto associé</a> en pdf.</li>
+<li>Des <a href="http://www.math.univ-toulouse.fr/~besse/Wikistat/pdf/st-m-explo-acp">éléments plus généraux sur l’ACP</a>.</li>
+</ul>
+</div>
+<div id="exemple" class="section level2">
+<h2><span class="header-section-number">3.4</span> Exemple</h2>
+<div id="donnees-utilisees" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Données utilisées</h3>
+<ul>
+<li>Données communales téléchargées sur <a href="http://geoidd.developpement-durable.gouv.fr/geoclip_stats_o3/index.php?profil=FR#s=2012;v=map1;i=ocs.p_surf_c1;l=fr">Géoïdd</a> et converties en format <em>.csv</em> (<strong>attention aux valeurs N/A ou autres dans le fichier Excel qui peuvent parasiter l’importation de données</strong>).</li>
+<li>Les individus statistiques sont les communes (lignes) et les variables (colonnes) différents indicateurs décrivant ces communes.</li>
+<li>Objectif : voir quels indicateurs différencient le plus les communes, et quelles sont les communes qui s’écartent le plus de la moyenne.</li>
+<li>Utilisation de variables qualitatives supplémentaires pour compléter la description (présence d’un agenda21 et d’un PPRN).</li>
+</ul>
+</div>
+</div>
+<div id="importation-et-exploration-rapide" class="section level2">
+<h2><span class="header-section-number">3.5</span> Importation et exploration rapide</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">geoidd &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="dt">file =</span> <span class="st">&quot;Exercices/ACP.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">encoding =</span> <span class="st">&quot;latin1&quot;</span>)
+dat &lt;-<span class="st"> </span>geoidd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span> (<span class="op">-</span>code, <span class="op">-</span>communes)
+<span class="kw">row.names</span> (dat) &lt;-<span class="st"> </span>geoidd<span class="op">$</span>code
+
+dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">agd21 =</span> <span class="kw">as.factor</span> (<span class="kw">paste</span> (<span class="st">&quot;Agenda21 &quot;</span>, (dat<span class="op">$</span>part_agenda21 <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="dv">0</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span> (<span class="op">-</span>part_agenda21) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">na.omit</span>()</code></pre></div>
+<p>Matrice de corrélations sur les variables quantitatives :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span> (<span class="op">-</span>PPRN, <span class="op">-</span>agd21) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>##              Densite tx_emploi part_artif part_proprio ind_vieill
+## Densite         1.00      0.09       0.68        -0.35      -0.06
+## tx_emploi       0.09      1.00       0.25        -0.34       0.07
+## part_artif      0.68      0.25       1.00        -0.48      -0.10
+## part_proprio   -0.35     -0.34      -0.48         1.00       0.03
+## ind_vieill     -0.06      0.07      -0.10         0.03       1.00</code></pre>
+<p>Tableau croisé sur les variables qualitataives :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span> (dat<span class="op">$</span>agd21, dat<span class="op">$</span>PPRN)</code></pre></div>
+<pre><code>##               
+##                0 - Absence de PPRN 1 - PPRN prescrit 2 - PPRN approuvé
+##   Agenda21  0                21768              2321              8306
+##   Agenda21  1                 2916               136              1063
+##   Agenda21  NA                   0                 0                 0</code></pre>
+<p>Le fait d’affecter les code géographiques comme <code>row.names</code> du dataframe permet de mieux identifier les individus sur les graphiques (et les sorties) par la suite.</p>
+<p>On remarque dans un premier temps que les corrélations ne sont pas très élevées entre les variables. La corrélation la plus élevée est celle entre la densité de population et la part de terres artificialisées. Le lien entre les variables <em>PPRN</em> et <em>Agenda21</em> est peu évident avec le tableau de fréquences.</p>
+<p>On peut utiliser les fonctions vues dans le module 3 pour explorer les données :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span> (dat, <span class="op">-</span>PPRN, <span class="op">-</span>agd21) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggpairs</span>()</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-5-1.png" width="576" /></p>
+</div>
+<div id="etape-0-realiser-lacp" class="section level2">
+<h2><span class="header-section-number">3.6</span> Etape 0 : réaliser l’ACP</h2>
+<p>Pour voir l’aide : <code>?PCA</code>. On voit que par défaut les variables sont centrées - réduites et que les valeurs manquantes sont remplacées par la moyenne de la colonne à laquelle elles appartiennent. Il est important de se questionner sur la pertinence de ces options “par défaut”.</p>
+<p>Réalisation de l’ACP :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acp &lt;-<span class="st"> </span><span class="kw">PCA</span> (<span class="dt">X =</span> dat, <span class="dt">quali.sup =</span> <span class="kw">c</span> (<span class="dv">5</span>,<span class="dv">7</span>), <span class="dt">graph =</span> <span class="ot">FALSE</span>)
+<span class="kw">names</span> (acp)</code></pre></div>
+<pre><code>## [1] &quot;eig&quot;       &quot;var&quot;       &quot;ind&quot;       &quot;svd&quot;       &quot;quali.sup&quot; &quot;call&quot;</code></pre>
+<p>La fonction PCA donne pour résultat un objet de type liste (de liste), qui contient toutes les informations nécessaires à l’interprétation des résultats et leur utilisation : on y retrouve notamment, pour les individus <strong>et</strong> pour les variables, sur chacun des axes :</p>
+<ul>
+<li>Les coordonnées factorielles (coord).</li>
+<li>La qualité de représentation (cos2) sur chaque axe.</li>
+<li>La contribution à la formation de l’axe (c’est à dire la part de variance de l’axe portée par l’individu / la variable).</li>
+</ul>
+<p>Pour tout visualiser d’un coup, on peut utiliser la fonction <code>str</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span> (acp)</code></pre></div>
+<p>L’élément <code>eig</code> donne les valeurs propres de la matrice de variance-covariance, autrement dit la part d’inertie portée par chacun des axes factoriels. Pour accéder aux coordonnées factorielles des individus, on apppelle l’élément <em>coord</em> de l’élément <em>ind</em> de l’objet <em>acp</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span> (acp<span class="op">$</span>ind<span class="op">$</span>coord, <span class="dt">n =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">datatable</span> ()</code></pre></div>
+<div id="htmlwidget-8e8ef2b92bb31aedf0b9" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8e8ef2b92bb31aedf0b9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],[-0.56,-0.8,3.39,0.11,0.08,0.22,0.36,-0.75,0.06,-0.48],[-0.6,-0.41,0.45,-0.48,-0.05,-0.4,-0.53,-0.26,-0.28,-0.61],[0.01,0.12,-0.98,-0.35,0.21,-0.25,-0.29,0.23,-0.49,-0.16],[-0,-0.03,-1.37,-0.43,-1.2,-0.09,-0.43,-0.08,-0.41,-0.36],[0.01,-0.15,0.5,-0.02,0.02,0.32,0.17,-0.17,-0.07,-0.13]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Dim.1<\/th>\n      <th>Dim.2<\/th>\n      <th>Dim.3<\/th>\n      <th>Dim.4<\/th>\n      <th>Dim.5<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<p>Contributions des individus à chacun des axes :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span> (acp<span class="op">$</span>var<span class="op">$</span>contrib, <span class="dt">n =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">datatable</span> ()</code></pre></div>
+<div id="htmlwidget-6ae552dd9547a4c629ac" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ae552dd9547a4c629ac">{"x":{"filter":"none","data":[["Densite","tx_emploi","part_artif","part_proprio","ind_vieill"],[28.55,9.88,35.55,25.45,0.57],[6.39,34.8,2.05,3.21,53.54],[17.3,30.33,3.07,4.15,45.15],[7.35,23.45,3.2,65.6,0.4],[40.4,1.55,56.13,1.59,0.34]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Dim.1<\/th>\n      <th>Dim.2<\/th>\n      <th>Dim.3<\/th>\n      <th>Dim.4<\/th>\n      <th>Dim.5<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<p>On peut également utiliser les fonctions génériques <code>summary</code> et <code>plot</code> pour aborder ce nouvel objet.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span> (acp)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_acp-1.png" width="576" /></p>
+</div>
+<div id="etape-1-le-nombre-daxes-a-retenir" class="section level2">
+<h2><span class="header-section-number">3.7</span> Etape 1 : le nombre d’axes à retenir</h2>
+<p>On représente graphiquement l’éboulis des valeurs propres.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eig &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (acp<span class="op">$</span>eig)
+mm &lt;-<span class="st"> </span><span class="kw">mean</span> (eig<span class="op">$</span><span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)
+
+<span class="kw">ggplot</span> (eig, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(eig), <span class="dt">weight =</span> <span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span> (<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_flip</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span> (<span class="st">&quot;Histogramme des valeurs propres&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> mm)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-9-1.png" width="576" /></p>
+<p>Pour choisir le nombre d’axes à conserver, on peut utiliser plusieurs critères :</p>
+<ul>
+<li>Critère de l’inertie moyenne : on retient les axes qui représentent plus d’inertie que la moyenne (=inertie totale/nombre de variables). Cette inertie vaut <strong>1</strong> dans le cas de l’ACP normée (soit 20% dans notre cas). Cela revient à se dire qu’on ne prend que les nouvelles variables qui portent plus d’inertie que les variables initiales.</li>
+<li>Critère du coude : on retient les premiers axes jusqu’à oberver un “décrochage” dans l’éboulis des valeurs propres. On peut l’objectiver par le calcul des différences secondes entre valeurs propres. Cela revient à écarter toutes les nouvelles variables qui n’apportent pas d’inertie supplémentaire de façon significative.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acp<span class="op">$</span>eig</code></pre></div>
+<pre><code>##        eigenvalue percentage of variance cumulative percentage of variance
+## comp 1  2.1546177              43.092354                          43.09235
+## comp 2  1.0908956              21.817913                          64.91027
+## comp 3  0.8865747              17.731493                          82.64176
+## comp 4  0.5718572              11.437144                          94.07890
+## comp 5  0.2960548               5.921095                         100.00000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acp<span class="op">$</span>eig <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>()</code></pre></div>
+<pre><code>##         eigenvalue percentage of variance
+## comp 3  0.85940109             17.1880217
+## comp 4 -0.11039646             -2.2079291
+## comp 5  0.03891498              0.7782996
+##        cumulative percentage of variance
+## comp 3                         -4.086420
+## comp 4                         -6.294349
+## comp 5                         -5.516049</code></pre>
+<p>Ici, le critère de l’inertie moyenne incite à retenir les 2 premiers axes alors que le critère du coude en retiendrait 3 (la dérivée seconde change de signe entre la 3e et 4e valeur propre). Généralement, on prend le critère le plus parcimonieux pour s’épargner du travail ensuite !</p>
+</div>
+<div id="etape-2-interpreter-les-axes" class="section level2">
+<h2><span class="header-section-number">3.8</span> Etape 2 : interpréter les axes</h2>
+<ul>
+<li>Rappel : les axes factoriels sont des combinaisons linéaires des variables initiales. On regarde donc l’importance de ces variables initiales dans les différents axes pour leur <em>donner du sens</em>.</li>
+<li>On doit regarder trois grandeurs pour interpréter (dans cet ordre) :
+<ul>
+<li>Contribution,</li>
+<li>Qualité de représentation,</li>
+<li>Coordonnée.</li>
+</ul></li>
+</ul>
+<p>On visualise tout cela sur le <strong>cercle des corrélations</strong>. En ACP, qualité et contribution dépendent directement de la coordonnée : il suffit que celle-ci soit élevée pour que la qualité de représentation soit bonne et la contribution forte. Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.PCA</span> (acp, <span class="dt">choix =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">col.var =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-11-1.png" width="576" /></p>
+<p><span class="math inline">\(\Rightarrow\)</span> on regarde avant tout les variables proches du cercle unité.</p>
+<p>A partir de ce cercle (sur le premier plan factoriel), on voit que :</p>
+<ul>
+<li>Les variables artificialisation et part de propriétaires sont anti-corrélées</li>
+<li>l’indice de vieillissement et la densité sont décorrélés.</li>
+<li>L’axe 1 contient 43,1% de l’inertie totale. Il est principalement formé par les variables densité, artificialisation et part de propriétaires</li>
+<li>L’axe 2 représente 21,8% de l’inertie. Il est formé par les variables indice de vieillissement et taux d’emploi</li>
+</ul>
+<p>On peut interpréter de façon plus fine grâce aux chiffres donnés par la fonction <code>summary</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(acp)</code></pre></div>
+<pre><code>## 
+## Call:
+## PCA(X = dat, quali.sup = c(5, 7), graph = FALSE) 
+## 
+## 
+## Eigenvalues
+##                        Dim.1   Dim.2   Dim.3   Dim.4   Dim.5
+## Variance               2.155   1.091   0.887   0.572   0.296
+## % of var.             43.092  21.818  17.731  11.437   5.921
+## Cumulative % of var.  43.092  64.910  82.642  94.079 100.000
+## 
+## Individuals (the 10 first)
+##                         Dist    Dim.1    ctr   cos2    Dim.2    ctr   cos2
+## 1                   |  0.823 | -0.559  0.000  0.462 | -0.603  0.001  0.538
+## 2                   |  0.915 | -0.795  0.001  0.756 | -0.407  0.000  0.198
+## 3                   |  3.847 |  3.393  0.015  0.778 |  0.449  0.001  0.014
+## 4                   |  0.741 |  0.109  0.000  0.021 | -0.476  0.001  0.413
+## 5                   |  1.222 |  0.080  0.000  0.004 | -0.055  0.000  0.002
+## 6                   |  0.623 |  0.219  0.000  0.124 | -0.404  0.000  0.420
+## 7                   |  0.844 |  0.365  0.000  0.187 | -0.529  0.001  0.392
+## 8                   |  0.851 | -0.750  0.001  0.778 | -0.263  0.000  0.096
+## 9                   |  0.701 |  0.060  0.000  0.007 | -0.276  0.000  0.154
+## 10                  |  0.881 | -0.480  0.000  0.296 | -0.613  0.001  0.483
+##                        Dim.3    ctr   cos2  
+## 1                   |  0.005  0.000  0.000 |
+## 2                   |  0.118  0.000  0.017 |
+## 3                   | -0.984  0.003  0.065 |
+## 4                   | -0.351  0.000  0.224 |
+## 5                   |  0.211  0.000  0.030 |
+## 6                   | -0.254  0.000  0.167 |
+## 7                   | -0.290  0.000  0.118 |
+## 8                   |  0.232  0.000  0.074 |
+## 9                   | -0.490  0.001  0.488 |
+## 10                  | -0.164  0.000  0.034 |
+## 
+## Variables
+##                        Dim.1    ctr   cos2    Dim.2    ctr   cos2    Dim.3
+## Densite             |  0.784 28.554  0.615 | -0.264  6.394  0.070 |  0.392
+## tx_emploi           |  0.461  9.877  0.213 |  0.616 34.798  0.380 | -0.519
+## part_artif          |  0.875 35.549  0.766 | -0.149  2.049  0.022 |  0.165
+## part_proprio        | -0.740 25.447  0.548 | -0.187  3.215  0.035 |  0.192
+## ind_vieill          | -0.111  0.573  0.012 |  0.764 53.545  0.584 |  0.633
+##                        ctr   cos2  
+## Densite             17.301  0.153 |
+## tx_emploi           30.330  0.269 |
+## part_artif           3.070  0.027 |
+## part_proprio         4.152  0.037 |
+## ind_vieill          45.146  0.400 |
+## 
+## Supplementary categories
+##                          Dist     Dim.1    cos2  v.test     Dim.2    cos2
+## 0 - Absence de PPRN |   0.243 |  -0.235   0.932 -44.179 |   0.003   0.000
+## 1 - PPRN prescrit   |   0.399 |   0.365   0.836  12.756 |  -0.112   0.078
+## 2 - PPRN approuvé   |   0.543 |   0.523   0.929  40.018 |   0.020   0.001
+## Agenda21  0         |   0.052 |  -0.048   0.829 -17.414 |   0.009   0.029
+## Agenda21  1         |   0.412 |   0.375   0.829  17.414 |  -0.070   0.029
+##                      v.test     Dim.3    cos2  v.test  
+## 0 - Absence de PPRN   0.916 |   0.024   0.009   6.937 |
+## 1 - PPRN prescrit    -5.482 |  -0.021   0.003  -1.145 |
+## 2 - PPRN approuvé     2.163 |  -0.057   0.011  -6.775 |
+## Agenda21  0           4.545 |  -0.015   0.083  -8.598 |
+## Agenda21  1          -4.545 |   0.119   0.083   8.598 |</code></pre>
+<p>La fonction <code>dimdesc</code> donne les variables les plus signifiantes sur chacun des axes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dimdesc</span>(acp)</code></pre></div>
+<pre><code>## $Dim.1
+## $Dim.1$quanti
+##              correlation       p.value
+## part_artif     0.8751772  0.000000e+00
+## Densite        0.7843627  0.000000e+00
+## tx_emploi      0.4613266  0.000000e+00
+## ind_vieill    -0.1111117 1.236263e-100
+## part_proprio  -0.7404659  0.000000e+00
+## 
+## $Dim.1$quali
+##                R2      p.value
+## PPRN  0.054080975 0.000000e+00
+## agd21 0.008306086 3.445294e-68
+## 
+## $Dim.1$category
+##                       Estimate      p.value
+## 2 - PPRN approuvé    0.3055307 0.000000e+00
+## Agenda21  1          0.2115150 3.445294e-68
+## 1 - PPRN prescrit    0.1470988 2.415332e-37
+## Agenda21  0         -0.2115150 3.445294e-68
+## 0 - Absence de PPRN -0.4526296 0.000000e+00
+## 
+## 
+## $Dim.2
+## $Dim.2$quanti
+##              correlation       p.value
+## ind_vieill     0.7642764  0.000000e+00
+## tx_emploi      0.6161225  0.000000e+00
+## part_artif    -0.1494941 1.843625e-181
+## part_proprio  -0.1872759 2.069053e-285
+## Densite       -0.2641013  0.000000e+00
+## 
+## $Dim.2$quali
+##                 R2      p.value
+## PPRN  0.0008706053 1.245555e-07
+## agd21 0.0005657106 5.489230e-06
+## 
+## $Dim.2$category
+##                      Estimate      p.value
+## Agenda21  0        0.03927776 5.489230e-06
+## 2 - PPRN approuvé  0.04945204 3.051304e-02
+## Agenda21  1       -0.03927776 5.489230e-06
+## 1 - PPRN prescrit -0.08224271 4.171741e-08
+## 
+## 
+## $Dim.3
+## $Dim.3$quanti
+##              correlation       p.value
+## ind_vieill     0.6326567  0.000000e+00
+## Densite        0.3916457  0.000000e+00
+## part_proprio   0.1918639 1.002604e-299
+## part_artif     0.1649901 4.054263e-221
+## tx_emploi     -0.5185559  0.000000e+00
+## 
+## $Dim.3$quali
+##                R2      p.value
+## agd21 0.002025068 7.791424e-18
+## PPRN  0.001395099 8.566069e-12
+## 
+## $Dim.3$category
+##                        Estimate      p.value
+## Agenda21  1          0.06699392 7.791424e-18
+## 0 - Absence de PPRN  0.04171611 3.957733e-12
+## 2 - PPRN approuvé   -0.03877158 1.223326e-11
+## Agenda21  0         -0.06699392 7.791424e-18</code></pre>
+<p>On peut également regarder l projection des individus dans le plan, ce qui n’est pas toujours très informatif (mais qui peut permettre de repérer des groupes d’individus dans les cas favorables)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.PCA</span>(acp,<span class="dt">choix =</span> <span class="st">&quot;ind&quot;</span>,<span class="dt">col.ind =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-13-1.png" width="576" /></p>
+<p>N’oubliez pas de consulter l’aide des fonctions présentées pour plus d’options.</p>
+</div>
+<div id="savoir-utiliser-les-variables-supplementaires" class="section level2">
+<h2><span class="header-section-number">3.9</span> Savoir utiliser les variables supplémentaires</h2>
+<p>Dans toutes les analyses factorielles, on distingue les <strong>variables actives</strong>, qui participent de la création du nouvel espace vectoriel, des <strong>variables supplémentaires</strong>, que l’on projette a posteriori sur cet espace, mais qui n’interviennent pas dans la construction des variables synthétiques.</p>
+<ul>
+<li>Elles peuvent être qualitatives ou quantitatives.</li>
+<li>Elles sont projetée sur l’espace des variables (variable continue) ou des individus (qualitative).</li>
+<li>Elles ne rentrent pas dans la matrice qui sert à la définition des axes.</li>
+<li>Elles sont utiles pour voir la corrélation d’une variable (une classe d’individus par exemple) avec toutes les variables simultanément</li>
+</ul>
+<p>Dans la fonction PCA, on désigne les variables supplémentaires avec les arguments quali.sup ou quanti.sup ; attention, on les désigne par le numéro de colonne de la variable.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Pas lien entre le PPRN et les autres variables : elles se projettent au centre du nuage de points. Les communes disposant d’un PPRN ou d’un Agenda21 n’ont donc pas de caractéristiques particulières.</p>
+<p>On peut utiliser le paramètre select pour mettre en évidence certains individus ou variables en fonction de leur contribution ou qualité de représentation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.PCA</span>(acp,<span class="dt">choix=</span><span class="st">&quot;ind&quot;</span>,<span class="dt">select=</span><span class="st">&quot;contrib 20&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-14-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.PCA</span>(acp,<span class="dt">choix=</span><span class="st">&quot;ind&quot;</span>,<span class="dt">select=</span><span class="st">&quot;cos2 20&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-14-2.png" width="576" /></p>
+</div>
+<div id="savoir-reperer-un-effet-taille" class="section level2">
+<h2><span class="header-section-number">3.10</span> Savoir repérer un effet taille</h2>
+<p>L’effet taille se recontre assez fréquemment quand on réalise une ACP : il se manifeste par :</p>
+<ul>
+<li>Toutes les variables sont du côté droit de l’axe 1 (c’est à dire qu’elles sont toutes corrélées positivement) et celui-ci contient une très grand part de l’inertie.</li>
+<li>Dans ce cas, l’axe 1 constitue un <strong>gradient</strong> : il permet de classer les individus du plus “petit” au plus “grand”, sur toutes les variables simultanément</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">taille &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;Exercices/Effet_taille.csv&quot;</span>,<span class="dt">h=</span>T, <span class="dt">encoding =</span> <span class="st">&quot;latin1&quot;</span>)
+t &lt;-<span class="st"> </span><span class="kw">PCA</span>(<span class="kw">na.omit</span>(taille[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]),<span class="dt">graph =</span> F)
+<span class="kw">plot.PCA</span>(t,<span class="dt">choix=</span><span class="kw">c</span>(<span class="st">&quot;var&quot;</span>),<span class="dt">col.var=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-15-1.png" width="576" /></p>
+</div>
+<div id="exercice" class="section level2">
+<h2><span class="header-section-number">3.11</span> Exercice</h2>
+<p>A partir du dataframe iris inclus dans R :</p>
+<ul>
+<li>Explorer rapidement le jeu de données. Quel est le type des variables ?</li>
+<li>Réalisez une ACP sur ce jeu de données</li>
+<li>Interprétez les résultats obtenus</li>
+<li>Inclure la variable “Species” dans l’analyse en tant que variable qualitative supplémentaire</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;iris&quot;</span>)
+<span class="kw">ggpairs</span>(iris)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acp.iris &lt;-<span class="st"> </span><span class="kw">select</span>(iris,<span class="op">-</span>Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">PCA</span>()</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-2.png" width="576" /><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-3.png" width="576" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(acp.iris)
+## 
+## Call:
+## PCA(X = .) 
+## 
+## 
+## Eigenvalues
+##                        Dim.1   Dim.2   Dim.3   Dim.4
+## Variance               2.918   0.914   0.147   0.021
+## % of var.             72.962  22.851   3.669   0.518
+## Cumulative % of var.  72.962  95.813  99.482 100.000
+## 
+## Individuals (the 10 first)
+##                  Dist    Dim.1    ctr   cos2    Dim.2    ctr   cos2  
+## 1            |  2.319 | -2.265  1.172  0.954 |  0.480  0.168  0.043 |
+## 2            |  2.202 | -2.081  0.989  0.893 | -0.674  0.331  0.094 |
+## 3            |  2.389 | -2.364  1.277  0.979 | -0.342  0.085  0.020 |
+## 4            |  2.378 | -2.299  1.208  0.935 | -0.597  0.260  0.063 |
+## 5            |  2.476 | -2.390  1.305  0.932 |  0.647  0.305  0.068 |
+## 6            |  2.555 | -2.076  0.984  0.660 |  1.489  1.617  0.340 |
+## 7            |  2.468 | -2.444  1.364  0.981 |  0.048  0.002  0.000 |
+## 8            |  2.246 | -2.233  1.139  0.988 |  0.223  0.036  0.010 |
+## 9            |  2.592 | -2.335  1.245  0.812 | -1.115  0.907  0.185 |
+## 10           |  2.249 | -2.184  1.090  0.943 | -0.469  0.160  0.043 |
+##               Dim.3    ctr   cos2  
+## 1            -0.128  0.074  0.003 |
+## 2            -0.235  0.250  0.011 |
+## 3             0.044  0.009  0.000 |
+## 4             0.091  0.038  0.001 |
+## 5             0.016  0.001  0.000 |
+## 6             0.027  0.003  0.000 |
+## 7             0.335  0.511  0.018 |
+## 8            -0.089  0.036  0.002 |
+## 9             0.145  0.096  0.003 |
+## 10           -0.254  0.293  0.013 |
+## 
+## Variables
+##                 Dim.1    ctr   cos2    Dim.2    ctr   cos2    Dim.3    ctr
+## Sepal.Length |  0.890 27.151  0.792 |  0.361 14.244  0.130 | -0.276 51.778
+## Sepal.Width  | -0.460  7.255  0.212 |  0.883 85.247  0.779 |  0.094  5.972
+## Petal.Length |  0.992 33.688  0.983 |  0.023  0.060  0.001 |  0.054  2.020
+## Petal.Width  |  0.965 31.906  0.931 |  0.064  0.448  0.004 |  0.243 40.230
+##                cos2  
+## Sepal.Length  0.076 |
+## Sepal.Width   0.009 |
+## Petal.Length  0.003 |
+## Petal.Width   0.059 |
+<span class="kw">dimdesc</span>(acp.iris)
+## $Dim.1
+## $Dim.1$quanti
+##              correlation       p.value
+## Petal.Length   0.9915552 3.369916e-133
+## Petal.Width    0.9649790  6.609632e-88
+## Sepal.Length   0.8901688  2.190813e-52
+## Sepal.Width   -0.4601427  3.139724e-09
+## 
+## 
+## $Dim.2
+## $Dim.2$quanti
+##              correlation      p.value
+## Sepal.Width    0.8827163 2.123801e-50
+## Sepal.Length   0.3608299 5.731933e-06
+## 
+## 
+## $Dim.3
+## $Dim.3$quanti
+##              correlation      p.value
+## Petal.Width    0.2429827 0.0027349555
+## Sepal.Length  -0.2756577 0.0006395628
+acp.iris &lt;-<span class="st"> </span><span class="kw">PCA</span>(iris,<span class="dt">quali.sup =</span> <span class="dv">5</span>)</code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-4.png" width="576" /><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-5.png" width="576" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lanalyse-factorielle-des-correspondances.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-ACP.Rmd",
+"text": "Edit"
+},
+"download": ["exploration_avancee.pdf", "exploration_avancee.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

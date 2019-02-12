@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Statistiques descriptives</title>
+  <title>Chapitre 4 Une variable qualitative | Statistiques descriptives</title>
   <meta name="description" content="Formation R aux statistiques descriptives">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Statistiques descriptives" />
+  <meta property="og:title" content="Chapitre 4 Une variable qualitative | Statistiques descriptives" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistiques descriptives" />
+  <meta name="twitter:title" content="Chapitre 4 Une variable qualitative | Statistiques descriptives" />
   
   <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="deux-variables-quantitatives.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -46,15 +47,16 @@
 
 
 
-<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
-<script src="libs/datatables-binding-0.2/datatables.js"></script>
-<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
@@ -295,8 +297,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">  </span><span class="kw">table</span> () <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Nombre&quot;</span>))</code></pre></div>
-<div id="htmlwidget-ec8ada95ab82c3e7d212" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ec8ada95ab82c3e7d212">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[3285,12297,3962,456,815,888,582,7021,7383]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Nombre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-01c576b8aa92b4a84a18" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-01c576b8aa92b4a84a18">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[3285,12297,3962,456,815,888,582,7021,7383]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Nombre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="comptage-pondere" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Comptage pondéré</h3>
@@ -304,8 +306,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span> (<span class="dt">formula =</span> P14_POP <span class="op">~</span><span class="st"> </span>ZAU, <span class="dt">data =</span> dat) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Population&quot;</span>))</code></pre></div>
-<div id="htmlwidget-000ddd9350f597886251" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-000ddd9350f597886251">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[38738103,12437519,3414201,1931948,359717,2422164,167718,3415222,3020568]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f6bc9c1e8c43e5023c21" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f6bc9c1e8c43e5023c21">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[38738103,12437519,3414201,1931948,359717,2422164,167718,3415222,3020568]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="frequences" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Fréquences</h3>
@@ -317,8 +319,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Fréquence&quot;</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">formatPercentage</span> (<span class="st">&#39;Freq&#39;</span>, <span class="dv">1</span>)</code></pre></div>
-<div id="htmlwidget-ce0a5ddbb2af598d23c8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ce0a5ddbb2af598d23c8">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[0.09,0.335,0.108,0.012,0.022,0.024,0.016,0.191,0.201]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Fréquence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-53b9fdb7816ff21e13e3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-53b9fdb7816ff21e13e3">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[0.09,0.335,0.108,0.012,0.022,0.024,0.016,0.191,0.201]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Fréquence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="frequences-ponderees" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Fréquences pondérées</h3>
@@ -329,8 +331,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;% de la Population&quot;</span>))<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">formatPercentage</span>(<span class="st">&#39;Freq&#39;</span>, <span class="dv">1</span>)</code></pre></div>
-<div id="htmlwidget-e334c598f52886dfde06" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e334c598f52886dfde06">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[0.588,0.189,0.052,0.029,0.005,0.037,0.003,0.052,0.046]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>% de la Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-6c0aa5779e45281d818c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6c0aa5779e45281d818c">{"x":{"filter":"none","data":[["111 - Grand pôle (plus de 10 000 emplois)","112 - Couronne d'un grand pôle","120 - Multipolarisée des grandes aires urbaines","211 - Moyen pôle (5 000 à 10 000 emplois)","212 - Couronne d'un moyen pôle","221 - Petit pôle (de 1 500 à 5 000 emplois)","222 - Couronne d'un petit pôle","300 - Autre commune multipolarisée","400 - Commune isolée hors influence des pôles"],[0.588,0.189,0.052,0.029,0.005,0.037,0.003,0.052,0.046]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>% de la Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, ',', '.');\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="graphiques" class="section level2">
@@ -402,7 +404,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -412,6 +414,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -429,7 +435,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

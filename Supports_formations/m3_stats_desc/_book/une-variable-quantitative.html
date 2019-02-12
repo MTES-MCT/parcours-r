@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Statistiques descriptives</title>
+  <title>Chapitre 3 Une variable quantitative | Statistiques descriptives</title>
   <meta name="description" content="Formation R aux statistiques descriptives">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Statistiques descriptives" />
+  <meta property="og:title" content="Chapitre 3 Une variable quantitative | Statistiques descriptives" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistiques descriptives" />
+  <meta name="twitter:title" content="Chapitre 3 Une variable quantitative | Statistiques descriptives" />
   
   <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="une-variable-qualitative.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -46,15 +47,16 @@
 
 
 
-<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
-<script src="libs/datatables-binding-0.2/datatables.js"></script>
-<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
@@ -305,8 +307,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">datatable</span> (immo, <span class="dt">width =</span> <span class="dv">400</span>,
            <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre de pièces&quot;</span>, <span class="st">&quot;Nombre d&#39;appartements&quot;</span>),
            <span class="dt">rownames =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-242bc387dcac03b1e4a1" style="width:400px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-242bc387dcac03b1e4a1">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-785d1f0c43f77d7abfaa" style="width:400px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-785d1f0c43f77d7abfaa">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span> (<span class="dt">x =</span> immo<span class="op">$</span>nb_pieces, <span class="dt">w =</span> immo<span class="op">$</span>nb_apparts)</code></pre></div>
 <pre><code>## [1] 3.277778</code></pre>
 <ul>
@@ -378,8 +380,8 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <span class="st">  </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&#39;Variable&#39;</span>, <span class="st">&#39;Moyenne&#39;</span>), <span class="dt">width =</span> <span class="dv">300</span>)</code></pre></div>
-<div id="htmlwidget-1bebac26bef16b4c4239" style="width:300px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1bebac26bef16b4c4239">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0cb15ce2c6234b20978f" style="width:300px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0cb15ce2c6234b20978f">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Sur des variables appelées par leur nom :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</code></pre></div>
@@ -391,8 +393,8 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <span class="st">      </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">mutate_if</span> (is.numeric, round, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">datatable</span> (<span class="dt">width =</span> <span class="dv">500</span>)</code></pre></div>
-<div id="htmlwidget-90c1ab8bcfc205610dcc" style="width:500px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90c1ab8bcfc205610dcc">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b04f9bfdbe13730d56bb" style="width:500px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b04f9bfdbe13730d56bb">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div id="exercice" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Exercice</h3>
 <p>Comparer le coefficient de variation de plusieurs variables. Laquelle est la plus “relativement étendue” ?</p>
@@ -546,7 +548,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -556,6 +558,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -573,7 +579,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

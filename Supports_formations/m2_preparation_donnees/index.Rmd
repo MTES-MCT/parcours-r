@@ -19,17 +19,14 @@ description: "Formation R à la data préparation"
 
 Le parcours de formation proposé est structuré en modules de 2 jours chacun :
 
-- 1 : Socle de base
-- 2 : Préparer ses données avec le tidyverse
-- 3 : Statistiques descriptives
-- 4 : Analyses multivariées
+- 1 : Socle de base $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m1_socle/_book/index.html)
+- 2 : Préparer ses données avec le tidyverse $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html)
+- 3 : Statistiques descriptives $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html)
+- 4 : Analyses multivariées $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m4_analyse_donnees/_book/index.html)
+- 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m5_valorisation_des_donnees/_book/index.html)
+- 6 : Documents reproductibles avec RMarkdown (2^ème^ semestre 2019)
 
-... et d'autres encore à venir :
-
-- 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux
-- 6 : Documents reproductibles avec RMarkdown
-
-... en perspective : analyse spatiale, applis interactives avec Shiny, etc.
+... et en perspective : analyse spatiale, applis interactives avec Shiny, big data, etc.
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
 

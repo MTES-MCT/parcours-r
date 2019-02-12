@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapitre 17 Exercices et corrections | Valoriser ses données avec R</title>
+  <meta name="description" content="Le support de la formation sur la valorisation des données sous R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapitre 17 Exercices et corrections | Valoriser ses données avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 17 Exercices et corrections | Valoriser ses données avec R" />
+  
+  <meta name="twitter:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+<meta name="author" content="Maël Theulière - Murielle Lethrosne">
+
+
+<meta name="date" content="2019-02-12">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="ressources.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-7.0.1/css/motion.css" rel="stylesheet" />
+<link href="libs/highcharts-7.0.1/css/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highcharts-7.0.1/highcharts.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-3d.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-more.js"></script>
+<script src="libs/highcharts-7.0.1/modules/stock.js"></script>
+<script src="libs/highcharts-7.0.1/modules/map.js"></script>
+<script src="libs/highcharts-7.0.1/modules/annotations.js"></script>
+<script src="libs/highcharts-7.0.1/modules/boost.js"></script>
+<script src="libs/highcharts-7.0.1/modules/data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drag-panes.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drilldown.js"></script>
+<script src="libs/highcharts-7.0.1/modules/item-series.js"></script>
+<script src="libs/highcharts-7.0.1/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-7.0.1/modules/exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/export-data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/funnel.js"></script>
+<script src="libs/highcharts-7.0.1/modules/heatmap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/treemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sankey.js"></script>
+<script src="libs/highcharts-7.0.1/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-7.0.1/modules/streamgraph.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sunburst.js"></script>
+<script src="libs/highcharts-7.0.1/modules/vector.js"></script>
+<script src="libs/highcharts-7.0.1/modules/wordcloud.js"></script>
+<script src="libs/highcharts-7.0.1/modules/xrange.js"></script>
+<script src="libs/highcharts-7.0.1/modules/tilemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/venn.js"></script>
+<script src="libs/highcharts-7.0.1/modules/gantt.js"></script>
+<script src="libs/highcharts-7.0.1/modules/timeline.js"></script>
+<script src="libs/highcharts-7.0.1/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/motion.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/multicolor_series.js"></script>
+<script src="libs/highcharts-7.0.1/custom/reset.js"></script>
+<script src="libs/highcharts-7.0.1/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-7.0.1/custom/text-symbols.js"></script>
+<script src="libs/highchart-binding-0.7.0/highchart.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Valoriser ses données avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="un-typologie-des-representations-graphiques.html"><a href="un-typologie-des-representations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Un typologie des représentations graphiques</a></li>
+<li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
+<li class="chapter" data-level="3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Présentation du package ggplot2</a><ul>
+<li class="chapter" data-level="3.1" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#le-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Le Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#ggplot-2-les-concepts-clefs"><i class="fa fa-check"></i><b>3.3</b> ggplot 2 : les concepts clefs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="le-mapping.html"><a href="le-mapping.html"><i class="fa fa-check"></i><b>4</b> Le mapping</a><ul>
+<li class="chapter" data-level="4.1" data-path="le-mapping.html"><a href="le-mapping.html#les-parametres-du-mapping"><i class="fa fa-check"></i><b>4.1</b> Les paramètres du mapping</a></li>
+<li class="chapter" data-level="4.2" data-path="le-mapping.html"><a href="le-mapping.html#les-autres-parametres"><i class="fa fa-check"></i><b>4.2</b> Les “autres” paramètres</a></li>
+<li class="chapter" data-level="4.3" data-path="le-mapping.html"><a href="le-mapping.html#exercice-1"><i class="fa fa-check"></i><b>4.3</b> Exercice 1</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="les-formes-geometriques.html"><a href="les-formes-geometriques.html"><i class="fa fa-check"></i><b>5</b> Les formes géométriques</a></li>
+<li class="chapter" data-level="6" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html"><i class="fa fa-check"></i><b>6</b> L’habillage simple</a><ul>
+<li class="chapter" data-level="6.1" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#titre-et-libelle-des-axes"><i class="fa fa-check"></i><b>6.1</b> Titre et libellé des axes</a></li>
+<li class="chapter" data-level="6.2" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#legende"><i class="fa fa-check"></i><b>6.2</b> Légende</a></li>
+<li class="chapter" data-level="6.3" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#annotation"><i class="fa fa-check"></i><b>6.3</b> Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="les-themes.html"><a href="les-themes.html"><i class="fa fa-check"></i><b>7</b> Les thèmes</a><ul>
+<li class="chapter" data-level="7.1" data-path="les-themes.html"><a href="les-themes.html#les-fonctions-element"><i class="fa fa-check"></i><b>7.1</b> Les fonctions “élément”</a></li>
+<li class="chapter" data-level="7.2" data-path="les-themes.html"><a href="les-themes.html#les-composantes"><i class="fa fa-check"></i><b>7.2</b> Les composantes</a></li>
+<li class="chapter" data-level="7.3" data-path="les-themes.html"><a href="les-themes.html#quelques-exemples"><i class="fa fa-check"></i><b>7.3</b> Quelques exemples</a></li>
+<li class="chapter" data-level="7.4" data-path="les-themes.html"><a href="les-themes.html#exercice-2"><i class="fa fa-check"></i><b>7.4</b> Exercice 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="les-scales.html"><a href="les-scales.html"><i class="fa fa-check"></i><b>8</b> Les scales</a><ul>
+<li class="chapter" data-level="8.1" data-path="les-scales.html"><a href="les-scales.html#exercice-3"><i class="fa fa-check"></i><b>8.1</b> Exercice 3</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="la-mise-en-page-de-plusieurs-graphiques.html"><a href="la-mise-en-page-de-plusieurs-graphiques.html"><i class="fa fa-check"></i><b>9</b> La mise en page de plusieurs graphiques</a></li>
+<li class="chapter" data-level="10" data-path="les-facettes.html"><a href="les-facettes.html"><i class="fa fa-check"></i><b>10</b> Les facettes</a><ul>
+<li class="chapter" data-level="10.1" data-path="les-facettes.html"><a href="les-facettes.html#exercice-4"><i class="fa fa-check"></i><b>10.1</b> Exercice 4</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="sauvergarder-un-graphique.html"><a href="sauvergarder-un-graphique.html"><i class="fa fa-check"></i><b>11</b> Sauvergarder un graphique</a></li>
+<li class="part"><span><b>II Créer des cartes sous R</b></span></li>
+<li class="chapter" data-level="12" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><i class="fa fa-check"></i><b>12</b> Créer des cartes avec ggplot2, tmap et Cartographie</a><ul>
+<li class="chapter" data-level="12.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#faire-des-cartes-avec-ggplot2"><i class="fa fa-check"></i><b>12.1</b> Faire des cartes avec ggplot2</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-choroplethe"><i class="fa fa-check"></i><b>12.1.1</b> Les cartes choroplèthe</a></li>
+<li class="chapter" data-level="12.1.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-a-ronds-proportionnels"><i class="fa fa-check"></i><b>12.1.2</b> Les cartes à ronds proportionnels</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-avec-tmap"><i class="fa fa-check"></i><b>12.2</b> Les cartes avec Tmap</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-choroplethe"><i class="fa fa-check"></i><b>12.2.1</b> Exemple de carte choroplèthe</a></li>
+<li class="chapter" data-level="12.2.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-a-ronds-proportionnels"><i class="fa fa-check"></i><b>12.2.2</b> Exemple de carte à ronds proportionnels</a></li>
+<li class="chapter" data-level="12.2.3" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemples-de-cartes-avec-facet"><i class="fa fa-check"></i><b>12.2.3</b> Exemples de cartes avec facet</a></li>
+<li class="chapter" data-level="12.2.4" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#gestion-des-palettes"><i class="fa fa-check"></i><b>12.2.4</b> gestion des palettes</a></li>
+<li class="chapter" data-level="12.2.5" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#la-mise-en-page"><i class="fa fa-check"></i><b>12.2.5</b> La mise en page</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exercice-5"><i class="fa fa-check"></i><b>12.3</b> Exercice 5</a></li>
+</ul></li>
+<li class="part"><span><b>III Graphiques animés</b></span></li>
+<li class="chapter" data-level="13" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html"><i class="fa fa-check"></i><b>13</b> Animer ses graphiques ggplot avec gganimate</a><ul>
+<li class="chapter" data-level="13.1" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#produire-une-animation"><i class="fa fa-check"></i><b>13.1</b> Produire une animation</a></li>
+<li class="chapter" data-level="13.2" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#parametrer-lanimation"><i class="fa fa-check"></i><b>13.2</b> Paramétrer l’animation</a></li>
+<li class="chapter" data-level="13.3" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#sauvegarder-une-animation"><i class="fa fa-check"></i><b>13.3</b> Sauvegarder une animation</a></li>
+<li class="chapter" data-level="13.4" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#exercice-6"><i class="fa fa-check"></i><b>13.4</b> Exercice 6</a></li>
+</ul></li>
+<li class="part"><span><b>IV Dataviz pour le web</b></span></li>
+<li class="chapter" data-level="14" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html"><i class="fa fa-check"></i><b>14</b> Créer des graphiques et cartes pour le web</a><ul>
+<li class="chapter" data-level="14.1" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#highcharter"><i class="fa fa-check"></i><b>14.1</b> Highcharter</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#exemple-type-de-graphique"><i class="fa fa-check"></i><b>14.1.1</b> Exemple type de graphique</a></li>
+<li class="chapter" data-level="14.1.2" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#les-facettes-1"><i class="fa fa-check"></i><b>14.1.2</b> Les facettes</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#les-cartes-leaflet"><i class="fa fa-check"></i><b>14.2</b> Les cartes Leaflet</a></li>
+<li class="chapter" data-level="14.3" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#exercice-7"><i class="fa fa-check"></i><b>14.3</b> Exercice 7</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="creer-des-tableaux-avec-kable-et-kable-extra.html"><a href="creer-des-tableaux-avec-kable-et-kable-extra.html"><i class="fa fa-check"></i><b>15</b> Créer des tableaux avec kable et kable extra</a><ul>
+<li class="chapter" data-level="15.1" data-path="creer-des-tableaux-avec-kable-et-kable-extra.html"><a href="creer-des-tableaux-avec-kable-et-kable-extra.html#exercice-8"><i class="fa fa-check"></i><b>15.1</b> Exercice 8</a></li>
+</ul></li>
+<li class="part"><span><b>V Ressources et correction</b></span></li>
+<li class="chapter" data-level="16" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i><b>16</b> ressources</a><ul>
+<li class="chapter" data-level="16.1" data-path="ressources.html"><a href="ressources.html#dataviz"><i class="fa fa-check"></i><b>16.1</b> dataviz</a></li>
+<li class="chapter" data-level="16.2" data-path="ressources.html"><a href="ressources.html#ggplot2-1"><i class="fa fa-check"></i><b>16.2</b> ggplot2</a></li>
+<li class="chapter" data-level="16.3" data-path="ressources.html"><a href="ressources.html#tmap"><i class="fa fa-check"></i><b>16.3</b> tmap</a></li>
+<li class="chapter" data-level="16.4" data-path="ressources.html"><a href="ressources.html#highcharter-1"><i class="fa fa-check"></i><b>16.4</b> highcharter</a></li>
+<li class="chapter" data-level="16.5" data-path="ressources.html"><a href="ressources.html#kable-et-kableextra"><i class="fa fa-check"></i><b>16.5</b> kable et kableExtra</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html"><i class="fa fa-check"></i><b>17</b> Exercices et corrections</a><ul>
+<li class="chapter" data-level="17.1" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-1-1"><i class="fa fa-check"></i><b>17.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="17.2" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-2-1"><i class="fa fa-check"></i><b>17.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="17.3" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-3-1"><i class="fa fa-check"></i><b>17.3</b> Exercice 3</a></li>
+<li class="chapter" data-level="17.4" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-4-1"><i class="fa fa-check"></i><b>17.4</b> Exercice 4</a></li>
+<li class="chapter" data-level="17.5" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-5-1"><i class="fa fa-check"></i><b>17.5</b> Exercice 5</a></li>
+<li class="chapter" data-level="17.6" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-6-1"><i class="fa fa-check"></i><b>17.6</b> Exercice 6</a></li>
+<li class="chapter" data-level="17.7" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-7-1"><i class="fa fa-check"></i><b>17.7</b> Exercice 7</a></li>
+<li class="chapter" data-level="17.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>17.8</b> Exercice 8</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Valoriser ses données avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercices-et-corrections" class="section level1">
+<h1><span class="header-section-number">Chapitre 17</span> Exercices et corrections</h1>
+<div id="exercice-1-1" class="section level2">
+<h2><span class="header-section-number">17.1</span> Exercice 1</h2>
+<blockquote>
+<p>A partir des données de la table rpls_aggrege_large (dans le data_exercices_formation.RData), créer un nuage de point entre :</p>
+<ul>
+<li><p>le % de parc social de moins de 5 ans;</p></li>
+<li><p>et le pourcentage de logement avec un DPE ges de classe A,B ou C;</p></li>
+<li><p>et une couleur différente pour distinguer les epci de la région PDL.</p></li>
+</ul>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/data_exercices_formation.RData&quot;</span>)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> rpls_aggrege_large  <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">filter</span>(TypeZone<span class="op">==</span><span class="st">&quot;Epci&quot;</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Parc_de_moins_de_5_ans_pourcent,
+                 <span class="dt">y=</span>DPE_GES_classe_ABC_pourcent,
+                 <span class="dt">color=</span>epci_2017_<span class="dv">52</span>),
+             <span class="dt">alpha=</span>.<span class="dv">5</span>,
+             <span class="dt">size=</span>.<span class="dv">5</span>
+             )</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/chap16-1.png" width="672" /></p>
+</div>
+<div id="exercice-2-1" class="section level2">
+<h2><span class="header-section-number">17.2</span> Exercice 2</h2>
+<blockquote>
+<p>Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
+<p>En modifier le thème:</p>
+<ul>
+<li>Insérer un titre de couleur, en gras, centré par rapport au graphe.</li>
+<li>Indiquer la source (ODD) et modifier sa taille</li>
+<li>Changer les titres des axes et leurs tailles.</li>
+<li>modifier la couleur de fond du graphe</li>
+<li>modifier le type de gadrillage (pointillés)</li>
+</ul>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Croisement du PIB avec le taux de mortalité maternelle&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Taux de mortalité maternelle&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Produit Intérieur Brut&quot;</span>, <span class="dt">caption=</span><span class="st">&quot;Source: ODD&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>, 
+                                <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, 
+                                <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>,
+                                <span class="dt">hjust=</span><span class="fl">0.5</span>), 
+        <span class="dt">plot.caption=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+        <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),  
+        <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>,<span class="dt">colour =</span> <span class="st">&quot;lightblue&quot;</span>,<span class="dt">size =</span> <span class="fl">0.5</span>),
+        <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>( <span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>),
+        <span class="dt">panel.grid.minor =</span> <span class="kw">element_line</span>( <span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+</div>
+<div id="exercice-3-1" class="section level2">
+<h2><span class="header-section-number">17.3</span> Exercice 3</h2>
+<blockquote>
+<p>En réutilisant le graphe obtenu à l’exercice 1, y rajouter:</p>
+<ul>
+<li><p>une palette brewer pour la couleur;</p></li>
+<li><p>la légende en bas;</p></li>
+<li><p>des libellés (axes et légende) parlant et un titre.</p></li>
+</ul>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> rpls_aggrege_large  <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">filter</span>(TypeZone<span class="op">==</span><span class="st">&quot;Epci&quot;</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Parc_de_moins_de_5_ans_pourcent,
+                 <span class="dt">y=</span>DPE_GES_classe_ABC_pourcent,
+                 <span class="dt">color=</span>epci_2017_<span class="dv">52</span>),
+             <span class="dt">size=</span>.<span class="dv">7</span>
+  )<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span>qual,<span class="dt">palette=</span><span class="st">&quot;Paired&quot;</span>,
+                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Autres Epci&quot;</span>,<span class="st">&quot;Epci de la région Pays de la Loire&quot;</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Répartition des Epci en fonction </span><span class="ch">\n</span><span class="st">de la part des logements ayant une étiquette A,B,C et de la part du parc récent&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Part du parc de moins de 5 ans&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Part des logements ayant une étiquette A,B,C&quot;</span>,
+       <span class="dt">color=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+</div>
+<div id="exercice-4-1" class="section level2">
+<h2><span class="header-section-number">17.4</span> Exercice 4</h2>
+<blockquote>
+<p>Facette sur un diagramme barre avec :</p>
+<ul>
+<li>en variable discrète les régions</li>
+<li>en variables continues les indicateurs suivants :
+<ul>
+<li>% de logements de 3 et 4 pièces</li>
+<li>% DPE énergie A,B,C</li>
+<li>% DPE GES A,B,C</li>
+<li>% de parc de moins de 5 ans</li>
+</ul></li>
+<li>une façon d’identifier la région Pays de la Loire</li>
+</ul>
+</blockquote>
+<p>Pour avoir la liste des modalités dune variable :</p>
+<p>Variables caractères ou factorielles :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(rpls_aggrege<span class="op">$</span>Indicateur)</code></pre></div>
+<p>Variables factorielles :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(rpls_aggrege<span class="op">$</span>Indicateur)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rpls_aggrege  <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(TypeZone<span class="op">==</span><span class="st">&quot;Régions&quot;</span>,
+         Indicateur <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;3 et 4 pièces_pourcent&quot;</span>,
+                           <span class="st">&quot;DPE GES classe ABC_pourcent&quot;</span>,
+                           <span class="st">&quot;DPE énergie classe ABC_pourcent&quot;</span>,
+                           <span class="st">&quot;Parc de moins de 5 ans_pourcent&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Indicateur=</span><span class="kw">fct_recode</span>(Indicateur,
+                             <span class="st">`</span><span class="dt">Logements de 3 et 4 pièces</span><span class="st">`</span>=<span class="st">&quot;3 et 4 pièces_pourcent&quot;</span>,
+                             <span class="st">`</span><span class="dt">Logements avec DPE énergie de classe A,B,C</span><span class="st">`</span>=<span class="st">&quot;DPE énergie classe ABC_pourcent&quot;</span>,
+                             <span class="st">`</span><span class="dt">Logements avec DPE GES de classe A,B,C</span><span class="st">`</span>=<span class="st">&quot;DPE GES classe ABC_pourcent&quot;</span>,
+                             <span class="st">`</span><span class="dt">Logements social de moins de 5 ans</span><span class="st">`</span>=<span class="st">&quot;Parc de moins de 5 ans_pourcent&quot;</span>),
+         <span class="dt">r52=</span><span class="kw">ifelse</span>(Reg_<span class="dv">2017</span><span class="op">==</span><span class="st">&quot;52&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="co">#On utilise l&#39;indicatrice de la région Pays de la Loire pour mapper la transparence</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span>nReg_<span class="dv">2017</span>,<span class="dt">weight=</span>Valeur,<span class="dt">fill=</span>Indicateur,<span class="dt">alpha=</span>r52))<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="co">#On défini les valeurs maximum et minimum de transparence que l&#39;on veut voir</span>
+<span class="st">  </span><span class="kw">scale_alpha_continuous</span>(<span class="dt">range=</span><span class="kw">c</span>(.<span class="dv">65</span>,<span class="dv">1</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Indicateur)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;mon premier facet&quot;</span>,<span class="dt">y=</span><span class="st">&quot;En % du parc social&quot;</span>,<span class="dt">x=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-52-1.png" width="1152" /></p>
+</div>
+<div id="exercice-5-1" class="section level2">
+<h2><span class="header-section-number">17.5</span> Exercice 5</h2>
+<blockquote>
+<p>Produire une carte du Loiret à l’EPCI du taux de logements collectifs dans le parc locatif social.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tt&lt;-Carte_EPCI_France <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(CODE_DEPT<span class="op">==</span><span class="st">&quot;45&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">left_join</span>(rpls_aggrege) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Indicateur<span class="op">==</span><span class="st">&quot;Logements collectifs_pourcent&quot;</span>)
+<span class="kw">ggplot</span>(<span class="dt">data=</span>tt)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>Valeur))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Taux de logements collectifs par EPCI&quot;</span>,<span class="dt">subtitle=</span><span class="st">&quot;Département du Loiret&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(
+    <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(),
+    <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),
+    <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+</div>
+<div id="exercice-6-1" class="section level2">
+<h2><span class="header-section-number">17.6</span> Exercice 6</h2>
+<p>Produire le nuage de point du croisement de la part des logements ayant une étiquette A,B,C en fonction de la part du parc récent. Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rpls&lt;-rpls_aggrege_large <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(nReg_<span class="dv">2017</span><span class="op">==</span><span class="st">&quot;Centre-Val de Loire&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nDep_2017=</span><span class="kw">fct_drop</span>(nDep_<span class="dv">2017</span>))
+
+anim&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span>rpls ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Parc_de_moins_de_5_ans_pourcent,
+                 <span class="dt">y=</span>DPE_GES_classe_ABC_pourcent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Croisement de la part des logements ayant une étiquette A,B,C </span><span class="ch">\n</span><span class="st"> en fonction de la part du parc récent&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En {closest_state}&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Part du parc de moins de 5 ans&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Part des logements ayant une étiquette A,B,C&quot;</span>,
+       <span class="dt">color=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">transition_states</span>(<span class="dt">states=</span>nDep_<span class="dv">2017</span>,
+                    <span class="dt">transition_length =</span> <span class="dv">1</span>,
+                    <span class="dt">state_length =</span> <span class="dv">2</span>)
+anim</code></pre></div>
+<pre><code>## 
+Frame 1 (1%)
+Frame 2 (2%)
+Frame 3 (3%)
+Frame 4 (4%)
+Frame 5 (5%)
+Frame 6 (6%)
+Frame 7 (7%)
+Frame 8 (8%)
+Frame 9 (9%)
+Frame 10 (10%)
+Frame 11 (11%)
+Frame 12 (12%)
+Frame 13 (13%)
+Frame 14 (14%)
+Frame 15 (15%)
+Frame 16 (16%)
+Frame 17 (17%)
+Frame 18 (18%)
+Frame 19 (19%)
+Frame 20 (20%)
+Frame 21 (21%)
+Frame 22 (22%)
+Frame 23 (23%)
+Frame 24 (24%)
+Frame 25 (25%)
+Frame 26 (26%)
+Frame 27 (27%)
+Frame 28 (28%)
+Frame 29 (29%)
+Frame 30 (30%)
+Frame 31 (31%)
+Frame 32 (32%)
+Frame 33 (33%)
+Frame 34 (34%)
+Frame 35 (35%)
+Frame 36 (36%)
+Frame 37 (37%)
+Frame 38 (38%)
+Frame 39 (39%)
+Frame 40 (40%)
+Frame 41 (41%)
+Frame 42 (42%)
+Frame 43 (43%)
+Frame 44 (44%)
+Frame 45 (45%)
+Frame 46 (46%)
+Frame 47 (47%)
+Frame 48 (48%)
+Frame 49 (49%)
+Frame 50 (50%)
+Frame 51 (51%)
+Frame 52 (52%)
+Frame 53 (53%)
+Frame 54 (54%)
+Frame 55 (55%)
+Frame 56 (56%)
+Frame 57 (57%)
+Frame 58 (58%)
+Frame 59 (59%)
+Frame 60 (60%)
+Frame 61 (61%)
+Frame 62 (62%)
+Frame 63 (63%)
+Frame 64 (64%)
+Frame 65 (65%)
+Frame 66 (66%)
+Frame 67 (67%)
+Frame 68 (68%)
+Frame 69 (69%)
+Frame 70 (70%)
+Frame 71 (71%)
+Frame 72 (72%)
+Frame 73 (73%)
+Frame 74 (74%)
+Frame 75 (75%)
+Frame 76 (76%)
+Frame 77 (77%)
+Frame 78 (78%)
+Frame 79 (79%)
+Frame 80 (80%)
+Frame 81 (81%)
+Frame 82 (82%)
+Frame 83 (83%)
+Frame 84 (84%)
+Frame 85 (85%)
+Frame 86 (86%)
+Frame 87 (87%)
+Frame 88 (88%)
+Frame 89 (89%)
+Frame 90 (90%)
+Frame 91 (91%)
+Frame 92 (92%)
+Frame 93 (93%)
+Frame 94 (94%)
+Frame 95 (95%)
+Frame 96 (96%)
+Frame 97 (97%)
+Frame 98 (98%)
+Frame 99 (99%)
+Frame 100 (100%)
+## Finalizing encoding... done!</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/exo6-1.gif" /><!-- --></p>
+</div>
+<div id="exercice-7-1" class="section level2">
+<h2><span class="header-section-number">17.7</span> Exercice 7</h2>
+<p>Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
+<p>Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(highcharter)
+<span class="kw">hchart</span>(graphique1,<span class="st">&quot;scatter&quot;</span>,<span class="kw">hcaes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                              <span class="dt">y=</span>Maternal_mortality_ratio,
+                              <span class="dt">color=</span>Continent)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">hc_plotOptions</span>(<span class="dt">series=</span><span class="kw">list</span>(<span class="dt">shadow=</span><span class="st">&#39;false&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">hc_tooltip</span>(
+    <span class="dt">pointFormat =</span> <span class="st">&#39;&lt;b&gt;{point.Continent}&lt;/b&gt;&lt;br/&gt;&lt;b&gt;{point.Parent_Zone_libelle}&lt;/b&gt;&lt;br/&gt;PIB de {point.x} un taux de mortalié maternelle de {point.y} (pour 100 000 naissances)&#39;</span>
+  )</code></pre></div>
+<div id="htmlwidget-30c8260fcad715c36d53" style="width:100%;height:500px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-30c8260fcad715c36d53">{"x":{"hc_opts":{"title":{"text":null},"yAxis":{"title":{"text":"Maternal_mortality_ratio"},"type":"linear"},"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"showInLegend":false,"shadow":"false"},"treemap":{"layoutAlgorithm":"squarified"},"scatter":{"marker":{"symbol":"circle"}}},"series":[{"group":"group","data":[{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Angola","Gross_Domestic_Product_GDP":4714.06595591947,"Maternal_mortality_ratio":477,"x":4714.06595591947,"y":477,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Cameroon","Gross_Domestic_Product_GDP":1217.26161463687,"Maternal_mortality_ratio":596,"x":1217.26161463687,"y":596,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Central African Republic","Gross_Domestic_Product_GDP":333.188549959116,"Maternal_mortality_ratio":882,"x":333.188549959116,"y":882,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Chad","Gross_Domestic_Product_GDP":713.049250814551,"Maternal_mortality_ratio":856,"x":713.049250814551,"y":856,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Congo","Gross_Domestic_Product_GDP":1838.10126582124,"Maternal_mortality_ratio":442,"x":1838.10126582124,"y":442,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Democratic Republic of the Congo","Gross_Domestic_Product_GDP":486.226656854987,"Maternal_mortality_ratio":693,"x":486.226656854987,"y":693,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Equatorial Guinea","Gross_Domestic_Product_GDP":16344.081898564,"Maternal_mortality_ratio":342,"x":16344.081898564,"y":342,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Gabon","Gross_Domestic_Product_GDP":7960.71560363083,"Maternal_mortality_ratio":291,"x":7960.71560363083,"y":291,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique centrale","Country_or_Area_Name":"Sao Tome and Principe","Gross_Domestic_Product_GDP":1752.77110818947,"Maternal_mortality_ratio":156,"x":1752.77110818947,"y":156,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Burundi","Gross_Domestic_Product_GDP":244.615216124977,"Maternal_mortality_ratio":712,"x":244.615216124977,"y":712,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Comoros","Gross_Domestic_Product_GDP":1368.85393708354,"Maternal_mortality_ratio":335,"x":1368.85393708354,"y":335,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Djibouti","Gross_Domestic_Product_GDP":1956.31354875787,"Maternal_mortality_ratio":229,"x":1956.31354875787,"y":229,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Eritrea","Gross_Domestic_Product_GDP":914.874571216281,"Maternal_mortality_ratio":501,"x":914.874571216281,"y":501,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Ethiopia","Gross_Domestic_Product_GDP":602.840167333313,"Maternal_mortality_ratio":353,"x":602.840167333313,"y":353,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Kenya","Gross_Domestic_Product_GDP":1376.72326842587,"Maternal_mortality_ratio":510,"x":1376.72326842587,"y":510,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Madagascar","Gross_Domestic_Product_GDP":401.836001463694,"Maternal_mortality_ratio":353,"x":401.836001463694,"y":353,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Malawi","Gross_Domestic_Product_GDP":372.914241418543,"Maternal_mortality_ratio":634,"x":372.914241418543,"y":634,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Mauritius","Gross_Domestic_Product_GDP":9040.87634843459,"Maternal_mortality_ratio":53,"x":9040.87634843459,"y":53,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Mozambique","Gross_Domestic_Product_GDP":529.211609852332,"Maternal_mortality_ratio":489,"x":529.211609852332,"y":489,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Rwanda","Gross_Domestic_Product_GDP":697.348219477715,"Maternal_mortality_ratio":290,"x":697.348219477715,"y":290,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Seychelles","Gross_Domestic_Product_GDP":14133.1599180329,"Maternal_mortality_ratio":null,"x":14133.1599180329,"y":null,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Somalia","Gross_Domestic_Product_GDP":144.545663035739,"Maternal_mortality_ratio":732,"x":144.545663035739,"y":732,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"South Sudan","Gross_Domestic_Product_GDP":1067.04469719275,"Maternal_mortality_ratio":789,"x":1067.04469719275,"y":789,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Uganda","Gross_Domestic_Product_GDP":647.715663304539,"Maternal_mortality_ratio":343,"x":647.715663304539,"y":343,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"United Republic of Tanzania","Gross_Domestic_Product_GDP":null,"Maternal_mortality_ratio":398,"x":null,"y":398,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Zambia","Gross_Domestic_Product_GDP":1311.09899500042,"Maternal_mortality_ratio":224,"x":1311.09899500042,"y":224,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’est","Country_or_Area_Name":"Zimbabwe","Gross_Domestic_Product_GDP":890.421575656754,"Maternal_mortality_ratio":443,"x":890.421575656754,"y":443,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Benin","Gross_Domestic_Product_GDP":779.067857876455,"Maternal_mortality_ratio":405,"x":779.067857876455,"y":405,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Burkina Faso","Gross_Domestic_Product_GDP":611.132876944978,"Maternal_mortality_ratio":371,"x":611.132876944978,"y":371,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Cabo Verde","Gross_Domestic_Product_GDP":3080.18474551164,"Maternal_mortality_ratio":42,"x":3080.18474551164,"y":42,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Côte d'Ivoire","Gross_Domestic_Product_GDP":1412.94023340913,"Maternal_mortality_ratio":645,"x":1412.94023340913,"y":645,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Gambia","Gross_Domestic_Product_GDP":473.162842920671,"Maternal_mortality_ratio":706,"x":473.162842920671,"y":706,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Ghana","Gross_Domestic_Product_GDP":1355.57197052322,"Maternal_mortality_ratio":319,"x":1355.57197052322,"y":319,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Guinea","Gross_Domestic_Product_GDP":703.87339985881,"Maternal_mortality_ratio":679,"x":703.87339985881,"y":679,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Guinea-Bissau","Gross_Domestic_Product_GDP":530.040453756163,"Maternal_mortality_ratio":549,"x":530.040453756163,"y":549,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Liberia","Gross_Domestic_Product_GDP":455.873934536237,"Maternal_mortality_ratio":725,"x":455.873934536237,"y":725,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Mali","Gross_Domestic_Product_GDP":744.346096636929,"Maternal_mortality_ratio":587,"x":744.346096636929,"y":587,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Mauritania","Gross_Domestic_Product_GDP":1234.99991396683,"Maternal_mortality_ratio":602,"x":1234.99991396683,"y":602,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Niger","Gross_Domestic_Product_GDP":358.958147487355,"Maternal_mortality_ratio":553,"x":358.958147487355,"y":553,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Nigeria","Gross_Domestic_Product_GDP":2714.4746330941,"Maternal_mortality_ratio":814,"x":2714.4746330941,"y":814,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Senegal","Gross_Domestic_Product_GDP":901.071273341967,"Maternal_mortality_ratio":315,"x":901.071273341967,"y":315,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Sierra Leone","Gross_Domestic_Product_GDP":694.757624946481,"Maternal_mortality_ratio":null,"x":694.757624946481,"y":null,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique de l’ouest","Country_or_Area_Name":"Togo","Gross_Domestic_Product_GDP":559.371523791642,"Maternal_mortality_ratio":368,"x":559.371523791642,"y":368,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Algeria","Gross_Domestic_Product_GDP":4154.11831853941,"Maternal_mortality_ratio":140,"x":4154.11831853941,"y":140,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Egypt","Gross_Domestic_Product_GDP":3452.34084845693,"Maternal_mortality_ratio":33,"x":3452.34084845693,"y":33,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Libya","Gross_Domestic_Product_GDP":5488.16828506271,"Maternal_mortality_ratio":9,"x":5488.16828506271,"y":9,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Morocco","Gross_Domestic_Product_GDP":2919.32275530741,"Maternal_mortality_ratio":121,"x":2919.32275530741,"y":121,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Sudan","Gross_Domestic_Product_GDP":1977.03616995812,"Maternal_mortality_ratio":311,"x":1977.03616995812,"y":311,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du nord","Country_or_Area_Name":"Tunisia","Gross_Domestic_Product_GDP":3660.93419728013,"Maternal_mortality_ratio":62,"x":3660.93419728013,"y":62,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du sud","Country_or_Area_Name":"Botswana","Gross_Domestic_Product_GDP":6360.61981004054,"Maternal_mortality_ratio":129,"x":6360.61981004054,"y":129,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du sud","Country_or_Area_Name":"Lesotho","Gross_Domestic_Product_GDP":940.596524086011,"Maternal_mortality_ratio":487,"x":940.596524086011,"y":487,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du sud","Country_or_Area_Name":"Namibia","Gross_Domestic_Product_GDP":4673.55593497493,"Maternal_mortality_ratio":265,"x":4673.55593497493,"y":265,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du sud","Country_or_Area_Name":"South Africa","Gross_Domestic_Product_GDP":5772.96453656481,"Maternal_mortality_ratio":138,"x":5772.96453656481,"y":138,"color":"#440154","colorv":"Afrique"},{"Continent":"Afrique","Parent_Zone_libelle":"Afrique du sud","Country_or_Area_Name":"Swaziland","Gross_Domestic_Product_GDP":3211.69443321909,"Maternal_mortality_ratio":389,"x":3211.69443321909,"y":389,"color":"#440154","colorv":"Afrique"},{"Continent":"Amérique du nord","Parent_Zone_libelle":"Amérique du nord","Country_or_Area_Name":"Canada","Gross_Domestic_Product_GDP":43205.6429056011,"Maternal_mortality_ratio":7,"x":43205.6429056011,"y":7,"color":"#363A6A","colorv":"Amérique du nord"},{"Continent":"Amérique du nord","Parent_Zone_libelle":"Amérique du nord","Country_or_Area_Name":"United States of America","Gross_Domestic_Product_GDP":56053.8411551815,"Maternal_mortality_ratio":14,"x":56053.8411551815,"y":14,"color":"#363A6A","colorv":"Amérique du nord"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Belize","Gross_Domestic_Product_GDP":4789.37334916098,"Maternal_mortality_ratio":28,"x":4789.37334916098,"y":28,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Costa Rica","Gross_Domestic_Product_GDP":11014.9788218303,"Maternal_mortality_ratio":25,"x":11014.9788218303,"y":25,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"El Salvador","Gross_Domestic_Product_GDP":4219.35226112174,"Maternal_mortality_ratio":54,"x":4219.35226112174,"y":54,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Guatemala","Gross_Domestic_Product_GDP":3903.48319311737,"Maternal_mortality_ratio":88,"x":3903.48319311737,"y":88,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Honduras","Gross_Domestic_Product_GDP":2521.94204861877,"Maternal_mortality_ratio":129,"x":2521.94204861877,"y":129,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Mexico","Gross_Domestic_Product_GDP":8980.86215568429,"Maternal_mortality_ratio":38,"x":8980.86215568429,"y":38,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Nicaragua","Gross_Domestic_Product_GDP":2086.8915619448,"Maternal_mortality_ratio":150,"x":2086.8915619448,"y":150,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique Centrale","Country_or_Area_Name":"Panama","Gross_Domestic_Product_GDP":13268.1137548894,"Maternal_mortality_ratio":94,"x":13268.1137548894,"y":94,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Argentina","Gross_Domestic_Product_GDP":14564.5012685773,"Maternal_mortality_ratio":52,"x":14564.5012685773,"y":52,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Bolivia (Plurinational State of)","Gross_Domestic_Product_GDP":3076.7934157589,"Maternal_mortality_ratio":206,"x":3076.7934157589,"y":206,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Brazil","Gross_Domestic_Product_GDP":8528.32505114074,"Maternal_mortality_ratio":44,"x":8528.32505114074,"y":44,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Chile","Gross_Domestic_Product_GDP":13416.2303619726,"Maternal_mortality_ratio":22,"x":13416.2303619726,"y":22,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Colombia","Gross_Domestic_Product_GDP":6056.14781704063,"Maternal_mortality_ratio":64,"x":6056.14781704063,"y":64,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Ecuador","Gross_Domestic_Product_GDP":6205.06414529951,"Maternal_mortality_ratio":64,"x":6205.06414529951,"y":64,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Guyana","Gross_Domestic_Product_GDP":4278.80643272326,"Maternal_mortality_ratio":229,"x":4278.80643272326,"y":229,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Paraguay","Gross_Domestic_Product_GDP":4174.3640336939,"Maternal_mortality_ratio":132,"x":4174.3640336939,"y":132,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Peru","Gross_Domestic_Product_GDP":6069.09132427143,"Maternal_mortality_ratio":68,"x":6069.09132427143,"y":68,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Suriname","Gross_Domestic_Product_GDP":8985.33809331831,"Maternal_mortality_ratio":155,"x":8985.33809331831,"y":155,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Uruguay","Gross_Domestic_Product_GDP":15573.8085056085,"Maternal_mortality_ratio":15,"x":15573.8085056085,"y":15,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Amérique du sud","Country_or_Area_Name":"Venezuela (Bolivarian Republic of)","Gross_Domestic_Product_GDP":11068.8721551596,"Maternal_mortality_ratio":95,"x":11068.8721551596,"y":95,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Bahamas","Gross_Domestic_Product_GDP":22817.2309500308,"Maternal_mortality_ratio":80,"x":22817.2309500308,"y":80,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Barbados","Gross_Domestic_Product_GDP":15429.3960698767,"Maternal_mortality_ratio":27,"x":15429.3960698767,"y":27,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Cuba","Gross_Domestic_Product_GDP":7656.63081625328,"Maternal_mortality_ratio":39,"x":7656.63081625328,"y":39,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Dominican Republic","Gross_Domestic_Product_GDP":6373.55387983325,"Maternal_mortality_ratio":92,"x":6373.55387983325,"y":92,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Grenada","Gross_Domestic_Product_GDP":8933.80974768356,"Maternal_mortality_ratio":27,"x":8933.80974768356,"y":27,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Haiti","Gross_Domestic_Product_GDP":793.681051758765,"Maternal_mortality_ratio":359,"x":793.681051758765,"y":359,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Jamaica","Gross_Domestic_Product_GDP":5105.79376486538,"Maternal_mortality_ratio":89,"x":5105.79376486538,"y":89,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Puerto Rico","Gross_Domestic_Product_GDP":27939.0036701402,"Maternal_mortality_ratio":14,"x":27939.0036701402,"y":14,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Saint Lucia","Gross_Domestic_Product_GDP":7839.37613876992,"Maternal_mortality_ratio":48,"x":7839.37613876992,"y":48,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Saint Vincent and the Grenadines","Gross_Domestic_Product_GDP":6739.1747448971,"Maternal_mortality_ratio":45,"x":6739.1747448971,"y":45,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Amérique latine","Parent_Zone_libelle":"Caraïbes","Country_or_Area_Name":"Trinidad and Tobago","Gross_Domestic_Product_GDP":19062.8993041606,"Maternal_mortality_ratio":63,"x":19062.8993041606,"y":63,"color":"#287380","colorv":"Amérique latine"},{"Continent":"Asie","Parent_Zone_libelle":"Asie centrale","Country_or_Area_Name":"Kazakhstan","Gross_Domestic_Product_GDP":10312.1366690943,"Maternal_mortality_ratio":12,"x":10312.1366690943,"y":12,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie centrale","Country_or_Area_Name":"Kyrgyzstan","Gross_Domestic_Product_GDP":1106.37963771972,"Maternal_mortality_ratio":76,"x":1106.37963771972,"y":76,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie centrale","Country_or_Area_Name":"Tajikistan","Gross_Domestic_Product_GDP":925.90938376481,"Maternal_mortality_ratio":32,"x":925.90938376481,"y":32,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie centrale","Country_or_Area_Name":"Turkmenistan","Gross_Domestic_Product_GDP":6996.74198269817,"Maternal_mortality_ratio":42,"x":6996.74198269817,"y":42,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie centrale","Country_or_Area_Name":"Uzbekistan","Gross_Domestic_Product_GDP":2308.3320957866,"Maternal_mortality_ratio":36,"x":2308.3320957866,"y":36,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"China","Gross_Domestic_Product_GDP":8109.0550673983,"Maternal_mortality_ratio":27,"x":8109.0550673983,"y":27,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"China, Hong Kong Special Administrative Region","Gross_Domestic_Product_GDP":42431.0121174821,"Maternal_mortality_ratio":null,"x":42431.0121174821,"y":null,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"China, Macao Special Administrative Region","Gross_Domestic_Product_GDP":78586.3518773504,"Maternal_mortality_ratio":null,"x":78586.3518773504,"y":null,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"Democratic People's Republic of Korea","Gross_Domestic_Product_GDP":648.030979417317,"Maternal_mortality_ratio":82,"x":648.030979417317,"y":82,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"Japan","Gross_Domestic_Product_GDP":34628.7094536166,"Maternal_mortality_ratio":5,"x":34628.7094536166,"y":5,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"Mongolia","Gross_Domestic_Product_GDP":3973.43990084485,"Maternal_mortality_ratio":44,"x":3973.43990084485,"y":44,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie de l’est","Country_or_Area_Name":"Republic of Korea","Gross_Domestic_Product_GDP":27396.6788443588,"Maternal_mortality_ratio":11,"x":27396.6788443588,"y":11,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Afghanistan","Gross_Domestic_Product_GDP":623.184798424718,"Maternal_mortality_ratio":396,"x":623.184798424718,"y":396,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Bangladesh","Gross_Domestic_Product_GDP":1207.89593214378,"Maternal_mortality_ratio":176,"x":1207.89593214378,"y":176,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Bhutan","Gross_Domestic_Product_GDP":2677.09308427205,"Maternal_mortality_ratio":148,"x":2677.09308427205,"y":148,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"India","Gross_Domestic_Product_GDP":1614.15533741417,"Maternal_mortality_ratio":174,"x":1614.15533741417,"y":174,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Iran (Islamic Republic of)","Gross_Domestic_Product_GDP":5038.12735680008,"Maternal_mortality_ratio":25,"x":5038.12735680008,"y":25,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Maldives","Gross_Domestic_Product_GDP":9446.4524527981,"Maternal_mortality_ratio":68,"x":9446.4524527981,"y":68,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Nepal","Gross_Domestic_Product_GDP":724.506419334003,"Maternal_mortality_ratio":258,"x":724.506419334003,"y":258,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Pakistan","Gross_Domestic_Product_GDP":1410.39271979117,"Maternal_mortality_ratio":178,"x":1410.39271979117,"y":178,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud","Country_or_Area_Name":"Sri Lanka","Gross_Domestic_Product_GDP":3973.74486570485,"Maternal_mortality_ratio":30,"x":3973.74486570485,"y":30,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Brunei Darussalam","Gross_Domestic_Product_GDP":30552.659474689,"Maternal_mortality_ratio":23,"x":30552.659474689,"y":23,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Cambodia","Gross_Domestic_Product_GDP":1158.68990352486,"Maternal_mortality_ratio":161,"x":1158.68990352486,"y":161,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Indonesia","Gross_Domestic_Product_GDP":3346.48703037017,"Maternal_mortality_ratio":126,"x":3346.48703037017,"y":126,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Lao People's Democratic Republic","Gross_Domestic_Product_GDP":1850.21382519137,"Maternal_mortality_ratio":197,"x":1850.21382519137,"y":197,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Malaysia","Gross_Domestic_Product_GDP":9768.36841138141,"Maternal_mortality_ratio":40,"x":9768.36841138141,"y":40,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Myanmar","Gross_Domestic_Product_GDP":1161.4832340637,"Maternal_mortality_ratio":178,"x":1161.4832340637,"y":178,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Philippines","Gross_Domestic_Product_GDP":2904.17945325133,"Maternal_mortality_ratio":114,"x":2904.17945325133,"y":114,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Singapore","Gross_Domestic_Product_GDP":52239.0245780046,"Maternal_mortality_ratio":10,"x":52239.0245780046,"y":10,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Thailand","Gross_Domestic_Product_GDP":5814.77003356402,"Maternal_mortality_ratio":20,"x":5814.77003356402,"y":20,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Timor-Leste","Gross_Domestic_Product_GDP":2425.36570712335,"Maternal_mortality_ratio":215,"x":2425.36570712335,"y":215,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Asie du sud-est","Country_or_Area_Name":"Viet Nam","Gross_Domestic_Product_GDP":2067.90886957744,"Maternal_mortality_ratio":54,"x":2067.90886957744,"y":54,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Armenia","Gross_Domestic_Product_GDP":3489.12764155997,"Maternal_mortality_ratio":25,"x":3489.12764155997,"y":25,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Azerbaijan","Gross_Domestic_Product_GDP":5438.71106141704,"Maternal_mortality_ratio":25,"x":5438.71106141704,"y":25,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Bahrain","Gross_Domestic_Product_GDP":22600.2140981035,"Maternal_mortality_ratio":15,"x":22600.2140981035,"y":15,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Cyprus","Gross_Domestic_Product_GDP":21941.9019631898,"Maternal_mortality_ratio":7,"x":21941.9019631898,"y":7,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Georgia","Gross_Domestic_Product_GDP":3491.43612800612,"Maternal_mortality_ratio":36,"x":3491.43612800612,"y":36,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Iraq","Gross_Domestic_Product_GDP":4509.02431137919,"Maternal_mortality_ratio":50,"x":4509.02431137919,"y":50,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Israel","Gross_Domestic_Product_GDP":37129.4389096141,"Maternal_mortality_ratio":5,"x":37129.4389096141,"y":5,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Jordan","Gross_Domestic_Product_GDP":4940.05301286994,"Maternal_mortality_ratio":58,"x":4940.05301286994,"y":58,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Kuwait","Gross_Domestic_Product_GDP":29303.8966851741,"Maternal_mortality_ratio":4,"x":29303.8966851741,"y":4,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Lebanon","Gross_Domestic_Product_GDP":8571.37009018664,"Maternal_mortality_ratio":15,"x":8571.37009018664,"y":15,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Oman","Gross_Domestic_Product_GDP":15550.8500020055,"Maternal_mortality_ratio":17,"x":15550.8500020055,"y":17,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Qatar","Gross_Domestic_Product_GDP":73653.3944346574,"Maternal_mortality_ratio":13,"x":73653.3944346574,"y":13,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Saudi Arabia","Gross_Domestic_Product_GDP":20710.5764936867,"Maternal_mortality_ratio":12,"x":20710.5764936867,"y":12,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"State of Palestine","Gross_Domestic_Product_GDP":2715.53868015747,"Maternal_mortality_ratio":45,"x":2715.53868015747,"y":45,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Syrian Arab Republic","Gross_Domestic_Product_GDP":1534.54399135164,"Maternal_mortality_ratio":68,"x":1534.54399135164,"y":68,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Turkey","Gross_Domestic_Product_GDP":9125.7909355656,"Maternal_mortality_ratio":16,"x":9125.7909355656,"y":16,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"United Arab Emirates","Gross_Domestic_Product_GDP":40438.7715000363,"Maternal_mortality_ratio":6,"x":40438.7715000363,"y":6,"color":"#4DA177","colorv":"Asie"},{"Continent":"Asie","Parent_Zone_libelle":"Moyen orient","Country_or_Area_Name":"Yemen","Gross_Domestic_Product_GDP":1106.41571611989,"Maternal_mortality_ratio":385,"x":1106.41571611989,"y":385,"color":"#4DA177","colorv":"Asie"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Belarus","Gross_Domestic_Product_GDP":5750.8383431033,"Maternal_mortality_ratio":4,"x":5750.8383431033,"y":4,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Bulgaria","Gross_Domestic_Product_GDP":6846.77167020133,"Maternal_mortality_ratio":11,"x":6846.77167020133,"y":11,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Czechia","Gross_Domestic_Product_GDP":17561.7085358369,"Maternal_mortality_ratio":4,"x":17561.7085358369,"y":4,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Hungary","Gross_Domestic_Product_GDP":12350.5752556485,"Maternal_mortality_ratio":17,"x":12350.5752556485,"y":17,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Poland","Gross_Domestic_Product_GDP":12355.4594338955,"Maternal_mortality_ratio":3,"x":12355.4594338955,"y":3,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Republic of Moldova","Gross_Domestic_Product_GDP":1591.35761751443,"Maternal_mortality_ratio":23,"x":1591.35761751443,"y":23,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Romania","Gross_Domestic_Product_GDP":9120.65069024344,"Maternal_mortality_ratio":31,"x":9120.65069024344,"y":31,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Russian Federation","Gross_Domestic_Product_GDP":9243.30477838838,"Maternal_mortality_ratio":25,"x":9243.30477838838,"y":25,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Slovakia","Gross_Domestic_Product_GDP":16082.4630506324,"Maternal_mortality_ratio":6,"x":16082.4630506324,"y":6,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’est","Country_or_Area_Name":"Ukraine","Gross_Domestic_Product_GDP":2021.58458995871,"Maternal_mortality_ratio":24,"x":2021.58458995871,"y":24,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Austria","Gross_Domestic_Product_GDP":44117.6911494585,"Maternal_mortality_ratio":4,"x":44117.6911494585,"y":4,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Belgium","Gross_Domestic_Product_GDP":40277.8058530984,"Maternal_mortality_ratio":7,"x":40277.8058530984,"y":7,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"France","Gross_Domestic_Product_GDP":36304.1543743294,"Maternal_mortality_ratio":8,"x":36304.1543743294,"y":8,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Germany","Gross_Domestic_Product_GDP":41686.2134213695,"Maternal_mortality_ratio":6,"x":41686.2134213695,"y":6,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Luxembourg","Gross_Domestic_Product_GDP":100160.83556209,"Maternal_mortality_ratio":10,"x":100160.83556209,"y":10,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Netherlands","Gross_Domestic_Product_GDP":44332.1243359755,"Maternal_mortality_ratio":7,"x":44332.1243359755,"y":7,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe de l’ouest","Country_or_Area_Name":"Switzerland","Gross_Domestic_Product_GDP":80831.084333691,"Maternal_mortality_ratio":5,"x":80831.084333691,"y":5,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Denmark","Gross_Domestic_Product_GDP":53149.3250570265,"Maternal_mortality_ratio":6,"x":53149.3250570265,"y":6,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Estonia","Gross_Domestic_Product_GDP":17111.9963312466,"Maternal_mortality_ratio":9,"x":17111.9963312466,"y":9,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Finland","Gross_Domestic_Product_GDP":42148.0912236222,"Maternal_mortality_ratio":3,"x":42148.0912236222,"y":3,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Iceland","Gross_Domestic_Product_GDP":50936.0212101745,"Maternal_mortality_ratio":3,"x":50936.0212101745,"y":3,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Ireland","Gross_Domestic_Product_GDP":60513.6250155242,"Maternal_mortality_ratio":8,"x":60513.6250155242,"y":8,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Latvia","Gross_Domestic_Product_GDP":13704.1463231068,"Maternal_mortality_ratio":18,"x":13704.1463231068,"y":18,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Lithuania","Gross_Domestic_Product_GDP":14383.6680898641,"Maternal_mortality_ratio":10,"x":14383.6680898641,"y":10,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Norway","Gross_Domestic_Product_GDP":74185.5482355888,"Maternal_mortality_ratio":5,"x":74185.5482355888,"y":5,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"Sweden","Gross_Domestic_Product_GDP":50687.469449797,"Maternal_mortality_ratio":4,"x":50687.469449797,"y":4,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du nord","Country_or_Area_Name":"United Kingdom of Great Britain and Northern Ireland","Gross_Domestic_Product_GDP":44162.3629212969,"Maternal_mortality_ratio":9,"x":44162.3629212969,"y":9,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Albania","Gross_Domestic_Product_GDP":3984.23430170379,"Maternal_mortality_ratio":29,"x":3984.23430170379,"y":29,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Bosnia and Herzegovina","Gross_Domestic_Product_GDP":4264.95373288177,"Maternal_mortality_ratio":11,"x":4264.95373288177,"y":11,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Croatia","Gross_Domestic_Product_GDP":11479.4028771849,"Maternal_mortality_ratio":8,"x":11479.4028771849,"y":8,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Greece","Gross_Domestic_Product_GDP":17787.950751035,"Maternal_mortality_ratio":3,"x":17787.950751035,"y":3,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Italy","Gross_Domestic_Product_GDP":30462.3810858898,"Maternal_mortality_ratio":4,"x":30462.3810858898,"y":4,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Malta","Gross_Domestic_Product_GDP":23280.6804337805,"Maternal_mortality_ratio":9,"x":23280.6804337805,"y":9,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Montenegro","Gross_Domestic_Product_GDP":6424.08775710508,"Maternal_mortality_ratio":7,"x":6424.08775710508,"y":7,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Portugal","Gross_Domestic_Product_GDP":19239.1764751803,"Maternal_mortality_ratio":10,"x":19239.1764751803,"y":10,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Serbia","Gross_Domestic_Product_GDP":5238.56831674703,"Maternal_mortality_ratio":17,"x":5238.56831674703,"y":17,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Slovenia","Gross_Domestic_Product_GDP":20689.8183243622,"Maternal_mortality_ratio":9,"x":20689.8183243622,"y":9,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"Spain","Gross_Domestic_Product_GDP":25865.384548961,"Maternal_mortality_ratio":5,"x":25865.384548961,"y":5,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Europe","Parent_Zone_libelle":"Europe du sud","Country_or_Area_Name":"The former Yugoslav Republic of Macedonia","Gross_Domestic_Product_GDP":4836.12748805247,"Maternal_mortality_ratio":8,"x":4836.12748805247,"y":8,"color":"#A5C44E","colorv":"Europe"},{"Continent":"Océanie","Parent_Zone_libelle":"Australie et Nouvelle Zélande","Country_or_Area_Name":"Australia","Gross_Domestic_Product_GDP":51352.1972220032,"Maternal_mortality_ratio":6,"x":51352.1972220032,"y":6,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Australie et Nouvelle Zélande","Country_or_Area_Name":"New Zealand","Gross_Domestic_Product_GDP":38294.2599628371,"Maternal_mortality_ratio":11,"x":38294.2599628371,"y":11,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Fiji","Gross_Domestic_Product_GDP":4921.91830257969,"Maternal_mortality_ratio":30,"x":4921.91830257969,"y":30,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Kiribati","Gross_Domestic_Product_GDP":1442.86738821981,"Maternal_mortality_ratio":90,"x":1442.86738821981,"y":90,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Micronesia (Federated States of)","Gross_Domestic_Product_GDP":3015.23071031974,"Maternal_mortality_ratio":100,"x":3015.23071031974,"y":100,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Papua New Guinea","Gross_Domestic_Product_GDP":2797.55333403895,"Maternal_mortality_ratio":215,"x":2797.55333403895,"y":215,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Samoa","Gross_Domestic_Product_GDP":4005.99910672509,"Maternal_mortality_ratio":51,"x":4005.99910672509,"y":51,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Solomon Islands","Gross_Domestic_Product_GDP":1841.63736804813,"Maternal_mortality_ratio":114,"x":1841.63736804813,"y":114,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Tonga","Gross_Domestic_Product_GDP":3784.48458888022,"Maternal_mortality_ratio":124,"x":3784.48458888022,"y":124,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Tuvalu","Gross_Domestic_Product_GDP":3362.37039786193,"Maternal_mortality_ratio":null,"x":3362.37039786193,"y":null,"color":"#FDE725","colorv":"Océanie"},{"Continent":"Océanie","Parent_Zone_libelle":"Océanie (hors Australie et Nouvelle Zélande)","Country_or_Area_Name":"Vanuatu","Gross_Domestic_Product_GDP":2783.01445847841,"Maternal_mortality_ratio":78,"x":2783.01445847841,"y":78,"color":"#FDE725","colorv":"Océanie"}],"type":"scatter"}],"xAxis":{"type":"linear","title":{"text":"Gross_Domestic_Product_GDP"},"categories":null},"tooltip":{"pointFormat":"<b>{point.Continent}<\/b><br/><b>{point.Parent_Zone_libelle}<\/b><br/>PIB de {point.x} un taux de mortalié maternelle de {point.y} (pour 100 000 naissances)"}},"theme":{"chart":{"backgroundColor":"transparent"}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="exercice-8-1" class="section level2">
+<h2><span class="header-section-number">17.8</span> Exercice 8</h2>
+<p>Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rpls_DEP_R24  &lt;-<span class="st"> </span>rpls_aggrege_large <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(TypeZone <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Départements&quot;</span>,<span class="st">&quot;Régions&quot;</span>),nReg_<span class="dv">2017</span><span class="op">==</span><span class="st">&quot;Centre-Val de Loire&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(TypeZone,Zone) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Logements_collectifs=</span><span class="kw">sum</span>(Logements_collectifs),
+            <span class="dt">Logements_individuels=</span><span class="kw">sum</span>(Logements_individuels)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(TypeZone,Zone) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>TypeZone) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">setNames</span>(<span class="kw">c</span>(<span class="st">&quot;Zone&quot;</span>,<span class="st">&quot;Nombre de logements collectifs&quot;</span>,<span class="st">&quot;Nombre de logements individuels&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">kable</span>(<span class="st">&quot;html&quot;</span>,<span class="dt">caption=</span><span class="st">&quot;Chiffres clés RPLS&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">row_spec</span>(<span class="dv">7</span>, <span class="dt">bold =</span> T, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">background =</span> <span class="st">&quot;grey&quot;</span>)
+rpls_DEP_R24</code></pre></div>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:exo8">Table 17.1: </span>Chiffres clés RPLS
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Zone
+</th>
+<th style="text-align:right;">
+Nombre de logements collectifs
+</th>
+<th style="text-align:right;">
+Nombre de logements individuels
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Cher
+</td>
+<td style="text-align:right;">
+14434
+</td>
+<td style="text-align:right;">
+7054
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eure-et-Loir
+</td>
+<td style="text-align:right;">
+24462
+</td>
+<td style="text-align:right;">
+7024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indre
+</td>
+<td style="text-align:right;">
+11533
+</td>
+<td style="text-align:right;">
+6419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indre-et-Loire
+</td>
+<td style="text-align:right;">
+39030
+</td>
+<td style="text-align:right;">
+9779
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Loir-et-Cher
+</td>
+<td style="text-align:right;">
+14632
+</td>
+<td style="text-align:right;">
+6436
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Loiret
+</td>
+<td style="text-align:right;">
+37442
+</td>
+<td style="text-align:right;">
+12671
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;color: white;background-color: grey;">
+Centre-Val de Loire
+</td>
+<td style="text-align:right;font-weight: bold;color: white;background-color: grey;">
+141533
+</td>
+<td style="text-align:right;font-weight: bold;color: white;background-color: grey;">
+49383
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ressources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

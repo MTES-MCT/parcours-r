@@ -1,0 +1,218 @@
+Parent Country or Area Code,Country or Area Code,Country or Area Name,Parent_Zone_libelle,Continent,Type_Zone
+NA,MDG_WORLD,World,Monde,Monde,Monde
+M49_NAM,CAN,Canada,Amérique du nord,Amérique du nord,Pays
+M49_NAM,USA,United States of America,Amérique du nord,Amérique du nord,Pays
+M49_EUR_EE,BLR,Belarus,Europe de l’est,Europe,Pays
+M49_EUR_EE,BGR,Bulgaria,Europe de l’est,Europe,Pays
+M49_EUR_EE,CZE,Czechia,Europe de l’est,Europe,Pays
+M49_EUR_EE,HUN,Hungary,Europe de l’est,Europe,Pays
+M49_EUR_EE,POL,Poland,Europe de l’est,Europe,Pays
+M49_EUR_EE,MDA,Republic of Moldova,Europe de l’est,Europe,Pays
+M49_EUR_EE,ROU,Romania,Europe de l’est,Europe,Pays
+M49_EUR_EE,RUS,Russian Federation,Europe de l’est,Europe,Pays
+M49_EUR_EE,SVK,Slovakia,Europe de l’est,Europe,Pays
+M49_EUR_EE,UKR,Ukraine,Europe de l’est,Europe,Pays
+M49_EUR_NE,DNK,Denmark,Europe du nord,Europe,Pays
+M49_EUR_NE,EST,Estonia,Europe du nord,Europe,Pays
+M49_EUR_NE,FIN,Finland,Europe du nord,Europe,Pays
+M49_EUR_NE,ISL,Iceland,Europe du nord,Europe,Pays
+M49_EUR_NE,IRL,Ireland,Europe du nord,Europe,Pays
+M49_EUR_NE,LVA,Latvia,Europe du nord,Europe,Pays
+M49_EUR_NE,LTU,Lithuania,Europe du nord,Europe,Pays
+M49_EUR_NE,NOR,Norway,Europe du nord,Europe,Pays
+M49_EUR_NE,SWE,Sweden,Europe du nord,Europe,Pays
+M49_EUR_NE,GBR,United Kingdom of Great Britain and Northern Ireland,Europe du nord,Europe,Pays
+M49_EUR_SE,ALB,Albania,Europe du sud,Europe,Pays
+M49_EUR_SE,BIH,Bosnia and Herzegovina,Europe du sud,Europe,Pays
+M49_EUR_SE,HRV,Croatia,Europe du sud,Europe,Pays
+M49_EUR_SE,GRC,Greece,Europe du sud,Europe,Pays
+M49_EUR_SE,ITA,Italy,Europe du sud,Europe,Pays
+M49_EUR_SE,MLT,Malta,Europe du sud,Europe,Pays
+M49_EUR_SE,MNE,Montenegro,Europe du sud,Europe,Pays
+M49_EUR_SE,PRT,Portugal,Europe du sud,Europe,Pays
+M49_EUR_SE,SRB,Serbia,Europe du sud,Europe,Pays
+M49_EUR_SE,SVN,Slovenia,Europe du sud,Europe,Pays
+M49_EUR_SE,ESP,Spain,Europe du sud,Europe,Pays
+M49_EUR_SE,MKD,The former Yugoslav Republic of Macedonia,Europe du sud,Europe,Pays
+M49_EUR_WE,AUT,Austria,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,BEL,Belgium,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,FRA,France,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,DEU,Germany,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,LUX,Luxembourg,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,NLD,Netherlands,Europe de l’ouest,Europe,Pays
+M49_EUR_WE,CHE,Switzerland,Europe de l’ouest,Europe,Pays
+MDG_WORLD,MDG_LAC,Latin America and the Caribbean,Monde,Amérique latine,Zone
+MDG_LAC_CAR,BHS,Bahamas,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,BRB,Barbados,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,CUB,Cuba,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,DOM,Dominican Republic,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,GRD,Grenada,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,HTI,Haiti,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,JAM,Jamaica,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,PRI,Puerto Rico,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,LCA,Saint Lucia,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,VCT,Saint Vincent and the Grenadines,Caraïbes,Amérique latine,Pays
+MDG_LAC_CAR,TTO,Trinidad and Tobago,Caraïbes,Amérique latine,Pays
+M49_LAC_CA,BLZ,Belize,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,CRI,Costa Rica,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,SLV,El Salvador,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,GTM,Guatemala,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,HND,Honduras,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,MEX,Mexico,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,NIC,Nicaragua,Amérique Centrale,Amérique latine,Pays
+M49_LAC_CA,PAN,Panama,Amérique Centrale,Amérique latine,Pays
+M49_LAC_SA,ARG,Argentina,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,BOL,Bolivia (Plurinational State of),Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,BRA,Brazil,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,CHL,Chile,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,COL,Colombia,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,ECU,Ecuador,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,GUY,Guyana,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,PRY,Paraguay,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,PER,Peru,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,SUR,Suriname,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,URY,Uruguay,Amérique du sud,Amérique latine,Pays
+M49_LAC_SA,VEN,Venezuela (Bolivarian Republic of),Amérique du sud,Amérique latine,Pays
+M49_ASI_CA,KAZ,Kazakhstan,Asie centrale,Asie,Pays
+M49_ASI_CA,KGZ,Kyrgyzstan,Asie centrale,Asie,Pays
+M49_ASI_CA,TJK,Tajikistan,Asie centrale,Asie,Pays
+M49_ASI_CA,TKM,Turkmenistan,Asie centrale,Asie,Pays
+M49_ASI_CA,UZB,Uzbekistan,Asie centrale,Asie,Pays
+SDG_ASI_SCA,MDG_SAS,Southern Asia,Asie centrale et du sud,Asie,Zone
+MDG_SAS,AFG,Afghanistan,Asie du sud,Asie,Pays
+MDG_SAS,BGD,Bangladesh,Asie du sud,Asie,Pays
+MDG_SAS,BTN,Bhutan,Asie du sud,Asie,Pays
+MDG_SAS,IND,India,Asie du sud,Asie,Pays
+MDG_SAS,IRN,Iran (Islamic Republic of),Asie du sud,Asie,Pays
+MDG_SAS,MDV,Maldives,Asie du sud,Asie,Pays
+MDG_SAS,NPL,Nepal,Asie du sud,Asie,Pays
+MDG_SAS,PAK,Pakistan,Asie du sud,Asie,Pays
+MDG_SAS,LKA,Sri Lanka,Asie du sud,Asie,Pays
+M49_ASI_EA,CHN,China,Asie de l’est,Asie,Pays
+M49_ASI_EA,PRK,Democratic People's Republic of Korea,Asie de l’est,Asie,Pays
+M49_ASI_EA,JPN,Japan,Asie de l’est,Asie,Pays
+M49_ASI_EA,MNG,Mongolia,Asie de l’est,Asie,Pays
+M49_ASI_EA,KOR,Republic of Korea,Asie de l’est,Asie,Pays
+SDG_ESEASI,MDG_SEAS,South-Eastern Asia,Asie de l’est et du sud est,Asie,Zone
+MDG_SEAS,BRN,Brunei Darussalam,Asie du sud-est,Asie,Pays
+MDG_SEAS,KHM,Cambodia,Asie du sud-est,Asie,Pays
+MDG_SEAS,IDN,Indonesia,Asie du sud-est,Asie,Pays
+MDG_SEAS,LAO,Lao People's Democratic Republic,Asie du sud-est,Asie,Pays
+MDG_SEAS,MYS,Malaysia,Asie du sud-est,Asie,Pays
+MDG_SEAS,MMR,Myanmar,Asie du sud-est,Asie,Pays
+MDG_SEAS,PHL,Philippines,Asie du sud-est,Asie,Pays
+MDG_SEAS,SGP,Singapore,Asie du sud-est,Asie,Pays
+MDG_SEAS,THA,Thailand,Asie du sud-est,Asie,Pays
+MDG_SEAS,TLS,Timor-Leste,Asie du sud-est,Asie,Pays
+MDG_SEAS,VNM,Viet Nam,Asie du sud-est,Asie,Pays
+M49_ASI_WA,ARM,Armenia,Moyen orient,Asie,Pays
+M49_ASI_WA,AZE,Azerbaijan,Moyen orient,Asie,Pays
+M49_ASI_WA,BHR,Bahrain,Moyen orient,Asie,Pays
+M49_ASI_WA,CYP,Cyprus,Moyen orient,Asie,Pays
+M49_ASI_WA,GEO,Georgia,Moyen orient,Asie,Pays
+M49_ASI_WA,IRQ,Iraq,Moyen orient,Asie,Pays
+M49_ASI_WA,ISR,Israel,Moyen orient,Asie,Pays
+M49_ASI_WA,JOR,Jordan,Moyen orient,Asie,Pays
+M49_ASI_WA,KWT,Kuwait,Moyen orient,Asie,Pays
+M49_ASI_WA,LBN,Lebanon,Moyen orient,Asie,Pays
+M49_ASI_WA,OMN,Oman,Moyen orient,Asie,Pays
+M49_ASI_WA,QAT,Qatar,Moyen orient,Asie,Pays
+M49_ASI_WA,SAU,Saudi Arabia,Moyen orient,Asie,Pays
+M49_ASI_WA,PSE,State of Palestine,Moyen orient,Asie,Pays
+M49_ASI_WA,SYR,Syrian Arab Republic,Moyen orient,Asie,Pays
+M49_ASI_WA,TUR,Turkey,Moyen orient,Asie,Pays
+M49_ASI_WA,ARE,United Arab Emirates,Moyen orient,Asie,Pays
+M49_ASI_WA,YEM,Yemen,Moyen orient,Asie,Pays
+M49_AFR_NA,DZA,Algeria,Afrique du nord,Afrique,Pays
+M49_AFR_NA,EGY,Egypt,Afrique du nord,Afrique,Pays
+M49_AFR_NA,LBY,Libya,Afrique du nord,Afrique,Pays
+M49_AFR_NA,MAR,Morocco,Afrique du nord,Afrique,Pays
+M49_AFR_NA,SDN,Sudan,Afrique du nord,Afrique,Pays
+M49_AFR_NA,TUN,Tunisia,Afrique du nord,Afrique,Pays
+M49_AFR_EA,BDI,Burundi,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,COM,Comoros,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,DJI,Djibouti,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,ERI,Eritrea,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,ETH,Ethiopia,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,KEN,Kenya,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,MDG,Madagascar,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,MWI,Malawi,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,MUS,Mauritius,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,MOZ,Mozambique,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,RWA,Rwanda,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,SOM,Somalia,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,SSD,South Sudan,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,UGA,Uganda,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,TZA,United Republic of Tanzania,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,ZMB,Zambia,Afrique de l’est,Afrique,Pays
+M49_AFR_EA,ZWE,Zimbabwe,Afrique de l’est,Afrique,Pays
+M49_AFR_MA,AGO,Angola,Afrique centrale,Afrique,Pays
+M49_AFR_MA,CMR,Cameroon,Afrique centrale,Afrique,Pays
+M49_AFR_MA,CAF,Central African Republic,Afrique centrale,Afrique,Pays
+M49_AFR_MA,TCD,Chad,Afrique centrale,Afrique,Pays
+M49_AFR_MA,COG,Congo,Afrique centrale,Afrique,Pays
+M49_AFR_MA,COD,Democratic Republic of the Congo,Afrique centrale,Afrique,Pays
+M49_AFR_MA,GNQ,Equatorial Guinea,Afrique centrale,Afrique,Pays
+M49_AFR_MA,GAB,Gabon,Afrique centrale,Afrique,Pays
+M49_AFR_MA,STP,Sao Tome and Principe,Afrique centrale,Afrique,Pays
+M49_AFR_SA,BWA,Botswana,Afrique du sud,Afrique,Pays
+M49_AFR_SA,LSO,Lesotho,Afrique du sud,Afrique,Pays
+M49_AFR_SA,NAM,Namibia,Afrique du sud,Afrique,Pays
+M49_AFR_SA,ZAF,South Africa,Afrique du sud,Afrique,Pays
+M49_AFR_SA,SWZ,Swaziland,Afrique du sud,Afrique,Pays
+M49_AFR_WA,BEN,Benin,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,BFA,Burkina Faso,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,CPV,Cabo Verde,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,CIV,Côte d'Ivoire,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,GMB,Gambia,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,GHA,Ghana,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,GIN,Guinea,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,GNB,Guinea-Bissau,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,LBR,Liberia,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,MLI,Mali,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,MRT,Mauritania,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,NER,Niger,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,NGA,Nigeria,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,SEN,Senegal,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,SLE,Sierra Leone,Afrique de l’ouest,Afrique,Pays
+M49_AFR_WA,TGO,Togo,Afrique de l’ouest,Afrique,Pays
+M49_OCE,MDG_OCE,Oceania (excluding Australia and New Zealand),Océanie,Océanie,Zone
+M49_OCE_MEL,FJI,Fiji,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_MEL,PNG,Papua New Guinea,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_MEL,SLB,Solomon Islands,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_MEL,VUT,Vanuatu,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_MIC,KIR,Kiribati,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_MIC,FSM,Micronesia (Federated States of),Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_POL,WSM,Samoa,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE_POL,TON,Tonga,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+SDG_OCE_ANZ,AUS,Australia,Australie et Nouvelle Zélande,Océanie,Pays
+SDG_OCE_ANZ,NZL,New Zealand,Australie et Nouvelle Zélande,Océanie,Pays
+MDG_WORLD,SDG_NAEUR,Europe and Northern America,Monde,Monde,Zone
+MDG_WORLD,SDG_ASI_SCA,Central and Southern Asia,Monde,Asie,Zone
+MDG_WORLD,SDG_ESEASI,Eastern and South-Eastern Asia,Monde,Asie,Zone
+MDG_WORLD,SDG_NAWA,Northern Africa and Western Asia,Monde,Asie,Zone
+MDG_WORLD,SDG_AFR_SSA,Sub-Saharan Africa,Monde,Afrique,Zone
+M49_AFR_EA,SYC,Seychelles,Afrique de l’est,Afrique,Pays
+M49_OCE_POL,TUV,Tuvalu,Océanie (hors Australie et Nouvelle Zélande),Océanie,Pays
+M49_OCE,SDG_OCE_ANZ,Australia and New Zealand,Océanie,Océanie,Zone
+SDG_NAEUR,M49_EUR,Europe,Europe et Amérique du Nord,,Zone
+M49_EUR,M49_EUR_EE,Eastern Europe,Europe,Europe,Zone
+M49_EUR,M49_EUR_SE,Southern Europe,Europe,Europe,Zone
+MDG_LAC,MDG_LAC_CAR,Caribbean,Amérique Latine,Amérique Latine,Zone
+MDG_LAC,M49_LAC_CA,Central America,Amérique Latine,Amérique Latine,Zone
+MDG_LAC,M49_LAC_SA,South America,Amérique Latine,Amérique Latine,Zone
+SDG_ASI_SCA,M49_ASI_CA,Central Asia,Asie centrale et du sud,Asie,Zone
+SDG_ESEASI,M49_ASI_EA,Eastern Asia,Asie de l’est et du sud est,Asie,Zone
+M49_ASI_EA,HKG,"China, Hong Kong Special Administrative Region",Asie de l’est,Asie,Pays
+M49_ASI_EA,MAC,"China, Macao Special Administrative Region",Asie de l’est,Asie,Pays
+SDG_NAWA,M49_ASI_WA,Western Asia,Afrique du nord et Moyen orient ,Multi,Zone
+SDG_NAWA,M49_AFR_NA,Northern Africa,Afrique du nord et Moyen orient ,Multi,Zone
+SDG_AFR_SSA,M49_AFR_EA,Eastern Africa,Afrique sub-saharienne,Afrique,Zone
+SDG_AFR_SSA,M49_AFR_MA,Middle Africa,Afrique sub-saharienne,Afrique,Zone
+SDG_AFR_SSA,M49_AFR_SA,Southern Africa,Afrique sub-saharienne,Afrique,Zone
+SDG_AFR_SSA,M49_AFR_WA,Western Africa,Afrique sub-saharienne,Afrique,Zone
+MDG_WORLD,M49_OCE,Oceania,Monde,Océanie,Zone
+MDG_OCE,M49_OCE_MEL,Melanesia,Océanie (hors Australie et Nouvelle Zélande),Océanie,Zone
+NA,MDG_LLDC,Landlocked developing countries,Pays en développement sans littoral,Multi,Zone
+NA,MDG_LDC,Least developed countries,Pays les moins développés,Multi,Zone
+NA,MDG_SIDS,Small island developing States,Petits États insulaires en développement,Multi,Zone

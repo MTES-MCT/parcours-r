@@ -1,0 +1,43 @@
+# (PART) Créer des graphiques sous R avec ggplot 2 {-}
+
+# Présentation du package ggplot2
+
+## ggplot2
+
+- [ggplot 2](http://ggplot2.tidyverse.org/) est un package créé par Hadley Wickham et Winston Chang pour implémenter dans R la vision développée par Leland Wilkinson dans  [The Grammar of Graphics (Statistics and Computing)](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl?ie=UTF8&qid=1477928463&sr=8-1&keywords=the+grammar+of+graphics&linkCode=sl1&tag=ggplot2-20&linkId=f0130e557161b83fbe97ba0e9175c431) de la conception de graphiques.
+
+- Le but est de fournir une approche unique pour produire quasiment **toute valorisation graphique** de données que l'on peut trouver dans des revues scientifiques, les journaux, dans l'analyse statisque ou la data visualisation.
+
+- Ce Package aujourd'hui s'inscrit dans R dans le **framework tidyverse** qui propose une approche cohérente entre l'importation et la préparationdes données, leur analyse et leur valorisation.
+
+## Le Tidyverse
+![le tidyverse](pic/tidyverse.png "le tidyverse"){#id .class width=800}
+
+## ggplot 2 : les concepts clefs
+
+Pour construire un graphique avec ggplot il va falloir lui définir plusieurs éléments : 
+
+- **la donnée** : ggplot2 permet de travailler sur des vecteurs, des dataframes, des tibbles, ou des données spatiales ;
+
+- le **mapping** : on définit dans l'aesthetic (ou aes) le **mapping**, c'est à dire ce que l'on veut représenter qui **dépend des variables** (quelle variable sur l'axe x, sur l'axe y, quelle variable pour définir une graduation de couleurs...) ;
+
+- les **paramètres** : on définit les autres paramètres qui dépendent de constantes (par exemple : je veux utiliser que toutes mes lignes soient rouge ou de taille 2 pixels) ;
+
+- le **layer ("forme géométrique")** : on définie sous quelle représentation graphique on représente les paramètres précédents. Sous ggplot, ces fonctions sont de la forme geom_XX ;
+
+L'écriture type d'un graphique sera donc: 
+
+```{r, echo=T,eval=F}
+ggplot(data = <DATA>) + 
+  <FORME_GEO>(mapping = aes(<MAPPINGS>),...=<PARAMS>)
+```
+
+On va ensuite pouvoir à partir de cette base pour enrichir avec des fonctions supplémentaires.
+Chaque fonction s'enchaine avec des **+** comme les pipe.
+
+```{r, echo=T,eval=F}
+ggplot(data = <DATA>) + 
+  <FORME_GEO>(mapping = aes(<MAPPINGS>),...=<PARAMS>)+
+  <FONCTION1>+
+  ...
+```

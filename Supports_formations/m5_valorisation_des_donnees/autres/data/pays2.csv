@@ -1,0 +1,221 @@
+Country_or_Area_Name,Parent_Country_or_Area_Code,Country_or_Area_Code
+Afghanistan,MDG_SAS,AFG
+Albania,M49_EUR_SE,ALB
+Algeria,M49_AFR_NA,DZA
+Andorra,NA,NA
+Angola,M49_AFR_MA,AGO
+Anguilla,NA,NA
+Antigua and Barbuda,NA,NA
+Argentina,M49_LAC_SA,ARG
+Armenia,M49_ASI_WA,ARM
+Aruba,NA,NA
+Australia,SDG_OCE_ANZ,AUS
+Austria,M49_EUR_WE,AUT
+Azerbaijan,M49_ASI_WA,AZE
+Bahamas,MDG_LAC_CAR,BHS
+Bahrain,M49_ASI_WA,BHR
+Bangladesh,MDG_SAS,BGD
+Barbados,MDG_LAC_CAR,BRB
+Belarus,M49_EUR_EE,BLR
+Belgium,M49_EUR_WE,BEL
+Belize,M49_LAC_CA,BLZ
+Benin,M49_AFR_WA,BEN
+Bermuda,NA,NA
+Bhutan,MDG_SAS,BTN
+Bolivia (Plurinational State of),M49_LAC_SA,BOL
+Bosnia and Herzegovina,M49_EUR_SE,BIH
+Botswana,M49_AFR_SA,BWA
+Brazil,M49_LAC_SA,BRA
+British Virgin Islands,NA,NA
+Brunei Darussalam,MDG_SEAS,BRN
+Bulgaria,M49_EUR_EE,BGR
+Burkina Faso,M49_AFR_WA,BFA
+Burundi,M49_AFR_EA,BDI
+Cabo Verde,M49_AFR_WA,CPV
+Cambodia,MDG_SEAS,KHM
+Cameroon,M49_AFR_MA,CMR
+Canada,M49_NAM,CAN
+Cayman Islands,NA,NA
+Central African Republic,M49_AFR_MA,CAF
+Chad,M49_AFR_MA,TCD
+Chile,M49_LAC_SA,CHL
+"China, Hong Kong SAR",NA,HKG
+"China, Macao Special Administrative Region",M49_ASI_EA,MAC
+"China, People's Republic of",NA,CHN
+Colombia,M49_LAC_SA,COL
+Comoros,M49_AFR_EA,COM
+Congo,M49_AFR_MA,COG
+Cook Islands,NA,NA
+Costa Rica,M49_LAC_CA,CRI
+Côte d'Ivoire,M49_AFR_WA,CIV
+Croatia,M49_EUR_SE,HRV
+Cuba,MDG_LAC_CAR,CUB
+Curaçao,NA,NA
+Cyprus,M49_ASI_WA,CYP
+Czech Republic,NA,CZE
+Democratic People's Republic of Korea,M49_ASI_EA,PRK
+Democratic Republic of the Congo,M49_AFR_MA,COD
+Denmark,M49_EUR_NE,DNK
+Djibouti,M49_AFR_EA,DJI
+Dominica,NA,NA
+Dominican Republic,MDG_LAC_CAR,DOM
+Ecuador,M49_LAC_SA,ECU
+Egypt,M49_AFR_NA,EGY
+El Salvador,M49_LAC_CA,SLV
+Equatorial Guinea,M49_AFR_MA,GNQ
+Eritrea,M49_AFR_EA,ERI
+Estonia,M49_EUR_NE,EST
+Ethiopia,M49_AFR_EA,ETH
+Fiji,M49_OCE_MEL,FJI
+Finland,M49_EUR_NE,FIN
+Former Czechoslovakia,NA,NA
+Former Ethiopia,NA,NA
+Former Netherlands Antilles,NA,NA
+Former Sudan,NA,NA
+Former USSR,NA,NA
+Former Yugoslavia,NA,NA
+France,M49_EUR_WE,FRA
+French Polynesia,NA,NA
+Gabon,M49_AFR_MA,GAB
+Gambia,M49_AFR_WA,GMB
+Georgia,M49_ASI_WA,GEO
+Germany,M49_EUR_WE,DEU
+Ghana,M49_AFR_WA,GHA
+Greece,M49_EUR_SE,GRC
+Greenland,NA,NA
+Grenada,MDG_LAC_CAR,GRD
+Guatemala,M49_LAC_CA,GTM
+Guinea,M49_AFR_WA,GIN
+Guinea-Bissau,M49_AFR_WA,GNB
+Guyana,M49_LAC_SA,GUY
+Haiti,MDG_LAC_CAR,HTI
+Honduras,M49_LAC_CA,HND
+Hungary,M49_EUR_EE,HUN
+Iceland,M49_EUR_NE,ISL
+India,MDG_SAS,IND
+Indonesia,MDG_SEAS,IDN
+"Iran, Islamic Republic of",NA,IRN
+Iraq,M49_ASI_WA,IRQ
+Ireland,M49_EUR_NE,IRL
+Israel,M49_ASI_WA,ISR
+Italy,M49_EUR_SE,ITA
+Jamaica,MDG_LAC_CAR,JAM
+Japan,M49_ASI_EA,JPN
+Jordan,M49_ASI_WA,JOR
+Kazakhstan,M49_ASI_CA,KAZ
+Kenya,M49_AFR_EA,KEN
+Kiribati,M49_OCE_MIC,KIR
+Kosovo,NA,NA
+Kuwait,M49_ASI_WA,KWT
+Kyrgyzstan,M49_ASI_CA,KGZ
+Lao People's Democratic Republic,MDG_SEAS,LAO
+Latvia,M49_EUR_NE,LVA
+Lebanon,M49_ASI_WA,LBN
+Lesotho,M49_AFR_SA,LSO
+Liberia,M49_AFR_WA,LBR
+Libya,M49_AFR_NA,LBY
+Liechtenstein,NA,NA
+Lithuania,M49_EUR_NE,LTU
+Luxembourg,M49_EUR_WE,LUX
+Madagascar,M49_AFR_EA,MDG
+Malawi,M49_AFR_EA,MWI
+Malaysia,MDG_SEAS,MYS
+Maldives,MDG_SAS,MDV
+Mali,M49_AFR_WA,MLI
+Malta,M49_EUR_SE,MLT
+Marshall Islands,NA,NA
+Mauritania,M49_AFR_WA,MRT
+Mauritius,M49_AFR_EA,MUS
+Mexico,M49_LAC_CA,MEX
+Micronesia (Federated States of),M49_OCE_MIC,FSM
+Monaco,NA,NA
+Mongolia,M49_ASI_EA,MNG
+Montenegro,M49_EUR_SE,MNE
+Montserrat,NA,NA
+Morocco,M49_AFR_NA,MAR
+Mozambique,M49_AFR_EA,MOZ
+Myanmar,MDG_SEAS,MMR
+Namibia,M49_AFR_SA,NAM
+Nauru,NA,NA
+Nepal,MDG_SAS,NPL
+Netherlands,M49_EUR_WE,NLD
+New Caledonia,NA,NA
+New Zealand,SDG_OCE_ANZ,NZL
+Nicaragua,M49_LAC_CA,NIC
+Niger,M49_AFR_WA,NER
+Nigeria,M49_AFR_WA,NGA
+Norway,M49_EUR_NE,NOR
+Oman,M49_ASI_WA,OMN
+Pakistan,MDG_SAS,PAK
+Palau,NA,NA
+Panama,M49_LAC_CA,PAN
+Papua New Guinea,M49_OCE_MEL,PNG
+Paraguay,M49_LAC_SA,PRY
+Peru,M49_LAC_SA,PER
+Philippines,MDG_SEAS,PHL
+Poland,M49_EUR_EE,POL
+Portugal,M49_EUR_SE,PRT
+Puerto Rico,MDG_LAC_CAR,PRI
+Qatar,M49_ASI_WA,QAT
+Republic of Korea,M49_ASI_EA,KOR
+Republic of Moldova,M49_EUR_EE,MDA
+Romania,M49_EUR_EE,ROU
+Russian Federation,M49_EUR_EE,RUS
+Rwanda,M49_AFR_EA,RWA
+Saint Kitts and Nevis,NA,NA
+Saint Lucia,MDG_LAC_CAR,LCA
+Saint Vincent and the Grenadines,MDG_LAC_CAR,VCT
+Samoa,M49_OCE_POL,WSM
+San Marino,NA,NA
+Sao Tome and Principe,M49_AFR_MA,STP
+Saudi Arabia,M49_ASI_WA,SAU
+Senegal,M49_AFR_WA,SEN
+Serbia,M49_EUR_SE,SRB
+Seychelles,M49_AFR_EA,SYC
+Sierra Leone,M49_AFR_WA,SLE
+Singapore,MDG_SEAS,SGP
+Sint Maarten (Dutch part),NA,NA
+Slovakia,M49_EUR_EE,SVK
+Slovenia,M49_EUR_SE,SVN
+Solomon Islands,M49_OCE_MEL,SLB
+Somalia,M49_AFR_EA,SOM
+South Africa,M49_AFR_SA,ZAF
+South Sudan,M49_AFR_EA,SSD
+Spain,M49_EUR_SE,ESP
+Sri Lanka,MDG_SAS,LKA
+State of Palestine,M49_ASI_WA,PSE
+Sudan,M49_AFR_NA,SDN
+Suriname,M49_LAC_SA,SUR
+Swaziland,M49_AFR_SA,SWZ
+Sweden,M49_EUR_NE,SWE
+Switzerland,M49_EUR_WE,CHE
+Syrian Arab Republic,M49_ASI_WA,SYR
+Tajikistan,M49_ASI_CA,TJK
+Thailand,MDG_SEAS,THA
+The former Yugoslav Republic of Macedonia,M49_EUR_SE,MKD
+Timor-Leste,MDG_SEAS,TLS
+Togo,M49_AFR_WA,TGO
+Tonga,M49_OCE_POL,TON
+Trinidad and Tobago,MDG_LAC_CAR,TTO
+Tunisia,M49_AFR_NA,TUN
+Turkey,M49_ASI_WA,TUR
+Turkmenistan,M49_ASI_CA,TKM
+Turks and Caicos Islands,NA,NA
+Tuvalu,M49_OCE_POL,TUV
+Uganda,M49_AFR_EA,UGA
+Ukraine,M49_EUR_EE,UKR
+United Arab Emirates,M49_ASI_WA,ARE
+United Kingdom of Great Britain and Northern Ireland,M49_EUR_NE,GBR
+United Republic of Tanzania: Mainland,NA,NA
+United Republic of Tanzania: Zanzibar,NA,NA
+United States,NA,USA
+Uruguay,M49_LAC_SA,URY
+Uzbekistan,M49_ASI_CA,UZB
+Vanuatu,M49_OCE_MEL,VUT
+Venezuela (Bolivarian Republic of),M49_LAC_SA,VEN
+Viet Nam,MDG_SEAS,VNM
+Yemen,M49_ASI_WA,YEM
+Yemen: Former Democratic Yemen,NA,NA
+Yemen: Former Yemen Arab Republic,NA,NA
+Zambia,M49_AFR_EA,ZMB
+Zimbabwe,M49_AFR_EA,ZWE

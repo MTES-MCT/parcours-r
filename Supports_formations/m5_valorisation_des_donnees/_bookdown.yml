@@ -1,0 +1,5 @@
+book_filename: "support-valorisation-des-donnees"
+delete_merged_file: TRUE
+language:
+  ui:
+    chapter_name: "Chapitre "

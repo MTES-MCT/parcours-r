@@ -1,0 +1,233 @@
+# Exercices et corrections
+
+## Exercice 1  
+
+> A partir des données de la table rpls_aggrege_large (dans le data_exercices_formation.RData), créer un nuage de point entre :
+>
+> - le % de parc social de moins de 5 ans; 
+> 
+> - et le pourcentage de logement avec un DPE ges de classe A,B ou C; 
+> 
+> - et une couleur différente pour distinguer les epci de la région PDL.
+
+```{r chap16, eval=T,message=F,warning=F}
+load("data/data_exercices_formation.RData")
+ggplot(data = rpls_aggrege_large  %>% 
+         filter(TypeZone=="Epci")) + 
+  geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
+                 y=DPE_GES_classe_ABC_pourcent,
+                 color=epci_2017_52),
+             alpha=.5,
+             size=.5
+             )
+```
+
+## Exercice 2 
+
+> Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
+> 
+> En modifier le thème:
+> 
+> - Insérer un titre de couleur, en gras, centré par rapport au graphe.
+> - Indiquer la source (ODD) et modifier sa taille
+> - Changer les titres des axes et leurs tailles.
+> - modifier la couleur de fond du graphe
+> - modifier le type de gadrillage (pointillés)
+
+```{r eval=T,message=F,warning=F}
+ggplot(graphique1) +
+  geom_point(aes(x=log(Gross_Domestic_Product_GDP),
+                 y=log(Maternal_mortality_ratio),
+                 color=Continent))+ 
+  labs(title="Croisement du PIB avec le taux de mortalité maternelle", y="Taux de mortalité maternelle", x="Produit Intérieur Brut", caption="Source: ODD")+
+  theme(plot.title=element_text(size=15, 
+                                face="bold", 
+                                color="blue",
+                                hjust=0.5), 
+        plot.caption=element_text(size=15),
+        axis.title.x=element_text(size=15),  
+        axis.title.y=element_text(size=15),
+        panel.background = element_rect(fill = "lightblue",colour = "lightblue",size = 0.5),
+        panel.grid.major = element_line( size=0.5,linetype = "dotted"),
+        panel.grid.minor = element_line( size=0.5,linetype = "dotted"))
+```
+
+
+## Exercice 3
+
+> En réutilisant le graphe obtenu à l'exercice 1, y rajouter:
+> 
+> - une palette brewer pour la couleur;
+> 
+> - la légende en bas;
+> 
+> - des libellés (axes et légende) parlant et un titre.
+
+```{r eval=T,message=F,warning=F}
+ggplot(data = rpls_aggrege_large  %>% 
+         filter(TypeZone=="Epci")) + 
+  geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
+                 y=DPE_GES_classe_ABC_pourcent,
+                 color=epci_2017_52),
+             size=.7
+  )+
+  scale_color_brewer(type=qual,palette="Paired",
+                     labels=c("Autres Epci","Epci de la région Pays de la Loire"))+
+  scale_x_continuous(limits = c(0,40))+
+  scale_y_continuous(limits = c(0,80))+
+  theme(legend.position = "bottom")+
+  labs(title="Répartition des Epci en fonction \nde la part des logements ayant une étiquette A,B,C et de la part du parc récent",
+       x="Part du parc de moins de 5 ans",
+       y="Part des logements ayant une étiquette A,B,C",
+       color="")
+```
+
+## Exercice 4
+
+> Facette sur un diagramme barre avec :
+> 
+> * en variable discrète les régions
+> * en variables continues les indicateurs suivants :
+>     - % de logements de 3 et 4 pièces
+>     - % DPE énergie A,B,C 
+>     - % DPE GES A,B,C
+>     - % de parc de moins de 5 ans
+> * une façon d'identifier la région Pays de la Loire
+
+Pour avoir la liste des modalités dune variable : 
+
+Variables caractères ou factorielles :
+
+```{r exo4, eval=F,message=F,warning=F}
+unique(rpls_aggrege$Indicateur)
+```
+
+Variables factorielles :
+
+```{r eval=F,message=F,warning=F}
+levels(rpls_aggrege$Indicateur)
+```
+
+```{r eval=T,fig.height=8,fig.width=12,message=F,warning=F}
+rpls_aggrege  %>% 
+  filter(TypeZone=="Régions",
+         Indicateur %in% c("3 et 4 pièces_pourcent",
+                           "DPE GES classe ABC_pourcent",
+                           "DPE énergie classe ABC_pourcent",
+                           "Parc de moins de 5 ans_pourcent")) %>% 
+  mutate(Indicateur=fct_recode(Indicateur,
+                             `Logements de 3 et 4 pièces`="3 et 4 pièces_pourcent",
+                             `Logements avec DPE énergie de classe A,B,C`="DPE énergie classe ABC_pourcent",
+                             `Logements avec DPE GES de classe A,B,C`="DPE GES classe ABC_pourcent",
+                             `Logements social de moins de 5 ans`="Parc de moins de 5 ans_pourcent"),
+         r52=ifelse(Reg_2017=="52",1,0)) %>% 
+  ggplot()+
+  #On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence
+  geom_bar(aes(x=nReg_2017,weight=Valeur,fill=Indicateur,alpha=r52))+
+  coord_flip()+
+  theme_ipsum()+
+  scale_fill_ipsum()+
+  #On défini les valeurs maximum et minimum de transparence que l'on veut voir
+  scale_alpha_continuous(range=c(.65,1))+
+  facet_wrap(~Indicateur)+
+  theme(legend.position="none")+
+  labs(title="mon premier facet",y="En % du parc social",x="")
+```
+
+## Exercice 5
+
+> Produire une carte du Loiret  à l'EPCI du taux de logements collectifs dans le parc locatif social.
+
+```{r eval=T,message=F,warning=F}
+tt<-Carte_EPCI_France %>% 
+  filter(CODE_DEPT=="45") %>% 
+  left_join(rpls_aggrege) %>% 
+  filter(Indicateur=="Logements collectifs_pourcent")
+ggplot(data=tt)+
+  geom_sf(aes(fill=Valeur))+
+  labs(title="Taux de logements collectifs par EPCI",subtitle="Département du Loiret")+
+  theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank())
+```
+
+
+## Exercice 6
+
+
+Produire le nuage de point du croisement de la part des logements ayant une étiquette A,B,C en fonction de la part du parc récent.
+Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
+
+
+```{r exo6, eval=T,message=F,warning=F}
+rpls<-rpls_aggrege_large %>% 
+  filter(nReg_2017=="Centre-Val de Loire") %>% 
+  mutate(nDep_2017=fct_drop(nDep_2017))
+
+anim<-ggplot(data =rpls ) + 
+  geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
+                 y=DPE_GES_classe_ABC_pourcent))+
+  labs(title="Croisement de la part des logements ayant une étiquette A,B,C \n en fonction de la part du parc récent",
+       subtitle="En {closest_state}",
+       x="Part du parc de moins de 5 ans",
+       y="Part des logements ayant une étiquette A,B,C",
+       color="")+
+  transition_states(states=nDep_2017,
+                    transition_length = 1,
+                    state_length = 2)
+anim
+
+```
+
+
+
+## Exercice 7
+
+
+Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en 
+fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
+
+Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées
+
+```{r eval=T}
+library(highcharter)
+hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
+                              y=Maternal_mortality_ratio,
+                              color=Continent)) %>%
+  hc_plotOptions(series=list(shadow='false')) %>% 
+  hc_tooltip(
+    pointFormat = '<b>{point.Continent}</b><br/><b>{point.Parent_Zone_libelle}</b><br/>PIB de {point.x} un taux de mortalié maternelle de {point.y} (pour 100 000 naissances)'
+  )
+
+
+```
+
+
+
+## Exercice 8
+
+
+Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
+
+```{r exo8, eval=T}
+rpls_DEP_R24  <- rpls_aggrege_large %>% 
+  filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
+  group_by(TypeZone,Zone) %>% 
+  summarise(Logements_collectifs=sum(Logements_collectifs),
+            Logements_individuels=sum(Logements_individuels)) %>% 
+  arrange(TypeZone,Zone) %>% 
+  ungroup() %>% 
+  select(-TypeZone) %>% 
+  setNames(c("Zone","Nombre de logements collectifs","Nombre de logements individuels")) %>% 
+  kable("html",caption="Chiffres clés RPLS") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  row_spec(7, bold = T, color = "white", background = "grey")
+rpls_DEP_R24
+```
+
+
+
+
+
+

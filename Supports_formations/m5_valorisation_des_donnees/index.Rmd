@@ -1,0 +1,71 @@
+--- 
+title: "Valoriser ses données avec R"
+author: "Maël Theulière - Murielle Lethrosne"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Le support de la formation sur la valorisation des données sous R"
+---
+
+# Introduction
+
+```{r setup, echo=F,eval=T,include=FALSE}
+knitr::opts_chunk$set(echo=TRUE,eval=TRUE,warning = FALSE,message = FALSE)
+load("data/data_exercices_formation.RData")
+load("data/ODD.RData")
+
+library(ggplot2)
+library(tidyverse)
+library(hrbrthemes)
+library(stringr)
+library(purrr)
+library(sf)
+library(tmap)
+library(viridis)
+library(scales)
+library(tmaptools)
+library(highcharter)
+library(leaflet)
+library(cowplot)
+library(waffle)
+library(glue)
+library(gganimate)
+```
+
+
+![](pic/data-visualization-660x330.jpg){#id .class width=800}
+
+Ce module va vous permettre de découvrir un ensemble de méthodes sous R afin de valoriser vos données. 
+Valoriser ces données, ça veut dire créer : 
+
+- Des tableaux
+
+- Des graphiques
+
+- Des cartes
+
+- Des publications à partir de tout cela
+
+- Des applications web à partir de tout cela
+
+
+R permet de faire tout cela.
+
+Et le plus important, il permet de le faire de façon reproductible.
+
+C'est à dire qu'un programme bien conçu permet d'être reproduit 
+
+- par une autre personne 
+
+- à partir des mêmes données mises à jour.
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown','ggplot2'
+), 'packages.bib')
+```

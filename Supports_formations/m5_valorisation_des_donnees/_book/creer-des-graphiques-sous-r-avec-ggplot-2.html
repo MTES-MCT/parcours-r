@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Valoriser ses données avec R</title>
+  <meta name="description" content="Le support de la formation sur la valorisation des données sous R">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Valoriser ses données avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Valoriser ses données avec R" />
+  
+  <meta name="twitter:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+<meta name="author" content="Maël Theulière - Murielle Lethrosne">
+
+
+<meta name="date" content="2018-06-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="un-typologie-des-representations-graphiques.html">
+<link rel="next" href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Valoriser ses données avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="un-typologie-des-representations-graphiques.html"><a href="un-typologie-des-representations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Un typologie des représentations graphiques</a></li>
+<li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
+<li class="chapter" data-level="3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html"><i class="fa fa-check"></i><b>3</b> Créer des graphiques sous R avec ggplot 2</a><ul>
+<li class="chapter" data-level="3.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#presentation-du-package-ggplot"><i class="fa fa-check"></i><b>3.1</b> Présentation du package ggplot</a></li>
+<li class="chapter" data-level="3.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#ggplot-2-les-concepts-clefs"><i class="fa fa-check"></i><b>3.3</b> ggplot 2 : les concepts clefs</a></li>
+<li class="chapter" data-level="3.4" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#le-mapping"><i class="fa fa-check"></i><b>3.4</b> Le mapping</a></li>
+<li class="chapter" data-level="3.5" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-autres-parametres"><i class="fa fa-check"></i><b>3.5</b> Les “autres” paramètres</a></li>
+<li class="chapter" data-level="3.6" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-formes-geometriques"><i class="fa fa-check"></i><b>3.6</b> Les formes géométriques</a></li>
+<li class="chapter" data-level="3.7" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-fonctions-statistiques"><i class="fa fa-check"></i><b>3.7</b> Les fonctions statistiques ????</a></li>
+<li class="chapter" data-level="3.8" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#lhabillage-simple"><i class="fa fa-check"></i><b>3.8</b> L’habillage simple</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#titre-et-libelle-des-axes"><i class="fa fa-check"></i><b>3.8.1</b> Titre et libellé des axes</a></li>
+<li class="chapter" data-level="3.8.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#annotation"><i class="fa fa-check"></i><b>3.8.2</b> Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-themes"><i class="fa fa-check"></i><b>3.9</b> Les thèmes</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-fonctions-element"><i class="fa fa-check"></i><b>3.9.1</b> Les fonctions “élément”</a></li>
+<li class="chapter" data-level="3.9.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-composantes"><i class="fa fa-check"></i><b>3.9.2</b> Les composantes</a></li>
+<li class="chapter" data-level="3.9.3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#quelques-exemples"><i class="fa fa-check"></i><b>3.9.3</b> Quelques exemples</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-scales"><i class="fa fa-check"></i><b>3.10</b> Les scales</a></li>
+<li class="chapter" data-level="3.11" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#la-mise-en-page-de-plusieurs-graphiques"><i class="fa fa-check"></i><b>3.11</b> La mise en page de plusieurs graphiques</a></li>
+<li class="chapter" data-level="3.12" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#les-facettes"><i class="fa fa-check"></i><b>3.12</b> Les facettes</a></li>
+<li class="chapter" data-level="3.13" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#sauvergarder-un-graphique"><i class="fa fa-check"></i><b>3.13</b> Sauvergarder un graphique</a></li>
+<li class="chapter" data-level="3.14" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#premier-exemple-le-nuage-de-point"><i class="fa fa-check"></i><b>3.14</b> Premier exemple : le nuage de point</a></li>
+<li class="chapter" data-level="3.15" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#representation-dune-variable-continue"><i class="fa fa-check"></i><b>3.15</b> Représentation d’une variable continue</a><ul>
+<li class="chapter" data-level="3.15.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#courbe-de-densite"><i class="fa fa-check"></i><b>3.15.1</b> courbe de densité</a></li>
+<li class="chapter" data-level="3.15.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#histogramme"><i class="fa fa-check"></i><b>3.15.2</b> histogramme</a></li>
+<li class="chapter" data-level="3.15.3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#graph-de-point"><i class="fa fa-check"></i><b>3.15.3</b> graph de point</a></li>
+</ul></li>
+<li class="chapter" data-level="3.16" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#representation-dune-variable-discrete"><i class="fa fa-check"></i><b>3.16</b> Représentation d’une variable discrète</a><ul>
+<li class="chapter" data-level="3.16.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#camembert"><i class="fa fa-check"></i><b>3.16.1</b> camembert</a></li>
+<li class="chapter" data-level="3.16.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#waffle"><i class="fa fa-check"></i><b>3.16.2</b> waffle</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#representation-de-deux-variables-continues"><i class="fa fa-check"></i><b>3.17</b> Représentation de deux variables continues</a><ul>
+<li class="chapter" data-level="3.17.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#nuage-de-points"><i class="fa fa-check"></i><b>3.17.1</b> Nuage de points</a></li>
+<li class="chapter" data-level="3.17.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#ligne"><i class="fa fa-check"></i><b>3.17.2</b> Ligne</a></li>
+<li class="chapter" data-level="3.17.3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#carte-de-chaleur-en-2-dimensions"><i class="fa fa-check"></i><b>3.17.3</b> Carte de chaleur en 2 dimensions</a></li>
+<li class="chapter" data-level="3.17.4" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#segments"><i class="fa fa-check"></i><b>3.17.4</b> Segments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.18" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#representation-dune-variable-discrete-et-dune-variable-continue"><i class="fa fa-check"></i><b>3.18</b> Représentation d’une variable discrete et d’une variable continue</a><ul>
+<li class="chapter" data-level="3.18.1" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#boite-a-moustache"><i class="fa fa-check"></i><b>3.18.1</b> boite à moustache</a></li>
+<li class="chapter" data-level="3.18.2" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#jitter-chart"><i class="fa fa-check"></i><b>3.18.2</b> jitter chart</a></li>
+<li class="chapter" data-level="3.18.3" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#violin-chart"><i class="fa fa-check"></i><b>3.18.3</b> violin chart</a></li>
+<li class="chapter" data-level="3.18.4" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#le-diagramme-barre"><i class="fa fa-check"></i><b>3.18.4</b> Le diagramme barre</a></li>
+<li class="chapter" data-level="3.18.5" data-path="creer-des-graphiques-sous-r-avec-ggplot-2.html"><a href="creer-des-graphiques-sous-r-avec-ggplot-2.html#le-graphique-lollipop"><i class="fa fa-check"></i><b>3.18.5</b> Le graphique lollipop</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><i class="fa fa-check"></i><b>4</b> Créer des cartes avec ggplot2, tmap et Cartographie</a><ul>
+<li class="chapter" data-level="4.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#faire-des-cartes-avec-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Faire des cartes avec ggplot2</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-choroplethe"><i class="fa fa-check"></i><b>4.1.1</b> Les cartes choroplèthe</a></li>
+<li class="chapter" data-level="4.1.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-a-ronds-proportionnels"><i class="fa fa-check"></i><b>4.1.2</b> Les cartes à ronds proportionnels</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-avec-tmap"><i class="fa fa-check"></i><b>4.2</b> Les cartes avec Tmap</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-choroplethe"><i class="fa fa-check"></i><b>4.2.1</b> Exemple de carte choroplèthe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-a-ronds-proportionnels"><i class="fa fa-check"></i><b>4.2.2</b> Exemple de carte à ronds proportionnels</a></li>
+<li class="chapter" data-level="4.2.3" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemples-de-cartes-avec-facet"><i class="fa fa-check"></i><b>4.2.3</b> Exemples de cartes avec facet</a></li>
+<li class="chapter" data-level="4.2.4" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#gestion-des-palettes"><i class="fa fa-check"></i><b>4.2.4</b> gestion des palettes</a></li>
+<li class="chapter" data-level="4.2.5" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#la-mise-en-page"><i class="fa fa-check"></i><b>4.2.5</b> La mise en page</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html"><i class="fa fa-check"></i><b>5</b> Créer des graphiques et cartes pour le web</a><ul>
+<li class="chapter" data-level="5.1" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#highcharter"><i class="fa fa-check"></i><b>5.1</b> Highcharter</a></li>
+<li class="chapter" data-level="5.2" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#les-cartes-leaflet"><i class="fa fa-check"></i><b>5.2</b> Les cartes Leaflet</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i><b>6</b> ressources</a><ul>
+<li class="chapter" data-level="6.1" data-path="ressources.html"><a href="ressources.html#dataviz"><i class="fa fa-check"></i><b>6.1</b> dataviz</a></li>
+<li class="chapter" data-level="6.2" data-path="ressources.html"><a href="ressources.html#ggplot2"><i class="fa fa-check"></i><b>6.2</b> ggplot2</a></li>
+<li class="chapter" data-level="6.3" data-path="ressources.html"><a href="ressources.html#tmap"><i class="fa fa-check"></i><b>6.3</b> tmap</a></li>
+<li class="chapter" data-level="6.4" data-path="ressources.html"><a href="ressources.html#highcharter-1"><i class="fa fa-check"></i><b>6.4</b> highcharter</a></li>
+<li class="chapter" data-level="6.5" data-path="ressources.html"><a href="ressources.html#kable-et-kableextra"><i class="fa fa-check"></i><b>6.5</b> kable et kableExtra</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="exercices-et-correction.html"><a href="exercices-et-correction.html"><i class="fa fa-check"></i><b>7</b> Exercices et correction</a><ul>
+<li class="chapter" data-level="7.1" data-path="exercices-et-correction.html"><a href="exercices-et-correction.html#exercice-1"><i class="fa fa-check"></i><b>7.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="7.2" data-path="exercices-et-correction.html"><a href="exercices-et-correction.html#exercice-2"><i class="fa fa-check"></i><b>7.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="7.3" data-path="exercices-et-correction.html"><a href="exercices-et-correction.html#exercice-3"><i class="fa fa-check"></i><b>7.3</b> Exercice 3</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Valoriser ses données avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="creer-des-graphiques-sous-r-avec-ggplot-2" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Créer des graphiques sous R avec ggplot 2</h1>
+<div id="presentation-du-package-ggplot" class="section level2">
+<h2><span class="header-section-number">3.1</span> Présentation du package ggplot</h2>
+<ul>
+<li><p><a href="http://ggplot2.tidyverse.org/">ggplot 2</a> est un package créé par Hadley Wickham et Winston Chang pour implémenter dans R la vision développée par Leland Wilkinson dans <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl?ie=UTF8&amp;qid=1477928463&amp;sr=8-1&amp;keywords=the+grammar+of+graphics&amp;linkCode=sl1&amp;tag=ggplot2-20&amp;linkId=f0130e557161b83fbe97ba0e9175c431">The Grammar of Graphics (Statistics and Computing)</a> de la conception de graphiques.</p></li>
+<li><p>Le but est de fournir une approche unique pour produire quasiment <strong>toute valorisation graphique</strong> de données que l’on peut trouver dans des revues scientifiques, les journaux, dans l’analyse statisque ou la data visualisation.</p></li>
+<li><p>Ce Package aujourd’hui s’inscrit dans R dans le <strong>framework tidyverse</strong> qui propose une approche cohérente entre l’importation et la préparationdes données, leur analyse et leur valorisation.</p></li>
+</ul>
+</div>
+<div id="tidyverse" class="section level2">
+<h2><span class="header-section-number">3.2</span> Tidyverse</h2>
+<div class="figure">
+<img src="pic/tidyverse.png" title="le tidyverse" alt="le tidyverse" id="id" class="class" width="800" />
+<p class="caption">le tidyverse</p>
+</div>
+</div>
+<div id="ggplot-2-les-concepts-clefs" class="section level2">
+<h2><span class="header-section-number">3.3</span> ggplot 2 : les concepts clefs</h2>
+<p>Pour construire un graphique avec ggplot il va falloir lui définir plusieurs éléments :</p>
+<ul>
+<li><p><strong>la donnée</strong> : ggplot2 permet de travailler sur des vecteurs, des dataframes, des tibbles, ou des données spatiales ;</p></li>
+<li><p>le <strong>mapping</strong> : on définit dans l’aesthetic (ou aes) le <strong>mapping</strong>, c’est à dire ce que l’on veut représenter qui <strong>dépend des variables</strong> (quelle variable sur l’axe x, sur l’axe y, quelle variable pour définir une graduation de couleurs…) ;</p></li>
+<li><p>les <strong>paramètres</strong> : on définit les autres paramètres qui dépendent de constantes (par exemple : je veux utiliser que toutes mes lignes soient rouge ou de taille 2 pixels) ;</p></li>
+<li><p>le <strong>layer (“forme géométrique”)</strong> : on définie sous quelle représentation graphique on représente les paramètres précédents. Sous ggplot, ces fonctions sont de la forme geom_XX ;</p></li>
+</ul>
+<p>L’écriture type d’un graphique sera donc:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="er">&lt;</span>FORME_GEO<span class="op">&gt;</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>),<span class="dt">...=</span><span class="op">&lt;</span>PARAMS<span class="op">&gt;</span>)</code></pre></div>
+<p>On va ensuite pouvoir à partir de cette base pour enrichir avec des fonctions supplémentaires. Chaque fonction s’enchaine avec des <strong>+</strong> comme les pipe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="er">&lt;</span>FORME_GEO<span class="op">&gt;</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>),<span class="dt">...=</span><span class="op">&lt;</span>PARAMS<span class="op">&gt;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="er">&lt;</span>FONCTION1<span class="op">&gt;+</span>
+<span class="st">  </span>...</code></pre></div>
+</div>
+<div id="le-mapping" class="section level2">
+<h2><span class="header-section-number">3.4</span> Le mapping</h2>
+<p>Dans l’exemple qui suit, la représentation géographique utilisée est le nuage de point <strong>geom_point</strong>. D’autres types de représentations géographiques sont présentés dans la partie suivante.</p>
+<p>L’aesthetic sert à identifier les variables que l’on souhaite représenter. Par exemple, si l’on souhaite représenter le taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>De plus, la fonction <strong>aes</strong> admet d’autres arguments qui permettent de modifier l’apparence du graphique selon une 3ème variable du jeu de données. <strong>colour</strong> : la couleur, <strong>shape</strong> : la forme, <strong>size</strong> : la taille, <strong>alpha</strong> : la transparence, <strong>fill</strong> : le remplissage ;</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">colour=</span>Continent))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="les-autres-parametres" class="section level2">
+<h2><span class="header-section-number">3.5</span> Les “autres” paramètres</h2>
+<p>Il est possible de spécifier des paramètres qui seront valables pour l’ensemble du graphique. On retrouve entre autre les mêmes paramètres que proposés dans l’aes mais il faut alors les passer <strong>en dehors de l’aesthetic</strong>.</p>
+<p>Par exemple si l’on souhaite modifier la transparance et la taille de l’ensemble des points du graphique précédent:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">colour=</span>Continent),
+             <span class="dt">alpha=</span><span class="fl">0.5</span>,<span class="dt">size=</span><span class="fl">1.9</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>De même si l’on souhaite modifier la couleur générale:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio),
+             <span class="dt">color=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="les-formes-geometriques" class="section level2">
+<h2><span class="header-section-number">3.6</span> Les formes géométriques</h2>
+<p>Pour spécifier le type de représentation que l’on souhaite, il faut utiliser les fonctions de la forme <strong>geom_XX</strong></p>
+<p>Le tableau ci-dessous présente quelques représentations graphiques classiques. Il en existe un grand nombre que l’on peut retrouver grâce à l’aide</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;^geom_&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;ggplot2&quot;</span>) </code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>GEOM</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>geom_point()</td>
+<td>Nuage de points</td>
+</tr>
+<tr class="even">
+<td>geom_line()</td>
+<td>Ligne</td>
+</tr>
+<tr class="odd">
+<td>geom_bar()</td>
+<td>Diagramme en barres</td>
+</tr>
+<tr class="even">
+<td>geom_histogram()</td>
+<td>Histogramme</td>
+</tr>
+<tr class="odd">
+<td>geom_boxplot()</td>
+<td>Boîte à moustaches</td>
+</tr>
+<tr class="even">
+<td>geom_density()</td>
+<td>Courbe de densité</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">     </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(Continent))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP)))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP)))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="les-fonctions-statistiques" class="section level2">
+<h2><span class="header-section-number">3.7</span> Les fonctions statistiques ????</h2>
+</div>
+<div id="lhabillage-simple" class="section level2">
+<h2><span class="header-section-number">3.8</span> L’habillage simple</h2>
+<div id="titre-et-libelle-des-axes" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> Titre et libellé des axes</h3>
+<p>Chaque nouvel élément graphique est à rajouter sous forme de layer, ici nous utilisons la fonction <strong>labs</strong> qui permet de labelliser tout les éléments possibles de l’aesthétic, ainsi que le titre (<em>title</em>), le sous titre (<em>subtitle</em>) et le bas de page (<em>caption</em>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-12-1.png" width="960" /></p>
+<p>A noter qu’il existe plusieurs autres façon de spécifier ces élèments par des couches spécifiques: ggtitle, xlab, ylab,…</p>
+</div>
+<div id="annotation" class="section level3">
+<h3><span class="header-section-number">3.8.2</span> Annotation</h3>
+<p>Il est aussi possible de rajouter des annotations de type texte, par exemple, “à la volée”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">6</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">label =</span> <span class="st">&quot;je rajoute mon texte&quot;</span>,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-13-1.png" width="960" /></p>
+<p>La fonction <strong>annotate</strong> permet aussi d’ajouter d’autre type d’annotation comme par exemple des rectangles:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span>
+<span class="st">   </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin =</span> <span class="dv">10</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>,<span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,<span class="dt">alpha=</span><span class="fl">0.2</span>)<span class="op">+</span>
+<span class="st">   </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="dv">2</span>,<span class="dt">fill=</span><span class="st">&quot;green&quot;</span>,<span class="dt">alpha=</span><span class="fl">0.2</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-14-1.png" width="960" /></p>
+</div>
+</div>
+<div id="les-themes" class="section level2">
+<h2><span class="header-section-number">3.9</span> Les thèmes</h2>
+<p>Pour modifier simplement la position de la légende,c’est la fonction <a href="http://ggplot2.tidyverse.org/reference/theme.html">theme()</a> qu’il faut utiliser. <strong><em>theme</em></strong> permet de créer des templates, c’est à dire de définir tout ce qui n’est pas lié directement aux données sur un graphique, notamment:</p>
+<ul>
+<li><p>la position, taille,couleur,police des éléments textuel</p></li>
+<li><p>la couleur des grilles primaires et secondaires du graphique</p></li>
+</ul>
+<p>Il existe des <a href="http://ggplot2.tidyverse.org/reference/index.html#section-themes">thèmes prédéfinis</a> dans ggplot que l’on peut déjà utiliser. Par exemple: theme_classic(), theme_bw(), theme_dark(), …</p>
+<p>Des packages externe permettent d’enrichir cette collection de thèmes, par exemple ggthemes ou hrbethemes.</p>
+<p>Lorsque l’on souhaite garder une cohérence entre plusieurs graphique, le mieux est d’en définir un à part pour l’appeler ensuite.</p>
+<div id="les-fonctions-element" class="section level3">
+<h3><span class="header-section-number">3.9.1</span> Les fonctions “élément”</h3>
+<p>Elle utilise 4 types de fonctions:</p>
+<ul>
+<li><strong><em>element_text()</em></strong> : pour toutes les étiquettes</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>family</td>
+<td>la famille de la police</td>
+</tr>
+<tr class="even">
+<td>face</td>
+<td>le type de police (“plain”, “italic”, “bold”, “bold.italic”)</td>
+</tr>
+<tr class="odd">
+<td>colour</td>
+<td>couleur</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>taille en points</td>
+</tr>
+<tr class="odd">
+<td>hjust</td>
+<td>justification horizontale, dans [0, 1]</td>
+</tr>
+<tr class="even">
+<td>vjust</td>
+<td>justification verticale, dans [0, 1]</td>
+</tr>
+<tr class="odd">
+<td>angle</td>
+<td>angle, dans [0, 360]</td>
+</tr>
+<tr class="even">
+<td>lineheight</td>
+<td>hauteur de ligne (pour l’espacement entre les lignes)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_rect()</em></strong> : pour les fonds et les cadres,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fill</td>
+<td>la couleur de remplissage</td>
+</tr>
+<tr class="even">
+<td>colour</td>
+<td>la couleur de la bordure</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>la taille de la bordure</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, “twodash)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_line()</em></strong> : pour toutes les lignes tracées,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>colour</td>
+<td>la couleur de ligne</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>la taille</td>
+</tr>
+<tr class="odd">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”,“longdash”, “twodash)</td>
+</tr>
+<tr class="even">
+<td>lineend</td>
+<td>le type de fin de ligne (“round”, “butt” ou “square”)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_blank()</em></strong> : permet de ne rien dessiner.</li>
+</ul>
+</div>
+<div id="les-composantes" class="section level3">
+<h3><span class="header-section-number">3.9.2</span> Les composantes</h3>
+<p>Il s’agit des différents éléments modifiables dans le thème. Par exemple:</p>
+<p><strong>Axes</strong> axis.line, axis.text.x, axis.text.y, axis.ticks, axis.title.x, axis.title.y,…</p>
+<p><strong>Légende</strong> legend.background, legend.key, legend.text, legend.title,…</p>
+<p><strong>Fond de graphe</strong> panel.background, panel.border, panel.grid.major, panel.grid.minor,…</p>
+<p>etc</p>
+</div>
+<div id="quelques-exemples" class="section level3">
+<h3><span class="header-section-number">3.9.3</span> Quelques exemples</h3>
+<ul>
+<li>Changer le fond du graphique <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;Lavender&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-15-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence du quadrillage <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-16-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence des étiquettes des axes <strong><em>axis_xxx()</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">angle =</span> <span class="dv">45</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-17-1.png" width="960" /></p>
+<p>Certains changements de paramètres ne nécessitent pas l’utilisation de fonction <strong><em>element_()</em></strong> . Par exemple, pour changer la position de la légende <strong><em>legend.xxx()</em></strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;left&quot;</span>,<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
+</div>
+</div>
+<div id="les-scales" class="section level2">
+<h2><span class="header-section-number">3.10</span> Les scales</h2>
+<p>Les fonctions <strong>scales</strong> permettent globalement de paramétrer les éléments rentrées dans l’aesthétic :</p>
+<ul>
+<li><p>Si je veux un gradient de couleur fonction d’une variable continue : quelle palette de couleur je choisie, comment je cale mon dégradée en fonction de cette variable continue ?</p></li>
+<li><p>Si je met une variable continue en ordonnée, comment je définie le minimum et maximum de cette axe, sa position, les valeurs que j’affiche sur l’échelle…</p></li>
+</ul>
+<p>L’ensemble des scales possibles peuvent se décrire sous forme suivante:</p>
+<p>scale_xx_yy</p>
+<p>ou xx peut être un des paramètre de l’aesthétic :</p>
+<table>
+<thead>
+<tr class="header">
+<th>xx</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>alpha</td>
+<td>transparence</td>
+</tr>
+<tr class="even">
+<td>color</td>
+<td>couleur des lignes ou des points</td>
+</tr>
+<tr class="odd">
+<td>fill</td>
+<td>couleurs des aires</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>type de ligne (continue,pointillée,…)</td>
+</tr>
+<tr class="odd">
+<td>shape</td>
+<td>forme des points</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>aire des points</td>
+</tr>
+<tr class="odd">
+<td>x</td>
+<td>variable de l’axe x</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td>variable de l’axe y</td>
+</tr>
+</tbody>
+</table>
+<p>Et y un type de paramétrage :</p>
+<table style="width:62%;">
+<colgroup>
+<col width="25%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>yy</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>continuous</td>
+<td>gérer les variables continue</td>
+</tr>
+<tr class="even">
+<td>discrete</td>
+<td>gérer les variables discrètes</td>
+</tr>
+<tr class="odd">
+<td>date</td>
+<td>gérer une variable au format date</td>
+</tr>
+<tr class="even">
+<td>reverse</td>
+<td>inverser l’axe</td>
+</tr>
+<tr class="odd">
+<td>log</td>
+<td>convertire l’échelle d’une variable continue en échelle logarithmique</td>
+</tr>
+<tr class="even">
+<td>log10</td>
+<td>convertire l’échelle d’une variable continue en échelle logarithmique décimale</td>
+</tr>
+<tr class="odd">
+<td>viridis</td>
+<td>utiliser une palette de couleur viridis</td>
+</tr>
+<tr class="even">
+<td>brewer</td>
+<td>utiliser une palette de couleur brewer (variable discrète)</td>
+</tr>
+<tr class="odd">
+<td>distiller</td>
+<td>utiliser une palette de couleur brewer (variable continue)</td>
+</tr>
+<tr class="even">
+<td>gradient</td>
+<td>utiliser un gradient de 2 couleurs</td>
+</tr>
+<tr class="odd">
+<td>gradient2</td>
+<td>utiliser un gradient divergent de 3 couleurs</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Un exemple d’usage, par exemple on peut exploiter une fonction scale pour définir une échelle logarithimique sur un axe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                 <span class="dt">y=</span>Maternal_mortality_ratio,
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_log10</span>()</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="la-mise-en-page-de-plusieurs-graphiques" class="section level2">
+<h2><span class="header-section-number">3.11</span> La mise en page de plusieurs graphiques</h2>
+<p>Le package cowplot permet la combinaison de plusieurs graphiques. Il est composé de plusieurs fonctions.</p>
+<ul>
+<li>le fonction <strong>plot_grid</strong> qui permet de disposer <strong><em>n</em></strong> graphes sur <strong><em>i</em></strong> colonnes et <strong><em>j</em></strong> lignes</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gg1&lt;-<span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                 <span class="dt">y=</span>Maternal_mortality_ratio))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_log10</span>()
+
+gg2&lt;-<span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP))
+               )
+
+<span class="kw">plot_grid</span>(gg1,gg2, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<ul>
+<li>le fonction <strong>draw_plot</strong> associée à <strong>ggdraw</strong> qui permet de disposer les graphiques à des places spécifiques</li>
+</ul>
+<p>ggdraw initialise le graphique</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gg1&lt;-<span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                 <span class="dt">y=</span>Maternal_mortality_ratio))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_log10</span>()
+
+gg2&lt;-<span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP))
+               )
+
+gg3&lt;-<span class="kw">ggplot</span>(graphique1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(<span class="dv">1</span>), <span class="dt">fill =</span> <span class="kw">factor</span>(Continent))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">&quot;y&quot;</span>)
+
+<span class="kw">ggdraw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">draw_plot</span>(gg1, <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span>.<span class="dv">5</span>, <span class="dt">width=</span><span class="dv">1</span>, <span class="dt">height=</span>.<span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">draw_plot</span>(gg2, <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span><span class="dv">0</span>, <span class="dt">width=</span>.<span class="dv">4</span>, <span class="dt">height=</span>.<span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">draw_plot</span>(gg3, <span class="dt">x=</span><span class="fl">0.4</span>, <span class="dt">y=</span><span class="dv">0</span>, <span class="dt">width=</span><span class="fl">0.6</span>, <span class="dt">height=</span>.<span class="dv">5</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+<div id="les-facettes" class="section level2">
+<h2><span class="header-section-number">3.12</span> Les facettes</h2>
+<p>Lorsque l’on veut pouvoir réaliser un graphique pour plusieurs sous ensemble, les facettes sont alors très utiles. On va ici l’illustrer avec la réalisation du même graphique ci dessus mais pour plusieurs années différentes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indicateur311 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Type_Zone <span class="op">!=</span><span class="st"> &quot;Pays&quot;</span>,
+         Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,
+         Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,
+         Location<span class="op">==</span><span class="st">&quot;Total (national level)&quot;</span>,
+         <span class="kw">is.na</span>(Value_type)
+         ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2005</span>,<span class="dv">2010</span>,<span class="dv">2015</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Country_or_Area_Name,<span class="dt">weight=</span>Value,<span class="dt">fill=</span>Country_or_Area_Name))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle sur quelques zones du globe&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Zone&quot;</span>,
+       <span class="dt">fill=</span><span class="st">&quot;Zone&quot;</span>
+  )<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Year)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-23-1.png" width="768" /></p>
+<p>L’exemple pris ici “scinde” notre table en fonction d’une seule variable, mais on peut le faire sur plusieurs variables également.</p>
+<p>On peut choisir avec facet_wrap : - le nombre de colonnes ou de ligne sur lesquel on veut voir s’afficher le graphique - si on veut fixer l’échelle de l’un ou l’autre des axes ou les deux</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indicateur311 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Type_Zone <span class="op">!=</span><span class="st"> &quot;Pays&quot;</span>,
+         Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,
+         Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,
+         Location<span class="op">==</span><span class="st">&quot;Total (national level)&quot;</span>,
+         <span class="kw">is.na</span>(Value_type)
+         ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2005</span>,<span class="dv">2010</span>,<span class="dv">2015</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Country_or_Area_Name,<span class="dt">weight=</span>Value,<span class="dt">fill=</span>Country_or_Area_Name))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle sur quelques zones du globe&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Zone&quot;</span>,
+       <span class="dt">fill=</span><span class="st">&quot;Zone&quot;</span>
+  )<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Year,<span class="dt">ncol=</span><span class="dv">4</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-24-1.png" width="1152" /></p>
+</div>
+<div id="sauvergarder-un-graphique" class="section level2">
+<h2><span class="header-section-number">3.13</span> Sauvergarder un graphique</h2>
+<p>Pour sauvegarder un graphique, ggplot contient une fonction <strong><em>ggsave()</em></strong> permet d’exporter nos graphiques au format image dans les formats suivants : eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg or wmf</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p&lt;-indicateur311 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Type_Zone <span class="op">!=</span><span class="st"> &quot;Pays&quot;</span>,
+         Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,
+         Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,
+         Location<span class="op">==</span><span class="st">&quot;Total (national level)&quot;</span>,
+         <span class="kw">is.na</span>(Value_type)
+         ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">2005</span>,<span class="dv">2010</span>,<span class="dv">2015</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Country_or_Area_Name,<span class="dt">weight=</span>Value,<span class="dt">fill=</span>Country_or_Area_Name))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle sur quelques zones du globe&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Zone&quot;</span>,
+       <span class="dt">fill=</span><span class="st">&quot;Zone&quot;</span>
+  )<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Year,<span class="dt">ncol=</span><span class="dv">4</span>)
+<span class="kw">ggsave</span>(<span class="st">&quot;mon_premier_graphique.svg&quot;</span>,p,<span class="dt">width=</span><span class="dv">12</span>,<span class="dt">height =</span> <span class="dv">5</span>)</code></pre></div>
+</div>
+<div id="premier-exemple-le-nuage-de-point" class="section level2 smallest">
+<h2><span class="header-section-number">3.14</span> Premier exemple : le nuage de point</h2>
+<p>Un nuage de points prend sous sa forme la plus simple deux variables continue en paramètre pour les axes x et y.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Le résultat d’un ggplot est un objet que l’on peut manipuler ensuite :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+</div>
+<div id="representation-dune-variable-continue" class="section level2">
+<h2><span class="header-section-number">3.15</span> Représentation d’une variable continue</h2>
+<div id="courbe-de-densite" class="section level3">
+<h3><span class="header-section-number">3.15.1</span> courbe de densité</h3>
+<p>La courbe de densité permet de visualiser la distribution des observations suivant la variable d’intérêt.</p>
+<p>La fonction géométrique : <strong><em>geom_density()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_density() :</p>
+<p><em>x, y, couleur, remplissage, taille, transparence, groupe, le type de ligne, la pondération</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP))
+               )</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="histogramme" class="section level3">
+<h3><span class="header-section-number">3.15.2</span> histogramme</h3>
+<p>L’histograme est une visualisation alternative à la coubre de densité. Suivant un intervale définis, le graphique va lister le nombre d’observations retrouvées sur cette intervalle, ce nombre prenant la forme d’une barre.</p>
+<p>La fonction géométrique : <strong><em>geom_histogram()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_dotplot() :</p>
+<p><em>x, y, couleur, remplissage, transparence, groupe</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP))
+               )</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>On peut modifier l’intervalle avec l’option binwidth. Par défaut l’intervalle est 1/30 de la plage des données.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP)),
+               <span class="dt">binwidth=</span>.<span class="dv">1</span>
+               )</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="graph-de-point" class="section level3">
+<h3><span class="header-section-number">3.15.3</span> graph de point</h3>
+<p>Le graph de points est une visualisation alternative à la coubre de densité. Suivant un intervale définis, le graphique va lister le nombre d’observations retrouvées, chaque observation étant un “point”.</p>
+<p>La fonction géométrique : <strong><em>geom_dotplot()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_dotplot() :</p>
+<p><em>x, y, couleur, remplissage, transparence, groupe</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP))
+               )</code></pre></div>
+<pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bindot).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>On peut modifier l’intervalle avec l’option binwidth. Par défaut l’intervalle est 1/30 de la plage des données.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP)),
+               <span class="dt">binwidth=</span>.<span class="dv">1</span>
+               )</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bindot).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+</div>
+</div>
+<div id="representation-dune-variable-discrete" class="section level2">
+<h2><span class="header-section-number">3.16</span> Représentation d’une variable discrète</h2>
+<div id="camembert" class="section level3">
+<h3><span class="header-section-number">3.16.1</span> camembert</h3>
+<p>Le camenbert va se définir comme un diagramme barre à une modalité sur lequel on applique une tranformation <strong><em>coord_polar()</em></strong> pour le rendre circulaire</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(<span class="dv">1</span>), <span class="dt">fill =</span> <span class="kw">factor</span>(Continent))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">&quot;y&quot;</span>)</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+<div id="waffle" class="section level3">
+<h3><span class="header-section-number">3.16.2</span> waffle</h3>
+<p>Les waffles chart ne sont pas directement faisable en ggplot,il n’existe par de geom dédié. Mais un package dédié permet de les réaliser avec une fonction Waffle. Celle ci ne répond pas au manifeste tidyverse car elle prend en entrée des vecteurs nommés : le contenu du vecteur représente la répartition, les noms les modalités.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(waffle)
+Continent&lt;-graphique1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Continent) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">tally</span>()
+n&lt;-Continent<span class="op">$</span>n
+<span class="kw">names</span>(n)&lt;-Continent<span class="op">$</span>Continent
+<span class="kw">waffle</span>(n, <span class="dt">rows=</span><span class="dv">7</span>, <span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">title=</span><span class="st">&quot;Répartition des pays par continents&quot;</span>)</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+</div>
+<div id="representation-de-deux-variables-continues" class="section level2">
+<h2><span class="header-section-number">3.17</span> Représentation de deux variables continues</h2>
+<div id="nuage-de-points" class="section level3">
+<h3><span class="header-section-number">3.17.1</span> Nuage de points</h3>
+<p>La fonction geométrique : <strong><em>geom_point()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_point() :</p>
+<p><em>x, y, couleur, remplissage, la forme, taille, transparence, groupe, l’épaisseur du trait</em></p>
+<p>Reprenons l’exemple précédent, on peut rajouter une dimension “couleur” dans le mapping pour distinguer les groupes d’observations par une 3ème variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                 <span class="dt">y=</span>Maternal_mortality_ratio,
+                 <span class="dt">color=</span>Continent))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>On peut utiliser des transformations des variables de nos tables comme paramètres.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>On peut paramétrer les couleurs utiliser en utilisant des palettes. Plusieurs palettes peuvent être mobilisées dans R.</p>
+<p>Retenons en deux très utiles :</p>
+<ul>
+<li><p><a href="http://colorbrewer2.org/">brewer</a></p></li>
+<li><p><a href="https://github.com/sjmgarnier/viridis">viridis</a></p></li>
+</ul>
+<p>On peut également définir soit même une palette.</p>
+<p>Pour intégrer une couleur on utilise une fonction <strong>scale</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>Les fonctions <strong>scales</strong> permettent globalement de paramétrer les éléments rentrées dans l’aesthétic :</p>
+<ul>
+<li><p>Si je veux un gradient de couleur fonction d’une variable continue : quelle palette de couleur je choisie, comme je cale mon dégradée en fonction de cette variable continue ?</p></li>
+<li><p>Si je met une variable continue en ordonnée, comme je définie le minimum et maximum de cette axe, sa position, les valeurs que j’affiche sur l’échelle…</p></li>
+</ul>
+<p>L’ensemble des scales possibles peuventd se décrire sous forme suivante:</p>
+<p>scale_xx_yy</p>
+<p>ou xx peut être un des paramètre de l’aesthétic :</p>
+<table>
+<thead>
+<tr class="header">
+<th>xx</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>alpha</td>
+<td>transparence</td>
+</tr>
+<tr class="even">
+<td>color</td>
+<td>couleur des lignes ou des points</td>
+</tr>
+<tr class="odd">
+<td>fill</td>
+<td>couleurs des aires</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>type de ligne (continue,pointillée,…)</td>
+</tr>
+<tr class="odd">
+<td>shape</td>
+<td>forme des points</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>aire des points</td>
+</tr>
+<tr class="odd">
+<td>x</td>
+<td>variable de l’axe x</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td>variable de l’axe y</td>
+</tr>
+</tbody>
+</table>
+<p>Et y un type de paramétrage :</p>
+<table style="width:62%;">
+<colgroup>
+<col width="25%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>yy</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>continuous</td>
+<td>gérer les variables continue</td>
+</tr>
+<tr class="even">
+<td>discrete</td>
+<td>gérer les variables discrètes</td>
+</tr>
+<tr class="odd">
+<td>date</td>
+<td>gérer une variable au format date</td>
+</tr>
+<tr class="even">
+<td>reverse</td>
+<td>inverser l’axe</td>
+</tr>
+<tr class="odd">
+<td>log</td>
+<td>convertire l’échelle d’une variable continue en échelle logarithmique</td>
+</tr>
+<tr class="even">
+<td>log10</td>
+<td>convertire l’échelle d’une variable continue en échelle logarithmique décimale</td>
+</tr>
+<tr class="odd">
+<td>viridis</td>
+<td>utiliser une palette de couleur viridis</td>
+</tr>
+<tr class="even">
+<td>brewer</td>
+<td>utiliser une palette de couleur brewer (variable discrète)</td>
+</tr>
+<tr class="odd">
+<td>distiller</td>
+<td>utiliser une palette de couleur brewer (variable continue)</td>
+</tr>
+<tr class="even">
+<td>gradient</td>
+<td>utiliser un gradient de 2 couleurs</td>
+</tr>
+<tr class="odd">
+<td>gradient2</td>
+<td>utiliser un gradient divergent de 3 couleurs</td>
+</tr>
+</tbody>
+</table>
+<p>Un exemple d’usage, par exemple on peut exploiter une fonction scale pour définir une échelle logarithimique sur un axe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,
+                 <span class="dt">y=</span>Maternal_mortality_ratio,
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_log10</span>()</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>On peut rajouter des labels avec l’instruction <strong><em>labs</em></strong>; <strong><em>labs</em></strong> permet de labelliser tout les éléments possibles de l’aesthétic, ainsi que le titre (<em>title</em>), le sous titre (<em>subtitle</em>) et le bas de page (<em>caption</em>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>,
+       <span class="dt">color=</span><span class="st">&quot;Zones&quot;</span>)</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>Pour modifier la légende, l’instruction utile est <strong><em>guide_legend()</em></strong>. Celle-ci permet de modifier énormément de paramètres.</p>
+<p>Pour modifier simplement la position de la légende,c’est la fonction <strong><em>theme</em></strong> qu’il faut utiliser. <strong><em>theme</em></strong> permet de créer des templates, c’est à dire de définir tout ce qui n’est pas lié directement aux données sur un graphique, notamment:</p>
+<ul>
+<li><p>la position, taille,couleur,police des éléments textuel</p></li>
+<li><p>la couleur des grilles primaires et secondaires du graphique</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>,
+       <span class="dt">color=</span><span class="st">&quot;Zones&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Il existe des <a href="http://ggplot2.tidyverse.org/reference/index.html#section-themes">thèmes prédéfinis</a> dans ggplot que l’on peut déjà utiliser.</p>
+<p>Des packages externe permettent d’enrichir cette collection de thèmes, par exemple ggthemes ou hrbethemes.</p>
+<p>Lorsque l’on souhaite garder une cohérence entre plusieurs graphique, le mieux est d’en définir un à part pour l’appeler ensuite.</p>
+<p>Quelques exemples de Thèmes :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">type=</span><span class="st">&quot;qual&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_dark</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">title=</span><span class="st">&quot;Zone&quot;</span>,<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">title=</span><span class="st">&quot;Zone&quot;</span>,<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div id="modifier-les-composantes-dun-theme" class="section level4">
+<h4><span class="header-section-number">3.17.1.1</span> Modifier les composantes d’un thème</h4>
+<p>Il est possible de changer d’autres paramètres en passant par la fonction <a href="http://ggplot2.tidyverse.org/reference/theme.html">theme()</a></p>
+<p>Elle utilise 4 types de fonctions:</p>
+<ul>
+<li><strong><em>element_text()</em></strong> : pour toutes les étiquettes</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>family</td>
+<td>la famille de la police</td>
+</tr>
+<tr class="even">
+<td>face</td>
+<td>le type de police (“plain”, “italic”, “bold”, “bold.italic”)</td>
+</tr>
+<tr class="odd">
+<td>colour</td>
+<td>couleur</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>taille en points</td>
+</tr>
+<tr class="odd">
+<td>hjust</td>
+<td>justification horizontale, dans [0, 1]</td>
+</tr>
+<tr class="even">
+<td>vjust</td>
+<td>justification verticale, dans [0, 1]</td>
+</tr>
+<tr class="odd">
+<td>angle</td>
+<td>angle, dans [0, 360]</td>
+</tr>
+<tr class="even">
+<td>lineheight</td>
+<td>hauteur de ligne (pour l’espacement entre les lignes)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_rect()</em></strong> : pour les fonds et les cadres,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fill</td>
+<td>la couleur de remplissage</td>
+</tr>
+<tr class="even">
+<td>colour</td>
+<td>la couleur de la bordure</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>la taille de la bordure</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, “twodash)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_line()</em></strong> : pour toutes les lignes tracées,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>colour</td>
+<td>la couleur de ligne</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>la taille</td>
+</tr>
+<tr class="odd">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”,“longdash”, “twodash)</td>
+</tr>
+<tr class="even">
+<td>lineend</td>
+<td>le type de fin de ligne (“round”, “butt” ou “square”)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_blank()</em></strong> : permet de ne rien dessiner.</li>
+</ul>
+<p>Quelques exemples d’utilisation:</p>
+<ul>
+<li>Changer le fond du graphique <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;Lavender&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-43-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence du quadrillage <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-44-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence des étiquettes des axes <strong><em>axis_xxx()</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">angle =</span> <span class="dv">45</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-45-1.png" width="960" /></p>
+<p>Certains changements de paramètres ne nécessitent pas l’utilisation de fonction <strong><em>element_()</em></strong> . Par exemple, pour changer la position de la légende <strong><em>legend.xxx()</em></strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;left&quot;</span>,<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-46-1.png" width="960" /></p>
+</div>
+</div>
+<div id="ligne" class="section level3">
+<h3><span class="header-section-number">3.17.2</span> Ligne</h3>
+<p>Un graphique ligne est le tracé d’une ligne qui passe par l’ensemble des points (x,y) définie par nos deux variables continue. L’usage typique de la ligne est pour tracer une courbe d’évolution d’une valeur avec le temps. La fonction geométrique : <strong><em>geom_line()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_line() :</p>
+<p><em>x,y,couleur,transparence,groupe, type de ligne, l’épaisseur du trait</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Modifier la couleur</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Modifier l’échelle : ylim</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">400</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Une alternative à geom_line() est geom_area() qui permet de remplir une zone définie par une “ligne”</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>,<span class="dt">fill=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">400</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>Combiner deux geom : rajouter les points</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2,<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">400</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>Combiner trois geom : rajouter l’objectif des ODD à 2030</p>
+<p>Pour cela, on va utiliser un autre geom, <strong><em>geom_hline()</em></strong> qui permet de tracer une ligne horizontale.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique2,<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">70</span>,<span class="dt">color=</span><span class="st">&quot;darkgreen&quot;</span>, <span class="dt">linetype=</span><span class="st">&quot;dotted&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">400</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">2000</span>,<span class="dv">2030</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle dans le monde&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;Année&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+</div>
+<div id="carte-de-chaleur-en-2-dimensions" class="section level3">
+<h3><span class="header-section-number">3.17.3</span> Carte de chaleur en 2 dimensions</h3>
+<p>Une représentation de la carte de chaleur des observations croisées sur deux dimensions. Cette représentation graphque va colorier chaque “case” de notre plan en fonction du nombre d’observation croisée.</p>
+<p>La fonction geométrique : <strong><em>geom_bin2d()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_bin2d() :</p>
+<p><em>x,y, le remplissage, le groupe</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio))
+  ) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+         <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+         <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+         <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+         <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_ipsum</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_color_ipsum</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_bin2d).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Pour définir la largeur et hauteur de nos “cases”“,il faut utiliser le paramètre <strong><em>binwidh</em></strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio)),
+  <span class="dt">binwidth =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)
+  )<span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+         <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+         <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+         <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+         <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_ipsum</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_color_ipsum</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_bin2d).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+</div>
+<div id="segments" class="section level3">
+<h3><span class="header-section-number">3.17.4</span> Segments</h3>
+<p>Les segments permette de faire une liaison entre deux nuage de point pour relier les mêmes observations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphique3 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(PIB2000),<span class="dt">y=</span><span class="kw">log</span>(Mortalite2000),<span class="dt">color=</span>Continent),<span class="dt">shape=</span><span class="dv">1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(PIB2015),<span class="dt">y=</span><span class="kw">log</span>(Mortalite2015),<span class="dt">color=</span>Continent),<span class="dt">shape=</span><span class="dv">2</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(PIB2000), <span class="dt">y =</span> <span class="kw">log</span>(Mortalite2000), 
+                   <span class="dt">xend =</span> <span class="kw">log</span>(PIB2015), <span class="dt">yend =</span> <span class="kw">log</span>(Mortalite2015),<span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+         <span class="dt">subtitle=</span><span class="st">&quot;Entre 2000 et 2015&quot;</span>,
+         <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+         <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+         <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_ipsum</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>,<span class="dt">title.position =</span> <span class="st">&quot;top&quot;</span>))</code></pre></div>
+<pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 15 rows containing missing values (geom_segment).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows
+
+## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>Autres fonctions utiles pour l’affichage de variables continues :</p>
+<ul>
+<li><p>geom_count() : variante de <strong><em>geom_point()</em></strong> permettant de gérer les problèmes de supperposition de point en faisant varier la taille du point en fonction du nombre d’observation présent à cet endroit.</p></li>
+<li><p>geom_contour() : permet de tracer des contours de densiter sur un plan</p></li>
+</ul>
+</div>
+</div>
+<div id="representation-dune-variable-discrete-et-dune-variable-continue" class="section level2">
+<h2><span class="header-section-number">3.18</span> Représentation d’une variable discrete et d’une variable continue</h2>
+<div id="boite-a-moustache" class="section level3">
+<h3><span class="header-section-number">3.18.1</span> boite à moustache</h3>
+<p>La boite moustache ou boxplot permet de comparer la distribution d’une variable continue d’une variable continue par rapport à une variable discrète. Par exemple, la distribution des ventes de logements par région en fonction d’un prix de vente au m2.</p>
+<p>La fonction géométrique : <strong><em>geom_boxplot()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_boxplot() :</p>
+<p><em>x,y, couleur, remplissage, transparence, groupe,type de ligne,forme,taille,pondération</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Continent,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="co">#scale_color_viridis_d()+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+<div id="jitter-chart" class="section level3">
+<h3><span class="header-section-number">3.18.2</span> jitter chart</h3>
+<p>Le jitter point est une alternative au boxplot pour comparer la distribution d’une variable continue d’une variable continue par rapport à une variable discrète. Ce graphique s’apparente à un graphique de point pour lequel une petite variation est donné à chaque point sur l’axe de la modalité discrète pour gérer les problèmes de supperposition des points.</p>
+<p>La fonction géométrique : <strong><em>geom_jitter()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_violin() :</p>
+<p><em>x,y, couleur, remplissage, transparence, groupe,type de ligne,forme,taille,pondération</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Continent,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="co">#scale_color_viridis_d()+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+</div>
+<div id="violin-chart" class="section level3">
+<h3><span class="header-section-number">3.18.3</span> violin chart</h3>
+<p>Le graphique en violon ou violin chart est une autre alternative au boxplot pour comparer la distribution d’une variable continue d’une variable continue par rapport à une variable discrète.</p>
+<p>La fonction géométrique : <strong><em>geom_violin()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_violin() :</p>
+<p><em>x,y, couleur, remplissage, transparence, groupe,type de ligne,forme,taille,pondération</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_violin</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Continent,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="co">#scale_color_viridis_d()+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_ydensity).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+</div>
+<div id="le-diagramme-barre" class="section level3">
+<h3><span class="header-section-number">3.18.4</span> Le diagramme barre</h3>
+<p>Le diagramme barre ou barplot permet de comparer la valeur d’une variable continue disponible pour chaque modalité une variable discrète. Par exemple, le prix moyen au m2 d’achat d’un logement pour chaque région.</p>
+<p>La fonction géométrique : <strong><em>geom_bar()</em></strong></p>
+<p>Ce que l’on peut mapper avec geom_bar() :</p>
+<p><em>x,y, couleur, remplissage, transparence, groupe,type de ligne,taille</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indicateur311 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Type_Zone <span class="op">!=</span><span class="st"> &quot;Pays&quot;</span>,
+         Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,
+         Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,
+         Location<span class="op">==</span><span class="st">&quot;Total (national level)&quot;</span>,
+         <span class="kw">is.na</span>(Value_type)
+         ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Country_or_Area_Code) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="kw">max</span>(Year)) <span class="op">%&gt;%</span>
+<span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Country_or_Area_Name,<span class="dt">weight=</span>Value,<span class="dt">fill=</span>Country_or_Area_Name))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle sur quelques zones du globe&quot;</span>,
+      <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+      <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+      <span class="dt">x=</span><span class="st">&quot;Zone&quot;</span>,
+      <span class="dt">fill=</span><span class="st">&quot;Zone&quot;</span>
+  )<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-59-1.png" width="960" /></p>
+</div>
+<div id="le-graphique-lollipop" class="section level3">
+<h3><span class="header-section-number">3.18.5</span> Le graphique lollipop</h3>
+<p>Une alternative au diagramme barre est le graphique lolipop. Celui ci permet de représenter des données avec un plus grand nombre de modalités pour la variable discrète. Il n’existe pas de geom spécifique à lollipop. Mais on peut combiner un geom_point qui permet de tracer un point,et geom_segment qui permet de tracer un trait.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indicateur311 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Type_Zone <span class="op">==</span><span class="st"> &quot;Pays&quot;</span>,
+         Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,
+         Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,
+         Location<span class="op">==</span><span class="st">&quot;Total (national level)&quot;</span>,
+         Continent<span class="op">==</span><span class="st">&quot;Afrique&quot;</span>,
+         <span class="kw">is.na</span>(Value_type)
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Country_or_Area_Code) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="kw">max</span>(Year)) <span class="op">%&gt;%</span>
+<span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(Country_or_Area_Name,Value) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(Value) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Country_or_Area_Name=</span><span class="kw">as.factor</span>(Country_or_Area_Name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_inorder</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(Country_or_Area_Name) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>Country_or_Area_Name,<span class="dt">x=</span>Value,<span class="dt">color=</span>Value))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="dv">0</span>,<span class="dt">y=</span>Country_or_Area_Name,<span class="dt">color=</span>Value,<span class="dt">xend=</span>Value,<span class="dt">yend=</span>Country_or_Area_Name))<span class="op">+</span>
+<span class="st">  </span><span class="co">#scale_color_viridis_c(direction = -1,option=&quot;B&quot;,begin=0.2,end=0.8)+</span>
+<span class="st">  </span><span class="kw">theme_ipsum</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Taux de mortalité de la mère à la naissance en Afrique&quot;</span>,<span class="dt">subtitle=</span><span class="st">&quot;Dernière données connues&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_segment).</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : famille de police introuvable dans la base de données des polices
+## Windows</code></pre>
+<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows
+
+## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## famille de police introuvable dans la base de données des polices Windows</code></pre>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-60-1.png" width="960" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="un-typologie-des-representations-graphiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+# Créer des tableaux avec kable et kable extra
+
+Kable permet de créer des tableaux de diffusion très simplement.
+Une très bonne documentation en anglais peut se trouver [ici](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+Ci dessous un exemple, on reprend les données utilisé pour le diagramme barre.
+```{r chap14}
+library(knitr)
+library(kableExtra)
+indicateur311 %>%
+  filter(Type_Zone != "Pays",
+         Age_group=="All age ranges or no breakdown by age",
+         Sex=="Both sexes or no breakdown by sex",
+         Location=="Total (national level)",
+         is.na(Value_type)
+  ) %>%
+  group_by(Country_or_Area_Code) %>%
+  filter(Year==max(Year)) %>%
+  ungroup %>% 
+  select(Country_or_Area_Name,Year,Value) %>% 
+  setNames(c("Zone","Année","Nombre de décès pour 100 000 Naissance")) %>% 
+  kable("html",caption="Mortalité de la mère à la naissance pour quelques grandes zones du globe") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  row_spec(1, bold = T, color = "white", background = "grey")%>%
+  add_indent(c(2:5))
+```
+
+Description des fonctions utilisées : 
+
+- ***setNames()*** permet de définir les libellées de colonne;
+
+- ***kable("html")*** permet de produire une sortie html du tableau, l'option caption défini le titre;
+
+- ***kable_styling()*** permet de mettre un theme à notre tableau, ici on lui dit qu'on veut un tableau avec des lignes dont les couleurs alterne entre blanc et gris et un effet de surbrillance au passage de la souris;
+
+- ***row_spec()*** permet de définir des attribut particuliers pour des lignes, ici on lui dit qu'on veut une ligne 1 avec du gras, un fond gris et une police de couleur blanche. L'équivalent pour les colonnes est ***column_spec()***;
+
+- ***add_indent()*** permet de définir sur un vecteur de ligne (ici les lignes 2 à 5) une identation.
+
+
+## Exercice 8
+
+
+Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
+
+Le résultat attendu : 
+```{r  eval=T,message=F,warning=F,echo=FALSE}
+rpls_DEP_R24  <- rpls_aggrege_large %>% 
+  filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
+  group_by(TypeZone,Zone) %>% 
+  summarise(Logements_collectifs=sum(Logements_collectifs),
+            Logements_individuels=sum(Logements_individuels)) %>% 
+  arrange(TypeZone,Zone) %>% 
+  ungroup() %>% 
+  select(-TypeZone) %>% 
+  setNames(c("Zone","Nombre de logements collectifs","Nombre de logements individuels")) %>% 
+  kable("html",caption="Chiffres clés RPLS") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  row_spec(7, bold = T, color = "white", background = "grey")
+rpls_DEP_R24
+```
+
+

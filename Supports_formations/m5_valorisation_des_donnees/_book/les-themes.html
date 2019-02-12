@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapitre 7 Les thèmes | Valoriser ses données avec R</title>
+  <meta name="description" content="Le support de la formation sur la valorisation des données sous R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapitre 7 Les thèmes | Valoriser ses données avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 7 Les thèmes | Valoriser ses données avec R" />
+  
+  <meta name="twitter:description" content="Le support de la formation sur la valorisation des données sous R" />
+  
+
+<meta name="author" content="Maël Theulière - Murielle Lethrosne">
+
+
+<meta name="date" content="2019-02-12">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="lhabillage-simple.html">
+<link rel="next" href="les-scales.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-7.0.1/css/motion.css" rel="stylesheet" />
+<link href="libs/highcharts-7.0.1/css/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highcharts-7.0.1/highcharts.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-3d.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-more.js"></script>
+<script src="libs/highcharts-7.0.1/modules/stock.js"></script>
+<script src="libs/highcharts-7.0.1/modules/map.js"></script>
+<script src="libs/highcharts-7.0.1/modules/annotations.js"></script>
+<script src="libs/highcharts-7.0.1/modules/boost.js"></script>
+<script src="libs/highcharts-7.0.1/modules/data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drag-panes.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drilldown.js"></script>
+<script src="libs/highcharts-7.0.1/modules/item-series.js"></script>
+<script src="libs/highcharts-7.0.1/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-7.0.1/modules/exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/export-data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/funnel.js"></script>
+<script src="libs/highcharts-7.0.1/modules/heatmap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/treemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sankey.js"></script>
+<script src="libs/highcharts-7.0.1/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-7.0.1/modules/streamgraph.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sunburst.js"></script>
+<script src="libs/highcharts-7.0.1/modules/vector.js"></script>
+<script src="libs/highcharts-7.0.1/modules/wordcloud.js"></script>
+<script src="libs/highcharts-7.0.1/modules/xrange.js"></script>
+<script src="libs/highcharts-7.0.1/modules/tilemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/venn.js"></script>
+<script src="libs/highcharts-7.0.1/modules/gantt.js"></script>
+<script src="libs/highcharts-7.0.1/modules/timeline.js"></script>
+<script src="libs/highcharts-7.0.1/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/motion.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/multicolor_series.js"></script>
+<script src="libs/highcharts-7.0.1/custom/reset.js"></script>
+<script src="libs/highcharts-7.0.1/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-7.0.1/custom/text-symbols.js"></script>
+<script src="libs/highchart-binding-0.7.0/highchart.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Valoriser ses données avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="un-typologie-des-representations-graphiques.html"><a href="un-typologie-des-representations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Un typologie des représentations graphiques</a></li>
+<li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
+<li class="chapter" data-level="3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Présentation du package ggplot2</a><ul>
+<li class="chapter" data-level="3.1" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#le-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Le Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="presentation-du-package-ggplot2.html"><a href="presentation-du-package-ggplot2.html#ggplot-2-les-concepts-clefs"><i class="fa fa-check"></i><b>3.3</b> ggplot 2 : les concepts clefs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="le-mapping.html"><a href="le-mapping.html"><i class="fa fa-check"></i><b>4</b> Le mapping</a><ul>
+<li class="chapter" data-level="4.1" data-path="le-mapping.html"><a href="le-mapping.html#les-parametres-du-mapping"><i class="fa fa-check"></i><b>4.1</b> Les paramètres du mapping</a></li>
+<li class="chapter" data-level="4.2" data-path="le-mapping.html"><a href="le-mapping.html#les-autres-parametres"><i class="fa fa-check"></i><b>4.2</b> Les “autres” paramètres</a></li>
+<li class="chapter" data-level="4.3" data-path="le-mapping.html"><a href="le-mapping.html#exercice-1"><i class="fa fa-check"></i><b>4.3</b> Exercice 1</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="les-formes-geometriques.html"><a href="les-formes-geometriques.html"><i class="fa fa-check"></i><b>5</b> Les formes géométriques</a></li>
+<li class="chapter" data-level="6" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html"><i class="fa fa-check"></i><b>6</b> L’habillage simple</a><ul>
+<li class="chapter" data-level="6.1" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#titre-et-libelle-des-axes"><i class="fa fa-check"></i><b>6.1</b> Titre et libellé des axes</a></li>
+<li class="chapter" data-level="6.2" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#legende"><i class="fa fa-check"></i><b>6.2</b> Légende</a></li>
+<li class="chapter" data-level="6.3" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#annotation"><i class="fa fa-check"></i><b>6.3</b> Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="les-themes.html"><a href="les-themes.html"><i class="fa fa-check"></i><b>7</b> Les thèmes</a><ul>
+<li class="chapter" data-level="7.1" data-path="les-themes.html"><a href="les-themes.html#les-fonctions-element"><i class="fa fa-check"></i><b>7.1</b> Les fonctions “élément”</a></li>
+<li class="chapter" data-level="7.2" data-path="les-themes.html"><a href="les-themes.html#les-composantes"><i class="fa fa-check"></i><b>7.2</b> Les composantes</a></li>
+<li class="chapter" data-level="7.3" data-path="les-themes.html"><a href="les-themes.html#quelques-exemples"><i class="fa fa-check"></i><b>7.3</b> Quelques exemples</a></li>
+<li class="chapter" data-level="7.4" data-path="les-themes.html"><a href="les-themes.html#exercice-2"><i class="fa fa-check"></i><b>7.4</b> Exercice 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="les-scales.html"><a href="les-scales.html"><i class="fa fa-check"></i><b>8</b> Les scales</a><ul>
+<li class="chapter" data-level="8.1" data-path="les-scales.html"><a href="les-scales.html#exercice-3"><i class="fa fa-check"></i><b>8.1</b> Exercice 3</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="la-mise-en-page-de-plusieurs-graphiques.html"><a href="la-mise-en-page-de-plusieurs-graphiques.html"><i class="fa fa-check"></i><b>9</b> La mise en page de plusieurs graphiques</a></li>
+<li class="chapter" data-level="10" data-path="les-facettes.html"><a href="les-facettes.html"><i class="fa fa-check"></i><b>10</b> Les facettes</a><ul>
+<li class="chapter" data-level="10.1" data-path="les-facettes.html"><a href="les-facettes.html#exercice-4"><i class="fa fa-check"></i><b>10.1</b> Exercice 4</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="sauvergarder-un-graphique.html"><a href="sauvergarder-un-graphique.html"><i class="fa fa-check"></i><b>11</b> Sauvergarder un graphique</a></li>
+<li class="part"><span><b>II Créer des cartes sous R</b></span></li>
+<li class="chapter" data-level="12" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><i class="fa fa-check"></i><b>12</b> Créer des cartes avec ggplot2, tmap et Cartographie</a><ul>
+<li class="chapter" data-level="12.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#faire-des-cartes-avec-ggplot2"><i class="fa fa-check"></i><b>12.1</b> Faire des cartes avec ggplot2</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-choroplethe"><i class="fa fa-check"></i><b>12.1.1</b> Les cartes choroplèthe</a></li>
+<li class="chapter" data-level="12.1.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-a-ronds-proportionnels"><i class="fa fa-check"></i><b>12.1.2</b> Les cartes à ronds proportionnels</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#les-cartes-avec-tmap"><i class="fa fa-check"></i><b>12.2</b> Les cartes avec Tmap</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-choroplethe"><i class="fa fa-check"></i><b>12.2.1</b> Exemple de carte choroplèthe</a></li>
+<li class="chapter" data-level="12.2.2" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemple-de-carte-a-ronds-proportionnels"><i class="fa fa-check"></i><b>12.2.2</b> Exemple de carte à ronds proportionnels</a></li>
+<li class="chapter" data-level="12.2.3" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exemples-de-cartes-avec-facet"><i class="fa fa-check"></i><b>12.2.3</b> Exemples de cartes avec facet</a></li>
+<li class="chapter" data-level="12.2.4" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#gestion-des-palettes"><i class="fa fa-check"></i><b>12.2.4</b> gestion des palettes</a></li>
+<li class="chapter" data-level="12.2.5" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#la-mise-en-page"><i class="fa fa-check"></i><b>12.2.5</b> La mise en page</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html"><a href="creer-des-cartes-avec-ggplot2-tmap-et-cartographie.html#exercice-5"><i class="fa fa-check"></i><b>12.3</b> Exercice 5</a></li>
+</ul></li>
+<li class="part"><span><b>III Graphiques animés</b></span></li>
+<li class="chapter" data-level="13" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html"><i class="fa fa-check"></i><b>13</b> Animer ses graphiques ggplot avec gganimate</a><ul>
+<li class="chapter" data-level="13.1" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#produire-une-animation"><i class="fa fa-check"></i><b>13.1</b> Produire une animation</a></li>
+<li class="chapter" data-level="13.2" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#parametrer-lanimation"><i class="fa fa-check"></i><b>13.2</b> Paramétrer l’animation</a></li>
+<li class="chapter" data-level="13.3" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#sauvegarder-une-animation"><i class="fa fa-check"></i><b>13.3</b> Sauvegarder une animation</a></li>
+<li class="chapter" data-level="13.4" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#exercice-6"><i class="fa fa-check"></i><b>13.4</b> Exercice 6</a></li>
+</ul></li>
+<li class="part"><span><b>IV Dataviz pour le web</b></span></li>
+<li class="chapter" data-level="14" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html"><i class="fa fa-check"></i><b>14</b> Créer des graphiques et cartes pour le web</a><ul>
+<li class="chapter" data-level="14.1" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#highcharter"><i class="fa fa-check"></i><b>14.1</b> Highcharter</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#exemple-type-de-graphique"><i class="fa fa-check"></i><b>14.1.1</b> Exemple type de graphique</a></li>
+<li class="chapter" data-level="14.1.2" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#les-facettes-1"><i class="fa fa-check"></i><b>14.1.2</b> Les facettes</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#les-cartes-leaflet"><i class="fa fa-check"></i><b>14.2</b> Les cartes Leaflet</a></li>
+<li class="chapter" data-level="14.3" data-path="creer-des-graphiques-et-cartes-pour-le-web.html"><a href="creer-des-graphiques-et-cartes-pour-le-web.html#exercice-7"><i class="fa fa-check"></i><b>14.3</b> Exercice 7</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="creer-des-tableaux-avec-kable-et-kable-extra.html"><a href="creer-des-tableaux-avec-kable-et-kable-extra.html"><i class="fa fa-check"></i><b>15</b> Créer des tableaux avec kable et kable extra</a><ul>
+<li class="chapter" data-level="15.1" data-path="creer-des-tableaux-avec-kable-et-kable-extra.html"><a href="creer-des-tableaux-avec-kable-et-kable-extra.html#exercice-8"><i class="fa fa-check"></i><b>15.1</b> Exercice 8</a></li>
+</ul></li>
+<li class="part"><span><b>V Ressources et correction</b></span></li>
+<li class="chapter" data-level="16" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i><b>16</b> ressources</a><ul>
+<li class="chapter" data-level="16.1" data-path="ressources.html"><a href="ressources.html#dataviz"><i class="fa fa-check"></i><b>16.1</b> dataviz</a></li>
+<li class="chapter" data-level="16.2" data-path="ressources.html"><a href="ressources.html#ggplot2-1"><i class="fa fa-check"></i><b>16.2</b> ggplot2</a></li>
+<li class="chapter" data-level="16.3" data-path="ressources.html"><a href="ressources.html#tmap"><i class="fa fa-check"></i><b>16.3</b> tmap</a></li>
+<li class="chapter" data-level="16.4" data-path="ressources.html"><a href="ressources.html#highcharter-1"><i class="fa fa-check"></i><b>16.4</b> highcharter</a></li>
+<li class="chapter" data-level="16.5" data-path="ressources.html"><a href="ressources.html#kable-et-kableextra"><i class="fa fa-check"></i><b>16.5</b> kable et kableExtra</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html"><i class="fa fa-check"></i><b>17</b> Exercices et corrections</a><ul>
+<li class="chapter" data-level="17.1" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-1-1"><i class="fa fa-check"></i><b>17.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="17.2" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-2-1"><i class="fa fa-check"></i><b>17.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="17.3" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-3-1"><i class="fa fa-check"></i><b>17.3</b> Exercice 3</a></li>
+<li class="chapter" data-level="17.4" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-4-1"><i class="fa fa-check"></i><b>17.4</b> Exercice 4</a></li>
+<li class="chapter" data-level="17.5" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-5-1"><i class="fa fa-check"></i><b>17.5</b> Exercice 5</a></li>
+<li class="chapter" data-level="17.6" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-6-1"><i class="fa fa-check"></i><b>17.6</b> Exercice 6</a></li>
+<li class="chapter" data-level="17.7" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-7-1"><i class="fa fa-check"></i><b>17.7</b> Exercice 7</a></li>
+<li class="chapter" data-level="17.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>17.8</b> Exercice 8</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Valoriser ses données avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="les-themes" class="section level1">
+<h1><span class="header-section-number">Chapitre 7</span> Les thèmes</h1>
+<p>Pour modifier simplement la position de la légende,c’est la fonction <a href="http://ggplot2.tidyverse.org/reference/theme.html">theme()</a> qu’il faut utiliser. <strong><em>theme</em></strong> permet de créer des templates, c’est à dire de définir tout ce qui n’est pas lié directement aux données sur un graphique, notamment:</p>
+<ul>
+<li><p>la position, taille,couleur,police des éléments textuel</p></li>
+<li><p>la couleur des grilles primaires et secondaires du graphique</p></li>
+</ul>
+<p>Il existe des <a href="http://ggplot2.tidyverse.org/reference/index.html#section-themes">thèmes prédéfinis</a> dans ggplot que l’on peut déjà utiliser. Par exemple: theme_classic(), theme_bw(), theme_dark(), …</p>
+<p>Des packages externe permettent d’enrichir cette collection de thèmes, par exemple ggthemes ou hrbethemes.</p>
+<p>Lorsque l’on souhaite garder une cohérence entre plusieurs graphique, le mieux est d’en définir un à part pour l’appeler ensuite.</p>
+<div id="les-fonctions-element" class="section level2">
+<h2><span class="header-section-number">7.1</span> Les fonctions “élément”</h2>
+<p>Elle utilise 4 types de fonctions:</p>
+<ul>
+<li><strong><em>element_text()</em></strong> : pour toutes les étiquettes</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>family</td>
+<td>la famille de la police</td>
+</tr>
+<tr class="even">
+<td>face</td>
+<td>le type de police (“plain”, “italic”, “bold”, “bold.italic”)</td>
+</tr>
+<tr class="odd">
+<td>colour</td>
+<td>couleur</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>taille en points</td>
+</tr>
+<tr class="odd">
+<td>hjust</td>
+<td>justification horizontale, dans [0, 1]</td>
+</tr>
+<tr class="even">
+<td>vjust</td>
+<td>justification verticale, dans [0, 1]</td>
+</tr>
+<tr class="odd">
+<td>angle</td>
+<td>angle, dans [0, 360]</td>
+</tr>
+<tr class="even">
+<td>lineheight</td>
+<td>hauteur de ligne (pour l’espacement entre les lignes)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_rect()</em></strong> : pour les fonds et les cadres,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fill</td>
+<td>la couleur de remplissage</td>
+</tr>
+<tr class="even">
+<td>colour</td>
+<td>la couleur de la bordure</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>la taille de la bordure</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, “twodash)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_line()</em></strong> : pour toutes les lignes tracées,</li>
+</ul>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>colour</td>
+<td>la couleur de ligne</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>la taille</td>
+</tr>
+<tr class="odd">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”,“longdash”, “twodash)</td>
+</tr>
+<tr class="even">
+<td>lineend</td>
+<td>le type de fin de ligne (“round”, “butt” ou “square”)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_blank()</em></strong> : permet de ne rien dessiner.</li>
+</ul>
+</div>
+<div id="les-composantes" class="section level2">
+<h2><span class="header-section-number">7.2</span> Les composantes</h2>
+<p>Il s’agit des différents éléments modifiables dans le thème. Par exemple:</p>
+<p><strong>Axes</strong> axis.line, axis.text.x, axis.text.y, axis.ticks, axis.title.x, axis.title.y,…</p>
+<p><strong>Légende</strong> legend.background, legend.key, legend.text, legend.title,…</p>
+<p><strong>Fond de graphe</strong> panel.background, panel.border, panel.grid.major, panel.grid.minor,…</p>
+<p>etc</p>
+</div>
+<div id="quelques-exemples" class="section level2">
+<h2><span class="header-section-number">7.3</span> Quelques exemples</h2>
+<ul>
+<li>Changer le fond du graphique <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;Lavender&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence du quadrillage <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-19-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence des étiquettes des axes <strong><em>axis_xxx()</em></strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">angle =</span> <span class="dv">45</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-20-1.png" width="960" /></p>
+<p>Certains changements de paramètres ne nécessitent pas l’utilisation de fonction <strong><em>element_()</em></strong> . Par exemple, pour changer la position de la légende <strong><em>legend.xxx()</em></strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),
+                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),
+                 <span class="dt">color=</span>Continent))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,
+       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,
+       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,
+       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,
+       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;left&quot;</span>,<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</code></pre></div>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-21-1.png" width="960" /></p>
+</div>
+<div id="exercice-2" class="section level2">
+<h2><span class="header-section-number">7.4</span> Exercice 2</h2>
+<blockquote>
+<p>Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
+<p>En modifier le thème:</p>
+<ul>
+<li>Insérer un titre de couleur, en gras, centré par rapport au graphe.</li>
+<li>Indiquer la source (ODD) et modifier sa taille</li>
+<li>Changer les titres des axes et leurs tailles.</li>
+<li>modifier la couleur de fond du graphe</li>
+<li>modifier le type de gadrillage (pointillés)</li>
+</ul>
+</blockquote>
+<p>Le résultat attendu</p>
+<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lhabillage-simple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="les-scales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

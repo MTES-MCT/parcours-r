@@ -1,0 +1,32 @@
+# Sauvergarder un graphique
+
+Pour sauvegarder un graphique, ggplot contient une fonction ***ggsave()*** permet d'exporter nos graphiques au format image dans les formats suivants : eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg or wmf 
+
+```{r chap11, echo=T,eval=T,fig.height=5,fig.width=12}
+p<-indicateur311 %>%
+  filter(Type_Zone != "Pays",
+         Age_group=="All age ranges or no breakdown by age",
+         Sex=="Both sexes or no breakdown by sex",
+         Location=="Total (national level)",
+         is.na(Value_type)
+         ) %>%
+  filter(Year %in% c(2000,2005,2010,2015)) %>%
+  ggplot()+
+  geom_bar(aes(x=Country_or_Area_Name,weight=Value,fill=Country_or_Area_Name))+
+  theme_ipsum()+
+  scale_fill_ipsum()+
+  coord_flip()+
+  labs(title="Mortalité maternelle sur quelques zones du globe",
+       subtitle="En 2015",
+       y="Taux de mortalité de la mère \n(pour 100 000 naissances)",
+       x="Zone",
+       fill="Zone"
+  )+
+  theme(legend.position = "none")+
+  facet_wrap(~Year,ncol=4)
+ggsave("mon_premier_graphique.svg",p,width=12,height = 5)
+```
+
+
+
+

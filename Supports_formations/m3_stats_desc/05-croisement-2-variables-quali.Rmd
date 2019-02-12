@@ -1,0 +1,141 @@
+# Deux variables qualitatives
+## Définitions
+
+- On calcule les effectifs de chaque couple possible de modalités i et j. $i \in \{1...k\}, j \in \{1...r\}$. Exemple : le nombre de communes du type ZAU i et de la région j.
+- $N_{ij}=\sum_c \mathbb{I}_{c=i} \cdot \mathbb{I}_{c=j}$ (nombre de communes du type ZAU i et de la région j)
+- $N_{i.}=\sum_c \mathbb{I}_{c=i}$ et $N_{.j}=\sum_c \mathbb{I}_{c=j}$ sont appelées effectifs marginaux (nombre de communes du type ZAU i, puis nombre de communes de la région j)
+- $f_{ij}=\frac{N_{ij}}{N}$ : *la fréquence*
+- $f_{ij}^{*} = \frac{N_{ij}}{N_{i.}}$ *les profils ligne* : la part de communes de type i et de la région j parmi les communes du type i
+- $f_{ij}^{**} = \frac{N_{ij}}{N_{.j}}$ *les profils colonne* : la part de communes de type i et de la région j parmi les communes de la région j
+
+
+## Tableaux de synthèse
+### Tableau de contingence (effectifs)
+
+Le tableau à double entrée, avec les lignes et colonnes correspondant aux modalités des variables qui sont croisées est appelé tableau de contingence. Les cellules contiennent le nombre d'occurrences correspondant à chaque case. 
+
+```{r tab_croise}
+tab <- select (dat, ZAU2, REG) %>%
+  filter (REG %in% c("11", "24", "27", "52")) %>% 
+  droplevels () %>% 
+  table () 
+
+as.data.frame (tab) %>% 
+  spread (key = REG, value = Freq) %>% 
+  datatable (caption = "VENTILATION DES COMMUNES PAR REGION ET PAR CLASSE DE ZAU")
+```
+La fonction `table()` fonctionne aussi au-delà de 2 variables, à l'image des tableaux croisés dynamiques dans Excel®, ou de la PROC FREQ en SAS®.
+
+### Tableau des fréquences
+Le tableau des fréquences est obtenu, comme auparavant, avec la fonction `prop.table()`.
+```{r}
+freq <- tab %>% prop.table() %>% round(digits = 3) * 100
+addmargins (freq)  # permet d'ajouter les fréquences totales pour chaque lignes et colonnes
+addmargins (freq, 1) # sommes en colonnes
+addmargins (freq, 2) # sommes en lignes
+```
+
+Ici, on peut voir que, dans les communes que nous avons filtré :
+
+- environ 10% des communes sont dans la région 11 ET dans une couronne de grand pôle
+- il y a 16,5% des communes qui sont isolées
+- la région 27 totalise plus de 45% des communes
+
+### Profils-ligne
+Grâce à l'argument *margin* de la fonction `prop.table()`, on peut afficher les profils-ligne (avec *margin = 1*). On regarde ainsi la proportion des régions pour chaque ZAU.
+
+
+```{r}
+freq <- tab %>% prop.table(margin = 1) %>% round(digits = 3) * 100
+addmargins (freq)
+```
+
+Ici, on voit que, parmi les communes que nous avons filtré :
+
+- 70% des communes classées comme "Commune isolée" sont dans la région 27
+- 54% des communes classées "Grand pôle" sont dans la région 11
+
+### Profils-colonne
+Pour obtenir les profils-colonnes, on se sert de *margin = 2*. On regarde alors la proportion de ZAU pour chaque région.
+
+```{r}
+freq <- tab %>% prop.table(margin = 2) %>% round(digits = 3) * 100
+addmargins (freq)
+```
+
+De la même manière que précedemment, parmi nos communes :
+
+- 66,6% des communes de la région 11 sont classées comme "Courrone GP"
+- 2,5% des communes de la région 24 sont classées comme "Petit pôle"
+
+## Graphiques
+### Diagramme en bâtons
+
+Pour visualiser un croisement de deux variables qualitatives, il est possible de faire un *diagramme superposé*. La fonction est similaire aux diagrammes en bâtons déjà tracés. Cette fois, on précise dans *aes* que les régions sont sur l'axe, et que les différents ZAU sont colorés (argument `fill`).
+
+```{r stacked_bar}
+dat4 <- dat %>% 
+  filter (REG %in% c("11", "24", "27", "52"))
+
+bar <- ggplot (dat4, aes(x = REG, fill = ZAU2)) 
+bar + geom_bar (position = "stack") # précise que les ZAU sont "empilées"
+
+```
+
+Si l'on veut ordonner les modalités par ordre décroissant de la hauteur totale des barres, c'est un peu plus compliqué :
+
+```{r}
+# On calcule la population totale par région
+prov <- dat4 %>%
+  group_by (REG) %>%
+  summarise (pop_reg = sum (P14_POP, na.rm = T))
+
+# On crée un vecteur contenant les modalités de REG par ordre décroissantes de population
+temp <- fct_reorder (prov$REG, -prov$pop_reg)
+
+# On produit le graphique en ordonnant les régions sur la base de leur ordre dans l'objet "temp"  
+ggplot (data = dat4, aes (x = fct_relevel (REG, levels (temp)),
+                         fill = ZAU2,
+                         weight = P14_POP)) +
+  geom_bar (position = "stack")
+
+```
+
+
+Il est aussi possible de faire un *diagramme juxtaposé* en changeant la valeur *position* de la fonction `geom_bar` :
+
+```{r dodge_bar}
+bar + geom_bar(position = "dodge") # précise que les ZAU sont "côte à côte"
+```
+
+
+### Graphique mosaïque
+
+Pour afficher graphiquement les proportions de deux modalités, il est possible de faire un graphique mosaïque :
+```{r mosaic}
+# On inverse colonnes et lignes pour avoir une représentation plus lisible
+tab <- table(dat$REG, dat$ZAU2)
+cols <- rainbow(nlevels(dat$ZAU2))
+plot(tab,col = cols, main = "Répartition des communes par type ZAU et région")
+
+#ggplot(dat) + geom_mosaic(aes(x = product(ZAU2, REG), fill = ZAU2)) # package ggmosaic ; ne fonctionne plus
+
+```
+
+## Avec pondération
+
+Si on désire connaître le "poids" d'une variable suivant le croisement de 2 variables qualitatives, on peut créer un tableau pondéré. Si par exemple, on souhaite connaître la population pour chaque croisement REG / ZAU : on se sert de la fonction `xtabs`en précisant la *formula* qu'on souhaite (P14_POP par REG et ZAU).
+```{r}
+dat <- mutate (dat, ZAU_COURT = as.factor (substr (ZAU, start = 1, stop = 3)))
+tab <- xtabs (formula = P14_POP ~ REG + ZAU_COURT, data = dat)
+tab
+```
+
+Une fois l'objet `table` généré, tout est identique pour les tables. Il faut ajouter le paramètre weight pour les graphiques. 
+
+```{r,fig.height=3.5}
+ggplot(data = dat, aes (REG, fill = ZAU2, weight = P14_POP)) +
+  geom_bar(position = "stack")
+```
+
+Ici, la hauteur de chaque rectangle coloré représente la population totale des communes concernées par le croisement.

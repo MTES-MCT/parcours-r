@@ -1,0 +1,48 @@
+id;group;level;nb var
+1 variable;reponse;2;1
+type de la variable ?;question;3;1
+qualitative;reponse;4;1
+quantitative;reponse;4;1
+question sur la variable quali;question;5;1
+question sur la variable quanti;question;5;1
+la moyenne différe-t-elle d'une valeur attendue ?;interrogation;6;1
+la distribution est-elle normale ?;interrogation;6;1
+normalité de la variable ?;question;7;1
+chisq.test(x = observe, p = attendu);test;7;1
+non normale;reponse;8;1
+normale;reponse;8;1
+wilcox.test(, mu = moyenne_reference);test;9;1
+t.test(, mu = moyenne_reference);test;9;1
+2 variables;reponse;2;2
+type des 2 variables ?;question;3;2
+1 qualitative, 1 quantitative;reponse;4;2
+2 quantitatives;reponse;4;2
+"question sur les ""groupes"" de la variable quali";question;5;2
+question sur les variables quantitatives;question;5;2
+les moyennes des groupes différent-elles ?;interrogation;6;2
+> 2 groupes;reponse;8;2
+2 groupes;reponse;8;2
+les variables sont-elles independantes ?;interrogation;6;2
+la distribution différe-t-elle de celle attendue ?;interrogation;6;2
+nombre de groupes ?;question;7;2
+shapiro.test();test;7;2
+dépendances des distributions ?;question;9;2
+normalité des variables ?;question;9;2
+chisq.test();test;7;2
+dépendantes;reponse;10;2
+indépendantes;reponse;10;2
+non normales;reponse;10;2
+normales;reponse;10;2
+aov(var ~ group, data = table) + tukeyHSD();test;11;2
+kruskal.test(var ~ group, data = table) + pariwise.wilcox.test();test;11;2
+normalité des variables indep ?;question;11;2
+normalité des variables dep ?;question;11;2
+normales indep;reponse;12;2
+non normales indep;reponse;12;2
+normales dep;reponse;12;2
+non normales dep;reponse;12;2
+t.test(var ~ group, data = table);test;13;2
+wilcox.test(var ~ group, data = table);test;13;2
+t.test(var ~ group, data = table, paired = TRUE);test;13;2
+wilcox.test(var ~ group, data = table, paired = TRUE);test;13;2
+quel test utiliser ?;depart;1;/

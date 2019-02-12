@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistiques descriptives</title>
+  <meta name="description" content="Formation R aux statistiques descriptives">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistiques descriptives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R aux statistiques descriptives" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistiques descriptives" />
+  
+  <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
+  
+
+<meta name="author" content="Groupe référents R   Ministère de la Transition écologique et solidaire   Ministère de la Cohésion des Territoires">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tests.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
+<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="libs/vis-4.20.1/vis.min.js"></script>
+<script src="libs/visNetwork-binding-2.0.4/visNetwork.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectif-general"><i class="fa fa-check"></i><b>1.2</b> Objectif général</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notions-et-methodes-presentees"><i class="fa fa-check"></i><b>1.3</b> Notions et méthodes présentées</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-quantitative"><i class="fa fa-check"></i><b>1.3.1</b> Analyse univariée d’une variable quantitative</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-qualitative"><i class="fa fa-check"></i><b>1.3.2</b> Analyse univariée d’une variable qualitative</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#relation-entre-2-variables-quantitatives"><i class="fa fa-check"></i><b>1.3.3</b> Relation entre 2 variables quantitatives</a></li>
+<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#relation-entre-2-variables-qualitatives"><i class="fa fa-check"></i><b>1.3.4</b> Relation entre 2 variables qualitatives</a></li>
+<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#relation-entre-une-variable-qualitative-et-une-variable-quantitative"><i class="fa fa-check"></i><b>1.3.5</b> Relation entre une variable qualitative et une variable quantitative</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fondamentaux-r-presentes"><i class="fa fa-check"></i><b>1.4</b> Fondamentaux R présentés</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html"><i class="fa fa-check"></i><b>2</b> Quelques préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#vocabulaire"><i class="fa fa-check"></i><b>2.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="2.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#donnees-utilisees-pour-la-formation"><i class="fa fa-check"></i><b>2.2</b> Données utilisées pour la formation</a></li>
+<li class="chapter" data-level="2.3" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="2.4" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.4</b> Variables qualitatives</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#definition"><i class="fa fa-check"></i><b>2.4.1</b> Définition</a></li>
+<li class="chapter" data-level="2.4.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#manipulation-des-factor"><i class="fa fa-check"></i><b>2.4.2</b> Manipulation des <code>factor</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html"><i class="fa fa-check"></i><b>3</b> Une variable quantitative</a><ul>
+<li class="chapter" data-level="3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-de-distribution"><i class="fa fa-check"></i><b>3.1</b> Statistiques de distribution</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-robustes-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.1</b> Statistiques robustes aux valeurs extrêmes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-sensibles-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.2</b> Statistiques sensibles aux valeurs extrêmes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#calcul-sur-plusieurs-variables"><i class="fa fa-check"></i><b>3.2</b> Calcul sur plusieurs variables</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#exercice"><i class="fa fa-check"></i><b>3.2.1</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#representations-graphiques"><i class="fa fa-check"></i><b>3.3</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#histogramme"><i class="fa fa-check"></i><b>3.3.1</b> Histogramme</a></li>
+<li class="chapter" data-level="3.3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#la-fonction-de-repartition-cumulative"><i class="fa fa-check"></i><b>3.3.2</b> La fonction de répartition (cumulative)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#graphique-de-densite"><i class="fa fa-check"></i><b>3.3.3</b> Graphique de densité</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#discretisation-dune-variable-continue"><i class="fa fa-check"></i><b>3.4</b> Discrétisation d’une variable continue</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-quantiles"><i class="fa fa-check"></i><b>3.4.1</b> Méthode des quantiles</a></li>
+<li class="chapter" data-level="3.4.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-seuils-naturels-methode-de-jenks"><i class="fa fa-check"></i><b>3.4.2</b> Méthode des seuils naturels (méthode de Jenks)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html"><i class="fa fa-check"></i><b>4</b> Une variable qualitative</a><ul>
+<li class="chapter" data-level="4.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#tableaux-de-synthese"><i class="fa fa-check"></i><b>4.1</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage"><i class="fa fa-check"></i><b>4.1.1</b> Comptage</a></li>
+<li class="chapter" data-level="4.1.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage-pondere"><i class="fa fa-check"></i><b>4.1.2</b> Comptage pondéré</a></li>
+<li class="chapter" data-level="4.1.3" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences"><i class="fa fa-check"></i><b>4.1.3</b> Fréquences</a></li>
+<li class="chapter" data-level="4.1.4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences-ponderees"><i class="fa fa-check"></i><b>4.1.4</b> Fréquences pondérées</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#graphiques"><i class="fa fa-check"></i><b>4.2</b> Graphiques</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-barres-ou-en-batons"><i class="fa fa-check"></i><b>4.2.1</b> Diagramme en barres (ou en bâtons)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-secteurs"><i class="fa fa-check"></i><b>4.2.2</b> Diagramme en secteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html"><i class="fa fa-check"></i><b>5</b> Deux variables quantitatives</a><ul>
+<li class="chapter" data-level="5.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#representations-graphiques-1"><i class="fa fa-check"></i><b>5.1</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#nuage-de-points"><i class="fa fa-check"></i><b>5.1.1</b> Nuage de points</a></li>
+<li class="chapter" data-level="5.1.2" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#matrice-de-nuages-de-points"><i class="fa fa-check"></i><b>5.1.2</b> Matrice de nuages de points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#coefficients-de-correlation"><i class="fa fa-check"></i><b>5.2</b> Coefficients de corrélation</a></li>
+<li class="chapter" data-level="5.3" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#regression"><i class="fa fa-check"></i><b>5.3</b> Régression</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#exercice-1"><i class="fa fa-check"></i><b>5.3.1</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html"><i class="fa fa-check"></i><b>6</b> Deux variables qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#definitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
+<li class="chapter" data-level="6.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableaux-de-synthese-1"><i class="fa fa-check"></i><b>6.2</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableau-de-contingence-effectifs"><i class="fa fa-check"></i><b>6.2.1</b> Tableau de contingence (effectifs)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableau-des-frequences"><i class="fa fa-check"></i><b>6.2.2</b> Tableau des fréquences</a></li>
+<li class="chapter" data-level="6.2.3" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#profils-ligne"><i class="fa fa-check"></i><b>6.2.3</b> Profils-ligne</a></li>
+<li class="chapter" data-level="6.2.4" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#profils-colonne"><i class="fa fa-check"></i><b>6.2.4</b> Profils-colonne</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#graphiques-1"><i class="fa fa-check"></i><b>6.3</b> Graphiques</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#diagramme-en-batons"><i class="fa fa-check"></i><b>6.3.1</b> Diagramme en bâtons</a></li>
+<li class="chapter" data-level="6.3.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#graphique-mosaique"><i class="fa fa-check"></i><b>6.3.2</b> Graphique mosaïque</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#avec-ponderation"><i class="fa fa-check"></i><b>6.4</b> Avec pondération</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html"><i class="fa fa-check"></i><b>7</b> Lien variable quantitative - variable qualitative</a><ul>
+<li class="chapter" data-level="7.1" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#statistiques-en-fonction-dun-facteur"><i class="fa fa-check"></i><b>7.1</b> Statistiques en fonction d’un facteur</a></li>
+<li class="chapter" data-level="7.2" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#elements-theoriques"><i class="fa fa-check"></i><b>7.2</b> Eléments théoriques</a></li>
+<li class="chapter" data-level="7.3" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#representation-graphique"><i class="fa fa-check"></i><b>7.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="7.4" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#calcul-du-rapport-de-correlation"><i class="fa fa-check"></i><b>7.4</b> Calcul du rapport de corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>8</b> Tests</a><ul>
+<li class="chapter" data-level="8.1" data-path="tests.html"><a href="tests.html#sur-une-variable-quantitative"><i class="fa fa-check"></i><b>8.1</b> Sur une variable quantitative</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tests.html"><a href="tests.html#la-distribution-est-elle-normale"><i class="fa fa-check"></i><b>8.1.1</b> La distribution est-elle normale ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tests.html"><a href="tests.html#la-moyenne-differe-t-elle-de-la-valeur-attendue"><i class="fa fa-check"></i><b>8.1.2</b> La moyenne diffère-t-elle de la valeur attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tests.html"><a href="tests.html#sur-une-variable-qualitative"><i class="fa fa-check"></i><b>8.2</b> Sur une variable qualitative</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tests.html"><a href="tests.html#la-distribution-des-observations-differe-t-elle-de-celle-attendue"><i class="fa fa-check"></i><b>8.2.1</b> La distribution des observations diffère-t-elle de celle attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tests.html"><a href="tests.html#sur-2-variables-qualitatives"><i class="fa fa-check"></i><b>8.3</b> Sur 2 variables qualitatives</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tests.html"><a href="tests.html#les-deux-variables-qualitatives-sont-elles-independantes-lune-de-lautre"><i class="fa fa-check"></i><b>8.3.1</b> Les deux variables qualitatives sont-elles indépendantes l’une de l’autre ?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tests.html"><a href="tests.html#un-couple-de-variables-qualitatives-est-il-lie-plus-fortement-quun-autre-couple"><i class="fa fa-check"></i><b>8.3.2</b> Un couple de variables qualitatives est-il “lié plus fortement” qu’un autre couple ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="tests.html"><a href="tests.html#sur-un-croisement-quantitatifqualitatif"><i class="fa fa-check"></i><b>8.4</b> Sur un croisement quantitatif/qualitatif</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tests.html"><a href="tests.html#echantillons-independants"><i class="fa fa-check"></i><b>8.4.1</b> 2 échantillons indépendants</a></li>
+<li class="chapter" data-level="8.4.2" data-path="tests.html"><a href="tests.html#echantillons-dependants"><i class="fa fa-check"></i><b>8.4.2</b> 2 échantillons dépendants</a></li>
+<li class="chapter" data-level="8.4.3" data-path="tests.html"><a href="tests.html#plusieurs-echantillons-independants"><i class="fa fa-check"></i><b>8.4.3</b> Plusieurs échantillons indépendants</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tests.html"><a href="tests.html#resume"><i class="fa fa-check"></i><b>8.5</b> Résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html"><i class="fa fa-check"></i><b>9</b> Exercice de synthèse</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#enonce"><i class="fa fa-check"></i><b>9.1</b> Enoncé</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1"><i class="fa fa-check"></i><b>9.1.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.1.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2"><i class="fa fa-check"></i><b>9.1.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.1.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3"><i class="fa fa-check"></i><b>9.1.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.1.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4"><i class="fa fa-check"></i><b>9.1.4</b> Partie 4</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#corrige"><i class="fa fa-check"></i><b>9.2</b> Corrigé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1-1"><i class="fa fa-check"></i><b>9.2.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2-1"><i class="fa fa-check"></i><b>9.2.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3-1"><i class="fa fa-check"></i><b>9.2.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4-1"><i class="fa fa-check"></i><b>9.2.4</b> Partie 4</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques descriptives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercice-de-synthese" class="section level1">
+<h1><span class="header-section-number">Chapitre 9</span> Exercice de synthèse</h1>
+<div id="enonce" class="section level2">
+<h2><span class="header-section-number">9.1</span> Enoncé</h2>
+<p>Créer un un sous-jeu de données constitué des 15 premières colonnes de la base Insee restreint à la région des Pays-de-la-Loire (code REG 52). Supprimer les modalités inutiles des variables qualitatives.</p>
+<div id="partie-1" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Partie 1</h3>
+<p>L’objectif est de bien décrire la variable de population issue du recensement 2014.</p>
+<p>Produire un graphique simple pour décrire la distribution.</p>
+<p>Calculer les statistiques simples décrivant cette variable.</p>
+<p>On a des indicateurs de tendance centrale qui sont très différents. Pourquoi ?</p>
+<p>Quel est le nombre de communes de moins de 1000 habitants ?</p>
+<p>Produire un graphique plus riche que le précédent.</p>
+<p>Produire un graphique comparant les distributions entre les départements des Pays-de-la-Loire.</p>
+</div>
+<div id="partie-2" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> Partie 2</h3>
+<p>En 2014, la population communale moyenne en Pays-de-la-Loire est-elle upérieure ou inférieure à la population communale moyenne nationale ?</p>
+<p>Cette différence est-elle significative au seuil de 5% ?</p>
+<p>Aide : Réfléchir aux questions :</p>
+<ul>
+<li><p>un ou deux échantillons ?</p></li>
+<li><p>test paramétrique ou non paramétrique ?</p></li>
+</ul>
+<p>La population moyenne diffère-t-elle entre PDL et Centre-val-de-Loire ?</p>
+</div>
+<div id="partie-3" class="section level3">
+<h3><span class="header-section-number">9.1.3</span> Partie 3</h3>
+<p>Combien de communes par département dans les Pays-de-Loire ?</p>
+<p>En 2014, quelle est la population communale moyenne par département dans la région ?</p>
+<p>Est-ce que la ventilation des communes dans les catégories de ZAU diffère selon les départements de la région PDL ?</p>
+</div>
+<div id="partie-4" class="section level3">
+<h3><span class="header-section-number">9.1.4</span> Partie 4</h3>
+<p>Y a-t-il un lien significatif entre la densité de population et le taux d’emploi en région PDL ? Si oui, est-il positif ou négatif ?</p>
+</div>
+</div>
+<div id="corrige" class="section level2">
+<h2><span class="header-section-number">9.2</span> Corrigé</h2>
+<p>Les questions étant ouvertes, il y a de nombreuses façons d’y répondre. Ci-dessous certaines d’entre elles.</p>
+<p>Créer un sous-jeu de données constitué des 15 premières colonnes de la base Insee restreint à la région des Pays-de-la-Loire (code REG 52)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pdl &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span> (REG <span class="op">==</span><span class="st"> &quot;52&quot;</span>)
+
+<span class="kw">summary</span> (pdl)</code></pre></div>
+<pre><code>##      CODGEO                        LIBGEO          REG            DEP     
+##  44001  :   1   Allonnes              :   2   52     :1502   72     :375  
+##  44002  :   1   Avrillé               :   2   01     :   0   49     :363  
+##  44003  :   1   Beaumont-Pied-de-Boeuf:   2   02     :   0   85     :282  
+##  44004  :   1   Changé                :   2   03     :   0   53     :261  
+##  44005  :   1   Chérancé              :   2   04     :   0   44     :221  
+##  44006  :   1   Cherré                :   2   11     :   0   01     :  0  
+##  (Other):1496   (Other)               :1490   (Other):   0   (Other):  0  
+##                                               ZAU     
+##  112 - Couronne d&#39;un grand pôle                 :535  
+##  300 - Autre commune multipolarisée             :386  
+##  120 - Multipolarisée des grandes aires urbaines:186  
+##  400 - Commune isolée hors influence des pôles  :143  
+##  111 - Grand pôle (plus de 10 000 emplois)      :108  
+##  221 - Petit pôle (de 1 500 à 5 000 emplois)    : 69  
+##  (Other)                                        : 75  
+##                        ZE         P14_POP          P09_POP      
+##  5213 - Le Mans         :230   Min.   :    12   Min.   :    17  
+##  5205 - Angers          :182   1st Qu.:   495   1st Qu.:   481  
+##  5209 - Laval           :157   Median :  1029   Median :   978  
+##  5203 - Nantes          :153   Mean   :  2720   Mean   :  2608  
+##  5218 - La Roche-sur-Yon:106   3rd Qu.:  2353   3rd Qu.:  2243  
+##  5207 - Saumur          : 86   Max.   :298029   Max.   :282047  
+##  (Other)                :588   NA&#39;s   :145      NA&#39;s   :145     
+##      SUPERF          NAIS0914          DECE0914         P14_MEN         
+##  Min.   :  0.20   Min.   :    1.0   Min.   :   0.0   Min.   :     5.45  
+##  1st Qu.: 11.76   1st Qu.:   33.0   1st Qu.:  15.0   1st Qu.:   196.52  
+##  Median : 17.96   Median :   69.0   Median :  31.0   Median :   402.51  
+##  Mean   : 23.64   Mean   :  166.3   Mean   : 113.1   Mean   :  1183.32  
+##  3rd Qu.: 28.53   3rd Qu.:  147.0   3rd Qu.: 107.0   3rd Qu.:   952.00  
+##  Max.   :323.98   Max.   :19814.0   Max.   :9968.0   Max.   :155272.72  
+##  NA&#39;s   :145      NA&#39;s   :145       NA&#39;s   :145      NA&#39;s   :145        
+##     NAISD15           DECESD15          P14_LOG         
+##  Min.   :   0.00   Min.   :   0.00   Min.   :    11.45  
+##  1st Qu.:   5.00   1st Qu.:   3.00   1st Qu.:   246.94  
+##  Median :  12.00   Median :   7.00   Median :   483.02  
+##  Mean   :  30.99   Mean   :  24.96   Mean   :  1427.59  
+##  3rd Qu.:  26.00   3rd Qu.:  23.00   3rd Qu.:  1108.68  
+##  Max.   :4011.00   Max.   :2146.00   Max.   :171979.65  
+##  NA&#39;s   :145       NA&#39;s   :145       NA&#39;s   :145</code></pre>
+<p>On a toujours les anciens codes régions et départements qui sont désormais inutiles.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pdl &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">droplevels</span> () <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span> (<span class="op">-</span>REG)
+
+<span class="kw">summary</span> (pdl)</code></pre></div>
+<pre><code>##      CODGEO                        LIBGEO     DEP     
+##  44001  :   1   Allonnes              :   2   44:221  
+##  44002  :   1   Avrillé               :   2   49:363  
+##  44003  :   1   Beaumont-Pied-de-Boeuf:   2   53:261  
+##  44004  :   1   Changé                :   2   72:375  
+##  44005  :   1   Chérancé              :   2   85:282  
+##  44006  :   1   Cherré                :   2           
+##  (Other):1496   (Other)               :1490           
+##                                               ZAU     
+##  112 - Couronne d&#39;un grand pôle                 :535  
+##  300 - Autre commune multipolarisée             :386  
+##  120 - Multipolarisée des grandes aires urbaines:186  
+##  400 - Commune isolée hors influence des pôles  :143  
+##  111 - Grand pôle (plus de 10 000 emplois)      :108  
+##  221 - Petit pôle (de 1 500 à 5 000 emplois)    : 69  
+##  (Other)                                        : 75  
+##                        ZE         P14_POP          P09_POP      
+##  5213 - Le Mans         :230   Min.   :    12   Min.   :    17  
+##  5205 - Angers          :182   1st Qu.:   495   1st Qu.:   481  
+##  5209 - Laval           :157   Median :  1029   Median :   978  
+##  5203 - Nantes          :153   Mean   :  2720   Mean   :  2608  
+##  5218 - La Roche-sur-Yon:106   3rd Qu.:  2353   3rd Qu.:  2243  
+##  5207 - Saumur          : 86   Max.   :298029   Max.   :282047  
+##  (Other)                :588   NA&#39;s   :145      NA&#39;s   :145     
+##      SUPERF          NAIS0914          DECE0914         P14_MEN         
+##  Min.   :  0.20   Min.   :    1.0   Min.   :   0.0   Min.   :     5.45  
+##  1st Qu.: 11.76   1st Qu.:   33.0   1st Qu.:  15.0   1st Qu.:   196.52  
+##  Median : 17.96   Median :   69.0   Median :  31.0   Median :   402.51  
+##  Mean   : 23.64   Mean   :  166.3   Mean   : 113.1   Mean   :  1183.32  
+##  3rd Qu.: 28.53   3rd Qu.:  147.0   3rd Qu.: 107.0   3rd Qu.:   952.00  
+##  Max.   :323.98   Max.   :19814.0   Max.   :9968.0   Max.   :155272.72  
+##  NA&#39;s   :145      NA&#39;s   :145       NA&#39;s   :145      NA&#39;s   :145        
+##     NAISD15           DECESD15          P14_LOG         
+##  Min.   :   0.00   Min.   :   0.00   Min.   :    11.45  
+##  1st Qu.:   5.00   1st Qu.:   3.00   1st Qu.:   246.94  
+##  Median :  12.00   Median :   7.00   Median :   483.02  
+##  Mean   :  30.99   Mean   :  24.96   Mean   :  1427.59  
+##  3rd Qu.:  26.00   3rd Qu.:  23.00   3rd Qu.:  1108.68  
+##  Max.   :4011.00   Max.   :2146.00   Max.   :171979.65  
+##  NA&#39;s   :145       NA&#39;s   :145       NA&#39;s   :145</code></pre>
+<div id="partie-1-1" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Partie 1</h3>
+<p>Objectif : bien décrire la variable population communale (P14_POP)</p>
+<p>Quelle est la population moyenne des communes de la région ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pop_moy_pdl &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pull</span> (P14_POP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mean</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span> ()
+pop_moy_pdl </code></pre></div>
+<pre><code>## [1] 2720</code></pre>
+<p>Quelle est la la médiane ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pop_med_pdl &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pull</span> (P14_POP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">median</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span> ()
+pop_med_pdl</code></pre></div>
+<pre><code>## [1] 1029</code></pre>
+<p>On a deux indicateurs de tendance centrale qui sont très différents. Pourquoi ?</p>
+<p>Quel est le nombre de communes de moins de 1000 habitants ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pop_inf_<span class="dv">1000</span> &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span> (P14_POP <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">nrow</span> ()
+pop_inf_<span class="dv">1000</span></code></pre></div>
+<pre><code>## [1] 664</code></pre>
+<p>L’histogramme de base …</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphique &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> pdl, <span class="kw">aes</span> (<span class="dt">x =</span> P14_POP)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> pop_med_pdl, <span class="dt">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> pop_moy_pdl, <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>)
+graphique</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p>… n’est pas bien lisible. Un peu de mise en forme s’impose.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphique &lt;-<span class="st"> </span>graphique <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>,
+                      <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">format</span>(x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>, <span class="dt">scientific =</span> F),
+                      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Population, échelle log&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="st">&#39;Nombre de communes&#39;</span>)
+
+graphique</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p>On peut encore rendre le graphique plus “auto-porteur”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphique &lt;-<span class="st"> </span>graphique <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> pop_med_pdl<span class="op">-</span><span class="dv">200</span>, <span class="dt">y =</span> <span class="dv">50</span>,
+            <span class="dt">label =</span> <span class="kw">paste</span> (<span class="st">&#39;Médiane&#39;</span>, <span class="st">&#39;:&#39;</span>, pop_med_pdl, <span class="st">&#39;hab.&#39;</span>),
+            <span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> pop_moy_pdl<span class="op">-</span><span class="dv">500</span>, <span class="dt">y =</span> <span class="dv">50</span>,
+            <span class="dt">label =</span> <span class="kw">paste</span> (<span class="st">&#39;Moyenne&#39;</span>, <span class="st">&#39;:&#39;</span>, pop_moy_pdl, <span class="st">&#39;hab.&#39;</span>),
+            <span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>)
+
+graphique</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p>Produire un graphique comparant les distributions entre les départements des Pays-de-la-Loire</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">medianes &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span> (DEP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span> (<span class="dt">pop_med =</span> <span class="kw">median</span> (P14_POP, <span class="dt">na.rm =</span> T))
+pdl &lt;-<span class="st"> </span><span class="kw">inner_join</span> (<span class="dt">x =</span> pdl, <span class="dt">y =</span> medianes)</code></pre></div>
+<pre><code>## Joining, by = &quot;DEP&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> pdl, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="kw">fct_reorder</span> (DEP, pop_med), <span class="dt">y =</span> P14_POP)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span> (<span class="dt">fill =</span> <span class="st">&#39;orange&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>,
+                      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>),
+                      <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">format</span>(x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>, <span class="dt">scientific =</span> <span class="ot">FALSE</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Département&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="st">&#39;Population&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span> (<span class="st">&#39;Région Pays-de-la-Loire&#39;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 145 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+</div>
+<div id="partie-2-1" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Partie 2</h3>
+<p>La population moyenne en Pays-de-la-Loire diffère-t-elle de la moyenne nationale ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pop_moy_nat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pull</span> (P14_POP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mean</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span> ()
+pop_moy_nat</code></pre></div>
+<pre><code>## [1] 1837</code></pre>
+<p>Cette différence est-elle significative au seuil de 5% ? Réfléchir aux questions : - un ou deux échantillons ? - test paramétrique ou non paramétrique ?</p>
+<p>On peut déjà comparer graphique les distributions PDL et hors PDL</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span> (<span class="dt">groupe =</span> <span class="kw">ifelse</span> (REG <span class="op">==</span><span class="st"> &#39;52&#39;</span>, <span class="st">&#39;PDL&#39;</span>, <span class="st">&#39;Hors_PDL&#39;</span>))
+
+<span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (<span class="dt">x =</span> P14_POP, <span class="dt">group =</span> groupe, <span class="dt">fill =</span> groupe)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span> (<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>, <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">format</span> (x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>, <span class="dt">scientific =</span> F)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Population, échelle log&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="st">&#39;Densité&#39;</span>)</code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in continuous x-axis</code></pre>
+<pre><code>## Warning: Removed 827 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p>Alors, un ou deux échantillons ?</p>
+<p>Si l’on considère 2 échantillons :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span> (P14_POP <span class="op">~</span><span class="st"> </span>groupe, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>, <span class="dt">data =</span> dat) <span class="co"># Student</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  P14_POP by groupe
+## t = -2.2175, df = 35866, p-value = 0.0266
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1727.6282  -106.4727
+## sample estimates:
+## mean in group Hors_PDL      mean in group PDL 
+##               1802.797               2719.847</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span> (P14_POP <span class="op">~</span><span class="st"> </span>groupe, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>, <span class="dt">data =</span> dat) <span class="co"># Welch</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  P14_POP by groupe
+## t = -3.0193, df = 1572.4, p-value = 0.002575
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1512.814  -321.287
+## sample estimates:
+## mean in group Hors_PDL      mean in group PDL 
+##               1802.797               2719.847</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span> (P14_POP <span class="op">~</span><span class="st"> </span>groupe, <span class="dt">data =</span> dat) <span class="co"># Wilcoxon</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  P14_POP by groupe
+## W = 14420000, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Si l’on considère 1 échantillon :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span> (<span class="dt">x =</span> pdl<span class="op">$</span>P14_POP, <span class="dt">mu =</span> pop_moy_nat) <span class="co"># Student</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  pdl$P14_POP
+## t = 3.0164, df = 1356, p-value = 0.002605
+## alternative hypothesis: true mean is not equal to 1837
+## 95 percent confidence interval:
+##  2145.694 3294.001
+## sample estimates:
+## mean of x 
+##  2719.847</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span> (<span class="dt">x =</span> pdl<span class="op">$</span>P14_POP, <span class="dt">mu =</span> pop_moy_nat) <span class="co"># Wilcoxon</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  pdl$P14_POP
+## V = 343300, p-value = 4.264e-16
+## alternative hypothesis: true location is not equal to 1837</code></pre>
+<p>On peut faire plein de tests ; à chaque fois R donne un résultat, mais le(s)quel(s) choisir ?</p>
+<p>Ici la moyenne nationale n’est pas calculée sur un échantillon : elle l’est sur l’exhaustivité des communes. C’est donc la moyenne sur la population. Notre problème est donc la comparaison de la moyenne d’<strong>un échantillon unique</strong> avec la moyenne de la population.</p>
+<p>Comme les distributions sont très asymétriques donc non gaussiennes, on ne peut pas lire les tests de Student. C’est donc le test de Wilcoxon qui nous indique une différence significative au seuil de 5%. Conclusion : Les communes de la région comptent en moyenne significativement plus d’habitants que celles de la France entière. Il est peu probable qu’il s’agisse d’un effet du hasard, donc les populations des communes des PDL ne sont pas distribuées comme celles des autres communes de France.</p>
+<p>La population moyenne diffère-t-elle entre PDL et Centre-val-de-Loire ?</p>
+<p>Traduire : Si je regroupe les communes des PDL + de CVDL (1502 + 1842) puis que je répartis aléatoirement ces communes dans deux groupes, est-il possible que par un effet du hasard, les distributions des deux groupes diffèrent autant que diffèrent celles observées dans les deux régions ?</p>
+<p>Centre-val-de-Loire : code 24</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cvdl &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span> (REG <span class="op">==</span><span class="st"> &quot;24&quot;</span>)
+
+pop_moy_cvdl &lt;-<span class="st"> </span>cvdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pull</span> (P14_POP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mean</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span> ()
+
+pop_med_cvdl &lt;-<span class="st"> </span>cvdl <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pull</span> (P14_POP) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">median</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span> ()</code></pre></div>
+<p>A quoi ressemble la distribution en Centre-val-de-Loire ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> cvdl, <span class="kw">aes</span> (<span class="dt">x =</span> P14_POP)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> pop_med_cvdl, <span class="dt">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> pop_moy_cvdl, <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>,
+                      <span class="dt">labels =</span> <span class="cf">function</span> (x) <span class="kw">format</span>(x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>, <span class="dt">scientific =</span> F),
+                      <span class="dt">breaks =</span> <span class="kw">c</span> (<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Population, échelle log&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="st">&#39;Nombre de communes&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> pop_med_cvdl<span class="op">-</span><span class="dv">200</span>, <span class="dt">y =</span> <span class="dv">50</span>,
+            <span class="dt">label =</span> <span class="kw">paste</span> (<span class="st">&#39;Médiane&#39;</span>, <span class="st">&#39;:&#39;</span>, pop_med_cvdl, <span class="st">&#39;hab.&#39;</span>),
+            <span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> pop_moy_cvdl<span class="op">-</span><span class="dv">500</span>, <span class="dt">y =</span> <span class="dv">50</span>,
+            <span class="dt">label =</span> <span class="kw">paste</span> (<span class="st">&#39;Moyenne&#39;</span>, <span class="st">&#39;:&#39;</span>, pop_moy_cvdl, <span class="st">&#39;hab.&#39;</span>),
+            <span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p>Tester la significativité</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cvdl_vs_pdl &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span> (REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">24</span>))
+
+<span class="kw">wilcox.test</span> (P14_POP <span class="op">~</span><span class="st"> </span>REG, <span class="dt">data =</span> cvdl_vs_pdl)</code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  P14_POP by REG
+## W = 824660, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Pas de surprise, la différence est très significative. A noter, que “p-value &lt; 2.2e-16” est un message qui apparaît souvent : c’est une valeur “plancher” et il ne sert à rien d’aller voir plus loin au microscope des valeurs encore plus faibles.</p>
+</div>
+<div id="partie-3-1" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Partie 3</h3>
+<p>Combien de communes par département dans les Pays-de-Loire ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span> (pdl<span class="op">$</span>DEP)</code></pre></div>
+<pre><code>## 
+##  44  49  53  72  85 
+## 221 363 261 375 282</code></pre>
+<p>Quelle est la population communale moyenne par département dans la région ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pop_com_moy_dept &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span> (DEP) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span> (<span class="dt">pop_moy_dept =</span> <span class="kw">round</span> (<span class="kw">mean</span> (P14_POP, <span class="dt">na.rm =</span> T))) 
+
+pop_com_moy_dept </code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   DEP   pop_moy_dept
+##   &lt;fct&gt;        &lt;dbl&gt;
+## 1 44            6352
+## 2 49            3224
+## 3 53            1192
+## 4 72            1546
+## 5 85            2461</code></pre>
+<p>Est-ce que la ventilation des communes dans les catégories de ZAU diffère selon les départements de la région PDL ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">croisement &lt;-<span class="st"> </span><span class="kw">table</span> (pdl<span class="op">$</span>DEP, pdl<span class="op">$</span>ZAU)
+
+DEP_vs_ZAU &lt;-<span class="st"> </span>croisement <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> Var1, <span class="dt">value =</span> Freq) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">rename</span> (<span class="dt">ZAU =</span> Var2)
+DEP_vs_ZAU</code></pre></div>
+<pre><code>##                                               ZAU  44  49 53  72  85
+## 1       111 - Grand pôle (plus de 10 000 emplois)  40  22  7  27  12
+## 2                  112 - Couronne d&#39;un grand pôle 102 166 65 157  45
+## 3 120 - Multipolarisée des grandes aires urbaines  26  31 20  59  50
+## 4       211 - Moyen pôle (5 000 à 10 000 emplois)   8   2  4   1   8
+## 5                  212 - Couronne d&#39;un moyen pôle  12   5 21   2   4
+## 6     221 - Petit pôle (de 1 500 à 5 000 emplois)   6  27  5  14  17
+## 7                  222 - Couronne d&#39;un petit pôle   0   0  4   4   0
+## 8              300 - Autre commune multipolarisée  27  83 80  90 106
+## 9   400 - Commune isolée hors influence des pôles   0  27 55  21  40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span> (croisement)</code></pre></div>
+<pre><code>## Warning in chisq.test(croisement): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  croisement
+## X-squared = 316.14, df = 32, p-value &lt; 2.2e-16</code></pre>
+<p>Problème : il y a dans certaines cases du tableau de contingence des effectifs inférieurs à 5. On va doc créer des regroupements :</p>
+<ul>
+<li>111 et 112 (grands pôles)</li>
+<li>120 et 300 (multipolarisées)</li>
+<li>211 212 221 22 et 400 (rural ou petits pôles)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span> (pdl<span class="op">$</span>ZAU)</code></pre></div>
+<pre><code>## [1] &quot;111 - Grand pôle (plus de 10 000 emplois)&quot;      
+## [2] &quot;112 - Couronne d&#39;un grand pôle&quot;                 
+## [3] &quot;120 - Multipolarisée des grandes aires urbaines&quot;
+## [4] &quot;211 - Moyen pôle (5 000 à 10 000 emplois)&quot;      
+## [5] &quot;212 - Couronne d&#39;un moyen pôle&quot;                 
+## [6] &quot;221 - Petit pôle (de 1 500 à 5 000 emplois)&quot;    
+## [7] &quot;222 - Couronne d&#39;un petit pôle&quot;                 
+## [8] &quot;300 - Autre commune multipolarisée&quot;             
+## [9] &quot;400 - Commune isolée hors influence des pôles&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pdl &lt;-<span class="st"> </span>pdl <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span> (<span class="dt">ZAU_regroupees =</span> <span class="kw">fct_collapse</span> (ZAU, <span class="st">&#39;Grand pôle&#39;</span> =<span class="st"> </span><span class="kw">levels</span> (pdl<span class="op">$</span>ZAU)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>],
+                                              <span class="st">&#39;Multipolarisées&#39;</span> =<span class="st"> </span><span class="kw">levels</span> (pdl<span class="op">$</span>ZAU)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">8</span>)],
+                                              <span class="st">&#39;Rurales et petits pôles&#39;</span> =<span class="st"> </span><span class="kw">levels</span> (pdl<span class="op">$</span>ZAU)[<span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">7</span>,<span class="dv">9</span>)]))
+          
+       
+croisement &lt;-<span class="st"> </span><span class="kw">table</span> (pdl<span class="op">$</span>DEP, pdl<span class="op">$</span>ZAU_regroupees)
+
+DEP_vs_ZAU_regroupees &lt;-<span class="st"> </span>croisement <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> Var1, <span class="dt">value =</span> Freq) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">rename</span> (<span class="dt">ZAU =</span> Var2)
+
+DEP_vs_ZAU_regroupees</code></pre></div>
+<pre><code>##                       ZAU  44  49  53  72  85
+## 1              Grand pôle 142 188  72 184  57
+## 2         Multipolarisées  53 114 100 149 156
+## 3 Rurales et petits pôles  26  61  89  42  69</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test &lt;-<span class="st"> </span><span class="kw">chisq.test</span> (croisement)
+test</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  croisement
+## X-squared = 174.29, df = 8, p-value &lt; 2.2e-16</code></pre>
+<p>Il y a bien un lien enter les variables <em>ZAU_regroupees</em> et <em>DEP</em>. Si l’on veut en savoir plus on peut comparer les effectifs observés dans le tableau de contingence aux effectifs attendus si les variables étaient indépendantes l’une de l’autre.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predict &lt;-<span class="st"> </span><span class="kw">t</span> (<span class="kw">round</span> (test<span class="op">$</span>expected)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span> ()
+<span class="kw">names</span> (predict) =<span class="st"> </span><span class="kw">paste0</span> (<span class="kw">names</span> (predict), <span class="st">&#39;p&#39;</span>)
+
+prov &lt;-<span class="st"> </span><span class="kw">bind_cols</span> (<span class="dt">x =</span> DEP_vs_ZAU_regroupees, <span class="dt">y =</span> predict)
+<span class="kw">View</span> (prov)</code></pre></div>
+</div>
+<div id="partie-4-1" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Partie 4</h3>
+<p>Y a-t-il un lien entre la densité de population et le taux d’emploi en région PDL ?</p>
+<p>On crée un sous-jeu de données ad hoc.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_p4 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, P09_EMPLT) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span> (REG <span class="op">==</span><span class="st"> &#39;52&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span> (<span class="dt">taux_emploi =</span> P09_EMPLT <span class="op">/</span><span class="st"> </span>P09_POP,
+          <span class="dt">densite_pop =</span> P14_POP <span class="op">/</span><span class="st"> </span>SUPERF)
+<span class="kw">summary</span>(data_p4<span class="op">$</span>taux_emploi)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+## 0.00979 0.13147 0.18493 0.24570 0.29610 1.59801     145</code></pre>
+<p>Avant de regarder le lien entre les deux variables, on les examine chacune à leur tour.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> data_p4, <span class="kw">aes</span> (<span class="dt">x =</span> taux_emploi)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> data_p4, <span class="kw">aes</span> (<span class="dt">x =</span> densite_pop)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log&#39;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>))</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-95-2.png" width="672" /></p>
+<p>Ces distributions ne sont pas trop normales à première vue. Mais en testant ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span> (data_p4<span class="op">$</span>taux_emploi)</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data_p4$taux_emploi
+## W = 0.77523, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span> (data_p4<span class="op">$</span>densite_pop)</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data_p4$densite_pop
+## W = 0.31672, p-value &lt; 2.2e-16</code></pre>
+<p>C’est confirmé -&gt; en toute rigueur, test non paramétrique. On regarde aussi le nuage de points.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data=</span>data_p4, <span class="kw">aes</span> (<span class="dt">x =</span> densite_pop, <span class="dt">y =</span> taux_emploi)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">color =</span> <span class="st">&#39;orange&#39;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span> (<span class="dt">x =</span> data_p4<span class="op">$</span>taux_emploi,
+     <span class="dt">y =</span> data_p4<span class="op">$</span>densite,
+     <span class="dt">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>,
+     <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>## [1] 0.3121057</code></pre>
+<p>Conclusion : Le coefficient de corrélation est positif, faible mais non négligeable. Les variables tendent à varier dans le même sens.</p>
+<p>Est-ce que la variable <em>densite</em> contribue significativement à expliquer la variabilité de la variable <em>taux_emploi</em> ?</p>
+<p>Pour répondre à cette question, on est bien embêtés dans un cadre non paramétrique. Pour l’approcher, on peut donc faire comme si on n’avait pas vu que les distrubutions des variables n’étaient pas normales.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modele &lt;-<span class="st"> </span><span class="kw">lm</span> (<span class="kw">log</span> (taux_emploi) <span class="op">~</span><span class="st"> </span><span class="kw">log</span> (densite_pop), <span class="dt">data =</span> data_p4)
+<span class="kw">summary</span> (modele)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(taux_emploi) ~ log(densite_pop), data = data_p4)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -3.14328 -0.37613 -0.02266  0.36720  2.00382 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      -2.56785    0.06862  -37.42   &lt;2e-16 ***
+## log(densite_pop)  0.23434    0.01625   14.42   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5732 on 1355 degrees of freedom
+##   (145 observations deleted due to missingness)
+## Multiple R-squared:  0.133,  Adjusted R-squared:  0.1323 
+## F-statistic: 207.8 on 1 and 1355 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span> (modele)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-98-1.png" width="672" /><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-98-2.png" width="672" /><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-98-3.png" width="672" /><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-98-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">residus &lt;-<span class="st"> </span>modele<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">rename</span> (<span class="dt">valeurs_residus =</span> <span class="st">&#39;.&#39;</span>)
+  
+<span class="kw">ggplot</span> (<span class="dt">data =</span> residus, <span class="kw">aes</span> (<span class="dt">x =</span> valeurs_residus)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-98-5.png" width="672" /></p>
+<p>Les graphiques montrent que :</p>
+<ul>
+<li><p>on a à peu près indépendance entre les valeurs prédites et les résidus</p></li>
+<li><p>les résidus sont à peu près distribués normalement avec une distribution centrée en zéro</p></li>
+<li><p>on a quelques points avec des bras de leviers (distance de Cook) importants, mais le modèle les prédit bien.</p></li>
+</ul>
+<p>Donc ce modèle n’est pas catastrophique. On peut s’aventurer à lire les valeurs des coefficients et le R<sup>2</sup> ajusté qui vaut 0,1323. Le taux d’emploi tend à augmenter avec la densité de population, selon une relation log-log.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tests.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

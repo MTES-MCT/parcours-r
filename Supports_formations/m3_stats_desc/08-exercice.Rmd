@@ -1,0 +1,427 @@
+# Exercice de synthèse
+
+## Enoncé
+
+Créer un un sous-jeu de données constitué des 15 premières colonnes de la base Insee restreint à la région des Pays-de-la-Loire (code REG 52). Supprimer les modalités inutiles des variables qualitatives.
+
+### Partie 1
+
+L'objectif est de bien décrire la variable de population issue du recensement 2014.
+
+Produire un graphique simple pour décrire la distribution.
+
+Calculer les statistiques simples décrivant cette variable.
+
+On a des indicateurs de tendance centrale qui sont très différents. Pourquoi ?
+
+Quel est le nombre de communes de moins de 1000 habitants ?
+
+Produire un graphique plus riche que le précédent.
+
+Produire un graphique comparant les distributions entre les départements des Pays-de-la-Loire.
+
+### Partie 2
+
+En 2014, la population communale moyenne en Pays-de-la-Loire est-elle upérieure ou inférieure à la population communale moyenne nationale ?
+
+Cette différence est-elle significative au seuil de 5% ?
+
+Aide : Réfléchir aux questions :
+
+- un ou deux échantillons ?
+
+- test paramétrique ou non paramétrique ?
+
+La population moyenne diffère-t-elle entre PDL et Centre-val-de-Loire ?
+
+
+### Partie 3
+
+Combien de communes par département dans les Pays-de-Loire ?
+
+En 2014, quelle est la population communale moyenne par département dans la région ?
+
+Est-ce que la ventilation des communes dans les catégories de ZAU diffère selon les départements de la région PDL ?
+
+### Partie 4
+
+Y a-t-il un lien significatif entre la densité de population et le taux d'emploi en région PDL ? Si oui, est-il positif ou négatif ?
+
+## Corrigé
+
+Les questions étant ouvertes, il y a de nombreuses façons d'y répondre. Ci-dessous certaines d'entre elles.
+
+Créer un sous-jeu de données constitué des 15 premières colonnes de la base Insee restreint à la région des Pays-de-la-Loire (code REG 52)
+```{r}
+pdl <- dat %>% 
+  select (1:15) %>% 
+  filter (REG == "52")
+
+summary (pdl)
+
+```
+
+On a toujours les anciens codes régions et départements qui sont désormais inutiles.
+
+```{r}
+pdl <- pdl %>%
+  droplevels () %>%
+  select (-REG)
+
+summary (pdl)
+```
+
+### Partie 1
+
+Objectif : bien décrire la variable population communale (P14_POP)
+
+Quelle est la population moyenne des communes de la région ?
+
+```{r}
+pop_moy_pdl <- pdl %>%
+  pull (P14_POP) %>%
+  mean (na.rm = T) %>%
+  round ()
+pop_moy_pdl 
+```
+
+Quelle est la la médiane ?
+
+```{r}
+pop_med_pdl <- pdl %>%
+  pull (P14_POP) %>%
+  median (na.rm = T) %>%
+  round ()
+pop_med_pdl
+```
+
+On a deux indicateurs de tendance centrale qui sont très différents. Pourquoi ?
+
+Quel est le nombre de communes de moins de 1000 habitants ?
+
+```{r}
+pop_inf_1000 <- pdl %>%
+  filter (P14_POP < 1000) %>% 
+  nrow ()
+pop_inf_1000
+```
+
+L'histogramme de base ...
+
+```{r, message=F, warning=F}
+graphique <- ggplot (data = pdl, aes (x = P14_POP)) +
+  geom_histogram () +
+  geom_vline (xintercept = pop_med_pdl, color = 'orange') +
+  geom_vline (xintercept = pop_moy_pdl, color = 'green')
+graphique
+```
+
+... n'est pas bien lisible. Un peu de mise en forme s'impose.
+
+```{r, message=F, warning=F}
+graphique <- graphique +
+  scale_x_continuous (trans = 'log10',
+                      labels = function(x) format(x, big.mark = " ", scientific = F),
+                      breaks = c(10, 100, 1000, 10000, 100000)) +
+  xlab ('Population, échelle log') +
+  ylab ('Nombre de communes')
+
+graphique
+```
+
+On peut encore rendre le graphique plus "auto-porteur".
+
+```{r, message=F, warning=F}
+graphique <- graphique +
+  annotate (geom = 'text', x = pop_med_pdl-200, y = 50,
+            label = paste ('Médiane', ':', pop_med_pdl, 'hab.'),
+            angle = 90, color = 'orange') +
+  annotate (geom = 'text', x = pop_moy_pdl-500, y = 50,
+            label = paste ('Moyenne', ':', pop_moy_pdl, 'hab.'),
+            angle = 90, color = 'green')
+
+graphique
+```
+
+Produire un graphique comparant les distributions entre les départements des Pays-de-la-Loire
+
+```{r}
+medianes <- pdl %>% 
+  group_by (DEP) %>%
+  summarise (pop_med = median (P14_POP, na.rm = T))
+pdl <- inner_join (x = pdl, y = medianes)
+
+ggplot (data = pdl, aes (x = fct_reorder (DEP, pop_med), y = P14_POP)) +
+  geom_boxplot (fill = 'orange') +
+  scale_y_continuous (trans = 'log10',
+                      breaks = c(10, 100, 1000, 10000, 100000),
+                      labels = function(x) format(x, big.mark = " ", scientific = FALSE)) +
+  xlab ('Département') +
+  ylab ('Population') +
+  ggtitle ('Région Pays-de-la-Loire')
+```
+
+
+### Partie 2
+
+La population moyenne en Pays-de-la-Loire diffère-t-elle de la moyenne nationale ?
+
+```{r}
+pop_moy_nat <- dat %>%
+  pull (P14_POP) %>%
+  mean (na.rm = T) %>%
+  round ()
+pop_moy_nat
+```
+
+Cette différence est-elle significative au seuil de 5% ?
+Réfléchir aux questions :
+- un ou deux échantillons ?
+- test paramétrique ou non paramétrique ?
+
+On peut déjà comparer graphique les distributions PDL et hors PDL
+
+
+```{r}
+dat <- dat %>%
+  mutate (groupe = ifelse (REG == '52', 'PDL', 'Hors_PDL'))
+
+ggplot (data = dat, aes (x = P14_POP, group = groupe, fill = groupe)) + 
+  geom_density (alpha = 0.5) +
+  scale_x_continuous (trans = 'log10', labels = function(x) format (x, big.mark = " ", scientific = F)) +
+  xlab ('Population, échelle log') +
+  ylab ('Densité')
+
+```
+
+Alors, un ou deux échantillons ?
+
+Si l'on considère 2 échantillons :
+
+```{r}
+t.test (P14_POP ~ groupe, var.equal = TRUE, data = dat) # Student
+t.test (P14_POP ~ groupe, var.equal = FALSE, data = dat) # Welch
+wilcox.test (P14_POP ~ groupe, data = dat) # Wilcoxon
+```
+
+Si l'on considère 1 échantillon :
+
+```{r}
+t.test (x = pdl$P14_POP, mu = pop_moy_nat) # Student
+wilcox.test (x = pdl$P14_POP, mu = pop_moy_nat) # Wilcoxon
+```
+
+On peut faire plein de tests ; à chaque fois R donne un résultat, mais le(s)quel(s) choisir ?
+
+Ici la moyenne nationale n'est pas calculée sur un échantillon : elle l'est sur l'exhaustivité des communes. C'est donc la moyenne sur la population. Notre problème est donc la comparaison de la moyenne d'**un échantillon unique** avec la moyenne de la population.
+
+Comme les distributions sont très asymétriques donc non gaussiennes, on ne peut pas lire les tests de Student. C'est donc le test de Wilcoxon qui nous indique une différence significative au seuil de 5%. Conclusion : Les communes de la région comptent en moyenne significativement plus d'habitants que celles de la France entière. Il est peu probable qu'il s'agisse d'un effet du hasard, donc les populations des communes des PDL ne sont pas distribuées comme celles des autres communes de France.
+
+La population moyenne diffère-t-elle entre PDL et Centre-val-de-Loire ?
+
+Traduire : Si je regroupe les communes des PDL + de CVDL (1502 + 1842) puis que je répartis aléatoirement ces communes dans deux groupes, est-il possible que par un effet du hasard, les distributions des deux groupes diffèrent autant que diffèrent celles observées dans les deux régions ?
+
+Centre-val-de-Loire : code 24
+
+```{r}
+cvdl <- dat %>% 
+  select (1:15) %>% 
+  filter (REG == "24")
+
+pop_moy_cvdl <- cvdl %>%
+  pull (P14_POP) %>%
+  mean (na.rm = T) %>%
+  round ()
+
+pop_med_cvdl <- cvdl %>%
+  pull (P14_POP) %>%
+  median (na.rm = T) %>%
+  round ()
+```
+
+A quoi ressemble la distribution en Centre-val-de-Loire ?
+
+```{r, message=F, warning=F}
+ggplot (data = cvdl, aes (x = P14_POP)) +
+  geom_histogram () +
+  geom_vline (xintercept = pop_med_cvdl, color = 'orange') +
+  geom_vline (xintercept = pop_moy_cvdl, color = 'green') +
+  scale_x_continuous (trans = 'log10',
+                      labels = function (x) format(x, big.mark = " ", scientific = F),
+                      breaks = c (10, 100, 1000, 10000, 100000)) +
+  xlab ('Population, échelle log') +
+  ylab ('Nombre de communes') +
+  annotate (geom = 'text', x = pop_med_cvdl-200, y = 50,
+            label = paste ('Médiane', ':', pop_med_cvdl, 'hab.'),
+            angle = 90, color = 'orange') +
+  annotate (geom = 'text', x = pop_moy_cvdl-500, y = 50,
+            label = paste ('Moyenne', ':', pop_moy_cvdl, 'hab.'),
+            angle = 90, color = 'green')
+
+```
+
+Tester la significativité
+
+```{r}
+cvdl_vs_pdl <- dat %>%
+  filter (REG %in% c(52, 24))
+
+wilcox.test (P14_POP ~ REG, data = cvdl_vs_pdl)
+
+```
+
+Pas de surprise, la différence est très significative. A noter, que "p-value < 2.2e-16" est un message qui apparaît souvent : c'est une valeur "plancher" et il ne sert à rien d'aller voir plus loin au microscope des valeurs encore plus faibles.
+
+### Partie 3
+
+Combien de communes par département dans les Pays-de-Loire ?
+
+```{r}
+table (pdl$DEP)
+```
+
+Quelle est la population communale moyenne par département dans la région ?
+
+```{r}
+pop_com_moy_dept <- pdl %>% group_by (DEP) %>% 
+  summarise (pop_moy_dept = round (mean (P14_POP, na.rm = T))) 
+
+pop_com_moy_dept 
+
+```
+
+Est-ce que la ventilation des communes dans les catégories de ZAU diffère selon les départements de la région PDL ?
+
+```{r}
+croisement <- table (pdl$DEP, pdl$ZAU)
+
+DEP_vs_ZAU <- croisement %>% 
+  as.data.frame () %>% 
+  spread (key = Var1, value = Freq) %>% 
+  rename (ZAU = Var2)
+DEP_vs_ZAU
+
+chisq.test (croisement)
+```
+
+Problème : il y a dans certaines cases du tableau de contingence des effectifs inférieurs à 5. On va doc créer des regroupements :
+
+- 111 et 112 (grands pôles)
+- 120 et 300 (multipolarisées)
+- 211 212 221 22 et 400 (rural ou petits pôles)
+
+```{r}
+levels (pdl$ZAU)
+
+pdl <- pdl %>% 
+  mutate (ZAU_regroupees = fct_collapse (ZAU, 'Grand pôle' = levels (pdl$ZAU)[1:2],
+                                              'Multipolarisées' = levels (pdl$ZAU)[c(3,8)],
+                                              'Rurales et petits pôles' = levels (pdl$ZAU)[c(4:7,9)]))
+          
+       
+croisement <- table (pdl$DEP, pdl$ZAU_regroupees)
+
+DEP_vs_ZAU_regroupees <- croisement %>% 
+  as.data.frame () %>% 
+  spread (key = Var1, value = Freq) %>% 
+  rename (ZAU = Var2)
+
+DEP_vs_ZAU_regroupees
+
+test <- chisq.test (croisement)
+test
+```
+
+Il y a bien un lien enter les variables *ZAU_regroupees* et *DEP*. Si l'on veut en savoir plus on peut comparer les effectifs observés dans le tableau de contingence aux effectifs attendus si les variables étaient indépendantes l'une de l'autre.
+
+```{r}
+predict <- t (round (test$expected)) %>% as.data.frame ()
+names (predict) = paste0 (names (predict), 'p')
+
+prov <- bind_cols (x = DEP_vs_ZAU_regroupees, y = predict)
+View (prov)
+
+```
+
+### Partie 4
+
+Y a-t-il un lien entre la densité de population et le taux d'emploi en région PDL ?
+
+On crée un sous-jeu de données ad hoc.
+
+```{r, message=F, warning=F}
+data_p4 <- dat %>%
+  select (1:15, P09_EMPLT) %>% 
+  filter (REG == '52') %>% 
+  mutate (taux_emploi = P09_EMPLT / P09_POP,
+          densite_pop = P14_POP / SUPERF)
+summary(data_p4$taux_emploi)
+```
+
+Avant de regarder le lien entre les deux variables, on les examine chacune à leur tour. 
+
+```{r, warning=F, message=F}
+ggplot (data = data_p4, aes (x = taux_emploi)) +
+  geom_histogram () +
+  scale_x_continuous (limits = c(0, 1))
+
+ggplot (data = data_p4, aes (x = densite_pop)) +
+  geom_histogram () +
+  scale_x_continuous (trans = 'log', breaks = c(1,10,100,1000))
+```
+
+Ces distributions ne sont pas trop normales à première vue. Mais en testant ?
+
+```{r}
+shapiro.test (data_p4$taux_emploi)
+shapiro.test (data_p4$densite_pop)
+```
+
+C'est confirmé -> en toute rigueur, test non paramétrique. On regarde aussi le nuage de points.
+
+```{r, warning=F, message=F}
+ggplot (data=data_p4, aes (x = densite_pop, y = taux_emploi)) +
+  geom_point () +
+  scale_x_continuous (trans = 'log10') +
+  scale_y_continuous (trans = 'log10') +
+  geom_smooth (color = 'orange')+
+  geom_smooth (method = 'lm', color = 'blue')
+  
+cor (x = data_p4$taux_emploi,
+     y = data_p4$densite,
+     use = "pairwise.complete.obs",
+     method = "spearman")
+```
+
+Conclusion : Le coefficient de corrélation est positif, faible mais non négligeable. Les variables tendent à varier dans le même sens.
+
+Est-ce que la variable *densite* contribue significativement à expliquer la variabilité de la variable *taux_emploi* ?
+
+Pour répondre à cette question, on est bien embêtés dans un cadre non paramétrique. Pour l'approcher, on peut donc faire comme si on n'avait pas vu que les distrubutions des variables n'étaient pas normales.
+
+```{r, warning=F, message=F}
+modele <- lm (log (taux_emploi) ~ log (densite_pop), data = data_p4)
+summary (modele)
+plot (modele)
+
+residus <- modele$residuals %>% 
+  as.data.frame () %>% 
+  rename (valeurs_residus = '.')
+  
+ggplot (data = residus, aes (x = valeurs_residus)) +
+  geom_histogram () +
+  geom_vline (xintercept = 0, color = 'red')
+```
+
+Les graphiques montrent que :
+
+- on a à peu près indépendance entre les valeurs prédites et les résidus
+
+- les résidus sont à peu près distribués normalement avec une distribution centrée en zéro
+
+- on a quelques points avec des bras de leviers (distance de Cook) importants, mais le modèle les prédit bien.
+
+Donc ce modèle n'est pas catastrophique. On peut s'aventurer à lire les valeurs des coefficients et le R^2^ ajusté qui vaut 0,1323. Le taux d'emploi tend à augmenter avec la densité de population, selon une relation log-log.
+
+
+

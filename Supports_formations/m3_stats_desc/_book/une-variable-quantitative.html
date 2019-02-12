@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistiques descriptives</title>
+  <meta name="description" content="Formation R aux statistiques descriptives">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistiques descriptives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R aux statistiques descriptives" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistiques descriptives" />
+  
+  <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
+  
+
+<meta name="author" content="Groupe référents R   Ministère de la Transition écologique et solidaire   Ministère de la Cohésion des Territoires">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="quelques-preliminaires.html">
+<link rel="next" href="une-variable-qualitative.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
+<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="libs/vis-4.20.1/vis.min.js"></script>
+<script src="libs/visNetwork-binding-2.0.4/visNetwork.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectif-general"><i class="fa fa-check"></i><b>1.2</b> Objectif général</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notions-et-methodes-presentees"><i class="fa fa-check"></i><b>1.3</b> Notions et méthodes présentées</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-quantitative"><i class="fa fa-check"></i><b>1.3.1</b> Analyse univariée d’une variable quantitative</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-qualitative"><i class="fa fa-check"></i><b>1.3.2</b> Analyse univariée d’une variable qualitative</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#relation-entre-2-variables-quantitatives"><i class="fa fa-check"></i><b>1.3.3</b> Relation entre 2 variables quantitatives</a></li>
+<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#relation-entre-2-variables-qualitatives"><i class="fa fa-check"></i><b>1.3.4</b> Relation entre 2 variables qualitatives</a></li>
+<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#relation-entre-une-variable-qualitative-et-une-variable-quantitative"><i class="fa fa-check"></i><b>1.3.5</b> Relation entre une variable qualitative et une variable quantitative</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fondamentaux-r-presentes"><i class="fa fa-check"></i><b>1.4</b> Fondamentaux R présentés</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html"><i class="fa fa-check"></i><b>2</b> Quelques préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#vocabulaire"><i class="fa fa-check"></i><b>2.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="2.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#donnees-utilisees-pour-la-formation"><i class="fa fa-check"></i><b>2.2</b> Données utilisées pour la formation</a></li>
+<li class="chapter" data-level="2.3" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="2.4" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.4</b> Variables qualitatives</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#definition"><i class="fa fa-check"></i><b>2.4.1</b> Définition</a></li>
+<li class="chapter" data-level="2.4.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#manipulation-des-factor"><i class="fa fa-check"></i><b>2.4.2</b> Manipulation des <code>factor</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html"><i class="fa fa-check"></i><b>3</b> Une variable quantitative</a><ul>
+<li class="chapter" data-level="3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-de-distribution"><i class="fa fa-check"></i><b>3.1</b> Statistiques de distribution</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-robustes-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.1</b> Statistiques robustes aux valeurs extrêmes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-sensibles-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.2</b> Statistiques sensibles aux valeurs extrêmes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#calcul-sur-plusieurs-variables"><i class="fa fa-check"></i><b>3.2</b> Calcul sur plusieurs variables</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#exercice"><i class="fa fa-check"></i><b>3.2.1</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#representations-graphiques"><i class="fa fa-check"></i><b>3.3</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#histogramme"><i class="fa fa-check"></i><b>3.3.1</b> Histogramme</a></li>
+<li class="chapter" data-level="3.3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#la-fonction-de-repartition-cumulative"><i class="fa fa-check"></i><b>3.3.2</b> La fonction de répartition (cumulative)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#graphique-de-densite"><i class="fa fa-check"></i><b>3.3.3</b> Graphique de densité</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#discretisation-dune-variable-continue"><i class="fa fa-check"></i><b>3.4</b> Discrétisation d’une variable continue</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-quantiles"><i class="fa fa-check"></i><b>3.4.1</b> Méthode des quantiles</a></li>
+<li class="chapter" data-level="3.4.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-seuils-naturels-methode-de-jenks"><i class="fa fa-check"></i><b>3.4.2</b> Méthode des seuils naturels (méthode de Jenks)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html"><i class="fa fa-check"></i><b>4</b> Une variable qualitative</a><ul>
+<li class="chapter" data-level="4.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#tableaux-de-synthese"><i class="fa fa-check"></i><b>4.1</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage"><i class="fa fa-check"></i><b>4.1.1</b> Comptage</a></li>
+<li class="chapter" data-level="4.1.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage-pondere"><i class="fa fa-check"></i><b>4.1.2</b> Comptage pondéré</a></li>
+<li class="chapter" data-level="4.1.3" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences"><i class="fa fa-check"></i><b>4.1.3</b> Fréquences</a></li>
+<li class="chapter" data-level="4.1.4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences-ponderees"><i class="fa fa-check"></i><b>4.1.4</b> Fréquences pondérées</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#graphiques"><i class="fa fa-check"></i><b>4.2</b> Graphiques</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-barres-ou-en-batons"><i class="fa fa-check"></i><b>4.2.1</b> Diagramme en barres (ou en bâtons)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-secteurs"><i class="fa fa-check"></i><b>4.2.2</b> Diagramme en secteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html"><i class="fa fa-check"></i><b>5</b> Deux variables quantitatives</a><ul>
+<li class="chapter" data-level="5.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#representations-graphiques-1"><i class="fa fa-check"></i><b>5.1</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#nuage-de-points"><i class="fa fa-check"></i><b>5.1.1</b> Nuage de points</a></li>
+<li class="chapter" data-level="5.1.2" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#matrice-de-nuages-de-points"><i class="fa fa-check"></i><b>5.1.2</b> Matrice de nuages de points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#coefficients-de-correlation"><i class="fa fa-check"></i><b>5.2</b> Coefficients de corrélation</a></li>
+<li class="chapter" data-level="5.3" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#regression"><i class="fa fa-check"></i><b>5.3</b> Régression</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="deux-variables-quantitatives.html"><a href="deux-variables-quantitatives.html#exercice-1"><i class="fa fa-check"></i><b>5.3.1</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html"><i class="fa fa-check"></i><b>6</b> Deux variables qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#definitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
+<li class="chapter" data-level="6.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableaux-de-synthese-1"><i class="fa fa-check"></i><b>6.2</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableau-de-contingence-effectifs"><i class="fa fa-check"></i><b>6.2.1</b> Tableau de contingence (effectifs)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#tableau-des-frequences"><i class="fa fa-check"></i><b>6.2.2</b> Tableau des fréquences</a></li>
+<li class="chapter" data-level="6.2.3" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#profils-ligne"><i class="fa fa-check"></i><b>6.2.3</b> Profils-ligne</a></li>
+<li class="chapter" data-level="6.2.4" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#profils-colonne"><i class="fa fa-check"></i><b>6.2.4</b> Profils-colonne</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#graphiques-1"><i class="fa fa-check"></i><b>6.3</b> Graphiques</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#diagramme-en-batons"><i class="fa fa-check"></i><b>6.3.1</b> Diagramme en bâtons</a></li>
+<li class="chapter" data-level="6.3.2" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#graphique-mosaique"><i class="fa fa-check"></i><b>6.3.2</b> Graphique mosaïque</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="deux-variables-qualitatives.html"><a href="deux-variables-qualitatives.html#avec-ponderation"><i class="fa fa-check"></i><b>6.4</b> Avec pondération</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html"><i class="fa fa-check"></i><b>7</b> Lien variable quantitative - variable qualitative</a><ul>
+<li class="chapter" data-level="7.1" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#statistiques-en-fonction-dun-facteur"><i class="fa fa-check"></i><b>7.1</b> Statistiques en fonction d’un facteur</a></li>
+<li class="chapter" data-level="7.2" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#elements-theoriques"><i class="fa fa-check"></i><b>7.2</b> Eléments théoriques</a></li>
+<li class="chapter" data-level="7.3" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#representation-graphique"><i class="fa fa-check"></i><b>7.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="7.4" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#calcul-du-rapport-de-correlation"><i class="fa fa-check"></i><b>7.4</b> Calcul du rapport de corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>8</b> Tests</a><ul>
+<li class="chapter" data-level="8.1" data-path="tests.html"><a href="tests.html#sur-une-variable-quantitative"><i class="fa fa-check"></i><b>8.1</b> Sur une variable quantitative</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tests.html"><a href="tests.html#la-distribution-est-elle-normale"><i class="fa fa-check"></i><b>8.1.1</b> La distribution est-elle normale ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tests.html"><a href="tests.html#la-moyenne-differe-t-elle-de-la-valeur-attendue"><i class="fa fa-check"></i><b>8.1.2</b> La moyenne diffère-t-elle de la valeur attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tests.html"><a href="tests.html#sur-une-variable-qualitative"><i class="fa fa-check"></i><b>8.2</b> Sur une variable qualitative</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tests.html"><a href="tests.html#la-distribution-des-observations-differe-t-elle-de-celle-attendue"><i class="fa fa-check"></i><b>8.2.1</b> La distribution des observations diffère-t-elle de celle attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tests.html"><a href="tests.html#sur-2-variables-qualitatives"><i class="fa fa-check"></i><b>8.3</b> Sur 2 variables qualitatives</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tests.html"><a href="tests.html#les-deux-variables-qualitatives-sont-elles-independantes-lune-de-lautre"><i class="fa fa-check"></i><b>8.3.1</b> Les deux variables qualitatives sont-elles indépendantes l’une de l’autre ?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tests.html"><a href="tests.html#un-couple-de-variables-qualitatives-est-il-lie-plus-fortement-quun-autre-couple"><i class="fa fa-check"></i><b>8.3.2</b> Un couple de variables qualitatives est-il “lié plus fortement” qu’un autre couple ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="tests.html"><a href="tests.html#sur-un-croisement-quantitatifqualitatif"><i class="fa fa-check"></i><b>8.4</b> Sur un croisement quantitatif/qualitatif</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tests.html"><a href="tests.html#echantillons-independants"><i class="fa fa-check"></i><b>8.4.1</b> 2 échantillons indépendants</a></li>
+<li class="chapter" data-level="8.4.2" data-path="tests.html"><a href="tests.html#echantillons-dependants"><i class="fa fa-check"></i><b>8.4.2</b> 2 échantillons dépendants</a></li>
+<li class="chapter" data-level="8.4.3" data-path="tests.html"><a href="tests.html#plusieurs-echantillons-independants"><i class="fa fa-check"></i><b>8.4.3</b> Plusieurs échantillons indépendants</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tests.html"><a href="tests.html#resume"><i class="fa fa-check"></i><b>8.5</b> Résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html"><i class="fa fa-check"></i><b>9</b> Exercice de synthèse</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#enonce"><i class="fa fa-check"></i><b>9.1</b> Enoncé</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1"><i class="fa fa-check"></i><b>9.1.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.1.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2"><i class="fa fa-check"></i><b>9.1.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.1.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3"><i class="fa fa-check"></i><b>9.1.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.1.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4"><i class="fa fa-check"></i><b>9.1.4</b> Partie 4</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#corrige"><i class="fa fa-check"></i><b>9.2</b> Corrigé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1-1"><i class="fa fa-check"></i><b>9.2.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2-1"><i class="fa fa-check"></i><b>9.2.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3-1"><i class="fa fa-check"></i><b>9.2.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4-1"><i class="fa fa-check"></i><b>9.2.4</b> Partie 4</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques descriptives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="une-variable-quantitative" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Une variable quantitative</h1>
+<p>Il existe plusieurs caractéristiques à étudier sur la distribution d’une variable quantitative :</p>
+<ul>
+<li><p>La <strong>tendance centrale</strong> : le point autour duquel se regroupent les différentes valeurs d’une variable (mesurée par la médiane, le mode, la moyenne, etc…)</p></li>
+<li><p>La <strong>dispersion</strong> : l’étendue des différentes valeurs (donc l’hétérogénité de la population) que peut prendre une variable (mesurée par l’écart-type, la variance, l’écart interquantiles, etc…)</p></li>
+<li><p>L’éventuelle présence de plusieurs <strong>modes</strong></p></li>
+</ul>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div id="statistiques-de-distribution" class="section level2">
+<h2><span class="header-section-number">3.1</span> Statistiques de distribution</h2>
+<div id="statistiques-robustes-aux-valeurs-extremes" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Statistiques robustes aux valeurs extrêmes</h3>
+<p>Ce sont des statistiques qui sont peu influencées par les valeurs extrêmes de la distribution. Elles sont dites “non paramétriques” car elles ne supposent aucune distribution particulière de la variable.</p>
+<ul>
+<li>La <strong>médiane</strong> est une statistique de tendance centrale : aprés classement par ordre croissant des <span class="math inline">\(n\)</span> valeurs, c’est la valeur de l’observation “du milieu”. Il y a autant d’observations inférieures à la médiane que d’observations supérieures. Avec R, la fonction <code>median()</code> permet d’obtenir la médiane d’une variable quantitative. Si le nombre de valeurs <span class="math inline">\(n\)</span> est impair (<span class="math inline">\(n=2k+1\)</span>), c’est la valeur exacte observée au rang <span class="math inline">\(k+1\)</span>. Si le nombre de valeurs est pair(<span class="math inline">\(n=2k\)</span>), c’est la moyenne entre les valeurs observées aux rangs <span class="math inline">\(k\)</span> et <span class="math inline">\(k+1\)</span>. En cas de valeurs manquantes sur la variable, l’argument <em>na.rm</em> permet de ne prendre en compte que les valeurs effectives.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec_superf &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, SUPERF)
+<span class="kw">median</span> (vec_superf)</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>## [1] 10.81</code></pre>
+<ul>
+<li><p>Les <strong>quartiles</strong> : après classement par ordre croissant, on partage en 4, il y a donc 3 bornes. Le premier quartile est la valeur qui sépare les observations telle que 25% soient en dessous et 75% au dessus. Le deuxième quartile est la médiane. Le troisième quartile divise enfin les 75% observations les plus basses des 25% plus élevées.</p></li>
+<li><p>On peut généraliser aux déciles, aux centiles ou tout autre pourcentile. La fonction <code>quantile()</code> permet d’obtenir les percentile de son choix (par défaut, la fonction retourne les quartiles).</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>##       0%      25%      50%      75%     100% 
+##     0.04     6.44    10.81    18.58 18360.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span> (vec_superf, <span class="dt">probs =</span> <span class="kw">c</span> (<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>), <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>##     5%    10%    25%    50%    75%    90%    95% 
+##  3.170  4.140  6.440 10.810 18.580 30.743 41.240</code></pre>
+<ul>
+<li>L’<strong>intervalle interquartile</strong> (Interquartile range en anglais) est une statistique de dispersion. C’est l’intervalle entre le 1<sup>er</sup> et le 3<sup>ème</sup> quartile : il encadre 50% des observations. Il se calcule facilement par Q3 - Q1, ou au moyen de la fonction <code>IQR()</code>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">q &lt;-<span class="st"> </span><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)
+<span class="kw">print</span> (q)</code></pre></div>
+<pre><code>##       0%      25%      50%      75%     100% 
+##     0.04     6.44    10.81    18.58 18360.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">q[<span class="st">&quot;75%&quot;</span>] <span class="op">-</span><span class="st"> </span>q[<span class="st">&quot;25%&quot;</span>]</code></pre></div>
+<pre><code>##   75% 
+## 12.14</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">IQR</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>## [1] 12.14</code></pre>
+</div>
+<div id="statistiques-sensibles-aux-valeurs-extremes" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Statistiques sensibles aux valeurs extrêmes</h3>
+<p>Ce sont des statistiques qui sont influencées par les valeurs extrêmes de la distribution.</p>
+<ul>
+<li>Quand le terme de moyenne est employé sans plus de précision, il désigne la <strong>moyenne arithmétique</strong>. C’est une statistique de tendance centrale : <span class="math inline">\(\bar{x} = \dfrac{1}{n} \sum_{i=1}^n x_i\)</span></li>
+</ul>
+<p>C’est la valeur qu’aurait chacune des observations si la répartition était égale entre les individus statistiques. La fonction <code>mean()</code> permet d’obtenir la moyenne.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>## [1] 17.64062</code></pre>
+<p>Quand la variable est discrète, la moyenne arithmétique peut être pondérée en utilisant la fonction <code>weighted.mean()</code>.</p>
+<p>Exemple : quel est le nombre moyen de pièces par appartement dans une localité ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">immo &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">nb_pieces =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,
+                       <span class="dt">nb_apparts =</span> <span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">92</span>, <span class="dv">67</span>, <span class="dv">43</span>, <span class="dv">18</span>, <span class="dv">5</span>))
+
+<span class="kw">datatable</span> (immo, <span class="dt">width =</span> <span class="dv">400</span>,
+           <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre de pièces&quot;</span>, <span class="st">&quot;Nombre d&#39;appartements&quot;</span>),
+           <span class="dt">rownames =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div id="htmlwidget-242bc387dcac03b1e4a1" style="width:400px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-242bc387dcac03b1e4a1">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span> (<span class="dt">x =</span> immo<span class="op">$</span>nb_pieces, <span class="dt">w =</span> immo<span class="op">$</span>nb_apparts)</code></pre></div>
+<pre><code>## [1] 3.277778</code></pre>
+<ul>
+<li>La <strong>moyenne géométrique</strong> est aussi une statistique de tendance centrale : <span class="math inline">\(\bar{x} = \sqrt[n] \prod_{i=1}^n x_i\)</span></li>
+</ul>
+Typiquement, la moyenne géométrique est utilisée pour calculer un taux de variation moyen sur une période. Par exemple si l’on a des données sur quatre années, et des taux de variation annuels de +12%, +4%, +7% et -2% avec une valeur de départ de 100, la valeur finale est :
+<center>
+<span class="math inline">\(Vf = 100\times1,12\times1,04\times1,07\times0,98=122,1\)</span>
+</center>
+Le taux de variation moyen annuel est de :
+<center>
+<span class="math inline">\(Tm = \sqrt[4]{1,12\times1,04\times1,07\times0,98}-1=0.051\)</span>
+</center>
+<p>soit + 5,1% par an.</p>
+<p>Cas où l’on a juste la valeur de départ, la valeur finale et le nombre de pas de temps :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Vd &lt;-<span class="st"> </span><span class="dv">100</span>
+Vf &lt;-<span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.12</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.04</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.07</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.98</span>
+Annees &lt;-<span class="st"> </span><span class="dv">4</span>
+taux_moyen_annuel &lt;-<span class="st"> </span>(Vf <span class="op">/</span><span class="st"> </span>Vd) <span class="op">^</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span>Annees)
+
+<span class="dv">100</span> <span class="op">*</span><span class="st"> </span>taux_moyen_annuel <span class="op">^</span><span class="st"> </span>Annees <span class="co"># vérification</span></code></pre></div>
+<pre><code>## [1] 122.1409</code></pre>
+<p>On peut calculer la moyenne géométrique ainsi :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span> (<span class="kw">mean</span> (<span class="kw">log</span> (vec_superf), <span class="dt">na.rm =</span> T)) <span class="co"># alternative : la fonction heR::gm()</span></code></pre></div>
+<pre><code>## [1] 11.06955</code></pre>
+<ul>
+<li>La <strong>variance</strong> est une statistique de dispersion : <span class="math inline">\(S_x^2=\dfrac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2\)</span></li>
+</ul>
+<p>C’est la moyenne des carrés des écarts à la moyenne. Son unité est le carré de celle de la variable sur laquelle on la calcule. La fonction <code>var()</code> permet de la calculer.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>## [1] 21166.58</code></pre>
+<ul>
+<li>L’<strong>écart type</strong> est une statistique de dispersion. Il est défini par : <span class="math inline">\(\sigma_x= \sqrt{S_x^2}\)</span>. C’est l’écart moyen à la moyenne. L’écart-type (<em>standard deviation</em> en anglais) est dans la même unité que la variable à laquelle on l’applique. L’écart-type s’obtient avec la fonction <code>sd()</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>## [1] 145.4874</code></pre>
+<ul>
+<li>L’<strong>étendue</strong> est l’écart entre les valeurs maximale et minimale.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">etendue &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_RP_PROP) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">range</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dv">0</span>)
+etendue</code></pre></div>
+<pre><code>## [1]      0 381934</code></pre>
+<ul>
+<li>Le <strong>coefficient de variation</strong> est une statistique de dispersion relative. C’est une mesure de l’écart relatif des valeurs d’une distribution à une valeur centrale. Il permet de comparer l’hétérogénéïté de distributions de variables qui ne seraient pas du même ordre de grandeur (une variable prenant ses valeurs entre 1000 et 2000 aura naturellement une “dispersion brute” plus importante qu’une variable prenant ses valeurs entre 10 et 20). Le coefficient de variation est obtenu comme ratio de l’écart-type sur la moyenne donc, comme ces deux valeurs, il est sensible aux valeurs extrêmes. Le coefficient de variation n’a pas d’unité donc il est souvent exprimé en pourcentage.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_POP)
+ecart_t &lt;-<span class="st"> </span><span class="kw">sd</span> (v, <span class="dt">na.rm =</span> T)
+moy &lt;-<span class="st"> </span><span class="kw">mean</span> (v, <span class="dt">na.rm =</span> T)
+ecart_t<span class="op">/</span>moy</code></pre></div>
+<pre><code>## [1] 8.132898</code></pre>
+<p>La fonction <code>summary()</code> fournit plusieurs statistiques (appliquée à une variable quantitative, on obtient : minimum, maximum, quartile, moyenne et nombre de valeurs manquantes) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span> (dat, P14_POP, SUPERF) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span> ()</code></pre></div>
+<pre><code>##     P14_POP            SUPERF        
+##  Min.   :      0   Min.   :    0.04  
+##  1st Qu.:    197   1st Qu.:    6.44  
+##  Median :    444   Median :   10.81  
+##  Mean   :   1838   Mean   :   17.64  
+##  3rd Qu.:   1110   3rd Qu.:   18.58  
+##  Max.   :2220445   Max.   :18360.00  
+##  NA&#39;s   :821       NA&#39;s   :821</code></pre>
+</div>
+</div>
+<div id="calcul-sur-plusieurs-variables" class="section level2">
+<h2><span class="header-section-number">3.2</span> Calcul sur plusieurs variables</h2>
+<p>Il est souvent pratique d’appliquer une même fonction à plusieurs variables d’un <code>dataframe</code>.</p>
+<p>Sur les variables quantitatives :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise_if</span> (is.numeric, <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&#39;Variable&#39;</span>, <span class="st">&#39;Moyenne&#39;</span>), <span class="dt">width =</span> <span class="dv">300</span>)</code></pre></div>
+<div id="htmlwidget-1bebac26bef16b4c4239" style="width:300px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1bebac26bef16b4c4239">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Sur des variables appelées par leur nom :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</code></pre></div>
+<pre><code>##    P14_POP   SUPERF
+## 1 1837.492 17.64062</code></pre>
+<p>On peut également décliner selon les modalités d’une variable qualitative :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span> (REG) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">mutate_if</span> (is.numeric, round, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">datatable</span> (<span class="dt">width =</span> <span class="dv">500</span>)</code></pre></div>
+<div id="htmlwidget-90c1ab8bcfc205610dcc" style="width:500px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90c1ab8bcfc205610dcc">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="exercice" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Exercice</h3>
+<p>Comparer le coefficient de variation de plusieurs variables. Laquelle est la plus “relativement étendue” ?</p>
+</div>
+</div>
+<div id="representations-graphiques" class="section level2">
+<h2><span class="header-section-number">3.3</span> Représentations graphiques</h2>
+<p>Plusieurs représentations permettent de visualiser la distribution des valeurs d’une variable quantitative. Les principales sont :</p>
+<ul>
+<li>l’histogramme</li>
+<li>le diagramme de densité</li>
+</ul>
+<div id="histogramme" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Histogramme</h3>
+<p>C’est la représentation la plus classique, qui permet d’observer la fréquence d’observations dans différents intervalles de valeurs.</p>
+<p><strong>A ne pas confondre avec le diagramme en barres / bâtons !</strong></p>
+<p>Beaucoup de confusions entre ces deux types de graphiques, même dans des journaux “de référence” comme dans <a href="https://www.lemonde.fr/les-decodeurs/article/2018/05/22/sept-conseils-pour-ne-pas-se-faire-avoir-par-les-representations-graphiques_5302680_4355770.html">cet article de la rubrique “Les décodeurs” du Monde</a> et dans Excel.</p>
+<center>
+<div class="figure">
+<img src="Figures/fake_histo2.jpg" />
+
+</div>
+</center>
+<p>… ou dans l’<em>arboretum</em> des Barres, là où ont été formés la plupart des ingénieurs forestiers des ministères de l’agriculture et de l’environnement.</p>
+<center>
+<img src="Figures/fake_histo.png" />
+</center>
+<p>Ça c’est un diagramme en bâtons, contrairement à ce qu’indique la légende.</p>
+<p>Un histogramme, c’est ça !</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">densite =</span> P14_POP<span class="op">/</span>SUPERF, 
+               <span class="dt">densite =</span> <span class="kw">replace</span> (densite, densite <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="fl">0.01</span>))
+<span class="co"># pour éviter les densités nulles (si on souhaite faire un passage au log, voir plus bas)</span>
+g &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (densite)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()
+g</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/histo-1.png" width="672" /></p>
+<p>Il n’y a qu’une variable considérée. L’axe des abscisses est numérique et couvre la gamme des valeurs prises par la variable considérée. L’axe des ordonnées indique le nombre des valeurs (ou leur fréquence en pourcentage) dans chaque intervalle. L’histogramme est obtenu grâce à la fonction <code>geom_histogram()</code>, appliquée à la suite de la fonction <code>ggplot()</code> (qui, elle, permet de définir les variables qui seront prises en compte pour le graphique ; cf. le module 5 qui devrait être proposé à partir de 2019).</p>
+<p>Les quelques valeurs très élevées rendent le graphique illisible. On limite la gamme des valeurs de l’axe des abscisses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span> (<span class="dt">limits =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="dv">1000</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> <span class="kw">mean</span> (dat<span class="op">$</span>densite, <span class="dt">na.rm =</span> T), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/histo2-1.png" width="672" /></p>
+<p>Ici, peu de villes ont une densité importante, et la plupart sont concentrées sur la première barre : c’est un phénomène d’asymétrie (<em>skewness</em> en anglais).</p>
+<p>La fonction <code>geom_vline()</code> permet d’ajouter une ligne verticale, afin de mettre en évidence des valeurs particulières (ex : moyenne, seuil réglementaire). Ici, la moyenne (ligne verticale rouge) est un mauvais indicateur de tendance centrale.</p>
+<p>Si l’on est chagriné par cette distribution, on peut appliquer à la variable une <em>transformation logarithmique</em>. Le logarithme “tasse” les valeurs élevées et “étire” les valeurs faibles, cela permet de zoomer là où il y a de la donnée.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">log_dens =</span> <span class="kw">log10</span> (densite))
+<span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (densite, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (densite, <span class="dt">na.rm =</span> T))</code></pre></div>
+<pre><code>##   mini     maxi
+## 1 0.01 27126.14</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (log_dens, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (log_dens, <span class="dt">na.rm =</span> T))</code></pre></div>
+<pre><code>##   mini     maxi
+## 1   -2 4.433388</code></pre>
+<p>Voyons à quoi ressemble l’histogramme de la variable transformée.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-25-1.png" width="768" /></p>
+<p>C’est déjà bien plus lisible … mais quelques finitions peuvent le rendre plus informatif et “auto-porteur”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quan &lt;-<span class="st">  </span><span class="kw">pull</span> (dat, log_dens) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)
+<span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (<span class="dt">x =</span> log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> quan) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> quan,
+            <span class="dt">y =</span> <span class="dv">3400</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Méd.&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Max&quot;</span>), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Log (densité)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Nombre de communes&quot;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-26-1.png" width="768" /></p>
+<p>L’histogramme est plus lisible et informatif ! La fonction <code>annotate()</code> permet d’ajouter du texte, et enfin <code>xlab()</code> et <code>ylab()</code> servent à modifier le nom des axes.</p>
+</div>
+<div id="la-fonction-de-repartition-cumulative" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> La fonction de répartition (cumulative)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quan &lt;-<span class="st"> </span><span class="kw">pull</span>(poids_sex, poids) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span>()
+
+<span class="kw">ggplot</span> (<span class="dt">data =</span> poids_sex, <span class="kw">aes</span> (<span class="dt">x =</span> poids)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_ecdf</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Poids (kg)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Fréquence&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">labels =</span> scales<span class="op">::</span>percent) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">3</span>]), <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">4</span>]), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="kw">c</span> (quan[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>, quan[<span class="dv">3</span>]<span class="op">+</span><span class="dv">2</span>, quan[<span class="dv">4</span>]<span class="op">+</span><span class="dv">1</span>),
+            <span class="dt">y =</span> <span class="fl">0.7</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Q3&quot;</span>), <span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-27-1.png" width="768" /></p>
+</div>
+<div id="graphique-de-densite" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Graphique de densité</h3>
+<p>La <strong>densité</strong> d’une variable correspond à la probabilité de réalisation de chacune des valeurs possibles de cette variable : il s’agit d’une fonction continue (nombre infini de points). Exemple pour <span class="math inline">\(X \hookrightarrow \mathcal{N}(m,\sigma)\)</span> : <span class="math inline">\(f_X(t) = \dfrac{1}{\sigma \sqrt{2\pi}}exp(-\dfrac{(t-m)^2}{2\sigma^2})\)</span></p>
+<p>Comme on n’observe qu’un nombre fini de points, on recourt à l’estimation par “noyau” pour estimer la densité en chaque point “possible” de la variable.</p>
+<p>La valeur de la densité en <span class="math inline">\(t\)</span> se calcule comme une moyenne pondérée de l’ensemble des points observés. Plus la valeur est éloignée de <span class="math inline">\(t\)</span>, moins leur poids est important. Le poids est donné par une fonction appelée <em>noyau</em>. Par exemple, le noyau gaussien : <span class="math inline">\(K(u)=\dfrac{1}{\sqrt{2\pi}}exp(-\dfrac{u^2}{2})\)</span></p>
+<p>Grâce au package <code>ggplot2</code>, il est possible de créer un graphique de densité avec la fonction <code>geom_density()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span> () <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Log de la densité de population&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/densite-1.png" width="768" /></p>
+</div>
+</div>
+<div id="discretisation-dune-variable-continue" class="section level2">
+<h2><span class="header-section-number">3.4</span> Discrétisation d’une variable continue</h2>
+<p>La <strong>discrétisation</strong> est l’opération qui permet de découper une série de données quantitatives en classes : elle est très utilisée pour les représentations cartographiques. La création des classes dépend fortement de la forme de la distribution. Plusieurs méthodes existent, par exemple :</p>
+<ul>
+<li>Seuils naturels (Jenks, coûteuse en calcul)</li>
+<li>Moyenne et écart type</li>
+<li>Progression géométrique (adaptée aux distributions asymétriques)</li>
+<li>Méthode des quantiles (souvent par défaut)</li>
+</ul>
+<div id="methode-des-quantiles" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Méthode des quantiles</h3>
+<p>Cette méthode vise une répartition égale des effectifs, c’est à dire le même nombre de données observations par classe. La fonction <code>cut()</code> permet de créer une variable selon le découpage voulu. Elle posséde les options <em>breaks</em> et <em>labels</em>. <em>breaks</em> permet d’indiquer le découpage voulu grâce à un vecteur (les éléments dont la valeur est comprise entre le 1er et le 2éme élément de ce vecteur rentre dans la première classe, entre le 2éme et 3éme élément, dans la 2éme classe, etc….). Pour faire un découpage en x classes, le vecteur de <em>breaks</em> prend donc x + 1 éléments. <em>labels</em> permet d’indiquer les noms de classes grâce à un vecteur qui comporte autant d’élément que de classes à créer.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v_dens &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, densite)
+v_dens <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)</code></pre></div>
+<pre><code>##          0%         25%         50%         75%        100% 
+##     0.01000    18.59047    40.35457    94.57430 27126.14108</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens =</span> <span class="kw">cut</span> (v_dens,
+                          <span class="dt">breaks =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="fl">18.6</span>, <span class="fl">40.4</span>, <span class="fl">94.6</span>, <span class="dv">27127</span>),
+                          <span class="dt">labels =</span> <span class="kw">c</span> (<span class="st">&quot;inf_18.6&quot;</span>, <span class="st">&quot;18.6_40.4&quot;</span>, <span class="st">&quot;40.4_94.6&quot;</span>, <span class="st">&quot;Sup_94.6&quot;</span>)))</code></pre></div>
+</div>
+<div id="methode-des-seuils-naturels-methode-de-jenks" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Méthode des seuils naturels (méthode de Jenks)</h3>
+<p>Cette méthode revient à séparer les classes à partir des fortes discontinuités observées dans la distribution. La fonction <code>getBreaks()</code> permet d’obtenir les bornes des classes, selon la méthode voulue.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (cartography)
+seuils &lt;-<span class="st"> </span><span class="kw">getBreaks</span> (v, <span class="dt">nclass =</span> <span class="dv">4</span>, <span class="dt">method =</span> <span class="st">&quot;fisher-jenks&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens2 =</span> <span class="kw">cut</span> (densite, <span class="dt">breaks =</span> seuils))
+<span class="kw">select</span> (dat, tr_dens2) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span> ()</code></pre></div>
+<pre><code>## .
+##        (0,3.07e+04] (3.07e+04,2.24e+05] (2.24e+05,1.54e+06] 
+##               35868                   0                   0 
+## (1.54e+06,2.22e+06] 
+##                   0</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="quelques-preliminaires.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="une-variable-qualitative.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

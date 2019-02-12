@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistiques descriptives</title>
+  <meta name="description" content="Formation R aux statistiques descriptives">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistiques descriptives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R aux statistiques descriptives" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistiques descriptives" />
+  
+  <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
+  
+
+<meta name="author" content="Groupe référents R   Ministère de la Transition écologique et solidaire   Ministère de la Cohésion des Territoires">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="une-variable-qualitative.html">
+<link rel="next" href="variables-qualitatives-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="libs/vis-4.20.1/vis.min.js"></script>
+<script src="libs/visNetwork-binding-2.0.4/visNetwork.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectif-general"><i class="fa fa-check"></i><b>1.2</b> Objectif général</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notions-et-methodes-presentees"><i class="fa fa-check"></i><b>1.3</b> Notions et méthodes présentées</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fondamentaux-r-presentes"><i class="fa fa-check"></i><b>1.4</b> Fondamentaux R présentés</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#plan-de-la-formation"><i class="fa fa-check"></i><b>1.5</b> Plan de la formation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html"><i class="fa fa-check"></i><b>2</b> Quelques préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#vocabulaire"><i class="fa fa-check"></i><b>2.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="2.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#donnees-utilisees-pour-la-formation"><i class="fa fa-check"></i><b>2.2</b> Données utilisées pour la formation</a></li>
+<li class="chapter" data-level="2.3" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="2.4" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.4</b> Variables qualitatives</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#definition"><i class="fa fa-check"></i><b>2.4.1</b> Définition</a></li>
+<li class="chapter" data-level="2.4.2" data-path="quelques-preliminaires.html"><a href="quelques-preliminaires.html#manipulation-des-factor"><i class="fa fa-check"></i><b>2.4.2</b> Manipulation des <code>factor</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html"><i class="fa fa-check"></i><b>3</b> Une variable quantitative</a><ul>
+<li class="chapter" data-level="3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-de-distribution"><i class="fa fa-check"></i><b>3.1</b> Statistiques de distribution</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-robustes-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.1</b> Statistiques robustes aux valeurs extrêmes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#statistiques-sensibles-aux-valeurs-extremes"><i class="fa fa-check"></i><b>3.1.2</b> Statistiques sensibles aux valeurs extrêmes</a></li>
+<li class="chapter" data-level="3.1.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#exercice"><i class="fa fa-check"></i><b>3.1.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#representations-graphiques"><i class="fa fa-check"></i><b>3.2</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#histogramme"><i class="fa fa-check"></i><b>3.2.1</b> Histogramme</a></li>
+<li class="chapter" data-level="3.2.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#la-fonction-de-repartition-cumulative"><i class="fa fa-check"></i><b>3.2.2</b> La fonction de répartition (cumulative)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#graphique-de-densite"><i class="fa fa-check"></i><b>3.2.3</b> Graphique de densité</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#discretisation-dune-variable-continue"><i class="fa fa-check"></i><b>3.3</b> Discrétisation d’une variable continue</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-quantiles"><i class="fa fa-check"></i><b>3.3.1</b> Méthode des quantiles</a></li>
+<li class="chapter" data-level="3.3.2" data-path="une-variable-quantitative.html"><a href="une-variable-quantitative.html#methode-des-seuils-naturels-methode-de-jenks"><i class="fa fa-check"></i><b>3.3.2</b> Méthode des seuils naturels (méthode de Jenks)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html"><i class="fa fa-check"></i><b>4</b> Une variable qualitative</a><ul>
+<li class="chapter" data-level="4.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#tableaux-de-synthese"><i class="fa fa-check"></i><b>4.1</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage"><i class="fa fa-check"></i><b>4.1.1</b> Comptage</a></li>
+<li class="chapter" data-level="4.1.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#comptage-pondere"><i class="fa fa-check"></i><b>4.1.2</b> Comptage pondéré</a></li>
+<li class="chapter" data-level="4.1.3" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences"><i class="fa fa-check"></i><b>4.1.3</b> Fréquences</a></li>
+<li class="chapter" data-level="4.1.4" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#frequences-ponderees"><i class="fa fa-check"></i><b>4.1.4</b> Fréquences pondérées</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#graphiques"><i class="fa fa-check"></i><b>4.2</b> Graphiques</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-barres-ou-en-batons"><i class="fa fa-check"></i><b>4.2.1</b> Diagramme en barres (ou en bâtons)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="une-variable-qualitative.html"><a href="une-variable-qualitative.html#diagramme-en-secteurs"><i class="fa fa-check"></i><b>4.2.2</b> Diagramme en secteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html"><i class="fa fa-check"></i><b>5</b> 2 variables quantitatives</a><ul>
+<li class="chapter" data-level="5.1" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#representations-graphiques-1"><i class="fa fa-check"></i><b>5.1</b> Représentations graphiques</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#nuage-de-points"><i class="fa fa-check"></i><b>5.1.1</b> Nuage de points</a></li>
+<li class="chapter" data-level="5.1.2" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#matrice-de-nuages-de-points"><i class="fa fa-check"></i><b>5.1.2</b> Matrice de nuages de points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#coefficients-de-correlation"><i class="fa fa-check"></i><b>5.2</b> Coefficients de corrélation</a></li>
+<li class="chapter" data-level="5.3" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#regression"><i class="fa fa-check"></i><b>5.3</b> Régression</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="variables-quantitatives-1.html"><a href="variables-quantitatives-1.html#exercice-1"><i class="fa fa-check"></i><b>5.3.1</b> Exercice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html"><i class="fa fa-check"></i><b>6</b> 2 variables qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#definitions"><i class="fa fa-check"></i><b>6.1</b> Définitions</a></li>
+<li class="chapter" data-level="6.2" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#tableaux-de-synthese-1"><i class="fa fa-check"></i><b>6.2</b> Tableaux de synthèse</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#tableau-de-contingence-effectifs"><i class="fa fa-check"></i><b>6.2.1</b> Tableau de contingence (effectifs)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#tableau-des-frequences"><i class="fa fa-check"></i><b>6.2.2</b> Tableau des fréquences</a></li>
+<li class="chapter" data-level="6.2.3" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#profils-ligne"><i class="fa fa-check"></i><b>6.2.3</b> Profils-ligne</a></li>
+<li class="chapter" data-level="6.2.4" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#profils-colonne"><i class="fa fa-check"></i><b>6.2.4</b> Profils-colonne</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#graphiques-1"><i class="fa fa-check"></i><b>6.3</b> Graphiques</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#diagramme-en-batons"><i class="fa fa-check"></i><b>6.3.1</b> Diagramme en bâtons</a></li>
+<li class="chapter" data-level="6.3.2" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#graphique-mosaique"><i class="fa fa-check"></i><b>6.3.2</b> Graphique mosaïque</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="variables-qualitatives-1.html"><a href="variables-qualitatives-1.html#avec-ponderation"><i class="fa fa-check"></i><b>6.4</b> Avec pondération</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html"><i class="fa fa-check"></i><b>7</b> Lien variable quantitative - variable qualitative</a><ul>
+<li class="chapter" data-level="7.1" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#statistiques-en-fonction-dun-facteur"><i class="fa fa-check"></i><b>7.1</b> Statistiques en fonction d’un facteur</a></li>
+<li class="chapter" data-level="7.2" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#elements-theoriques"><i class="fa fa-check"></i><b>7.2</b> Eléments théoriques</a></li>
+<li class="chapter" data-level="7.3" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#representation-graphique"><i class="fa fa-check"></i><b>7.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="7.4" data-path="lien-variable-quantitative-variable-qualitative.html"><a href="lien-variable-quantitative-variable-qualitative.html#calcul-du-rapport-de-correlation"><i class="fa fa-check"></i><b>7.4</b> Calcul du rapport de corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>8</b> Tests</a><ul>
+<li class="chapter" data-level="8.1" data-path="tests.html"><a href="tests.html#sur-une-variable-qualitative"><i class="fa fa-check"></i><b>8.1</b> Sur une variable qualitative</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tests.html"><a href="tests.html#la-distribution-est-elle-normale"><i class="fa fa-check"></i><b>8.1.1</b> La distribution est-elle normale ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tests.html"><a href="tests.html#la-moyenne-differe-t-elle-de-la-valeur-attendue"><i class="fa fa-check"></i><b>8.1.2</b> La moyenne diffère-t-elle de la valeur attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tests.html"><a href="tests.html#sur-une-variable-quantitative"><i class="fa fa-check"></i><b>8.2</b> Sur une variable quantitative</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="tests.html"><a href="tests.html#la-distribution-des-observations-differe-t-elle-de-celle-attendue"><i class="fa fa-check"></i><b>8.2.1</b> La distribution des observations diffère-t-elle de celle attendue ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tests.html"><a href="tests.html#sur-2-variables-qualitatives"><i class="fa fa-check"></i><b>8.3</b> Sur 2 variables qualitatives</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tests.html"><a href="tests.html#les-deux-variables-qualitatives-sont-elles-independantes-lune-de-lautre"><i class="fa fa-check"></i><b>8.3.1</b> Les deux variables qualitatives sont-elles indépendantes l’une de l’autre ?</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tests.html"><a href="tests.html#un-couple-de-variables-qualitatives-est-il-lie-plus-fortement-quun-autre-couple"><i class="fa fa-check"></i><b>8.3.2</b> Un couple de variables qualitatives est-il “lié plus fortement” qu’un autre couple ?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="tests.html"><a href="tests.html#sur-un-croisement-quantitatifqualitatif"><i class="fa fa-check"></i><b>8.4</b> Sur un croisement quantitatif/qualitatif</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="tests.html"><a href="tests.html#echantillons-independants"><i class="fa fa-check"></i><b>8.4.1</b> 2 échantillons indépendants</a></li>
+<li class="chapter" data-level="8.4.2" data-path="tests.html"><a href="tests.html#echantillons-dependants"><i class="fa fa-check"></i><b>8.4.2</b> 2 échantillons dépendants</a></li>
+<li class="chapter" data-level="8.4.3" data-path="tests.html"><a href="tests.html#plusieurs-echantillons-independants"><i class="fa fa-check"></i><b>8.4.3</b> Plusieurs échantillons indépendants</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tests.html"><a href="tests.html#resume"><i class="fa fa-check"></i><b>8.5</b> Résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html"><i class="fa fa-check"></i><b>9</b> Exercice de synthèse</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#enonce"><i class="fa fa-check"></i><b>9.1</b> Enoncé</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1"><i class="fa fa-check"></i><b>9.1.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.1.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2"><i class="fa fa-check"></i><b>9.1.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.1.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3"><i class="fa fa-check"></i><b>9.1.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.1.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4"><i class="fa fa-check"></i><b>9.1.4</b> Partie 4</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#corrige"><i class="fa fa-check"></i><b>9.2</b> Corrigé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-1-1"><i class="fa fa-check"></i><b>9.2.1</b> Partie 1</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-2-1"><i class="fa fa-check"></i><b>9.2.2</b> Partie 2</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-3-1"><i class="fa fa-check"></i><b>9.2.3</b> Partie 3</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercice-de-synthese.html"><a href="exercice-de-synthese.html#partie-4-1"><i class="fa fa-check"></i><b>9.2.4</b> Partie 4</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques descriptives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variables-quantitatives-1" class="section level1">
+<h1><span class="header-section-number">Chapitre 5</span> 2 variables quantitatives</h1>
+<p>On cherche à quantifier le lien entre deux variables quantitatives X et Y sur un échantillon de n individus. Par exemple : le lien entre les revenus médians et le nombre d’emploi au lieu de travail des communes.</p>
+<p>Plusieurs coefficient permettent de quantifier ce lien :</p>
+<ul>
+<li>Coefficient de corrélation linéaire (Pearson) : <span class="math inline">\(\rho_{XY}=\frac{\sigma_{XY}}{\sigma_{X} \cdot \sigma_{X}}\)</span> avec <span class="math inline">\(\sigma_{XY} = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})(y_i-\bar{y})\)</span> et <span class="math inline">\(\sigma_x\)</span> l’écart-type de X.</li>
+<li>Coefficient de corrélation des rangs (Spearman) : c’est le coefficient précédent appliqué aux rangs <span class="math inline">\(\Rightarrow\)</span> détecte des relations non linéaires</li>
+</ul>
+<p>Dans certains cas (distributions asymétriques), il faut penser à appliquer la transformation logarithmique</p>
+<div id="representations-graphiques-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Représentations graphiques</h2>
+<p>Des représentations graphiques permettent de visualiser d’éventuels effets entre variables, qu’il faudra ensuite étudier plus précisemment en les quantifier.</p>
+<div id="nuage-de-points" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Nuage de points</h3>
+<p>Un croisement de deux variables quantitatives peut se faire facilement avec un nuage simple (<code>geom_point()</code>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat_pays_loire &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(REG <span class="op">==</span><span class="st"> &quot;52&quot;</span>)
+<span class="kw">ggplot</span> (<span class="dt">data =</span> dat_pays_loire, <span class="kw">aes</span> (<span class="dt">x =</span> P14_EMPLT, <span class="dt">y =</span> MED13)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span> () </code></pre></div>
+<pre><code>## Warning: Removed 159 rows containing missing values (geom_point).</code></pre>
+<p><img src="Statistiques-descriptives_files/figure-html/nuage_pts-1.png" width="672" /></p>
+<p>On peut ajouter un peu de mise en forme :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> dat_pays_loire, <span class="kw">aes</span> (<span class="dt">x =</span> P14_EMPLT, <span class="dt">y =</span> MED13)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span> (<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span> (<span class="st">&quot;Revenu médian en fonction du nombre d&#39;emplois&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span> (<span class="st">&quot;Revenu médian&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&quot;Nombre d&#39;emplois&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span> (<span class="dt">trans =</span> <span class="st">&#39;log10&#39;</span>,
+                      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">1000000</span>),
+                      <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">format</span>(x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>, <span class="dt">scientific =</span> <span class="ot">FALSE</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">paste</span> (<span class="kw">format</span> (x, <span class="dt">big.mark =</span> <span class="st">&quot; &quot;</span>,
+                                                          <span class="dt">scientific =</span> <span class="ot">FALSE</span>), <span class="st">&quot; €&quot;</span>))
+g</code></pre></div>
+<pre><code>## Warning: Removed 159 rows containing missing values (geom_point).</code></pre>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Les fonctions <code>scale_._continous()</code> permettent de modifier les echelles des axes. Ici, nous avons effectué une transformation logarithmique de l’axe des X.</p>
+<p>Pour visualiser, sans <em>a priori</em> sur sa forme, la relation entre X et Y (elle n’est pas forcément linéaire) on peut appliquer une fonction de lissage avec <code>geom_smooth</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span> (<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Si on veut la droite de régression, c’est aussi la fonction <code>geom_smooth</code> en ajoutant l’argument <code>method = &quot;lm&quot;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+</div>
+<div id="matrice-de-nuages-de-points" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Matrice de nuages de points</h3>
+<p>Une matrice permet d’afficher plusieurs nuages de points d’un coup. Cela est pratique quand on explore un jeu de données avec différentes variables susceptibles d’êtres corrélées entre elles. Elle s’obtient avec la fonction <code>ggpairs()</code> (du package <code>GGally</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">num &lt;-<span class="st"> </span><span class="kw">select</span> (dat, P14_LOGVAC<span class="op">:</span>PIMP13) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">sample_n</span> (<span class="dv">10000</span>) <span class="op">%&gt;%</span><span class="st">               </span><span class="co"># On sélectionne quelques données</span>
+<span class="st">  </span><span class="kw">log</span> () 
+<span class="kw">ggpairs</span> (num)                        <span class="co"># package &quot;GGally nécessaire&quot;</span></code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</div>
+</div>
+<div id="coefficients-de-correlation" class="section level2">
+<h2><span class="header-section-number">5.2</span> Coefficients de corrélation</h2>
+<p>Le <strong>coefficient de corrélation</strong> entre deux variables quantifie l’intensité de la liaison entre ces variables. Il varie entre +1 et -1. S’il est proche de zéro, il n’y a pas de liaison, les variables sont indépendantes l’une de l’autre. S’il est de signe positif, les variables ont tendance à varier dans le même sens, c’est-à-dire que quand l’une augmente, l’autre tend aussi à augmenter. S’il est négatif, quand l’une augmente l’autre tend à diminuer.</p>
+<p>Le coefficient de corrélation <em>linéaire</em> classique, par défaut dans la fonction <code>cor()</code> est celui de Pearson. Attention, il est très sensible aux valeurs extrêmes et il ne rend pas bien compte des relations non linéaires.</p>
+<p>Il entre dans la catégorie des outils paramétriques, donc attention à son interprétation quand les variables ne sont pas distribuées selon une loi normale.</p>
+<p><span class="math inline">\(r=\dfrac{Cov(X,Y)}{\sigma_X\times\sigma_Y}\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span> (<span class="kw">na.omit</span> (num))</code></pre></div>
+<pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
+## P14_LOGVAC   1.0000000  0.78546635  0.85142247 -0.33261480
+## P14_RP_PROP  0.7854664  1.00000000  0.96410077  0.03753895
+## NBMENFISC13  0.8514225  0.96410077  1.00000000 -0.08409857
+## PIMP13      -0.3326148  0.03753895 -0.08409857  1.00000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span> (<span class="kw">na.omit</span> (<span class="kw">log</span> (num)))</code></pre></div>
+<pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
+## P14_LOGVAC   1.0000000  0.72947716  0.80193850 -0.34348227
+## P14_RP_PROP  0.7294772  1.00000000  0.95960928  0.03878204
+## NBMENFISC13  0.8019385  0.95960928  1.00000000 -0.09097561
+## PIMP13      -0.3434823  0.03878204 -0.09097561  1.00000000</code></pre>
+<p>Pour tester si vous arrivez bien à estimer à l’oeil l’intensité du lien linéaire entre deux variables, un peu d’entraînement sur <a href="https://hekemp.shinyapps.io/Correlation_Game/">cette appli shiny</a> ou <a href="http://shiny.science.psu.edu/apps/boast/CorrelationGuessing/">celle-ci</a>.</p>
+<p>Quand la relation n’est pas linéaire, on peut utiliser en alternative le coefficient de corrélation de Spearman. Celui-ci est basé sur les rangs. Il permet donc de mettre en évidence des relations non linéaires (pour peu qu’elles soient monotones) entre les deux variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span> (<span class="kw">na.omit</span> (num), <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
+## P14_LOGVAC   1.0000000  0.71020801   0.8096957 -0.38153975
+## P14_RP_PROP  0.7102080  1.00000000   0.9412590  0.02815516
+## NBMENFISC13  0.8096957  0.94125901   1.0000000 -0.11180776
+## PIMP13      -0.3815398  0.02815516  -0.1118078  1.00000000</code></pre>
+<p>Quelques exemples de comparaison entre les corrélations de Pearson et de Spearman <a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/supporting-topics/basics/a-comparison-of-the-pearson-and-spearman-correlation-methods/">ici</a></p>
+</div>
+<div id="regression" class="section level2">
+<h2><span class="header-section-number">5.3</span> Régression</h2>
+<p>Le principe de la régression est de décrire la manière dont une variable est dépendante d’une autre variable. À la différence de la corrélation, où on cherche à quantifier la manière dont 2 variables s’oriente l’une par rapport à l’autre, la régression a pour objectif d’estimer les valeurs d’une variable en connaissant les valeurs d’une autre variable. Le modèle usuel de régression linéaire est : <span class="math inline">\(y = \beta_0 + \beta_1 x + \varepsilon\)</span>, avec :</p>
+<ul>
+<li><p><span class="math inline">\(y\)</span> variable à expliquer</p></li>
+<li><p><span class="math inline">\(x\)</span> variable explicative</p></li>
+<li><p><span class="math inline">\(\varepsilon\)</span> un terme d’erreur aléatoire de loi normale, d’espérance nulle et d’écart-type σ.</p></li>
+</ul>
+<p>On veut une estimation des coefficients <span class="math inline">\(\beta_0\)</span> et <span class="math inline">\(\beta_1\)</span>. Sur R, on se sert de la fonction <code>lm()</code> pour créer un modèle (“linear model”). Cet objet permettra d’accéder à plusieurs informations de la régression.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> NBMENFISC13 <span class="op">~</span><span class="st"> </span>P14_RP_PROP, <span class="dt">data =</span> dat)
+<span class="kw">summary</span>(model)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = NBMENFISC13 ~ P14_RP_PROP, data = dat)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -69374    -22    210    312  91368 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -4.199e+02  5.955e+00  -70.52   &lt;2e-16 ***
+## P14_RP_PROP  2.482e+00  2.071e-03 1198.05   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1052 on 32187 degrees of freedom
+##   (4500 observations deleted due to missingness)
+## Multiple R-squared:  0.9781, Adjusted R-squared:  0.9781 
+## F-statistic: 1.435e+06 on 1 and 32187 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>On peut encore une fois visualiser la droite de régression grâce à la fonction <code>geom_smooth()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> dat, <span class="kw">aes</span>(<span class="dt">x =</span> P14_RP_PROP, <span class="dt">y =</span> NBMENFISC13)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div id="exercice-1" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Exercice</h3>
+<p>Effectuer une nouvelle régression avec 2 autres variables, puis tracer le nuage de points de ces variables, et enfin y ajouter la droite de regression.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="une-variable-qualitative.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-qualitatives-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

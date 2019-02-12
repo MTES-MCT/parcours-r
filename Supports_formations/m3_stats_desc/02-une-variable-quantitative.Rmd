@@ -1,0 +1,348 @@
+# Une variable quantitative
+
+Il existe plusieurs caractéristiques à étudier sur la distribution d'une variable quantitative :
+
+- La **tendance centrale** : le point autour duquel se regroupent les différentes valeurs d'une variable  (mesurée par la médiane, le mode, la moyenne, etc...)
+
+- La **dispersion** : l'étendue des différentes valeurs (donc l'hétérogénité de la population) que peut prendre une variable (mesurée par l'écart-type, la variance, l'écart interquantiles, etc...)
+
+- L'éventuelle présence de plusieurs **modes**
+
+```{r, warning = FALSE, echo = FALSE}
+set.seed (123)
+poids_sex <- data.frame (sex = factor (rep (c ("F", "M"), each = 200)),
+                         poids = round (c (rnorm (200, mean = 55, sd = 5),
+                                           rnorm (200, mean = 65, sd = 5))))
+```
+
+```{r, warning = FALSE, echo = FALSE}
+library (grid)
+
+# Histogramme basique
+g <- ggplot (poids_sex, aes (x = poids)) + geom_histogram (binwidth = 1) +
+  geom_vline (aes (xintercept = mean (poids)),
+             color = "blue", linetype="dashed", size = 1) +
+  geom_vline (aes (xintercept = 53),
+             color = "green", linetype = "dashed", size = 1) +
+  geom_vline (aes (xintercept = 65),
+             color= "green", linetype = "dashed", size = 1) + 
+  geom_segment (aes (x = min (poids_sex$poids), xend = max (poids_sex$poids), y = 1, yend = 1),
+               color = "orange", linetype = "dashed", size = 1, 
+               arrow = arrow (length = unit(0.5, "cm"))) +
+  geom_segment (aes (x = max (poids_sex$poids), xend = min (poids_sex$poids), y = 1, yend = 1),
+               color = "orange", linetype = "dashed", size = 1, 
+               arrow = arrow (length = unit(0.5, "cm"))) +
+  annotate (geom = "text", x = c (mean(poids_sex$poids) + 5, mean(poids_sex$poids) + 5, 55, 67),
+            y = c(25, 2, 15, 15), label = c ("Tendance centrale", "Dispersion", "Mode", "Mode"), colour = c("blue","orange", "green", "green")) +
+  ylab ("Fréquence")
+g
+```
+
+
+
+## Statistiques de distribution
+
+### Statistiques robustes aux valeurs extrêmes
+
+Ce sont des statistiques qui sont peu influencées par les valeurs extrêmes de la distribution. Elles sont dites "non paramétriques" car elles ne supposent aucune distribution particulière de la variable.
+
+- La **médiane** est une statistique de tendance centrale : aprés classement par ordre croissant des $n$ valeurs, c'est la valeur de l'observation "du milieu". Il y a autant d'observations inférieures à la médiane que d'observations supérieures. Avec R, la fonction `median()` permet d'obtenir la médiane d'une variable quantitative. Si le nombre de valeurs $n$ est impair ($n=2k+1$), c'est la valeur exacte observée au rang $k+1$. Si le nombre de valeurs est pair($n=2k$), c'est la moyenne entre les valeurs observées aux rangs $k$ et $k+1$. En cas de valeurs manquantes sur la variable, l'argument *na.rm* permet de ne prendre en compte que les valeurs effectives.
+
+```{r}
+vec_superf <- pull (dat, SUPERF)
+median (vec_superf)
+median (vec_superf, na.rm = T)
+```
+
+- Les **quartiles** : après classement par ordre croissant, on partage en 4, il y a donc 3 bornes. Le premier quartile est la valeur qui sépare les observations telle que 25% soient en dessous et 75% au dessus. Le deuxième quartile est la médiane. Le troisième quartile divise enfin les 75% observations les plus basses des 25% plus élevées.
+
+- On peut généraliser aux déciles, aux centiles ou tout autre pourcentile. La fonction `quantile()` permet d'obtenir les percentile de son choix (par défaut, la fonction retourne les quartiles).
+
+```{r}
+quantile (vec_superf, na.rm = T)
+quantile (vec_superf, probs = c (0.05, 0.1, 0.25, 0.5, 0.75, 0.90, 0.95), na.rm = T)
+```
+
+- L'**intervalle interquartile** (Interquartile range en anglais) est une statistique de dispersion. C'est l'intervalle entre le 1^er^ et le 3^ème^ quartile : il encadre 50% des observations. Il se calcule facilement par Q3 - Q1, ou au moyen de la fonction `IQR()`.
+
+```{r}
+q <- quantile (vec_superf, na.rm = T)
+print (q)
+q["75%"] - q["25%"]
+IQR (vec_superf, na.rm = T)
+```
+
+### Statistiques sensibles aux valeurs extrêmes
+
+Ce sont des statistiques qui sont influencées par les valeurs extrêmes de la distribution.
+
+- Quand le terme de moyenne est employé sans plus de précision, il désigne la **moyenne arithmétique**. C'est une statistique de tendance centrale : $\bar{x} = \dfrac{1}{n} \sum_{i=1}^n x_i$
+
+C'est la valeur qu'aurait chacune des observations si la répartition était égale entre les individus statistiques. La fonction `mean()` permet d'obtenir la moyenne.
+
+```{r}
+mean (vec_superf, na.rm = T)
+```
+
+Quand la variable est discrète, la moyenne arithmétique peut être pondérée en utilisant la fonction `weighted.mean()`.
+
+Exemple : quel est le nombre moyen de pièces par appartement dans une localité ?
+
+```{r}
+immo <- data.frame (nb_pieces = 1:7,
+                       nb_apparts = c(38, 61, 92, 67, 43, 18, 5))
+
+datatable (immo, width = 400,
+           colnames = c("Nombre de pièces", "Nombre d'appartements"),
+           rownames = FALSE)
+
+weighted.mean (x = immo$nb_pieces, w = immo$nb_apparts)
+```
+
+- La **moyenne géométrique** est aussi une statistique de tendance centrale : $\bar{x} = \sqrt[n] \prod_{i=1}^n x_i$
+
+Typiquement, la moyenne géométrique est utilisée pour calculer un taux de variation moyen sur une période. Par exemple si l'on a des données sur quatre années, et des taux de variation annuels de +12%, +4%, +7% et -2% avec une valeur de départ de 100, la valeur finale est :
+<center>
+$Vf = 100\times1,12\times1,04\times1,07\times0,98=122,1$
+</center>
+Le taux de variation moyen annuel est de :
+<center>
+$Tm = \sqrt[4]{1,12\times1,04\times1,07\times0,98}-1=0.051$
+</center>
+
+soit + 5,1% par an.
+
+Cas où l'on a juste la valeur de départ, la valeur finale et le nombre de pas de temps :
+
+```{r}
+Vd <- 100
+Vf <- 100 * 1.12 * 1.04 * 1.07 * 0.98
+Annees <- 4
+taux_moyen_annuel <- (Vf / Vd) ^ (1 / Annees)
+
+100 * taux_moyen_annuel ^ Annees # vérification
+
+```
+
+On peut calculer la moyenne géométrique ainsi : 
+```{r moyennegeo}
+exp (mean (log (vec_superf), na.rm = T)) # alternative : la fonction heR::gm()
+```
+
+- La **variance** est une statistique de dispersion : $S_x^2=\dfrac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2$
+
+C'est la moyenne des carrés des écarts à la moyenne. Son unité est le carré de celle de la variable sur laquelle on la calcule. La fonction `var()` permet de la calculer.
+
+```{r}
+var (vec_superf, na.rm = T)
+```
+
+- L'**écart type** est une statistique de dispersion. Il est défini par : $\sigma_x= \sqrt{S_x^2}$. 
+C'est l'écart moyen à la moyenne. L'écart-type (*standard deviation* en anglais) est dans la même unité que la variable à laquelle on l'applique. L'écart-type s'obtient avec la fonction `sd()`
+
+```{r}
+sd (vec_superf, na.rm = T)
+```
+
+- L'**étendue** est l'écart entre les valeurs maximale et minimale.
+```{r}
+etendue <- pull (dat, P14_RP_PROP) %>% range (na.rm = T) %>% round (0)
+etendue
+```
+
+- Le **coefficient de variation** est une statistique de dispersion relative. C'est une mesure de l'écart relatif des valeurs d'une distribution à une valeur centrale. Il permet de comparer l'hétérogénéïté de distributions de variables qui ne seraient pas du même ordre de grandeur (une variable prenant ses valeurs entre 1000 et 2000 aura naturellement une "dispersion brute" plus importante qu'une variable prenant ses valeurs entre 10 et 20). Le coefficient de variation est obtenu comme ratio de l'écart-type sur la moyenne donc, comme ces deux valeurs, il est sensible aux valeurs extrêmes. Le coefficient de variation n'a pas d'unité donc il est souvent exprimé en pourcentage.
+
+```{r disp_rel}
+v <- pull (dat, P14_POP)
+ecart_t <- sd (v, na.rm = T)
+moy <- mean (v, na.rm = T)
+ecart_t/moy
+```
+
+La fonction `summary()` fournit plusieurs statistiques (appliquée à une variable quantitative, on obtient : minimum, maximum, quartile, moyenne et nombre de valeurs manquantes) :
+
+```{r}
+select (dat, P14_POP, SUPERF) %>% summary ()
+```
+
+## Calcul sur plusieurs variables
+
+Il est souvent pratique d'appliquer une même fonction à plusieurs variables d'un `dataframe`.
+
+Sur les variables quantitatives :
+
+```{r}
+dat %>%
+  summarise_if (is.numeric, funs(mean(., na.rm = TRUE))) %>% 
+  round (digits = 2) %>% 
+  t() %>%
+  datatable (rownames = TRUE, colnames = c('Variable', 'Moyenne'), width = 300)
+```
+
+Sur des variables appelées par leur nom :
+
+```{r}
+dat %>%
+    summarise_at (vars(P14_POP, SUPERF), funs(mean(., na.rm = TRUE)))
+```
+
+On peut également décliner selon les modalités d'une variable qualitative :
+
+```{r}
+dat %>%
+  group_by (REG) %>% 
+      summarise_at (vars(P14_POP, SUPERF), funs(mean(., na.rm = TRUE))) %>% 
+      mutate_if (is.numeric, round, digits = 2) %>% 
+      datatable (width = 500)
+```
+
+### Exercice 
+
+Comparer le coefficient de variation de plusieurs variables. Laquelle est la plus "relativement étendue" ?
+
+## Représentations graphiques
+
+Plusieurs représentations permettent de visualiser la distribution des valeurs d'une variable quantitative. Les principales sont :
+
+- l'histogramme
+- le diagramme de densité
+
+### Histogramme
+
+C'est la représentation la plus classique, qui permet d'observer la fréquence d'observations dans différents intervalles de valeurs.
+
+**A ne pas confondre avec le diagramme en barres / bâtons !**
+
+Beaucoup de confusions entre ces deux types de graphiques, même dans des journaux "de référence" comme dans [cet article de la rubrique "Les décodeurs" du Monde](https://www.lemonde.fr/les-decodeurs/article/2018/05/22/sept-conseils-pour-ne-pas-se-faire-avoir-par-les-representations-graphiques_5302680_4355770.html) et dans Excel\circledR.
+
+<center>
+![](Figures/fake_histo2.jpg)
+
+</center>
+
+... ou dans l'*arboretum* des Barres, là où ont été formés la plupart des ingénieurs forestiers des ministères de l'agriculture et de l'environnement.
+
+<center>
+![](Figures/fake_histo.png)
+</center>
+
+Ça c’est un diagramme en bâtons, contrairement à ce qu'indique la légende.
+
+Un histogramme, c'est ça !
+
+```{r histo, warning = FALSE, message = FALSE, fig.height = 3.5}
+dat <- mutate (dat, densite = P14_POP/SUPERF, 
+               densite = replace (densite, densite == 0, 0.01))
+# pour éviter les densités nulles (si on souhaite faire un passage au log, voir plus bas)
+g <- ggplot (data = dat, aes (densite)) + geom_histogram ()
+g
+```
+
+Il n'y a qu'une variable considérée. L'axe des abscisses est numérique et couvre la gamme des valeurs prises par la variable considérée. L'axe des ordonnées indique le nombre des valeurs (ou leur fréquence en pourcentage) dans chaque intervalle. L'histogramme est obtenu grâce à la fonction `geom_histogram()`, appliquée à la suite de la fonction `ggplot()` (qui, elle, permet de définir les variables qui seront prises en compte pour le graphique ; cf. le module 5 qui devrait être proposé à partir de 2019).
+
+Les quelques valeurs très élevées rendent le graphique illisible. On limite la gamme des valeurs de l'axe des abscisses.
+
+```{r histo2, warning = FALSE, message = FALSE, fig.height = 3.5}
+g + scale_x_continuous (limits = c (0, 1000)) +
+  geom_vline (xintercept = mean (dat$densite, na.rm = T), color = 'red')
+```
+
+Ici, peu de villes ont une densité importante, et la plupart sont concentrées sur la première barre : c'est un phénomène d'asymétrie (*skewness* en anglais).
+
+La fonction `geom_vline()` permet d'ajouter une ligne verticale, afin de mettre en évidence des valeurs particulières (ex : moyenne, seuil réglementaire). Ici, la moyenne (ligne verticale rouge) est un mauvais indicateur de tendance centrale. 
+
+Si l'on est chagriné par cette distribution, on peut appliquer à la variable une *transformation logarithmique*. Le logarithme "tasse" les valeurs élevées et "étire" les valeurs faibles, cela permet de zoomer là où il y a de la donnée.
+
+```{r}
+dat <- mutate (dat, log_dens = log10 (densite))
+summarise (dat, mini = min (densite, na.rm = T), maxi = max (densite, na.rm = T))
+summarise (dat, mini = min (log_dens, na.rm = T), maxi = max (log_dens, na.rm = T))
+```
+
+Voyons à quoi ressemble l'histogramme de la variable transformée.
+
+```{r, warning = FALSE, fig.height = 4, fig.width = 8, message = FALSE}
+ggplot (data = dat, aes (log_dens)) + geom_histogram ()
+```
+
+C'est déjà bien plus lisible ... mais quelques finitions peuvent le rendre plus informatif et "auto-porteur".
+
+```{r, warning = FALSE, message = FALSE, fig.height = 4.5, fig.width = 8}
+quan <-  pull (dat, log_dens) %>% quantile (na.rm = T)
+ggplot (data = dat, aes (x = log_dens)) + geom_histogram () +
+  geom_vline (xintercept = quan) +
+  annotate (geom = "text", x = quan,
+            y = 3400, label = c ("Min", "Q1", "Méd.", "Q3", "Max"), colour = "red") +
+  xlab (label = "Log (densité)") +
+  ylab (label = "Nombre de communes")
+```
+
+L'histogramme est plus lisible et informatif ! La fonction `annotate()` permet d'ajouter du texte, et enfin `xlab()` et `ylab()` servent à modifier le nom des axes.
+
+### La fonction de répartition (cumulative)
+
+```{r, warning = FALSE, message = FALSE, fig.height = 4.5, fig.width = 8}
+quan <- pull(poids_sex, poids) %>% quantile()
+
+ggplot (data = poids_sex, aes (x = poids)) + stat_ecdf () +
+  xlab (label = "Poids (kg)") +
+  ylab (label = "Fréquence") +
+  scale_y_continuous (labels = scales::percent) +
+  geom_vline(aes(xintercept = quan[2]), color = "blue", linetype = "dashed", size = 1) +
+  geom_vline(aes(xintercept = quan[3]), color = "darkgreen", linetype = "dashed", size = 1) +
+  geom_vline(aes(xintercept = quan[4]), color = "orange", linetype = "dashed", size = 1) +
+  annotate (geom = "text", x = c (quan[2]+1, quan[3]+2, quan[4]+1),
+            y = 0.7, label = c ("Q1", "Médiane", "Q3"), colour = c("blue", "darkgreen", "orange"))
+```
+
+### Graphique de densité
+
+La **densité** d'une variable correspond à la probabilité de réalisation de chacune des valeurs possibles de cette variable : il s'agit d'une fonction continue (nombre infini de points).
+Exemple pour $X \hookrightarrow \mathcal{N}(m,\sigma)$ : $f_X(t) = \dfrac{1}{\sigma \sqrt{2\pi}}exp(-\dfrac{(t-m)^2}{2\sigma^2})$
+
+Comme on n'observe qu'un nombre fini de points, on recourt à l'estimation par "noyau" pour estimer la densité en chaque point "possible" de la variable.
+
+La valeur de la densité en $t$ se calcule comme une moyenne pondérée de l'ensemble des points observés. Plus la valeur est éloignée de $t$, moins leur poids est important. Le poids est donné par une fonction appelée *noyau*. Par exemple, le noyau gaussien : $K(u)=\dfrac{1}{\sqrt{2\pi}}exp(-\dfrac{u^2}{2})$
+
+Grâce au package `ggplot2`, il est possible de créer un graphique de densité avec la fonction `geom_density()`
+
+```{r densite, warning = FALSE, fig.height = 4.5, fig.width = 8}
+ggplot (data = dat, aes (log_dens)) +
+  geom_density () +
+  xlab ('Log de la densité de population')
+```
+
+## Discrétisation d'une variable continue
+
+La **discrétisation** est l'opération qui permet de découper une série de données quantitatives en classes : elle est très utilisée pour les représentations cartographiques. La création des classes dépend fortement de la forme de la distribution. Plusieurs méthodes existent, par exemple :
+
+- Seuils naturels (Jenks, coûteuse en calcul)
+- Moyenne et écart type
+- Progression géométrique (adaptée aux distributions asymétriques)
+- Méthode des quantiles (souvent par défaut)
+
+### Méthode des quantiles
+
+Cette méthode vise une répartition égale des effectifs, c'est à dire le même nombre de données observations par classe. La fonction `cut()` permet de créer une variable selon le découpage voulu. Elle posséde les options *breaks* et *labels*. *breaks* permet d'indiquer le découpage voulu grâce à un vecteur (les éléments dont la valeur est comprise entre le 1er et le 2éme élément de ce vecteur rentre dans la première classe, entre le 2éme et 3éme élément, dans la 2éme classe, etc....). Pour faire un découpage en x classes, le vecteur de *breaks* prend donc x + 1 éléments. *labels* permet d'indiquer les noms de classes grâce à un vecteur qui comporte autant d'élément que de classes à créer.
+
+```{r}
+v_dens <- pull (dat, densite)
+v_dens %>% quantile (na.rm = T)
+dat <- mutate (dat, tr_dens = cut (v_dens,
+                          breaks = c (0, 18.6, 40.4, 94.6, 27127),
+                          labels = c ("inf_18.6", "18.6_40.4", "40.4_94.6", "Sup_94.6")))
+```
+
+
+### Méthode des seuils naturels (méthode de Jenks)
+
+Cette méthode revient à séparer les classes à partir des fortes discontinuités observées dans la distribution. La fonction `getBreaks()` permet d'obtenir les bornes des classes, selon la méthode voulue.
+
+```{r}
+library (cartography)
+seuils <- getBreaks (v, nclass = 4, method = "fisher-jenks")
+dat <- mutate (dat, tr_dens2 = cut (densite, breaks = seuils))
+select (dat, tr_dens2) %>% table ()
+```
+
+

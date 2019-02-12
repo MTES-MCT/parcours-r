@@ -1,0 +1,47 @@
+from;to
+quel test utiliser ?;1 variable
+quel test utiliser ?;2 variables
+1 variable;type de la variable ?
+type de la variable ?;quantitative
+type de la variable ?;qualitative
+quantitative;question sur la variable quanti
+question sur la variable quanti;la distribution est-elle normale ?
+la distribution est-elle normale ?;shapiro.test()
+question sur la variable quanti;la moyenne différe-t-elle d'une valeur attendue ?
+la moyenne différe-t-elle d'une valeur attendue ?;normalité de la variable ?
+normalité de la variable ?;normale
+normale;t.test(, mu = moyenne_reference)
+normalité de la variable ?;non normale
+non normale;wilcox.test(, mu = moyenne_reference)
+qualitative;question sur la variable quali
+question sur la variable quali;la distribution différe-t-elle de celle attendue ?
+la distribution différe-t-elle de celle attendue ?;chisq.test(x = observe, p = attendu)
+2 variables;type des 2 variables ?
+type des 2 variables ?;2 quantitatives
+2 quantitatives;question sur les variables quantitatives
+question sur les variables quantitatives;les variables sont-elles independantes ?
+les variables sont-elles independantes ?;chisq.test()
+type des 2 variables ?;1 qualitative, 1 quantitative
+1 qualitative, 1 quantitative;"question sur les ""groupes"" de la variable quali"
+"question sur les ""groupes"" de la variable quali";les moyennes des groupes différent-elles ?
+les moyennes des groupes différent-elles ?;nombre de groupes ?
+nombre de groupes ?;2 groupes
+2 groupes;dépendances des distributions ?
+dépendances des distributions ?;indépendantes
+indépendantes;normalité des variables indep ?
+normalité des variables indep ?;normales indep
+normales indep;t.test(var ~ group, data = table)
+normalité des variables indep ?;non normales indep
+non normales indep;wilcox.test(var ~ group, data = table)
+dépendances des distributions ?;dépendantes
+dépendantes;normalité des variables dep ?
+normalité des variables dep ?;normales dep
+normalité des variables dep ?;non normales dep
+normales dep;t.test(var ~ group, data = table, paired = TRUE)
+non normales dep;wilcox.test(var ~ group, data = table, paired = TRUE)
+nombre de groupes ?;> 2 groupes
+> 2 groupes;normalité des variables ?
+normalité des variables ?;normales
+normalité des variables ?;non normales
+normales;aov(var ~ group, data = table) + tukeyHSD()
+non normales;kruskal.test(var ~ group, data = table) + pariwise.wilcox.test()

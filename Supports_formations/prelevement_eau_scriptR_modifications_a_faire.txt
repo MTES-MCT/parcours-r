@@ -1,0 +1,7 @@
+modifications à introduire dans le script de consolidation de la BNPE, par rapport à la v2
+
+- remplacer la fonction read.table par la fonction fread pour 9 bassins (déjà utilisée pour SN)
+- récupérer les variables manquantes dans l'édition n-1 et non dans la version 2013
+- tenir systématiquement compte de l'encodage des fichiers source
+- sélectionner les variables par leur nom, plutôt que par leur rang de colonne
+- intégrer la correction des IND en EDF pour la naf 35

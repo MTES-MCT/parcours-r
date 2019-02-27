@@ -2,7 +2,8 @@
 
 ## TODO
 * nettoyage de l'arborescence
-
+* gérer la fermeture de rawgit
+* définir une licence
 
 ## Journal
 15/02/2019

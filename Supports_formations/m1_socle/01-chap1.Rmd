@@ -1,10 +1,10 @@
 # R, son écosystème et ses possibilités
 
-```{r,echo=FALSE,results='hide',message=FALSE, warning=FALSE}
-require(tidyverse)
-require(sf)
-require(cartography)
-mapReg <- st_read("Data/REG.shp")
+```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+require (tidyverse)
+require (sf)
+require (cartography)
+mapReg <- st_read ("data/REG.shp")
 ```
 
 
@@ -13,25 +13,24 @@ mapReg <- st_read("Data/REG.shp")
 - Un groupe pour structurer une offre de formations sur R
 - Un réseau d'entraide 
 
-```{r,echo=FALSE,message=FALSE}
+```{r, echo=FALSE, message=FALSE}
 reg <- c("11","24","32","44","93","76","52")
 
-ref <- c("R.Morel, S.Trainel \n S.Colin, B.Vermont \n F.Brouillet, C.Toque",
+ref <- c("R.Morel, S.Trainel \n S.Colin, B.Vermont \n F.Brouillet, M. Zellou",
          "Pascal Irz \n Murielle Lethrone \n Fabio Dos Santos",
          "Franck Lequesne",
          "Thierry Zorn",
          "Bruno Terseur \n Mathieu Rajerison",
          "Alexandre Dumont",
          "Maël \n Theulière")
-df <- data.frame(reg=reg,ref=ref)
-map <- merge(mapReg,df,df,by.y="reg",by.x="Num_reg",all.x=T)
 
-par(mar=c(.2,.2,.2,.2))
-plot(st_geometry(map),col="lightgrey",border="white")
-labelLayer(map,txt = "ref")
+df <- data.frame (reg=reg, ref=ref)
+map <- merge (mapReg, df, df, by.y="reg", by.x="Num_reg", all.x=T)
+
+par (mar=c(.2,.2,.2,.2))
+plot (st_geometry (map), col="lightgrey", border="white")
+labelLayer (map, txt = "ref")
 ```
-
-Pour rejoindre le groupe des utilisateurs du ministères, vous pouvez écrire à la liste SYMPA : labo.communaute-r@developpement-durable.gouv.fr
 
 
 ## R c'est quoi ?
@@ -91,7 +90,7 @@ C'est un logiciel libre : les utilisateurs ont la liberté d'exécuter, copier, 
 Privilégie la flexibilité et le découpage des traitements en parties simples.
 
 
-![](Figures/illustrations.png)
+![](images/illustrations.png)
 
 ## Un logiciel modulaire
 

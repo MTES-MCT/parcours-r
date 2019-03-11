@@ -6,12 +6,14 @@ Le référentiel des communes a changé sur la période, dans un seul sens : il 
 
 La table *com2017* permet de rattacher toute commune ayant existé sur la région à sa commune de rattachement dans la carte communale 2017.
 
-Les surface artificialisé se calculent comme cela à partir de la typologie d'occupation du sol de majic : SA=dcnt07+dcnt09+ dcnt10+dcnt11+dcnt12+dcnt13.
+Les surface artificialisé se calculent comme cela à partir de la typologie d'occupation du sol de majic :
+
+$SA=dcnt07+dcnt09+ dcnt10+dcnt11+dcnt12+dcnt13$
 
 Deux indices à calculer : 
 
-- un indice d’étalement urbain simple= Evolution de la surface artificialisée  /  Evolution de la population
+- un indice d’étalement urbain simple $I_e = \dfrac{Evolution\;de\;la\;surface\;artificialisée} {Evolution\;de\;la\;population}$
 
 - un indice d’étalement urbain avancé en classes
 
-<center>![](pic/etalementurbain.png)</center>
+<center>![](images/etalementurbain.png)</center>

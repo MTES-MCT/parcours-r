@@ -16,7 +16,7 @@ La fonction `ggplot()` fonctionne d'une manière particulière. La structure res
 ggplot(TableEnEntree, aes(VariablesATracer)) + geom_FonctionAChoisir()
 ```
 
-Pour découvrir les nombreuses possibilités de `ggplot2`, vous pouvez consulter les sites suivants :
+Pour découvrir les nombreuses possibilités de `ggplot2`, vous pouvez vous référer au [Module 5 : « Datavisualisation : produire des graphiques, des cartes et des tableaux »](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m5_valorisation_des_donnees/_book/index.html) ou consulter les sites suivants :
 
 - [Version anglaise](http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization)
 - [Version française](http://www.sthda.com/french/wiki/ggplot2)
@@ -34,7 +34,7 @@ Si on désire un histogramme de log_SUPERF, on fera appel à la fonction `geom_h
 ```{r, message=FALSE, warning=FALSE}
 rm(list = ls())
 
-base <- read.csv(file = "Data/Base_synth_territoires.csv",
+base <- read.csv(file = "data/Base_synth_territoires.csv",
                  header = T, sep=";", dec=",") %>% 
   select(1:24) %>% 
   mutate(log_SUPERF = log (SUPERF),
@@ -135,4 +135,4 @@ Là encore il faudrait faire une transformation logarithmique, mais tout ça est
 plot(iris)
 ```
 
-Des possibilités infinies à approfondir dans les modules 3 et 5 !!
+Des possibilités infinies à approfondir dans [les modules 3 et 5](https://mtes-mct.github.io/parcours-r/) !!

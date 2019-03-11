@@ -11,14 +11,14 @@
 Par exemple :
 ```{r}
 library(tidyverse)
-base <- read.csv(file = "Data/Base_synth_territoires.csv",
+base <- read.csv(file = "data/Base_synth_territoires.csv",
                  header = T, sep = ";", dec = ",")
 str(pull(base, DEP))
 ```
 
 ## Créer de nouvelles variables
 
-<center>![](Figures/mutate.png)</center>
+<center>![](images/mutate.png)</center>
 
 La fonction `mutate()` permet de créer/modifier une variable (ou plusieurs).
 
@@ -41,7 +41,7 @@ $\Rightarrow$ La table base contient de nouvelles colonnes
 
 ## Sélectionner des variables
 
-<center>![](Figures/select.png)</center>
+<center>![](images/select.png)</center>
 
 La fonction `select()` permet de sélectionner les variables voulues.
 
@@ -63,7 +63,7 @@ base_select <- select(base, -CODGEO)
 
 ## Filtrer des observations
 
-<center>![](Figures/filter.png)</center>
+<center>![](images/filter.png)</center>
 
 La fonction `filter()` permet de sélectionner les observations, selon une condition (ou plusieurs).
 
@@ -75,7 +75,7 @@ Par exemple :
 base_filter <- filter(base, DEP == "01" & P14_POP > 10000)
 ```
 
-$\Rightarrow$ Attention à l’opérateur de comparaison : " == " et non pas "="
+>**$\Rightarrow$ Attention à l’opérateur de comparaison : " == " et non pas "="**
 
 ## Les tests logiques dans R
 
@@ -155,7 +155,7 @@ selection_62 <- select(df, CODGEO, ZAU, REG, DEP, densite, tx_natal) %>%
   filter(DEP == "62")
 ```
 
-**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10%}
+**Le coin du capitaine [ ]**  ![ ](../images/CapHookImage.png){ width=10%}
 
 Pour sélectionner les données, on peut également utiliser les crochets couplés aux dollars et aux `c()`, sans passer par les numéros de lignes et colonnes ! On rencontre assez souvent cette syntaxe sur les forums (voir chapitre 9).
 

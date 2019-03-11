@@ -48,17 +48,17 @@ datatable (SEQUOIA)
 Le package sf (pour simple feature) permet d'importer dans R un fichier ayant une dimension spatiale. Après importation, le fichier est un dataframe avec une variable d'un type nouveau : la géométrie. Deux exemples ici pour lire des données au format shape et geojson.
 
 ```{r, eval = F, message = F,warning = F}
-Carte_EPCI_France <- st_read (dsn = "refgeo2017", layer = "Contour_epci_2017_region")
+Carte_EPCI_France <- st_read (dsn = "data/refgeo2017", layer = "Contour_epci_2017_region")
 plot (Carte_EPCI_France)
 
-communes2017 <- st_read (dsn = "refgeo2017/communes2017.geojson")
+communes2017 <- st_read (dsn = "data/refgeo2017/communes2017.geojson")
 plot (communes2017)
 ```
 
-Le package sf contient l'ensemble des fonctions permettant des manipulations sur fichiers géomatiques.
+Le package *sf* contient l'ensemble des fonctions permettant des manipulations sur fichiers géomatiques.
 On ne traitera pas ici de toutes ces fonctions en détail, mais la documentation se trouve [ici](https://r-spatial.github.io/sf/).
 
-A noter que sf étant complètement compatible avec les packages du tidyverse, la géométrie se conçoit comme une une donnée comme une autre, sur laquelle par exemple on peut réaliser des aggrégations.
+A noter que *sf* étant complètement compatible avec les packages du *tidyverse*, la géométrie se conçoit comme une une donnée comme une autre, sur laquelle par exemple on peut réaliser des aggrégations.
 
 
 ## Lire des données sous PostgreSQL
@@ -115,8 +115,8 @@ On peut réaliser des opérations sur la table analyse avec du code R très simp
 analyse_db <-  filter (analyse_db, code_parametre == 1506)
 ```
 
-Attention, ce code ne touche pas la base de donnée, il n'est pas exécuté.
-Pour l'exécuter, il faut par exemple afficher la table.
+>Attention, ce code ne touche pas la base de donnée, il n'est pas exécuté.
+>Pour l'exécuter, il faut par exemple afficher la table.
 
 ```{r, eval=F}
 analyse_db

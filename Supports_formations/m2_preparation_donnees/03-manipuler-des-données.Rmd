@@ -2,7 +2,7 @@
 
 ## Les principes des packages dplyr
 
-Le but de dplyr est d'identifier et de rassembler dans un seul package les outils de manipulation de données les plus importantes pour l'analyse des données. Ce package rassemble donc des fonctions correspondant à un ensemble d'opérations élémentaires (ou *verbes*) qui permettent de : 
+Le but de *dplyr* est d'identifier et de rassembler dans un seul package les outils de manipulation de données les plus importantes pour l'analyse des données. Ce package rassemble donc des fonctions correspondant à un ensemble d'opérations élémentaires (ou *verbes*) qui permettent de : 
 
 - Sélectionner un ensemble de variables : ***select()***
 - Sélectionner un ensemble de lignes : ***filter()***
@@ -19,12 +19,12 @@ D'appliquer cela en articulation avec **group_by()** qui change la façon d'inte
 
 On va travailler sur ce module principalement à partir des données sitadel en date réelle estimée et à partir des données de qualité des eaux de surface.
 
-![](pic/MCD_pesticides.png)
+![](images/MCD_pesticides.png)
 
 
 ## Chargement des données
 
-```{r echo = F,warning = F,error = F,eval = F}
+```{r echo = F, warning = F, error = F, eval = F}
 drv <- dbDriver ("PostgreSQL")
 con <- dbConnect (drv, dbname = "production", host = "10.44.128.174", port = 5432,
                   user = "dreal", password = "rtIX>7d[5P/0")
@@ -43,7 +43,7 @@ load (file = "data/FormationPreparationDesDonnées.RData")
 ## Les verbes clefs de dplyr pour manipuler une table
 
 ### Sélectionner des variables : **select()**
-<center>![](pic/select.png)</center>
+<center>![](images/select.png)</center>
 
 Nous allons ici sélectionner un ensemble de variables de la table des prélèvements
 
@@ -89,7 +89,7 @@ prelevementb <- select (prelevement, date_p = date_prelevement, code_prelevement
 ```
 
 ### Filter une table : **filter()**
-<center>![](pic/filter.png)</center>
+<center>![](images/filter.png)</center>
 
 On va ici récupérer les analyses produites par l'ARS
 
@@ -129,7 +129,7 @@ non_ars <- filter (prelevement, !(code_reseau == "ARS"))
 
 **mutate()** est le verbe qui permet la transformation d’une variable existante ou la création d’une nouvelle variable dans le jeu de données. 
 
-<center>![](pic/mutate.png)</center>
+<center>![](images/mutate.png)</center>
 
 Création de nouvelles variables
 ```{r}
@@ -258,7 +258,7 @@ sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
 ```
 
 
-<center>![](pic/exercice1_enonce_v3.png)</center>
+<center>![](images/exercice1_enonce_v3.png)</center>
 
 
 
@@ -459,11 +459,11 @@ ggplot (data, aes (x = fct_reorder (cat, -num), num)) +
 
 ## Aggréger des données : **summarise()**
 
-<center>![](pic/summarise.png)</center>
+<center>![](images/summarise.png)</center>
 
 La fonction ***summarise()*** permet d'aggréger des données, en appliquant une fonction sur les variables pour construire une statistique sur les observations de la table.
 **summarise()** est une fonction dite de “résumé”. À l’inverse de **mutate()**, quand une fonction summarise est appelée, elle retourne une seule information. La moyenne, la variance, l’effectif…sont des informations qui condensent la variable étudiée en une seule information.
-<left>![](pic/summarise.jpg)</left><left>![](pic/mutate.jpg)</left>
+<left>![](images/summarise.jpg)</left><left>![](images/mutate.jpg)</left>
 
 La syntaxe de summarise est classique. Le resultat est un dataframe
 
@@ -495,7 +495,7 @@ summarise (exercice,
 
 ## Aggréger des données par dimension : **group_by()**
 
-<center>![](pic/groupby.png)</center>
+<center>![](images/groupby.png)</center>
 
 Summarise est utile, mais la plupart du temps, nous avons besoin non pas d'aggréger des données d'une table entière, mais de construire des aggrégations sur des sous-ensembles : par années, départements...
 La fonction ***group_by()*** va permettre *d'éclater* notre table en fonction de dimensions de celle-ci.
@@ -508,7 +508,7 @@ Ainsi, si on veut construire des statistiques agrégées non sur l'ensemble de l
 
 Découper un jeu de données pour réaliser des opérations sur chacun des sous-ensembles afin de les restituer ensuite de façon organisée est appelée stratégie du split – apply – combine schématiquement, c’est cette opération qui est réalisée par dplyr dès qu'un ***group_by()*** est introduit sur une table.
 
-<center>![](pic/split_apply_combine-1024x570.png)</center>
+<center>![](images/split_apply_combine-1024x570.png)</center>
 
 Exemple pour calculer les statistiques précédentes par mois : 
 
@@ -527,7 +527,7 @@ summarise (paran,
 Pour reprendre des traitements "table entière", il faut mettre fin au ***group_by()*** par un ***ungroup()***
 
 ## Le pipe
-![](pic/pipe.png)
+![](images/pipe.png)
 
 Le pipe est la fonction qui va vous permettre d'écrire votre code de façon plus lisible pour vous et les utilisateurs.
 Comment ?
@@ -625,5 +625,5 @@ sitadel <- read_excel ("data/ROES_201702.xls", "AUT_REG") %>%
   mutate_at (vars (ends_with ("cumul12")), funs (part = 100 *./ log_AUT_cumul12))
 ```
 
-Les verbes ayant ces variantes sont les suivants : select(), arrange(), rename(), filter(), mutate(), transmute(), group_by(), summarise().
+Les verbes ayant ces variantes sont les suivants : *select(), arrange(), rename(), filter(), mutate(), transmute(), group_by(), summarise()*.
 

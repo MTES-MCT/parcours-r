@@ -32,7 +32,7 @@ Le package est prêt à être utilisé !
 Conseil : exporter les données au format .csv ; c'est le format le plus interopérable (supporté par tous les logiciels stat). Utiliser ensuite la fonction `read.csv` après avoir défini le répertoire de travail (ou en donnant le chemin complet)
 
 ```{r}
-base <- read.csv(file = "Data/Base_synth_territoires.csv",
+base <- read.csv (file = "data/Base_synth_territoires.csv",
                  header = T, sep = ";", dec = ",")
 ```
 
@@ -54,14 +54,14 @@ Autres façons d'importer les données
 
 ## Structure des données : le *dataframe*
 
-<center>![](Figures/DF1.png)</center>
+<center>![](images/DF1.png)</center>
 
 - n lignes (observations)
 - p colonnes (variables)
 ```{r}
-nrow(base)
-ncol(base)
-dim(base)
+nrow (base)
+ncol (base)
+dim (base)
 ```
 
 ## Gérer le type des variables
@@ -87,7 +87,7 @@ mean(V1)              # renvoie NA. Not good !
 mean(V1, na.rm = T)   # renvoie 15.9   - OK !
 ```
 
-$\Rightarrow$ Le module 2 "Préparation des données" aborde la gestion de ces valeurs particulières
+$\Rightarrow$ Le [module 2 "Préparation des données"](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html) aborde la gestion de ces valeurs particulières.
 
 
 ## Exercice : Importer les données et premier coup d'oeil
@@ -102,7 +102,7 @@ Ici, nous travaillerons sur une base de données communales fournie par l'Insee,
 
 
 ```{r}
-df <- read.csv(file = "Data/Base_synth_territoires.csv",
+df <- read.csv(file = "data/Base_synth_territoires.csv",
                sep = ";", dec = ",",
                colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
                               NA, NA, NA, NA, rep("NULL", 28)))

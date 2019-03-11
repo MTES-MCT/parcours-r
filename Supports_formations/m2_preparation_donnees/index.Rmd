@@ -1,6 +1,6 @@
 --- 
 title: "Préparer ses données avec R et le Tidyverse"
-author: "Groupe des référents R"
+author: "Maël Theulière & Bruno Terseur"
 date: '`r format(Sys.time(), "%d %B %Y")`'
 site: bookdown::bookdown_site
 documentclass: book
@@ -13,24 +13,37 @@ description: "Formation R à la data préparation"
 
 # Introduction
 
-![](pic/cover.png)
+![](images/cover.jpg)
+
+<font size="2"> 
+*Crédit photographique Sébastien Colas*
+</font> 
 
 ## Le parcours de formation
 
-Le parcours de formation proposé est structuré en modules de 2 jours chacun :
+Ce dispositif de formation vise à faire monter en compétence les agents du MTES (Ministère de la transition écologique et solidaire) et du MCT (Ministère de la cohésion des territoires) dans le domaine de la science de la donnée avec le logiciel R. Il est conçu pour être déployé à l'échelle nationale par le réseau des CVRH (Centre de Valorisation des Ressources Humaines).
 
-- 1 : Socle de base $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m1_socle/_book/index.html)
-- 2 : Préparer ses données avec le tidyverse $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html)
-- 3 : Statistiques descriptives $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html)
-- 4 : Analyses multivariées $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m4_analyse_donnees/_book/index.html)
-- 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m5_valorisation_des_donnees/_book/index.html)
-- 6 : Documents reproductibles avec RMarkdown (2^ème^ semestre 2019)
+Le parcours proposé est structuré en modules de 2 jours chacun. Les deux premiers (ou un niveau équivalent) sont des pré-requis pour suivre les suivants qui sont proposés "à la carte" :
+
+1. Socle : Premier programme en R
+2. Socle : Préparation des données
+3. Statistiques descriptives
+4. Analyses multivariées
+5. Datavisualisation : Produire des graphiques, des cartes et des tableaux
+6. Documents reproductibles avec RMarkdown (2^ème^ semestre 2019)
 
 ... et en perspective : analyse spatiale, applis interactives avec Shiny, big data, etc.
+
+
+La mise à disposition des supports de formation se fait désormais par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
+
+
+Si vous souhaitez accéder aux sources, données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du ministère](https://github.com/MTES-MCT/parcours-r/tree/master/Supports_formations).
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
 
 Il existe une liste pour diffuser de l'information, échanger autour de R ou lever des points de blocage. Pour s'insrire, envoyer un message vide avec le titre "subscribe labo.communaute-r" à l'adresse sympa@developpement-durable.gouv.fr.
+
 
 ## Objectifs du module 2
 
@@ -49,7 +62,10 @@ Préparer ses données sous R, cela veut dire :
 Bref, tout le travail technique préalable entre la collecte de la donnée et la valorisation proprement dite de ces sources.
 On estime qu'un scientifique de la donnée passe en général ***la moitié de son temps*** à cela.
 
+![](images/cover.png)
+
 Sous R, comme souvent, il y a plusieurs façons d'aborder cette question. Nous choisirons, lors de ce module de formation, d'explorer principalement les packages du framework *tidyverse*, qui ont l'avantage d'aborder ces différentes questions d'une façon intégrée et cohérente, d'une part entre elles, mais également avec d'autres.
+
 
 ```{r setup, include=FALSE}
 rm(list=ls())

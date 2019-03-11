@@ -20,15 +20,15 @@ L'important est de pouvoir facilement passer de l'un à l'autre suivant ce que l
 
 - **gather()** permet d'empiler plusieurs colonnes (correspondant à des variables quantitatives). Elles sont repérées par création d'une variable qualitative, à partir de leurs noms. Le résultat est une table au format *long*
 
-<center>![](pic/gather.png)</center>
+<center>![](images/gather.png)</center>
 
-<center>![](pic/gather2.png)</center>
+<center>![](images/gather2.png)</center>
 
 - **spread()** fait l'inverse. Cette fonction crée autant de colonnes qu'il y a de modalités d'une variable qualitative, en remplissant chacune par le contenu d'une variable numérique. Le résultat est une table au format *large*
 
-<center>![](pic/spread.png)</center>
+<center>![](images/spread.png)</center>
 
-<center>![](pic/spread2.png)</center>
+<center>![](images/spread2.png)</center>
 
 Un exemple : obtenir un fichier avec une ligne par région, et une colonne par année qui donne l'évolution en % de la construction neuve par rapport à l'année précédente
 

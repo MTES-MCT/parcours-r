@@ -8,7 +8,7 @@ La fonction `summary()` peut s'appliquer à une table entière ou un vecteur. Ap
 
 ```{r}
 library(tidyverse)
-base <- read.csv(file = "Data/Base_synth_territoires.csv",
+base <- read.csv(file = "data/Base_synth_territoires.csv",
                  header = T, sep=";", dec=",")
 base_extrait <- select(base, 1, 3, 5, 7:12)
 summary(base_extrait)
@@ -42,10 +42,9 @@ Ces fonctions retournent une valeur, ou bien un ensemble de valeur (pour `quanti
 
 ### Globalement
 
-<center>![](Figures/summarise.png)</center>
+<center>![](images/summarise.png)</center>
 
-La fonction `summarise()` permet d'aggréger des données, en appliquant une fonction sur les variables pour construire une statistique sur les observations de la table.
-**summarise()** est une fonction dite de “résumé”.
+La fonction `summarise()` permet d'aggréger des données, en appliquant une fonction sur les variables pour construire une statistique sur les observations de la table. C'est une fonction dite de “résumé”.
 
 ```{r, eval=FALSE}
 summarise (TableEnEntree, NomVariableAgregee = Fonction(NomVariableEtude))
@@ -60,7 +59,7 @@ La fonction `summarise()` retourne un data.frame.
 
 ### Selon un facteur
 
-<center>![](Figures/groupby.png)</center>
+<center>![](images/groupby.png)</center>
 
 La fonction `summarise()` couplée à `group_by()` permet de calculer des statistiques pour chaque modalité d'une variable qualitative. Avec `group_by()`, on précise les variables qui formeront des groupes, sur lesquels on appliquera une fonction :
 
@@ -164,6 +163,6 @@ t
 100 * prop.table(t) %>% round(digits = 4)
 ```
 
-Pour aller plus loin et ajouter des variables de pondération, calculer les profils-ligne ou profils-colonne, rendez-vous au module 3, ou demandez à votre GF (Gentil Formateur)
+Pour aller plus loin et ajouter des variables de pondération, calculer les profils-ligne ou profils-colonne, rendez-vous au [module 3 "Statistiques descriptives"](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html), ou demandez à votre GF (Gentil Formateur).
 
 

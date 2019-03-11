@@ -4,7 +4,7 @@
 
 ## Une interface particulière : RStudio
 
-![](Figures/Rstudio.png)
+![](images/Rstudio.png)
 
 - Environnement de développement conçu spécialement pour R
 - Interface utilisateur simple, conviviale, configurable et intégrant plusieurs outils
@@ -142,6 +142,6 @@ taille <- 1.87
 imc <- poids / (taille ^ 2)
 
 # Affichage du résultat
-print(imc)
+print (imc)
 
 ```

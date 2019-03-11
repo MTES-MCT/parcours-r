@@ -10,7 +10,7 @@ Le tidyverse est un ensemble de packages proposant une syntaxe cohérente pour r
 
 - Designé pour les être humains : favoriser la facilité d'usage à la performance machine 
 
-![](pic/tidyverse.png)
+![](images/tidyverse.png)
 
 
 ## Présentation des packages
@@ -75,4 +75,4 @@ Un autre package propose toutefois une vision intégrée de la sorte : [data.tab
 Plusieurs différences sont à noter : 
 
 - *data.table* est plus rapide sur d'importants volumes de données, le code est très succinct.
-- *dplyr* est plus simple à apprendre, le code est plus lisible, il peut s'appliquer à des formats de données multiples, il s'intègre dans un framework global qui va de la lecture des données (readr, readxl,haven...) à leur valorisation (ggplot2).
+- *dplyr* est plus simple à apprendre, le code est plus lisible, il peut s'appliquer à des formats de données multiples, il s'intègre dans un framework global qui va de la lecture des données (*readr*, *readxl*, *haven...*) à leur valorisation (*ggplot2*).

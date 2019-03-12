@@ -10,8 +10,7 @@
 > 
 > - et une couleur différente pour distinguer les epci de la région PDL.
 
-```{r chap16, eval=T,message=F,warning=F}
-load("data/data_exercices_formation.RData")
+```{r eval=T,message=F,warning=F}
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
@@ -98,7 +97,7 @@ Pour avoir la liste des modalités dune variable :
 
 Variables caractères ou factorielles :
 
-```{r exo4, eval=F,message=F,warning=F}
+```{r eval=F,message=F,warning=F}
 unique(rpls_aggrege$Indicateur)
 ```
 
@@ -160,7 +159,7 @@ Produire le nuage de point du croisement de la part des logements ayant une éti
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
 
 
-```{r exo6, eval=T,message=F,warning=F}
+```{r eval=T,message=F,warning=F}
 rpls<-rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
@@ -191,7 +190,6 @@ fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
 Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées
 
 ```{r eval=T}
-library(highcharter)
 hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
                               y=Maternal_mortality_ratio,
                               color=Continent)) %>%
@@ -199,8 +197,6 @@ hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
   hc_tooltip(
     pointFormat = '<b>{point.Continent}</b><br/><b>{point.Parent_Zone_libelle}</b><br/>PIB de {point.x} un taux de mortalié maternelle de {point.y} (pour 100 000 naissances)'
   )
-
-
 ```
 
 
@@ -210,15 +206,11 @@ hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
 
 Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
 
-```{r exo8, eval=T}
+```{r eval=T}
 rpls_DEP_R24  <- rpls_aggrege_large %>% 
   filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
-  group_by(TypeZone,Zone) %>% 
-  summarise(Logements_collectifs=sum(Logements_collectifs),
-            Logements_individuels=sum(Logements_individuels)) %>% 
-  arrange(TypeZone,Zone) %>% 
-  ungroup() %>% 
-  select(-TypeZone) %>% 
+  arrange(TypeZone,Zone) %>%
+  select(Zone,Logements_collectifs,Logements_individuels)%>% 
   setNames(c("Zone","Nombre de logements collectifs","Nombre de logements individuels")) %>% 
   kable("html",caption="Chiffres clés RPLS") %>%
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 

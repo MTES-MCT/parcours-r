@@ -1,10 +1,10 @@
 # Les scales
 
-Les fonctions **scales** permettent globalement de paramétrer les éléments rentrées dans l'aesthétic : 
+Les fonctions **scales** permettent globalement de paramétrer les éléments rentrés dans l'aesthétic : 
 
-- Si je veux un gradient de couleur fonction d'une variable continue : quelle palette de couleur je choisie, comment je cale mon dégradée en fonction de cette variable continue ?
+- Si je veux un gradient de couleur fonction d'une variable continue : quelle palette de couleur je choisie, comment je cale mon dégradé en fonction de cette variable continue ?
 
-- Si je met une variable continue en ordonnée, comment je définie le minimum et maximum de cette axe, sa position, les valeurs que j'affiche sur l'échelle...
+- Si je met une variable continue en ordonnée, comment je définis le minimum et maximum de cette axe, sa position, les valeurs que j'affiche sur l'échelle...
 
 
 L'ensemble des scales possibles peuvent se décrire sous forme suivante:
@@ -42,7 +42,7 @@ gradient|utiliser un gradient de 2 couleurs
 gradient2|utiliser un gradient divergent de 3 couleurs
 
 
-```{r chap8, echo=T,eval=T,fig.height=3.5}
+```{r, echo=T,eval=T,fig.height=3.5}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -50,7 +50,7 @@ ggplot(graphique1) +
   scale_color_brewer(type="qual")
 ```
 
-Un exemple d'usage, par exemple on peut exploiter une fonction scale pour définir une échelle logarithimique sur un axe.
+Par exemple on peut exploiter une fonction scale pour définir une échelle logarithimique sur un axe.
 
 ```{r, echo=T,eval=T,fig.height=3.5}
 ggplot(graphique1) +
@@ -62,9 +62,26 @@ ggplot(graphique1) +
   scale_y_log10()
 ```
 
+## Formatage spécifique
+
+- Transformation en pourcentage;
+```{r, echo=T,eval=F}
+  scale_y_continuous(labels=scales::percent)
+```
+- Ajout du séparateurs des milliers;
+```{r, echo=T,eval=F}
+  scale_y_continuous(labels=function(x) format(x,big.mark=" ",scientific = FALSE))
+```
+- Ajout du symbole €;
+
+```{r, echo=T,eval=F}
+  scale_y_continuous(labels=function(x) paste(x," €"))
+```
+
+
 ## Exercice 3
 
-> En réutilisant le graphe obtenu à l'exercice 1, y rajouter:
+> En réutilisant le graphe obtenu à l'exercice 1 (table rpls_aggrege_large), y rajouter:
 >
 > - une palette brewer pour la couleur;
 >

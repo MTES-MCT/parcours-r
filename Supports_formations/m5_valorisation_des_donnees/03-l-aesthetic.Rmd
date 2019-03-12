@@ -46,6 +46,11 @@ ggplot(data = graphique1) +
              color="red")
 ```
 
+Pour choisir et modifier facilement les couleurs d'un graphe, il existe un addin développé par Dean Attali: **Colour Picker**
+Il est installable comme n'importe quel package.
+Pour plus d'informations: https://github.com/daattali/colourpicker
+
+
 
 ## Exercice 1
 
@@ -63,7 +68,6 @@ ggplot(data = graphique1) +
 Le résultat attendu : 
 
 ```{r eval=T,echo=F,warning=F}
-load("data/data_exercices_formation.RData")
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,

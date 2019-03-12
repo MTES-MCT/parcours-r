@@ -4,9 +4,8 @@ Kable permet de créer des tableaux de diffusion très simplement.
 Une très bonne documentation en anglais peut se trouver [ici](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
 
 Ci dessous un exemple, on reprend les données utilisé pour le diagramme barre.
-```{r chap14}
-library(knitr)
-library(kableExtra)
+
+```{r kabble}
 indicateur311 %>%
   filter(Type_Zone != "Pays",
          Age_group=="All age ranges or no breakdown by age",
@@ -44,15 +43,12 @@ Description des fonctions utilisées :
 Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
 
 Le résultat attendu : 
+
 ```{r  eval=T,message=F,warning=F,echo=FALSE}
 rpls_DEP_R24  <- rpls_aggrege_large %>% 
   filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
-  group_by(TypeZone,Zone) %>% 
-  summarise(Logements_collectifs=sum(Logements_collectifs),
-            Logements_individuels=sum(Logements_individuels)) %>% 
-  arrange(TypeZone,Zone) %>% 
-  ungroup() %>% 
-  select(-TypeZone) %>% 
+  arrange(TypeZone,Zone) %>%
+  select(Zone,Logements_collectifs,Logements_individuels)%>% 
   setNames(c("Zone","Nombre de logements collectifs","Nombre de logements individuels")) %>% 
   kable("html",caption="Chiffres clés RPLS") %>%
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 

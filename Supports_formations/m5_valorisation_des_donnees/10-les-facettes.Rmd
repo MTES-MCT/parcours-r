@@ -2,7 +2,7 @@
 
 Lorsque l'on veut pouvoir réaliser un graphique pour plusieurs sous ensemble, les facettes sont alors très utiles. On va ici l'illustrer avec la réalisation du même graphique ci dessus mais pour plusieurs années différentes.
 
-```{r chap10, echo=T,eval=T,fig.height=5,fig.width=8}
+```{r, echo=T,eval=T,fig.height=5,fig.width=8}
 indicateur311 %>%
   filter(Type_Zone != "Pays",
          Age_group=="All age ranges or no breakdown by age",
@@ -58,7 +58,7 @@ indicateur311 %>%
 
 ## Exercice 4
 
-> Facette sur un diagramme barre avec :
+> A partir de la table rpls_aggrege, réaliser une facette sur un diagramme barre avec :
 >
 > * en variable discrète les régions
 > * en variables continues les indicateurs suivants :
@@ -93,10 +93,10 @@ rpls_aggrege  %>%
                            "DPE énergie classe ABC_pourcent",
                            "Parc de moins de 5 ans_pourcent")) %>% 
   mutate(Indicateur=fct_recode(Indicateur,
-                             `Logements de 3 et 4 pièces`="3 et 4 pièces_pourcent",
-                             `Logements avec DPE énergie de classe A,B,C`="DPE énergie classe ABC_pourcent",
-                             `Logements avec DPE GES de classe A,B,C`="DPE GES classe ABC_pourcent",
-                             `Logements social de moins de 5 ans`="Parc de moins de 5 ans_pourcent"),
+                             `Logements sociaux de 3 et 4 pièces`="3 et 4 pièces_pourcent",
+                             `Logements sociaux avec DPE énergie de classe A,B,C`="DPE énergie classe ABC_pourcent",
+                             `Logements sociaux avec DPE GES de classe A,B,C`="DPE GES classe ABC_pourcent",
+                             `Logements sociaux de moins de 5 ans`="Parc de moins de 5 ans_pourcent"),
          r52=ifelse(Reg_2017=="52",1,0)) %>% 
   ggplot()+
   #On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence

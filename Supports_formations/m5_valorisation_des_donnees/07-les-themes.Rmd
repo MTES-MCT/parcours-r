@@ -13,7 +13,7 @@ Par exemple: theme_classic(), theme_bw(), theme_dark(), ...
 
 Des packages externe permettent d'enrichir cette collection de thèmes, par exemple ggthemes ou hrbethemes.
 
-Lorsque l'on souhaite garder une cohérence entre plusieurs graphique, le mieux est d'en définir un à part pour l'appeler ensuite.
+Lorsque l'on souhaite garder une cohérence entre plusieurs graphiques, le mieux est d'en définir un à part pour l'appeler ensuite.
 
 
 ## Les fonctions "élément"
@@ -134,9 +134,59 @@ ggplot(graphique1) +
   theme(legend.position="left",legend.title=element_blank())
 ```
 
+## Modifier le thème par défaut.
+
+La fonction theme_set() vous permet de définir un thème par défaut pour l'ensemble de vos graphiques.
+
+```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+theme_set(theme_dark())
+
+ggplot(graphique1) +
+  geom_point(aes(x=log(Gross_Domestic_Product_GDP),
+                 y=log(Maternal_mortality_ratio),
+                 color=Continent))+
+  labs(title="Mortalité maternelle en fonction du PIB par habitant",
+       subtitle="En 2015",
+       x="PIB",
+       y="Taux de mortalité de la mère \n(pour 100 000 naissances)",
+       caption="Source : ODD / ONU")
+```
+
+
+## Créer son propre thème
+
+Un thème est une fonction R qui va prendre ne paramètre des éléments que vous souhaitez pouvoir faire varier et fixer des éléments que vous souhaitez avoir comme rendu par défaut.
+Créons ici un thème avec un fond vert pour le ministère de la transition écologique et solidaire. On rajoute un paramètre pour la taille de la police du titre du graphique.
+
+```{r}
+library(hrbrthemes)
+theme_mtes<-function(taille_police=14){
+  theme_bw()+
+  theme(plot.title = element_text(color = "white",size=taille_police,face="bold"),
+        text = element_text(color="white"),
+        axis.text = element_text(color="white"),
+        panel.background = element_rect(fill="lightgreen",colour="lightgreen"),
+        plot.background= element_rect(fill="#006400",colour="lightgreen"),
+        legend.background =  element_rect(fill="lightgreen",colour="lightgreen"),
+        legend.key = element_blank())
+
+}
+
+ggplot(graphique1) +
+  geom_point(aes(x=log(Gross_Domestic_Product_GDP),
+                 y=log(Maternal_mortality_ratio),
+                 color=Continent))+
+  labs(title="Mortalité maternelle en fonction du PIB par habitant",
+       subtitle="En 2015",
+       x="PIB",
+       y="Taux de mortalité de la mère \n(pour 100 000 naissances)",
+       caption="Source : ODD / ONU")+
+  theme_mtes()
+```
+
 ## Exercice 2
 
-> Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
+> A partir des données de la table graphique 1, reprendre le nuage de point obtenu à partir des données ODD : taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
 > 
 > En modifier le thème:
 > 

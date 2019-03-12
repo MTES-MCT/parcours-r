@@ -20,7 +20,7 @@ La différence avec ggplot2 :
 
 La syntaxe de hchart est la suivante : 
 
-```{r chap13, eval=F}
+```{r eval=F}
 hchart(MA_TABLE,"MON_TYPE_DE_GRAPHIQUE",hcaes(MON_AESTHETIC))
 ```
 
@@ -67,7 +67,7 @@ hchart(highchart,"bar",hcaes(x=Country_or_Area_Name,y=Value,color=Country_or_Are
 
 Quelques définitions des options utilisées ici :
 
-- ***hc_colors()*** permet de définir les couleurs utlisées. elle prend en parametre un vecteur de couleur de longueur égal à celui des modalités différentes de la variable utilisée dans l'aesthétique pour la couleur.
+- ***hc_colors()*** permet de définir les couleurs utlisées. elle prend en paramètre un vecteur de couleur de longueur égal à celui des modalités différentes de la variable utilisée dans l'aesthétique pour la couleur.
 
 - ***hc_plotOptions()*** permet de définir les options globales du graphique.
 2 niveaux d'options peuvent être définies avec hcchart :
@@ -102,7 +102,7 @@ Le plus simple est de se référer à la documentation de l'[API Highcharts](htt
 
 ### Les facettes
 
-Highcharter permet de réaliser des graphiques à facette à partir d'une liste de graphiques réalisé avec Highcharter.
+Highcharter permet de réaliser des graphiques à facette à partir d'une liste de graphiques réalisés avec Highcharter.
 La fonction permettant cela est la fonction ***hw_grid()***
 
 ```{r FacetteHighchart}
@@ -113,9 +113,7 @@ highchart_liste<-indicateur311 %>%
          Sex=="Both sexes or no breakdown by sex",
          Location=="Total (national level)",
          Year>=2000
-  ) %>%
-  group_by(Country_or_Area_Code) %>%
-  ungroup
+  ) 
 #Création de la liste des graphiques highcharts
 map(unique(highchart_liste$Country_or_Area_Name), function(x){
   highchart_liste %>% 
@@ -195,13 +193,13 @@ ttc<-st_centroid(tt)
 bins <-quantile(ttc$Value,na.rm=T)
 pal <- colorBin("YlOrRd", domain = ttc$Value, bins = bins)
 
-leaflet(ttc) %>%
+carte_rond_proportionnel<-leaflet(ttc) %>%
   addPolygons(data=tt,
               fillColor = "#ffffff",
                 opacity=.2,
               color = "white",
               dashArray = "3",
-              fillOpacity = 0.7,
+              fillOpacity = 0.7
   ) %>% 
   addCircles(data=ttc,
               fillColor=~pal(Value),
@@ -227,6 +225,13 @@ leaflet(ttc) %>%
             opacity = 1)
 ```
 
+## Exporter une sortie html
+
+La foncion `saveWidget` permet d'exporter une sotie d'un html Widget en html.
+
+```{r, eval=T}
+saveWidget(widget=carte_rond_proportionnel,file="Taux de décès des mères à la naissance.html")
+```
 
 
 
@@ -241,7 +246,6 @@ Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du cont
 Le résultat attendu : 
 
 ```{r eval=T,message=F,warning=F,echo=FALSE}
-library(highcharter)
 hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
                               y=Maternal_mortality_ratio,
                               color=Continent)) %>%
@@ -249,7 +253,5 @@ hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
   hc_tooltip(
     pointFormat = '<b>{point.Continent}</b><br/><b>{point.Parent_Zone_libelle}</b><br/>PIB de {point.x} un taux de mortalié maternelle de {point.y} (pour 100 000 naissances)'
   )
-
-
 ```
 

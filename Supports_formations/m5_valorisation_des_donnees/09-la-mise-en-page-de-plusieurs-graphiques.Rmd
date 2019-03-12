@@ -5,7 +5,7 @@ Le package cowplot permet la combinaison de plusieurs graphiques. Il est compos√
 - le fonction **plot_grid** qui permet de disposer ***n*** graphes sur ***i*** colonnes et ***j*** lignes
 
 
-```{r chap09, echo=T,eval=T,fig.height=3.5}
+```{r, echo=T,eval=T,fig.height=3.5}
 gg1<-ggplot(graphique1) +
   geom_point(aes(x=Gross_Domestic_Product_GDP,
                  y=Maternal_mortality_ratio))+

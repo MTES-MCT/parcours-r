@@ -6,11 +6,11 @@ le package [gganimate](https://gganimate.com/) permet d'enrichir ggplot avec des
 
 ## Produire une animation
 
-Nous allons voir comment animer notre premier graphique sur la répartition des pays en fonction du taux de mortalité et du PIB, en regardant comment celui ci évolu avec les années.
+Nous allons voir comment animer notre premier graphique sur la répartition des pays en fonction du taux de mortalité et du PIB, en regardant comment celui ci évolue avec les années.
 
 Pour cela nous partons des même données mais définies pour l'ensemble des années depuis 1990.
 
-```{r chap12b}
+```{r gganimate1}
 ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -23,7 +23,7 @@ ggplot(data = graphique_anime) +
 
 ```
 
-Le graphique précédent est bien sur illisible, un même pays vois ces données affichés pour toutes les années.
+Le graphique précédent est bien sur illisible, un même pays voit ces données affichées pour toutes les années.
 Nous allons utiliser la fonction ***transition_states()*** du package gganimate pour lui définir l'année comme la frame de notre graphique animé.
 
 
@@ -96,13 +96,13 @@ animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"),
         )
 ```
 
-## Sauvegarder une animation
+## Exporter une animation
 
-La fonction ***anime_save()*** permet de sauvegarder nos animations.
+La fonction ***anime_save()*** permet de sauvegarder nos animations sous différent format à définir via le moteur de rendu.
 Par défaut elle sauvegarde la dernière animation.
 
 ```{r gganimate5,warning = FALSE,message = FALSE,error=FALSE}
-anim_save("ma_super_animation.gif")
+anim_save("figures/ma_super_animation.gif")
 ```
 
 
@@ -110,14 +110,14 @@ anim_save("ma_super_animation.gif")
 ## Exercice 6
 
 
-Produire le nuage de point du croisement de la part des logements ayant une étiquette A,B,C en fonction de la part du parc récent.
+Produire le nuage de point du croisement de la part communale des logements ayant une étiquette A,B,C en fonction de la part communale du parc récent.
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
 
 Le résultat attendu : 
 
 ```{r eval=T,message=F,warning=F,echo=FALSE}
 rpls<-rpls_aggrege_large %>% 
-  filter(nReg_2017=="Centre-Val de Loire") %>% 
+  filter(nReg_2017=="Centre-Val de Loire" & TypeZone=="Communes") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
 
 anim<-ggplot(data =rpls ) + 

@@ -1,6 +1,6 @@
 --- 
 title: "Analyse des données multi-dimensionnelles"
-author: "Groupe des référents R"
+author: Vivien Roussez & Pascal Irz
 date: '`r format (Sys.time(), "%d %B %Y")`'
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -30,27 +30,33 @@ require (DT)
 
 # Introduction
 
+![](images/crabe.jpg)
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 6}
-par (mfrow = c (1,2))
-acp <- PCA (iris, quali.sup = 5, graph = F)
-plot.PCA (acp, choix = "ind", col.ind = "lightblue", col.quali = "red")
-HCPC (acp, nb.clust = 3, graph = F) %>%
-  plot.HCPC (choice = "3D.map")
-```
+<font size="2"> 
+*Crédit photographique Pascal Irz*
+</font> 
+
 
 ## Le parcours de formation
 
-Le parcours de formation proposé est structuré en modules de 2 jours chacun :
+Ce dispositif de formation vise à faire monter en compétence les agents du MTES (Ministère de la transition écologique et solidaire) et du MCT (Ministère de la cohésion des territoires) dans le domaine de la science de la donnée avec le logiciel R. Il est conçu pour être déployé à l'échelle nationale par le réseau des CVRH (Centre de Valorisation des Ressources Humaines).
 
-- 1 : Socle de base $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m1_socle/_book/index.html)
-- 2 : Préparer ses données avec le tidyverse $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html)
-- 3 : Statistiques descriptives $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html)
-- 4 : Analyses multivariées $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m4_analyse_donnees/_book/index.html)
-- 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux $\Rightarrow$ [support](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m5_valorisation_des_donnees/_book/index.html)
-- 6 : Documents reproductibles avec RMarkdown (2^ème^ semestre 2019)
+Le parcours proposé est structuré en modules de 2 jours chacun. Les deux premiers (ou un niveau équivalent) sont des pré-requis pour suivre les suivants qui sont proposés "à la carte" :
+
+1. Socle : Premier programme en R
+2. Socle : Préparation des données
+3. Statistiques descriptives
+4. Analyses multivariées
+5. Datavisualisation : Produire des graphiques, des cartes et des tableaux
+6. Documents reproductibles avec RMarkdown (2^ème^ semestre 2019)
 
 ... et en perspective : analyse spatiale, applis interactives avec Shiny, big data, etc.
+
+
+La mise à disposition des supports de formation se fait désormais par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
+
+
+Si vous souhaitez accéder aux sources, données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du ministère](https://github.com/MTES-MCT/parcours-r/tree/master/Supports_formations).
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
 
@@ -64,6 +70,18 @@ Il existe une liste pour diffuser de l'information, échanger autour de R ou lev
 - Mise en oeuvre et interprétation des méthodes usuelles.
 
 Ce module balaye les techniques statistiques qui permettent d'explorer efficacement un jeu de données contenant un nombre important de variables. Ces méthodes produisent des graphiques et des statistiques qui mettent en évidence les liens et corrélations entre $p$ variables simultanément, ainsi que les proximités entre les $n$ observations.
+
+
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 6}
+par (mfrow = c (1,2))
+acp <- PCA (iris, quali.sup = 5, graph = F)
+plot.PCA (acp, choix = "ind", col.ind = "lightblue", col.quali = "red")
+HCPC (acp, nb.clust = 3, graph = F) %>%
+  plot.HCPC (choice = "3D.map")
+```
+
+
 
 Il fait une petite entorse à la philosophie générale du parcours, dans la mesure où le principal *package* mobilisé ne fait pas partie du *tidyverse*, et que les sorties graphiques sont des graphiques R de base. Mais ceux-ci ont une vocation essentiellement exploratoire (on publie rarement les graphiques qui seront vus dans ce module) ; il est naturellement toujours possible de basculer dans le *tidyverse* modulo quelques opérations.
 

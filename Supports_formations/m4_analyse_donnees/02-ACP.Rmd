@@ -13,7 +13,7 @@ output:
 
 On dispose d'un tableau de $n$ lignes et $p$ colonnes actives qui sont uniquement des variables quantitatives (au sens large, des binaires codées 0/1 ou des variables ordinales passent). 
 
-<center>![](Figures/DF1.png)</center>
+<center>![](images/DF1.png)</center>
 
 ### Objectifs
 
@@ -127,7 +127,6 @@ ATTENTION, certaines fonctions du package `dplyr` du tidyverse, comme `mutate`, 
 
 ```{r import}
 
-geoidd <- read.csv2 (file = "Exercices/ACP.csv", header = T, encoding = "latin1")
 dat <- geoidd %>%
   select (-code, -communes)
 row.names (dat) <- geoidd$code
@@ -340,7 +339,7 @@ L'effet taille se recontre assez fréquemment quand on réalise une ACP : il se 
 - Dans ce cas, l'axe 1 constitue un **gradient** : il permet de classer les individus du plus "petit" au plus "grand", sur toutes les variables simultanément.
 
 ```{r}
-taille <- read.csv2 ("Exercices/Effet_taille.csv", header = TRUE,
+taille <- read.csv2 ("data/Effet_taille.csv", header = TRUE,
                      encoding = "latin1")
 t <- PCA (na.omit (taille[,-c(1,2)]), graph = FALSE)
 plot.PCA (t, choix = c ("var"), col.var = "blue")

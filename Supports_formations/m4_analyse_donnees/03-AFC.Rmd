@@ -1,4 +1,3 @@
-
 # L'AFC
 
 ## Principe de l'AFC
@@ -13,7 +12,7 @@ Lors de la construction du tableau de contingence, pour chacune des variables, l
 
 Exemple d'une enquête réalisée au niveau national, dans laquelle on pose des questions avec quatre modalités possibles de réponses.
 
-<center>![](Figures/tableau_contingence.png)</center>
+<center>![](images/tableau_contingence.png)</center>
 
 
 L'AFC permet simultanément de :
@@ -48,7 +47,7 @@ Il s'agit des [immatriculations des voitures particulières d'occasion par dépa
 Le fichier de départ a été converti au format *.csv*.
 
 ```{r chargement_immat}
-immat <- read.csv2 (file = 'Exercices/AFC_immat.csv', dec=',',
+immat <- read.csv2 (file = 'data/AFC_immat.csv', dec=',',
                     header = T, encoding = "latin1") %>% 
   rename (dep = `Départements`) %>% 
   filter (dep != "Total") %>% 

@@ -23,7 +23,7 @@ ggplot (data = dat, aes (sample = log_dens)) +
   stat_qq ()
 ```
 
-Plus une courbe est droite, plus cela signifie que les quantiles de la variable sont similaires à ceux de la distribution attendue.
+Plus la courbe est rectiligne, plus cela signifie que les quantiles de la variable sont similaires à ceux de la distribution attendue.
 
 On peut aussi apprécier la normalité en repartant de l'histogramme :
 
@@ -43,6 +43,7 @@ ggplot (dat, aes (x = log_dens)) +
   ylab (label = "Nombre de communes")
 
 ```
+
 `stat_function()` trace la fonction indiquée. Ici, on trace une loi normale (`dnorm()`) de même moyenne et écart-type que la variable dont on veut tester la normalité.
 
 
@@ -329,6 +330,7 @@ ggplot(graph, aes(x = DEP, y = means, fill = DEP)) +
 
 #### Echantillons non normalement distribués (Kruskal-Wallis)
 Si les distributions ne sont pas normales, on se servira du *test de Kruskal-Wallis*. Il généralise le test de Wilcoxon sur plus de deux groupes. Il fonctionne de manière similaire, en comparant les rangs des valeurs des différents groupes.
+
 ```{r}
 # travail préalable : on peut visualiser les données
 ggplot(data = data_test_m, aes(x = DEP, y = densite, fill = DEP)) + geom_boxplot()
@@ -347,7 +349,7 @@ pairwise.wilcox.test(data_test_m$densite, data_test_m$DEP,
 
 ```
 
-Ici, tous les départements sont significativement différents deux à deux, car les p-values sont toutes inférieures à 0,05.
+Ici, tous les départements sont significativement différents deux à deux, car les *p-values* sont toutes inférieures à 0,05.
 
 
 ## Résumé

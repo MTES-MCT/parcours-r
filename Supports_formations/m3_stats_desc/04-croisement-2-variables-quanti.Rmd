@@ -4,7 +4,7 @@ On cherche à quantifier le lien entre deux variables quantitatives X et Y sur u
 
 Plusieurs coefficient permettent de quantifier ce lien :
 
-- Coefficient de corrélation linéaire (Pearson) : $\rho_{XY}=\frac{\sigma_{XY}}{\sigma_{X} \cdot \sigma_{X}}$ avec $\sigma_{XY} = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})(y_i-\bar{y})$ et $\sigma_x$ l'écart-type de X.
+- Coefficient de corrélation linéaire (Pearson) : $\rho_{XY}=\dfrac{\sigma_{XY}}{\sigma_{X} \cdot \sigma_{X}}$ avec $\sigma_{XY} = \dfrac{1}{n}\sum_{i=1}^n (x_i-\bar{x})(y_i-\bar{y})$ et $\sigma_x$ l'écart-type de X.
 - Coefficient de corrélation des rangs (Spearman) : c'est le coefficient précédent appliqué aux rangs $\Rightarrow$ détecte des relations non linéaires
 
 Dans certains cas (distributions asymétriques), il faut penser à appliquer la transformation logarithmique

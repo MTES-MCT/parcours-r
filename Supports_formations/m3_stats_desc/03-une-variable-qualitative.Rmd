@@ -105,6 +105,7 @@ ggplot (dat, aes (x = fct_infreq (ZAU2), fill = fct_infreq (ZAU2))) +
 ```
 
 D'autres présentations sont possibles. Par exemple, avec les intitulés des modalités sur l'axe (obtenu grâce à `coord_flip()`, il n'y donc plus besoin de différencier par les couleurs, ni de la légende. La disposition en barres horizontales permet d'afficher ces intitulés longs. 
+
 ```{r barplot_horiz}
 ggplot (dat, aes (x = ZAU2)) +
   geom_bar () +

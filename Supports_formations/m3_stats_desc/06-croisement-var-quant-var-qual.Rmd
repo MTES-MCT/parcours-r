@@ -2,11 +2,13 @@
 
 ## Statistiques en fonction d'un facteur
 
-Par exemple, calculer la population totale (moyenne, médiane...) des communes pour chaque type ZAU
+Par exemple, calculer la population totale (moyenne, médiane...) des communes pour chaque type ZAU.
 
 ```{r agregat, echo = F}
 ag <- dat %>% group_by(ZAU) %>%
-  summarise(pop_moy = mean(P14_POP, na.rm = T),                                dens_med = median(densite, na.rm = T),                             nb_com = n())
+  summarise(pop_moy = mean(P14_POP, na.rm = T), 
+            dens_med = median(P14_POP, na.rm = T),
+            nb_com = n())
 print(ag)
 ```
 
@@ -23,16 +25,20 @@ print(ag)
 
 Pour réprésenter graphiquement le croisement d'une variable qualitative avec une variable quantitative, il existe plusieurs moyens.
 
-- La *boîte à moustaches* (fonction `geom_boxplot()`) affiche, pour chaque modalités de la variable qualitative, la distribution de la variable quantitative, grâce à une boîte à moustaches (la barre la plus basse de la boîte indique Q1, le trait au milieu indique la médiane, et la barre supérieur de la boîte indique Q3).
+- La fonction `geom_boxplot()` produit la boîte à moustaches pour visualiser, pour chaque modalités de la variable qualitative, la distribution de la variable quantitative. La barre la plus basse de la boîte indique Q1 (pourcentile 25%), le trait au milieu indique la médiane, et la barre supérieur de la boîte indique Q3.
 
 ```{r boxplot, warning = FALSE, message = FALSE}
+dat <- dat %>%
+  mutate (densite = P14_POP / SUPERF,
+          log_dens = log10 (densite+0.00000001))
+
 ggplot (data = dat, aes (y = log (densite), x = ZAU2, fill = ZAU2)) +
   geom_boxplot () +
   coord_flip () + # pour plus de lisibilité
   theme (legend.position = "none") # supprime la légende
 ```
 
-- Le *violinplot* (fonction `geom_violin()`) fonctionne sur le même principe. Les boîtes à moustaches sont remplacés par des graphiques en *violon*, qui représentent la densité de distribution de la variables quantitatives
+- Le *violinplot* (fonction `geom_violin()`) fonctionne sur le même principe. Les boîtes à moustaches sont remplacées par des graphiques en *violon*, qui représentent la densité de distribution de la variables quantitatives.
 
 ```{r violinplot, warning = FALSE, message = FALSE}
 ggplot (data = dat, aes (y = log (densite), x = ZAU2, fill = ZAU2)) +

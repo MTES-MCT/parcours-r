@@ -1,18 +1,3 @@
-
-```{r chargement_packages, echo = FALSE, warning = FALSE, message = FALSE}
-library (plyr)
-library (tidyverse)
-library (forcats)
-library (lsr)
-library (sp)
-library (cartography)
-library (GGally)
-library (ggmosaic)
-library (DT)
-library (plotly)
-library (grid)
-```
-
 # Quelques préliminaires
 
 ## Vocabulaire
@@ -22,8 +7,9 @@ library (grid)
 - Description des données : un tableau peut être regardé comme un ensemble de lignes (des individus statistiques) ou comme un ensemble de colonnes (des variables).
 
 <center>
-![](Figures/DF1.png)
+![](images/DF1.png)
 </center>
+
 $\rightarrow$ structure du tableau (`dataframe`) à modifier ? Voir [le module 2 sur la préparation des données](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparer_ses_donnees_avec_R_et_le_tidyverse/_book/index.html).
 
 
@@ -32,10 +18,6 @@ $\rightarrow$ structure du tableau (`dataframe`) à modifier ? Voir [le module 2
 Nous utiliserons la base Insee de comparaison des territoires. Pour chaque commune, nous disposons d'un certain nombre d'informations, contenues dans les différentes variables (population, naissance, décès, nombre de logements, etc...).
 
 ```{r}
-dat <- read.csv (file = "Data/Base_synth_territoires.csv", sep = ';',
-                 dec = ',', colClasses = c ("REG" = "factor")) %>% 
-      select (-starts_with ("ET"))
-
 str (dat)  # premier aperçu de la base
 ```
 
@@ -155,7 +137,7 @@ as.integer (v) %>% table ()
 
 ### Manipulation des `factor`
 
-![](Figures/logos_tidyverse_forcats.png)
+![](images/logos_tidyverse_forcats.png)
 
 La manipulation des `factor` fait intervenir le package [`forcats`](https://cran.r-project.org/web/packages/forcats/forcats.pdf), du "méta-package" [`tidyverse`](https://www.tidyverse.org/), qui propose de nombreuses fonctions.
 
@@ -187,7 +169,7 @@ Pour effectuer l'opération sur l'ensemble des variables `factor` d'un `datafram
 
 - Les fonctions `levels()` et `fct_recode()` permettent de modifier les `levels`. La fonction `levels()` renomme toutes les modalités et s'applique sur un vecteur de type `factor`. `fct_recode()` permet de renommer seulement les `levels` voulus et peut être imbriqué dans un `mutate()`.
 
-![http://perso.ens-lyon.fr/lise.vaudor/manipulation-de-facteurs-avec-forcats/](Figures/fct_recode.png)
+![http://perso.ens-lyon.fr/lise.vaudor/manipulation-de-facteurs-avec-forcats/](images/fct_recode.png)
 ```{r}
 
 vec_ZAU <- pull (dat, ZAU)
@@ -225,7 +207,7 @@ pull (dat, ZAU2) %>%
 
 - Pour modifier l'ordre des facteurs (cela peut être utile en particulier pour les représentations graphiques), il existe plusieurs fonctions : 
 
-![http://perso.ens-lyon.fr/lise.vaudor/manipulation-de-facteurs-avec-forcats/](Figures/fct_relevel.png)
+![http://perso.ens-lyon.fr/lise.vaudor/manipulation-de-facteurs-avec-forcats/](images/fct_relevel.png)
 
 ```{r changeFactors}
 

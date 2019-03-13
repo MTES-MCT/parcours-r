@@ -1,6 +1,6 @@
-# Le Tidyverse
+# Le tidyverse
 
-Le tidyverse est un ensemble de packages proposant une syntaxe cohérente pour remplir l'essentiel des traitements propres à la science de la données, de la lecture des données à la valorisation en passant par la modélisation. Le manifeste du tidyverse comprend 4 principes clefs pour les packages du tidyverse : 
+Le `tidyverse` est un ensemble de packages proposant une syntaxe cohérente pour remplir l'essentiel des traitements propres à la science de la données, de la lecture des données à la valorisation en passant par la modélisation. Le manifeste du `tidyverse` comprend 4 principes clefs pour les packages : 
 
 - Utiliser les structures de données existantes : ne pas créer des objets ad hoc
 
@@ -40,22 +40,6 @@ Le tidyverse est un ensemble de packages proposant une syntaxe cohérente pour r
 #### Hors tidyverse
 - [RcppRoll](https://cran.r-project.org/web/packages/RcppRoll/index.html) qui regroupe des opérations fenêtrées ou glissantes
 
-## Activer les packages
-
-```{r lib, eval=T}
-library (dplyr)
-library (tidyr)
-library (forcats)
-library (lubridate)
-library (stringr)
-library (RcppRoll)
-library (DT)
-library (readxl)
-library (dbplyr)
-library (RPostgreSQL)
-library (rsdmx)
-library (sf)
-```
 
 ## Les spécificités du tidyverse
 

@@ -1,6 +1,6 @@
 # Manipuler plusieurs tables
 
-Le package *dplyr* possède également plusieurs fonctions permettant de travailler sur deux tables.
+Le package `dplyr` possède également plusieurs fonctions permettant de travailler sur deux tables.
 On va pouvoir regrouper ces fonctions en plusieurs catégories de manipulations : 
 
 - pour fusionner des informations de deux tables entre elles : jointures transformantes

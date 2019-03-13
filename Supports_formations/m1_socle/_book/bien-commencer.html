@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapitre 4 Bien commencer | Découvrir R et RStudio</title>
+  <title>Chapitre 5 Bien commencer | Découvrir R et RStudio</title>
   <meta name="description" content="Formation R socle">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapitre 4 Bien commencer | Découvrir R et RStudio" />
+  <meta property="og:title" content="Chapitre 5 Bien commencer | Découvrir R et RStudio" />
   <meta property="og:type" content="book" />
   
   
@@ -17,12 +17,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 4 Bien commencer | Découvrir R et RStudio" />
+  <meta name="twitter:title" content="Chapitre 5 Bien commencer | Découvrir R et RStudio" />
   
   <meta name="twitter:description" content="Formation R socle" />
   
 
-<meta name="author" content="Thierry Zorn, Murielle Lethrosne, Vivien Roussez, Pascal Irz">
+<meta name="author" content="Thierry Zorn, Murielle Lethrosne, Vivien Roussez &amp; Pascal Irz">
 
 
 
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="presentation-de-linterface-et-premieres-manipulations.html">
-<link rel="next" href="mon-premier-jeu-de-donnees.html">
+<link rel="prev" href="mon-premier-jeu-de-donnees.html">
+<link rel="next" href="premiere-manipulation-des-donnees.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -126,21 +133,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.7" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#utilite-des-scripts"><i class="fa fa-check"></i><b>3.7</b> Utilité des scripts</a></li>
 <li class="chapter" data-level="3.8" data-path="presentation-de-linterface-et-premieres-manipulations.html"><a href="presentation-de-linterface-et-premieres-manipulations.html#exercice-utiliser-un-script"><i class="fa fa-check"></i><b>3.8</b> Exercice : utiliser un script</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>4</b> Bien commencer</a><ul>
-<li class="chapter" data-level="4.1" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>4.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
-<li class="chapter" data-level="4.2" data-path="bien-commencer.html"><a href="bien-commencer.html#integrer-vos-donnees"><i class="fa fa-check"></i><b>4.2</b> Intégrer vos données</a></li>
-<li class="chapter" data-level="4.3" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>4.3</b> Créer votre arborescence de projet</a></li>
-<li class="chapter" data-level="4.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-necessaires"><i class="fa fa-check"></i><b>4.4</b> Activer les packages nécessaires</a></li>
-<li class="chapter" data-level="4.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>4.5</b> Bien structurer ses projets data</a></li>
+<li class="chapter" data-level="4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html"><i class="fa fa-check"></i><b>4</b> Mon premier jeu de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-types-de-valeurs-dans-r"><i class="fa fa-check"></i><b>4.1</b> Les types de valeurs dans R</a></li>
+<li class="chapter" data-level="4.2" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#avant-de-manipuler-le-dataframe-installer-et-charger-un-package"><i class="fa fa-check"></i><b>4.2</b> Avant de manipuler le <em>dataframe</em> : installer et charger un <em>package</em></a></li>
+<li class="chapter" data-level="4.3" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#importation-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Importation de données</a></li>
+<li class="chapter" data-level="4.4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#structure-des-donnees-le-dataframe"><i class="fa fa-check"></i><b>4.4</b> Structure des données : le <em>dataframe</em></a></li>
+<li class="chapter" data-level="4.5" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#gerer-le-type-des-variables"><i class="fa fa-check"></i><b>4.5</b> Gérer le type des variables</a></li>
+<li class="chapter" data-level="4.6" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-valeurs-particulieres"><i class="fa fa-check"></i><b>4.6</b> Les valeurs particulières</a></li>
+<li class="chapter" data-level="4.7" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#exercice-importer-les-donnees-et-premier-coup-doeil"><i class="fa fa-check"></i><b>4.7</b> Exercice : Importer les données et premier coup d’oeil</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html"><i class="fa fa-check"></i><b>5</b> Mon premier jeu de données</a><ul>
-<li class="chapter" data-level="5.1" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-types-de-valeurs-dans-r"><i class="fa fa-check"></i><b>5.1</b> Les types de valeurs dans R</a></li>
-<li class="chapter" data-level="5.2" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#avant-de-manipuler-le-data.frame-installer-et-charger-un-package"><i class="fa fa-check"></i><b>5.2</b> Avant de manipuler le data.frame : installer et charger un package</a></li>
-<li class="chapter" data-level="5.3" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#importation-de-donnees"><i class="fa fa-check"></i><b>5.3</b> Importation de données</a></li>
-<li class="chapter" data-level="5.4" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#structure-des-donnees-le-dataframe"><i class="fa fa-check"></i><b>5.4</b> Structure des données : le <em>dataframe</em></a></li>
-<li class="chapter" data-level="5.5" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#gerer-le-type-des-variables"><i class="fa fa-check"></i><b>5.5</b> Gérer le type des variables</a></li>
-<li class="chapter" data-level="5.6" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#les-valeurs-particulieres"><i class="fa fa-check"></i><b>5.6</b> Les valeurs particulières</a></li>
-<li class="chapter" data-level="5.7" data-path="mon-premier-jeu-de-donnees.html"><a href="mon-premier-jeu-de-donnees.html#exercice-importer-les-donnees-et-premier-coup-doeil"><i class="fa fa-check"></i><b>5.7</b> Exercice : Importer les données et premier coup d’oeil</a></li>
+<li class="chapter" data-level="5" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>5</b> Bien commencer</a><ul>
+<li class="chapter" data-level="5.1" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>5.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="5.2" data-path="bien-commencer.html"><a href="bien-commencer.html#integrer-vos-donnees"><i class="fa fa-check"></i><b>5.2</b> Intégrer vos données</a></li>
+<li class="chapter" data-level="5.3" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>5.3</b> Créer votre arborescence de projet</a></li>
+<li class="chapter" data-level="5.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-necessaires"><i class="fa fa-check"></i><b>5.4</b> Activer les packages nécessaires</a></li>
+<li class="chapter" data-level="5.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>5.5</b> Bien structurer ses projets <em>data</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html"><i class="fa fa-check"></i><b>6</b> Première manipulation des données</a><ul>
 <li class="chapter" data-level="6.1" data-path="premiere-manipulation-des-donnees.html"><a href="premiere-manipulation-des-donnees.html#afficher-les-valeurs-et-manipuler-les-variables"><i class="fa fa-check"></i><b>6.1</b> Afficher les valeurs et manipuler les variables</a></li>
@@ -172,7 +179,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html"><i class="fa fa-check"></i><b>9</b> Sauvegarder son travail</a><ul>
 <li class="chapter" data-level="9.1" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#exportation-des-resultats"><i class="fa fa-check"></i><b>9.1</b> Exportation des résultats</a></li>
-<li class="chapter" data-level="9.2" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#environnement-et-rdata"><i class="fa fa-check"></i><b>9.2</b> Environnement et RData</a></li>
+<li class="chapter" data-level="9.2" data-path="sauvegarder-son-travail.html"><a href="sauvegarder-son-travail.html#environnement-et-.rdata"><i class="fa fa-check"></i><b>9.2</b> Environnement et <code>.RData</code></a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><i class="fa fa-check"></i><b>10</b> Aller plus loin avec les objets, crochets et la programmation fonctionnelle</a><ul>
 <li class="chapter" data-level="10.1" data-path="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html"><a href="aller-plus-loin-avec-les-objets-crochets-et-la-programmation-fonctionnelle.html#les-objets-dans-r"><i class="fa fa-check"></i><b>10.1</b> Les objets dans R</a><ul>
@@ -211,9 +218,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="bien-commencer" class="section level1">
-<h1><span class="header-section-number">Chapitre 4</span> Bien commencer</h1>
+<h1><span class="header-section-number">Chapitre 5</span> Bien commencer</h1>
 <div id="creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux." class="section level2">
-<h2><span class="header-section-number">4.1</span> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</h2>
+<h2><span class="header-section-number">5.1</span> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</h2>
 <p>Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?</p>
 <ul>
 <li>Cela permet la portabilité : le répertoire de travail par défaut d’un projet est le répertoire où est ce projet. Si vous transmettez celui-ci à un collègue, le fait de lancer un programme ne dépend pas de l’arborescence de votre machine.</li>
@@ -252,7 +259,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </div>
 <div id="integrer-vos-donnees" class="section level2">
-<h2><span class="header-section-number">4.2</span> Intégrer vos données</h2>
+<h2><span class="header-section-number">5.2</span> Intégrer vos données</h2>
 <p>Une bonne pratique est de créer un sous répertoire <code>/data</code> pour stocker les données sur lesquelles vous aurez à travailler.</p>
 <p>Vous pouvez le faire depuis l’explorateur de fichier de votre système d’exploitation ou directement à partir de l’explorateur de fichier de RStudio.</p>
 <div class="figure">
@@ -262,44 +269,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Cela marche bien quand on a un seul type de données, mais en général on va avoir à travailler sur des données brutes que l’on va retravailler ensuite et vouloir stocker à part. Si par la suite vous souhaitez avoir des exemples de bonnes pratiques sur comment structurer vos données, vous pouvez vous référer au <a href="http://r-pkgs.had.co.nz/data.html">chapitre data</a> du livre d’Hadley Wickham sur la construction de packages R (tout package R étant aussi un projet !).</p>
 </div>
 <div id="creer-votre-arborescence-de-projet" class="section level2">
-<h2><span class="header-section-number">4.3</span> Créer votre arborescence de projet</h2>
+<h2><span class="header-section-number">5.3</span> Créer votre arborescence de projet</h2>
 <ul>
 <li>Créer un répertoire <code>/src</code> ou vous mettrez vos scripts R.</li>
 <li>Créer un répertoire <code>/figures</code> ou vous mettrez vos illustrations issues de R.</li>
 </ul>
 </div>
 <div id="activer-les-packages-necessaires" class="section level2">
-<h2><span class="header-section-number">4.4</span> Activer les packages nécessaires</h2>
+<h2><span class="header-section-number">5.4</span> Activer les packages nécessaires</h2>
 <p>Commencer par rajouter un script dans le répertoire <code>/src</code> à votre projet qui commencera par :</p>
 <ul>
 <li><p>activer l’ensemble des packages nécessaires</p></li>
 <li><p>charger les données dont vous aurez besoin.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
-<span class="kw">library</span>(kableExtra)
-<span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(hrbrthemes)
-<span class="kw">library</span>(stringr)
-<span class="kw">library</span>(purrr)
-<span class="kw">library</span>(sf)
-<span class="kw">library</span>(tmap)
-<span class="kw">library</span>(viridis)
-<span class="kw">library</span>(scales)
-<span class="kw">library</span>(tmaptools)
-<span class="kw">library</span>(highcharter)
-<span class="kw">library</span>(leaflet)
-<span class="kw">library</span>(cowplot)
-<span class="kw">library</span>(waffle)
-<span class="kw">library</span>(glue)
-<span class="kw">library</span>(gganimate)
-<span class="kw">library</span>(htmlwidgets)
-<span class="kw">load</span>(<span class="st">&quot;data/data_exercices_formation.RData&quot;</span>)
-<span class="kw">load</span>(<span class="st">&quot;data/ODD.RData&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(GGally) 
+<span class="kw">library</span>(plotly)
+
+base &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="dt">file =</span> <span class="st">&quot;data/Base_synth_territoires.csv&quot;</span>,
+                 <span class="dt">header =</span> T, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</code></pre></div>
 </div>
 <div id="bien-structurer-ses-projets-data" class="section level2">
-<h2><span class="header-section-number">4.5</span> Bien structurer ses projets data</h2>
-<p>Plusieurs documents peuvent vous inspirer sur la structuration de vos projets data par la suite.</p>
+<h2><span class="header-section-number">5.5</span> Bien structurer ses projets <em>data</em></h2>
+<p>Plusieurs documents peuvent vous inspirer sur la structuration de vos projets <em>data</em> par la suite.</p>
 <p>En voici quelques uns :</p>
 <ul>
 <li><a href="https://github.com/pavopax/new-project-template" class="uri">https://github.com/pavopax/new-project-template</a></li>
@@ -316,8 +308,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="presentation-de-linterface-et-premieres-manipulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mon-premier-jeu-de-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mon-premier-jeu-de-donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="premiere-manipulation-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -362,6 +354,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

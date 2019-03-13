@@ -7,9 +7,6 @@
 La fonction `summary()` peut s'appliquer à une table entière ou un vecteur. Appliquée sur un tableau, elle donne les statistiques principales sur chacune des variables, en s'adaptant au type de celles-ci (numerique ou texte).
 
 ```{r}
-library(tidyverse)
-base <- read.csv(file = "data/Base_synth_territoires.csv",
-                 header = T, sep=";", dec=",")
 base_extrait <- select(base, 1, 3, 5, 7:12)
 summary(base_extrait)
 ```

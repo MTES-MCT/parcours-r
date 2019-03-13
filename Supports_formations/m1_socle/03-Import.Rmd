@@ -13,7 +13,7 @@ Ces valeurs sont ensuites structurées au sein de vecteur qui sont compilés dan
 
 
 
-## Avant de manipuler le data.frame : installer et charger un package
+## Avant de manipuler le *dataframe* : installer et charger un *package*
 Pour manipuler notre base de données, nous allons nous servir de fonctionnalités présentes dans le package `tidyverse`. 
 
 La première fois que l'on veut utiliser un package, il faut le télécharger sur notre ordinateur, avec `install.packages()` :
@@ -72,7 +72,7 @@ Mais le type peut être erronné. Il suffit alors de de les convertir :
 base <- mutate(base, LIBGEO = as.character (LIBGEO))
 ```
 
-ou `as.factor`, `as.numeric()`, etc...
+ou `as.factor()`, `as.numeric()`, etc...
 
 Pour être sûr de ne pas faire de bêtise, il vaut mieux gérer les types au moment de l'importation avec le paramètre `colClasses` $\rightarrow$ exercice !
 
@@ -92,9 +92,9 @@ $\Rightarrow$ Le [module 2 "Préparation des données"](https://rawgit.com/MTES-
 
 ## Exercice : Importer les données et premier coup d'oeil
 
-On peut importer n'importe quel format de données en R (Excel, SAT, Stata, SQL...). Beaucoup sont abordé lors du module 2. Pour ce module, nous ne voyons que l'importation de fichier .CSV. Si vous avez une base de données en Excel ou LibreOffice Calc, sauvegardez l'onglet que vous souhaitez en faisant "enregistrer sous" $\rightarrow$ "délimité CSV". 
+On peut importer n'importe quel format de données en R (Excel, SAT, Stata, SQL...). Beaucoup sont abordés lors du [module 2 "Préparation des données"](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html). Pour ce module, nous ne voyons que l'importation de fichier `.CSV`. Si vous avez une base de données en Excel ou LibreOffice Calc, sauvegardez l'onglet que vous souhaitez en faisant "enregistrer sous" $\rightarrow$ "délimité CSV". 
 
-Ici, nous travaillerons sur une base de données communales fournie par l'Insee, dite "comparateur de territoires". Le fichier source (Excel) figure dans le sous-répertoire "Data" et contient toutes les métadonnées.
+Ici, nous travaillerons sur une base de données communales fournie par l'Insee, dite "comparateur de territoires". Le fichier source (Excel) figure dans le sous-répertoire "data" et contient toutes les métadonnées.
 
 
 - Utiliser la fonction `read.csv()` pour importer ce fichier et stockez le dans un objet `df`. **Veillez à ce que la région soit bien importée comme un facteur et non un entier**. 
@@ -110,7 +110,7 @@ df <- read.csv(file = "data/Base_synth_territoires.csv",
 str(df)
 ```
 
-On peut également gérer les problèmes d'encodage de caractères (si on passe de Windows à un système Unix, par exemple)
+On peut également gérer les problèmes d'encodage de caractères (si on passe de Windows à un système Unix, par exemple).
 
 ```{r}
 head(df)

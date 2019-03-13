@@ -1,30 +1,29 @@
 # Aller plus loin avec les objets, crochets et la programmation fonctionnelle
 
-Ce qui a été présenté dans ce module reposer sur les fonctions du package `tidyverse`. Cette approche tend à se généraliser depuis quelques années, mais quand on cherche la réponse à un problème sur Internet, on trouve d'autres façons de programmer en R, qui appellent aux éléments du package `base` et non du `tidyverse`
-$\rightarrow$ Cete partie donne quelques clés de compréhension.
+Ce qui a été présenté dans ce module repose sur les fonctions du package `tidyverse`. Cette approche tend à se généraliser depuis quelques années, mais quand on cherche la réponse à un problème sur Internet, on trouve d'autres façons de programmer en R, qui font appel aux fonctions du package `base` et non du `tidyverse`
+$\Rightarrow$ Cette partie donne quelques clés de compréhension.
 
 ## Les objets dans R
 
-Rappel : en informatique, un objet est défini par : ses *attributs* et ses *méthodes* (fonctions). On prend l'exemple du jeu d'échec : chaque pièce peut-être vue comme un objet :
+Rappel : en informatique, un objet est défini par : ses *attributs* et ses *méthodes* (fonctions). Dans l'exemple du jeu d'échec, chaque pièce peut être vue comme un objet :
 
 - sa position sur le plateau constitue ses attributs
-- sa façon de se déplacer peut-être vue comme une fonction qui ne s'applique qu'à ce type de pièce, donc une méthode
+- sa façon de se déplacer peut être vue comme une fonction qui ne s'applique qu'à ce type de pièce, donc une méthode
 
-R est un langage orienté objet ; ces objets permettent de structurer les données selon leurs caractéristiques $\rightarrow$ on retrouve les données dans les attributs. Les méthodes sont en général transparentes pour l'utilisateur (cf utilisation des fonctions `summary`, `plot`...). Les objets les plus courants sont les suivants :
+R est un langage orienté objet ; ces objets permettent de structurer les données selon leurs caractéristiques $\Rightarrow$ on retrouve les données dans les attributs. Les méthodes sont en général transparentes pour l'utilisateur (cf. utilisation des fonctions `summary`, `plot`...). Les objets les plus courants sont les suivants :
 
 - **Vecteurs** : suite unidimensionnelle de **valeurs** ayant le même type.
-- **Facteurs** : vecteur qui prend un nombre limité de modalités (exemple : sexe). Il est défini par les niveaux (*levels*) et les libellés associés (*labels*)
-- **Matrice** et **arrays** : suites multidimensionnelles de **valeurs** (matrices=dimension 2 ; array=dimension n)
-- **Liste** : ensemble d'**objets** différents. On peut stocker un vecteur alphanumérique avec matrice numérique dans une liste
-
-- **Tableaux** (data.frame) : Objet qui ressemble le plus aux tables Excel, SAS ou SPSS... : description d'individus statistiques (observations, en ligne) par des caractéristiques (variables, en colonnes)
-* **Fonctions** : Objets particuliers qui donnent un *résultat* à partir de paramètres en entrée. Cela sera au programme d'un autre module de formation.
+- **Facteurs** : vecteur qui prend un nombre limité de modalités (exemple : sexe). Il est défini par les niveaux (`levels`) et les libellés associés (`labels`).
+- **Matrice** et **arrays** : suites multidimensionnelles de **valeurs** (matrices=dimension 2 ; array=dimension n).
+- **Liste** : ensemble d'**objets** différents. On peut stocker un vecteur alphanumérique + une matrice numérique dans une liste.
+- **Tableaux** (`data.frame`) : Objet qui ressemble le plus aux tables Excel, SAS ou SPSS... : description d'individus statistiques (observations, en ligne) par des caractéristiques (variables, en colonnes).
+* **Fonctions** : Objets particuliers qui donnent un *résultat* à partir de paramètres en entrée.
 - **Autres objets** : Il existe un très grand nombre d'objets *ad hoc* dans R. Par exemple 
     + *ts* (time serie) pour les séries temporelles, 
     + *lm* (linear model) qui contient tous les résultats d'une régression linéraire... 
+    + des graphiques
     + On peut même en définir de nouveaux soi-même !
 
-On utilise `<-` ou `=` pour stocker un objet.
 La fonction `c` permet de lister simplement les valeurs que l'on veut stocker dans l'objet ; la fonction `seq` génére une suite incrémentée. Il existe aussi la fonction `rep` qui réplique n fois la même valeur.
 
 ### Créer des vecteurs
@@ -58,7 +57,7 @@ str (l)    # Permet de visualiser les attributs
 
 Il est aussi possible d'accéder aux éléments d’un dataframe à partir du numéro de ligne et de colonne, grâce aux crochets :
 
-<center>![](Figures/DF2.png)</center>
+<center>![](images/DF2.png)</center>
 
 - `base[1,3]` $\rightarrow$ <span style="color:red">valeur de la première ligne et de la troisième colonne </span>
 - `base[2,]` $\rightarrow$ <span style="color:blue">toutes les variables pour la 2e observation</span>
@@ -79,8 +78,8 @@ calcul_IMC <- function (poids, taille)
   imc <- poids / taille ^ 2
   return (imc)
 }
-calcul_IMC (poids=80,taille=1.89)
-calcul_IMC (poids=60,taille=1.55)
+calcul_IMC (poids = 80, taille = 1.89)
+calcul_IMC (poids = 60, taille = 1.55)
 ```
 
 ## Les boucles conditionnelles
@@ -134,7 +133,7 @@ x <- rnorm (n = 30)
 # création de vecteurs avec la fonction c() = combine
 v1 <- c( 3, 4, 12, 15, 32, 6, 1, 2, 3, 9)
 
-# avec la fonction seq() = sequence, g?n?ralisation de la syntaxe ci-dessus
+# avec la fonction seq() = sequence, généralisation de la syntaxe ci-dessus
 v2 <- seq(from = 1 , to = 15 , by = 1.5)
 
 # syntaxe équivalente mais préférable car plus lisible :
@@ -145,7 +144,7 @@ v3 <- 1:10
 # avec la fonction rep() = répétition
 v4 <- rep (x = 4, times = 10)
 
-# ces commandes peuvent être combinées. Pratique pour cr?er des variables "facteur"
+# ces commandes peuvent être combinées. Pratique pour créer des variables "facteur"
 v5 <- rep (x = c(3, 4, 1.2, 8, 9), times = 2)
 v6 <- rep (x = 1:5, times = 2)
 
@@ -182,7 +181,7 @@ Les matrices et les arrays permettent des calculs rapides et efficaces, et peuve
 - Créer un hypercube avec la fonction `array()` avec 10 lignes, 5 colonnes et de profondeur 3, toujours avec un tirage aléatoire selon une loi normale
 
 Un hypercube de trois dimensions peut être représenté comme suit :
-![](Figures/grille.jpg){width=50%}
+![](images/grille.jpg){width=50%}
 
 
 ```{r}
@@ -214,7 +213,7 @@ apply (arr, MARGIN = 3, FUN=mean)
 apply (arr, MARGIN = c(2,3), FUN = mean)
 ```
 
-**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+**Le coin du capitaine [ ]**![ ](images/CapHookImage.png){ width=10% }
 
 Le crochet, c'est comme le capitaine du même nom : personne ne l'aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s'en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.
 
@@ -236,7 +235,13 @@ Pour les dataframes, le fonctionnement est le même que pour les matrices. Pour 
 ```{r}
 str (liste [1])
 str (liste [[1]])
+
+liste["v6"]
+liste[c("v6", "v5")]
 ```
+
+>Dans la syntaxe `tidyverse`, on ne met pas (obligatoirement) de guillemets pour les noms de variable, alors qu'on le fait pour la version [ ].
+
 
 ### Inspection d'un objet : la régression
 

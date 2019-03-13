@@ -5,7 +5,7 @@
 ## Package ggplot2
 Pour réaliser des graphiques, nous choisissons de nous servir du package `ggplot2`, qui permet de faire de meilleures réalisations que les fonctions basiques. Il est intégré dans le méta-package `tidyverse` donc il n'est pas utile de le re-charger dans notre session. Mais si vous devez le faire, le code est le suivant :
 
-```{r,eval=FALSE}
+```{r, eval=FALSE}
 install.packages("ggplot2")
 library("ggplot2")
 ```
@@ -47,6 +47,7 @@ ggplot(base, aes(x = log_SUPERF)) + geom_histogram()
 ```
 
 ## Nuages de points
+
 Selon les graphiques que l'on veut tracer, on peut renseigner plusieurs variables. Dans le cas d'un nuage de points, par exemple, on croise 2 variables quantitatives :
 
 ```{r, message=FALSE, warning=FALSE}

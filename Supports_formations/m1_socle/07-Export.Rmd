@@ -8,15 +8,15 @@ Après avoir réalisé ces traitements, on peut exporter son travail afin de le 
 - Exporter une table en csv
 ```{r,eval=FALSE}
 res <- summary(base)
-write.table(x = res, file = 'resultat_R.csv', sep = ';', row.names = F)
+write.table(x = res, file = 'outputs/resultat_R.csv', sep = ';', row.names = F)
 # row.names=F pour éviter un décalage entre première ligne et les suivantes
 
-write.table(x = base, file = 'base_R.csv', sep = ';', row.names = F)
+write.table(x = base, file = 'outputs/base_R.csv', sep = ';', row.names = F)
 ```
 
 - Exporter un graphique pour l'intégrer à un document
 ```{r,eval=FALSE}
-png('mongraphe.png') # Alloue et ouvre le fichier où inscrire le graphe
+png('outputs/mongraphe.png') # Alloue et ouvre le fichier où inscrire le graphe
 ggplot(base, aes(x = P14_EMPLT, y = MED13)) +
   geom_point(colour = "blue")
 dev.off()           # Ferme le fichier
@@ -25,16 +25,20 @@ dev.off()           # Ferme le fichier
 $\rightarrow$ Beaucoup d'autres fonctions : `jpeg`, `pdf`, `postscript`, `svg`...
 
 
-## Environnement et RData
-Il est possible de sauvegarder des objets R (data.frame, vecteur, etc...) directement sur son ordinateur. Une liste d'objets R est enregistrée sous le format "RData".
+## Environnement et `.RData`
+
+Il est possible de sauvegarder des objets R (*dataframe*, *vecteur*, etc...) directement sur son ordinateur. Une liste d'objets R est enregistrée sous le format `.RData`.
 
 ```{r,eval=FALSE}
-save(list = ls(), file = "env_entier.RData") # sauvegarde de tout l'environnement sur l'ordinateur
+save(list = ls(), file = "outputs/env_entier.RData") # sauvegarde de tout l'environnement sur le répertoire choisi
 rm(list = ls()) # suppression de notre environnement dans R
-load("env_entier.RData") # chargement de l'environnement stocké sur l'ordinateur
+load("outputs/env_entier.RData") # chargement de l'environnement stocké sur l'ordinateur
 
-save(base, V1, file = "petit_env.RData") # sauvegarde des éléments base et V1
+save(base, V1, file = "outputs/petit_env.RData") # sauvegarde des éléments base et V1
 rm(list = ls()) # suppression de notre environnement
-load("petit_env.RData")
+load(outputs/"petit_env.RData")
 ```
 
+>**Avantages    
+- Un seul fichier peut contenir des dataframes, des graphiques, des fonctions, etc.    
+- La lecture est très rapide $\Rightarrow$ utile pour les gros volumes**

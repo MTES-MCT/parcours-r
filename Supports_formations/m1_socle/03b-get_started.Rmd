@@ -1,0 +1,87 @@
+# Bien commencer
+
+
+
+## Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.
+
+Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
+
+- Cela permet la portabilité : le répertoire de travail par défaut d'un projet est le répertoire où est ce projet. Si vous transmettez celui-ci à un collègue, le fait de lancer un programme ne dépend pas de l'arborescence de votre machine.
+
+> **Fini les `setwd("chemin/qui/marche/uniquement/sur/mon/poste")` !** 
+
+- Toujours sur la portabilité, un projet peut être utilisé avec un outil comme `packrat` qui va vous intégrer en interne au projet l'ensemble des packages nécessaires au projet. Cela permet donc à votre collègue à qui vous passez votre projet de ne pas avoir à les installer et, surtout, si vous mettez à jour votre environnement R, votre projet restera toujours avec les versions des packages avec lesquelles vous avez fait tourner votre projet à l'époque. Cela évite d'avoir à subir les effets d'une mise à jour importante d'un package qui casserait votre code.
+
+Pour activer `packrat` sur un projet, aller dans `Tools/Project Options->Packrat`
+
+[En savoir plus sur Packrat](https://www.rstudio.com/resources/webinars/managing-package-dependencies-in-r-with-packrat/)
+
+![](images/creerprojet4.png){#id .class width=500}
+
+
+- Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tout ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications... et donc y compris les packages avec `packrat`.
+
+- On peut travailler sur plusieurs projets en même temps, Rstudio ouvre autant de sessions que de projets dans ce cas.
+
+- Les projets Rstudio intègrent une interface avec les outils de gestion de version Git et SVN. Cela veut dire que vous pouvez versionniser votre projet et l'héberger simplement comme répertoire sur des plateformes de gestion de code telle que Github ou Gitlab.
+
+**Pour créer un projet : **
+
+- Cliquez sur *Project* en haut à droite puis *New Project*.
+
+![](images/creerprojet1.png){#id .class width=500}
+
+- Cliquez sur *New Directory*.
+
+![](images/creerprojet2.png){#id .class width=500}
+
+
+## Intégrer vos données
+
+Une bonne pratique est de créer un sous répertoire `/data` pour stocker les données sur lesquelles vous aurez à travailler. 
+
+Vous pouvez le faire depuis l'explorateur de fichier de votre système d'exploitation ou directement à partir de l'explorateur de fichier de RStudio.
+
+![](images/creerprojet3.png){#id .class width=500}
+
+Cela marche bien quand on a un seul type de données, mais en général on va avoir à travailler sur des données brutes que l'on va retravailler ensuite et vouloir stocker à part. Si par la suite vous souhaitez avoir des exemples de bonnes pratiques sur comment structurer vos données, vous pouvez vous référer au [chapitre data](http://r-pkgs.had.co.nz/data.html) du livre d'Hadley Wickham sur la construction de packages R (tout package R étant aussi un projet !).
+
+## Créer votre arborescence de projet
+
+- Créer un répertoire `/src` ou vous mettrez vos scripts R.
+- Créer un répertoire `/figures` ou vous mettrez vos illustrations issues de R.
+
+## Activer les packages nécessaires
+
+Commencer par rajouter un script dans le répertoire `/src` à votre projet qui commencera par : 
+
+- activer l'ensemble des packages nécessaires
+
+- charger les données dont vous aurez besoin.
+
+
+```{r eval=T}
+library(tidyverse)
+library(GGally) 
+library(plotly)
+
+base <- read.csv (file = "data/Base_synth_territoires.csv",
+                 header = T, sep = ";", dec = ",")
+
+```
+
+
+## Bien structurer ses projets *data*
+
+Plusieurs documents peuvent vous inspirer sur la structuration de vos projets *data* par la suite.
+
+En voici quelques uns : 
+
+- https://github.com/pavopax/new-project-template
+- https://nicercode.github.io/blog/2013-04-05-projects/
+- https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html
+- http://projecttemplate.net/architecture.html
+
+A partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à conserver toujours la même arborescence dans vos projets afin de vous y retrouver plus simplement.
+
+

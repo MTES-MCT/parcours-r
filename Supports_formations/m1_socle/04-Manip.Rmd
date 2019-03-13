@@ -10,9 +10,6 @@
 
 Par exemple :
 ```{r}
-library(tidyverse)
-base <- read.csv(file = "data/Base_synth_territoires.csv",
-                 header = T, sep = ";", dec = ",")
 str(pull(base, DEP))
 ```
 
@@ -155,12 +152,3 @@ selection_62 <- select(df, CODGEO, ZAU, REG, DEP, densite, tx_natal) %>%
   filter(DEP == "62")
 ```
 
-**Le coin du capitaine [ ]**  ![ ](../images/CapHookImage.png){ width=10%}
-
-Pour sélectionner les données, on peut également utiliser les crochets couplés aux dollars et aux `c()`, sans passer par les numéros de lignes et colonnes ! On rencontre assez souvent cette syntaxe sur les forums (voir chapitre 9).
-
-```{r, eval = F}
-selection_62 <- df[df$DEP == "62", c("CODGEO", "ZAU", "REG", "DEP", "densite")]
-```
-
-*Note* : dans la syntaxe `tidyverse`, on ne met pas (obligatoirement) de guillemets pour les noms de variable, alors qu'on le fait pour la version [ ]

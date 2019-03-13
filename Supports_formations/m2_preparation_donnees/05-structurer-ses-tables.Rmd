@@ -2,29 +2,28 @@
 
 ## Pourquoi se pencher sur la structuration des tables ?
 
-Pour bien manipuler des données, leur structuration est fondamentale.
+Pour bien manipuler des données, leur structuration est fondamentale. Il faut bien savoir ce qu'est :
 
-- Qu'est ce qu'une ligne de notre table ?
-
-- Qu'est ce qu'une colonne de notre table ?
+- Une ligne de notre table.
+- Une colonne de notre table.
 
 Sur une table non aggrégée (un répertoire, une table d'enquête...), la structuration naturelle est une ligne par observation (un individu, une entreprise...), une colonne par variable (âge, taille...) sur cette observation. 
 
 Mais dès qu'on aggrège une telle table pour construire des tables structurées par dimensions d'analyse et indicateurs, se pose toujours la question de savoir ce qu'on va considérer comme des dimensions et comme des indicateurs. 
 
 La bonne réponse, c'est que ça dépend de ce que l'on veut en faire.
-L'important est de pouvoir facilement passer de l'un à l'autre suivant ce que l'on doit faire. C'est l'intérêt du module *tidyr*.
+L'important est de pouvoir facilement passer de l'un à l'autre suivant ce que l'on doit faire. C'est l'intérêt du module `tidyr`.
 
-## Les deux fonctions clefs de tidyr
+## Les deux fonctions clefs de `tidyr`
 
 
-- **gather()** permet d'empiler plusieurs colonnes (correspondant à des variables quantitatives). Elles sont repérées par création d'une variable qualitative, à partir de leurs noms. Le résultat est une table au format *long*
+- `gather()` permet d'empiler plusieurs colonnes (correspondant à des variables quantitatives). Elles sont repérées par création d'une variable qualitative, à partir de leurs noms. Le résultat est une table au format *long*.
 
 <center>![](images/gather.png)</center>
 
 <center>![](images/gather2.png)</center>
 
-- **spread()** fait l'inverse. Cette fonction crée autant de colonnes qu'il y a de modalités d'une variable qualitative, en remplissant chacune par le contenu d'une variable numérique. Le résultat est une table au format *large*
+- `spread()` fait l'inverse. Cette fonction crée autant de colonnes qu'il y a de modalités d'une variable qualitative, en remplissant chacune par le contenu d'une variable numérique. Le résultat est une table au format *large*.
 
 <center>![](images/spread.png)</center>
 

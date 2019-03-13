@@ -106,7 +106,7 @@ Sur les données "FormationPreparationDesDonnées.RData", table "exercice" :
 
     - filtrer les concentrations quantifiées (code_remarque=1) et l'année 2016
     - sommer les concentrations (resultat_analyse) par combinaison code_station x code_prelevement
-    - ne conserver que le prélèvement avec le concentration maximale
+    - ne conserver que le prélèvement avec la concentration maximale
 
 ```{r, message=F, warning=F}
 rm (list = ls ())
@@ -186,20 +186,20 @@ majic_2009 <- bind_rows (majic_2009_com44, majic_2009_com49, majic_2009_com53, m
   left_join (com2017, by = c ("idcom" = "depcom")) %>%
   select (-idcom, -idcomtxt) %>%
   group_by (epci_2017, depcom2017) %>%
-  summarise_all (funs (sum)) %>%
+    summarise_all (funs (sum)) %>%
   ungroup %>% 
-  mutate (artif_2009=dcnt07+dcnt09+dcnt10+dcnt11+dcnt12+dcnt13) %>% 
-  select(-starts_with("dcnt"))
+  mutate (artif_2009 = dcnt07+dcnt09+dcnt10+dcnt11+dcnt12+dcnt13) %>% 
+  select(-starts_with ("dcnt"))
   
 
 majic_2014 <- bind_rows (majic_2014_com44, majic_2014_com49, majic_2014_com53, majic_2014_com72, majic_2014_com85) %>%
   left_join (com2017, by = c ("idcom" = "depcom")) %>%
   select (-idcom, -idcomtxt) %>%
   group_by (epci_2017, depcom2017) %>%
-  summarise_all (funs (sum)) %>%
+    summarise_all (funs (sum)) %>%
   ungroup %>% 
-  mutate (artif_2014=dcnt07+dcnt09+dcnt10+dcnt11+dcnt12+dcnt13) %>% 
-  select(-starts_with("dcnt"))
+  mutate (artif_2014 = dcnt07+dcnt09+dcnt10+dcnt11+dcnt12+dcnt13) %>% 
+  select(-starts_with ("dcnt"))
 
 
 #on passe également les données de population sur la nouvelle carte des territoires
@@ -208,14 +208,14 @@ p_2009 <- population_2009 %>%
   left_join (com2017, by = c ("idcom" = "depcom")) %>%
   select (-idcom) %>%
   group_by (epci_2017, depcom2017) %>%
-  summarise(population_2009=sum(Population)) %>% 
-  ungroup
+    summarise (population_2009 = sum (Population)) %>% 
+  ungroup()
 p_2014 <-population_2014 %>%
   left_join (com2017, by = c ("idcom" = "depcom")) %>%
   select (-idcom) %>%
   group_by (epci_2017, depcom2017) %>%
-  summarise(population_2014=sum(Population)) %>% 
-  ungroup
+    summarise (population_2014 = sum (Population)) %>% 
+  ungroup()
 
 #indicateur à la commune
 # on joint les 4 tables précédentes par commune et on calcul les indicateurs
@@ -238,8 +238,8 @@ etalement_urbain_commune <- majic_2009 %>%
           )
   )
 
-#indicateur à l'epci
-# on joint les 4 tables précédentes par commune, on aggrege les compteurs par epci et on calcul les indicateurs
+# Indicateur à l'EPCI
+# on joint les 4 tables précédentes par commune, on aggrège les compteurs par EPCI et on calcule les indicateurs
 
 etalement_urbain_epci <- majic_2009 %>%
   left_join(majic_2014) %>% 
@@ -263,13 +263,20 @@ etalement_urbain_epci <- majic_2009 %>%
           )
   )
 # Deux graphiques de visualisation de notre indicateur
-ggplot(data=etalement_urbain_epci) +
-  geom_point(aes(x=evoarti,y=evopop,color=indicateur_etalement_avance))+
-  theme_minimal() +
-  labs(title="Indicateur d'étalement urbain sur les epci de la région Pays de la Loire",x="Evolution de l'artificialisation",y="Evolution de la démographie",color="",caption="Source : Majic et Recensement de la population\nCarte des territoires 2017")
+ggplot (data=etalement_urbain_epci) +
+  geom_point (aes (x = evoarti, y = evopop, color = indicateur_etalement_avance)) +
+  theme_minimal () +
+  labs (title="Indicateur d'étalement urbain sur les epci de la région Pays de la Loire",
+        x="Evolution de l'artificialisation",y="Evolution de la démographie",
+        color="",
+        caption="Source : Majic et Recensement de la population\nCarte des territoires 2017")
 
-ggplot(data=etalement_urbain_commune) +
-  geom_point(aes(x=evoarti,y=evopop,color=indicateur_etalement_avance),size=.5,alpha=.5)+
-  theme_minimal()+
-  labs(title="Indicateur d'étalement urbain sur les communes de la région Pays de la Loire",subtitle="Entre 2009 et 2014",x="Evolution de l'artificialisation",y="Evolution de la démographie",color="",caption="Source : Majic et Recensement de la population\nCarte des territoires 2017")
+ggplot (data=etalement_urbain_commune) +
+  geom_point (aes (x = evoarti, y = evopop, color = indicateur_etalement_avance),
+              size = 0.5, alpha = 0.5)+
+  theme_minimal ()+
+  labs (title="Indicateur d'étalement urbain sur les communes de la région Pays de la Loire",
+        subtitle="Entre 2009 et 2014",x="Evolution de l'artificialisation",
+        y="Evolution de la démographie",color="",
+        caption="Source : Majic et Recensement de la population\nCarte des territoires 2017")
 ```

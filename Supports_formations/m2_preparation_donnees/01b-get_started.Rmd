@@ -60,28 +60,21 @@ Commencer par rajouter un script dans le répertoire `/src` à votre projet qui 
 - charger les données dont vous aurez besoin.
 
 
-```{r eval=F}
-library(knitr)
-library(kableExtra)
-library(ggplot2)
-library(tidyverse)
-library(hrbrthemes)
-library(stringr)
-library(purrr)
-library(sf)
-library(tmap)
-library(viridis)
-library(scales)
-library(tmaptools)
-library(highcharter)
-library(leaflet)
-library(cowplot)
-library(waffle)
-library(glue)
-library(gganimate)
-library(htmlwidgets)
-load("data/data_exercices_formation.RData")
-load("data/ODD.RData")
+```{r lib, eval=T}
+library (tidyverse)
+library (lubridate)
+library (RcppRoll)
+library (DT)
+library (readxl)
+library (dbplyr)
+library (RPostgreSQL)
+library (rsdmx)
+library (sf)
+
+sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
+                    col_types = c ("text","text","numeric","numeric","numeric","numeric"))
+load (file = "data/FormationPreparationDesDonnées.RData")
+
 ```
 
 
@@ -89,7 +82,7 @@ load("data/ODD.RData")
 
 Plusieurs documents peuvent vous inspirer sur la structuration de vos projets data par la suite.
 
-En voici quelques uns : 
+En voici quelques-uns : 
 
 - https://github.com/pavopax/new-project-template
 - https://nicercode.github.io/blog/2013-04-05-projects/

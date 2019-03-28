@@ -356,6 +356,8 @@ Ici, tous les départements sont significativement différents deux à deux, car
 
 Afin de savoir quel test s'applique dans chaque situation :
 
+![](images/guide_tests.png)
+
 ```{r, echo= FALSE}
 
 # fichiers dans Graphiques_tests

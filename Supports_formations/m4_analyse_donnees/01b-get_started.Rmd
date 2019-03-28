@@ -58,7 +58,7 @@ Commencer par rajouter un script dans le répertoire `/src` à votre projet qui 
 - charger les données dont vous aurez besoin.
 
 
-```{r eval=T}
+```{r eval=T, warning=FALSE, message=FALSE}
 library (tidyverse)
 library (FactoMineR)
 library (factoextra)

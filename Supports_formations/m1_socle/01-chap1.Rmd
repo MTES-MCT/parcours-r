@@ -116,7 +116,7 @@ Sructure modulaire $\rightarrow$ il existe de multiple façons d'effectuer une m
 
 Les fonctionnalités utilisables dans R, sont en perpétuelle évolution et permettent d'intégrer les méthodes les plus récentes dans des domaines qui évoluent rapidement : modélisation, analyse spatiale, dataviz,...
 
-La proposition du groupe de référents est de fournir une version installable de R intégrant un ensemble de packages estimés indispensables pour travailler avec ce logiciel. Vous pouvez trouver cette version à  [cette adresse](http://pne.metier.e2.rie.gouv.fr/suite-logicielle-r-r974.html)
+Le groupe des référents propose un pack d'installation comprenant R, RStudio et un ensemble de packages en phase avec le parcours de formation. Vous pouvez le  [télécharger ici](http://pne.metier.e2.rie.gouv.fr/suite-logicielle-r-r974.html) en deux fichiers compressés (nécessite un accès intranet MTES-MCT).
 
 ## Des exemples de ce qu'on peut faire avec R :
 

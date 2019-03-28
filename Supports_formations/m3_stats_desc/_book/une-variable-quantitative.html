@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Formation R aux statistiques descriptives" />
   
 
-<meta name="author" content="Groupe référents R   Ministère de la Transition écologique et solidaire   Ministère de la Cohésion des Territoires">
+<meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz">
 
 
 
@@ -116,7 +116,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectif-general"><i class="fa fa-check"></i><b>1.2</b> Objectif général</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectif-du-module-3"><i class="fa fa-check"></i><b>1.2</b> Objectif du module 3</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notions-et-methodes-presentees"><i class="fa fa-check"></i><b>1.3</b> Notions et méthodes présentées</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-quantitative"><i class="fa fa-check"></i><b>1.3.1</b> Analyse univariée d’une variable quantitative</a></li>
 <li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#analyse-univariee-dune-variable-qualitative"><i class="fa fa-check"></i><b>1.3.2</b> Analyse univariée d’une variable qualitative</a></li>
@@ -314,8 +314,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">datatable</span> (immo, <span class="dt">width =</span> <span class="dv">400</span>,
            <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre de pièces&quot;</span>, <span class="st">&quot;Nombre d&#39;appartements&quot;</span>),
            <span class="dt">rownames =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-257aed028af4a18f9314" style="width:400px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-257aed028af4a18f9314">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7a98254c4e7c6dca48a9" style="width:400px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7a98254c4e7c6dca48a9">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span> (<span class="dt">x =</span> immo<span class="op">$</span>nb_pieces, <span class="dt">w =</span> immo<span class="op">$</span>nb_apparts)</code></pre></div>
 <pre><code>## [1] 3.277778</code></pre>
 <ul>
@@ -387,8 +387,8 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <span class="st">  </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&#39;Variable&#39;</span>, <span class="st">&#39;Moyenne&#39;</span>), <span class="dt">width =</span> <span class="dv">300</span>)</code></pre></div>
-<div id="htmlwidget-be21eecb8652e3ec0228" style="width:300px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-be21eecb8652e3ec0228">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564","densite","log_dens"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82,160.15,1.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-07f9b9cfc97b3b01ab77" style="width:300px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-07f9b9cfc97b3b01ab77">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564","densite","log_dens"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82,160.15,1.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Sur des variables appelées par leur nom :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</code></pre></div>
@@ -400,8 +400,8 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <span class="st">      </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">mutate_if</span> (is.numeric, round, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">datatable</span> (<span class="dt">width =</span> <span class="dv">500</span>)</code></pre></div>
-<div id="htmlwidget-bcada9dc92358ca2523c" style="width:500px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bcada9dc92358ca2523c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-60c36261baeba99d4776" style="width:500px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-60c36261baeba99d4776">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div id="exercice-1" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Exercice</h3>
 <p>Comparer le coefficient de variation de plusieurs variables. Laquelle est la plus “relativement étendue” ?</p>

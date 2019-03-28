@@ -1,7 +1,7 @@
 --- 
 title: "Valoriser ses données avec R"
-author: "Maël Theulière - Murielle Lethrosne"
-date: "`r Sys.Date()`"
+author: Maël Theulière & Murielle Lethrosne
+date: '`r format(Sys.time(), "%d %B %Y")`'
 bibliography:
 - book.bib
 - packages.bib

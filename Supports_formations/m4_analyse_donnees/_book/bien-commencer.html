@@ -47,6 +47,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -262,35 +270,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>activer l’ensemble des packages nécessaires</p></li>
 <li><p>charger les données dont vous aurez besoin.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages ----------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.1.0     v purrr   0.3.0
-## v tibble  2.0.1     v dplyr   0.7.8
-## v tidyr   0.8.2     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.3.0</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (FactoMineR)
-<span class="kw">library</span> (factoextra)</code></pre></div>
-<pre><code>## Welcome! Related Books: `Practical Guide To Cluster Analysis in R` at https://goo.gl/13EFCZ</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (GGally)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;GGally&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     nasa</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (ggExtra)
-<span class="kw">library</span> (data.table)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;data.table&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     between, first, last</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     transpose</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (DT)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (tidyverse)
+<span class="kw">library</span> (FactoMineR)
+<span class="kw">library</span> (factoextra)
+<span class="kw">library</span> (GGally)
+<span class="kw">library</span> (ggExtra)
+<span class="kw">library</span> (data.table)
+<span class="kw">library</span> (DT)
 <span class="kw">library</span> (grid)
 
 geoidd &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="dt">file =</span> <span class="st">&quot;data/ACP.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">encoding =</span> <span class="st">&quot;latin1&quot;</span>)
@@ -367,6 +353,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

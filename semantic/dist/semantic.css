@@ -656,8 +656,8 @@ a {
 }
 
 a:hover {
-  color: #1e70bf;
-  text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
 }
 
 /*******************************
@@ -6857,6 +6857,8 @@ i.flag.zimbabwe:before {
 
 .ui.header:last-child {
   margin-bottom: 0em;
+  float: left;
+  margin-left: 2rem;
 }
 
 /*--------------
@@ -6961,11 +6963,14 @@ i.flag.zimbabwe:before {
 ---------------*/
 
 h1.ui.header {
-  font-size: 2rem;
+  font-size: 3rem;
+    text-align: left;
+    margin: 0 1rem 0;
+    padding: 0 11rem;
 }
 
 h2.ui.header {
-  font-size: 1.71428571rem;
+  font-size: 1.31428571rem;
 }
 
 h3.ui.header {
@@ -7001,7 +7006,10 @@ h4.ui.header .sub.header {
 h5.ui.header .sub.header {
   font-size: 0.92857143rem;
 }
-
+.four.wide.column {
+  text-align: left;
+  margin: 0 1rem 0;
+}
 /*--------------
  Content Heading
 ---------------*/
@@ -18657,8 +18665,7 @@ ol.ui.horizontal.list li:before,
   border-top: 2px solid #00B5AD !important;
 }
 
-.ui.inverted.teal.segment {
-  background-color: #00B5AD !important;
+.ui.inverted.teal.segment {  
   color: #FFFFFF !important;
 }
 
@@ -21065,6 +21072,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .row > img,
 .ui.grid > .row > .column > img {
   max-width: 100%;
+  float: left;
 }
 
 /*-------------------
@@ -21176,6 +21184,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .column:only-child,
 .ui.grid > .row > .column:only-child {
   width: 100%;
+
 }
 
 /* Grid Based */
@@ -21364,7 +21373,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .column.row > [class*="four wide"].column,
 .ui.grid > [class*="four wide"].column,
 .ui.column.grid > [class*="four wide"].column {
-  width: 25% !important;
+  width: 100% !important;
 }
 
 .ui.grid > .row > [class*="five wide"].column,
@@ -21483,7 +21492,7 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .column.row > [class*="four wide mobile"].column,
   .ui.grid > [class*="four wide mobile"].column,
   .ui.column.grid > [class*="four wide mobile"].column {
-    width: 25% !important;
+    width: 100% !important;
   }
 
   .ui.grid > .row > [class*="five wide mobile"].column,
@@ -21599,7 +21608,7 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .column.row > [class*="four wide tablet"].column,
   .ui.grid > [class*="four wide tablet"].column,
   .ui.column.grid > [class*="four wide tablet"].column {
-    width: 25% !important;
+    width: 100% !important;
   }
 
   .ui.grid > .row > [class*="five wide tablet"].column,
@@ -21715,7 +21724,7 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .column.row > [class*="four wide computer"].column,
   .ui.grid > [class*="four wide computer"].column,
   .ui.column.grid > [class*="four wide computer"].column {
-    width: 25% !important;
+    width: 100% !important;
   }
 
   .ui.grid > .row > [class*="five wide computer"].column,
@@ -21831,7 +21840,7 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .column.row > [class*="four wide large screen"].column,
   .ui.grid > [class*="four wide large screen"].column,
   .ui.column.grid > [class*="four wide large screen"].column {
-    width: 25% !important;
+    width: 100% !important;
   }
 
   .ui.grid > .row > [class*="five wide large screen"].column,
@@ -21947,7 +21956,7 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .column.row > [class*="four wide widescreen"].column,
   .ui.grid > [class*="four wide widescreen"].column,
   .ui.column.grid > [class*="four wide widescreen"].column {
-    width: 25% !important;
+    width: 100% !important;
   }
 
   .ui.grid > .row > [class*="five wide widescreen"].column,

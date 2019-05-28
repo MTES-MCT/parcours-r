@@ -1,4 +1,4 @@
- /*
+﻿ /*
  * # Semantic UI - 2.3.2
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
@@ -39879,3 +39879,7 @@ body.pushable > .pusher {
 /*******************************
          Site Overrides
 *******************************/
+
+div.ui.special.cards.centered div.card{
+	box-shadow: 0 0 10px #000;
+}

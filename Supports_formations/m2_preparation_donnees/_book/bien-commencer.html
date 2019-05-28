@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 3 Bien commencer | Préparer ses données avec R et le Tidyverse</title>
-  <meta name="description" content="Formation R à la data préparation">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Formation R à la data préparation" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 3 Bien commencer | Préparer ses données avec R et le Tidyverse" />
   <meta property="og:type" content="book" />
@@ -22,13 +21,13 @@
   <meta name="twitter:description" content="Formation R à la data préparation" />
   
 
-<meta name="author" content="Maël Theulière &amp; Bruno Terseur">
+<meta name="author" content="Maël Theulière &amp; Bruno Terseur" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="le-tidyverse.html">
@@ -47,6 +46,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -100,7 +107,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Préparer ses données</a></li>
+
+<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Préparer ses données</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
@@ -266,36 +274,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>activer l’ensemble des packages nécessaires</p></li>
 <li><p>charger les données dont vous aurez besoin.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages ----------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.1.0     v purrr   0.3.0
-## v tibble  2.0.1     v dplyr   0.7.8
-## v tidyr   0.8.2     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.3.0</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (lubridate)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;lubridate&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     date</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (RcppRoll)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (tidyverse)
+<span class="kw">library</span> (lubridate)
+<span class="kw">library</span> (RcppRoll)
 <span class="kw">library</span> (DT)
 <span class="kw">library</span> (readxl)
-<span class="kw">library</span> (dbplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dbplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     ident, sql</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (RPostgreSQL)</code></pre></div>
-<pre><code>## Loading required package: DBI</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (rsdmx)
-<span class="kw">library</span> (sf)</code></pre></div>
-<pre><code>## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sitadel &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;data/ROES_201702.xls&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;AUT_REG&quot;</span>,
+<span class="kw">library</span> (dbplyr)
+<span class="kw">library</span> (RPostgreSQL)
+<span class="kw">library</span> (rsdmx)
+<span class="kw">library</span> (sf)
+
+sitadel &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;data/ROES_201702.xls&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;AUT_REG&quot;</span>,
                     <span class="dt">col_types =</span> <span class="kw">c</span> (<span class="st">&quot;text&quot;</span>,<span class="st">&quot;text&quot;</span>,<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;numeric&quot;</span>))
 <span class="kw">load</span> (<span class="dt">file =</span> <span class="st">&quot;data/FormationPreparationDesDonnées.RData&quot;</span>)</code></pre></div>
 </div>

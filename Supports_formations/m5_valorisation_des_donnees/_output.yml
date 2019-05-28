@@ -1,8 +1,8 @@
-bookdown::gitbook:
+﻿bookdown::gitbook:
   css: style.css
   config:
     toc:
       before: |
-        <li><a href="./">Valoriser ses données avec R</a></li>
+        <li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Valoriser ses données avec R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>

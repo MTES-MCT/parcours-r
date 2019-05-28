@@ -1,5 +1,7 @@
 
 --- 
+bookdown::html_book:
+  css: test.css
 title: "Découvrir R et RStudio"
 author: "Thierry Zorn, Murielle Lethrosne, Vivien Roussez & Pascal Irz"
 date: '`r format(Sys.time(), "%d %B %Y")`'
@@ -11,7 +13,12 @@ link-citations: yes
 description: "Formation R socle"
 ---
 
-<style> body {text-align: justify}  </style>
+<style> 
+
+body {text-align: justify;}
+
+
+</style>
 
 # Introduction
 
@@ -43,7 +50,7 @@ La mise à disposition des supports de formation se fait désormais par la [page
 
 Si vous souhaitez accéder aux sources, données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du ministère](https://github.com/MTES-MCT/parcours-r/tree/master/Supports_formations).
 
-Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/)(nécessite un accès intranet MTES-MCT). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
+Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS] (http://oups-cmvrh.e2.rie.gouv.fr/)(nécessite un accès intranet MTES-MCT). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
 
 Il existe une liste pour diffuser de l'information, échanger autour de R ou lever des points de blocage. Pour s'insrire, envoyer un message vide avec le titre "subscribe labo.communaute-r" à l'adresse sympa@developpement-durable.gouv.fr.
 

@@ -23,6 +23,10 @@ theme_set(theme_gray())
 
 ![](pic/renard.jpg){#id .class width=640 height=425}
 
+<font size="2"> 
+*Crédit photographique Sébastien Colas*
+</font> 
+
 Ce module va vous permettre de découvrir un ensemble de méthodes sous R afin de produire : 
 
 - Des tableaux

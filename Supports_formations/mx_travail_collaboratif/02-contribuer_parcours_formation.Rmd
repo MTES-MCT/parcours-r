@@ -110,17 +110,49 @@ Etant donné qu'il y a beaucoup de contenu, ça prend du temps à télécharger.
 
 Une fois le téléchargement terminé, vous pouvez constater que vous avez un nouveau dossier intitulé `parcours-r`.
 
+### Dernière opération importante
+
+La dernière opération que nous allons faire est assez particulière et unique à `git`. Nous allons créer un nouveau _remote_ pour suivre le dépôt initial. Cette opération est essentielle lorsqu'on travaille avec un fork.
+
+Tout d'abord, inspectons les _remotes_ en tapant les commandes suivantes dans le Terminal de RStudio.
+
+Lister les remotes :
+
+```bash
+git remote -v
+```
+
+Cela devrait vous renvoyer :
+
+```
+origin  https://github.com/MONNOM/parcours-r.git (fetch)
+origin  https://github.com/MONNOM/parcours-r.git (push)
+```
+
+Cela signifie que pour l'instant, il n'y a qu'un seul _remote_ à votre projet et qui s'appelle `origin`. En plus, vous pouvez constater que c'est de cette façon que git va savoir avec quel serveur faire des push et des pull.
+
+Maintenant, nous allons créer un nouveau lien avec le dépôt "officiel". Rendez-vous sur la page <https://github.com/MTES-MCT/parcours-r> et cliquer sur `Clone or download`. Copiez l'url du dépôt officiel et tapez dans le Terminal de RStudio
+
+```bash
+git remote add upstream https://github.com/MTES-MCT/parcours-r.git
+```
+
+Avec cette commande, vous définissez un nouveau remote que vous décidez d'appeler `upstream` et qui pointe sur le dépôt officiel. Vous auriez pu choisir un autre nom que `upstream` mais il s'agit d'une convention suivie par la quasi-totalité des utilisateurs de `git`. Ne cherchez pas à innover, appelez `upstream` le remote qui pointe sur le dépôt officiel.
+
+Maintenant, vérifiez que vous avez bien deux remotes :
+
+```bash
+git remote -v
+```
+
 ### Examiner le contenu de la copie locale
 
 Le contenu de votre copie locale est identique à votre copie de travail hébergée sur Github. Vous pouvez vous déplacer dans le répertoire `parcours-r` et regarder les dossiers et les fichiers.
 
 Si on regarde le contenu du répertoire `Supports_formations`, on constate qu'il comprend les différents modules. Si on ouvre le répertoire d'un de ces modules, on constate qu'il y a un fichier `.Rproj`. Cela signifie qu'au sein du dépôt se situent de multiples projets RStudio différents.
 
-**Il s'agit d'une pratique avancée qui n'est pas recommandée**. En effet, cela peut engendrer plein de problèmes. Tenez-vous à la règle **1 projet RStudio = 1 dépôt**. Tous les pros (ceux qui travaillent chez RStudio par exemple) utilisent cette règle. Vous pouvez leur faire confiance.
+**Il s'agit d'une technique avancée qui n'est pas recommandée car elle nécessite une très grande expérience de tous les contributeurs au projet**. En effet, cela peut engendrer plein de problèmes. Tenez-vous à la règle **1 projet RStudio = 1 dépôt**. C'est beaucoup plus simple et c'est ce que tous les pros font au quotidien. Vous pouvez leur faire confiance. Là encore, ne cherchez pas à innover, vous vous attirerez surtout des ennuis et n'en tirerez aucun bénéfice.
 
 Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.
 
-### Dernière opération importante
-
-La dernière opération que nous allons faire est assez particulière et unique à `git`. Nous allons créer un nouveau _remote_ pour suivre le dépôt initial.
-
+Pour cela, vous allez ouvrir le dossier `Supports_formation/mx_travail_collaboratif`. Ensuite, cliquez sur le fichier `mx_travail_collaboratif.Rproj`

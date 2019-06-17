@@ -119,3 +119,8 @@ Si on regarde le contenu du répertoire `Supports_formations`, on constate qu'il
 **Il s'agit d'une pratique avancée qui n'est pas recommandée**. En effet, cela peut engendrer plein de problèmes. Tenez-vous à la règle **1 projet RStudio = 1 dépôt**. Tous les pros (ceux qui travaillent chez RStudio par exemple) utilisent cette règle. Vous pouvez leur faire confiance.
 
 Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.
+
+### Dernière opération importante
+
+La dernière opération que nous allons faire est assez particulière et unique à `git`. Nous allons créer un nouveau _remote_ pour suivre le dépôt initial.
+

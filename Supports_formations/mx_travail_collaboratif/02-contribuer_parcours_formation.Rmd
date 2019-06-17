@@ -164,11 +164,58 @@ Maintenant que tout est configuré, vous allez pouvoir travailler, c'est-à-dire
 Pour que tout se passe bien, vous devez respecter les règles d'or suivantes :
 
 - toujours vérifier sur quelle branche vous vous trouvez avant de modifier un fichier
-- ne jamais modifier de fichier lorsque vous êtes est sur la branche master
 - tenir la branche master à jour du dépôt officiel
+- ne jamais modifier de fichier lorsque vous êtes est sur la branche master
 
 Il y a d'autres façons de procéder mais celle-ci est simple et fonctionne. Commencez par maîtriser cette méthode avant d'en changer. Si vous êtes vigilants et que vous respectez ces règles d'or, tout sera facile.
 
 Le problème que vous rencontrerez fréquemment c'est que vous oublierez de vérifier sur quelle branche vous êtes avant de travailler. Nous verrons plus tard comment gérer ces étourderies qui nous arrivent à tous.
 
+Allons-y.  
+Vérifiez dans RStudio que le projet ouvert est bien `mx_travail_collaboratif`.
 
+### Tenir master à jour du dépôt officiel
+
+Vérifiez que vous êtes bien sur la branche master.
+
+Téléchargez les dernières avancées du dépôt officiel : en effet, avant de créer une nouvelle contribution, il vaut mieux savoir où en est le dépôt officiel sinon vous allez travailler à partir de fichiers obsolètes !
+
+Dans le Terminal de RStudio, exécutez
+
+```bash
+git pull upstream master
+```
+
+Ca y est, vous avez récupéré les dernières avancées.
+
+Bon, maintenant vous voulez faire des modifications et vous vous rappelez la 3e règle d'or : ne jamais modifier de fichiers lorsque vous êtes sur master ! 
+
+Comment faire ? Créer une nouvelle branche.
+
+### Créer une nouvelle branche
+
+Dans RStudio, sélectionnez l'onglet Git puis cliquez sur le bouton `New Branch`.
+
+![](img/create_branch.png)
+
+A la place de `Branch Name`, choisissez un nom : les espaces sont interdits ! Par exemple, `contrib/travail-collaboratif`.
+
+Laissez la valeur de Remote à `origin` et laissez la case cochée.
+
+Maintenant, vous êtes sur une nouvelle branche : elle apparaît en haut à droite de l'onglet Git. Ayez toujours un oeil ici !
+
+Vous pouvez travailler : modifiez des fichiers, faîtes des commits et poussez !
+
+### Créer une pull request
+
+Lorsque vous avez fini de préparer vos modifications, vous allez les proposer aux auteurs du dépôt officiel. Pour cela, rendez-vous dans Github. Allez sur la page de votre copie de travail. Sélectionnez votre branche et cliquez sur le bouton `Compare & pull request`.
+
+Une nouvelle page s'ouvre. Rédigez votre message et cliquez sur `Create Pull Request`.
+
+Ca y est !
+
+Vous serez prévenus par mail lorsque les responsables du dépôt officiel échangeront avec vous ou bien intégreront vos modifications dans le dépôt officiel.
+
+Tout cela peut paraître un peu compliqué la première fois. Mais vous verrez que dès votre première pull request, vous aurez appris. Et si vous pratiquez régulièrement, cette méthode de travail deviendra naturelle.
+
+Vous pouvez avoir l'impression que ces compétences sont très éloignées du métier de statisticien. Détrompez-vous ! Ces compétences sont déjà des pré-requis dans de nombreux lieux, sont devenues essentielles pour collaborer avec des partenaires extérieurs et en plus, elles vous permettront de travailler avec le reste du monde et de proposer des modifications à vos packages préférés !

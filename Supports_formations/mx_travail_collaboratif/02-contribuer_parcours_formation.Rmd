@@ -8,7 +8,7 @@ Nous allons voir cela au travers d'un exemple : nous allons créer une contribut
 
 Pour cela, il faut acquérir un premier réflexe : lire la liste des fichiers qui se trouvent à la racine du dépôt^[la racine d'un dépôt est le premier niveau dans les dossiers.].
 
-![](accueil-repo.png)
+![](img/accueil-repo.png)
 
 On constate qu'il n'y a aucun fichier qui a pour extension `.Rproj` : ce n'est pas un projet RStudio.
 
@@ -34,11 +34,11 @@ Il n'y a qu'une chose à faire : sur la page d'accueil du dépôt, cliquez sur l
 
 Ensuite, vous allez voir cet écran :
 
-![](forking.png)
+![](img/forking.png)
 
 Et après quelques secondes, vous vous retrouvez sur une page qui ressemble à s'y méprendre à la page d'accueil du dépôt.
 
-![](accueil-fork.png)
+![](img/accueil-fork.png)
 
 Arrêtez-vous quelques instants et :
 
@@ -56,12 +56,12 @@ Il n'y a qu'une chose à faire : **s'assurer que nous n'avons pas de projet RStu
 
 **Comment est-ce qu'on sait si on a un projet RStudio d'ouvert ?**
 
-Il faut regarder en haut à droite de RStudio ![](projet-rs.png).
+Il faut regarder en haut à droite de RStudio ![](img/projet-rs.png).
 
 Si vous voyez `Project: (None)`, cela signifie que vous n'avez aucun projet d'ouvert.
 
 Si vous voyez autre chose, vous avez deviné, c'est que vous avez un projet d'ouvert. Et vous devez le fermer.  
-Pour cela, il faut cliquer sur le nom du projet puis `Close Project` ![](fermer-projet.png)
+Pour cela, il faut cliquer sur le nom du projet puis `Close Project` ![](img/fermer-projet.png)
 
 ### Créer une copie locale de sa copie de travail Github
 
@@ -80,7 +80,7 @@ Oui. Le terminal, c'est un peu comme la console de R : on saisit des instruction
 
 Pour créer une copie locale, il va nous falloir récupérer une information : l'adresse de notre copie de travail. Elle se trouve sur la page d'accueil de notre copie de travail qui est sur Github 
 
-![](fork_url.png)
+![](img/fork_url.png)
 
 Une fois l'adresse en poche, nous tapons dans le Terminal de RStudio : 
 

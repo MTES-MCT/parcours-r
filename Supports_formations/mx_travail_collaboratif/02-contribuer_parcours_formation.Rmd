@@ -157,3 +157,18 @@ Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.
 
 Pour cela, vous allez ouvrir le dossier `Supports_formation/mx_travail_collaboratif`. Ensuite, cliquez sur le fichier `mx_travail_collaboratif.Rproj`
 
+## Mode de travail standard
+
+Maintenant que tout est configuré, vous allez pouvoir travailler, c'est-à-dire préparer une contribution. C'est de cette façon que vous pourrez contribuer à tous vos packages préférés qui sont sur Github.
+
+Pour que tout se passe bien, vous devez respecter les règles d'or suivantes :
+
+- toujours vérifier sur quelle branche vous vous trouvez avant de modifier un fichier
+- ne jamais modifier de fichier lorsque vous êtes est sur la branche master
+- tenir la branche master à jour du dépôt officiel
+
+Il y a d'autres façons de procéder mais celle-ci est simple et fonctionne. Commencez par maîtriser cette méthode avant d'en changer. Si vous êtes vigilants et que vous respectez ces règles d'or, tout sera facile.
+
+Le problème que vous rencontrerez fréquemment c'est que vous oublierez de vérifier sur quelle branche vous êtes avant de travailler. Nous verrons plus tard comment gérer ces étourderies qui nous arrivent à tous.
+
+

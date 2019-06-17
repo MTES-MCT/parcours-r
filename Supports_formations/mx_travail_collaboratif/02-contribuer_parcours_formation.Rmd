@@ -1,6 +1,8 @@
 # Contribuer au parcours de formation R
 
-Nous allons étudier le cas le plus complexe, à savoir la contribution à un dépôt qui n'est pas un projet RStudio. Pour cela, nous allons devoir utiliser git dans le terminal.
+Nous allons étudier un cas plus complexe, à savoir la contribution à un dépôt qui n'est pas un projet RStudio. Pour cela, nous allons devoir utiliser git dans le terminal.
+
+Ce cas devrait vous arriver rarement car **il est vivement conseillé d'utiliser la règle 1 projet RStudio = 1 dépôt** (c'est dans cette optique que les projets RStudio ont été pensés).
 
 Nous allons voir cela au travers d'un exemple : nous allons créer une contribution au parcours de formation R dont les fichiers source sont hébergés sur le dépôt <https://github.com/MTES-MCT/parcours-r>.
 
@@ -8,9 +10,11 @@ Nous allons voir cela au travers d'un exemple : nous allons créer une contribut
 
 Pour cela, il faut acquérir un premier réflexe : lire la liste des fichiers qui se trouvent à la racine du dépôt^[la racine d'un dépôt est le premier niveau dans les dossiers.].
 
-![](img/accueil-repo.png)
+![](img/accueil_repo.png)
 
 On constate qu'il n'y a aucun fichier qui a pour extension `.Rproj` : ce n'est pas un projet RStudio.
+
+Une seconde habitude a acquérir est de lire le fichier `README` : il y a parfois des indications. Enfin, certains projets disposent d'un fichier `CONTRIBUTING.md` qui indique les règles pour contribuer au projet.
 
 ## Opérations sur Github
 
@@ -38,7 +42,7 @@ Ensuite, vous allez voir cet écran :
 
 Et après quelques secondes, vous vous retrouvez sur une page qui ressemble à s'y méprendre à la page d'accueil du dépôt.
 
-![](img/accueil-fork.png)
+![](img/accueil_fork.png)
 
 Arrêtez-vous quelques instants et :
 
@@ -52,29 +56,31 @@ Vous constatez en haut à gauche qu'il est écrit `RLesur/parcours-r` : ce n'est
 ### Préparation 
 
 La première étape est de préparer son environnement de travail.  
-Il n'y a qu'une chose à faire : **s'assurer que nous n'avons pas de projet RStudio d'ouvert**.  
-
+Comme le projet auquel nous voulons contribuer n'est pas un projet RStudio nous ne pouvons pas utiliser la méthode classique (qui aura été vue précédemment). 
+Il y a une chose importante à faire : **s'assurer que nous n'avons pas de projet RStudio d'ouvert**.  
 **Comment est-ce qu'on sait si on a un projet RStudio d'ouvert ?**
 
-Il faut regarder en haut à droite de RStudio ![](img/projet-rs.png).
+Il faut regarder en haut à droite de RStudio ![](img/projet_rs.png).
 
 Si vous voyez `Project: (None)`, cela signifie que vous n'avez aucun projet d'ouvert.
 
 Si vous voyez autre chose, vous avez deviné, c'est que vous avez un projet d'ouvert. Et vous devez le fermer.  
-Pour cela, il faut cliquer sur le nom du projet puis `Close Project` ![](img/fermer-projet.png)
+Pour cela, il faut cliquer sur le nom du projet puis `Close Project` ![](img/fermer_projet.png)
+
+Maintenant que votre projet est fermé, passez à l'étape suivante.
 
 ### Créer une copie locale de sa copie de travail Github
 
-Maintenant que vous êtes certains d'avoir fermé votre projet RStudio, nous allons encore créer une copie de travail !
+Maintenant que vous avez fermé votre projet RStudio, nous allons encore créer une copie de travail !
 
 Là, vous vous dites sûrement : mais on vient de le faire sur Github ? Oui, mais on comme on veut travailler depuis notre ordinateur, on va devoir réaliser une copie locale de notre copie de travail qui se trouve sur Github. Comme ça, on est tranquille, on peut travailler depuis notre ordinateur (dans le train, par exemple) et pousser plus tard nos modifications sur notre copie de travail qui se trouve sur Github.
 
-Pour cela, nous allons devoir utiliser le Terminal et y saisir des instructions.
+Comme le dépôt n'est pas un projet RStudio, nous ne pouvons pas utiliser la méthode classique (qui aura été vue précédemment). Nous allons donc devoir utiliser le Terminal et y saisir des instructions.
 
 ::::card
 <h4 class="card-title"> Ai-je vraiment le droit d'utiliser le terminal ? </h4>
 :::card-body
-Oui. Le terminal, c'est un peu comme la console de R : on saisit des instructions et notre machine les exécute. Mais ce ne sont pas des instructions en langage R, c'est la seule différence. Comme avec R, on peut faire des bêtises : supprimer des fichiers, par exemple. Donc, comme toujours, il faut comprendre ce que l'on fait pour éviter de faire des erreurs.
+Evidemment ! Le terminal, c'est un peu comme la console de R : on saisit des instructions et notre machine les exécute. Mais ce ne sont pas des instructions en langage R, c'est la seule différence. Comme avec R, on peut faire des bêtises : supprimer des fichiers, par exemple. Donc, comme toujours, il faut comprendre ce que l'on fait pour éviter de faire des erreurs.
 :::
 ::::
 
@@ -87,7 +93,7 @@ Une fois l'adresse en poche, nous tapons dans le Terminal de RStudio :
 ```bash
 cd ~
 
-git clone <adresse-précédente>
+git clone https://github.com/MONNOM/parcours-r.git
 ```
 
 Et là, vous devriez voir dans le terminal :
@@ -100,7 +106,7 @@ remote: Compressing objects: 100% (562/562), done.
 remote: ...
 ```
 
-Etant donné qu'il y a beaucoup de contenu, ça prend du temps à copier...
+Etant donné qu'il y a beaucoup de contenu, ça prend du temps à télécharger...
 
 Une fois le téléchargement terminé, vous pouvez constater que vous avez un nouveau dossier intitulé `parcours-r`.
 
@@ -108,3 +114,8 @@ Une fois le téléchargement terminé, vous pouvez constater que vous avez un no
 
 Le contenu de votre copie locale est identique à votre copie de travail hébergée sur Github. Vous pouvez vous déplacer dans le répertoire `parcours-r` et regarder les dossiers et les fichiers.
 
+Si on regarde le contenu du répertoire `Supports_formations`, on constate qu'il comprend les différents modules. Si on ouvre le répertoire d'un de ces modules, on constate qu'il y a un fichier `.Rproj`. Cela signifie qu'au sein du dépôt se situent de multiples projets RStudio différents.
+
+**Il s'agit d'une pratique avancée qui n'est pas recommandée**. En effet, cela peut engendrer plein de problèmes. Tenez-vous à la règle **1 projet RStudio = 1 dépôt**. Tous les pros (ceux qui travaillent chez RStudio par exemple) utilisent cette règle. Vous pouvez leur faire confiance.
+
+Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.

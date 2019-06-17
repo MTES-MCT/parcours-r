@@ -156,3 +156,4 @@ Si on regarde le contenu du répertoire `Supports_formations`, on constate qu'il
 Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.
 
 Pour cela, vous allez ouvrir le dossier `Supports_formation/mx_travail_collaboratif`. Ensuite, cliquez sur le fichier `mx_travail_collaboratif.Rproj`
+

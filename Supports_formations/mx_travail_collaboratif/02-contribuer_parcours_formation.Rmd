@@ -46,7 +46,7 @@ Et après quelques secondes, vous vous retrouvez sur une page qui ressemble à s
 
 Arrêtez-vous quelques instants et :
 
-- examinez le chemin qui se trouve dans la barre d'addresse de votre navigateur
+- examinez le chemin qui se trouve dans la barre d'adresse de votre navigateur
 - regardez attentivement ce qui est écrit en haut à gauche
 
 Vous constatez en haut à gauche qu'il est écrit `RLesur/parcours-r` : ce n'est pas le dépôt original, c'est ma copie de travail. Et juste en dessous, il est écrit : _forked from MTES-MCT/parcours-r_. Cela signifie que cette copie de travail conserve un lien avec le dépôt "officiel".
@@ -65,7 +65,9 @@ Il faut regarder en haut à droite de RStudio ![](img/projet_rs.png).
 Si vous voyez `Project: (None)`, cela signifie que vous n'avez aucun projet d'ouvert.
 
 Si vous voyez autre chose, vous avez deviné, c'est que vous avez un projet d'ouvert. Et vous devez le fermer.  
-Pour cela, il faut cliquer sur le nom du projet puis `Close Project` ![](img/fermer_projet.png)
+Pour cela, il faut cliquer sur le nom du projet puis `Close Project` 
+
+![](img/fermer_projet.png)
 
 Maintenant que votre projet est fermé, passez à l'étape suivante.
 
@@ -119,6 +121,8 @@ Tout d'abord, inspectons les _remotes_ en tapant les commandes suivantes dans le
 Lister les remotes :
 
 ```bash
+cd ~/parcours-r
+
 git remote -v
 ```
 
@@ -131,7 +135,7 @@ origin  https://github.com/MONNOM/parcours-r.git (push)
 
 Cela signifie que pour l'instant, il n'y a qu'un seul _remote_ à votre projet et qui s'appelle `origin`. En plus, vous pouvez constater que c'est de cette façon que git va savoir avec quel serveur faire des push et des pull.
 
-Maintenant, nous allons créer un nouveau lien avec le dépôt "officiel". Rendez-vous sur la page <https://github.com/MTES-MCT/parcours-r> et cliquer sur `Clone or download`. Copiez l'url du dépôt officiel et tapez dans le Terminal de RStudio
+Maintenant, nous allons créer un nouveau lien avec le dépôt "officiel". Rendez-vous sur la page <https://github.com/MTES-MCT/parcours-r> et cliquez sur `Clone or download`. Copiez l'url du dépôt officiel et tapez dans le Terminal de RStudio
 
 ```bash
 git remote add upstream https://github.com/MTES-MCT/parcours-r.git
@@ -151,11 +155,14 @@ Le contenu de votre copie locale est identique à votre copie de travail héberg
 
 Si on regarde le contenu du répertoire `Supports_formations`, on constate qu'il comprend les différents modules. Si on ouvre le répertoire d'un de ces modules, on constate qu'il y a un fichier `.Rproj`. Cela signifie qu'au sein du dépôt se situent de multiples projets RStudio différents.
 
-**Il s'agit d'une technique avancée qui n'est pas recommandée car elle nécessite une très grande expérience de tous les contributeurs au projet**. En effet, cela peut engendrer plein de problèmes. Tenez-vous à la règle **1 projet RStudio = 1 dépôt**. C'est beaucoup plus simple et c'est ce que tous les pros font au quotidien. Vous pouvez leur faire confiance. Là encore, ne cherchez pas à innover, vous vous attirerez surtout des ennuis et n'en tirerez aucun bénéfice.
+**Il s'agit d'une technique avancée qui n'est pas recommandée car elle nécessite une très grande expérience de tous les contributeurs au projet**. En effet, cela peut engendrer plein de problèmes.  
+Pour vos projets, tenez-vous à la règle **1 projet RStudio = 1 dépôt**. C'est beaucoup plus simple et c'est ce que tous les pros font au quotidien. Vous pouvez leur faire confiance. Là encore, ne cherchez pas à innover, vous vous attirerez surtout des ennuis et n'en tirerez aucun bénéfice.
 
 Pour autant, cela ne devrait pas vous empêcher de pouvoir contribuer.
 
-Pour cela, vous allez ouvrir le dossier `Supports_formation/mx_travail_collaboratif`. Ensuite, cliquez sur le fichier `mx_travail_collaboratif.Rproj`
+Pour cela, vous allez ouvrir le dossier `Supports_formation/mx_travail_collaboratif`. Ensuite, cliquez sur le fichier `mx_travail_collaboratif.Rproj`.
+
+Le projet `mx_travail_collaboratif` va alors s'ouvrir dans RStudio.
 
 ## Mode de travail standard
 
@@ -202,7 +209,7 @@ A la place de `Branch Name`, choisissez un nom : les espaces sont interdits ! Pa
 
 Laissez la valeur de Remote à `origin` et laissez la case cochée.
 
-Maintenant, vous êtes sur une nouvelle branche : elle apparaît en haut à droite de l'onglet Git. Ayez toujours un oeil ici !
+Maintenant, vous êtes sur une nouvelle branche : elle apparaît en haut à droite de l'onglet Git. Ayez toujours un oeil dessus !
 
 Vous pouvez travailler : modifiez des fichiers, faîtes des commits et poussez !
 

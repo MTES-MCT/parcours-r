@@ -1,0 +1,9 @@
+# MacOS
+.DS_Store
+.Rhistory
+.pper
+.Rproj.user
+Thumbs.db
+.Rhistory
+.RData
+.Ruserdata

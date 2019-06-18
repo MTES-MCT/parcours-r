@@ -1,0 +1,13 @@
+--- 
+title: "Travail Collaboratif"
+author: "Romain Lesur"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+description: "Ceci est le squelette d'un nouveau module consacré au travail collaboratif avec RStudio"
+---
+
+# Pré-requis
+

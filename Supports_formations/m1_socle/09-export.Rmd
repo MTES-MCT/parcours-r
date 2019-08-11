@@ -1,4 +1,3 @@
-
 # Sauvegarder son travail
 
 Après avoir réalisé ces traitements, on peut exporter son travail afin de le finaliser dans un tableur ou un traitement de texte en vue d'une publication ou autre. On peut donc avoir à exporter soit des tableaux qu'on retouchera par la suite, soit des images de ses graphiques qu'on intégrera dans un document. Une dernière possibilité consiste à sauvegarder un ensemble d'objets R dans un seul fichier (RData) afin de retrouver son environnement de travail facilement en rouvrant une session de R.

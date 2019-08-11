@@ -1,8 +1,8 @@
-
 # Présentation de l'interface et premières manipulations
 
+Ce chapitre permet de découvrir l'interface de travail RStudio et les principales fonctionnalités pour débuter.
 
-## Une interface particulière : RStudio
+## Une interface dédiée : RStudio
 
 ![](images/Rstudio.png)
 

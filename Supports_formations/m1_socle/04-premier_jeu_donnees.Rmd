@@ -1,6 +1,5 @@
 # Mon premier jeu de données
 
-
 ## Les types de valeurs dans R
 
 Une valeur constitue l'unité de base des données pour R. Comme pour la plupart des logiciels, elles peuvent être de trois **types** :
@@ -9,7 +8,7 @@ Une valeur constitue l'unité de base des données pour R. Comme pour la plupart
 - **Caractère** : texte ou code
 - **Logique** : booléens
 
-Ces valeurs sont ensuites structurées au sein de vecteur qui sont compilés dans des *dataframes*.
+Ces valeurs sont ensuites structurées au sein de vecteurs qui sont compilés dans des *dataframes*.
 
 
 

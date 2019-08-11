@@ -5,6 +5,10 @@ language: r
 sudo: false
 cache: 
   packages: yes
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
 
 script:
   - git config --global user.email "stephane.trainel@gmail.com"

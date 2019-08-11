@@ -16,14 +16,15 @@ script:
   - cd output
   - Rscript -e "rmarkdown::render('index.Rmd')"
   - Rscript -e "rmarkdown::render('01-introduction.Rmd')"
-  - Rscript -e "rmarkdown::render('02-interface.Rmd')"
-  - Rscript -e "rmarkdown::render('03-import.Rmd')"
-  - Rscript -e "rmarkdown::render('03b-get_started.Rmd')"
-  - Rscript -e "rmarkdown::render('04-manip.Rmd')"
-  - Rscript -e "rmarkdown::render('05-stats.Rmd')"
-  - Rscript -e "rmarkdown::render('06-graph.Rmd')"
-  - Rscript -e "rmarkdown::render('07-export.Rmd')"
-  - Rscript -e "rmarkdown::render('08-rbase.Rmd')"
+  - Rscript -e "rmarkdown::render('02-generalite.Rmd')"
+  - Rscript -e "rmarkdown::render('03-interface.Rmd')"
+  - Rscript -e "rmarkdown::render('04-premier_jeu_donnees.Rmd')"
+  - Rscript -e "rmarkdown::render('05-get_started.Rmd')"
+  - Rscript -e "rmarkdown::render('06-manip.Rmd')"
+  - Rscript -e "rmarkdown::render('07-stats.Rmd')"
+  - Rscript -e "rmarkdown::render('08-graph.Rmd')"
+  - Rscript -e "rmarkdown::render('09-export.Rmd')"
+  - Rscript -e "rmarkdown::render('10-rbase.Rmd')"
   - git add --all -f ./*
   - git commit --allow-empty -m"Update site"
   - git push origin gh-pages

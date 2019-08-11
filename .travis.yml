@@ -12,6 +12,7 @@ script:
   - git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git output
   - cp ./Supports_formations/m1_socle/*.Rmd ./output
   - cp ./Supports_formations/m1_socle/*.bib ./output
+  - cp -r ./Supports_formations/m1_socle/images ./output/
   - cd output
   - Rscript -e "rmarkdown::render('index.Rmd')"
   - Rscript -e "rmarkdown::render('01-intro.Rmd')"

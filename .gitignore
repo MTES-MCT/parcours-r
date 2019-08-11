@@ -4,3 +4,5 @@
 .pper
 .Rproj.user
 Thumbs.db
+.RData
+.Ruserdata

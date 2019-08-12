@@ -1,7 +1,5 @@
 # Premiers traitements statistiques
 
-
-
 ## Obtenir des informations
 
 La fonction `summary()` peut s'appliquer à une table entière ou un vecteur. Appliquée sur un tableau, elle donne les statistiques principales sur chacune des variables, en s'adaptant au type de celles-ci (numerique ou texte).

@@ -1,5 +1,9 @@
 # Première manipulation des données
 
+```{r}
+require("dplyr")
+```
+
 ## Afficher les valeurs et manipuler les variables
 
 - Pour afficher la table, plusieurs façons : "clic" dans l'environnement Rstudio, `View(base)`, `print(base)`, `base`.

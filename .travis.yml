@@ -17,6 +17,7 @@ script:
   - git config --global user.email "stephane.trainel@gmail.com"
   - git config --global user.name "Stéphane Trainel"
   - git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git output
+  - git rm -fr .
   - cp ./Supports_formations/m1_socle/*.Rmd ./output
   - cp ./Supports_formations/m1_socle/*.bib ./output
   - cp -r ./Supports_formations/m1_socle/images ./output/

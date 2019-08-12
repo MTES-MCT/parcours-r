@@ -3,6 +3,8 @@ branches:
   - master
 language: r
 sudo: false
+git:
+  depth: false
 cache: 
   packages: yes
 addons:

@@ -1,6 +1,4 @@
-
 # Premiers graphiques
-
 
 ## Package ggplot2
 Pour réaliser des graphiques, nous choisissons de nous servir du package `ggplot2`, qui permet de faire de meilleures réalisations que les fonctions basiques. Il est intégré dans le méta-package `tidyverse` donc il n'est pas utile de le re-charger dans notre session. Mais si vous devez le faire, le code est le suivant :
@@ -8,6 +6,7 @@ Pour réaliser des graphiques, nous choisissons de nous servir du package `ggplo
 ```{r, eval=FALSE}
 install.packages("ggplot2")
 library("ggplot2")
+require(dplyr)
 ```
 
 La fonction `ggplot()` fonctionne d'une manière particulière. La structure ressemble à ceci :

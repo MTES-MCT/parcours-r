@@ -20,10 +20,10 @@ script:
   - cd ./Supports_formations/m1_socle/
   - Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
   - cd ../..
-  - rm -fr ./output
+  - rm -fr ./output/*
   - mkdir ./output/m1
-  - cp -r ./_book ./output/m1/
-  - cp -r ./_bookdown_files ./output/m1/
+  - cp -r ./Supports_formations/m1_socle/_book ./output/m1/
+  - cp -r ./Supports_formations/m1_socle/_bookdown_files ./output/m1/
   - git add --all -f ./*
   - git commit --allow-empty -m"Update site"
   - git push origin gh-pages

@@ -12,7 +12,7 @@ addons:
     packages:
       - libudunits2-dev
       - libgdal-dev
-      - libxml
+      - libxml2
 
 script:
   - git config --global user.email "stephane.trainel@gmail.com"

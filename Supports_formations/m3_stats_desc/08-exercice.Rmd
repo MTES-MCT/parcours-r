@@ -335,11 +335,12 @@ test
 Il y a bien un lien enter les variables *ZAU_regroupees* et *DEP*. Si l'on veut en savoir plus on peut comparer les effectifs observés dans le tableau de contingence aux effectifs attendus si les variables étaient indépendantes l'une de l'autre.
 
 ```{r}
+library(knitr)
 predict <- t (round (test$expected)) %>% as.data.frame ()
 names (predict) = paste0 (names (predict), 'p')
 
 prov <- bind_cols (x = DEP_vs_ZAU_regroupees, y = predict)
-View (prov)
+kable (prov, caption = "Effectifs observés")
 
 ```
 

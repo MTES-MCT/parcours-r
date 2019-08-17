@@ -2,7 +2,7 @@
 
 # Animer ses graphiques ggplot avec gganimate
 
-le package [gganimate](https://gganimate.com/) permet d'enrichir ggplot avec des fonctionnalités d'animation.
+Le package [gganimate](https://gganimate.com/) permet d'enrichir ggplot avec des fonctionnalités d'animation.
 
 ## Produire une animation
 
@@ -28,10 +28,10 @@ Nous allons utiliser la fonction ***transition_states()*** du package gganimate 
 
 
 ```{r gganimate2,,warning = FALSE,message = FALSE,error=FALSE}
-anim<-ggplot(data = graphique_anime) + 
+anim <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
-                 color=Continent))+
+                 color=Continent)) +
   labs(title="Mortalité maternelle en fonction du PIB par habitant",
        subtitle="En {closest_state}",
        x="PIB",
@@ -62,10 +62,10 @@ gganimate possède encore bien d'autres fonctionnalités pour définir son anima
 On peut utiliser gganimate avec des facettes.
 
 ```{r gganimate3,warning = FALSE,message = FALSE,error=FALSE}
-anim_facet<-ggplot(data = graphique_anime) + 
+anim_facet <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
-                 color=Continent))+
+                 color=Continent)) +
   labs(title="Mortalité maternelle en fonction du PIB par habitant",
        subtitle="En {closest_state}",
        x="PIB",
@@ -89,7 +89,6 @@ La fonction animate() permet de paramétrer notre animation.Notamment:
 Ici par exemple, nous paramétrons le rendu pour supprimer la boucle d'animation (*loop=FALSE*)
 
 ```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE}
-require(gifski)
 animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"), 
                                       loop = FALSE,
                                    width = NULL,
@@ -117,11 +116,11 @@ Créer une animation par département uniquement pour ceux de la région Centre-
 Le résultat attendu : 
 
 ```{r eval=T,message=F,warning=F,echo=FALSE}
-rpls<-rpls_aggrege_large %>% 
+rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire" & TypeZone=="Communes") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
 
-anim<-ggplot(data =rpls ) + 
+anim <- ggplot(data =rpls ) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
                  y=DPE_GES_classe_ABC_pourcent))+
   labs(title="Croisement de la part des logements ayant une étiquette A,B,C \n en fonction de la part du parc récent",

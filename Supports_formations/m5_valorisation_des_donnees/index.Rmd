@@ -18,6 +18,7 @@ biblio-style: apalike
 knitr::opts_chunk$set(echo=TRUE,eval=TRUE,warning = FALSE,message = FALSE)
 library(ggplot2)
 theme_set(theme_gray())
+library(gifski)
 ```
 
 

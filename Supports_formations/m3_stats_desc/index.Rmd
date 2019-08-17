@@ -5,18 +5,10 @@ date: '`r format(Sys.time(), "%d %B %Y")`'
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-
-
 biblio-style: apalike
 link-citations: yes
-description: Formation R aux statistiques descriptives
-
-
-
-
-
+description: "Module de formation aux statistiques descriptives avec R"
 ---
-
 
 
 # Introduction
@@ -95,5 +87,3 @@ Le module comprend, pour chacune des parties ci-dessous, l’acquisition ou le r
 
 ## Fondamentaux R présentés
 Objets R, scripts, graphiques avec `ggplot2`, tests avec les packages de `base`, `dplyr` et `lsr`.
-
-

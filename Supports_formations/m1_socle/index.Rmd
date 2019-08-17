@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Module socle du cycle de formation à R proposé aux MTES et MCTCRT"
+description: "Module socle pour décourvir R et RStudio"
 ---
 
 <style> 

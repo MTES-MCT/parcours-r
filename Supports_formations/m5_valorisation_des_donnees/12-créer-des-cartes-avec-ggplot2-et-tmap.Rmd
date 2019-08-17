@@ -239,19 +239,19 @@ tmap_save(carte,filename="figures/Taux de mortalité de la mère dans le monde.p
 ## Exercice 5 
 
 
-> Produire une carte du Loiret  à l'EPCI du taux de logements collectifs dans le parc locatif social.
+> Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
 
 Résultat attendu
 
 
 ```{r eval=T,echo=F,message=F,warning=F}
-tt<-Carte_EPCI_France %>% 
+tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 
   filter(Indicateur=="Logements collectifs_pourcent")
-ggplot(data=tt)+
-  geom_sf(aes(geometry=geometry, fill=Valeur))+
-  labs(title="Taux de logements collectifs par EPCI",subtitle="Département du Loiret")+
+ggplot(data=tt) +
+  geom_sf(aes(geometry=geometry, fill=Valeur)) +
+  labs(title="Taux de logements collectifs par EPCI",subtitle="Département du Loiret") +
   theme(
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),

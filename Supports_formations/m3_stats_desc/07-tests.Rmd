@@ -282,7 +282,7 @@ Si on cherche à comparer plus de 2 groupes, on doit se servir d'autres tests qu
 #### Echantillons normalement distribués (ANOVA)
 Dans le cas où les données suivent une distribution normale, on se servira alors de *l'ANOVA* (Analysis of Variance). La fonction permettant d'effectuer une ANOVA sur R est `aov()`. Si on veut comparer la densité dans 3 départements différents, on fera : 
 
-```{r}
+```{r anova_ggplot}
 # travail préalable : on peut visualiser les données
 data_test_m <- dat %>% filter(DEP %in% c(94, 68, 29)) %>% 
   select(CODGEO, densite, log_dens, DEP)
@@ -331,7 +331,7 @@ ggplot(graph, aes(x = DEP, y = means, fill = DEP)) +
 #### Echantillons non normalement distribués (Kruskal-Wallis)
 Si les distributions ne sont pas normales, on se servira du *test de Kruskal-Wallis*. Il généralise le test de Wilcoxon sur plus de deux groupes. Il fonctionne de manière similaire, en comparant les rangs des valeurs des différents groupes.
 
-```{r}
+```{r kruskal_ggplot}
 # travail préalable : on peut visualiser les données
 ggplot(data = data_test_m, aes(x = DEP, y = densite, fill = DEP)) + geom_boxplot()
 ```

@@ -13,6 +13,7 @@ addons:
       - libudunits2-dev
       - libgdal-dev
       - libxml2
+      - cargo
 
 before_script:
   - chmod +x ./_build.sh

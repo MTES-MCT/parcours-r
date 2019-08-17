@@ -1,5 +1,0 @@
-dep <- st_read(dsn="../data/refgeo2017/communes2017.geojson") %>% 
-  select(code_dept,population,geometry) %>% 
-  group_by(code_dept) %>% 
-  summarise(population=sum(population))
-plot(dep)

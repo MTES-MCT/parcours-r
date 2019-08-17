@@ -250,7 +250,7 @@ tt<-Carte_EPCI_France %>%
   left_join(rpls_aggrege) %>% 
   filter(Indicateur=="Logements collectifs_pourcent")
 ggplot(data=tt)+
-  geom_sf(aes(fill=Valeur))+
+  geom_sf((aes(geometry=geometry, fill=Valeur))+
   labs(title="Taux de logements collectifs par EPCI",subtitle="Département du Loiret")+
   theme(
     axis.text.x = element_blank(),

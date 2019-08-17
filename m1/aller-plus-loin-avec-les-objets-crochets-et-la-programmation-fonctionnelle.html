@@ -138,9 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Découvrir R et RStudio</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#objectifs-du-module-1"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 1</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-1"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 1</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html"><i class="fa fa-check"></i><b>2</b> R, son écosystème et ses possibilités</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-son-ecosysteme-et-ses-possibilites.html"><a href="r-son-ecosysteme-et-ses-possibilites.html#le-groupe-de-referents"><i class="fa fa-check"></i><b>2.1</b> Le groupe de référents</a></li>
@@ -464,111 +464,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dt">ncol =</span> <span class="dv">5</span>, <span class="dt">nrow =</span> <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb150-2" data-line-number="2">arr &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">150</span>),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb150-3" data-line-number="3">mat</a></code></pre></div>
-<pre><code>##             [,1]        [,2]       [,3]       [,4]       [,5]
-##  [1,] -0.1988538 -0.62929859  1.8332272  0.2848739  0.3294754
-##  [2,] -0.8207820 -1.46490772 -1.2709016 -0.5455546  1.0817803
-##  [3,] -1.5180960 -1.02779877 -1.2925904  0.4991018 -1.3792478
-##  [4,] -1.6068807 -0.43794615 -0.2884536  0.5706830 -1.0756939
-##  [5,] -1.6166367 -2.63399899  0.9656088 -0.9307886  1.4627013
-##  [6,]  0.8231647 -0.06717375 -0.2162744 -0.7870188  1.5087442
-##  [7,]  0.6345543 -1.08853704 -1.5041381 -1.0624467  0.1804761
-##  [8,]  0.1126479  2.76695730 -0.1901575 -0.2256935 -0.2892085
-##  [9,]  1.2599326  0.21475815 -0.3272690  1.7415376 -0.3235411
-## [10,] -0.3255951  0.11793917 -2.1177413 -1.1415381 -0.1513226</code></pre>
+<pre><code>##             [,1]         [,2]       [,3]        [,4]       [,5]
+##  [1,] -1.0453185  0.018362785  0.6971484  0.27962644 -1.7834150
+##  [2,]  1.2717746  1.037005565 -0.7190508  0.18361477  0.2281476
+##  [3,]  1.0027441  0.004207298 -0.1241148 -0.16695442  1.9878499
+##  [4,] -1.6979917 -0.264635095  0.6378476  0.28582174 -0.9294012
+##  [5,]  1.2870347 -0.186181499  0.4290366 -0.52475714 -0.3586118
+##  [6,] -0.6399748  0.500860678 -0.2660979  0.55475855  1.6717948
+##  [7,] -1.1442729 -1.592810238 -2.2992936  0.21760661 -1.3233385
+##  [8,]  0.4491220  1.256719293 -0.9400667  0.08271622 -0.5799866
+##  [9,] -1.1048514  1.425012094  0.7623937 -0.74719616 -0.1829126
+## [10,]  0.8645393  0.029825325 -1.2148248  0.82154869 -0.7671038</code></pre>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">arr</a></code></pre></div>
 <pre><code>## , , 1
 ## 
-##              [,1]       [,2]         [,3]        [,4]       [,5]
-##  [1,] -0.80473616 -0.9901526 -0.336696323 -0.95215853  0.7269662
-##  [2,] -1.29344664  0.3975658 -1.540087005  0.03972435  1.0071815
-##  [3,]  1.34302837  0.6166555 -0.506655846  1.23193200 -0.8181930
-##  [4,]  0.03637936  2.4140207  0.005155647  1.93872983 -0.4633662
-##  [5,]  0.25835448 -1.1371202 -0.325199995  1.40751977  0.1280943
-##  [6,] -1.31786778 -0.8423542  0.953113947  1.40686045  0.3043712
-##  [7,]  0.70319842 -1.4659636  0.089182880  0.49658645 -0.5904254
-##  [8,]  1.45309909  0.7957910 -0.621955662  1.33977968 -0.1187179
-##  [9,] -0.09543979 -1.8502558  0.200604265  0.44472381 -1.6551636
-## [10,]  0.49362495  0.2797484 -0.023393152  0.71517725 -0.2041629
+##             [,1]        [,2]       [,3]       [,4]        [,5]
+##  [1,]  0.4155735 -0.14069094 -0.2612832 -0.4740356  1.44962354
+##  [2,] -0.1880991  0.08758982  0.2394100  0.5856781 -1.49011925
+##  [3,]  1.2484254  0.04797117 -0.4916251 -0.1813901 -1.04011764
+##  [4,] -1.1329532  0.16445169  1.5096621  1.7519217  0.32664679
+##  [5,] -0.1974634 -0.30669515  0.5420373  2.0811743 -0.04152102
+##  [6,]  0.8442996  1.23122623 -0.1008956 -0.5232821  0.10211669
+##  [7,]  0.5758937  1.84963600  0.7980972  0.4535579  0.56615595
+##  [8,]  0.8734883  1.05590318  2.1761384 -0.1923005  0.36564366
+##  [9,]  0.6192645  1.32507095 -1.2502696 -0.5428331 -0.50848060
+## [10,] -2.1503166  0.26791430  0.2261320 -0.6846150  0.37061488
 ## 
 ## , , 2
 ## 
-##              [,1]        [,2]       [,3]       [,4]       [,5]
-##  [1,]  0.31667573 -2.79265683  0.9240892 -3.3264688  0.9320702
-##  [2,] -0.22346066  0.08455775  0.1566932 -2.1889949 -0.8467967
-##  [3,]  1.07001818 -0.70517807 -1.9464096 -1.2642971  0.7037712
-##  [4,]  0.88952344 -1.28564601  0.1390623  1.2010996  0.3046146
-##  [5,]  2.54829871 -0.71929739  0.3768038  0.7516014 -0.7793168
-##  [6,] -0.76965803 -0.60439938  0.2301606  1.6058753  0.3768220
-##  [7,]  0.09063577  0.22133174  1.1168181  0.3488024 -0.1181490
-##  [8,]  1.04644077 -1.31004114 -0.2406135  0.8991234  0.3612332
-##  [9,] -0.45431577  0.61990935  0.7679360 -0.6037420  1.0594620
-## [10,]  0.12946994  0.79841237 -0.9492016  0.1363067 -0.3192538
+##              [,1]       [,2]        [,3]        [,4]       [,5]
+##  [1,] -1.43700563  0.5681616  1.10328594  0.46227615  0.3821013
+##  [2,]  0.33136494  0.6828725 -2.20249600 -0.85300436  0.2384244
+##  [3,]  0.08711161 -0.8704728 -0.69711141  1.37786999 -2.4609655
+##  [4,] -0.33610257  0.4716152  0.35579495  0.33219277 -0.9377386
+##  [5,] -0.27120404 -1.3987097  0.04313749 -0.29480517 -1.1972276
+##  [6,] -1.70692065  1.2159751  0.19799479 -1.79248231 -0.4227301
+##  [7,] -0.50030987  1.9827696  0.43728932 -2.25056351 -0.8243444
+##  [8,] -0.18965329  0.2085566  0.16615155  0.74385655 -0.3368503
+##  [9,]  0.95452928  0.9821238  0.21475834 -0.07262753 -1.1886461
+## [10,]  0.08313476  0.8655124 -2.07314734 -1.33087445  0.4232022
 ## 
 ## , , 3
 ## 
-##             [,1]        [,2]        [,3]        [,4]        [,5]
-##  [1,]  0.5619170  1.54049138 -0.93711149  0.39161114 -0.40233016
-##  [2,] -1.0523047  0.57005487  0.21762892 -3.08924646  0.04529764
-##  [3,]  0.3673449  0.06492676  0.07879658  1.15805047 -0.28829474
-##  [4,]  2.6214442 -2.45485293  1.57285747 -0.06451811  0.03547170
-##  [5,] -1.0773933 -0.21758129  0.07930618 -0.43990889 -1.48029173
-##  [6,] -1.5805384 -3.36070925  0.15867417 -0.09320989 -0.91205916
-##  [7,]  0.7045466  0.09227327  0.82116154  0.28240553 -1.23017124
-##  [8,]  0.9967839  1.58568895 -0.71081505  0.10797524 -0.50295287
-##  [9,]  1.0320925  0.77305873  0.59073897  0.39150861  0.12691046
-## [10,]  0.4117228 -0.92404746  2.19128603  1.67025121 -0.57642224</code></pre>
+##              [,1]       [,2]       [,3]       [,4]       [,5]
+##  [1,]  0.01069835  1.0711385 -0.7787362  0.5830669  0.6599206
+##  [2,]  1.04993059 -1.0548099 -0.2430551 -1.9691228 -0.6820664
+##  [3,] -0.67026461  0.5549454 -0.8454179  1.0517391 -0.6602242
+##  [4,]  0.77241111  0.1011356 -0.7145472 -0.3702916 -0.7179908
+##  [5,] -0.06064491  0.4477661 -0.6508567  2.1839743 -0.5225084
+##  [6,]  1.31927256 -0.7886920 -0.2375158  0.1728293  0.6774512
+##  [7,]  0.03166487 -0.9246025 -1.4573903  1.3265480  0.2434100
+##  [8,]  0.54187121  0.5386750 -1.1762965  0.5057891  1.3559595
+##  [9,] -0.56787958  2.6793698  0.3335857 -0.1545763 -2.0294156
+## [10,]  0.23467443 -0.6185326  0.3835970  0.4790689 -0.8640829</code></pre>
 <p><em>Pourquoi s’embêter avec ça ?</em> Parce qu’on peut appliquer des fonctions facilement sur les lignes, colonnes et autres dimensions grâce à la fonction <code>apply()</code>.
 Exemple : résultats de validations croisées par bloc, simulations de loi selon différents paramètres. Et on calcule facilement des statistiques “marginales”.</p>
 <p>Par, exemple, sur une matrice, on peut calculer des statistiques par lignes :</p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">apply</span>(mat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN=</span>mean)</a></code></pre></div>
-<pre><code>##  [1]  0.3238848 -0.6040731 -0.9437262 -0.5676583 -0.5506228  0.2522884
-##  [7] -0.5680183  0.4349092  0.5130836 -0.7236516</code></pre>
+<pre><code>##  [1] -0.36671917  0.40029836  0.54074641 -0.39367173  0.12930417
+##  [6]  0.36426828 -1.22842174  0.05370084  0.03048914 -0.05320304</code></pre>
 <p>Ou par colonnes :</p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">apply</span>(mat, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN=</span>mean)</a></code></pre></div>
-<pre><code>## [1] -0.3256545 -0.4250006 -0.4408690 -0.1596844  0.1344163</code></pre>
+<pre><code>## [1] -0.07571946  0.22283662 -0.30370221  0.09867853 -0.20369772</code></pre>
 <p>Sur notre hypercube de type <code>array</code>, on peut aussi calculer des stats sur ses différentes dimensions :</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">apply</span> (arr, <span class="dt">MARGIN =</span> <span class="dv">3</span>, <span class="dt">FUN=</span>mean)</a></code></pre></div>
-<pre><code>## [1]  0.065473150 -0.024805560 -0.003049634</code></pre>
+<pre><code>## [1]  0.24504664 -0.21467860  0.01101945</code></pre>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">apply</span> (arr, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">FUN =</span> mean)</a></code></pre></div>
-<pre><code>##             [,1]        [,2]        [,3]
-## [1,]  0.07761943  0.46436281  0.29856154
-## [2,] -0.17820648 -0.56930076 -0.23306970
-## [3,] -0.21059312  0.05753385  0.40625233
-## [4,]  0.80688751 -0.24406940  0.03149188
-## [5,] -0.16834158  0.16744570 -0.51848423</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]
+## [1,] 0.09081129 -0.2985055  0.2661734
+## [2,] 0.55823772  0.4708404  0.2006393
+## [3,] 0.33874035 -0.2454342 -0.5386633
+## [4,] 0.22738756 -0.3678162  0.3809025
+## [5,] 0.01005630 -0.6324775 -0.2539547</code></pre>
 <p><strong>Le coin du capitaine [ ]</strong><img src="images/CapHookImage.png" style="width:10.0%" /></p>
 <p>Le crochet, c’est comme le capitaine du même nom : personne ne l’aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s’en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.</p>
 <ul>
 <li>Matrices et arrays</li>
 </ul>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">mat [<span class="dv">1</span>,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] -0.1988538</code></pre>
+<pre><code>## [1] -1.045319</code></pre>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">mat [<span class="dv">1</span>,]</a></code></pre></div>
-<pre><code>## [1] -0.1988538 -0.6292986  1.8332272  0.2848739  0.3294754</code></pre>
+<pre><code>## [1] -1.04531852  0.01836278  0.69714843  0.27962644 -1.78341496</code></pre>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">mat [,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>##  [1] -0.1988538 -0.8207820 -1.5180960 -1.6068807 -1.6166367  0.8231647
-##  [7]  0.6345543  0.1126479  1.2599326 -0.3255951</code></pre>
+<pre><code>##  [1] -1.0453185  1.2717746  1.0027441 -1.6979917  1.2870347 -0.6399748
+##  [7] -1.1442729  0.4491220 -1.1048514  0.8645393</code></pre>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">arr [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] -0.8047362</code></pre>
+<pre><code>## [1] 0.4155735</code></pre>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">arr [<span class="dv">1</span>,,]</a></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]
-## [1,] -0.8047362  0.3166757  0.5619170
-## [2,] -0.9901526 -2.7926568  1.5404914
-## [3,] -0.3366963  0.9240892 -0.9371115
-## [4,] -0.9521585 -3.3264688  0.3916111
-## [5,]  0.7269662  0.9320702 -0.4023302</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]
+## [1,]  0.4155735 -1.4370056  0.01069835
+## [2,] -0.1406909  0.5681616  1.07113845
+## [3,] -0.2612832  1.1032859 -0.77873624
+## [4,] -0.4740356  0.4622762  0.58306687
+## [5,]  1.4496235  0.3821013  0.65992063</code></pre>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">arr [,,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>##              [,1]       [,2]         [,3]        [,4]       [,5]
-##  [1,] -0.80473616 -0.9901526 -0.336696323 -0.95215853  0.7269662
-##  [2,] -1.29344664  0.3975658 -1.540087005  0.03972435  1.0071815
-##  [3,]  1.34302837  0.6166555 -0.506655846  1.23193200 -0.8181930
-##  [4,]  0.03637936  2.4140207  0.005155647  1.93872983 -0.4633662
-##  [5,]  0.25835448 -1.1371202 -0.325199995  1.40751977  0.1280943
-##  [6,] -1.31786778 -0.8423542  0.953113947  1.40686045  0.3043712
-##  [7,]  0.70319842 -1.4659636  0.089182880  0.49658645 -0.5904254
-##  [8,]  1.45309909  0.7957910 -0.621955662  1.33977968 -0.1187179
-##  [9,] -0.09543979 -1.8502558  0.200604265  0.44472381 -1.6551636
-## [10,]  0.49362495  0.2797484 -0.023393152  0.71517725 -0.2041629</code></pre>
+<pre><code>##             [,1]        [,2]       [,3]       [,4]        [,5]
+##  [1,]  0.4155735 -0.14069094 -0.2612832 -0.4740356  1.44962354
+##  [2,] -0.1880991  0.08758982  0.2394100  0.5856781 -1.49011925
+##  [3,]  1.2484254  0.04797117 -0.4916251 -0.1813901 -1.04011764
+##  [4,] -1.1329532  0.16445169  1.5096621  1.7519217  0.32664679
+##  [5,] -0.1974634 -0.30669515  0.5420373  2.0811743 -0.04152102
+##  [6,]  0.8442996  1.23122623 -0.1008956 -0.5232821  0.10211669
+##  [7,]  0.5758937  1.84963600  0.7980972  0.4535579  0.56615595
+##  [8,]  0.8734883  1.05590318  2.1761384 -0.1923005  0.36564366
+##  [9,]  0.6192645  1.32507095 -1.2502696 -0.5428331 -0.50848060
+## [10,] -2.1503166  0.26791430  0.2261320 -0.6846150  0.37061488</code></pre>
 <ul>
 <li>dataframes et listes :</li>
 </ul>

@@ -26,10 +26,10 @@ script:
   - cd ../..
   - rm -fr ./output/*
   - cp -r ./Supports_formations/m1_socle/_book ./output/
-  - mv _book m1
+  - mv ./output/_book ./output/m1
   - cp -r ./Supports_formations/m1_socle/_bookdown_files ./output/m1/
   - cp -r ./Supports_formations/m2_preparation_donnees/_book ./output/
-  - mv _book m2
+  - mv ./output/_book ./output/m2
   - cp -r ./Supports_formations/m2_preparation_donnees/_bookdown_files ./output/m2/
   - cp -r ./assets ./semantic index.html ./output/
   - cd output

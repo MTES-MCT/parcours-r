@@ -33,7 +33,7 @@
 
 ## Exercice 4 : Créer son premier script (20 min.)
 
-* Depuis le panneau d'édition de script de RStudio (en haut à gauche), vous allez créer un script ré-utilisable permettant de calculer l'indice de masse corporelle d'un individu (IMC) et d'afficher le résultat dans la console sous la forme d'un phrase explicite. L'IMC est calculé par la masse sur la taille au carré d'un individu (`masse/taille²`).
+* Depuis le panneau d'édition de script de RStudio (en haut à gauche), vous allez créer un script ré-utilisable permettant de calculer l'indice de masse corporelle d'un individu (IMC) et d'afficher le résultat dans la console sous la forme d'un phrase explicite. L'IMC est calculé par la masse sur la taille au carré d'un individu ($masse / taille^2$).
 * Quelques petits conseils :
      * de façon générale, n'hésitez pas à commenter votre script pour vous aider à le comprendre lorsque vous serez amené à le reprendre,
      * pensez à bien assigner vos variables poids et taille pour une meilleure ré-utilisabilité du script,

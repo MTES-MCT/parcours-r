@@ -18,7 +18,7 @@ before_script:
   - chmod +x ./_build.sh
       
 script:
-  - ./_build
+  - ./_build.sh
   - git config --global user.email "stephane.trainel@gmail.com"
   - git config --global user.name "Stéphane Trainel"
   - git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git output

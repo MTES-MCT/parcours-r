@@ -135,15 +135,15 @@ rpls_aggrege  %>%
 
 ## Exercice 5
 
-> Produire une carte du Loiret  à l'EPCI du taux de logements collectifs dans le parc locatif social.
+> Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
 
 ```{r eval=T,message=F,warning=F}
-tt<-Carte_EPCI_France %>% 
+tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 
   filter(Indicateur=="Logements collectifs_pourcent")
 ggplot(data=tt)+
-  geom_sf(aes(fill=Valeur))+
+  geom_sf(aes(geometry=geometry, fill=Valeur))+
   labs(title="Taux de logements collectifs par EPCI",subtitle="Département du Loiret")+
   theme(
     axis.text.x = element_blank(),
@@ -160,7 +160,7 @@ Créer une animation par département uniquement pour ceux de la région Centre-
 
 
 ```{r eval=T,message=F,warning=F}
-rpls<-rpls_aggrege_large %>% 
+rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
 

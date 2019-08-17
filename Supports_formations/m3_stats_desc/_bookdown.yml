@@ -3,5 +3,3 @@ delete_merged_file: TRUE
 language:
   ui:
     chapter_name: "Chapitre "
-  includes:
-    in_header: logo_ministere.png

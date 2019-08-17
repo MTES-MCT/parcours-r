@@ -11,3 +11,6 @@ cd ./Supports_formations/m2_preparation_donnees/
 Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
 cd ../..
 
+cd ./Supports_formations/m3_stats_desc/
+Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
+cd ../..

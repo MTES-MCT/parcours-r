@@ -16,9 +16,9 @@ cp -r ./Supports_formations/m2_preparation_donnees/_book ./output/
 mv ./output/_book ./output/m2
 cp -r ./Supports_formations/m2_preparation_donnees/_bookdown_files ./output/m2/
 
-#cp -r ./Supports_formations/m3_stats_desc/_book ./output/
-#mv ./output/_book ./output/m3
-#cp -r ./Supports_formations/m3_stats_desc/_bookdown_files ./output/m3/
+cp -r ./Supports_formations/m3_stats_desc/_book ./output/
+mv ./output/_book ./output/m3
+cp -r ./Supports_formations/m3_stats_desc/_bookdown_files ./output/m3/
 
 cp -r ./Supports_formations/m4_analyse_donnees/_book ./output/
 mv ./output/_book ./output/m4

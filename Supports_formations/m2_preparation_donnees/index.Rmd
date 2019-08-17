@@ -7,9 +7,17 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Formation R à la data préparation"
+description: "Module de formation à la préparation des données avec R"
 ---
 
+<style> 
+  body {text-align: justify;}
+</style>
+
+```{r setup, include=FALSE}
+rm(list=ls())
+knitr::opts_chunk$set(echo = T, message=F, error=F,warning=F,fig.width=4, fig.height=4)
+```
 
 # Introduction
 
@@ -34,9 +42,7 @@ Le parcours proposé est structuré en modules de 2 jours chacun. Les deux premi
 
 ... et en perspective : analyse spatiale, applis interactives avec Shiny, big data, etc.
 
-
 La mise à disposition des supports de formation se fait désormais par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
-
 
 Si vous souhaitez accéder aux sources, données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du ministère](https://github.com/MTES-MCT/parcours-r/tree/master/Supports_formations).
 
@@ -65,9 +71,3 @@ On estime qu'un scientifique de la donnée passe en général ***la moitié de s
 ![](images/cover.png)
 
 Sous R, comme souvent, il y a plusieurs façons d'aborder cette question. Nous choisirons, lors de ce module de formation, d'explorer principalement les packages du framework *tidyverse*, qui ont l'avantage d'aborder ces différentes questions d'une façon intégrée et cohérente, d'une part entre elles, mais également avec d'autres.
-
-
-```{r setup, include=FALSE}
-rm(list=ls())
-knitr::opts_chunk$set(echo = T, message=F, error=F,warning=F,fig.width=4, fig.height=4)
-```

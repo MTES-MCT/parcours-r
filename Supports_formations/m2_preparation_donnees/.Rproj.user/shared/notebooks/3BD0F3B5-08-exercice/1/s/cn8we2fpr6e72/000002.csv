@@ -1,5 +1,0 @@
-"0","analyse_non_retrouve_dans_table_prelevement<-analyse %>% 
-  anti_join(prelevement)
-"
-"2","Joining, by = ""code_prelevement""
-"

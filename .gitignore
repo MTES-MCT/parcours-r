@@ -1,8 +1,11 @@
 # MacOS
 .DS_Store
-.Rhistory
+*\.Rhistory
 .pper
 .Rproj.user
 Thumbs.db
 .RData
 .Ruserdata
+_book
+_bookdown_files
+

@@ -14,16 +14,14 @@ addons:
       - libgdal-dev
       - libxml2
 
+before_script:
+  - chmod +x ./_build.sh
+      
 script:
+  - ./_build
   - git config --global user.email "stephane.trainel@gmail.com"
   - git config --global user.name "Stéphane Trainel"
   - git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git output
-  - cd ./Supports_formations/m1_socle/
-  - Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
-  - cd ../..
-  - cd ./Supports_formations/m2_preparation_donnees/
-  - Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
-  - cd ../..
   - rm -fr ./output/*
   - cp -r ./Supports_formations/m1_socle/_book ./output/
   - mv ./output/_book ./output/m1

@@ -5,5 +5,5 @@ bookdown::gitbook:
       before: |
         <li><p style="text-align:center;"><img src="../assets/images/logo_marianne_fond_blanc.png" style="width:100px;"/></p></li>
       after: |
-        <li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
+        <li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>

@@ -176,7 +176,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Valoriser ses données avec R</a></li>
+<li><p style="text-align:center;"><img src="../assets/images/logo_marianne_fond_blanc.png" style="width:100px;"/></p></li>
+<li><a href="./">Valoriser ses données avec R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -293,6 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>19.8</b> Exercice 8</a></li>
 </ul></li>
 <li class="divider"></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
 
@@ -321,7 +323,7 @@ D’autres types de représentations géographiques sont présentés dans la par
 Par exemple, si l’on souhaite représenter le taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio))</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>De plus, la fonction <strong>aes</strong> admet d’autres arguments qui permettent de modifier l’apparence du graphique selon une 3ème variable du jeu de données.
 <strong>colour</strong> : la couleur,
 <strong>shape</strong> : la forme,
@@ -330,7 +332,7 @@ Par exemple, si l’on souhaite représenter le taux de mortalité maternelle (M
 <strong>fill</strong> : le remplissage ;</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">colour=</span>Continent))</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="les-autres-parametres" class="section level2">
 <h2><span class="header-section-number">5.2</span> Les “autres” paramètres</h2>
@@ -340,12 +342,12 @@ On retrouve entre autre les mêmes paramètres que proposés dans l’aes mais i
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio,<span class="dt">colour=</span>Continent),</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">             <span class="dt">alpha=</span><span class="fl">0.5</span>,<span class="dt">size=</span><span class="fl">1.9</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>De même si l’on souhaite modifier la couleur générale:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique1) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Gross_Domestic_Product_GDP,<span class="dt">y=</span>Maternal_mortality_ratio),</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">             <span class="dt">color=</span><span class="st">&quot;red&quot;</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Pour choisir et modifier facilement les couleurs d’un graphe, il existe un addin développé par Dean Attali: <strong>Colour Picker</strong>
 Il est installable comme n’importe quel package.
 Pour plus d’informations: <a href="https://github.com/daattali/colourpicker" class="uri">https://github.com/daattali/colourpicker</a></p>
@@ -362,7 +364,7 @@ Pour plus d’informations: <a href="https://github.com/daattali/colourpicker" c
 </ul>
 </blockquote>
 <p>Le résultat attendu :</p>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
 </div>
 </div>

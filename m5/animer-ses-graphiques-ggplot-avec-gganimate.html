@@ -176,7 +176,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Valoriser ses données avec R</a></li>
+<li><p style="text-align:center;"><img src="../assets/images/logo_marianne_fond_blanc.png" style="width:100px;"/></p></li>
+<li><a href="./">Valoriser ses données avec R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -293,6 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>19.8</b> Exercice 8</a></li>
 </ul></li>
 <li class="divider"></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
 
@@ -313,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="animer-ses-graphiques-ggplot-avec-gganimate" class="section level1">
 <h1><span class="header-section-number">Chapitre 15</span> Animer ses graphiques ggplot avec gganimate</h1>
-<p>le package <a href="https://gganimate.com/">gganimate</a> permet d’enrichir ggplot avec des fonctionnalités d’animation.</p>
+<p>Le package <a href="https://gganimate.com/">gganimate</a> permet d’enrichir ggplot avec des fonctionnalités d’animation.</p>
 <div id="produire-une-animation" class="section level2">
 <h2><span class="header-section-number">15.1</span> Produire une animation</h2>
 <p>Nous allons voir comment animer notre premier graphique sur la répartition des pays en fonction du taux de mortalité et du PIB, en regardant comment celui ci évolue avec les années.</p>
@@ -327,13 +329,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb61-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
 <a class="sourceLine" id="cb61-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
 <a class="sourceLine" id="cb61-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU</span><span class="ch">\n</span><span class="st"> échelle logarithmique&quot;</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/gganimate1-1.png" width="672" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/gganimate1-1.png" width="672" /></p>
 <p>Le graphique précédent est bien sur illisible, un même pays voit ces données affichées pour toutes les années.
 Nous allons utiliser la fonction <strong><em>transition_states()</em></strong> du package gganimate pour lui définir l’année comme la frame de notre graphique animé.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">anim&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> graphique_anime) <span class="op">+</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">anim &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique_anime) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
 <a class="sourceLine" id="cb62-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
-<a class="sourceLine" id="cb62-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4">                 <span class="dt">color=</span>Continent)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb62-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
 <a class="sourceLine" id="cb62-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En {closest_state}&quot;</span>,</a>
 <a class="sourceLine" id="cb62-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
@@ -343,7 +345,7 @@ Nous allons utiliser la fonction <strong><em>transition_states()</em></strong> d
 <a class="sourceLine" id="cb62-11" data-line-number="11">                    <span class="dt">transition_length =</span> <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb62-12" data-line-number="12">                    <span class="dt">state_length =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb62-13" data-line-number="13">anim</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/gganimate2,-1.gif" /><!-- --></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/gganimate2,-1.gif" /><!-- --></p>
 <p><strong><em>Transition_states()</em></strong> peut s’assimiler à la création de facette, mais qui vont être ensuite utilisée pour créer une animation. Les options permettant de paramétrer cette animation:</p>
 <ul>
 <li>states: le nom de la colonne qui va définir nos états</li>
@@ -358,10 +360,10 @@ Nous allons utiliser la fonction <strong><em>transition_states()</em></strong> d
 <li><p><strong><em>enter_xx()</em></strong> et <strong><em>exit_xx()</em></strong> permette de définir comment les objets apparaissent et disparaissent quand on change d’état.</p></li>
 </ul>
 <p>On peut utiliser gganimate avec des facettes.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">anim_facet&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> graphique_anime) <span class="op">+</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">anim_facet &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> graphique_anime) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb63-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
 <a class="sourceLine" id="cb63-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
-<a class="sourceLine" id="cb63-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb63-4" data-line-number="4">                 <span class="dt">color=</span>Continent)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb63-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
 <a class="sourceLine" id="cb63-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En {closest_state}&quot;</span>,</a>
 <a class="sourceLine" id="cb63-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
@@ -372,7 +374,7 @@ Nous allons utiliser la fonction <strong><em>transition_states()</em></strong> d
 <a class="sourceLine" id="cb63-12" data-line-number="12">                    <span class="dt">transition_length =</span> <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb63-13" data-line-number="13">                    <span class="dt">state_length =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb63-14" data-line-number="14">anim_facet</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/gganimate3-1.gif" /><!-- --></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/gganimate3-1.gif" /><!-- --></p>
 </div>
 <div id="parametrer-lanimation" class="section level2">
 <h2><span class="header-section-number">15.2</span> Paramétrer l’animation</h2>
@@ -382,13 +384,12 @@ Nous allons utiliser la fonction <strong><em>transition_states()</em></strong> d
 - le frame rate
 - la durée</p>
 <p>Ici par exemple, nous paramétrons le rendu pour supprimer la boucle d’animation (<em>loop=FALSE</em>)</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">require</span>(gifski)</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="kw">animate</span>(anim,<span class="dt">renderer=</span><span class="kw">gifski_renderer</span>(<span class="dt">file =</span> <span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.gif&quot;</span>), </a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">                                      <span class="dt">loop =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb64-4" data-line-number="4">                                   <span class="dt">width =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb64-5" data-line-number="5">                                   <span class="dt">height =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb64-6" data-line-number="6">        )</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/gganimate4-1.gif" /><!-- --></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">animate</span>(anim,<span class="dt">renderer=</span><span class="kw">gifski_renderer</span>(<span class="dt">file =</span> <span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.gif&quot;</span>), </a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">                                      <span class="dt">loop =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb64-3" data-line-number="3">                                   <span class="dt">width =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb64-4" data-line-number="4">                                   <span class="dt">height =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb64-5" data-line-number="5">        )</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/gganimate4-1.gif" /><!-- --></p>
 </div>
 <div id="exporter-une-animation" class="section level2">
 <h2><span class="header-section-number">15.3</span> Exporter une animation</h2>
@@ -401,7 +402,7 @@ Par défaut elle sauvegarde la dernière animation.</p>
 <p>Produire le nuage de point du croisement de la part communale des logements ayant une étiquette A,B,C en fonction de la part communale du parc récent.
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.</p>
 <p>Le résultat attendu :</p>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-68-1.gif" /><!-- --></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-68-1.gif" /><!-- --></p>
 
 </div>
 </div>

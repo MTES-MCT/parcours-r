@@ -176,7 +176,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Valoriser ses données avec R</a></li>
+<li><p style="text-align:center;"><img src="../assets/images/logo_marianne_fond_blanc.png" style="width:100px;"/></p></li>
+<li><a href="./">Valoriser ses données avec R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -293,6 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>19.8</b> Exercice 8</a></li>
 </ul></li>
 <li class="divider"></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
 
@@ -325,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb13-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
 <a class="sourceLine" id="cb13-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
 <a class="sourceLine" id="cb13-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-15-1.png" width="960" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-15-1.png" width="960" /></p>
 <p>A noter qu’il existe plusieurs autres façons de spécifier ces élèments par des couches spécifiques: ggtitle, xlab, ylab,…</p>
 </div>
 <div id="legende" class="section level2">
@@ -348,7 +350,7 @@ Les guides peuvent être spécifiées dans chaque scale_* ou dans une instructio
 <a class="sourceLine" id="cb14-14" data-line-number="14">                           <span class="dt">nrow=</span><span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb14-15" data-line-number="15">                           <span class="dt">label.position=</span><span class="st">&quot;bottom&quot;</span>))<span class="op">+</span></a>
 <a class="sourceLine" id="cb14-16" data-line-number="16"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-16-1.png" width="960" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-16-1.png" width="960" /></p>
 </div>
 <div id="annotation" class="section level2">
 <h2><span class="header-section-number">7.3</span> Annotation</h2>
@@ -363,7 +365,7 @@ Les guides peuvent être spécifiées dans chaque scale_* ou dans une instructio
 <a class="sourceLine" id="cb15-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
 <a class="sourceLine" id="cb15-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb15-10" data-line-number="10"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">6</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">label =</span> <span class="st">&quot;je rajoute mon texte&quot;</span>,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-17-1.png" width="960" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-17-1.png" width="960" /></p>
 <p>La fonction <strong>annotate</strong> permet aussi d’ajouter d’autre type d’annotation comme par exemple des rectangles:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
@@ -376,7 +378,7 @@ Les guides peuvent être spécifiées dans chaque scale_* ou dans une instructio
 <a class="sourceLine" id="cb16-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb16-10" data-line-number="10"><span class="st">   </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin =</span> <span class="dv">10</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>,<span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,<span class="dt">alpha=</span><span class="fl">0.2</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb16-11" data-line-number="11"><span class="st">   </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="dv">2</span>,<span class="dt">fill=</span><span class="st">&quot;green&quot;</span>,<span class="dt">alpha=</span><span class="fl">0.2</span>)</a></code></pre></div>
-<p><img src="support-valorisation-des-donnees_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
 
 </div>
 </div>

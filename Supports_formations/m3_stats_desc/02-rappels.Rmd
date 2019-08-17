@@ -161,7 +161,7 @@ d %>% pull (ZAU) %>% levels ()
 d %>% pull (ZAU) %>% fct_drop () %>% levels ()
 ```
 
-La modalité "`r levels (dat$ZAU)[1]`" a bien été supprimée.
+La modalité `r iconv(levels (dat$ZAU)[1], "LATIN2", "UTF-8")` a bien été supprimée.
 
 Pour effectuer l'opération sur l'ensemble des variables `factor` d'un `dataframe`, il faut utiliser la fonction `droplevels()` du package `base`. 
 

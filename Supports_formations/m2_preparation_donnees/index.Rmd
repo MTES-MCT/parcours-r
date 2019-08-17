@@ -10,7 +10,9 @@ link-citations: yes
 description: "Formation R à la data préparation"
 ---
 
-
+<style> 
+  body {text-align: justify;}
+</style>
 
 ```{r setup, include=FALSE}
 rm(list=ls())

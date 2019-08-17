@@ -1,6 +1,4 @@
 --- 
-bookdown::html_book:
-  css: test.css
 title: "Découvrir R et RStudio"
 author: "Thierry Zorn, Murielle Lethrosne, Vivien Roussez & Pascal Irz"
 date: '`r format(Sys.time(), "%d %B %Y")`'
@@ -15,7 +13,6 @@ description: "Module socle du cycle de formation à R proposé aux MTES et MCTCR
 <style> 
   body {text-align: justify;}
 </style>
-
 
 ```{r setup, include=FALSE}
 rm(list=ls())

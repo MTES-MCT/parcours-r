@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 5 L’AFC | Analyse des données multi-dimensionnelles</title>
+  <meta name="description" content="Parcours de formation R - module 4" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 5 L’AFC | Analyse des données multi-dimensionnelles" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Parcours de formation R - module 4" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 5 L’AFC | Analyse des données multi-dimensionnelles" />
+  
+  <meta name="twitter:description" content="Parcours de formation R - module 4" />
+  
+
+<meta name="author" content="Vivien Roussez &amp; Pascal Irz" />
+
+
+<meta name="date" content="2019-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lacp.html">
+<link rel="next" href="lacm.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Exploration avancée des données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-4"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 4</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Les analyses multivariées</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#objectifs"><i class="fa fa-check"></i><b>2.1</b> Objectifs</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#comment-synthetiser"><i class="fa fa-check"></i><b>2.2</b> Comment synthétiser ?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#quelles-methodes"><i class="fa fa-check"></i><b>2.3</b> Quelles méthodes ?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#lien-entre-ces-methodes"><i class="fa fa-check"></i><b>2.4</b> Lien entre ces méthodes</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#notion-de-distance"><i class="fa fa-check"></i><b>2.5</b> Notion de distance</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#questions-a-se-poser"><i class="fa fa-check"></i><b>2.6</b> Questions à se poser</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#nature-des-variables"><i class="fa fa-check"></i><b>2.7</b> Nature des variables</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.7.1</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.7.2</b> Variables qualitatives</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#entre-les-deux"><i class="fa fa-check"></i><b>2.7.3</b> Entre les deux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#le-package-factominer"><i class="fa fa-check"></i><b>2.8</b> Le package FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>3</b> Bien commencer</a><ul>
+<li class="chapter" data-level="3.1" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>3.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="3.2" data-path="bien-commencer.html"><a href="bien-commencer.html#integrer-vos-donnees"><i class="fa fa-check"></i><b>3.2</b> Intégrer vos données</a></li>
+<li class="chapter" data-level="3.3" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>3.3</b> Créer votre arborescence de projet</a></li>
+<li class="chapter" data-level="3.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-necessaires"><i class="fa fa-check"></i><b>3.4</b> Activer les packages nécessaires</a></li>
+<li class="chapter" data-level="3.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>3.5</b> Bien structurer ses projets <em>data</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lacp.html"><a href="lacp.html"><i class="fa fa-check"></i><b>4</b> L’ACP</a><ul>
+<li class="chapter" data-level="4.1" data-path="lacp.html"><a href="lacp.html#principe-de-lacp"><i class="fa fa-check"></i><b>4.1</b> Principe de l’ACP</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="lacp.html"><a href="lacp.html#type-de-donnees"><i class="fa fa-check"></i><b>4.1.1</b> Type de données</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lacp.html"><a href="lacp.html#objectifs-1"><i class="fa fa-check"></i><b>4.1.2</b> Objectifs</a></li>
+<li class="chapter" data-level="4.1.3" data-path="lacp.html"><a href="lacp.html#methode"><i class="fa fa-check"></i><b>4.1.3</b> Méthode</a></li>
+<li class="chapter" data-level="4.1.4" data-path="lacp.html"><a href="lacp.html#centrer---reduire"><i class="fa fa-check"></i><b>4.1.4</b> Centrer - réduire ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lacp.html"><a href="lacp.html#lacp-avec-factominer"><i class="fa fa-check"></i><b>4.2</b> L’ACP avec FactoMiner</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lacp.html"><a href="lacp.html#ressources"><i class="fa fa-check"></i><b>4.2.1</b> Ressources</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lacp.html"><a href="lacp.html#exemple"><i class="fa fa-check"></i><b>4.2.2</b> Exemple</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lacp.html"><a href="lacp.html#reperer-un-effet-taille"><i class="fa fa-check"></i><b>4.2.3</b> Repérer un effet taille</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lacp.html"><a href="lacp.html#exercice"><i class="fa fa-check"></i><b>4.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lafc.html"><a href="lafc.html"><i class="fa fa-check"></i><b>5</b> L’AFC</a><ul>
+<li class="chapter" data-level="5.1" data-path="lafc.html"><a href="lafc.html#principe-de-lafc"><i class="fa fa-check"></i><b>5.1</b> Principe de l’AFC</a></li>
+<li class="chapter" data-level="5.2" data-path="lafc.html"><a href="lafc.html#lafc-avec-factominer"><i class="fa fa-check"></i><b>5.2</b> L’AFC avec FactoMiner</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="lafc.html"><a href="lafc.html#donnees-utilisees-1"><i class="fa fa-check"></i><b>5.2.1</b> Données utilisées</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lafc.html"><a href="lafc.html#realisation-de-lafc"><i class="fa fa-check"></i><b>5.2.2</b> Réalisation de l’AFC</a></li>
+<li class="chapter" data-level="5.2.3" data-path="lafc.html"><a href="lafc.html#nombre-daxes-a-retenir-1"><i class="fa fa-check"></i><b>5.2.3</b> Nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="5.2.4" data-path="lafc.html"><a href="lafc.html#interpretation-des-axes"><i class="fa fa-check"></i><b>5.2.4</b> Interprétation des axes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lafc.html"><a href="lafc.html#exercice-1"><i class="fa fa-check"></i><b>5.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lacm.html"><a href="lacm.html"><i class="fa fa-check"></i><b>6</b> L’ACM</a><ul>
+<li class="chapter" data-level="6.1" data-path="lacm.html"><a href="lacm.html#principe-de-lacm"><i class="fa fa-check"></i><b>6.1</b> Principe de l’ACM</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="lacm.html"><a href="lacm.html#le-tableau-disjonctif-complet"><i class="fa fa-check"></i><b>6.1.1</b> Le tableau disjonctif complet</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lacm.html"><a href="lacm.html#ressources-1"><i class="fa fa-check"></i><b>6.2</b> Ressources</a></li>
+<li class="chapter" data-level="6.3" data-path="lacm.html"><a href="lacm.html#lacm-avec-factominer"><i class="fa fa-check"></i><b>6.3</b> L’ACM avec FactoMiner</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lacm.html"><a href="lacm.html#exemple-1"><i class="fa fa-check"></i><b>6.3.1</b> Exemple</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lacm.html"><a href="lacm.html#realisation-de-lacm"><i class="fa fa-check"></i><b>6.3.2</b> Réalisation de l’ACM</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lacm.html"><a href="lacm.html#variables-supplementaires"><i class="fa fa-check"></i><b>6.3.3</b> Variables supplémentaires</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lacm.html"><a href="lacm.html#exercice-2"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classification-clustering.html"><a href="classification-clustering.html"><i class="fa fa-check"></i><b>7</b> Classification (clustering)</a><ul>
+<li class="chapter" data-level="7.1" data-path="classification-clustering.html"><a href="classification-clustering.html#les-k-moyennes"><i class="fa fa-check"></i><b>7.1</b> Les k-moyennes</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="classification-clustering.html"><a href="classification-clustering.html#principe"><i class="fa fa-check"></i><b>7.1.1</b> Principe</a></li>
+<li class="chapter" data-level="7.1.2" data-path="classification-clustering.html"><a href="classification-clustering.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>7.1.2</b> Mise en oeuvre</a></li>
+<li class="chapter" data-level="7.1.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils"><i class="fa fa-check"></i><b>7.1.3</b> Quelques conseils</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="classification-clustering.html"><a href="classification-clustering.html#la-classification-ascendante-hierarchique-cah"><i class="fa fa-check"></i><b>7.2</b> La classification ascendante hiérarchique (CAH)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="classification-clustering.html"><a href="classification-clustering.html#determination-du-nombre-de-classes"><i class="fa fa-check"></i><b>7.2.1</b> Détermination du nombre de classes</a></li>
+<li class="chapter" data-level="7.2.2" data-path="classification-clustering.html"><a href="classification-clustering.html#description-des-classes"><i class="fa fa-check"></i><b>7.2.2</b> Description des classes</a></li>
+<li class="chapter" data-level="7.2.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils-pratiques"><i class="fa fa-check"></i><b>7.2.3</b> Quelques conseils pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="classification-clustering.html"><a href="classification-clustering.html#exercice-3"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse des données multi-dimensionnelles</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lafc" class="section level1">
+<h1><span class="header-section-number">Chapitre 5</span> L’AFC</h1>
+<div id="principe-de-lafc" class="section level2">
+<h2><span class="header-section-number">5.1</span> Principe de l’AFC</h2>
+<p>L’AFC sert à analyser le lien entre deux variables qualitatives. On l’utilise quand le nombre de modalités des variables est tel que la lecture du tableau de contingence (comptage des effectifs d’individus dans les cases du tableau croisé) devient complexe, voire impossible.</p>
+<p>S’il y a indépendance etre les deux variables qualitatives, réaliser l’AFC n’a guère de sens <span class="math inline">\(\Rightarrow\)</span> commencer par un test du <span class="math inline">\(\chi^2\)</span>.</p>
+<p>On considère ici des variables qualitatives “pures” ou nominales. Si l’on utilise une variable ordinale (exemple : avec les modalités ‘petit’, ‘moyen’ et ‘grand’ codées 1, 2 et 3), l’ordre des modalités est perdu.</p>
+<p>Lors de la construction du tableau de contingence, pour chacune des variables, les modalités sont exclusives : chacun des individus possède une modalité et une seule pour chacune des deux variables. Les modalités avec des effectifs nuls sont écartées.</p>
+<p>Exemple d’une enquête réalisée au niveau national, dans laquelle on pose des questions avec quatre modalités possibles de réponses.</p>
+<center>
+<img src="images/tableau_contingence.png" />
+</center>
+<p>L’AFC permet simultanément de :</p>
+<ul>
+<li>Comparer les profils-lignes entre eux (les distributions de réponses entre les différentes régions).<br />
+</li>
+<li>Comparer les profils-colonnes entre eux (les distributions de régions parmi les réponses).<br />
+</li>
+<li>Repérer les cases du tableau de contingence où les effectifs observés <span class="math inline">\(n_{i,j}\)</span> sont nettement différents des effectifs théoriques (effectifs sous l’hypothèse d’indépendance) pour mettre en évidence les modalités <span class="math inline">\(i\)</span> de <span class="math inline">\(X\)</span> et <span class="math inline">\(j\)</span> de <span class="math inline">\(Y\)</span> qui tendent à être présentes simultanément (<span class="math inline">\(f_{i,j} &gt; p_{i,j}\)</span>) et celles qui tendent à s’exclure mutuellement (<span class="math inline">\(f_{i,j} &lt; p_{i,j}\)</span>).</li>
+</ul>
+<p>Remarque : statistique du <span class="math inline">\(\chi^2\)</span> <span class="math inline">\(\Rightarrow\)</span> module 3 “Statistiques descriptives”.</p>
+<p>L’AFC consiste donc à synthétiser un tableau de contingence trop grand. Au plan mathématique, elle revient à faire une ACP du tableau de contingence avec la métrique du <span class="math inline">\(\chi^2\)</span>.</p>
+<p>Dans le tableau de contingence, on continue à désigner les colonnes sous le nom de <em>variables</em> et les lignes sous le nom d’<em>individus</em>, afin de conserver un parallélisme dans les présentations de l’AFC et de l’ACP. Cependant, il faut garder en tête que les lignes, comme les colonnes, représentent les modalités des deux variables qui sont analysées, et qu’on désignera par la suite par <em>caractères</em>.</p>
+<p>L’inertie totale du tableau de contingence vaut <span class="math inline">\(\frac{\chi^2}{n}\)</span>, et, contrairement au cas de l’ACP, on peut représenter les <em>individus</em> et les <em>variables</em> sur le même graphique car l’espace des <em>individus</em> et l’espace des <em>variables</em> sont les mêmes.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> En <strong>ACP</strong>, on cherche à conserver au mieux la <strong>variance</strong> de la population ; en <strong>AFC</strong>, l’<strong>écart à l’indépendance</strong>.</p>
+<p>Pour que chacune des modalités des deux <em>caractères</em> soit correctement représentée dans l’analyse, il faut avoir des effectifs suffisants dans les cases du tableau de contingence. Cela peut signifier la nécessité d’exclure certaines modalités trop rares, ou de regrouper des modalités pour en augmenter les effectifs.</p>
+<p>Pour une explication en vidéo par l’auteur du package FactoMiner, <a href="https://www.youtube.com/watch?v=f_lgjXVdTAk">cliquer ici</a>.
+Pour un cours en pdf, rendez-vous sur <a href="http://factominer.free.fr/docs/cours_afc.pdf">cette page</a>.</p>
+</div>
+<div id="lafc-avec-factominer" class="section level2">
+<h2><span class="header-section-number">5.2</span> L’AFC avec FactoMiner</h2>
+<p>Un exemple est donné, dans lequel on veut savoir s’il existe un lien entre les caractéristiques des voitures immatriculées et l’endroit où elles le sont (le département).</p>
+<div id="donnees-utilisees-1" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Données utilisées</h3>
+<p>Il s’agit des <a href="http://www.statistiques.developpement-durable.gouv.fr/fileadmin/documents/Themes/Transports/Vehicules_routiers/Immatriculations/resultats_detailles/2015/immatriculations-2015-2ir2.xls">immatriculations des voitures particulières d’occasion par département, région et carrosserie</a>.</p>
+<p>Le fichier de départ a été converti au format <em>.csv</em>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">immat &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="dt">file =</span> <span class="st">&#39;data/AFC_immat.csv&#39;</span>, <span class="dt">dec=</span><span class="st">&#39;,&#39;</span>,</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">                    <span class="dt">header =</span> T, <span class="dt">encoding =</span> <span class="st">&quot;latin1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span> (<span class="dt">dep =</span> <span class="st">`</span><span class="dt">Départements</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span> (dep <span class="op">!=</span><span class="st"> &quot;Total&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span> (<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span>Total) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate_if</span> (is.numeric, <span class="kw">funs</span> (<span class="kw">replace</span> (., <span class="kw">is.na</span>(.), <span class="dv">0</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="st">  </span><span class="kw">column_to_rownames</span> (<span class="dt">var =</span> <span class="st">&quot;dep&quot;</span>)</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="kw">head</span> (immat)</a></code></pre></div>
+<pre><code>##                Break Cabriolet Conduite.intérieure
+## Bas-Rhin       19668      2184               74109
+## Haut-Rhin      14937      1676               56014
+## Dordogne        8171       944               33144
+## Gironde        28384      4221              117207
+## Landes          8762       878               32774
+## Lot-et-Garonne  6185       761               27195
+##                Véhicule.pour.handicapés Autres
+## Bas-Rhin                             14     54
+## Haut-Rhin                             6     48
+## Dordogne                              8     42
+## Gironde                              22    142
+## Landes                                5     56
+## Lot-et-Garonne                       11     36</code></pre>
+<p><strong>Attention : </strong>notez que dans cet exemple, la base de données est déjà sous forme de tableau de contingence : les lignes correspondent aux modalités du <em>caractère</em> “département” et les colonnes aux modalités <em>du caractère</em> “type de voiture”.</p>
+<p>Si l’on partait d’un classique tableau individus (en lignes) / variables (en colonnes), il faudra construire au préalable le tableau de contingence à l’aide de la fonction <code>table</code> (cf. module 2).</p>
+</div>
+<div id="realisation-de-lafc" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Réalisation de l’AFC</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">afc &lt;-<span class="st"> </span><span class="kw">CA</span> (immat, <span class="dt">graph =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">names</span> (afc)</a></code></pre></div>
+<pre><code>## [1] &quot;eig&quot;  &quot;call&quot; &quot;row&quot;  &quot;col&quot;  &quot;svd&quot;</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">summary</span> (afc)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## CA(X = immat, graph = FALSE) 
+## 
+## The chi square of independence between the two variables is equal to 22332.55 (p-value =  0 ).
+## 
+## Eigenvalues
+##                        Dim.1   Dim.2   Dim.3   Dim.4
+## Variance               0.001   0.001   0.000   0.000
+## % of var.             56.219  37.398   5.549   0.834
+## Cumulative % of var.  56.219  93.617  99.166 100.000
+## 
+## Rows (the 10 first)
+##                            Iner*1000    Dim.1    ctr   cos2    Dim.2
+## Bas-Rhin                 |     0.027 |  0.052  2.083  0.894 |  0.008
+## Haut-Rhin                |     0.022 |  0.054  1.708  0.897 |  0.011
+## Dordogne                 |     0.003 |  0.026  0.221  0.947 |  0.003
+## Gironde                  |     0.025 |  0.012  0.180  0.084 |  0.041
+## Landes                   |     0.015 |  0.062  1.287  0.955 | -0.002
+## Lot-et-Garonne           |     0.001 | -0.005  0.006  0.072 | -0.002
+## Pyrénées-Atlantiques     |     0.025 |  0.066  2.141  0.984 | -0.007
+## Allier                   |     0.002 | -0.004  0.005  0.024 | -0.027
+## Cantal                   |     0.029 |  0.103  1.119  0.438 | -0.053
+## Haute-Loire              |     0.026 |  0.082  1.145  0.500 | -0.040
+##                             ctr   cos2    Dim.3    ctr   cos2  
+## Bas-Rhin                  0.082  0.023 | -0.015  1.772  0.075 |
+## Haut-Rhin                 0.109  0.038 | -0.011  0.768  0.040 |
+## Dordogne                  0.004  0.012 |  0.005  0.088  0.037 |
+## Gironde                   2.946  0.911 |  0.002  0.066  0.003 |
+## Landes                    0.002  0.001 |  0.013  0.557  0.041 |
+## Lot-et-Garonne            0.001  0.008 |  0.011  0.343  0.399 |
+## Pyrénées-Atlantiques      0.034  0.010 |  0.004  0.094  0.004 |
+## Allier                    0.261  0.873 |  0.001  0.003  0.001 |
+## Cantal                    0.434  0.113 |  0.105 11.599  0.448 |
+## Haute-Loire               0.406  0.118 |  0.071  8.864  0.382 |
+## 
+## Columns
+##                            Iner*1000    Dim.1    ctr   cos2    Dim.2
+## Break                    |     0.903 |  0.070 78.767  0.994 |  0.004
+## Cabriolet                |     0.746 | -0.034  2.293  0.035 |  0.179
+## Conduite.intérieure      |     0.218 | -0.015 16.524  0.864 | -0.006
+## Véhicule.pour.handicapés |     0.019 |  0.023  0.008  0.005 |  0.002
+## Autres                   |     0.141 |  0.193  2.408  0.194 |  0.094
+##                             ctr   cos2    Dim.3    ctr   cos2  
+## Break                     0.362  0.003 | -0.004  2.386  0.003 |
+## Cabriolet                94.927  0.964 | -0.005  0.515  0.001 |
+## Conduite.intérieure       3.842  0.134 |  0.001  0.344  0.002 |
+## Véhicule.pour.handicapés  0.000  0.000 | -0.106  1.732  0.105 |
+## Autres                    0.868  0.047 |  0.381 95.022  0.757 |</code></pre>
+<p>La structure de l’objet est très comparable à l’objet ACP.</p>
+</div>
+<div id="nombre-daxes-a-retenir-1" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Nombre d’axes à retenir</h3>
+<p>Le choix du nombre d’axes se fait exactement comme pour l’ACP. Ici on en retiendrait… Combien ? (dur…)</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">eig &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (afc<span class="op">$</span>eig)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">mm &lt;-<span class="st"> </span><span class="kw">mean</span> (eig<span class="op">$</span><span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="kw">ggplot</span> (eig, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(eig), <span class="dt">weight =</span> <span class="st">`</span><span class="dt">percentage of variance</span><span class="st">`</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_bar</span> (<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="st">  </span><span class="kw">coord_flip</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="st">  </span><span class="kw">ggtitle</span> (<span class="st">&quot;Eboulis des valeurs propres&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.title =</span> <span class="kw">element_blank</span> ())<span class="op">+</span></a>
+<a class="sourceLine" id="cb40-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> mm)</a></code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-21-1.png" width="576" /></p>
+</div>
+<div id="interpretation-des-axes" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Interprétation des axes</h3>
+<p>Pour l’interprétation des positions des <em>individus</em> et des <em>variables</em> (dans le même espace), on retiendra :</p>
+<ul>
+<li>les <em>variables</em> et <em>individus</em> interprétables sont ceux qui sont éloignés su centre du nuage de points.</li>
+<li>La proximité de deux modalités (bien projetées) d’une même variable indique que les individus (au sens du tableau de départ) qui prennent ces modalités ont des profils similaires sur le reste des autres variables.</li>
+<li>La proximité de deux modalités de variables différentes tend à indiquer que ce sont (à peu près) les mêmes individus qui prennent ces modalités, mais ce n’est pas toujours le cas.</li>
+</ul>
+<p>Si une modalité soit graphiquement très éloignée des autres, c’est qu’elle possède dans le tableau de départ un profil tout à fait spécifique. Sa position dans le plan factoriel étant isolée, elle empêche une étude précise des positions des autres points qui se retrouvent « en paquet ». Il est recommandé dans ce cas de rendre cette modalité inactive (on la met en individu et variable supplémentaire), ce qui revient à réaliser l’AFC du tableau de départ en éliminant la ligne ou la colonne représentant cette modalité.</p>
+<p>Remarque : La position moyenne des modalités de chacun des <em>caractères</em> est au centre du plan factoriel, quel que soit le couple d’axes représenté (ex : <span class="math inline">\(F_1, F_2\)</span>).</p>
+<p>On peut s’aider des graphiques avec sélections des profils lignes/colonne selon leur contribution et qualité de représentation.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">plot.CA</span> (afc, <span class="dt">selectRow =</span> <span class="st">&quot;contrib 10&quot;</span>)  </a></code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_ca-1.png" width="576" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">plot.CA</span> (afc, <span class="dt">selectRow =</span> <span class="st">&quot;cos2 10&quot;</span>)  </a></code></pre></div>
+<p><img src="exploration_avancee_files/figure-html/plot_ca-2.png" width="576" /></p>
+<p>Et approfondir avec dimdesc et le contenu des éléments de l’objet résultat :</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">dimdesc</span> (afc, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">a<span class="op">$</span><span class="st">`</span><span class="dt">Dim 1</span><span class="st">`</span><span class="op">$</span>col</a></code></pre></div>
+<pre><code>##                                coord
+## Cabriolet                -0.03406597
+## Conduite.intérieure      -0.01541153
+## Véhicule.pour.handicapés  0.02294535
+## Break                     0.06990982
+## Autres                    0.19286587</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">a<span class="op">$</span><span class="st">`</span><span class="dt">Dim 2</span><span class="st">`</span><span class="op">$</span>col</a></code></pre></div>
+<pre><code>##                                 coord
+## Conduite.intérieure      -0.006061409
+## Véhicule.pour.handicapés  0.001527471
+## Break                     0.003865634
+## Autres                    0.094473008
+## Cabriolet                 0.178757047</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">print</span> (a)</a></code></pre></div>
+<pre><code>## $`Dim 1`
+## $`Dim 1`$row
+##                                 coord
+## Seine-Saint-Denis       -1.205028e-01
+## Val-d&#39;Oise              -8.791869e-02
+## Val-de-Marne            -7.432990e-02
+## Essonne                 -7.226047e-02
+## Seine-et-Marne          -5.477814e-02
+## Nord                    -5.037039e-02
+## Seine-Maritime          -4.377076e-02
+## Alpes-Maritimes         -4.250122e-02
+## Pas-de-Calais           -4.224495e-02
+## Bouches-du-Rhône        -3.837182e-02
+## Pyrénées-Orientales     -3.374121e-02
+## Yvelines                -3.344429e-02
+## Aisne                   -3.149320e-02
+## Aube                    -3.143509e-02
+## Eure-et-Loir            -3.128713e-02
+## Eure                    -2.676634e-02
+## Loiret                  -2.590359e-02
+## Ardennes                -2.143561e-02
+## Gard                    -2.139036e-02
+## Vaucluse                -2.035721e-02
+## Loire                   -1.913524e-02
+## Meurthe-et-Moselle      -1.910311e-02
+## Orne                    -1.836443e-02
+## Hérault                 -1.761927e-02
+## Oise                    -1.571449e-02
+## Var                     -1.529432e-02
+## Sarthe                  -1.379318e-02
+## Rhône                   -1.261760e-02
+## Tarn-et-Garonne         -1.201273e-02
+## Indre-et-Loire          -1.059448e-02
+## Territoire de Belfort   -7.278324e-03
+## Lot-et-Garonne          -4.724635e-03
+## Allier                  -4.394207e-03
+## Haute-Marne             -3.502886e-03
+## Loir-et-Cher            -3.140012e-03
+## Yonne                   -2.568009e-03
+## Somme                   -2.507620e-03
+## Cher                    -2.331563e-03
+## Vienne                  -1.466094e-03
+## Haute-Garonne           -5.090963e-05
+##                         -3.012981e-31
+## Puy-de-Dôme              1.540346e-03
+## Drôme                    1.877008e-03
+## Haute-Vienne             3.743229e-03
+## Marne                    3.815582e-03
+## Nièvre                   5.565141e-03
+## Isère                    6.018624e-03
+## Moselle                  6.172150e-03
+## Hauts-de-Seine           6.554576e-03
+## Meuse                    7.385971e-03
+## Calvados                 8.469428e-03
+## Maine-et-Loire           1.144199e-02
+## Vosges                   1.197765e-02
+## Gironde                  1.226144e-02
+## Indre                    1.231941e-02
+## Charente                 1.256245e-02
+## Aude                     1.339194e-02
+## Saône-et-Loire           1.489107e-02
+## Mayenne                  1.558344e-02
+## Ardèche                  1.559999e-02
+## Haute-Saône              1.777123e-02
+## Loire-Atlantique         1.805983e-02
+## Tarn                     1.922924e-02
+## Dordogne                 2.559593e-02
+## Charente-Maritime        2.593709e-02
+## Corrèze                  3.210698e-02
+## Côte-d&#39;Or                3.809917e-02
+## Gers                     4.148141e-02
+## Creuse                   4.343192e-02
+## Deux-Sèvres              4.501198e-02
+## Ain                      4.622389e-02
+## Ille-et-Vilaine          4.712467e-02
+## Hautes-Pyrénées          4.859568e-02
+## Ariège                   4.994071e-02
+## Lot                      5.043305e-02
+## Alpes-de-Haute-Provence  5.053949e-02
+## Doubs                    5.105133e-02
+## Paris                    5.137144e-02
+## Corse-du-Sud             5.192945e-02
+## Bas-Rhin                 5.218902e-02
+## Vendée                   5.295559e-02
+## Aveyron                  5.356964e-02
+## Côtes-d&#39;Armor            5.390284e-02
+## Haut-Rhin                5.432006e-02
+## Manche                   5.969410e-02
+## Haute-Corse              6.131374e-02
+## Landes                   6.168946e-02
+## Pyrénées-Atlantiques     6.557587e-02
+## Jura                     6.747017e-02
+## Morbihan                 7.773702e-02
+## Haute-Loire              8.176348e-02
+## Finistère                8.693922e-02
+## Cantal                   1.034789e-01
+## Savoie                   1.231039e-01
+## Haute-Savoie             1.430532e-01
+## Lozère                   1.445917e-01
+## Hautes-Alpes             1.740661e-01
+## 
+## $`Dim 1`$col
+##                                coord
+## Cabriolet                -0.03406597
+## Conduite.intérieure      -0.01541153
+## Véhicule.pour.handicapés  0.02294535
+## Break                     0.06990982
+## Autres                    0.19286587
+## 
+## 
+## $`Dim 2`
+## $`Dim 2`$row
+##                                 coord
+## Seine-Saint-Denis       -6.804845e-02
+## Lozère                  -6.282311e-02
+## Mayenne                 -5.786252e-02
+## Cantal                  -5.258330e-02
+## Finistère               -4.971712e-02
+## Côtes-d&#39;Armor           -4.484982e-02
+## Creuse                  -4.314707e-02
+## Maine-et-Loire          -4.273399e-02
+## Haute-Loire             -3.968751e-02
+## Ariège                  -3.734793e-02
+## Territoire de Belfort   -3.666758e-02
+## Haute-Saône             -3.610000e-02
+## Hautes-Pyrénées         -3.605016e-02
+## Nièvre                  -3.527796e-02
+## Orne                    -3.492388e-02
+## Doubs                   -3.457935e-02
+## Jura                    -3.357340e-02
+## Haute-Vienne            -3.048780e-02
+## Aveyron                 -3.037677e-02
+## Vosges                  -2.983557e-02
+## Isère                   -2.972866e-02
+## Aisne                   -2.949380e-02
+## Allier                  -2.653724e-02
+## Eure-et-Loir            -2.574538e-02
+## Val-de-Marne            -2.534338e-02
+## Loire                   -2.504104e-02
+## Yonne                   -2.473389e-02
+## Somme                   -2.456922e-02
+## Côte-d&#39;Or               -2.454563e-02
+## Val-d&#39;Oise              -2.391910e-02
+## Sarthe                  -2.357502e-02
+## Cher                    -2.332247e-02
+## Manche                  -2.164958e-02
+## Ille-et-Vilaine         -2.161899e-02
+## Vendée                  -2.137873e-02
+## Saône-et-Loire          -2.135809e-02
+## Morbihan                -2.133030e-02
+## Ardennes                -2.105406e-02
+## Deux-Sèvres             -2.101219e-02
+## Puy-de-Dôme             -2.096500e-02
+## Loir-et-Cher            -2.074057e-02
+## Essonne                 -2.066025e-02
+## Savoie                  -1.928556e-02
+## Indre                   -1.891997e-02
+## Oise                    -1.882057e-02
+## Meuse                   -1.701860e-02
+## Hautes-Alpes            -1.698177e-02
+## Rhône                   -1.587399e-02
+## Tarn                    -1.528299e-02
+## Aube                    -1.471184e-02
+## Loire-Atlantique        -1.400754e-02
+## Corrèze                 -1.174709e-02
+## Loiret                  -1.165232e-02
+## Vienne                  -1.004011e-02
+## Gers                    -9.023304e-03
+## Haute-Marne             -8.455006e-03
+## Pyrénées-Atlantiques    -6.728537e-03
+## Pas-de-Calais           -6.445579e-03
+## Tarn-et-Garonne         -6.081220e-03
+## Seine-et-Marne          -5.903842e-03
+## Nord                    -5.865414e-03
+## Ardèche                 -3.944466e-03
+## Ain                     -3.083734e-03
+## Landes                  -2.171074e-03
+## Marne                   -1.585396e-03
+## Lot-et-Garonne          -1.571293e-03
+## Meurthe-et-Moselle      -4.923831e-04
+##                          2.826051e-30
+## Indre-et-Loire           1.866924e-03
+## Dordogne                 2.930141e-03
+## Calvados                 4.672278e-03
+## Drôme                    5.589878e-03
+## Seine-Maritime           6.868601e-03
+## Alpes-de-Haute-Provence  6.926638e-03
+## Haute-Garonne            7.267337e-03
+## Lot                      7.784406e-03
+## Bas-Rhin                 8.453751e-03
+## Gard                     1.060292e-02
+## Haut-Rhin                1.117205e-02
+## Aude                     1.327454e-02
+## Haute-Corse              1.699308e-02
+## Bouches-du-Rhône         2.001680e-02
+## Yvelines                 2.046225e-02
+## Moselle                  2.055545e-02
+## Charente                 2.726250e-02
+## Eure                     2.982343e-02
+## Hérault                  3.131496e-02
+## Charente-Maritime        3.324311e-02
+## Haute-Savoie             3.426670e-02
+## Vaucluse                 3.743514e-02
+## Hauts-de-Seine           3.804606e-02
+## Gironde                  4.050476e-02
+## Pyrénées-Orientales      4.436732e-02
+## Corse-du-Sud             7.222577e-02
+## Var                      1.105449e-01
+## Paris                    1.424313e-01
+## Alpes-Maritimes          1.577608e-01
+## 
+## $`Dim 2`$col
+##                                 coord
+## Conduite.intérieure      -0.006061409
+## Véhicule.pour.handicapés  0.001527471
+## Break                     0.003865634
+## Autres                    0.094473008
+## Cabriolet                 0.178757047</code></pre>
+<p><strong>Interprétation de l’exemple</strong> :</p>
+<ul>
+<li>Les modalités fortement contributives à la formation des deux premiers axes ont presque toutes une bonne qualité de représentation (ce n’est pas toujours le cas).</li>
+<li>Concernant les modalités du “type de voiture”, on remarque une distinction nette entre les cabriolets d’un côté, et les “autres” d’un… autre côté.</li>
+<li>Concernant les modalités “département”, on remarque une opposition entre les départements du nord et de l’Île de France (quart sud-ouest), les Alpes Maritimes et le Var (quart nord ouest), mais également la Savoie et la Haute-Savoie (Est).</li>
+<li>Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les “autres” (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloignés des types “standard”. On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu’ils comptent peu des autres types).</li>
+<li>Les types conduite intérieure, break et véhicules pour handicapés sont proches du barycentre du nuage, ce qui en fait un type “standard”, sans appartenance géographique particulière.</li>
+</ul>
+</div>
+</div>
+<div id="exercice-1" class="section level2">
+<h2><span class="header-section-number">5.3</span> Exercice</h2>
+<p>Refaire pas à pas <a href="http://www.sthda.com/french/articles/38-methodes-des-composantes-principales-dans-r-guide-pratique/74-afc-analyse-factorielle-des-correspondances-avec-r-l-essentiel/">cet exercice</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lacp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lacm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-AFC.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["exploration_avancee.pdf", "exploration_avancee.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

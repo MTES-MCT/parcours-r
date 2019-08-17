@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 2 Les analyses multivariées | Analyse des données multi-dimensionnelles</title>
+  <meta name="description" content="Parcours de formation R - module 4" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 2 Les analyses multivariées | Analyse des données multi-dimensionnelles" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Parcours de formation R - module 4" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 2 Les analyses multivariées | Analyse des données multi-dimensionnelles" />
+  
+  <meta name="twitter:description" content="Parcours de formation R - module 4" />
+  
+
+<meta name="author" content="Vivien Roussez &amp; Pascal Irz" />
+
+
+<meta name="date" content="2019-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="bien-commencer.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Exploration avancée des données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectifs-du-module-4"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 4</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Les analyses multivariées</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#objectifs"><i class="fa fa-check"></i><b>2.1</b> Objectifs</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#comment-synthetiser"><i class="fa fa-check"></i><b>2.2</b> Comment synthétiser ?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#quelles-methodes"><i class="fa fa-check"></i><b>2.3</b> Quelles méthodes ?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#lien-entre-ces-methodes"><i class="fa fa-check"></i><b>2.4</b> Lien entre ces méthodes</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#notion-de-distance"><i class="fa fa-check"></i><b>2.5</b> Notion de distance</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#questions-a-se-poser"><i class="fa fa-check"></i><b>2.6</b> Questions à se poser</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#nature-des-variables"><i class="fa fa-check"></i><b>2.7</b> Nature des variables</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.7.1</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.7.2</b> Variables qualitatives</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#entre-les-deux"><i class="fa fa-check"></i><b>2.7.3</b> Entre les deux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#le-package-factominer"><i class="fa fa-check"></i><b>2.8</b> Le package FactoMineR</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>3</b> Bien commencer</a><ul>
+<li class="chapter" data-level="3.1" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>3.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="3.2" data-path="bien-commencer.html"><a href="bien-commencer.html#integrer-vos-donnees"><i class="fa fa-check"></i><b>3.2</b> Intégrer vos données</a></li>
+<li class="chapter" data-level="3.3" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>3.3</b> Créer votre arborescence de projet</a></li>
+<li class="chapter" data-level="3.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-necessaires"><i class="fa fa-check"></i><b>3.4</b> Activer les packages nécessaires</a></li>
+<li class="chapter" data-level="3.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>3.5</b> Bien structurer ses projets <em>data</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lacp.html"><a href="lacp.html"><i class="fa fa-check"></i><b>4</b> L’ACP</a><ul>
+<li class="chapter" data-level="4.1" data-path="lacp.html"><a href="lacp.html#principe-de-lacp"><i class="fa fa-check"></i><b>4.1</b> Principe de l’ACP</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="lacp.html"><a href="lacp.html#type-de-donnees"><i class="fa fa-check"></i><b>4.1.1</b> Type de données</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lacp.html"><a href="lacp.html#objectifs-1"><i class="fa fa-check"></i><b>4.1.2</b> Objectifs</a></li>
+<li class="chapter" data-level="4.1.3" data-path="lacp.html"><a href="lacp.html#methode"><i class="fa fa-check"></i><b>4.1.3</b> Méthode</a></li>
+<li class="chapter" data-level="4.1.4" data-path="lacp.html"><a href="lacp.html#centrer---reduire"><i class="fa fa-check"></i><b>4.1.4</b> Centrer - réduire ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lacp.html"><a href="lacp.html#lacp-avec-factominer"><i class="fa fa-check"></i><b>4.2</b> L’ACP avec FactoMiner</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lacp.html"><a href="lacp.html#ressources"><i class="fa fa-check"></i><b>4.2.1</b> Ressources</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lacp.html"><a href="lacp.html#exemple"><i class="fa fa-check"></i><b>4.2.2</b> Exemple</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lacp.html"><a href="lacp.html#reperer-un-effet-taille"><i class="fa fa-check"></i><b>4.2.3</b> Repérer un effet taille</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lacp.html"><a href="lacp.html#exercice"><i class="fa fa-check"></i><b>4.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lafc.html"><a href="lafc.html"><i class="fa fa-check"></i><b>5</b> L’AFC</a><ul>
+<li class="chapter" data-level="5.1" data-path="lafc.html"><a href="lafc.html#principe-de-lafc"><i class="fa fa-check"></i><b>5.1</b> Principe de l’AFC</a></li>
+<li class="chapter" data-level="5.2" data-path="lafc.html"><a href="lafc.html#lafc-avec-factominer"><i class="fa fa-check"></i><b>5.2</b> L’AFC avec FactoMiner</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="lafc.html"><a href="lafc.html#donnees-utilisees-1"><i class="fa fa-check"></i><b>5.2.1</b> Données utilisées</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lafc.html"><a href="lafc.html#realisation-de-lafc"><i class="fa fa-check"></i><b>5.2.2</b> Réalisation de l’AFC</a></li>
+<li class="chapter" data-level="5.2.3" data-path="lafc.html"><a href="lafc.html#nombre-daxes-a-retenir-1"><i class="fa fa-check"></i><b>5.2.3</b> Nombre d’axes à retenir</a></li>
+<li class="chapter" data-level="5.2.4" data-path="lafc.html"><a href="lafc.html#interpretation-des-axes"><i class="fa fa-check"></i><b>5.2.4</b> Interprétation des axes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lafc.html"><a href="lafc.html#exercice-1"><i class="fa fa-check"></i><b>5.3</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lacm.html"><a href="lacm.html"><i class="fa fa-check"></i><b>6</b> L’ACM</a><ul>
+<li class="chapter" data-level="6.1" data-path="lacm.html"><a href="lacm.html#principe-de-lacm"><i class="fa fa-check"></i><b>6.1</b> Principe de l’ACM</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="lacm.html"><a href="lacm.html#le-tableau-disjonctif-complet"><i class="fa fa-check"></i><b>6.1.1</b> Le tableau disjonctif complet</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lacm.html"><a href="lacm.html#ressources-1"><i class="fa fa-check"></i><b>6.2</b> Ressources</a></li>
+<li class="chapter" data-level="6.3" data-path="lacm.html"><a href="lacm.html#lacm-avec-factominer"><i class="fa fa-check"></i><b>6.3</b> L’ACM avec FactoMiner</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lacm.html"><a href="lacm.html#exemple-1"><i class="fa fa-check"></i><b>6.3.1</b> Exemple</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lacm.html"><a href="lacm.html#realisation-de-lacm"><i class="fa fa-check"></i><b>6.3.2</b> Réalisation de l’ACM</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lacm.html"><a href="lacm.html#variables-supplementaires"><i class="fa fa-check"></i><b>6.3.3</b> Variables supplémentaires</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lacm.html"><a href="lacm.html#exercice-2"><i class="fa fa-check"></i><b>6.4</b> Exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classification-clustering.html"><a href="classification-clustering.html"><i class="fa fa-check"></i><b>7</b> Classification (clustering)</a><ul>
+<li class="chapter" data-level="7.1" data-path="classification-clustering.html"><a href="classification-clustering.html#les-k-moyennes"><i class="fa fa-check"></i><b>7.1</b> Les k-moyennes</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="classification-clustering.html"><a href="classification-clustering.html#principe"><i class="fa fa-check"></i><b>7.1.1</b> Principe</a></li>
+<li class="chapter" data-level="7.1.2" data-path="classification-clustering.html"><a href="classification-clustering.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>7.1.2</b> Mise en oeuvre</a></li>
+<li class="chapter" data-level="7.1.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils"><i class="fa fa-check"></i><b>7.1.3</b> Quelques conseils</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="classification-clustering.html"><a href="classification-clustering.html#la-classification-ascendante-hierarchique-cah"><i class="fa fa-check"></i><b>7.2</b> La classification ascendante hiérarchique (CAH)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="classification-clustering.html"><a href="classification-clustering.html#determination-du-nombre-de-classes"><i class="fa fa-check"></i><b>7.2.1</b> Détermination du nombre de classes</a></li>
+<li class="chapter" data-level="7.2.2" data-path="classification-clustering.html"><a href="classification-clustering.html#description-des-classes"><i class="fa fa-check"></i><b>7.2.2</b> Description des classes</a></li>
+<li class="chapter" data-level="7.2.3" data-path="classification-clustering.html"><a href="classification-clustering.html#quelques-conseils-pratiques"><i class="fa fa-check"></i><b>7.2.3</b> Quelques conseils pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="classification-clustering.html"><a href="classification-clustering.html#exercice-3"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse des données multi-dimensionnelles</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapitre 2</span> Les analyses multivariées</h1>
+<div id="objectifs" class="section level2">
+<h2><span class="header-section-number">2.1</span> Objectifs</h2>
+<p>On dispose d’un grand volume de données :</p>
+<ul>
+<li><span class="math inline">\(n\)</span> individus</li>
+<li><span class="math inline">\(p\)</span> variables, avec <span class="math inline">\(p&gt;2\)</span>, potentiellement de natures différentes (qualitatives, quantitatives, binaires…)</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> On ne peut pas examiner tous les croisements des variables 2 à 2.</p>
+<p>L’analyse multidimensionelle permet de croiser toutes les variables simultanément et de synthétiser l’information.</p>
+<p><strong>Les méthodes présentées ici entrent dans la famille des statistiques exploratoires, très utiles pour défricher certains jeux de données. Par contre, en général elles ne permettent pas directement de tester des hypothèses et encore moins d’inférer des causalités. </strong></p>
+</div>
+<div id="comment-synthetiser" class="section level2">
+<h2><span class="header-section-number">2.2</span> Comment synthétiser ?</h2>
+<ul>
+<li>On souhaite passer d’un espace trop grand, non visualisable (<span class="math inline">\(p\)</span> dimensions) à une dimension plus petite.</li>
+<li>Mais on souhaite conserver l’essentiel de la variabilité entre individus <span class="math inline">\(\Rightarrow\)</span> Concept <strong>d’inertie du nuage de points</strong>.</li>
+</ul>
+<p><strong>Solution</strong> : On construit un nouvel espace, dans lequel l’inertie est concentrée sur les premiers axes factoriels. Autrement dit, on construit des nouvelles variables (qui définissent le nouvel espace), combinaisons linéaires des variables initiales, pour lesquelle l’inertie est maximale sur le nombre le plus réduit possible.</p>
+</div>
+<div id="quelles-methodes" class="section level2">
+<h2><span class="header-section-number">2.3</span> Quelles méthodes ?</h2>
+<p>Une première partie sera consacrée aux <strong>analyses factorielles</strong>. Ces dernières permettent de voir rapidement les corrélations ou liens entre variables dans le jeu de données, et de diminuer l’espace d’analyse en construisant des variables synthétiques. Quelques exemples :</p>
+<ul>
+<li><strong>ACP</strong> (analyse en composantes principales) : analyse de <span class="math inline">\(p\)</span> variables <em>quantitatives</em></li>
+<li><strong>AFC</strong> (analyse factorielle des correspondances) : analyse de 2 variable <em>qualitatives</em></li>
+<li><strong>ACM</strong> (analyse des correspondances multiples) : analyse de <span class="math inline">\(p\)</span> variable <em>qualitatives</em></li>
+<li>etc…</li>
+</ul>
+<p>Quand on emploie ces méthodes, la procédure à suivre est toujours la même :</p>
+<ul>
+<li>Implémentation de la méthode choisie <span class="math inline">\(\rightarrow\)</span> création d’un objet R.</li>
+<li>Choix du nombre de variables synthétiques retenues.</li>
+<li>Interprétation des résultats :
+<ul>
+<li>Comment sont corrélées les variables initiales ?</li>
+<li>Quel sens puis-je donner à mes variables synthétiques ?</li>
+<li>Est-ce que des groupes d’individus se dégagent ?</li>
+</ul></li>
+</ul>
+<p>On verra enfin deux méthodes de classification (attention pour vos recherches en anglais : <em>clustering</em> est le terme correspondant ; <em>classification</em> fait référence aux algorithmes de discrimination). Ces méthodes visent à regrouper <span class="math inline">\(n\)</span> individus en <span class="math inline">\(k\)</span> classes, à partir de <span class="math inline">\(p\)</span> variables (continues ou qualitatives). Quelques exemples :</p>
+<ul>
+<li><strong>CAH</strong> (classification ascendante hiérarchique)</li>
+<li><strong>K-moyennes</strong> ou “nuées dynamiques”</li>
+<li>DBscan</li>
+<li>X-means</li>
+</ul>
+<p>Une ressource inestimable pour les méthodes de <em>clustering</em> (et le machine learning en général) : <a href="http://scikit-learn.org/stable/modules/clustering.html#clustering">Page de Scikit-lean</a>.</p>
+</div>
+<div id="lien-entre-ces-methodes" class="section level2">
+<h2><span class="header-section-number">2.4</span> Lien entre ces méthodes</h2>
+<ul>
+<li>Toutes visent à diminuer la dimension de l’espace d’analyse et à résumer au mieux l’information.</li>
+<li>Elles se basent toutes sur le critère d’inertie, autrement dit sur l’hétérogénéité des individus.</li>
+<li>Pour toutes il faut choisir le nombre de variables (ou de classes) à retenir.</li>
+<li>Les analyses factorielles permettent de repérer les variables qui permettent le plus de résumer l’information.</li>
+<li>La classification permet de regrouper les individus aux caractéristiques proches. C’est la méthode la plus synthétique, donc la plus réductrice.</li>
+<li>Il est souvent utile d’utiliser une analyse factorielle + une méthode de partitionnement en complément pour bien comprendre l’information contenue dans les données.</li>
+</ul>
+</div>
+<div id="notion-de-distance" class="section level2">
+<h2><span class="header-section-number">2.5</span> Notion de distance</h2>
+<p>On parle de proximité entre les individus <span class="math inline">\(\Rightarrow\)</span> comment la mesurer ? Par une distance.</p>
+<p>Exemple de la distance euclidienne en 3D : <span class="math inline">\(D = \sqrt{(x_{b}-x_{a})^2+(y_{b}-y_{a})^2+(z_{b}-z_{a})^2}\)</span></p>
+<p>Il existe de nombreuses autres distances qui répondent à différents usages. En restant dans le domaine des distances géographiques, il existe par exemple la distance orthodromique, utilisée par les marins, qui est la plus courte à la surface du globe terrestre entre deux points (calculable avec les packages <a href="https://cran.r-project.org/web/packages/geosphere/geosphere.pdf">geosphere</a> ou <a href="https://cran.r-project.org/web/packages/fields/fields.pdf">fields</a>), ou la distance curviligne le long d’un réseau hydrographique utilisée par les hydrologues (calculable avec le <a href="https://cran.r-project.org/web/packages/riverdist/riverdist.pdf">package riverdist</a>).</p>
+<p>En génétique des populations, on utilise la distance génétique pour mesurer le degré de dissemblance entre deux génomes.</p>
+<p>En écologie des communautés, l’indice de Jaccard permet de comparer la composition en espèces de deux communautés A et B. C’est le pourcentage du nombre total d’espèces présentes dans au moins un des échantillons qui est commun aux deux échantillons :</p>
+<p><span class="math inline">\(J(A,B) = \frac{|A \cap B|}{|A \cup B|}\)</span></p>
+<center>
+<img src="images/jaccard.png" style="width:50.0%" />
+</center>
+<p>C’est donc un indice de proximité qui varie de 0% (aucune espèce n’est commune aux deux échantillons) à 100% (toutes les espèces sont communes à A et à B).</p>
+<p>La distance de Jaccard est <span class="math inline">\(D_j = 1 - J\)</span>.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Il existe de nombreuses autres distances correspondant à différents usages et métiers.</p>
+<p>En statistiques, on est amené à utiliser des distances “exotiques” en plus de la distance euclidienne et de la distance de Jaccard : Distance du <span class="math inline">\({\chi}^2\)</span> (en AFC et ACM), Mahalanobis, Bray-Curtis …</p>
+</div>
+<div id="questions-a-se-poser" class="section level2">
+<h2><span class="header-section-number">2.6</span> Questions à se poser</h2>
+<p>Mon objectif est de :</p>
+<ol style="list-style-type: decimal">
+<li>Déterminer une typologie <span class="math inline">\(\Rightarrow\)</span> classification / partitionnement.</li>
+<li>Explorer des liens entre variables et entre individus <span class="math inline">\(\Rightarrow\)</span> analyses factorielles.</li>
+</ol>
+<p>Puis, si l’on est dans le cas n°2, <a href="https://youtu.be/aiqGyLGrQ48">cette petite vidéo</a> (en anglais, mais l’accent de l’auteur aide à la compréhension) donne un rapide aperçu des questions à se poser avant de se lancer dans les analyses. On peut la résumer ainsi :</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Que représente mon tableau de données ?
+<ul>
+<li>Un tableau de contingence <span class="math inline">\(\Rightarrow\)</span> AFC</li>
+<li>Un tableau de <span class="math inline">\(n\)</span> individus x <span class="math inline">\(p\)</span> variables <span class="math inline">\(\Rightarrow\)</span> aller au point 4.</li>
+</ul></li>
+<li><p>Quels sont les éléments (lignes, colonnes) qui seront “actifs”, c’est-à-dire qui participeront à la constitution des axes, donc à la détermination des distances entre les individus ? Les autres éléments, dits “supplémentaires”, pourront être positionnés après coup sur les axes.</p></li>
+<li>Les variables sont-elles quantitatives ou qualitatives ?
+<ul>
+<li>Quantitatives <span class="math inline">\(\Rightarrow\)</span> ACP</li>
+<li>Qualitatives, 2 variables et tableau de contingence <span class="math inline">\(\Rightarrow\)</span> AFC</li>
+<li>Qualitatives, autres cas <span class="math inline">\(\Rightarrow\)</span> ACM</li>
+</ul></li>
+<li><p>Si l’on est dans le cas de l’ACP, doit-on standardiser les variables ?</p></li>
+<li><p>Y a-t-il des valeurs manquantes dans le tableau à analyses ? Si oui, comment les gérer ?</p></li>
+</ol>
+</div>
+<div id="nature-des-variables" class="section level2">
+<h2><span class="header-section-number">2.7</span> Nature des variables</h2>
+<p>On distingue les variables qualitatives des variables quantitatives. Cependant cette distinction n’est pas absolument évidente.</p>
+<div id="variables-quantitatives" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Variables quantitatives</h3>
+<p>Une variable <strong>quantitative</strong> permet de mesurer une grandeur (quantité). Elle peut être :</p>
+<ul>
+<li><p><strong>discrète</strong> (un nombre fini de valeurs possibles). <em>Exemple : un nombre de logements</em></p></li>
+<li><p><strong>continue</strong> (<em>a priori</em>, toutes les valeurs possibles). <em>Exemple : une taille, une surface, un revenu</em></p></li>
+</ul>
+</div>
+<div id="variables-qualitatives" class="section level3">
+<h3><span class="header-section-number">2.7.2</span> Variables qualitatives</h3>
+<p>Une variable <strong>qualitative</strong> indique des caractéristiques qui ne sont pas des quantités. Les différentes valeurs que peut prendre cette variable sont appelées les catégories ou modalités (<code>levels</code> dans R). Elle peut être :</p>
+<ul>
+<li><p><strong>ordonnée</strong> (exprimer un ordre). <em>Exemple : “petit - moyen - grand”</em></p></li>
+<li><p><strong>non ordonnée</strong>. <em>Exemple : une couleur, un groupe sanguin…</em></p></li>
+</ul>
+</div>
+<div id="entre-les-deux" class="section level3">
+<h3><span class="header-section-number">2.7.3</span> Entre les deux</h3>
+<p>Les variables binaires (ou boléennes) peuvent être considérées soit comme quantitatives, soit comme qualitatives.</p>
+<p>Les variables ordinales peuvent être codées quantitativement, comme par exemple un indice de satisfaction dans une enquête :
+- 0 : Pas satisfait du tout
+- 1 : Plutôt pas satisfait
+- 2 : Plutôt satisfait
+- 3 : Très satisfait
+Dans un tel cas, ce n’est pas très élégant car ça dépebd du codage choisi, mais on peut calculer des indices de satisfaction “moyens” par exemple pour comparer des groupes.</p>
+<p>A l’inverse, on peut discrétiser une variable quantitative pour la transformer en variable qualitative, avec la fonction <code>cut</code> et en précisant les bornes du découpage. En discrétisant, on perd une part de l’information (l’information intra-classe), donc c’est à éviter autant que possible en privilégiant les méthodes applicables aux variables quantitatives.</p>
+</div>
+</div>
+<div id="le-package-factominer" class="section level2">
+<h2><span class="header-section-number">2.8</span> Le package FactoMineR</h2>
+<p>Il existe de nombreux packages R pour les analyses multivariées (ex : ade4, vegan, cluster, Hmisc …). Il a bien fallu choisir.</p>
+<p>Le package <code>FactoMineR</code> est décrit dans <a href="https://www.jstatsoft.org/index.php/jss/article/view/v025i01/v25i01.pdf">cet article du J. Stat. Software de 2008</a>. Il a donc fait ses preuves. Il est très employé : en décembre 2018, <a href="">l’article est cité plus de 1800 fois depuis 2008 dans Google Scholar</a><a href="https://scholar.google.fr/scholar?as_q=factominer&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=husson&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;hl=fr&amp;as_sdt=0%2C5">https://scholar.google.fr/scholar?as_q=factominer&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=husson&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;hl=fr&amp;as_sdt=0%2C5</a>.</p>
+<p>Il permet de réaliser toutes les analyses multivariées usuelles et fournit de nombreuses aides graphiques à l’interprétation <span class="math inline">\(\Rightarrow\)</span> “école française de l’analyse multivariée”.</p>
+<p>Deux de ses fonctionnalités sont particulièrement intéressantes :</p>
+<ul>
+<li>La possibilité de projeter des variables ou des individus supplémentaires.</li>
+<li>La simplicité d’utilisation avec le package <a href="http://math.agrocampus-ouest.fr/infoglueDeliverLive/developpement/missMDA">missMDA</a> pour imputer les valeurs manquantes.</li>
+</ul>
+<p>La documentation associée est très riche, dont une bonne partie en français. Il y a en particulier :</p>
+<ul>
+<li><a href="http://factominer.free.fr/">Un site web</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLnZgp6epRBbTsZEFXi_p6W48HhNyqwxIu">Des tutos en vidéo</a></li>
+</ul>
+<p>Il existe un module complémentaire pour améliorer les graphiques de sortie : <a href="http://factominer.free.fr/graphs/factoshiny-fr.html">Factoshiny</a>.</p>
+<p>La plupart des méthodes qui ne sont pas comprises dans <code>FactoMineR</code> peuvent être mises en oeuvre avec le package <code>ade4</code>, en particulier pour l’analyse discriminante et les analyses à plusieurs tableaux (co-inertie, ACP sur variables instrumentales, analyse canonique des correspondences, analyse RLQ).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bien-commencer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["exploration_avancee.pdf", "exploration_avancee.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

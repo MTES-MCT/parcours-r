@@ -1,7 +1,7 @@
 Package: Parcours-R
 Type: Book
 Title: Formations à R
-Version: 0.0.1
+Version: 0.0.2
 Imports: rmarkdown, htmltools, tidyverse, cartography, sf, GGally, dplyr, plotly, bookdown, RcppRoll, DT, RPostgreSQL, rsdmx, XML
 License: MIT
 Description: Valise pédagogique pour la formation à R

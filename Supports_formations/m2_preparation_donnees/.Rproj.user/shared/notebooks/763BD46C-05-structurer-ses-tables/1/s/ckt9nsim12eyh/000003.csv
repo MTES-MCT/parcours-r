@@ -1,7 +1,0 @@
-"0","sitadel<-read_excel(""../data/ROES_201702.xls"",""AUT_REG"") %>%"
-"0","  mutate(ANNEE=str_sub(date,1,4)) %>%"
-"0","  group_by(REG,ANNEE) %>%"
-"0","  summarise_if(is.numeric,funs(sum(.,na.rm=T))) %>%"
-"0","  mutate_if(is.numeric,funs(evo=100*./lag(.)-100)) %>%"
-"0","  select(REG,ANNEE,log_AUT_evo)"
-"0","sitadel %>% spread(ANNEE,log_AUT_evo,sep=""_"")"

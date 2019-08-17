@@ -22,4 +22,7 @@ cd ./Supports_formations/m4_analyse_donnees/
 Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
 cd ../..
 
-
+# Compilation du module 4
+cd ./Supports_formations/m5_valorisation_des_donnees/
+Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
+cd ../..

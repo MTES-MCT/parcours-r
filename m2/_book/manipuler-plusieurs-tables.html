@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 6 Manipuler plusieurs tables | Préparer ses données avec R et le Tidyverse</title>
+  <meta name="description" content="Formation R à la data préparation" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 6 Manipuler plusieurs tables | Préparer ses données avec R et le Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Formation R à la data préparation" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 6 Manipuler plusieurs tables | Préparer ses données avec R et le Tidyverse" />
+  
+  <meta name="twitter:description" content="Formation R à la data préparation" />
+  
+
+<meta name="author" content="Maël Theulière &amp; Bruno Terseur" />
+
+
+<meta name="date" content="2019-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="manipuler-des-donnees.html">
+<link rel="next" href="structurer-ses-tables.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+
+<li><p style="text-align:center;"><img src="https://www.alerte-sante-environnement-deontologie.fr/IMG/siteon0.svg?1550857332" style="width:150px;"/></p></li><li><a href="./">Préparer ses données</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#le-parcours-de-formation"><i class="fa fa-check"></i><b>1.1</b> Le parcours de formation</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#objectifs-du-module-2"><i class="fa fa-check"></i><b>1.2</b> Objectifs du module 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="le-tidyverse.html"><a href="le-tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
+<li class="chapter" data-level="2.1" data-path="le-tidyverse.html"><a href="le-tidyverse.html#presentation-des-packages"><i class="fa fa-check"></i><b>2.1</b> Présentation des packages</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="le-tidyverse.html"><a href="le-tidyverse.html#des-packages-pour-lire-des-donnees"><i class="fa fa-check"></i><b>2.1.1</b> Des packages pour lire des données</a></li>
+<li class="chapter" data-level="2.1.2" data-path="le-tidyverse.html"><a href="le-tidyverse.html#des-packages-pour-manipuler-des-donnees"><i class="fa fa-check"></i><b>2.1.2</b> Des packages pour manipuler des données</a></li>
+<li class="chapter" data-level="2.1.3" data-path="le-tidyverse.html"><a href="le-tidyverse.html#des-packages-pour-nettoyer-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Des packages pour nettoyer des données</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="le-tidyverse.html"><a href="le-tidyverse.html#les-specificites-du-tidyverse"><i class="fa fa-check"></i><b>2.2</b> Les spécificités du tidyverse</a></li>
+<li class="chapter" data-level="2.3" data-path="le-tidyverse.html"><a href="le-tidyverse.html#dautres-approches-possibles"><i class="fa fa-check"></i><b>2.3</b> D’autres approches possibles</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>3</b> Bien commencer</a><ul>
+<li class="chapter" data-level="3.1" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>3.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="3.2" data-path="bien-commencer.html"><a href="bien-commencer.html#integrer-vos-donnees"><i class="fa fa-check"></i><b>3.2</b> Intégrer vos données</a></li>
+<li class="chapter" data-level="3.3" data-path="bien-commencer.html"><a href="bien-commencer.html#creer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>3.3</b> Créer votre arborescence de projet</a></li>
+<li class="chapter" data-level="3.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-necessaires"><i class="fa fa-check"></i><b>3.4</b> Activer les packages nécessaires</a></li>
+<li class="chapter" data-level="3.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>3.5</b> Bien structurer ses projets data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html"><i class="fa fa-check"></i><b>4</b> Lire des données</a><ul>
+<li class="chapter" data-level="4.1" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#readxl-lire-des-donnees-excel"><i class="fa fa-check"></i><b>4.1</b> readxl : lire des données Excel</a></li>
+<li class="chapter" data-level="4.2" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#read_delim-lire-des-fichiers-plats"><i class="fa fa-check"></i><b>4.2</b> read_delim : lire des fichiers plats</a></li>
+<li class="chapter" data-level="4.3" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#telecharger-des-donnees-disponibles-sur-le-web"><i class="fa fa-check"></i><b>4.3</b> Télécharger des données disponibles sur le web</a></li>
+<li class="chapter" data-level="4.4" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#lire-des-fichiers-avec-une-dimension-spatiale"><i class="fa fa-check"></i><b>4.4</b> Lire des fichiers avec une dimension spatiale</a></li>
+<li class="chapter" data-level="4.5" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#lire-des-donnees-sous-postgresql"><i class="fa fa-check"></i><b>4.5</b> Lire des données sous PostgreSQL</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#lire-des-donnees-sous-postgresql-premiere-approche"><i class="fa fa-check"></i><b>4.5.1</b> Lire des données sous PostgreSQL : première approche</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#lire-des-donnees-sous-postgresql-seconde-approche"><i class="fa fa-check"></i><b>4.5.2</b> Lire des données sous PostgreSQL : seconde approche</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lire-des-donnees.html"><a href="lire-des-donnees.html#lire-des-donnees-du-webservice-insee"><i class="fa fa-check"></i><b>4.6</b> Lire des données du webservice Insee</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html"><i class="fa fa-check"></i><b>5</b> Manipuler des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#les-principes-des-fonctions-de-dplyr"><i class="fa fa-check"></i><b>5.1</b> Les principes des fonctions de <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.2" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#presentation-des-donnees"><i class="fa fa-check"></i><b>5.2</b> Présentation des données</a></li>
+<li class="chapter" data-level="5.3" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#chargement-des-donnees"><i class="fa fa-check"></i><b>5.3</b> Chargement des données</a></li>
+<li class="chapter" data-level="5.4" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#les-verbes-clefs-de-dplyr-pour-manipuler-une-table"><i class="fa fa-check"></i><b>5.4</b> Les verbes clefs de <code>dplyr</code> pour manipuler une table</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#selectionner-des-variables-select"><i class="fa fa-check"></i><b>5.4.1</b> Sélectionner des variables : <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#trier-une-table-arrange"><i class="fa fa-check"></i><b>5.4.2</b> Trier une table : <code>arrange()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#renommer-une-variable-rename"><i class="fa fa-check"></i><b>5.4.3</b> Renommer une variable : <code>rename()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#filter-une-table-filter"><i class="fa fa-check"></i><b>5.4.4</b> Filter une table : <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#modifierrajouter-une-variable-mutate"><i class="fa fa-check"></i><b>5.4.5</b> Modifier/rajouter une variable : <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.6" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#extraire-un-vecteur-pull"><i class="fa fa-check"></i><b>5.4.6</b> Extraire un vecteur : <code>pull()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#la-boite-a-outils-pour-creer-et-modifier-des-variables-avec-r"><i class="fa fa-check"></i><b>5.5</b> La boîte à outils pour créer et modifier des variables avec R</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#manipuler-des-variables-numeriques"><i class="fa fa-check"></i><b>5.5.1</b> Manipuler des variables numériques</a></li>
+<li class="chapter" data-level="5.5.2" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#exercice-les-donnees-mensuelles-sitadel"><i class="fa fa-check"></i><b>5.5.2</b> Exercice : Les données mensuelles sitadel</a></li>
+<li class="chapter" data-level="5.5.3" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#manipuler-des-dates"><i class="fa fa-check"></i><b>5.5.3</b> Manipuler des dates</a></li>
+<li class="chapter" data-level="5.5.4" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#manipuler-des-chaines-de-caracteres"><i class="fa fa-check"></i><b>5.5.4</b> Manipuler des chaînes de caractères</a></li>
+<li class="chapter" data-level="5.5.5" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#manipuler-des-variables-factorielles-qualitatives"><i class="fa fa-check"></i><b>5.5.5</b> Manipuler des variables factorielles (=qualitatives)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#aggreger-des-donnees-summarise"><i class="fa fa-check"></i><b>5.6</b> Aggréger des données : <code>summarise()</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#quelques-fonctions-daggregations-utiles"><i class="fa fa-check"></i><b>5.6.1</b> Quelques fonctions d’aggrégations utiles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#aggreger-des-donnees-par-dimension-group_by"><i class="fa fa-check"></i><b>5.7</b> Aggréger des données par dimension : <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.8" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#le-pipe"><i class="fa fa-check"></i><b>5.8</b> Le pipe</a></li>
+<li class="chapter" data-level="5.9" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#la-magie-des-operations-groupees"><i class="fa fa-check"></i><b>5.9</b> La magie des opérations groupées</a></li>
+<li class="chapter" data-level="5.10" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#exercice"><i class="fa fa-check"></i><b>5.10</b> Exercice</a></li>
+<li class="chapter" data-level="5.11" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#exercice-1"><i class="fa fa-check"></i><b>5.11</b> Exercice</a></li>
+<li class="chapter" data-level="5.12" data-path="manipuler-des-donnees.html"><a href="manipuler-des-donnees.html#les-armes-non-conventionnelles-de-la-preparation-des-donneees"><i class="fa fa-check"></i><b>5.12</b> Les armes non conventionnelles de la préparation des donnéees</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="manipuler-plusieurs-tables.html"><a href="manipuler-plusieurs-tables.html"><i class="fa fa-check"></i><b>6</b> Manipuler plusieurs tables</a><ul>
+<li class="chapter" data-level="6.1" data-path="manipuler-plusieurs-tables.html"><a href="manipuler-plusieurs-tables.html#exercices"><i class="fa fa-check"></i><b>6.1</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="structurer-ses-tables.html"><a href="structurer-ses-tables.html"><i class="fa fa-check"></i><b>7</b> Structurer ses tables</a><ul>
+<li class="chapter" data-level="7.1" data-path="structurer-ses-tables.html"><a href="structurer-ses-tables.html#pourquoi-se-pencher-sur-la-structuration-des-tables"><i class="fa fa-check"></i><b>7.1</b> Pourquoi se pencher sur la structuration des tables ?</a></li>
+<li class="chapter" data-level="7.2" data-path="structurer-ses-tables.html"><a href="structurer-ses-tables.html#les-deux-fonctions-clefs-de-tidyr"><i class="fa fa-check"></i><b>7.2</b> Les deux fonctions clefs de <code>tidyr</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercice-les-donnees-majic.html"><a href="exercice-les-donnees-majic.html"><i class="fa fa-check"></i><b>8</b> Exercice : Les données majic</a></li>
+<li class="chapter" data-level="9" data-path="aller-plus-loin.html"><a href="aller-plus-loin.html"><i class="fa fa-check"></i><b>9</b> Aller plus loin</a></li>
+<li class="chapter" data-level="10" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html"><i class="fa fa-check"></i><b>10</b> Correction des exercices</a><ul>
+<li class="chapter" data-level="10.1" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#exercice-4.5.2"><i class="fa fa-check"></i><b>10.1</b> Exercice 4.5.2</a></li>
+<li class="chapter" data-level="10.2" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#exercice-4.5.3"><i class="fa fa-check"></i><b>10.2</b> Exercice 4.5.3</a></li>
+<li class="chapter" data-level="10.3" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#exercices-4.10"><i class="fa fa-check"></i><b>10.3</b> Exercices 4.10</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#sitadel"><i class="fa fa-check"></i><b>10.3.1</b> Sitadel</a></li>
+<li class="chapter" data-level="10.3.2" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#pesticides"><i class="fa fa-check"></i><b>10.3.2</b> Pesticides</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#exercice-5.1"><i class="fa fa-check"></i><b>10.4</b> Exercice 5.1</a></li>
+<li class="chapter" data-level="10.5" data-path="correction-des-exercices.html"><a href="correction-des-exercices.html#exercice-7"><i class="fa fa-check"></i><b>10.5</b> Exercice 7</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Préparer ses données avec R et le Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manipuler-plusieurs-tables" class="section level1">
+<h1><span class="header-section-number">Chapitre 6</span> Manipuler plusieurs tables</h1>
+<p>Le package <code>dplyr</code> possède également plusieurs fonctions permettant de travailler sur deux tables.
+On va pouvoir regrouper ces fonctions en plusieurs catégories de manipulations :</p>
+<ul>
+<li>pour fusionner des informations de deux tables entre elles : jointures transformantes</li>
+<li>pour sélectionner des observations d’une table en fonction de celles présentes dans une autre table : jointures filtrantes</li>
+<li>pour traiter deux tables ayant les mêmes colonnes et sélectionner sur celles-ci des observations de l’une et l’autre : opérations ensemblistes</li>
+<li>Des manipulations visant à additionner deux tables ensembles : assemblages</li>
+</ul>
+<center>
+<img src="images/cheatsheetv2.png" />
+</center>
+<div id="exercices" class="section level2">
+<h2><span class="header-section-number">6.1</span> Exercices</h2>
+<ul>
+<li>reconstituer le dataframe “exercice” à partir des données contenues dans les tables “analyse”, “prelevement” et “station” (jointures)</li>
+</ul>
+<p><img src="images/MCD_pesticides.png" /></p>
+<ul>
+<li><p>calculer le nombre d’analyses réalisées sur des molécules (code_parametre) présentes dans le référentiel</p></li>
+<li><p>produire une liste des <strong>code_parametre</strong> associés à des analyses mais absents du référentiel</p></li>
+<li><p>produire une table des analyses “orphelines”, c’est-à-dire qui ne correspondent pas à un prélèvement</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manipuler-des-donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structurer-ses-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,3 +1,0 @@
-[
-["index.html", "Valoriser ses données avec R Chapitre 1 Introduction", " Valoriser ses données avec R Maël Theulière &amp; Murielle Lethrosne 28 mai 2019 Chapitre 1 Introduction Crédit photographique Sébastien Colas Ce module va vous permettre de découvrir un ensemble de méthodes sous R afin de produire : Des tableaux Des graphiques Des cartes R permet de faire tout cela. Et le plus important, il permet de le faire de façon reproductible. C’est à dire qu’un programme bien conçu permet d’être reproduit par une autre personne à partir des mêmes données mises à jour. Il vous permet également d’insérer ces valorisations dans un rapport ou une application via les packages Rmarkdown et Shiny qui sont au programme d’autres modules de formation. "]
-]

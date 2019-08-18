@@ -24,6 +24,7 @@
 <meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz" />
 
 
+<meta name="date" content="2019-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -48,7 +49,7 @@
 
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.7/datatables.js"></script>
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -64,41 +65,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -240,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
 
@@ -276,32 +304,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>La <strong>médiane</strong> est une statistique de tendance centrale : aprés classement par ordre croissant des <span class="math inline">\(n\)</span> valeurs, c’est la valeur de l’observation “du milieu”. Il y a autant d’observations inférieures à la médiane que d’observations supérieures. Avec R, la fonction <code>median()</code> permet d’obtenir la médiane d’une variable quantitative. Si le nombre de valeurs <span class="math inline">\(n\)</span> est impair (<span class="math inline">\(n=2k+1\)</span>), c’est la valeur exacte observée au rang <span class="math inline">\(k+1\)</span>. Si le nombre de valeurs est pair(<span class="math inline">\(n=2k\)</span>), c’est la moyenne entre les valeurs observées aux rangs <span class="math inline">\(k\)</span> et <span class="math inline">\(k+1\)</span>. En cas de valeurs manquantes sur la variable, l’argument <em>na.rm</em> permet de ne prendre en compte que les valeurs effectives.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec_superf &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, SUPERF)
-<span class="kw">median</span> (vec_superf)</code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">vec_superf &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, SUPERF)</a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="kw">median</span> (vec_superf)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="kw">median</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>## [1] 10.81</code></pre>
 <ul>
 <li><p>Les <strong>quartiles</strong> : après classement par ordre croissant, on partage en 4, il y a donc 3 bornes. Le premier quartile est la valeur qui sépare les observations telle que 25% soient en dessous et 75% au dessus. Le deuxième quartile est la médiane. Le troisième quartile divise enfin les 75% observations les plus basses des 25% plus élevées.</p></li>
 <li><p>On peut généraliser aux déciles, aux centiles ou tout autre pourcentile. La fonction <code>quantile()</code> permet d’obtenir les percentile de son choix (par défaut, la fonction retourne les quartiles).</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>##       0%      25%      50%      75%     100% 
 ##     0.04     6.44    10.81    18.58 18360.00</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span> (vec_superf, <span class="dt">probs =</span> <span class="kw">c</span> (<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>), <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">quantile</span> (vec_superf, <span class="dt">probs =</span> <span class="kw">c</span> (<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>), <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>##     5%    10%    25%    50%    75%    90%    95% 
 ##  3.170  4.140  6.440 10.810 18.580 30.743 41.240</code></pre>
 <ul>
 <li>L’<strong>intervalle interquartile</strong> (Interquartile range en anglais) est une statistique de dispersion. C’est l’intervalle entre le 1<sup>er</sup> et le 3<sup>ème</sup> quartile : il encadre 50% des observations. Il se calcule facilement par Q3 - Q1, ou au moyen de la fonction <code>IQR()</code>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">q &lt;-<span class="st"> </span><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)
-<span class="kw">print</span> (q)</code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">q &lt;-<span class="st"> </span><span class="kw">quantile</span> (vec_superf, <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="kw">print</span> (q)</a></code></pre></div>
 <pre><code>##       0%      25%      50%      75%     100% 
 ##     0.04     6.44    10.81    18.58 18360.00</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">q[<span class="st">&quot;75%&quot;</span>] <span class="op">-</span><span class="st"> </span>q[<span class="st">&quot;25%&quot;</span>]</code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">q[<span class="st">&quot;75%&quot;</span>] <span class="op">-</span><span class="st"> </span>q[<span class="st">&quot;25%&quot;</span>]</a></code></pre></div>
 <pre><code>##   75% 
 ## 12.14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">IQR</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">IQR</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>## [1] 12.14</code></pre>
 </div>
 <div id="statistiques-sensibles-aux-valeurs-extremes" class="section level3">
@@ -311,19 +339,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Quand le terme de moyenne est employé sans plus de précision, il désigne la <strong>moyenne arithmétique</strong>. C’est une statistique de tendance centrale : <span class="math inline">\(\bar{x} = \dfrac{1}{n} \sum_{i=1}^n x_i\)</span></li>
 </ul>
 <p>C’est la valeur qu’aurait chacune des observations si la répartition était égale entre les individus statistiques. La fonction <code>mean()</code> permet d’obtenir la moyenne.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">mean</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>## [1] 17.64062</code></pre>
 <p>Quand la variable est discrète, la moyenne arithmétique peut être pondérée en utilisant la fonction <code>weighted.mean()</code>.</p>
 <p>Exemple : quel est le nombre moyen de pièces par appartement dans une localité ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">immo &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">nb_pieces =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,
-                       <span class="dt">nb_apparts =</span> <span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">92</span>, <span class="dv">67</span>, <span class="dv">43</span>, <span class="dv">18</span>, <span class="dv">5</span>))
-
-<span class="kw">datatable</span> (immo, <span class="dt">width =</span> <span class="dv">400</span>,
-           <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre de pièces&quot;</span>, <span class="st">&quot;Nombre d&#39;appartements&quot;</span>),
-           <span class="dt">rownames =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-8493fde22d78d4acaee8" style="width:400px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8493fde22d78d4acaee8">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span> (<span class="dt">x =</span> immo<span class="op">$</span>nb_pieces, <span class="dt">w =</span> immo<span class="op">$</span>nb_apparts)</code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">immo &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">nb_pieces =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">                       <span class="dt">nb_apparts =</span> <span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">92</span>, <span class="dv">67</span>, <span class="dv">43</span>, <span class="dv">18</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb228-4" data-line-number="4"><span class="kw">datatable</span> (immo, <span class="dt">width =</span> <span class="dv">400</span>,</a>
+<a class="sourceLine" id="cb228-5" data-line-number="5">           <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre de pièces&quot;</span>, <span class="st">&quot;Nombre d&#39;appartements&quot;</span>),</a>
+<a class="sourceLine" id="cb228-6" data-line-number="6">           <span class="dt">rownames =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div id="htmlwidget-081a105ae5659fa18f1c" style="width:400px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-081a105ae5659fa18f1c">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7],[38,61,92,67,43,18,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre de pièces<\/th>\n      <th>Nombre d'appartements<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">weighted.mean</span> (<span class="dt">x =</span> immo<span class="op">$</span>nb_pieces, <span class="dt">w =</span> immo<span class="op">$</span>nb_apparts)</a></code></pre></div>
 <pre><code>## [1] 3.277778</code></pre>
 <ul>
 <li>La <strong>moyenne géométrique</strong> est aussi une statistique de tendance centrale : <span class="math inline">\(\bar{x} = \sqrt[n] \prod_{i=1}^n x_i\)</span></li>
@@ -338,43 +366,44 @@ Le taux de variation moyen annuel est de :
 </center>
 <p>soit + 5,1% par an.</p>
 <p>Cas où l’on a juste la valeur de départ, la valeur finale et le nombre de pas de temps :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Vd &lt;-<span class="st"> </span><span class="dv">100</span>
-Vf &lt;-<span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.12</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.04</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.07</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.98</span>
-Annees &lt;-<span class="st"> </span><span class="dv">4</span>
-taux_moyen_annuel &lt;-<span class="st"> </span>(Vf <span class="op">/</span><span class="st"> </span>Vd) <span class="op">^</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span>Annees)
-
-<span class="dv">100</span> <span class="op">*</span><span class="st"> </span>taux_moyen_annuel <span class="op">^</span><span class="st"> </span>Annees <span class="co"># vérification</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">Vd &lt;-<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb231-2" data-line-number="2">Vf &lt;-<span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.12</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.04</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.07</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.98</span></a>
+<a class="sourceLine" id="cb231-3" data-line-number="3">Annees &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb231-4" data-line-number="4">taux_moyen_annuel &lt;-<span class="st"> </span>(Vf <span class="op">/</span><span class="st"> </span>Vd) <span class="op">^</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span>Annees)</a>
+<a class="sourceLine" id="cb231-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb231-6" data-line-number="6"><span class="dv">100</span> <span class="op">*</span><span class="st"> </span>taux_moyen_annuel <span class="op">^</span><span class="st"> </span>Annees <span class="co"># vérification</span></a></code></pre></div>
 <pre><code>## [1] 122.1409</code></pre>
 <p>On peut calculer la moyenne géométrique ainsi :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span> (<span class="kw">mean</span> (<span class="kw">log</span> (vec_superf), <span class="dt">na.rm =</span> T)) <span class="co"># alternative : la fonction heR::gm()</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">exp</span> (<span class="kw">mean</span> (<span class="kw">log</span> (vec_superf), <span class="dt">na.rm =</span> T)) <span class="co"># alternative : la fonction heR::gm()</span></a></code></pre></div>
 <pre><code>## [1] 11.06955</code></pre>
 <ul>
 <li>La <strong>variance</strong> est une statistique de dispersion : <span class="math inline">\(S_x^2=\dfrac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2\)</span></li>
 </ul>
 <p>C’est la moyenne des carrés des écarts à la moyenne. Son unité est le carré de celle de la variable sur laquelle on la calcule. La fonction <code>var()</code> permet de la calculer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">var</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>## [1] 21166.58</code></pre>
 <ul>
-<li>L’<strong>écart type</strong> est une statistique de dispersion. Il est défini par : <span class="math inline">\(\sigma_x= \sqrt{S_x^2}\)</span>. C’est l’écart moyen à la moyenne. L’écart-type (<em>standard deviation</em> en anglais) est dans la même unité que la variable à laquelle on l’applique. L’écart-type s’obtient avec la fonction <code>sd()</code></li>
+<li>L’<strong>écart type</strong> est une statistique de dispersion. Il est défini par : <span class="math inline">\(\sigma_x= \sqrt{S_x^2}\)</span>.
+C’est l’écart moyen à la moyenne. L’écart-type (<em>standard deviation</em> en anglais) est dans la même unité que la variable à laquelle on l’applique. L’écart-type s’obtient avec la fonction <code>sd()</code></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span> (vec_superf, <span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">sd</span> (vec_superf, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>## [1] 145.4874</code></pre>
 <ul>
 <li>L’<strong>étendue</strong> est l’écart entre les valeurs maximale et minimale.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">etendue &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_RP_PROP) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">range</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dv">0</span>)
-etendue</code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">etendue &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_RP_PROP) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">range</span> (<span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span> (<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2">etendue</a></code></pre></div>
 <pre><code>## [1]      0 381934</code></pre>
 <ul>
 <li>Le <strong>coefficient de variation</strong> est une statistique de dispersion relative. C’est une mesure de l’écart relatif des valeurs d’une distribution à une valeur centrale. Il permet de comparer l’hétérogénéïté de distributions de variables qui ne seraient pas du même ordre de grandeur (une variable prenant ses valeurs entre 1000 et 2000 aura naturellement une “dispersion brute” plus importante qu’une variable prenant ses valeurs entre 10 et 20). Le coefficient de variation est obtenu comme ratio de l’écart-type sur la moyenne donc, comme ces deux valeurs, il est sensible aux valeurs extrêmes. Le coefficient de variation n’a pas d’unité donc il est souvent exprimé en pourcentage.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_POP)
-ecart_t &lt;-<span class="st"> </span><span class="kw">sd</span> (v, <span class="dt">na.rm =</span> T)
-moy &lt;-<span class="st"> </span><span class="kw">mean</span> (v, <span class="dt">na.rm =</span> T)
-ecart_t<span class="op">/</span>moy</code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, P14_POP)</a>
+<a class="sourceLine" id="cb241-2" data-line-number="2">ecart_t &lt;-<span class="st"> </span><span class="kw">sd</span> (v, <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb241-3" data-line-number="3">moy &lt;-<span class="st"> </span><span class="kw">mean</span> (v, <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb241-4" data-line-number="4">ecart_t<span class="op">/</span>moy</a></code></pre></div>
 <pre><code>## [1] 8.132898</code></pre>
 <p>La fonction <code>summary()</code> fournit plusieurs statistiques (appliquée à une variable quantitative, on obtient : minimum, maximum, quartile, moyenne et nombre de valeurs manquantes) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span> (dat, P14_POP, SUPERF) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span> ()</code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="kw">select</span> (dat, P14_POP, SUPERF) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span> ()</a></code></pre></div>
 <pre><code>##     P14_POP            SUPERF        
 ##  Min.   :      0   Min.   :    0.04  
 ##  1st Qu.:    197   1st Qu.:    6.44  
@@ -389,11 +418,11 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <h2><span class="header-section-number">10.2</span> Calcul sur plusieurs variables</h2>
 <p>Il est souvent pratique d’appliquer une même fonction à plusieurs variables d’un <code>dataframe</code>.</p>
 <p>Sur les variables quantitatives :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise_if</span> (is.numeric, <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&#39;Variable&#39;</span>, <span class="st">&#39;Moyenne&#39;</span>), <span class="dt">width =</span> <span class="dv">300</span>)</code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise_if</span> (is.numeric, <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-3" data-line-number="3"><span class="st">  </span><span class="kw">round</span> (<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-4" data-line-number="4"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb245-5" data-line-number="5"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">TRUE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&#39;Variable&#39;</span>, <span class="st">&#39;Moyenne&#39;</span>), <span class="dt">width =</span> <span class="dv">300</span>)</a></code></pre></div>
 <pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
 ## Please use a list of either functions or lambdas: 
 ## 
@@ -406,21 +435,21 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 ##   # Using lambdas
 ##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
 ## This warning is displayed once per session.</code></pre>
-<div id="htmlwidget-5b10a40b5ee7c6d64e9e" style="width:300px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5b10a40b5ee7c6d64e9e">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564","densite","log_dens"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82,160.15,1.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b3133ef8a9e08bd86610" style="width:300px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3133ef8a9e08bd86610">{"x":{"filter":"none","data":[["P14_POP","P09_POP","SUPERF","NAIS0914","DECE0914","P14_MEN","NAISD15","DECESD15","P14_LOG","P14_RP","P14_RSECOCC","P14_LOGVAC","P14_RP_PROP","NBMENFISC13","PIMP13","MED13","TP6013","P14_EMPLT","P14_EMPLT_SAL","P09_EMPLT","P14_POP1564","P14_CHOM1564","P14_ACT1564","densite","log_dens"],[1837.49,1792.81,17.64,114.44,77.35,802,21.97,16.47,970.23,802,91.63,76.6,462.24,809.68,58.98,20250.35,13.35,733.91,637.79,716.43,1165,119.75,855.82,160.15,1.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Moyenne<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Sur des variables appelées par leur nom :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="st">    </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
 <pre><code>##    P14_POP   SUPERF
 ## 1 1837.492 17.64062</code></pre>
 <p>On peut également décliner selon les modalités d’une variable qualitative :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span> (REG) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">mutate_if</span> (is.numeric, round, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">datatable</span> (<span class="dt">width =</span> <span class="dv">500</span>)</code></pre></div>
-<div id="htmlwidget-0a67cac3df0c8b56342e" style="width:500px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0a67cac3df0c8b56342e">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span> (REG) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb249-3" data-line-number="3"><span class="st">      </span><span class="kw">summarise_at</span> (<span class="kw">vars</span>(P14_POP, SUPERF), <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb249-4" data-line-number="4"><span class="st">      </span><span class="kw">mutate_if</span> (is.numeric, round, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb249-5" data-line-number="5"><span class="st">      </span><span class="kw">datatable</span> (<span class="dt">width =</span> <span class="dv">500</span>)</a></code></pre></div>
+<div id="htmlwidget-243bc10c1e532f61a2e0" style="width:500px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-243bc10c1e532f61a2e0">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["01","02","03","04","11","24","27","28","32","44","52","53","75","76","84","93","94"],[12505.81,11291.5,11469.91,35115.29,9411.24,1423.21,746.79,1156.2,1573.12,1078.15,2719.85,2621.23,1316.42,1268.99,1892.32,5229.21,900.59],[50.89,33.18,3797,104.32,9.4,21.62,12.65,10.37,8.33,11.15,23.64,21.77,18.82,16.1,16.87,32.95,24.11]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>REG<\/th>\n      <th>P14_POP<\/th>\n      <th>SUPERF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div id="exercice-1" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Exercice</h3>
 <p>Comparer le coefficient de variation de plusieurs variables. Laquelle est la plus “relativement étendue” ?</p>
@@ -439,10 +468,7 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 <p><strong>A ne pas confondre avec le diagramme en barres / bâtons !</strong></p>
 <p>Beaucoup de confusions entre ces deux types de graphiques, même dans des journaux “de référence” comme dans <a href="https://www.lemonde.fr/les-decodeurs/article/2018/05/22/sept-conseils-pour-ne-pas-se-faire-avoir-par-les-representations-graphiques_5302680_4355770.html">cet article de la rubrique “Les décodeurs” du Monde</a> et dans Excel.</p>
 <center>
-<div class="figure">
-<img src="Figures/fake_histo2.jpg" />
-
-</div>
+<p><img src="Figures/fake_histo2.jpg" /></p>
 </center>
 <p>… ou dans l’<em>arboretum</em> des Barres, là où ont été formés la plupart des ingénieurs forestiers des ministères de l’agriculture et de l’environnement.</p>
 <center>
@@ -450,65 +476,66 @@ ecart_t<span class="op">/</span>moy</code></pre></div>
 </center>
 <p>Ça c’est un diagramme en bâtons, contrairement à ce qu’indique la légende.</p>
 <p>Un histogramme, c’est ça !</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">densite =</span> P14_POP<span class="op">/</span>SUPERF, 
-               <span class="dt">densite =</span> <span class="kw">replace</span> (densite, densite <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="fl">0.01</span>))
-<span class="co"># pour éviter les densités nulles (si on souhaite faire un passage au log, voir plus bas)</span>
-g &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (densite)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()
-g</code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">densite =</span> P14_POP<span class="op">/</span>SUPERF, </a>
+<a class="sourceLine" id="cb250-2" data-line-number="2">               <span class="dt">densite =</span> <span class="kw">replace</span> (densite, densite <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="fl">0.01</span>))</a>
+<a class="sourceLine" id="cb250-3" data-line-number="3"><span class="co"># pour éviter les densités nulles (si on souhaite faire un passage au log, voir plus bas)</span></a>
+<a class="sourceLine" id="cb250-4" data-line-number="4">g &lt;-<span class="st"> </span><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (densite)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()</a>
+<a class="sourceLine" id="cb250-5" data-line-number="5">g</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/histo-1.png" width="672" /></p>
 <p>Il n’y a qu’une variable considérée. L’axe des abscisses est numérique et couvre la gamme des valeurs prises par la variable considérée. L’axe des ordonnées indique le nombre des valeurs (ou leur fréquence en pourcentage) dans chaque intervalle. L’histogramme est obtenu grâce à la fonction <code>geom_histogram()</code>, appliquée à la suite de la fonction <code>ggplot()</code> (qui, elle, permet de définir les variables qui seront prises en compte pour le graphique ; cf. le module 5 qui devrait être proposé à partir de 2019).</p>
 <p>Les quelques valeurs très élevées rendent le graphique illisible. On limite la gamme des valeurs de l’axe des abscisses.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span> (<span class="dt">limits =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="dv">1000</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> <span class="kw">mean</span> (dat<span class="op">$</span>densite, <span class="dt">na.rm =</span> T), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">g <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span> (<span class="dt">limits =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="dv">1000</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> <span class="kw">mean</span> (dat<span class="op">$</span>densite, <span class="dt">na.rm =</span> T), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/histo2-1.png" width="672" /></p>
 <p>Ici, peu de villes ont une densité importante, et la plupart sont concentrées sur la première barre : c’est un phénomène d’asymétrie (<em>skewness</em> en anglais).</p>
 <p>La fonction <code>geom_vline()</code> permet d’ajouter une ligne verticale, afin de mettre en évidence des valeurs particulières (ex : moyenne, seuil réglementaire). Ici, la moyenne (ligne verticale rouge) est un mauvais indicateur de tendance centrale.</p>
 <p>Si l’on est chagriné par cette distribution, on peut appliquer à la variable une <em>transformation logarithmique</em>. Le logarithme “tasse” les valeurs élevées et “étire” les valeurs faibles, cela permet de zoomer là où il y a de la donnée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">log_dens =</span> <span class="kw">log10</span> (densite))
-<span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (densite, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (densite, <span class="dt">na.rm =</span> T))</code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">log_dens =</span> <span class="kw">log10</span> (densite))</a>
+<a class="sourceLine" id="cb252-2" data-line-number="2"><span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (densite, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (densite, <span class="dt">na.rm =</span> T))</a></code></pre></div>
 <pre><code>##   mini     maxi
 ## 1 0.01 27126.14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (log_dens, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (log_dens, <span class="dt">na.rm =</span> T))</code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">summarise</span> (dat, <span class="dt">mini =</span> <span class="kw">min</span> (log_dens, <span class="dt">na.rm =</span> T), <span class="dt">maxi =</span> <span class="kw">max</span> (log_dens, <span class="dt">na.rm =</span> T))</a></code></pre></div>
 <pre><code>##   mini     maxi
 ## 1   -2 4.433388</code></pre>
 <p>Voyons à quoi ressemble l’histogramme de la variable transformée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()</code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> ()</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-92-1.png" width="768" /></p>
 <p>C’est déjà bien plus lisible … mais quelques finitions peuvent le rendre plus informatif et “auto-porteur”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quan &lt;-<span class="st">  </span><span class="kw">pull</span> (dat, log_dens) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)
-<span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (<span class="dt">x =</span> log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> () <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> quan) <span class="op">+</span>
-<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> quan,
-            <span class="dt">y =</span> <span class="dv">3400</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Méd.&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Max&quot;</span>), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Log (densité)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Nombre de communes&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">quan &lt;-<span class="st">  </span><span class="kw">pull</span> (dat, log_dens) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (<span class="dt">x =</span> log_dens)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_vline</span> (<span class="dt">xintercept =</span> quan) <span class="op">+</span></a>
+<a class="sourceLine" id="cb257-4" data-line-number="4"><span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> quan,</a>
+<a class="sourceLine" id="cb257-5" data-line-number="5">            <span class="dt">y =</span> <span class="dv">3400</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Méd.&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Max&quot;</span>), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Log (densité)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Nombre de communes&quot;</span>)</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-93-1.png" width="768" /></p>
 <p>L’histogramme est plus lisible et informatif ! La fonction <code>annotate()</code> permet d’ajouter du texte, et enfin <code>xlab()</code> et <code>ylab()</code> servent à modifier le nom des axes.</p>
 </div>
 <div id="la-fonction-de-repartition-cumulative" class="section level3">
 <h3><span class="header-section-number">10.3.2</span> La fonction de répartition (cumulative)</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quan &lt;-<span class="st"> </span><span class="kw">pull</span>(poids_sex, poids) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span>()
-
-<span class="kw">ggplot</span> (<span class="dt">data =</span> poids_sex, <span class="kw">aes</span> (<span class="dt">x =</span> poids)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_ecdf</span> () <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Poids (kg)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Fréquence&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">labels =</span> scales<span class="op">::</span>percent) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">3</span>]), <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">4</span>]), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="kw">c</span> (quan[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>, quan[<span class="dv">3</span>]<span class="op">+</span><span class="dv">2</span>, quan[<span class="dv">4</span>]<span class="op">+</span><span class="dv">1</span>),
-            <span class="dt">y =</span> <span class="fl">0.7</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Q3&quot;</span>), <span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">quan &lt;-<span class="st"> </span><span class="kw">pull</span>(poids_sex, poids) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span>()</a>
+<a class="sourceLine" id="cb258-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb258-3" data-line-number="3"><span class="kw">ggplot</span> (<span class="dt">data =</span> poids_sex, <span class="kw">aes</span> (<span class="dt">x =</span> poids)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_ecdf</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-4" data-line-number="4"><span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Poids (kg)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-5" data-line-number="5"><span class="st">  </span><span class="kw">ylab</span> (<span class="dt">label =</span> <span class="st">&quot;Fréquence&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-6" data-line-number="6"><span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">labels =</span> scales<span class="op">::</span>percent) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">3</span>]), <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> quan[<span class="dv">4</span>]), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-10" data-line-number="10"><span class="st">  </span><span class="kw">annotate</span> (<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="kw">c</span> (quan[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>, quan[<span class="dv">3</span>]<span class="op">+</span><span class="dv">2</span>, quan[<span class="dv">4</span>]<span class="op">+</span><span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb258-11" data-line-number="11">            <span class="dt">y =</span> <span class="fl">0.7</span>, <span class="dt">label =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Q3&quot;</span>), <span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;orange&quot;</span>))</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/unnamed-chunk-94-1.png" width="768" /></p>
 </div>
 <div id="graphique-de-densite" class="section level3">
 <h3><span class="header-section-number">10.3.3</span> Graphique de densité</h3>
-<p>La <strong>densité</strong> d’une variable correspond à la probabilité de réalisation de chacune des valeurs possibles de cette variable : il s’agit d’une fonction continue (nombre infini de points). Exemple pour <span class="math inline">\(X \hookrightarrow \mathcal{N}(m,\sigma)\)</span> : <span class="math inline">\(f_X(t) = \dfrac{1}{\sigma \sqrt{2\pi}}exp(-\dfrac{(t-m)^2}{2\sigma^2})\)</span></p>
+<p>La <strong>densité</strong> d’une variable correspond à la probabilité de réalisation de chacune des valeurs possibles de cette variable : il s’agit d’une fonction continue (nombre infini de points).
+Exemple pour <span class="math inline">\(X \hookrightarrow \mathcal{N}(m,\sigma)\)</span> : <span class="math inline">\(f_X(t) = \dfrac{1}{\sigma \sqrt{2\pi}}exp(-\dfrac{(t-m)^2}{2\sigma^2})\)</span></p>
 <p>Comme on n’observe qu’un nombre fini de points, on recourt à l’estimation par “noyau” pour estimer la densité en chaque point “possible” de la variable.</p>
 <p>La valeur de la densité en <span class="math inline">\(t\)</span> se calcule comme une moyenne pondérée de l’ensemble des points observés. Plus la valeur est éloignée de <span class="math inline">\(t\)</span>, moins leur poids est important. Le poids est donné par une fonction appelée <em>noyau</em>. Par exemple, le noyau gaussien : <span class="math inline">\(K(u)=\dfrac{1}{\sqrt{2\pi}}exp(-\dfrac{u^2}{2})\)</span></p>
 <p>Grâce au package <code>ggplot2</code>, il est possible de créer un graphique de densité avec la fonction <code>geom_density()</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_density</span> () <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Log de la densité de population&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="kw">ggplot</span> (<span class="dt">data =</span> dat, <span class="kw">aes</span> (log_dens)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb259-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_density</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb259-3" data-line-number="3"><span class="st">  </span><span class="kw">xlab</span> (<span class="st">&#39;Log de la densité de population&#39;</span>)</a></code></pre></div>
 <p><img src="Statistiques-descriptives_files/figure-html/densite-1.png" width="768" /></p>
 </div>
 </div>
@@ -524,27 +551,27 @@ g</code></pre></div>
 <div id="methode-des-quantiles" class="section level3">
 <h3><span class="header-section-number">10.4.1</span> Méthode des quantiles</h3>
 <p>Cette méthode vise une répartition égale des effectifs, c’est à dire le même nombre de données observations par classe. La fonction <code>cut()</code> permet de créer une variable selon le découpage voulu. Elle posséde les options <em>breaks</em> et <em>labels</em>. <em>breaks</em> permet d’indiquer le découpage voulu grâce à un vecteur (les éléments dont la valeur est comprise entre le 1er et le 2éme élément de ce vecteur rentre dans la première classe, entre le 2éme et 3éme élément, dans la 2éme classe, etc….). Pour faire un découpage en x classes, le vecteur de <em>breaks</em> prend donc x + 1 éléments. <em>labels</em> permet d’indiquer les noms de classes grâce à un vecteur qui comporte autant d’élément que de classes à créer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v_dens &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, densite)
-v_dens <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">v_dens &lt;-<span class="st"> </span><span class="kw">pull</span> (dat, densite)</a>
+<a class="sourceLine" id="cb260-2" data-line-number="2">v_dens <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span> (<span class="dt">na.rm =</span> T)</a></code></pre></div>
 <pre><code>##          0%         25%         50%         75%        100% 
 ##     0.01000    18.59047    40.35457    94.57430 27126.14108</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens =</span> <span class="kw">cut</span> (v_dens,
-                          <span class="dt">breaks =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="fl">18.6</span>, <span class="fl">40.4</span>, <span class="fl">94.6</span>, <span class="dv">27127</span>),
-                          <span class="dt">labels =</span> <span class="kw">c</span> (<span class="st">&quot;inf_18.6&quot;</span>, <span class="st">&quot;18.6_40.4&quot;</span>, <span class="st">&quot;40.4_94.6&quot;</span>, <span class="st">&quot;Sup_94.6&quot;</span>)))</code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens =</span> <span class="kw">cut</span> (v_dens,</a>
+<a class="sourceLine" id="cb262-2" data-line-number="2">                          <span class="dt">breaks =</span> <span class="kw">c</span> (<span class="dv">0</span>, <span class="fl">18.6</span>, <span class="fl">40.4</span>, <span class="fl">94.6</span>, <span class="dv">27127</span>),</a>
+<a class="sourceLine" id="cb262-3" data-line-number="3">                          <span class="dt">labels =</span> <span class="kw">c</span> (<span class="st">&quot;inf_18.6&quot;</span>, <span class="st">&quot;18.6_40.4&quot;</span>, <span class="st">&quot;40.4_94.6&quot;</span>, <span class="st">&quot;Sup_94.6&quot;</span>)))</a></code></pre></div>
 </div>
 <div id="methode-des-seuils-naturels-methode-de-jenks" class="section level3">
 <h3><span class="header-section-number">10.4.2</span> Méthode des seuils naturels (méthode de Jenks)</h3>
 <p>Cette méthode revient à séparer les classes à partir des fortes discontinuités observées dans la distribution. La fonction <code>getBreaks()</code> permet d’obtenir les bornes des classes, selon la méthode voulue.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (cartography)
-seuils &lt;-<span class="st"> </span><span class="kw">getBreaks</span> (v, <span class="dt">nclass =</span> <span class="dv">4</span>, <span class="dt">method =</span> <span class="st">&quot;fisher-jenks&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">library</span> (cartography)</a>
+<a class="sourceLine" id="cb263-2" data-line-number="2">seuils &lt;-<span class="st"> </span><span class="kw">getBreaks</span> (v, <span class="dt">nclass =</span> <span class="dv">4</span>, <span class="dt">method =</span> <span class="st">&quot;fisher-jenks&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in classInt::classIntervals(v, nclass, style = method): N is large,
 ## and some styles will run very slowly; sampling imposed</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens2 =</span> <span class="kw">cut</span> (densite, <span class="dt">breaks =</span> seuils))
-<span class="kw">select</span> (dat, tr_dens2) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span> ()</code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">mutate</span> (dat, <span class="dt">tr_dens2 =</span> <span class="kw">cut</span> (densite, <span class="dt">breaks =</span> seuils))</a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"><span class="kw">select</span> (dat, tr_dens2) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span> ()</a></code></pre></div>
 <pre><code>## .
-##        (0,6.98e+03] (6.98e+03,2.75e+04]  (2.75e+04,7.7e+04] 
-##               35791                  77                   0 
-##  (7.7e+04,1.51e+05] 
+##        (0,1.53e+04] (1.53e+04,6.49e+04] (6.49e+04,4.87e+05] 
+##               35851                  17                   0 
+## (4.87e+05,8.58e+05] 
 ##                   0</code></pre>
 
 </div>
@@ -606,7 +633,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -24,6 +24,7 @@
 <meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz" />
 
 
+<meta name="date" content="2019-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -48,7 +49,7 @@
 
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.7/datatables.js"></script>
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -64,41 +65,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -240,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://mtes-mct.github.io/parcours-r/" target="blank">Liste des formations R</a></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
 
@@ -275,10 +303,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Pour activer <code>packrat</code> sur un projet, aller dans <code>Tools/Project Options-&gt;Packrat</code></p>
 <p><a href="https://www.rstudio.com/resources/webinars/managing-package-dependencies-in-r-with-packrat/">En savoir plus sur Packrat</a></p>
-<div class="figure">
-<img src="images/creerprojet4.png" id="id" class="class" width="500" />
-
-</div>
+<p><img src="images/creerprojet4.png" id="id" class="class" width="500" /></p>
 <ul>
 <li><p>Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tout ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications… et donc y compris les packages avec <code>packrat</code>.</p></li>
 <li><p>On peut travailler sur plusieurs projets en même temps, Rstudio ouvre autant de sessions que de projets dans ce cas.</p></li>
@@ -288,26 +313,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>Cliquez sur <em>Project</em> en haut à droite puis <em>New Project</em>.</li>
 </ul>
-<div class="figure">
-<img src="images/creerprojet1.png" id="id" class="class" width="500" />
-
-</div>
+<p><img src="images/creerprojet1.png" id="id" class="class" width="500" /></p>
 <ul>
 <li>Cliquez sur <em>New Directory</em>.</li>
 </ul>
-<div class="figure">
-<img src="images/creerprojet2.png" id="id" class="class" width="500" />
-
-</div>
+<p><img src="images/creerprojet2.png" id="id" class="class" width="500" /></p>
 </div>
 <div id="integrer-vos-donnees" class="section level2">
 <h2><span class="header-section-number">2.2</span> Intégrer vos données</h2>
 <p>Une bonne pratique est de créer un sous répertoire <code>/data</code> pour stocker les données sur lesquelles vous aurez à travailler.</p>
 <p>Vous pouvez le faire depuis l’explorateur de fichier de votre système d’exploitation ou directement à partir de l’explorateur de fichier de RStudio.</p>
-<div class="figure">
-<img src="images/creerprojet3.png" id="id" class="class" width="500" />
-
-</div>
+<p><img src="images/creerprojet3.png" id="id" class="class" width="500" /></p>
 <p>Cela marche bien quand on a un seul type de données, mais en général on va avoir à travailler sur des données brutes que l’on va retravailler ensuite et vouloir stocker à part. Si par la suite vous souhaitez avoir des exemples de bonnes pratiques sur comment structurer vos données, vous pouvez vous référer au <a href="http://r-pkgs.had.co.nz/data.html">chapitre data</a> du livre d’Hadley Wickham sur la construction de packages R (tout package R étant aussi un projet !).</p>
 </div>
 <div id="creer-votre-arborescence-de-projet" class="section level2">
@@ -324,30 +340,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>activer l’ensemble des packages nécessaires</p></li>
 <li><p>charger les données dont vous aurez besoin.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (plyr)
-<span class="kw">library</span> (tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.2.0     v purrr   0.3.2
-## v tibble  2.1.3     v dplyr   0.8.3
-## v tidyr   0.8.3     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::arrange()   masks plyr::arrange()
-## x purrr::compact()   masks plyr::compact()
-## x dplyr::count()     masks plyr::count()
-## x dplyr::failwith()  masks plyr::failwith()
-## x dplyr::filter()    masks stats::filter()
-## x dplyr::id()        masks plyr::id()
-## x dplyr::lag()       masks stats::lag()
-## x dplyr::mutate()    masks plyr::mutate()
-## x dplyr::rename()    masks plyr::rename()
-## x dplyr::summarise() masks plyr::summarise()
-## x dplyr::summarize() masks plyr::summarize()</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (forcats)
-<span class="kw">library</span> (lsr)
-<span class="kw">library</span> (sp)
-<span class="kw">library</span> (cartography)
-<span class="kw">library</span> (GGally)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span> (plyr)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span> (tidyverse)</a></code></pre></div>
+<pre><code>## ── Attaching packages ────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::arrange()   masks plyr::arrange()
+## ✖ purrr::compact()   masks plyr::compact()
+## ✖ dplyr::count()     masks plyr::count()
+## ✖ dplyr::failwith()  masks plyr::failwith()
+## ✖ dplyr::filter()    masks stats::filter()
+## ✖ dplyr::id()        masks plyr::id()
+## ✖ dplyr::lag()       masks stats::lag()
+## ✖ dplyr::mutate()    masks plyr::mutate()
+## ✖ dplyr::rename()    masks plyr::rename()
+## ✖ dplyr::summarise() masks plyr::summarise()
+## ✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span> (forcats)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span> (lsr)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">library</span> (sp)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">library</span> (cartography)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">library</span> (GGally)</a></code></pre></div>
 <pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
 ##   method from   
 ##   +.gg   ggplot2</code></pre>
@@ -356,14 +372,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     nasa</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (ggmosaic)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span> (ggmosaic)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ggmosaic&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:GGally&#39;:
 ## 
 ##     happy</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (DT)
-<span class="kw">library</span> (plotly)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span> (DT)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">library</span> (plotly)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
@@ -378,11 +394,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## The following object is masked from &#39;package:graphics&#39;:
 ## 
 ##     layout</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span> (grid)
-
-dat &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="dt">file =</span> <span class="st">&quot;data/Base_synth_territoires.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&#39;;&#39;</span>,
-                 <span class="dt">dec =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">colClasses =</span> <span class="kw">c</span> (<span class="st">&quot;REG&quot;</span> =<span class="st"> &quot;factor&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">select</span> (<span class="op">-</span><span class="kw">starts_with</span> (<span class="st">&quot;ET&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">library</span> (grid)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span> (<span class="dt">file =</span> <span class="st">&quot;data/Base_synth_territoires.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&#39;;&#39;</span>,</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">                 <span class="dt">dec =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">colClasses =</span> <span class="kw">c</span> (<span class="st">&quot;REG&quot;</span> =<span class="st"> &quot;factor&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">      </span><span class="kw">select</span> (<span class="op">-</span><span class="kw">starts_with</span> (<span class="st">&quot;ET&quot;</span>))</a></code></pre></div>
 </div>
 <div id="bien-structurer-ses-projets-data" class="section level2">
 <h2><span class="header-section-number">2.5</span> Bien structurer ses projets data</h2>
@@ -454,7 +470,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

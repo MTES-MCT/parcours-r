@@ -1,8 +1,7 @@
 OUTDIR=_book
 SOURCE=$(wildcard *.Rmd)
 PDF_FILE=$(shell Rscript -e "cat(paste0(bookdown:::book_filename(), '.pdf'))")
-PDF_FILE:=$(addprefix /,$(PDF_FILE))
-PDF_FILE:=$(addprefix $(OUTDIR),$(PDF_FILE))
+PDF_FILE:=$(addprefix $(OUTDIR),$(addprefix /,$(PDF_FILE)))
 
 .PHONY: all gitbook pdf clean
 

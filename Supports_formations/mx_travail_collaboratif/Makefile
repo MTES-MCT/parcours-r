@@ -1,20 +1,22 @@
-GBDIR=_book
-BOOK_NAME=$(shell Rscript -e "cat(bookdown:::book_filename())")
-PDF_FILE=$(addsuffix .pdf,$(BOOK_NAME))
+OUTDIR=_book
+SOURCE=$(wildcard *.Rmd)
+PDF_FILE=$(shell Rscript -e "cat(paste0(bookdown:::book_filename(), '.pdf'))")
 PDF_FILE:=$(addprefix /,$(PDF_FILE))
-PDF_FILE:=$(addprefix $(GBDIR),$(PDF_FILE))
+PDF_FILE:=$(addprefix $(OUTDIR),$(PDF_FILE))
+
+.PHONY: all gitbook pdf clean
 
 all: gitbook pdf
 
-gitbook: $(GBDIR) 
+gitbook: $(OUTDIR) 
 
 pdf: $(PDF_FILE)
 
-$(GBDIR): *.Rmd
-	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', output_dir = '$(GBDIR)')"
+$(OUTDIR): $(SOURCE)
+	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook', output_dir = '$(OUTDIR)')"
 
-$(PDF_FILE): *.Rmd
-	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', output_dir = '$(GBDIR)', output_options = list(latex_engine = 'xelatex'))"
+$(PDF_FILE): $(SOURCE)
+	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book', output_dir = '$(OUTDIR)', output_options = list(latex_engine = 'xelatex'))"
 
 clean:
-	rm -rf $(GBDIR)
+	rm -rf $(OUTDIR)

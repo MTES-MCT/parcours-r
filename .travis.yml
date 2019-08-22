@@ -33,4 +33,8 @@ before_script:
       
 script:
   - ./_build.sh
-  - ./_deploy.sh
+
+deploy:
+  provider: script
+  script: ./_deploy.sh
+  skip_cleanup: true

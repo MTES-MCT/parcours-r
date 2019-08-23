@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Le lien entre les variables <em>PPRN</em> et <em>Agenda21</em> est peu évident avec le tableau de fréquences.</p>
 <p>On peut utiliser les fonctions vues dans le module 3 pour explorer les données :</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">select</span> (dat, <span class="op">-</span>PPRN, <span class="op">-</span>agd21) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggpairs</span>()</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-6-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/ggpairs-1.png" width="576" /></p>
 </div>
 <div id="realiser-lacp" class="section level4">
 <h4><span class="header-section-number">4.2.2.3</span> Réaliser l’ACP</h4>
@@ -396,7 +396,7 @@ Le lien entre les variables <em>PPRN</em> et <em>Agenda21</em> est peu évident 
 <a class="sourceLine" id="cb20-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_y_continuous</span> (<span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">paste0</span>(x, <span class="st">&quot;%&quot;</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb20-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> <span class="dv">20</span>, <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb20-10" data-line-number="10"><span class="st">  </span><span class="kw">coord_flip</span> ()</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-12-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-11-1.png" width="576" /></p>
 <p>Pour choisir le nombre d’axes à conserver, on peut utiliser plusieurs critères :</p>
 <ul>
 <li>Critère de l’inertie moyenne : on retient les axes qui représentent plus d’inertie que la moyenne (=inertie totale/nombre de variables). Cette inertie vaut <strong>1</strong> dans le cas de l’ACP normée (soit 20% dans notre cas). Cela revient à se dire qu’on ne prend que les nouvelles variables qui portent plus d’inertie que les variables initiales.</li>
@@ -427,7 +427,7 @@ Le lien entre les variables <em>PPRN</em> et <em>Agenda21</em> est peu évident 
 <p>On visualise le <strong>cercle des corrélations</strong>. En ACP, qualité et contribution dépendent directement de la coordonnée : il suffit que celle-ci soit élevée pour que la qualité de représentation soit bonne et la contribution forte.
 Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code>, avec l’argument <code>choix = &quot;var&quot;</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">plot.PCA</span> (acp, <span class="dt">choix =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">col.var =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-14-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-13-1.png" width="576" /></p>
 <p><span class="math inline">\(\Rightarrow\)</span> on regarde avant tout les variables proches du cercle unité.</p>
 <p>A partir de ce cercle (sur le premier plan factoriel), on voit que :</p>
 <ul>
@@ -571,7 +571,7 @@ Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code>, avec l�
 - Des groupes d’individus quand il existe des discontinuités.
 - Des valeurs extrêmes qui peuvent contribuer exagérément aux axes (donc qui nuisent à la représentation du reste des individus).</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">plot.PCA</span> (acp, <span class="dt">choix =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">col.ind =</span> <span class="st">&quot;lightblue&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-15-1.png" width="576" /></p>
 <p>N’oubliez pas de consulter l’aide des fonctions présentées pour plus d’options.</p>
 </div>
 <div id="les-variables-supplementaires" class="section level4">
@@ -587,9 +587,9 @@ Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code>, avec l�
 <p><span class="math inline">\(\Rightarrow\)</span> Pas lien entre le PPRN et les autres variables : elles se projettent au centre du nuage de points. Les communes disposant d’un PPRN ou d’un Agenda21 n’ont donc pas de caractéristiques particulières.</p>
 <p>On peut utiliser le paramètre <code>select</code> pour mettre en évidence certains individus ou variables en fonction de leur contribution ou qualité de représentation. Par exemple <code>select = &quot;contrib 20&quot;</code> permet de n’afficher les étiquettes que des individus qui contribuent le plus aux deux axes représent</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">plot.PCA</span> (acp, <span class="dt">choix =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;contrib 20&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-17-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/plot2pca-1.png" width="576" /></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">plot.PCA</span> (acp, <span class="dt">choix =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;cos2 20&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-17-2.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/plot2pca-2.png" width="576" /></p>
 </div>
 </div>
 <div id="reperer-un-effet-taille" class="section level3">
@@ -603,7 +603,7 @@ Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code>, avec l�
 <a class="sourceLine" id="cb31-2" data-line-number="2">                     <span class="dt">encoding =</span> <span class="st">&quot;latin1&quot;</span>)</a>
 <a class="sourceLine" id="cb31-3" data-line-number="3">t &lt;-<span class="st"> </span><span class="kw">PCA</span> (<span class="kw">na.omit</span> (taille[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]), <span class="dt">graph =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw">plot.PCA</span> (t, <span class="dt">choix =</span> <span class="kw">c</span> (<span class="st">&quot;var&quot;</span>), <span class="dt">col.var =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-18-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
 <p>Ce type de configuration peut décevoir quand on ne s’y attend pas. Cependant, il peut y avoir un intérêt car l’axe <span class="math inline">\(F_1\)</span> synthétise, de manière objectifs et multidimensionnelle le lien entre les variables. Ici, revenus, diplômes et statut de cadre sont très liés. Si l’on voulait étudier si ces variables sont corrélées à d’autres caractéristiques des individus, plutôt que de faire 3 analyses semblables, ou de choisir une de ces 3 variables, on pourrait prendre les coordonnées des individus sur <span class="math inline">\(F_1\)</span> (<code>t$ind$coord[, 1</code>) comme variable de synthèse.</p>
 </div>
 </div>
@@ -618,7 +618,7 @@ Pour obtenir ce graphique, on utilise la fonction <code>plot.PCA</code>, avec l�
 </ul>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">data</span> (<span class="st">&quot;iris&quot;</span>)</a>
 <a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">ggpairs</span> (iris)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-19-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/exercice02acp-1.png" width="576" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">acp.iris &lt;-<span class="st"> </span><span class="kw">select</span> (iris, <span class="op">-</span>Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">PCA</span>()</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2"><span class="kw">summary</span> (acp.iris)</a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">## </a>

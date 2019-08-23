@@ -327,8 +327,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="gerer-le-type-des-variables" class="section level2">
 <h2><span class="header-section-number">4.5</span> Gérer le type des variables</h2>
-<p>À chaque type de variable (numéric, factor,…) correspond une utilisation. Lors de l’import de données, un type est affecté automatiquement par R.
-Mais le type peut être erronné. Il suffit alors de de les convertir :</p>
+<p>À chaque type de variable (numéric, factor,…) correspond une utilisation. Lors de l’import des données, un type est affecté automatiquement par R.
+Mais le type peut être erronné. Il suffit alors de les convertir :</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">base &lt;-<span class="st"> </span><span class="kw">mutate</span>(base, <span class="dt">LIBGEO =</span> <span class="kw">as.character</span> (LIBGEO))</a></code></pre></div>
 <p>ou <code>as.factor()</code>, <code>as.numeric()</code>, etc…</p>
 <p>Pour être sûr de ne pas faire de bêtise, il vaut mieux gérer les types au moment de l’importation avec le paramètre <code>colClasses</code> <span class="math inline">\(\rightarrow\)</span> exercice !</p>
@@ -352,7 +352,7 @@ Mais le type peut être erronné. Il suffit alors de de les convertir :</p>
 <p>On peut importer n’importe quel format de données en R (Excel, SAT, Stata, SQL…). Beaucoup sont abordés lors du <a href="https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m2_preparation_donnees/_book/index.html">module 2 “Préparation des données”</a>. Pour ce module, nous ne voyons que l’importation de fichier <code>.CSV</code>. Si vous avez une base de données en Excel ou LibreOffice Calc, sauvegardez l’onglet que vous souhaitez en faisant “enregistrer sous” <span class="math inline">\(\rightarrow\)</span> “délimité CSV”.</p>
 <p>Ici, nous travaillerons sur une base de données communales fournie par l’Insee, dite “comparateur de territoires”. Le fichier source (Excel) figure dans le sous-répertoire “data” et contient toutes les métadonnées.</p>
 <ul>
-<li>Utiliser la fonction <code>read.csv()</code> pour importer ce fichier et stockez le dans un objet <code>df</code>. <strong>Veillez à ce que la région soit bien importée comme un facteur et non un entier</strong>.</li>
+<li>Utiliser la fonction <code>read.csv()</code> pour importer ce fichier et stocker le dans un objet <code>df</code>. <strong>Veillez à ce que la région soit bien importée comme un facteur et non un entier</strong>.</li>
 <li>Inspecter le dataframe avec les fonctions vues auparavant</li>
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/Base_synth_territoires.csv&quot;</span>,</a>

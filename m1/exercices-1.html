@@ -350,168 +350,168 @@ Ces exercices nécessitent les packages de base et le package <code>tidyverse</c
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>),<span class="dt">ncol =</span> <span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb199-2" data-line-number="2">arr &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">300</span>),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb199-3" data-line-number="3">mat</a></code></pre></div>
-<pre><code>##              [,1]        [,2]        [,3]        [,4]        [,5]
-##  [1,]  0.53011158 -0.15256062  1.07324707 -1.03895551 -2.59474651
-##  [2,] -0.31964920 -0.74118127  0.84484173  0.03872791 -0.90288965
-##  [3,]  0.64044464 -0.77447620 -1.39853434  0.34297198  0.30773064
-##  [4,]  2.13470619 -1.35027225 -0.09235457 -0.20549259  0.02972369
-##  [5,]  0.53873552  0.83082141  1.19696722  0.36389144  0.66228889
-##  [6,] -0.44532214 -0.68583342  1.86014380 -1.88597459 -1.31746378
-##  [7,] -0.67945239  0.27240024 -1.57072389  1.40515094  0.04527946
-##  [8,]  0.27741856  1.24177845 -1.32631417  0.15869862  0.86548370
-##  [9,]  0.04725301  0.01206466  0.26971805  1.76999658 -0.99334568
-## [10,] -0.32132153 -1.38983455 -1.34710375 -0.50644280  0.33757162
-##             [,6]        [,7]        [,8]        [,9]        [,10]
-##  [1,]  1.6180461  0.06261739  0.39577015  0.43292661  0.273591954
-##  [2,] -0.1666256 -0.27613171  1.83756949  0.44240308  0.585032103
-##  [3,]  1.1265526  1.23676997  0.90890475 -0.38897749 -0.378561000
-##  [4,] -0.3268083  0.60035582  0.05696559  0.29601902  1.390477664
-##  [5,] -1.5739766  1.08285402 -1.43767217 -1.67258041  0.215782556
-##  [6,]  1.1856666  0.20075478  0.18313564 -0.05282426 -1.709150970
-##  [7,]  0.1196832  2.03244773  0.13764659  0.03940966 -0.316999246
-##  [8,] -0.8711429 -0.49963645 -0.01341201 -0.78942883 -0.554704219
-##  [9,] -0.2501953  0.37464041 -0.22414440 -1.21915331 -0.009112219
-## [10,]  0.8809391 -0.31964043 -1.57759243  1.81260816  0.284656454</code></pre>
+<pre><code>##             [,1]       [,2]       [,3]       [,4]        [,5]       [,6]
+##  [1,]  1.2342530 -0.2673119 -0.7365189 -1.4635164 -0.46202819 -0.1336374
+##  [2,] -0.5898646 -2.4310856  0.4552493  0.2710612  0.05441884 -0.8357549
+##  [3,]  0.7391648 -1.2170108 -1.0409780  0.3682755 -1.44647745  0.6204263
+##  [4,]  1.5028080 -2.8271511 -1.1819194  0.6593466  0.15240203 -0.9621266
+##  [5,] -1.0350065  0.2983665 -1.0548778 -1.0177427  1.09630871  1.0633483
+##  [6,] -1.6460297  0.9669230  0.3195135 -0.6529936  0.62751325 -2.0273913
+##  [7,]  0.7654174  1.9647858  0.4267305 -1.0645179  0.23558980  2.0767869
+##  [8,]  0.3450448 -0.3430853 -1.7514647  0.3057639  1.76538873 -0.2241587
+##  [9,] -0.7737962  0.2017479  0.6141043  0.2721176 -0.64934287 -0.3375396
+## [10,]  1.6718405  0.9941470 -1.8798350  1.5482557  1.04110838 -0.8254630
+##             [,7]       [,8]        [,9]      [,10]
+##  [1,]  1.6474180  0.6596627  0.36635556 -1.7624460
+##  [2,] -0.4819188 -0.1609526 -0.98370893  2.3146795
+##  [3,]  0.2414820 -1.5132841 -0.07836610  1.0742253
+##  [4,]  0.9903748  2.6757327 -0.59430949  0.8959507
+##  [5,] -1.5248454 -0.4688744 -1.49776425 -1.0470130
+##  [6,] -1.8205099  0.4013105 -0.21297455  0.1974871
+##  [7,] -0.1901039 -2.4470655 -0.43096861  1.2741821
+##  [8,] -1.4978979  0.7687606 -0.08766233  0.5670935
+##  [9,] -0.6799844 -0.7811789  0.11061394 -0.5013420
+## [10,]  0.3590517 -1.2316326 -0.74986930  0.0726320</code></pre>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">arr</a></code></pre></div>
 <pre><code>## , , 1
 ## 
-##              [,1]       [,2]       [,3]       [,4]         [,5]       [,6]
-##  [1,]  0.21702614  1.6125446 -0.1000399 -1.1793842  0.223163232 -0.7100767
-##  [2,]  1.00399005 -0.3972211 -1.3347138  0.8989529  0.213385877  0.2131785
-##  [3,]  0.34414135 -0.2098278  2.0132075  1.4039943 -0.294049419 -0.1923867
-##  [4,]  0.19115522  0.5693725  1.3072174  0.7325632  0.127305130 -0.9571383
-##  [5,]  0.04357422  1.1474830  0.5774808 -0.2253204 -0.947574884  0.2551711
-##  [6,]  0.64245088 -0.4286076 -0.6784510 -0.1688762  1.093186071 -0.9105886
-##  [7,] -0.53646673 -0.4920049 -0.2658793  0.2601091  1.521559034  1.0347389
-##  [8,] -1.90791948 -0.6606624 -0.4935075 -1.6700877 -1.406154016  0.8178790
-##  [9,] -0.06262498  0.5751107  0.6510035  1.3700998 -1.018070167 -1.0467073
-## [10,]  0.65575770  0.9068241 -0.3888719 -0.6303187 -0.004777158  0.7145515
-##              [,7]        [,8]       [,9]      [,10]
-##  [1,]  0.38209184 -0.79596985 -0.5616728 -0.4341420
-##  [2,]  1.54858402 -2.22526547 -1.0662178 -0.1914317
-##  [3,]  2.37599874  1.11955052 -0.5458483  1.2445112
-##  [4,]  0.04206005 -0.56241841  0.2119258  1.5558214
-##  [5,]  0.47731935 -1.16242766  0.4189298  0.4267121
-##  [6,] -0.77130081 -0.48643649 -0.3188707  0.1897529
-##  [7,]  0.56799440 -1.54076600  0.8857718  0.1850283
-##  [8,]  0.15082316  1.18187919  1.1103084  1.5172885
-##  [9,]  0.37583227  0.05043921  0.6601515 -0.8001908
-## [10,]  1.09011234 -0.31153376  0.9347908 -0.5291164
+##              [,1]        [,2]       [,3]        [,4]        [,5]
+##  [1,]  0.36763491  0.36939769  0.4887273 -0.76829913 -0.45588230
+##  [2,] -0.20849377  0.02283976  0.8395038  0.64213650 -0.79456145
+##  [3,]  0.62480252  0.97107118  0.4046500 -0.53051920 -1.02238939
+##  [4,]  1.56499954  1.06763894  0.2438911 -0.01000283  0.63822384
+##  [5,]  1.95655348 -1.07404084 -0.7120302  0.84546955 -0.73356242
+##  [6,]  0.34630295  0.56304542  0.1274965  0.41092263  0.09161339
+##  [7,]  0.07527641 -0.47259789 -0.1069284 -0.79718388 -1.12216139
+##  [8,]  0.64254770  1.78782694  0.7296875  0.34752473 -0.79556877
+##  [9,]  0.55658720  0.73261109 -0.3639639  1.54367237  1.51699260
+## [10,] -0.58467520 -0.60978024 -0.7446947  0.03347663 -0.02863275
+##             [,6]        [,7]       [,8]        [,9]       [,10]
+##  [1,]  1.1634157  0.75417795  0.8371194 -0.10217785 -0.01806347
+##  [2,] -2.1764215 -0.18442719 -1.5409883 -1.54699289 -0.26879160
+##  [3,] -0.4633197  2.07127193 -1.8083949 -1.47801054  0.22067796
+##  [4,]  0.8298978 -1.62251194  1.2496639 -0.98087961 -0.21512105
+##  [5,]  1.6309957  0.36728727  0.4486763  0.03044581  1.32230399
+##  [6,]  0.1426259 -0.06038681  1.7465499 -0.07272001 -1.40229603
+##  [7,] -0.3884790 -0.95688247  0.2986629 -0.27542275 -0.31765687
+##  [8,]  0.4527712  0.02220051 -1.2374358 -1.65341805  1.77745105
+##  [9,] -1.8072422  0.92588511 -0.9788308 -0.94917538  0.80973963
+## [10,]  0.8624155  0.95265179  0.1907900 -0.07829007  2.25381526
 ## 
 ## , , 2
 ## 
-##              [,1]        [,2]       [,3]        [,4]       [,5]
-##  [1,]  0.06322216 -1.42327900  0.7133865  0.48255382 -0.6040348
-##  [2,] -0.10841773 -1.50423524  0.1264139 -1.79154250 -0.5693680
-##  [3,]  0.36442968  0.32143208  0.4743219 -0.60836484  1.6612911
-##  [4,] -0.01002406  0.17515406  0.1203904  0.45994455  0.3040500
-##  [5,] -0.72713882 -0.40235466  0.4745400 -0.06601066 -0.3075215
-##  [6,] -1.64611272 -0.70333432  0.7157224  0.57685017  0.4139291
-##  [7,]  0.24690313  0.04152629 -0.7575125 -0.98674849 -0.3786082
-##  [8,] -0.45345486  0.71615196  0.5187570  0.44923989  0.1403131
-##  [9,]  0.86223581 -0.52621942  1.3139362  0.27256691  0.1407107
-## [10,]  1.52261878 -0.80781067 -0.3715384 -1.49649854  1.0586138
-##              [,6]        [,7]        [,8]        [,9]      [,10]
-##  [1,]  0.07391823  1.28702417  0.59157267 -1.75167365  1.3635067
-##  [2,] -0.20611622  1.29638444 -0.16348720 -0.45957519 -0.6200555
-##  [3,]  0.07109751 -0.08799316  0.49895371 -0.11105942  1.0068654
-##  [4,] -1.28011490 -1.65703192  1.24220645  0.13836209 -0.1580532
-##  [5,] -0.73225108 -1.83004881  0.98479075 -1.29238319  1.1937579
-##  [6,] -1.07317451  0.53691715  0.47904035  0.37558536  1.2984491
-##  [7,]  0.05747955 -0.96609069 -1.10204734 -0.03116883 -0.8956484
-##  [8,] -0.43474087  0.46737792  0.06202786  1.24993332 -1.5690780
-##  [9,] -0.43447128 -0.60258172 -0.55391389 -1.60091095  0.7185956
-## [10,] -0.18100136 -0.44649360 -0.85506222  0.97555898 -0.8215066
+##              [,1]       [,2]         [,3]        [,4]       [,5]
+##  [1,]  0.83577378 -1.0024147 -0.502270801 -1.01276278  1.0747401
+##  [2,] -0.98706781 -2.0937432  1.280048973 -0.62295123  0.3579879
+##  [3,] -1.44202725 -0.2161564  1.608961497  0.05483474 -0.2328398
+##  [4,] -1.01099981  0.3868119 -1.326844332  0.71199836 -1.2247929
+##  [5,]  0.21799481 -0.2646234  0.903280729  0.84399478 -0.4974379
+##  [6,] -0.07484675  0.9786727  0.147105317 -0.59094709  2.2742731
+##  [7,] -2.44292214 -0.5086612 -0.692355660 -0.17553858  0.8567979
+##  [8,]  0.37378114  1.2319155  1.803840078  0.26710560  1.1617698
+##  [9,] -1.45398925 -1.3042620  0.009328718  1.85440430  1.8128860
+## [10,] -0.77414204  0.4773135  0.818062831 -0.05562255 -0.8344999
+##              [,6]        [,7]         [,8]        [,9]      [,10]
+##  [1,] -0.11992180  0.03857664  0.473763802 -0.79906724 -0.3292616
+##  [2,] -0.07669005 -0.29954184  0.304079606 -1.13294039 -0.8535316
+##  [3,] -0.38413895 -0.12992176  0.972156325 -1.48040692  1.5136312
+##  [4,]  1.97919863  0.27100843  0.183011465 -0.02439093 -1.0999025
+##  [5,] -1.25388522 -1.35999693  0.705475759  0.96423460  1.0891135
+##  [6,] -1.02238056 -1.71148054 -0.034387563  0.87604987 -0.4307390
+##  [7,]  0.07707700  0.39964029 -1.485272514  0.38627353  0.1759080
+##  [8,]  0.40011562  1.61923830  0.005837469 -0.71914853 -1.1429402
+##  [9,]  0.06204815  1.21221303  0.050974286  1.04198859 -1.2104698
+## [10,] -0.72690610 -1.61473032 -0.906778207 -0.33673287 -0.8384724
 ## 
 ## , , 3
 ## 
-##              [,1]       [,2]       [,3]       [,4]        [,5]
-##  [1,] -0.02134347  0.4473473 -2.0905006  1.0833284 -1.23432532
-##  [2,] -1.39154226  0.7128677  1.4148476 -1.7313306 -0.83099374
-##  [3,] -0.17711105  0.6349865  0.8439845  1.6511990 -0.94825005
-##  [4,] -1.03245799  0.2489663 -0.9087957 -0.5820145 -0.26905755
-##  [5,] -0.63378632 -0.1834975 -1.1751012 -0.1704577 -0.28928530
-##  [6,] -0.47264645 -0.2339813 -0.9198578 -1.9600827  0.50367403
-##  [7,]  1.52943698  1.2632922 -2.2656074  0.8049513 -0.56686796
-##  [8,] -0.42426975 -0.3927238  0.7160083  0.1313939 -0.01535956
-##  [9,]  0.10180533  0.0885269  0.6455718 -0.3093611  0.24205703
-## [10,] -0.15122023 -0.4279499  0.6570354  0.2076020  0.67682949
-##               [,6]       [,7]         [,8]       [,9]      [,10]
-##  [1,] -0.502105267 -1.2725497  0.581199795 -0.6136052  1.7759008
-##  [2,]  0.259510615  0.3647463  0.731123299  0.7687717  0.1545293
-##  [3,] -0.482928626  1.7488033 -0.913842621  1.4683446  1.1557910
-##  [4,]  1.045933299 -1.3670805 -0.141054522  2.1658978 -0.5792896
-##  [5,]  0.665888195  0.4046723  0.552044629  0.3361170 -0.2460750
-##  [6,]  0.774010537 -1.5575686  0.811362670  0.2592292  0.2382850
-##  [7,] -0.094406240 -2.4967462  0.302939200 -1.0792811  1.3823991
-##  [8,]  0.009187414  1.1796122 -1.100842926  2.5381317  0.4305951
-##  [9,]  1.072650191 -2.7456196  0.008193401 -1.7523641 -1.8240363
-## [10,]  0.902479942 -0.5572296 -0.567242211  1.8536519  0.9671054</code></pre>
+##              [,1]       [,2]       [,3]        [,4]       [,5]        [,6]
+##  [1,]  0.23004790 -0.6016437 -1.3780375  0.56903759 -0.5689377  0.84472792
+##  [2,] -1.40090544  1.7736836 -0.5960737  0.50947413  1.1194704  1.15453043
+##  [3,]  0.53500434 -1.2033845  0.6400805 -1.13270368  1.0307086  0.49137459
+##  [4,] -1.53123110  1.7814408 -1.7025776  0.65011122 -0.6634727 -0.87525628
+##  [5,] -0.01951406  0.2143652 -1.4974448 -1.20385987 -0.7604200 -0.63800822
+##  [6,]  2.75105746  1.0233459 -1.9967361 -0.27108546  1.8758533 -0.31840920
+##  [7,]  0.02463402 -0.2373599 -0.3445331 -0.35355338 -1.3525308 -1.10766622
+##  [8,]  0.33218548  1.6336175 -0.4167889  1.23800355  0.9608524 -0.09358776
+##  [9,] -0.37470321 -1.4429265  0.6796019  0.07152995 -0.5961074 -1.22003324
+## [10,] -0.93026208 -0.1507774  0.7871125 -1.33887178 -0.7574470  0.24991555
+##             [,7]        [,8]       [,9]      [,10]
+##  [1,] -1.1792176 -0.39319077  0.2066929 -0.2284628
+##  [2,] -1.5282797  1.46770032  0.3155963 -1.0979704
+##  [3,] -1.5506097  0.41406992 -0.1013422  0.2322612
+##  [4,]  1.0305454  2.98720070 -1.0392182  2.2265474
+##  [5,]  0.2603164 -0.05523427  0.9118473 -0.9659767
+##  [6,] -0.7428584  0.91023107 -0.7109149 -0.3598753
+##  [7,] -1.0233385 -0.61299580  1.2583248 -0.4450234
+##  [8,] -0.9454389 -0.19783747 -0.5231797  1.3121945
+##  [9,]  0.1188426  0.65758549  0.5379792 -0.8761840
+## [10,] -0.6337577 -0.55873418 -0.8154235 -0.1049987</code></pre>
 <p><em>Pourquoi s’embêter avec ça ?</em> Parce qu’on peut appliquer des fonctions facilement sur les lignes, colonnes et autres dimensions. Exemple : résultats de validations croisées par bloc, simulations de loi selon différents paramètres. Et on calcule facilement des statistiques “marginales”.</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">apply</span>(arr,<span class="dt">MARGIN =</span> <span class="dv">3</span>,<span class="dt">FUN=</span>mean)</a></code></pre></div>
-<pre><code>## [1]  0.104199370 -0.074672531 -0.001888279</code></pre>
+<pre><code>## [1]  0.07394311 -0.05723458 -0.07747211</code></pre>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">apply</span>(arr,<span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">FUN =</span> mean)</a></code></pre></div>
-<pre><code>##              [,1]        [,2]        [,3]
-##  [1,]  0.05910844  0.01142614 -0.26731352
-##  [2,]  0.26230112 -0.41129689  0.21578343
-##  [3,]  0.12874459  0.33284173 -0.30824152
-##  [4,]  0.07917321 -0.27080097 -0.08747721
-##  [5,] -0.04920263  0.18593754 -0.27315789
-##  [6,] -0.07813787 -0.41393749  0.36502201
-##  [7,]  0.62395154 -0.20025362 -0.62989600
-##  [8,] -0.47329487  0.11840811  0.02638807
-##  [9,]  0.17292685 -0.25073315  0.59448935
-## [10,]  0.31642333  0.15168330  0.34552049</code></pre>
+<pre><code>##              [,1]        [,2]         [,3]
+##  [1,]  0.53415357 -0.67584453 -0.038368668
+##  [2,]  0.33580120 -0.23151474  0.279036099
+##  [3,]  0.09063390  0.40491574 -0.582539668
+##  [4,]  0.17171974  0.12745155 -0.126191773
+##  [5,] -0.27059287  0.47488843  0.028796898
+##  [6,]  0.02466593 -0.10654833 -0.151241243
+##  [7,]  0.22692661 -0.15749947 -0.619379622
+##  [8,] -0.07941874  0.02688604  0.461879500
+##  [9,] -0.71066413 -0.12241403  0.004036192
+## [10,]  0.41620589 -0.31266643 -0.030748823</code></pre>
 <p><strong>Le coin du capitaine [ ]</strong> <img src="../Figures/CapHookImage.png" style="width:10.0%" /></p>
 <p>Le crochet, c’est comme le capitaine du même nom : personne ne l’aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s’en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.</p>
 <ul>
 <li>Matrices et arrays</li>
 </ul>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">mat[<span class="dv">1</span>,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] 0.5301116</code></pre>
+<pre><code>## [1] 1.234253</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">mat[<span class="dv">1</span>,]</a></code></pre></div>
-<pre><code>##  [1]  0.53011158 -0.15256062  1.07324707 -1.03895551 -2.59474651
-##  [6]  1.61804607  0.06261739  0.39577015  0.43292661  0.27359195</code></pre>
+<pre><code>##  [1]  1.2342530 -0.2673119 -0.7365189 -1.4635164 -0.4620282 -0.1336374
+##  [7]  1.6474180  0.6596627  0.3663556 -1.7624460</code></pre>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">mat[,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>##  [1]  0.53011158 -0.31964920  0.64044464  2.13470619  0.53873552
-##  [6] -0.44532214 -0.67945239  0.27741856  0.04725301 -0.32132153</code></pre>
+<pre><code>##  [1]  1.2342530 -0.5898646  0.7391648  1.5028080 -1.0350065 -1.6460297
+##  [7]  0.7654174  0.3450448 -0.7737962  1.6718405</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">arr[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] 0.2170261</code></pre>
+<pre><code>## [1] 0.3676349</code></pre>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">arr[<span class="dv">1</span>,,]</a></code></pre></div>
-<pre><code>##             [,1]        [,2]        [,3]
-##  [1,]  0.2170261  0.06322216 -0.02134347
-##  [2,]  1.6125446 -1.42327900  0.44734731
-##  [3,] -0.1000399  0.71338648 -2.09050061
-##  [4,] -1.1793842  0.48255382  1.08332840
-##  [5,]  0.2231632 -0.60403478 -1.23432532
-##  [6,] -0.7100767  0.07391823 -0.50210527
-##  [7,]  0.3820918  1.28702417 -1.27254971
-##  [8,] -0.7959699  0.59157267  0.58119979
-##  [9,] -0.5616728 -1.75167365 -0.61360515
-## [10,] -0.4341420  1.36350668  1.77590077</code></pre>
+<pre><code>##              [,1]        [,2]       [,3]
+##  [1,]  0.36763491  0.83577378  0.2300479
+##  [2,]  0.36939769 -1.00241475 -0.6016437
+##  [3,]  0.48872726 -0.50227080 -1.3780375
+##  [4,] -0.76829913 -1.01276278  0.5690376
+##  [5,] -0.45588230  1.07474008 -0.5689377
+##  [6,]  1.16341565 -0.11992180  0.8447279
+##  [7,]  0.75417795  0.03857664 -1.1792176
+##  [8,]  0.83711943  0.47376380 -0.3931908
+##  [9,] -0.10217785 -0.79906724  0.2066929
+## [10,] -0.01806347 -0.32926159 -0.2284628</code></pre>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">arr[,,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>##              [,1]       [,2]       [,3]       [,4]         [,5]       [,6]
-##  [1,]  0.21702614  1.6125446 -0.1000399 -1.1793842  0.223163232 -0.7100767
-##  [2,]  1.00399005 -0.3972211 -1.3347138  0.8989529  0.213385877  0.2131785
-##  [3,]  0.34414135 -0.2098278  2.0132075  1.4039943 -0.294049419 -0.1923867
-##  [4,]  0.19115522  0.5693725  1.3072174  0.7325632  0.127305130 -0.9571383
-##  [5,]  0.04357422  1.1474830  0.5774808 -0.2253204 -0.947574884  0.2551711
-##  [6,]  0.64245088 -0.4286076 -0.6784510 -0.1688762  1.093186071 -0.9105886
-##  [7,] -0.53646673 -0.4920049 -0.2658793  0.2601091  1.521559034  1.0347389
-##  [8,] -1.90791948 -0.6606624 -0.4935075 -1.6700877 -1.406154016  0.8178790
-##  [9,] -0.06262498  0.5751107  0.6510035  1.3700998 -1.018070167 -1.0467073
-## [10,]  0.65575770  0.9068241 -0.3888719 -0.6303187 -0.004777158  0.7145515
-##              [,7]        [,8]       [,9]      [,10]
-##  [1,]  0.38209184 -0.79596985 -0.5616728 -0.4341420
-##  [2,]  1.54858402 -2.22526547 -1.0662178 -0.1914317
-##  [3,]  2.37599874  1.11955052 -0.5458483  1.2445112
-##  [4,]  0.04206005 -0.56241841  0.2119258  1.5558214
-##  [5,]  0.47731935 -1.16242766  0.4189298  0.4267121
-##  [6,] -0.77130081 -0.48643649 -0.3188707  0.1897529
-##  [7,]  0.56799440 -1.54076600  0.8857718  0.1850283
-##  [8,]  0.15082316  1.18187919  1.1103084  1.5172885
-##  [9,]  0.37583227  0.05043921  0.6601515 -0.8001908
-## [10,]  1.09011234 -0.31153376  0.9347908 -0.5291164</code></pre>
+<pre><code>##              [,1]        [,2]       [,3]        [,4]        [,5]
+##  [1,]  0.36763491  0.36939769  0.4887273 -0.76829913 -0.45588230
+##  [2,] -0.20849377  0.02283976  0.8395038  0.64213650 -0.79456145
+##  [3,]  0.62480252  0.97107118  0.4046500 -0.53051920 -1.02238939
+##  [4,]  1.56499954  1.06763894  0.2438911 -0.01000283  0.63822384
+##  [5,]  1.95655348 -1.07404084 -0.7120302  0.84546955 -0.73356242
+##  [6,]  0.34630295  0.56304542  0.1274965  0.41092263  0.09161339
+##  [7,]  0.07527641 -0.47259789 -0.1069284 -0.79718388 -1.12216139
+##  [8,]  0.64254770  1.78782694  0.7296875  0.34752473 -0.79556877
+##  [9,]  0.55658720  0.73261109 -0.3639639  1.54367237  1.51699260
+## [10,] -0.58467520 -0.60978024 -0.7446947  0.03347663 -0.02863275
+##             [,6]        [,7]       [,8]        [,9]       [,10]
+##  [1,]  1.1634157  0.75417795  0.8371194 -0.10217785 -0.01806347
+##  [2,] -2.1764215 -0.18442719 -1.5409883 -1.54699289 -0.26879160
+##  [3,] -0.4633197  2.07127193 -1.8083949 -1.47801054  0.22067796
+##  [4,]  0.8298978 -1.62251194  1.2496639 -0.98087961 -0.21512105
+##  [5,]  1.6309957  0.36728727  0.4486763  0.03044581  1.32230399
+##  [6,]  0.1426259 -0.06038681  1.7465499 -0.07272001 -1.40229603
+##  [7,] -0.3884790 -0.95688247  0.2986629 -0.27542275 -0.31765687
+##  [8,]  0.4527712  0.02220051 -1.2374358 -1.65341805  1.77745105
+##  [9,] -1.8072422  0.92588511 -0.9788308 -0.94917538  0.80973963
+## [10,]  0.8624155  0.95265179  0.1907900 -0.07829007  2.25381526</code></pre>
 <ul>
 <li>dataframes et listes :</li>
 </ul>
@@ -525,7 +525,7 @@ Ces exercices nécessitent les packages de base et le package <code>tidyverse</c
 </div>
 <div id="inspection-dun-objet-la-regression-1" class="section level3">
 <h3><span class="header-section-number">11.1.3</span> Inspection d’un objet : la régression</h3>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-92-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-85-1.png" width="576" /></p>
 <p>La régression linéaire consiste à exprimer une variable Y en fonction d’une variable X dans une fonction linéaire. C’est à dire qu’on cherche a et b tels que : <span class="math display">\[ Y = a \cdot X + b + \epsilon\]</span>
 où <span class="math inline">\(\epsilon\)</span> est le résidu de la régression. On utilise dans cet exemple la table des iris de Fisher, existant dans R base qu’il suffit d’appeler avec <code>data(iris)</code> (il existe d’autres dataframe inclus dans les packages et qui sont utilisés en exemple dans l’aide).</p>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;iris&quot;</span>)</a>
@@ -625,7 +625,7 @@ où <span class="math inline">\(\epsilon\)</span> est le résidu de la régressi
 ## Multiple R-squared:   0.76,  Adjusted R-squared:  0.7583 
 ## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">plot</span>(reg)</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-95-1.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-95-2.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-95-3.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-95-4.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-88-1.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-88-2.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-88-3.png" width="576" /><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-88-4.png" width="576" /></p>
 <p>Les <strong>méthodes</strong> summary, print et plot sont implémentées pour tous les objets en R, et on peut les utiliser pour avoir un premier aperçu de ce que l’on obtient avec la fonction.</p>
 </div>
 </div>
@@ -1141,26 +1141,26 @@ Avantage : on élimine les effets d’unité (d’ordre de grandeur)</p>
 <h3><span class="header-section-number">11.3.3</span> Les graphiques avec ggplot2</h3>
 <p>On reprend la base non filtrée. A l’aide de la cheat sheet ggplot2, réalisez un histogramme de la densite de population.</p>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> df,<span class="kw">aes</span>(<span class="dt">x=</span>densite)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-113-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-106-1.png" width="576" /></p>
 <p>Ce n’est pas très informatif, mais on peut faire une transformation log pour y voir plus clair !</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> df,<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(densite))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-114-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-107-1.png" width="576" /></p>
 <p>Faites maintenant un barplot (qui n’est pas un histogramme !!!! ) du nombre de communes par type ZAU</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data=</span>df,<span class="kw">aes</span>(<span class="dt">x=</span>ZAU)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-115-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-108-1.png" width="576" /></p>
 <p>On va essayer d’y voir plus clair avec le paramètre <code>fill</code></p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data=</span>df,<span class="kw">aes</span>(<span class="dt">x=</span>ZAU2,<span class="dt">fill=</span>ZAU2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-116-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-109-1.png" width="576" /></p>
 <p>Réalisez un graphique (unage de points) croisant la densité de population et le taux de mortalité</p>
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data=</span>df,<span class="kw">aes</span>(<span class="dt">x=</span>densite,<span class="dt">y=</span>tx_mort)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-117-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-110-1.png" width="576" /></p>
 <p>On peut ajouter une dimension supplémentaire avec la couleur des points</p>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data=</span>df,<span class="kw">aes</span>(<span class="dt">x=</span>densite,<span class="dt">y=</span>tx_mort,<span class="dt">color=</span>ZAU2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-118-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-111-1.png" width="576" /></p>
 <p>Là encore il faudrait faire une transformation logarithmique, mais tout ça est abordé dans le module 3 !</p>
 <p>Avec les fonctions de base, on peut obtenir de nombreux graphiques avec très peu de code, mais moins jolis :</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="kw">plot</span>(iris)</a></code></pre></div>
-<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-119-1.png" width="576" /></p>
+<p><img src="D%C3%A9buter-avec-R-et-RStudio_files/figure-html/unnamed-chunk-112-1.png" width="576" /></p>
 <p>Des possibilités infinies à approfondir dans les modules 3 et 5 !!!!!</p>
 
 </div>

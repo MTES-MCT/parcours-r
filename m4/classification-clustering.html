@@ -300,10 +300,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb75-2" data-line-number="2">coord &lt;-<span class="st"> </span><span class="kw">mutate</span> (coord, <span class="dt">classe =</span> <span class="kw">as.factor</span> (classif<span class="op">$</span>cluster))</a>
 <a class="sourceLine" id="cb75-3" data-line-number="3"><span class="kw">ggplot</span> (coord, <span class="kw">aes</span> (<span class="dt">x =</span> Axe1, <span class="dt">y =</span> Axe2, <span class="dt">color =</span> classe)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb75-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-37-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-34-1.png" width="576" /></p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">ggplot</span> (coord, <span class="kw">aes</span> (<span class="dt">x =</span> Axe3, <span class="dt">y =</span> Axe4, <span class="dt">color =</span> classe)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-37-2.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-34-2.png" width="576" /></p>
 <p>Ici on remarque que les classes 2 et 3 s’opposent sur le premier plan factoriel : la classe 2 est plutôt du côté des personnes ayant peu de hobbies, à l’inverse de la classe 3 est composée d’individus ayant des occupations plutôt culturelles.
 Les classes 1 et 4 sont opposées sur l’axe 3, ce qui signifie que la 1 regroupe des individus aux loisirs plutôt domestiques et la 4 des individus ayant des loisirs de plein air.</p>
 </div>
@@ -691,10 +691,10 @@ Les classes 1 et 4 sont opposées sur l’axe 3, ce qui signifie que la 1 regrou
 <p>Pour déterminer le nombre optimal de classes, on regarde la perte d’inertie inter-classes (pour ça, il faut lancer une première fois la commande avec un nombre arbitraire de classes). En effet, on part d’une situation où il n’y a que de l’inertie inter-classes (chaque classe comprenant un seul individu, il n’y a pas d’inertie intra-classe). Au fur et à mesure des regroupements, on va donc perdre en inertie inter-classes, jusqu’à la dernière étape où il y a une classe avec tous les individus et donc plus d’inertie inter. Le but du jeu consiste à “stopper” l’aggrégation avant de perdre une forte quantité d’inertie inter-classe. On s’intéresse au dernières étapes pour ne pas alourdir le graphique (et on prendra un nombre de classe inférieur à 20 en général, sinon, ce n’est pas très opérationnel…). Ce diagramme ressemble très fortement à l’éboulis des valeurs propres, et on cherche à peu près la même chose (un saut).</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">barplot</span>(hc<span class="op">$</span>call<span class="op">$</span>t<span class="op">$</span>inert.gain[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>],<span class="dt">horiz =</span> T,<span class="dt">main=</span><span class="st">&quot;Gain d&#39;inertie intra sur les 20 dernières agrégations &quot;</span>,</a>
 <a class="sourceLine" id="cb79-2" data-line-number="2">          <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>,<span class="dt">border =</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-38-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-35-1.png" width="576" /></p>
 <p>Autre représentation : le dendogramme représente les étapes d’agrégation. La auteur des branches représente la perte d’inertie inter-classe (ou le gain d’inertie intra)</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">plot</span>(hc, <span class="dt">choice =</span><span class="st">&quot;tree&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-39-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-36-1.png" width="576" /></p>
 </div>
 <div id="description-des-classes" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Description des classes</h3>
@@ -750,7 +750,7 @@ modalité.</li>
 <a class="sourceLine" id="cb86-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">ggplot</span> (res.iris, <span class="kw">aes</span> (<span class="dt">x =</span> Dim<span class="fl">.1</span>, <span class="dt">y =</span> Dim<span class="fl">.2</span>, <span class="dt">color =</span> Species)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb86-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span> ()</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-43-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-40-1.png" width="576" /></p>
 
 </div>
 </div>

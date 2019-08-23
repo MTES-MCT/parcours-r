@@ -33,5 +33,5 @@ cp -r ./assets ./semantic index.html ./output/
 
 cd output
 git add --all -f ./*
-git commit --allow-empty -m"Update site - build by travis-ci (#${TRAVIS_REPO_SLUG})"
+git commit --allow-empty -m"Update site - build by travis-ci (#${TRAVIS_BUILD_NUMBER})"
 git push origin gh-pages

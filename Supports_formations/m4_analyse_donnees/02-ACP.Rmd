@@ -1,10 +1,3 @@
----
-title: "R Notebook"
-output:
-  html_document:
-    df_print: paged
----
-
 # L'ACP
 
 ## Principe de l'ACP
@@ -155,7 +148,7 @@ Le lien entre les variables *PPRN* et *Agenda21* est peu évident avec le tablea
 
 On peut utiliser les fonctions vues dans le module 3 pour explorer les données :
 
-```{r}
+```{r ggpairs}
 select (dat, -PPRN, -agd21) %>% ggpairs()
 ```
 
@@ -325,7 +318,7 @@ $\Rightarrow$ Pas lien entre le PPRN et les autres variables : elles se projette
 
 On peut utiliser le paramètre `select` pour mettre en évidence certains individus ou variables en fonction de leur contribution ou qualité de représentation. Par exemple `select = "contrib 20"` permet de n'afficher les étiquettes que des individus qui contribuent le plus aux deux axes représent
 
-```{r}
+```{r plot2pca}
 plot.PCA (acp, choix = "ind", select = "contrib 20")
 plot.PCA (acp, choix = "ind", select = "cos2 20")
 ```
@@ -356,7 +349,7 @@ A partir du `dataframe` *iris* inclus dans R :
 - Interprétez les résultats obtenus.
 - Inclure la variable "Species" dans l'analyse en tant que variable qualitative supplémentaire.
 
-```{r, collapse = T}
+```{r exercice02acp, collapse = T}
 data ("iris")
 ggpairs (iris)
 acp.iris <- select (iris, -Species) %>% PCA()

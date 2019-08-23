@@ -27,7 +27,7 @@ Le graphique précédent est bien sur illisible, un même pays voit ces données
 Nous allons utiliser la fonction ***transition_states()*** du package gganimate pour lui définir l'année comme la frame de notre graphique animé.
 
 
-```{r gganimate2,,warning = FALSE,message = FALSE,error=FALSE}
+```{r gganimate2,,warning = FALSE,message = FALSE,error=FALSE, cache=TRUE}
 anim <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -61,7 +61,7 @@ gganimate possède encore bien d'autres fonctionnalités pour définir son anima
 
 On peut utiliser gganimate avec des facettes.
 
-```{r gganimate3,warning = FALSE,message = FALSE,error=FALSE}
+```{r gganimate3,warning = FALSE,message = FALSE,error=FALSE,cache=TRUE}
 anim_facet <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -88,7 +88,7 @@ La fonction animate() permet de paramétrer notre animation.Notamment:
 
 Ici par exemple, nous paramétrons le rendu pour supprimer la boucle d'animation (*loop=FALSE*)
 
-```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE}
+```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE, cache=TRUE}
 animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"), 
                                       loop = FALSE,
                                    width = NULL,

@@ -58,7 +58,7 @@ g + geom_smooth (method = "lm", se = FALSE, color = 'red')
 
 Une matrice permet d'afficher plusieurs nuages de points d'un coup. Cela est pratique quand on explore un jeu de données avec différentes variables susceptibles d'êtres corrélées entre elles. Elle s'obtient avec la fonction `ggpairs()` (du package `GGally`).
 
-```{r,message=FALSE,warning=F, fig.height = 8}
+```{r,message=FALSE,warning=F, fig.height = 8, cache=TRUE}
 num <- select (dat, P14_LOGVAC:PIMP13) %>%
   sample_n (10000) %>%               # On sélectionne quelques données
   log () 

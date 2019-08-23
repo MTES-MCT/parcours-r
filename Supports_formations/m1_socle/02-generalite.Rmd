@@ -13,7 +13,7 @@ mapReg <- st_read ("data/REG.shp")
 - Un groupe pour structurer une offre de formations sur R
 - Un réseau d'entraide 
 
-```{r, echo=FALSE, message=FALSE}
+```{r mapg2r, echo=FALSE, message=FALSE}
 reg <- c("11","24","32","44","93","76","52")
 
 ref <- c("R.Morel, S.Trainel \n S.Colin, B.Vermont \n F.Brouillet, M. Zellou",

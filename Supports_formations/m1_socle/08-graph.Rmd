@@ -57,9 +57,9 @@ ggplot(base, aes(x = log (P14_EMPLT), y = log(MED13))) + geom_point(colour = "bl
 
 ## Matrice de nuages
 
-Pour explorer son jeu de données, on peut décider de réaliser un nuage de points pour plusieurs croisements de variables possibles. Ici, en conservant quelques variables quantitatives, on peut réaliser un ensemble de graphiques. Cette "matrice" de nuage fonctionne avec le package `GGally`. 
+Pour explorer son jeu de données, on peut réaliser un nuage de points pour plusieurs croisements de variables possibles. Ici, en conservant quelques variables quantitatives, on peut réaliser un ensemble de graphiques. Cette "matrice" de nuages fonctionne avec le package `GGally`. 
 
-```{r, message=FALSE, warning=FALSE}
+```{r ggpairs, message=FALSE, warning=FALSE}
 # install.packages("GGally")
 library("GGally") 
 num <- select(base, P14_LOGVAC:PIMP13) %>% sample_n(10000) %>% log() 
@@ -70,7 +70,7 @@ ggpairs(num) ## fonction ggpairs() de GGally
 
 Une fois qu'on a généré un graphique avec ggplot, on peut le passer dans la fonction `ggplotly()` (package `plotly`) qui permet de le rendre dynamique. 
 
-```{r,message=FALSE,warning=FALSE}
+```{r ggplotly,message=FALSE,warning=FALSE}
 library(plotly)
 g <- ggplot(data = base, aes(x = REG, fill = REG)) +
   geom_bar()

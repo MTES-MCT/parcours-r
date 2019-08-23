@@ -30,7 +30,7 @@ Le package est prêt à être utilisé !
 
 Conseil : exporter les données au format .csv ; c'est le format le plus interopérable (supporté par tous les logiciels stat). Utiliser ensuite la fonction `read.csv` après avoir défini le répertoire de travail (ou en donnant le chemin complet)
 
-```{r}
+```{r lecturecsv}
 base <- read.csv (file = "data/Base_synth_territoires.csv",
                  header = T, sep = ";", dec = ",")
 ```
@@ -57,17 +57,17 @@ Autres façons d'importer les données
 
 - n lignes (observations)
 - p colonnes (variables)
-```{r}
+```{r dimdf}
 nrow (base)
 ncol (base)
 dim (base)
 ```
 
 ## Gérer le type des variables
-À chaque type de variable (numéric, factor,…) correspond une utilisation. Lors de l’import de données, un type est affecté automatiquement par R.
-Mais le type peut être erronné. Il suffit alors de de les convertir :
+À chaque type de variable (numéric, factor,…) correspond une utilisation. Lors de l’import des données, un type est affecté automatiquement par R.
+Mais le type peut être erronné. Il suffit alors de les convertir :
 
-```{r}
+```{r converttype}
 base <- mutate(base, LIBGEO = as.character (LIBGEO))
 ```
 
@@ -96,11 +96,11 @@ On peut importer n'importe quel format de données en R (Excel, SAT, Stata, SQL.
 Ici, nous travaillerons sur une base de données communales fournie par l'Insee, dite "comparateur de territoires". Le fichier source (Excel) figure dans le sous-répertoire "data" et contient toutes les métadonnées.
 
 
-- Utiliser la fonction `read.csv()` pour importer ce fichier et stockez le dans un objet `df`. **Veillez à ce que la région soit bien importée comme un facteur et non un entier**. 
+- Utiliser la fonction `read.csv()` pour importer ce fichier et stocker le dans un objet `df`. **Veillez à ce que la région soit bien importée comme un facteur et non un entier**. 
 - Inspecter le dataframe avec les fonctions vues auparavant
 
 
-```{r}
+```{r inspectdf}
 df <- read.csv(file = "data/Base_synth_territoires.csv",
                sep = ";", dec = ",",
                colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
@@ -126,5 +126,4 @@ typeof(df$CODGEO)
 length(df)
 length(df$REG)
 ```
-
 

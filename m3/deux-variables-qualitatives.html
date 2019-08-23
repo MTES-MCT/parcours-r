@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 6 Deux variables qualitatives | Statistiques descriptives</title>
   <meta name="description" content="Module de formation aux statistiques descriptives avec R" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 6 Deux variables qualitatives | Statistiques descriptives" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-17" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="deux-variables-quantitatives.html">
-<link rel="next" href="lien-variable-quantitative-variable-qualitative.html">
+<link rel="prev" href="deux-variables-quantitatives.html"/>
+<link rel="next" href="lien-variable-quantitative-variable-qualitative.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -313,8 +313,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb70-6" data-line-number="6"><span class="kw">as.data.frame</span> (tab) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb70-7" data-line-number="7"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> REG, <span class="dt">value =</span> Freq) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb70-8" data-line-number="8"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">caption =</span> <span class="st">&quot;VENTILATION DES COMMUNES PAR REGION ET PAR CLASSE DE ZAU&quot;</span>)</a></code></pre></div>
-<p><div id="htmlwidget-d9e3022fad9b2023bed4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d9e3022fad9b2023bed4">{"x":{"filter":"none","caption":"<caption>VENTILATION DES COMMUNES PAR REGION ET PAR CLASSE DE ZAU<\/caption>","data":[["1","2","3","4","5","6","7","8","9"],["111 - Grand pôle","112 - Couronne GP","120 - Multipol grandes AU","211 - Moyen pôle","212 - Couronne MP","221 - Petit pôle","222 - Couronne PP","300 - Autre multipol.","400 - Commune isolée"],[413,853,3,3,2,0,0,7,0],[103,734,188,30,72,46,19,375,275],[140,1299,336,31,122,60,137,737,969],[108,535,186,23,44,69,8,386,143]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ZAU2<\/th>\n      <th>11<\/th>\n      <th>24<\/th>\n      <th>27<\/th>\n      <th>52<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><div id="htmlwidget-9cbf01e2d1bdee00e1ee" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9cbf01e2d1bdee00e1ee">{"x":{"filter":"none","caption":"<caption>VENTILATION DES COMMUNES PAR REGION ET PAR CLASSE DE ZAU<\/caption>","data":[["1","2","3","4","5","6","7","8","9"],["111 - Grand pôle","112 - Couronne GP","120 - Multipol grandes AU","211 - Moyen pôle","212 - Couronne MP","221 - Petit pôle","222 - Couronne PP","300 - Autre multipol.","400 - Commune isolée"],[413,853,3,3,2,0,0,7,0],[103,734,188,30,72,46,19,375,275],[140,1299,336,31,122,60,137,737,969],[108,535,186,23,44,69,8,386,143]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ZAU2<\/th>\n      <th>11<\/th>\n      <th>24<\/th>\n      <th>27<\/th>\n      <th>52<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 La fonction <code>table()</code> fonctionne aussi au-delà de 2 variables, à l’image des tableaux croisés dynamiques dans Excel®, ou de la PROC FREQ en SAS®.</p>
 </div>
 <div id="tableau-des-frequences" class="section level3">
@@ -564,8 +564,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

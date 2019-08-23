@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 5 Deux variables quantitatives | Statistiques descriptives</title>
   <meta name="description" content="Module de formation aux statistiques descriptives avec R" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 5 Deux variables quantitatives | Statistiques descriptives" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-17" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="une-variable-qualitative.html">
-<link rel="next" href="deux-variables-qualitatives.html">
+<link rel="prev" href="une-variable-qualitative.html"/>
+<link rel="next" href="deux-variables-qualitatives.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -347,24 +347,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(r=\dfrac{Cov(X,Y)}{\sigma_X\times\sigma_Y}\)</span></p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">cor</span> (<span class="kw">na.omit</span> (num))</a></code></pre></div>
 <pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
-## P14_LOGVAC   1.0000000  0.80886158  0.87263962 -0.32498111
-## P14_RP_PROP  0.8088616  1.00000000  0.96851445  0.03716189
-## NBMENFISC13  0.8726396  0.96851445  1.00000000 -0.09164348
-## PIMP13      -0.3249811  0.03716189 -0.09164348  1.00000000</code></pre>
+## P14_LOGVAC   1.0000000  0.80313256  0.86939080 -0.28606401
+## P14_RP_PROP  0.8031326  1.00000000  0.96896171  0.07081767
+## NBMENFISC13  0.8693908  0.96896171  1.00000000 -0.04882322
+## PIMP13      -0.2860640  0.07081767 -0.04882322  1.00000000</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">cor</span> (<span class="kw">na.omit</span> (<span class="kw">log</span> (num)))</a></code></pre></div>
 <pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
-## P14_LOGVAC   1.0000000  0.76490176  0.83741665 -0.34593866
-## P14_RP_PROP  0.7649018  1.00000000  0.96453879  0.03873261
-## NBMENFISC13  0.8374166  0.96453879  1.00000000 -0.09876591
-## PIMP13      -0.3459387  0.03873261 -0.09876591  1.00000000</code></pre>
+## P14_LOGVAC   1.0000000   0.7510432  0.82430124 -0.30355971
+## P14_RP_PROP  0.7510432   1.0000000  0.96435736  0.07242620
+## NBMENFISC13  0.8243012   0.9643574  1.00000000 -0.05598404
+## PIMP13      -0.3035597   0.0724262 -0.05598404  1.00000000</code></pre>
 <p>Pour tester si vous arrivez bien à estimer à l’oeil l’intensité du lien linéaire entre deux variables, un peu d’entraînement sur <a href="https://hekemp.shinyapps.io/Correlation_Game/">cette appli shiny</a> ou <a href="http://shiny.science.psu.edu/apps/boast/CorrelationGuessing/">celle-ci</a>.</p>
 <p>Quand la relation n’est pas linéaire, on peut utiliser en alternative le coefficient de corrélation de Spearman. Celui-ci est basé sur les rangs. Il permet donc de mettre en évidence des relations non linéaires (pour peu qu’elles soient monotones) entre les deux variables.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">cor</span> (<span class="kw">na.omit</span> (num), <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>##             P14_LOGVAC P14_RP_PROP NBMENFISC13      PIMP13
-## P14_LOGVAC   1.0000000  0.70737607   0.8150272 -0.37792029
-## P14_RP_PROP  0.7073761  1.00000000   0.9435339  0.03604438
-## NBMENFISC13  0.8150272  0.94353387   1.0000000 -0.11455728
-## PIMP13      -0.3779203  0.03604438  -0.1145573  1.00000000</code></pre>
+## P14_LOGVAC   1.0000000  0.72563435  0.83228498 -0.32899157
+## P14_RP_PROP  0.7256343  1.00000000  0.94369501  0.06396099
+## NBMENFISC13  0.8322850  0.94369501  1.00000000 -0.07952808
+## PIMP13      -0.3289916  0.06396099 -0.07952808  1.00000000</code></pre>
 <p>Quelques exemples de comparaison entre les corrélations de Pearson et de Spearman <a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/supporting-topics/basics/a-comparison-of-the-pearson-and-spearman-correlation-methods/">ici</a></p>
 </div>
 <div id="regression" class="section level2">
@@ -470,8 +470,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

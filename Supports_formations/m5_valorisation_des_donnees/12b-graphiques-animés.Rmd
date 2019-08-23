@@ -88,7 +88,7 @@ La fonction animate() permet de paramétrer notre animation.Notamment:
 
 Ici par exemple, nous paramétrons le rendu pour supprimer la boucle d'animation (*loop=FALSE*)
 
-```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE, cache=TRUE}
+```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE}
 animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"), 
                                       loop = FALSE,
                                    width = NULL,

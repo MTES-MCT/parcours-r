@@ -143,10 +143,10 @@ Le lien entre les variables *PPRN* et *Agenda21* est peu évident avec le tablea
 
 On peut utiliser les fonctions vues dans le module 3 pour explorer les données :
 
-```{r acp_6}
-select (dat, -PPRN, -agd21) %>% ggpairs()
+```{r acp_6, cache=TRUE}
+select (dat, -PPRN, -agd21) %>% 
+  ggpairs()
 ```
-
 
 #### Réaliser l'ACP
 
@@ -213,7 +213,7 @@ En ordonnant le tableau selon les différentes composantes principales, on peut 
 
 On peut également utiliser les fonctions génériques `summary` et `plot` (ou `plot.PCA` ; cf. `?plot.PCA`) pour aborder ce nouvel objet.
 
-```{r  acp_14}
+```{r acp_14}
 plot (acp)
 ```
 
@@ -291,7 +291,7 @@ On peut également regarder la projection des individus dans le plan. Ce n'est p
 - Des groupes d'individus quand il existe des discontinuités.
 - Des valeurs extrêmes qui peuvent contribuer exagérément aux axes (donc qui nuisent à la représentation du reste des individus).
 
-```{r acp_21}
+```{r acp_21, cache=TRUE}
 plot.PCA (acp, choix = "ind", col.ind = "lightblue")
 ```
 
@@ -312,7 +312,7 @@ $\Rightarrow$ Pas lien entre le PPRN et les autres variables : elles se projette
 
 On peut utiliser le paramètre `select` pour mettre en évidence certains individus ou variables en fonction de leur contribution ou qualité de représentation. Par exemple `select = "contrib 20"` permet de n'afficher les étiquettes que des individus qui contribuent le plus aux deux axes représent
 
-```{r acp_22}
+```{r acp_22, cache=TRUE}
 plot.PCA (acp, choix = "ind", select = "contrib 20")
 plot.PCA (acp, choix = "ind", select = "cos2 20")
 ```
@@ -342,7 +342,7 @@ A partir du `dataframe` *iris* inclus dans R :
 - Interprétez les résultats obtenus.
 - Inclure la variable "Species" dans l'analyse en tant que variable qualitative supplémentaire.
 
-```{r exercice02acp, collapse = T}
+```{r exercice02acp, collapse = T, cache=TRUE}
 data ("iris")
 ggpairs (iris)
 acp.iris <- select (iris, -Species) %>% PCA()

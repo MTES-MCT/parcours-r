@@ -100,7 +100,7 @@ animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"),
 La fonction ***anime_save()*** permet de sauvegarder nos animations sous différent format à définir via le moteur de rendu.
 Par défaut, elle sauvegarde la dernière animation.
 
-```{r gganim_,warning = FALSE,message = FALSE,error=FALSE}
+```{r gganim_5,warning = FALSE,message = FALSE,error=FALSE}
 anim_save("figures/ma_super_animation.gif")
 ```
 

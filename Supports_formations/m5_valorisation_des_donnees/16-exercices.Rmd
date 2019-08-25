@@ -10,15 +10,14 @@
 > 
 > - et une couleur différente pour distinguer les epci de la région PDL.
 
-```{r eval=T,message=F,warning=F}
+```{r exo_1, eval=T,message=F,warning=F}
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
                  y=DPE_GES_classe_ABC_pourcent,
                  color=epci_2017_52),
              alpha=.5,
-             size=.5
-             )
+             size=.5 )
 ```
 
 ## Exercice 2 
@@ -33,7 +32,7 @@ ggplot(data = rpls_aggrege_large  %>%
 > - modifier la couleur de fond du graphe
 > - modifier le type de gadrillage (pointillés)
 
-```{r eval=T,message=F,warning=F}
+```{r exo_2, eval=T,message=F,warning=F}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -62,7 +61,7 @@ ggplot(graphique1) +
 > 
 > - des libellés (axes et légende) parlant et un titre.
 
-```{r eval=T,message=F,warning=F}
+```{r exo_3, eval=T,message=F,warning=F}
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
@@ -97,17 +96,17 @@ Pour avoir la liste des modalités dune variable :
 
 Variables caractères ou factorielles :
 
-```{r eval=F,message=F,warning=F}
+```{r exo_4, eval=F,message=F,warning=F}
 unique(rpls_aggrege$Indicateur)
 ```
 
 Variables factorielles :
 
-```{r eval=F,message=F,warning=F}
+```{r exo_5, eval=F,message=F,warning=F}
 levels(rpls_aggrege$Indicateur)
 ```
 
-```{r eval=T,fig.height=8,fig.width=12,message=F,warning=F}
+```{r exo_6, eval=T,fig.height=8,fig.width=12,message=F,warning=F}
 rpls_aggrege  %>% 
   filter(TypeZone=="Régions",
          Indicateur %in% c("3 et 4 pièces_pourcent",
@@ -137,7 +136,7 @@ rpls_aggrege  %>%
 
 > Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
 
-```{r eval=T,message=F,warning=F}
+```{r exo_7, eval=T,message=F,warning=F}
 tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 
@@ -159,7 +158,7 @@ Produire le nuage de point du croisement de la part des logements ayant une éti
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
 
 
-```{r eval=T,message=F,warning=F}
+```{r exo_8, eval=T,message=F,warning=F}
 rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
@@ -176,20 +175,18 @@ anim<-ggplot(data =rpls ) +
                     transition_length = 1,
                     state_length = 2)
 anim
-
 ```
 
 
 
 ## Exercice 7
 
-
-Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en 
+Reprendre le nuage de points obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en 
 fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
 
 Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées
 
-```{r eval=T}
+```{r exo_9, eval=T}
 hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
                               y=Maternal_mortality_ratio,
                               color=Continent)) %>%
@@ -203,10 +200,9 @@ hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
 
 ## Exercice 8
 
-
 Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
 
-```{r eval=T}
+```{r exo_10, eval=T}
 rpls_DEP_R24  <- rpls_aggrege_large %>% 
   filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
   arrange(TypeZone,Zone) %>%
@@ -217,9 +213,3 @@ rpls_DEP_R24  <- rpls_aggrege_large %>%
   row_spec(7, bold = T, color = "white", background = "grey")
 rpls_DEP_R24
 ```
-
-
-
-
-
-

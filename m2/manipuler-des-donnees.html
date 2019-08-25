@@ -425,9 +425,9 @@ Exemple: On va ici recalculer des seuils fictifs sur les analyses.</li>
 </div>
 <div id="exercice-les-donnees-mensuelles-sitadel" class="section level3">
 <h3><span class="header-section-number">5.5.2</span> Exercice : Les données mensuelles sitadel</h3>
-<p>A partir du fichier sitadel de février 2017 (ROES_201702.xls), sur la région Pays de la Loire (code région 52), livrer un fichier contenant pour chaque mois, pour les logements individuels (i_AUT = ip_AUT + ig_AUT) :</p>
+<p>À partir du fichier sitadel de février 2017 (ROES_201702.xls), sur la région Pays-de-la-Loire (code région 52), livrer un fichier contenant pour chaque mois, pour les logements individuels (i_AUT = ip_AUT + ig_AUT) :</p>
 <ul>
-<li><p>le cumul des autorisations sur 12 mois glissants(i_AUT_cum12)</p></li>
+<li><p>le cumul des autorisations sur 12 mois glissants (i_AUT_cum12)</p></li>
 <li><p>le taux d’évolution du cumul sur 12 mois (i_AUT_cum_evo, en %)</p></li>
 <li><p>la part de ce cumul dans celui de l’ensemble des logements autorisés (log_AUT), en pourcentage</p></li>
 </ul>
@@ -492,7 +492,7 @@ Les positions peuvent être positives, et dans ce cas, on compte à partir de la
 </div>
 <div id="gestion-des-espaces" class="section level4">
 <h4><span class="header-section-number">5.5.4.2</span> Gestion des espaces</h4>
-<p>la fonction <code>str_pad()</code> permet de compléter une chaîne de caractère pour qu’elle atteigne une taille fixe. Le cas typique d’usage est la gestion des codes communes Insee.</p>
+<p>La fonction <code>str_pad()</code> permet de compléter une chaîne de caractère pour qu’elle atteigne une taille fixe. Le cas typique d’usage est la gestion des codes communes Insee.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">code_insee &lt;-<span class="st"> </span><span class="dv">1001</span></a>
 <a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">str_pad</span> (code_insee, <span class="dv">5</span>, <span class="dt">pad =</span> <span class="st">&quot;0&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;01001&quot;</code></pre>
@@ -545,8 +545,8 @@ La gestion des majuscules/minuscules :</p>
 <li><p>Changer les modalités des facteurs et/ou leur ordre</p></li>
 <li><p>Regrouper des modalités</p></li>
 </ul>
-<p>On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d’apparition dans la table “prelevement”&quot;</p>
-<p>forcats permet beaucoup d’autres possibilités de tri :</p>
+<p>On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d’apparition dans la table “prelevement”</p>
+<p><code>forcats</code> permet beaucoup d’autres possibilités de tri :</p>
 <ul>
 <li><p>manuellement des facteurs (<code>fct_relevel()</code>);</p></li>
 <li><p>en fonction de la valeur d’une autre variable (<code>fct_reorder()</code>);</p></li>
@@ -570,11 +570,11 @@ fonction des régions).</p></li>
 <a class="sourceLine" id="cb81-7" data-line-number="7"><span class="kw">ggplot</span> (data, <span class="kw">aes</span> (<span class="dt">x =</span> cat, num)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb81-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_bar</span> (<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb81-9" data-line-number="9"><span class="st">    </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Facteur&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span> (<span class="dt">label =</span><span class="st">&quot;Valeur&quot;</span>)</a></code></pre></div>
-<p><img src="Pr%C3%A9parer-ses-donn%C3%A9es-avec-R-et-le-Tidyverse_files/figure-html/unnamed-chunk-44-1.png" width="384" /></p>
+<p><img src="Pr%C3%A9parer-ses-donn%C3%A9es-avec-R-et-le-Tidyverse_files/figure-html/unnamed-chunk-15-1.png" width="384" /></p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">ggplot</span> (data, <span class="kw">aes</span> (<span class="dt">x =</span> <span class="kw">fct_reorder</span> (cat, <span class="op">-</span>num), num)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb82-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span> (<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">  </span><span class="kw">xlab</span> (<span class="dt">label =</span> <span class="st">&quot;Facteur ordonné&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span> (<span class="dt">label =</span><span class="st">&quot;Valeur&quot;</span>)</a></code></pre></div>
-<p><img src="Pr%C3%A9parer-ses-donn%C3%A9es-avec-R-et-le-Tidyverse_files/figure-html/unnamed-chunk-44-2.png" width="384" /></p>
+<p><img src="Pr%C3%A9parer-ses-donn%C3%A9es-avec-R-et-le-Tidyverse_files/figure-html/unnamed-chunk-15-2.png" width="384" /></p>
 </div>
 </div>
 <div id="aggreger-des-donnees-summarise" class="section level2">

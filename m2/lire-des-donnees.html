@@ -294,7 +294,7 @@ On ne traitera pas ici de toutes ces fonctions en détail, mais la <a href="http
 </div>
 <div id="lire-des-donnees-sous-postgresql" class="section level2">
 <h2><span class="header-section-number">4.5</span> Lire des données sous PostgreSQL</h2>
-<p>Deux approches possibles pour lire les données du patrimoine de la Dreal :</p>
+<p>Deux approches possibles pour utiliser des données stockées dans une base de données PostgreSQL.</p>
 <ul>
 <li><em>Importer</em> toutes ces données dans l’environnement R</li>
 <li>se <em>connecter</em> à ces données et utiliser un interpréteur permettant de traduire du code R comme une requête SQL.</li>
@@ -332,8 +332,8 @@ On peut bien sûr avec la même fonction lancer n’importe quelle requête sur 
 <a class="sourceLine" id="cb6-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#téléchargement de la table analyse du schéma pesticide</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11">analyse_db &lt;-<span class="st"> </span><span class="kw">tbl</span> (con, <span class="kw">in_schema</span> (<span class="st">&quot;pesticides&quot;</span>, <span class="st">&quot;analyse&quot;</span>))</a></code></pre></div>
-<p>Ici la table <em>analyse</em> n’est pas chargée dans l’environnement R, R s’est juste <em>connecté</em> à notre base de données.</p>
-<p>On peut réaliser des opérations sur la table analyse avec du code R très simplement, par exemple ici pour filtrer sur les analyses relatives au Glyphosate :</p>
+<p>Ici la table <em>analyse</em> n’est pas chargée dans l’environnement R, R s’est juste <em>connecté</em> à la de données.</p>
+<p>On peut réaliser des opérations sur la table analyse avec du code R très simplement. Par exemple pour filtrer sur les analyses relatives au Glyphosate :</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">analyse_db &lt;-<span class="st">  </span><span class="kw">filter</span> (analyse_db, code_parametre <span class="op">==</span><span class="st"> </span><span class="dv">1506</span>)</a></code></pre></div>
 <blockquote>
 <p>Attention, ce code ne touche pas la base de donnée, il n’est pas exécuté.

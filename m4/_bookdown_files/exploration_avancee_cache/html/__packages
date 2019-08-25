@@ -1,0 +1,16 @@
+base
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+FactoMineR
+factoextra
+GGally
+ggExtra
+data.table
+DT

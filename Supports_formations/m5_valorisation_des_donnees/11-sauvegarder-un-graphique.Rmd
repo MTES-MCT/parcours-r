@@ -1,6 +1,6 @@
 # Exporter un graphique
 
-`ggplot` contient une fonction ***ggsave()*** qui permet d'exporter nos graphiques au format image dans les formats suivants : eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg or wmf 
+La fonction `ggsave()` de ggplot2  permet d'exporter des graphiques au format image. Les formats suivants sont supportés : eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg et wmf.
 
 ```{r exp_1, echo=T,eval=T,fig.height=5,fig.width=12}
 p<-indicateur311 %>%

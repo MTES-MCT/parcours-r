@@ -58,7 +58,7 @@ Commencer par rajouter un script dans le répertoire `/src` à votre projet qui 
 - charger les données dont vous aurez besoins.
 
 
-```{r eval=T}
+```{r _init_, eval=T}
 library(knitr)
 library(kableExtra)
 library(ggplot2)

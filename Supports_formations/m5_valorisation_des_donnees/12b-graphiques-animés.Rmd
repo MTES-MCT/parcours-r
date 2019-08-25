@@ -111,7 +111,7 @@ Créer une animation par département uniquement pour ceux de la région Centre-
 
 Le résultat attendu : 
 
-```{r  gganim_6, eval=T,message=F,warning=F,echo=FALSE}
+```{r  gganim_6, eval=T,message=F,warning=F,echo=FALSE, cache=TRUE}
 rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire" & TypeZone=="Communes") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))

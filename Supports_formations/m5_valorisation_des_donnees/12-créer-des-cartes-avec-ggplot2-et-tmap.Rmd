@@ -6,11 +6,11 @@
 
 ### Les cartes choroplèthes
 
-`ggplot2` intègre une fonction géométrique permettant l'utilisation de données géomatrique : **geom_sf()**
+Une fonction géométrique de ggplot2 permet l'utilisation de données géomatrique : `geom_sf()`
 
-Le premier exemple que nous allons pouvoir voir, c'est une carte choroplèthe
+L'exemple suivtant est une carte choroplèthe.
 
-```{r cart_1, echo=T,eval=T,fig.height=5,fig.width=12}
+```{r cart_1, echo=T,eval=T,fig.height=5,fig.width=12, cache=TRUE}
 data("World")
 
 tt<-World %>%
@@ -28,9 +28,9 @@ ggplot(data=tt)+
   geom_sf(aes(fill=Value))
 ```
 
-On peut exploiter de la même façon les différents fonctions vue précédement. Par exemple avec un peu de thème et de facet.
+On peut exploiter de la même façon les différents fonctions vues précédement. Par exemple : avec un peu de thème et de facet.
 
-```{r cart_2, echo=T,eval=T,fig.height=12,fig.width=12,warning=F}
+```{r cart_2, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
 data("World")
 World<-st_as_sf(World)
 
@@ -100,26 +100,27 @@ ggplot(data=ttc)+
 
 ## Les cartes avec Tmap
 
-`Tmap` est un package dédié à la réalisation de cartes sous R. La syntaxe est très proche de ggplot,avec l'opérateur "+" pour enchainer les options.
+`Tmap` est un package dédié à la réalisation de cartes sous R. La syntaxe est très proche de ggplot, avec l'opérateur `+` pour enchaîner les options.
 
-L'équivalent des *geom_xx()* dans tmap sont les fonctions suivantes : 
-***tm_lines()*** : afficher des lignes
-***tm_polygons()*** : afficher des polygones
-***tm_raster()*** : afficher un raster
-***tm_bubbles()*** : afficher des ronds proportionnels
-***tm_markers()*** : afficher des marqueurs
-***tm_text()*** : afficher du texte
+L'équivalent des `geom_xx()` dans tmap sont les fonctions suivantes : 
+`tm_lines()` : afficher des lignes
+`tm_polygons()` : afficher des polygones
+`tm_raster()` : afficher un raster
+`tm_bubbles()` : afficher des ronds proportionnels
+`tm_markers()` : afficher des marqueurs
+`tm_text()` : afficher du texte
 
-Pour charger une donnée géométrique, il faut utiliser la fonction ***tm_shape()***
+Pour charger une donnée géométrique, il faut utiliser la fonction `*tm_shape()`.
 
 Les différences :
+
 - Les variables s'appellent avec des cotes ""
 
 - Le facetting peut se faire sur un format de données large (une carte par colonne et non une carte par modalité d'une variable)
 
-- La grande différence entre les ***tm_xx()*** et les ***geom_xx()***, c'est que les ***tm_xx()***  inclus la définition des *classes* (nombre de classe, définition des classes et des palettes) sans passer par une fonction **scale()**  dont l'équivalant n'existe pas.
+- La grande différence entre les `tm_xx()` et les `geom_xx()` : les `tm_xx()` inclut la définition des *classes* (nombre de classes, définition des classes et des palettes) sans passer par une fonction `scale()`  dont l'équivalent n'existe pas.
 
-La mise en page se définit avec la fonction *tm_layout()*, la légende avec *tm_legend()*
+La mise en page se définit avec la fonction `tm_layout()`, la légende avec `tm_legend()`.
 
 
 ### Exemple de carte choroplèthe
@@ -129,7 +130,7 @@ tm_shape(tt %>% filter(Year==2015))+
   tm_polygons("Value")
 ```
 
-L'option *n=* permet de sélectionner le nombre de classes souhaitées, lorsque l'on réalise une carte sur une variable continue.
+L'option `n=` permet de sélectionner le nombre de classes souhaitées, lorsque l'on réalise une carte sur une variable continue.
 
 ```{r cart_5, echo=T,eval=T,fig.height=5,fig.width=12}
 tm_shape(tt %>% filter(Year==2015))+
@@ -176,9 +177,9 @@ tm_shape(tt %>% filter(Year==2015))+
 
 ### La mise en page
 
-***tm_layout()*** permet de controler les polices, la légende, les marges, les couleurs.
-L'option design.mode=T permet de voir visuellement les marges, la position de la légende.
-Le titre de la légende ne se définit pas dans ***tm_layout()***, mais dans ***tm_polygons()***. L'option `title` de ces fonctions est l'équivalent d'un libellé de la variable mise dans l'aesthetic.
+***tm_layout()*** permet de contrôler les polices, la légende, les marges, les couleurs.
+L'option `design.mode=T` permet de voir visuellement les marges, la position de la légende.
+Le titre de la légende ne se définit pas dans `tm_layout()`, mais dans `tm_polygons()`. L'option `title` de ces fonctions est l'équivalent d'un libellé de la variable mise dans l'aesthetic.
 
 ```{r cart_11, echo=T,eval=T,fig.height=5,fig.width=8}
 tm_shape(tt %>% filter(Year==2015))+
@@ -239,7 +240,7 @@ tmap_save(carte,filename="figures/Taux de mortalité de la mère dans le monde.p
 
 Résultat attendu
 
-```{r  cart_14,eval=T,echo=F,message=F,warning=F}
+```{r cart_14,eval=T,echo=F,message=F,warning=F}
 tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 

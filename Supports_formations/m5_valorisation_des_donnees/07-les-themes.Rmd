@@ -134,7 +134,7 @@ ggplot(graphique1) +
   theme(legend.position="left",legend.title=element_blank())
 ```
 
-## Modifier le thème par défaut.
+## Modifier le thème par défaut
 
 La fonction theme_set() vous permet de définir un thème par défaut pour l'ensemble de vos graphiques.
 

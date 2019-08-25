@@ -1,4 +1,4 @@
-# Un typologie des représentations graphiques
+# Une typologie des représentations graphiques
 
 <style>
 #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }

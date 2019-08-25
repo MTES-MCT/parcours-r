@@ -2,13 +2,13 @@
 
 ## Exercice 1  
 
-> A partir des données de la table rpls_aggrege_large (dans le data_exercices_formation.RData), créer un nuage de point entre :
+> À partir des données de la table rpls_aggrege_large (dans le data_exercices_formation.RData), créer un nuage de points entre :
 >
 > - le % de parc social de moins de 5 ans; 
 > 
-> - et le pourcentage de logement avec un DPE ges de classe A,B ou C; 
+> - et le pourcentage de logement avec un DPE GES de classe A, B ou C; 
 > 
-> - et une couleur différente pour distinguer les epci de la région PDL.
+> - et une couleur différente pour distinguer les EPCI de la région PDL.
 
 ```{r exo_1, eval=T,message=F,warning=F}
 ggplot(data = rpls_aggrege_large  %>% 
@@ -22,15 +22,15 @@ ggplot(data = rpls_aggrege_large  %>%
 
 ## Exercice 2 
 
-> Reprendre le nuage de point obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
+> Reprendre le nuage de points obtenu à partir des données ODD : taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
 > 
-> En modifier le thème:
+> En modifier le thème :
 > 
-> - Insérer un titre de couleur, en gras, centré par rapport au graphe.
+> - Insérer un titre, de couleur, en gras, centré par rapport au graphe
 > - Indiquer la source (ODD) et modifier sa taille
-> - Changer les titres des axes et leurs tailles.
-> - modifier la couleur de fond du graphe
-> - modifier le type de gadrillage (pointillés)
+> - Changer les titres des axes et leurs tailles
+> - Modifier la couleur de fond du graphe
+> - Modifier le type de quadrillage (pointillés)
 
 ```{r exo_2, eval=T,message=F,warning=F}
 ggplot(graphique1) +
@@ -55,9 +55,9 @@ ggplot(graphique1) +
 
 > En réutilisant le graphe obtenu à l'exercice 1, y rajouter:
 > 
-> - une palette brewer pour la couleur;
+> - une palette brewer pour la couleur ;
 > 
-> - la légende en bas;
+> - la légende en bas ;
 > 
 > - des libellés (axes et légende) parlant et un titre.
 
@@ -106,7 +106,7 @@ Variables factorielles :
 levels(rpls_aggrege$Indicateur)
 ```
 
-```{r exo_6, eval=T,fig.height=8,fig.width=12,message=F,warning=F}
+```{r exo_6, eval=T,fig.height=8,fig.width=12,message=F,warning=F, cache=TRUE}
 rpls_aggrege  %>% 
   filter(TypeZone=="Régions",
          Indicateur %in% c("3 et 4 pièces_pourcent",
@@ -136,7 +136,7 @@ rpls_aggrege  %>%
 
 > Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
 
-```{r exo_7, eval=T,message=F,warning=F}
+```{r exo_7, eval=T,message=F,warning=F, cache=TRUE}
 tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 
@@ -153,12 +153,10 @@ ggplot(data=tt)+
 
 ## Exercice 6
 
-
-Produire le nuage de point du croisement de la part des logements ayant une étiquette A,B,C en fonction de la part du parc récent.
+Produire le nuage de points du croisement de la part des logements ayant une étiquette A,B,C en fonction de la part du parc récent.
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
 
-
-```{r exo_8, eval=T,message=F,warning=F}
+```{r exo_8, eval=T,message=F,warning=F, cache=TRUE}
 rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
@@ -177,14 +175,12 @@ anim<-ggplot(data =rpls ) +
 anim
 ```
 
-
-
 ## Exercice 7
 
 Reprendre le nuage de points obtenu à partir des données ODD :taux de mortalité maternelle (Maternal_mortality_ratio) en 
-fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
+fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1).
 
-Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées
+Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées.
 
 ```{r exo_9, eval=T}
 hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,

@@ -46,7 +46,7 @@ Il s'agit des [immatriculations des voitures particulières d'occasion par dépa
 
 Le fichier de départ a été converti au format *.csv*.
 
-```{r chargement_immat}
+```{r afc_1}
 immat <- read.csv2 (file = 'data/AFC_immat.csv', dec=',',
                     header = T, encoding = "latin1") %>% 
   rename (dep = `Départements`) %>% 
@@ -65,7 +65,7 @@ Si l'on partait d'un classique tableau individus (en lignes) / variables (en col
 
 ### Réalisation de l'AFC
 
-```{r}
+```{r afc_2}
 afc <- CA (immat, graph = FALSE)
 names (afc)
 summary (afc)
@@ -77,7 +77,7 @@ La structure de l'objet est très comparable à l'objet ACP.
 
 Le choix du nombre d'axes se fait exactement comme pour l'ACP. Ici on en retiendrait... Combien ? (dur...)
 
-```{r}
+```{r afc_3}
 eig <- as.data.frame (afc$eig)
 mm <- mean (eig$`percentage of variance`)
 ggplot (eig, aes (x = 1:nrow(eig), weight = `percentage of variance`)) +
@@ -101,16 +101,16 @@ Si une modalité soit graphiquement très éloignée des autres, c'est qu’elle
 
 Remarque : La position moyenne des modalités de chacun des *caractères* est au centre du plan factoriel, quel que soit le couple d'axes représenté (ex : $F_1, F_2$). 
 
-On peut s'aider des graphiques avec sélections des profils lignes/colonne selon leur contribution et qualité de représentation.
+On peut s'aider des graphiques avec sélection des profils lignes/colonne selon leur contribution et qualité de représentation.
 
-```{r plot_ca}
+```{r afc_4}
 plot.CA (afc, selectRow = "contrib 10")  
 plot.CA (afc, selectRow = "cos2 10")  
 ```
 
-Et approfondir avec dimdesc et le contenu des éléments de l'objet résultat :
+Et approfondir avec `dimdesc` et le contenu des éléments de l'objet résultat :
 
-```{r}
+```{r afc_5}
 a <- dimdesc (afc, axes = 1:2)
 a$`Dim 1`$col
 a$`Dim 2`$col
@@ -122,7 +122,7 @@ print (a)
 - Les modalités fortement contributives à la formation des deux premiers axes ont presque toutes une bonne qualité de représentation (ce n'est pas toujours le cas).
 - Concernant les modalités du "type de voiture", on remarque une distinction nette entre les cabriolets d'un côté, et les "autres" d'un... autre côté. 
 - Concernant les modalités "département", on remarque une opposition entre les départements du nord et de l'Île de France (quart sud-ouest), les Alpes Maritimes et le Var (quart nord ouest), mais également la Savoie et la Haute-Savoie (Est).
-- Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les "autres" (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloignés des types "standard". On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu'ils comptent peu des autres types).
+- Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les "autres" (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloigné des types "standard". On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu'ils comptent peu des autres types).
 - Les types conduite intérieure, break et véhicules pour handicapés sont proches du barycentre du nuage, ce qui en fait un type "standard", sans appartenance géographique particulière.
 
 ## Exercice

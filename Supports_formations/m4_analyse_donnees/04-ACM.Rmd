@@ -6,13 +6,9 @@ L'ACM permet d'analyser les liens entre $p$ variables **qualitatives**. C'est un
 
 On peut y mettre des variable quantitatives, à condition de les discrétiser (donc de les transformer en variables qualitatives).
 
-L'ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu'une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu'une autre avec peu de modalités. A l'inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument `row.w` de la fonction `MCA`). 
+L'ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu'une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu'une autre avec peu de modalités. À l'inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument `row.w` de la fonction `MCA`). 
 
 Le résultat d'une ACM, comme pour les autres analyses factorielles, est consitué des coordonnées des individus et des variables dans le nouvel espace construit. On peut donc utiliser cette technique pour **transformer des variables qualitatives en variables continues**.
-
-
-
-
 
 ### Le tableau disjonctif complet
 
@@ -20,7 +16,7 @@ On (enfin, R le fait tout seul) transforme les modalités des variables qualitat
 
 **Table ordonnée**
  
-```{r, warning = FALSE, echo = FALSE}
+```{r acm_1, warning = FALSE, echo = FALSE}
 table_ordonnee <- data.frame (Identifiant = c ('0001', '0002', '0003', '0004'),
                                  Sexe = c('H', 'F', 'F', 'H'),
                                  Age = c('<20', '20-60', '>60', '<20'))
@@ -31,7 +27,7 @@ datatable (table_ordonnee, options = list(
 
 **Tableau disjonctif complet**
 
-```{r, warning = FALSE, echo = FALSE}
+```{r acm_2, warning = FALSE, echo = FALSE}
 tableau_disjonctif <- data.frame (Identifiant = c ('0001', '0002', '0003', '0004'),
                                   Sexe_H = c("1","0","0","1"),
                                   Sexe_F = c("0","1","1","0"),
@@ -42,7 +38,6 @@ tableau_disjonctif <- data.frame (Identifiant = c ('0001', '0002', '0003', '0004
 datatable (tableau_disjonctif, options = list(
   columnDefs = list(list(className = 'dt-center', targets = 1:6))))
 ```
-
 
 La "dernière" des colonnes correspondant à une variable peut être déduite des valeurs observées dans les autres. Par exemple si Sexe_H=1, alors Sexe_F=0 et vice versa.
 
@@ -60,13 +55,13 @@ Le jeu de donnée est pris directement dans le package `FactoMineR` : il s'agit 
 
 Chargement des données :
 
-```{r}
+```{r acm_3}
 data (hobbies)
 ```
 
 Examen rapide :
 
-```{r, eval = FALSE}
+```{r acm_4, eval = FALSE}
 summary (hobbies)
 ```
 
@@ -74,14 +69,14 @@ summary (hobbies)
 
 Analyse et création de l'objet :
 
-```{r}
+```{r acm_5}
 acm <- select (hobbies, -(19:23)) %>% MCA (graph = F)
 names (acm)
 ```
 
 Si l'on veut en savoir plus :
 
-```{r, eval = FALSE}
+```{r acm_6, eval = FALSE}
 str (acm)
 ```
 
@@ -89,30 +84,27 @@ str (acm)
 
 On reprend les méthodes vues pour l'ACP et l'AFC.
 
-```{r}
+```{r acm_7}
 # Valeurs propres et inertie moyenne
 head (acm$eig)
 ```
 
 La première dimension est au-dessus des autres.
 
-```{r}
+```{r acm_8}
 eig <- as.data.frame (acm$eig)
 mean (eig$`percentage of variance`)
 ```
 
 Ici, le critère de l'inertie moyenne conduirait à retenir 5 voire 6 axes factoriels qui portent 40 à 45% de l'hétérogénéité. 
 
-```{r}
+```{r acm_9}
 acm$eig[,1] %>% diff() %>% diff()
-
 ```
 
 Le critère du coude est lui nettement plus parcimonieux et conduit à retenir 3 axes : la dérivée seconde change de signe entre les axes 3 et 4. Mais dans ce cas, seule 30% de l'inertie est conservée.
 
-
-```{r}
-
+```{r acm_10}
 mm <- mean (eig$`percentage of variance`)
 ggplot (eig, aes(x = 1:nrow(eig), weight = `percentage of variance`)) +
   geom_bar (fill = "lightblue") + 
@@ -129,12 +121,12 @@ On peut aussi retenir un nombre d'axes assez élevé, puis dans un second temps 
 
 #### Interprétation des axes
 
-```{r}
+```{r acm_11}
 as.data.frame (acm$var$eta2) %>% datatable ()
 ```
 
 
-```{r summary_acm}
+```{r acm_12}
 summary (acm)
 
 plot.MCA (acm, axes = 1:2, cex = 0.7, invisible = "ind")
@@ -149,7 +141,7 @@ Sur le deuxième plan factoriel, l'axe 3 permet de distinguer les individus qui 
 
 Dans cet exemple, il est particulièrement judicieux d'utiliser les variables concernant les individus comme variables supplémentaires pour voir quel type de personne a quel type de hooby. On voit notamment que ce sont les moins qualifiés et les plus âgés qui ont moins de hobby, alors que les managers sont plutôt dans le cadrant des loisirs "culturels".
 
-```{r}
+```{r acm_13}
 acm <- MCA(hobbies,quali.sup = 19:22,quanti.sup = 23,ncp=4,graph = F)
 plot.MCA(acm,axes=1:2,cex=.7,selectMod = "cos2 10",select = "contrib 10", invisible = "ind")
 ```
@@ -168,7 +160,7 @@ A partir de ce qui vient d'être vu, complétez l'interprétation des résultats
 - Y a-t-il un lien entre hobbies et genre ?
 - Refaites l'ACM en ajoutant la variable sexe en variable active. Que constatez-vous ?
 
-```{r plot_acm}
+```{r acm_14}
 plot.MCA (acm, axes = 1:2, invisible = "var", select = "contrib 50")
 plot.MCA (acm, axes = 3:4, invisible = "var", select = "contrib 50")
 

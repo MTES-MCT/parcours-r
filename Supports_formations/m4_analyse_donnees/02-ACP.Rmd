@@ -22,8 +22,7 @@ L'ACP va déterminer, dans un espace à $p$ dimensions (sous l'hypothèse qu'auc
 
 Dans l'exemple graphique ci-dessous et en 2D, la dispersion des points est essentiellement le long de l'axe bleu. L'axe rouge est orthogonal au bleu. Dans le repère $(O, x, y)$, la variance est à peu près équivalente sur $x$ et sur $y$. A l'inverse, dans le repère constitué des axes de couleur, la variance est portée essentiellement sur le bleu tandis que le rouge ne porte qu'une faible partie de l'inertie du nuage de point. En gros, l'axe bleu est la première composante principale, généralement notée $PC_1$ ou $F_1$, et le rouge $PC_2$ ou $F_2$.
 
-```{r graph_2d, echo = FALSE}
-
+```{r acp_1, echo = FALSE}
 library (ggExtra)
 set.seed (123)
 x <- rnorm (300, 50, 10)
@@ -36,12 +35,11 @@ p <- ggplot(df, aes(x, y)) +
   geom_abline (slope = -1 / mod$coefficients[2], intercept = 155, col = 'red', lwd = 1.2) +
   coord_fixed (ratio = 1)
 ggExtra::ggMarginal (p, type = "histogram")
-
 ```
 
 Ce changement de repère peut être visualisé ainsi :
 
-```{r, echo = FALSE}
+```{r acp_2, echo = FALSE}
 library (grid)
 df <- data.frame (F1 = mod$fitted, F2 = mod$residuals)
 p <- ggplot (data = df, aes (x = F1, y = F2)) +
@@ -64,7 +62,6 @@ p <- ggplot (data = df, aes (x = F1, y = F2)) +
   annotate (geom = "text", x = 107, y = 1.5, label = "d", color = "purple", cex = 5)
   
 ggExtra::ggMarginal (p, type = "histogram")
-
 ```
 
 Dans ce nouveau repère, l'essentiel de la dispersion des points peut être "résumé" par leur position sur $F_1$.
@@ -118,8 +115,7 @@ Le fait d'affecter les code géographiques comme `row.names` du dataframe permet
 
 ATTENTION, certaines fonctions du package `dplyr` du tidyverse, comme `mutate`, suppriment les noms des lignes.
 
-```{r import}
-
+```{r acp_3}
 dat <- geoidd %>%
   select (-code, -communes)
 row.names (dat) <- geoidd$code
@@ -128,18 +124,17 @@ dat$agd21 <- as.factor (paste ("Agenda21 ", (dat$part_agenda21 > 0) + 0))
 dat <- dat %>%
   select (- part_agenda21) %>%
   na.omit()
-
 ```
 
 Matrice de corrélations sur les variables quantitatives :
 
-```{r}
+```{r acp_4}
 dat %>% select (-PPRN, -agd21) %>% cor() %>% round (digits = 2)
 ```
 
 Tableau croisé sur les variables qualitatives :
 
-```{r}
+```{r acp_5}
 table (dat$agd21, dat$PPRN)
 ```
 
@@ -148,7 +143,7 @@ Le lien entre les variables *PPRN* et *Agenda21* est peu évident avec le tablea
 
 On peut utiliser les fonctions vues dans le module 3 pour explorer les données :
 
-```{r ggpairs}
+```{r acp_6}
 select (dat, -PPRN, -agd21) %>% ggpairs()
 ```
 
@@ -161,7 +156,7 @@ On voit que par défaut les variables sont centrées - réduites et que les vale
 
 Réalisation de l'ACP :
 
-```{r acp}
+```{r acp_7}
 acp <- PCA (X = dat, quali.sup = c (5,7), graph = FALSE)
 ```
 
@@ -173,37 +168,37 @@ La fonction `PCA` retourne un objet de type liste (de liste), qui contient toute
 
 Pour accéder aux résultats de l'ACP, on peut voir les objets contenus dans cette liste :
 
-```{r}
+```{r acp_8}
 names (acp)
 ```
 
 Chacun de ces sous-objets (par exemple `acp$ind`) contient à son tour des éléments :
 
-```{r}
+```{r acp_9}
 names (acp$ind)
 ```
 
 Pour tout visualiser d'un coup, on peut utiliser la fonction `str` :
 
-```{r, eval = FALSE}
+```{r acp_10, eval = FALSE}
 str (acp)
 ```
 
 L'élément `eig` donne les valeurs propres de la matrice de variance-covariance, autrement dit la part d'inertie portée par chacun des axes factoriels. Pour accéder aux coordonnées factorielles des individus, on apppelle l'élément *coord* de l'élément *ind* de l'objet *acp*.
 
-```{r acp_coord}
+```{r acp_11}
 head (acp$ind$coord, n = 10) %>% round (digits = 2) %>% datatable ()
 ```
 
 Contributions des individus à chacun des axes :
 
-```{r acp_ctr}
+```{r acp_12}
 acp$ind$contrib %>% round (digits = 5) %>% datatable ()
 ```
 
 Recherche des individus qui contribuent le plus aux axes. Pas mal de fonctions du tidyverse font disparaître les noms des lignes $\Rightarrow$ on les stocke provisoirement dans une variable avec la fonction `rownames_to_column()` puis on les ré-attribue avec la fonction réciproque `column_to_rownames()`
 
-```{r}
+```{r acp_13}
 acp$ind$contrib %>%
   round (digits = 5) %>%
   as.data.frame () %>% 
@@ -214,12 +209,11 @@ acp$ind$contrib %>%
   datatable ()
 ```
 
-
 En ordonnant le tableau selon les différentes composantes principales, on peut identifier les communes qui contribuent le plus à chacun des axes.
 
 On peut également utiliser les fonctions génériques `summary` et `plot` (ou `plot.PCA` ; cf. `?plot.PCA`) pour aborder ce nouvel objet.
 
-```{r plot_acp}
+```{r  acp_14}
 plot (acp)
 ```
 
@@ -227,13 +221,13 @@ plot (acp)
 
 On accède aux valeurs propres par l'objet `acp$eig` :
 
-```{r}
+```{r acp_15}
 acp$eig
 ```
 
 On peut représenter graphiquement les valeurs propres (« éboulis » des valeurs propres).
 
-```{r}
+```{r acp_16}
 eig <- as.data.frame (acp$eig)
 mm <- mean (eig$`percentage of variance`) / 100
 
@@ -251,7 +245,7 @@ Pour choisir le nombre d'axes à conserver, on peut utiliser plusieurs critères
 - Critère de l'inertie moyenne : on retient les axes qui représentent plus d'inertie que la moyenne (=inertie totale/nombre de variables). Cette inertie vaut **1** dans le cas de l'ACP normée (soit 20% dans notre cas). Cela revient à se dire qu'on ne prend que les nouvelles variables qui portent plus d'inertie que les variables initiales.
 - Critère du coude : on retient les premiers axes jusqu'à oberver un "décrochage" dans l'éboulis des valeurs propres. On peut l'objectiver par le calcul des différences secondes entre valeurs propres.
 
-```{r}
+```{r acp_17}
 acp$eig %>% diff () %>% diff ()
 ```
 
@@ -268,7 +262,7 @@ Ici, le critère de l'inertie moyenne incite à retenir les 2 premiers axes alor
 On visualise le **cercle des corrélations**. En ACP, qualité et contribution dépendent directement de la coordonnée : il suffit que celle-ci soit élevée pour que la qualité de représentation soit bonne et la contribution forte. 
 Pour obtenir ce graphique, on utilise la fonction `plot.PCA`, avec l'argument `choix = "var"`.
 
-```{r}
+```{r acp_18}
 plot.PCA (acp, choix = "var", col.var = "blue")
 ```
 
@@ -283,13 +277,13 @@ A partir de ce cercle (sur le premier plan factoriel), on voit que :
 
 On peut interpréter de façon plus fine grâce aux chiffres donnés par la fonction `summary`.
 
-```{r summary}
+```{r acp_19 summary}
 summary (acp)
 ```
 
 La fonction `dimdesc` donne les variables les plus liées à chacun des axes.
 
-```{r}
+```{r acp_20}
 dimdesc (acp)
 ```
 
@@ -297,7 +291,7 @@ On peut également regarder la projection des individus dans le plan. Ce n'est p
 - Des groupes d'individus quand il existe des discontinuités.
 - Des valeurs extrêmes qui peuvent contribuer exagérément aux axes (donc qui nuisent à la représentation du reste des individus).
 
-```{r}
+```{r acp_21}
 plot.PCA (acp, choix = "ind", col.ind = "lightblue")
 ```
 
@@ -318,11 +312,10 @@ $\Rightarrow$ Pas lien entre le PPRN et les autres variables : elles se projette
 
 On peut utiliser le paramètre `select` pour mettre en évidence certains individus ou variables en fonction de leur contribution ou qualité de représentation. Par exemple `select = "contrib 20"` permet de n'afficher les étiquettes que des individus qui contribuent le plus aux deux axes représent
 
-```{r plot2pca}
+```{r acp_22}
 plot.PCA (acp, choix = "ind", select = "contrib 20")
 plot.PCA (acp, choix = "ind", select = "cos2 20")
 ```
-
 
 ### Repérer un effet taille
 
@@ -331,14 +324,14 @@ L'effet taille se recontre assez fréquemment quand on réalise une ACP : il se 
 - Toutes les variables sont de même signe sur le premier axe factoriel (donc elles sont toutes corrélées positivement entre elles) et celui-ci contient une très grand part de l'inertie.
 - Dans ce cas, l'axe 1 constitue un **gradient** : il permet de classer les individus du plus "petit" au plus "grand", sur toutes les variables simultanément.
 
-```{r}
+```{r acp_23}
 taille <- read.csv2 ("data/Effet_taille.csv", header = TRUE,
                      encoding = "latin1")
 t <- PCA (na.omit (taille[,-c(1,2)]), graph = FALSE)
 plot.PCA (t, choix = c ("var"), col.var = "blue")
 ```
 
-Ce type de configuration peut décevoir quand on ne s'y attend pas. Cependant, il peut y avoir un intérêt car l'axe $F_1$ synthétise, de manière objectifs et multidimensionnelle le lien entre les variables. Ici, revenus, diplômes et statut de cadre sont très liés. Si l'on voulait étudier si ces variables sont corrélées à d'autres caractéristiques des individus, plutôt que de faire 3 analyses semblables, ou de choisir une de ces 3 variables, on pourrait prendre les coordonnées des individus sur $F_1$ (`t$ind$coord[, 1`) comme variable de synthèse.
+Ce type de configuration peut décevoir quand on ne s'y attend pas. Cependant, il peut y avoir un intérêt car l'axe $F_1$ synthétise, de manière objective et multidimensionnelle, le lien entre les variables. Ici, revenus, diplômes et statut de cadre sont très liés. Si l'on voulait étudier si ces variables sont corrélées à d'autres caractéristiques des individus, plutôt que de faire 3 analyses semblables, ou de choisir une de ces 3 variables, on pourrait prendre les coordonnées des individus sur $F_1$ (`t$ind$coord[, 1`) comme variable de synthèse.
 
 ## Exercice
 
@@ -357,4 +350,3 @@ summary (acp.iris)
 dimdesc (acp.iris)
 acp.iris <- PCA(iris, quali.sup = 5)
 ```
-

@@ -17,7 +17,7 @@ L'analyse multidimensionelle permet de croiser toutes les variables simultanéme
 
 ## Comment synthétiser ?
 
-- On souhaite passer d'un espace trop grand, non visualisable ($p$ dimensions) à une dimension plus petite. 
+- On souhaite passer d'un espace trop grand, non visualisable ($p$ dimensions) à un espace plus petit (moins de dimension). 
 - Mais on souhaite conserver l'essentiel de la variabilité entre individus $\Rightarrow$ Concept **d'inertie du nuage de points**.
 
 **Solution** : On construit un nouvel espace, dans lequel l'inertie est concentrée sur les premiers axes factoriels. Autrement dit, on construit des nouvelles variables (qui définissent le nouvel espace), combinaisons linéaires des variables initiales, pour lesquelle l'inertie est maximale sur le nombre le plus réduit possible.
@@ -54,10 +54,10 @@ Une ressource inestimable pour les méthodes de *clustering* (et le machine lear
 
 - Toutes visent à diminuer la dimension de l'espace d'analyse et à résumer au mieux l'information.
 - Elles se basent toutes sur le critère d'inertie, autrement dit sur l'hétérogénéité des individus.
-- Pour toutes il faut choisir le nombre de variables (ou de classes) à retenir.
+- Pour toutes, il faut choisir le nombre de variables (ou de classes) à retenir.
 - Les analyses factorielles permettent de repérer les variables qui permettent le plus de résumer l'information.
 - La classification permet de regrouper les individus aux caractéristiques proches. C'est la méthode la plus synthétique, donc la plus réductrice.
-- Il est souvent utile d'utiliser une analyse factorielle + une méthode de partitionnement en complément pour bien comprendre l'information contenue dans les données.
+- Il est souvent pertinent d'utiliser une analyse factorielle + une méthode de partitionnement en complément pour bien comprendre l'information contenue dans les données.
 
 ## Notion de distance
 
@@ -72,13 +72,10 @@ En génétique des populations, on utilise la distance génétique pour mesurer 
 En écologie des communautés, l'indice de Jaccard permet de comparer la composition en espèces de deux communautés A et B. C'est le pourcentage du nombre total d'espèces présentes dans au moins un des échantillons qui est commun aux deux échantillons :
 
 
-
 $J(A,B) =  \frac{|A \cap B|}{|A \cup B|}$
 
 
-
 <center>![](images/jaccard.png){width=50%}</center>
-
 
 
 C'est donc un indice de proximité qui varie de 0% (aucune espèce n'est commune aux deux échantillons) à 100% (toutes les espèces sont communes à A et à B).
@@ -115,7 +112,7 @@ Puis, si l'on est dans le cas n°2, [cette petite vidéo](https://youtu.be/aiqGy
 
 ## Nature des variables
 
-On distingue les variables qualitatives des variables quantitatives. Cependant cette distinction n'est pas absolument évidente.
+On distingue les variables qualitatives des variables quantitatives. Cependant, cette distinction n'est pas absolument évidente.
 
 ### Variables quantitatives
 
@@ -144,11 +141,11 @@ Les variables ordinales peuvent être codées quantitativement, comme par exempl
 - 3 : Très satisfait
 Dans un tel cas, ce n'est pas très élégant car ça dépebd du codage choisi, mais on peut calculer des indices de satisfaction "moyens" par exemple pour comparer des groupes.
 
-A l'inverse, on peut discrétiser une variable quantitative pour la transformer en variable qualitative, avec la fonction `cut` et en précisant les bornes du découpage. En discrétisant, on perd une part de l'information (l'information intra-classe), donc c'est à éviter autant que possible en privilégiant les méthodes applicables aux variables quantitatives.
+À l'inverse, on peut discrétiser une variable quantitative pour la transformer en variable qualitative, avec la fonction `cut` et en précisant les bornes du découpage. En discrétisant, on perd une part de l'information (l'information intra-classe), donc c'est à éviter autant que possible en privilégiant les méthodes applicables aux variables quantitatives.
  
 ## Le package FactoMineR
 
-Il existe de nombreux packages R pour les analyses multivariées (ex : ade4, vegan, cluster, Hmisc ...). Il a bien fallu choisir.
+Il existe de nombreux packages R pour les analyses multivariées : `ade4`, `vegan`, `cluster`, `Hmisc`, etc. Il a bien fallu choisir.
 
 Le package `FactoMineR` est décrit dans [cet article du J. Stat. Software de 2008](https://www.jstatsoft.org/index.php/jss/article/view/v025i01/v25i01.pdf). Il a donc fait ses preuves. Il est très employé : en décembre 2018, [l'article est cité plus de 1800 fois depuis 2008 dans Google Scholar]()https://scholar.google.fr/scholar?as_q=factominer&as_epq=&as_oq=&as_eq=&as_occt=any&as_sauthors=husson&as_publication=&as_ylo=&as_yhi=&hl=fr&as_sdt=0%2C5.
 

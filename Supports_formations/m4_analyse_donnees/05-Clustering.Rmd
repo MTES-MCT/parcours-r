@@ -23,7 +23,7 @@ Cet algorithme fonctionne sur des variables **quantitatives** ; on peut le mobil
 
 Exemple sur les hobbies :
 
-```{r}
+```{r clust_1}
 coord <- as.data.frame (acm$ind$coord)
 classif <- kmeans (coord, centers = 4)
 str (classif)
@@ -38,7 +38,7 @@ Remarques :
     + fournir les centres initiaux à l'algorithme.
     + fixer la "graine" du générateur de nombres aléatoires.
     
-```{r}
+```{r clust_2}
 # initialisation des centres avec les quintiles (ça fait 4 points)
 # Avec du R de base hyper efficace ^^ 
 init <- sapply (coord, function(x) quantile (x, seq(.2,.8,.2)))
@@ -50,7 +50,7 @@ classif <- kmeans (coord, centers = 4)
 
 Pour récupérer les résultat dans son *dataframe*, il suffit de rajouter le vecteur résultat dans le *dataframe* initial :
 
-```{r}
+```{r clust_3}
 names (coord) <- paste ("Axe", 1:4, sep = "")
 coord <- mutate (coord, classe = as.factor (classif$cluster))
 ggplot (coord, aes (x = Axe1, y = Axe2, color = classe)) +
@@ -114,14 +114,14 @@ str(hc)
 
 Pour déterminer le nombre optimal de classes, on regarde la perte d'inertie inter-classes (pour ça, il faut lancer une première fois la commande avec un nombre arbitraire de classes). En effet, on part d'une situation où il n'y a que de l'inertie inter-classes (chaque classe comprenant un seul individu, il n'y a pas d'inertie intra-classe). Au fur et à mesure des regroupements, on va donc perdre en inertie inter-classes, jusqu'à la dernière étape où il y a une classe avec tous les individus et donc plus d'inertie inter. Le but du jeu consiste à "stopper" l'aggrégation avant de perdre une forte quantité d'inertie inter-classe. On s'intéresse au dernières étapes pour ne pas alourdir le graphique (et on prendra un nombre de classe inférieur à 20 en général, sinon, ce n'est pas très opérationnel...). Ce diagramme ressemble très fortement à l'éboulis des valeurs propres, et on cherche à peu près la même chose (un saut).
 
-```{r}
+```{r  clust_4}
 barplot(hc$call$t$inert.gain[1:20],horiz = T,main="Gain d'inertie intra sur les 20 dernières agrégations ",
           col="lightblue",border = "grey")
 ```
 
 Autre représentation : le dendogramme représente les étapes d'agrégation. La auteur des branches représente la perte d'inertie inter-classe (ou le gain d'inertie intra)
 
-```{r}
+```{r clust_5}
 plot(hc, choice ="tree")
 ```
 
@@ -129,11 +129,11 @@ plot(hc, choice ="tree")
 
 Une fois que l'on a déterminé le nombre de classes, il reste à les décrire. Premier outil : le tableau croisé pour voir la taille de chacun.
 
-```{r}
+```{r clust_6}
 table (hc$data.clust$clust)
 ```
 
-```{r, eval = FALSE}
+```{r clust_7, eval = FALSE}
 hc$desc.var$category$`1`
 hc$desc.ind$para
 ```
@@ -174,7 +174,7 @@ Reprendre la base de données sur les iris et réaliser une classification des 1
 - Que peut-on dire des résultats et leur lien avec la variable Species ?
 
 
-```{r,collapse=T}
+```{r clust_8,collapse=T}
 hc.iris <- HCPC (acp.iris, nb.clust = 3)
 kmeans.iris <- kmeans (acp.iris$ind$coord, centers = 3)
 res.iris <- data.frame (acp.iris$ind$coord, classe = as.factor (kmeans.iris$cluster),
@@ -186,7 +186,7 @@ ggplot (res.iris, aes (x = Dim.1, y = Dim.2, color = classe)) +
 
 On compare à la vraie classe. Conclusion : la nature est mal faite...
 
-```{r}
+```{r clust_9}
 # La vraie classe :
 
 ggplot (res.iris, aes (x = Dim.1, y = Dim.2, color = Species)) +

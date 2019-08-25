@@ -9,9 +9,7 @@ La fonction `read_excel()` permet d'importer les données d'un fichier Excel. On
 - le format des variables importées
 - la valeur qui sera interprétée comme étant la valeur manquante
 
-
-
-```{r}
+```{r lire_1}
 library(readxl)
 sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
                     col_types = c ("text","text","numeric","numeric","numeric","numeric"))
@@ -36,7 +34,7 @@ Parfois, les données que nous exploitons sont disponibles sur le web.
 Il est possible, directement depuis R, de télécharger ces données et, si nécessaire, de les décompresser (dans le répertoire de travail).
 Exemple sur les données SEQUOIA de l'ACOSS :
 
-```{r, eval=F}
+```{r lire_2, eval=F}
 url <- "http://www.acoss.fr/files/Donnees_statistiques/SEQUOIA_TRIM_REGION.zip"
 download.file (url, destfile = "SEQUOIA_TRIM_REGION.zip", method = "auto")
 unzip (zipfile = "SEQUOIA_TRIM_REGION.zip")
@@ -48,7 +46,7 @@ datatable (SEQUOIA)
 
 Le package `sf` (pour simple feature) permet d'importer dans R un fichier ayant une dimension spatiale. Après importation, le fichier est un dataframe avec une variable d'un type nouveau : la géométrie. Deux exemples ici pour lire des données au format shape et geojson.
 
-```{r, eval = F, message = F,warning = F}
+```{r lire_3, eval = F, message = F,warning = F}
 Carte_EPCI_France <- st_read (dsn = "data/refgeo2017", layer = "Contour_epci_2017_region")
 plot (Carte_EPCI_France)
 
@@ -64,15 +62,14 @@ A noter que `sf` étant complètement compatible avec les packages du `tidyverse
 
 ## Lire des données sous PostgreSQL
 
-Deux approches possibles pour lire les données du patrimoine de la Dreal : 
+Deux approches possibles pour utiliser des données stockées dans une base de données PostgreSQL. 
 
 - *Importer* toutes ces données dans l'environnement R
 - se *connecter* à ces données et utiliser un interpréteur permettant de traduire du code R comme une requête SQL. 
 
 ### Lire des données sous PostgreSQL : première approche
 
-```{r, eval=F}
-
+```{r lire_4, eval=F}
 #Définition du driver
 drv <- dbDriver ("PostgreSQL") 
 
@@ -95,7 +92,7 @@ On peut bien sûr avec la même fonction lancer n'importe quelle requête sur la
 
 ### Lire des données sous PostgreSQL : seconde approche
 
-```{r, eval=F,message=F,warning=F}
+```{r lire_5, eval=F,message=F,warning=F}
 #définition du driver
 drv <- dbDriver ("PostgreSQL") 
 
@@ -109,25 +106,25 @@ postgresqlpqExec (con, "SET client_encoding = 'windows-1252'")
 analyse_db <- tbl (con, in_schema ("pesticides", "analyse"))
 ```
 
-Ici la table *analyse* n'est pas chargée dans l'environnement R, R s'est juste *connecté* à notre base de données.
+Ici la table *analyse* n'est pas chargée dans l'environnement R, R s'est juste *connecté* à la de données.
 
-On peut réaliser des opérations sur la table analyse avec du code R très simplement, par exemple ici pour filtrer sur les analyses relatives au Glyphosate : 
+On peut réaliser des opérations sur la table analyse avec du code R très simplement. Par exemple pour filtrer sur les analyses relatives au Glyphosate : 
 
-```{r, eval=F,message=F,warning=F}
+```{r lire_6, eval=F,message=F,warning=F}
 analyse_db <-  filter (analyse_db, code_parametre == 1506)
 ```
 
 >Attention, ce code ne touche pas la base de donnée, il n'est pas exécuté.
 >Pour l'exécuter, il faut par exemple afficher la table.
 
-```{r, eval=F}
+```{r lire_7, eval=F}
 analyse_db
 ```
 
 Même une fois le code exécuté, cette base n'est pas encore un dataframe.
 Pour importer la table, on utile la fonction `collect()`
 
-```{r, eval=F}
+```{r lire_8, eval=F}
 analyse_db <- collect (analyse_db)
 ```
 
@@ -139,22 +136,21 @@ L'Insee met à disposition un webservice d'accès à des données de référence
 Un package R, [rsdmx](https://github.com/opensdmx/rsdmx) permet de se connecter directement à ces données. 
 Deux approches sont possibles. La première permet d'accéder à une série particulière.
 
-```{r, eval=F}
+```{r lire_9, eval=F}
 url <- "https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471"
 datainsee <- as.data.frame (readSDMX (url))
 ```
 
 Cette approche peut être utilisée pour télécharger plusieurs séries en même temps. Ici par exemple nous téléchargeons l'ensemble des données sur les créations et défaillances d'entreprises pour les secteurs de la construction et de l'immobilier sur les Pays de la Loire.
 
-```{r, eval=F}
+```{r lire_10, eval=F}
 url <- "https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471+001564503+001564799+001564823+001582441+001582578+001582597+001582745+001656155+001656161+001655989+001655995"
 datainsee <- as.data.frame (readSDMX (url))
 ```
 
 L'autre approche permet de télécharger un ensemble de données d'une thématique appelé *dataflow.* Ici, par exemple, on va télécharger l'ensemble des données relatives à la construction neuve :
 
-```{r, eval=F}
+```{r lire_11, eval=F}
 url <- "https://bdm.insee.fr/series/sdmx/data/CONSTRUCTION-LOGEMENTS"
 datainsee <- as.data.frame (readSDMX (url))
 ```
-

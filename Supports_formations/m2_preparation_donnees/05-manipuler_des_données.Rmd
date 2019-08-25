@@ -24,7 +24,7 @@ On va travailler sur ce module principalement à partir des données sitadel en 
 
 ## Chargement des données
 
-```{r echo = F, warning = F, error = F, eval = F}
+```{r manip_1, echo = F, warning = F, error = F, eval = F}
 drv <- dbDriver ("PostgreSQL")
 con <- dbConnect (drv, dbname = "production", host = "10.44.128.174", port = 5432,
                   user = "dreal", password = "rtIX>7d[5P/0")
@@ -36,7 +36,7 @@ prelevement <- dbGetQuery(con, "SELECT * FROM pesticides.prelevement")
 station <- st_read_db(con,query="SELECT * FROM pesticides.station")
 ```
 
-```{r load, include = TRUE}
+```{r manip_2, include = TRUE}
 load (file = "data/FormationPreparationDesDonnées.RData")
 ```
 
@@ -47,7 +47,7 @@ load (file = "data/FormationPreparationDesDonnées.RData")
 
 Nous allons ici sélectionner un ensemble de variables de la table des prélèvements.
 
-```{r selection, warning = F}
+```{r manip_3, warning = F}
 prelevementb <- select (prelevement, date_prelevement, code_prelevement,
                         code_reseau, code_station)
 datatable (prelevementb)
@@ -60,32 +60,32 @@ names (prelevementb)
 
 Exemple : sélectionner toutes les variables qui commencent par "code_" : 
 
-```{r}
+```{r manip_4}
 prelevementb <- select (prelevement, starts_with ("code_"))
 ```
 
 Exemple : sélectionner les variables dont les noms sont contenus dans un vecteur de chaînes de caractères :
 
-```{r}
+```{r manip_5}
 mes_variables <- c ("code_prelevement", "code_intervenant", "code_reseau", "date_prelevement")
 prelevementb <- select (prelevement, one_of (mes_variables))
 ```
 
 ### Trier une table : `arrange()`
 
-```{r arrenger}
+```{r  manip_6}
 prelevementb <- arrange (prelevementb, date_prelevement)
 ```
 
 ### Renommer une variable : `rename()`
 
-```{r renommer}
+```{r  manip_7}
 prelevementb <- rename (prelevementb, date_p = date_prelevement)
 ```
 
 On peut aussi directement renommer une variable dans l'opération `select()`
 
-```{r}
+```{r  manip_8}
 prelevementb <- select (prelevement, date_p = date_prelevement, code_prelevement,
                         code_reseau, code_station)
 ```
@@ -103,19 +103,19 @@ L'exemple ci-dessus n'exerce un filtre que sur une condition unique.
 
 Pour des conditions cumulatives (toutes les conditions doivent être remplies), le "&" ou la ","
 
-```{r}
+```{r manip_9}
 ars <- filter (prelevement, code_reseau == "ARS", code_intervenant == "44")
 ```
 
 Pour des conditions non cumulatives (au moins une des conditions doit être remplie), le "|"
 
-```{r}
+```{r manip_10}
 ars <- filter (prelevement, code_reseau == "ARS" | code_reseau == "FREDON")
 ```
 
 Si une condition non cumulative s'applique sur une même variable, privilégier un test de sélection dans une liste avec le `%in%`
 
-```{r}
+```{r manip_11}
 ars <- filter (prelevement, code_reseau %in% c ("ARS", "FREDON"))
 ```
 
@@ -123,7 +123,7 @@ Pour sélectionner des observations qui ne répondent pas à la condition, le !
 
 Toutes les observations ayant été réalisées par un autre réseau que l'ARS :
 
-```{r}
+```{r manip_12}
 non_ars <- filter (prelevement, !(code_reseau == "ARS"))
 ```
 
@@ -134,14 +134,14 @@ non_ars <- filter (prelevement, !(code_reseau == "ARS"))
 <center>![](images/mutate.png)</center>
 
 Création de nouvelles variables
-```{r}
+```{r manip_13}
 prelevementb <- mutate (prelevementb,
                         code_prelevement_caract = as.character (code_prelevement),
                         code_reseau_fact = as.factor (code_reseau))
 ```
 
 Modification de variables existantes
-```{r}
+```{r manip_14}
 prelevementb <- mutate (prelevementb,
                         code_prelevement = as.character (code_prelevement),
                         code_reseau = as.factor (code_reseau))
@@ -156,7 +156,7 @@ prelevementb <- mutate (prelevementb,
 
 `pull()` permet d'extraire sous forme de vecteur une variable d'un *dataframe.*
 
-```{r}
+```{r manip_15}
 stations_de_la_table_prelevement <- pull (prelevement, code_station)
 stations_de_la_table_prelevement <- unique (stations_de_la_table_prelevement)
 ```
@@ -192,7 +192,7 @@ cbind (x = x, lagx = lagx, lag2x = lag2x, leadx = leadx, lead2x = lead2x)
 
 Exemple de somme glissante sur un pas de 2 observations.
 
-```{r,eval=T}
+```{r manip_16, eval=T}
 x <- sample (1:10)
 cumsumx <- cumsum (x)
 rollsumx <- roll_sum (x, n=2)
@@ -201,7 +201,7 @@ rollsumx
 
 La fonction `roll_sumr()` fait en sorte d'obtenir un vecteur de même dimension que l'entrée x
 
-```{r,eval=T}
+```{r manip_17, eval=T}
 rollsumrx <- roll_sumr (x, n=2)
 rollsumrx
 length(rollsumrx) == length(x)
@@ -209,7 +209,7 @@ length(rollsumrx) == length(x)
 
 Nous pouvons obtenir une matrice des différentes valeurs calculées :
 
-```{r,eval=T}
+```{r manip_18,eval=T}
   cbind (x = x, cumsumx = cumsum (x), rollsumx = rollsumx, rollsumrx = roll_sumr (x, n=2))
 ```
 
@@ -223,7 +223,7 @@ Nous pouvons obtenir une matrice des différentes valeurs calculées :
 - `variable = ifelse (condition (x), valeursi, valeursinon)` permet d'affecter *valeursi* ou  *valeursinon* à *variable* en fonction du fait que *x* répond à *condition*.
 Exemple : création d'une variable résultat pour savoir si les résultats de nos analyses sont bons, ou non.
 
-```{r}
+```{r manip_19}
 analyseb <- mutate (analyse,
                     resultat_ok = ifelse (code_remarque %in% c (1,2,7,10),
                                           yes = TRUE, no = FALSE))
@@ -233,7 +233,7 @@ analyseb <- mutate (analyse,
 Les conditions mises dans un `case_when()` ne sont pas exclusives. De ce fait, il faut pouvoir déterminer l'ordre d'évaluation des conditions qui y sont posées. Cet ordre s'effectue de bas en haut, c'est à dire que la dernière condition évaluée (celle qui primera sur toutes les autres) sera la première à écrire.
 Exemple: On va ici recalculer des seuils fictifs sur les analyses.
 
-```{r}
+```{r manip_20}
 analyseb <- mutate (analyse, classe_resultat_analyse = case_when (
                         resultat_analyse == 0  ~ "1",
                         resultat_analyse <= 0.001  ~ "2",
@@ -246,15 +246,15 @@ analyseb <- mutate (analyse, classe_resultat_analyse = case_when (
 
 ### Exercice : Les données mensuelles sitadel
 
-A partir du fichier sitadel de février 2017 (ROES_201702.xls), sur la région Pays de la Loire (code région 52), livrer un fichier contenant pour chaque mois, pour les logements individuels (i_AUT = ip_AUT + ig_AUT) :
+À partir du fichier sitadel de février 2017 (ROES_201702.xls), sur la région Pays-de-la-Loire (code région 52), livrer un fichier contenant pour chaque mois, pour les logements individuels (i_AUT = ip_AUT + ig_AUT) :
 
-- le cumul des autorisations sur 12 mois glissants(i_AUT_cum12)
+- le cumul des autorisations sur 12 mois glissants (i_AUT_cum12)
 
 - le taux d'évolution du cumul sur 12 mois (i_AUT_cum_evo, en %)
 
 - la part de ce cumul dans celui de l'ensemble des logements autorisés (log_AUT), en pourcentage
 
-```{r}
+```{r manip_21}
 sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
                     col_types = c ("text","text","numeric","numeric","numeric","numeric"))
 ```
@@ -271,7 +271,7 @@ Le framework tidyverse propose le package `lubridate` qui permet de gérer ces i
 
 - gestion des dates :
 
-```{r, echo = TRUE, eval = T, results = 'hide'}
+```{r manip_22, echo = TRUE, eval = T, results = 'hide'}
 dmy ("jeudi 21 novembre 2017")
 dmy ("21112017")
 ymd ("20171121")
@@ -338,7 +338,7 @@ x
 
 #### Gestion des espaces
 
-la fonction `str_pad()` permet de compléter une chaîne de caractère pour qu'elle atteigne une taille fixe. Le cas typique d'usage est la gestion des codes communes Insee.
+La fonction `str_pad()` permet de compléter une chaîne de caractère pour qu'elle atteigne une taille fixe. Le cas typique d'usage est la gestion des codes communes Insee.
 
 ```{r}
 code_insee <- 1001
@@ -406,8 +406,7 @@ Les fonctions du module [forcats](https://cran.r-project.org/web/packages/forcat
 
 - Regrouper des modalités
 
-
-On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d'apparition dans la table "prelevement""
+On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d'apparition dans la table "prelevement"
 
 ```{r, echo = F, warning = F, results = 'hide'}
 library (forcats)
@@ -419,8 +418,7 @@ prelevementb <- mutate (prelevementb,
 head (levels (prelevementb$code_station))
 ```
 
-
-forcats permet beaucoup d'autres possibilités de tri : 
+`forcats` permet beaucoup d'autres possibilités de tri : 
 
 - manuellement des facteurs (`fct_relevel()`);
 
@@ -535,11 +533,11 @@ Le pipe est la fonction qui va vous permettre d'écrire votre code de façon plu
 Comment ?
 En se rapprochant de l'usage usuel en grammaire.
 
-```verbe(sujet,complement)``` devient ```sujet %>% verbe(complement)```
+`verbe(sujet,complement)` devient `sujet %>% verbe(complement)`
 
 Quand on enchaîne plusieurs verbes, l'avantage devient encore plus évident : 
 
-```verbe2(verbe1(sujet,complement1),complement2)``` devient ```sujet %>% verbe1(complement1) %>% verbe2(complement2)```
+`verbe2(verbe1(sujet,complement1),complement2)` devient `sujet %>% verbe1(complement1) %>% verbe2(complement2)`
 
 En reprenant l'exemple précédent, sans passer par les étapes intermédiaires, le code aurait cette tête :
 

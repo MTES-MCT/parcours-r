@@ -105,7 +105,7 @@ En général, on utilise le paramétrage suivant :
 
 $\Rightarrow$ la fonction `HCPC` du package factominer le fait directement pour vous.
 
-```{r hcpc}
+```{r hcpc, cache=TRUE}
 hc <- HCPC (acm, nb.clust = 5, graph=F)
 str(hc)
 ```
@@ -146,7 +146,7 @@ modalité.
 
 Visualisation du dendogrades classes sur les axes factoriels
 
-```{r plot_hc}
+```{r plot_hc, cache=TRUE}
 plot(hc, choice ="3D.map")
 ```
 

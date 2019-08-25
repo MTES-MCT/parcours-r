@@ -5,7 +5,7 @@ Après avoir réalisé ces traitements, on peut exporter son travail afin de le 
 ## Exportation des résultats
 
 - Exporter une table en csv
-```{r,eval=FALSE}
+```{r exp_1,eval=FALSE}
 res <- summary(base)
 write.table(x = res, file = 'outputs/resultat_R.csv', sep = ';', row.names = F)
 # row.names=F pour éviter un décalage entre première ligne et les suivantes
@@ -14,7 +14,7 @@ write.table(x = base, file = 'outputs/base_R.csv', sep = ';', row.names = F)
 ```
 
 - Exporter un graphique pour l'intégrer à un document
-```{r,eval=FALSE}
+```{r exp_2,eval=FALSE}
 png('outputs/mongraphe.png') # Alloue et ouvre le fichier où inscrire le graphe
 ggplot(base, aes(x = P14_EMPLT, y = MED13)) +
   geom_point(colour = "blue")
@@ -28,7 +28,7 @@ $\rightarrow$ Beaucoup d'autres fonctions : `jpeg`, `pdf`, `postscript`, `svg`..
 
 Il est possible de sauvegarder des objets R (*dataframe*, *vecteur*, etc...) directement sur son ordinateur. Une liste d'objets R est enregistrée sous le format `.RData`.
 
-```{r,eval=FALSE}
+```{r exp_3,eval=FALSE}
 save(list = ls(), file = "outputs/env_entier.RData") # sauvegarde de tout l'environnement sur le répertoire choisi
 rm(list = ls()) # suppression de notre environnement dans R
 load("outputs/env_entier.RData") # chargement de l'environnement stocké sur l'ordinateur
@@ -40,4 +40,4 @@ load(outputs/"petit_env.RData")
 
 >**Avantages    
 - Un seul fichier peut contenir des dataframes, des graphiques, des fonctions, etc.    
-- La lecture est très rapide $\Rightarrow$ utile pour les gros volumes**
+- La lecture est très rapide $\Rightarrow$ utile pour les gros volumes de données**

@@ -70,7 +70,7 @@ flèches pour naviguer dans l'historique          |.
 
 On assigne un contenu à une variable au moyen de `<-`
 
-```{r}
+```{r inter_1}
 ma_variable <- 2
 ma_variable <- "Toulouse"
 ma_variable <- c("Toulouse", "Nantes", "Strasbourg")
@@ -97,9 +97,9 @@ Adopter des règles de nommage cohérentes, par exemples [celles-ci](http://adv-
 - Créer une troisième variable à partir des deux premières `c <- a+b*3`
 - Ré-assigner une variable : `a<-10` et vérifier l'onglet environnement
 - Créer une variable chaîne de caractère (utilisation des simples quotes et des double-quotes) `t <- 'chaine'`
-- Concaténer *a* et *t* avec `paste(a,t)` 
+- Concaténer `a` et `t` avec `paste(a,t)` 
 - Expérimenter la casse des noms de variables : créer `A <- 15` et `B <- 12` et vérifier l'onglet environnement
-- Supprimer les variables *A* et *B* avec la fonction `rm()`
+- Supprimer les variables `A` et `B` avec la fonction `rm()`
 - Aide en ligne `?ls` et `?rm`
 - Attention : Pour supprimer toutes les variables `rm(list = ls())`
 
@@ -130,7 +130,7 @@ Toujours utiliser des commentaires. Permet de pouvoir mieux comprendre ce que l'
 - Sauvegarder ce script dans votre répertoire de travail
 - Fermer RStudio, le rouvrir, et réexécuter le script
 
-```{r}
+```{r inter_2}
 # Supprimer toutes les variables existantes
 rm(list = ls())
 
@@ -143,5 +143,4 @@ imc <- poids / (taille ^ 2)
 
 # Affichage du résultat
 print (imc)
-
 ```

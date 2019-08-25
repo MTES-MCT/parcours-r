@@ -1,6 +1,6 @@
 # R, son écosystème et ses possibilités
 
-```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+```{r gen_1, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 require (tidyverse)
 require (sf)
 require (cartography)
@@ -41,7 +41,7 @@ labelLayer (map, txt = "ref")
 
 ## Un peu d'histoire
 
-- A l'origine existait le langage S, servant à programmer avec des données (*Bell laboratory*, années 70)
+- À l'origine existait le langage S, servant à programmer avec des données (*Bell laboratory*, années 70)
 
 - Au milieu des années 90, mélange de S et du langage Lisp pour le dédier à l'analyse de données et aux graphiques $\rightarrow$ création de R. [Ihaka R, Gentleman R (1996) R: A Language for Data Analysis and Graphics. *Journal of
 Computational and Graphical Statistics*, 5(3), 299–314](https://www.stat.auckland.ac.nz/~ihaka/downloads/R-paper.pdf)
@@ -50,8 +50,8 @@ Computational and Graphical Statistics*, 5(3), 299–314](https://www.stat.auckl
 
 - Système toujours d’actualité - Mise à jour tous les 6 mois
 
-- Avenir dans la statistique publique : Adopté comme standard par l'Insee (à l'horizon 2025) et divers SSM. Des packages pour :
-    - charger les données sdmx de l'Insee,
+- Avenir dans la statistique publique : adopté comme standard par l'Insee (à l'horizon 2025) et divers SSM. Des packages pour :
+    - charger les données produites par l'Insee au format sdmx,
     - charger les formats des organisations internationales (Eurostat, OCDE, ONU, etc.),
     - gérer les millésimes du référentiel communal, etc.
 
@@ -101,7 +101,7 @@ Privilégie la flexibilité et le découpage des traitements en parties simples.
 
 De base, R permet déjà de faire un très grand nombre de choses avec son socle commun : le package `base`. Pour afficher la liste des fonctions disponibles dans le package `base` :
 
-```{r, eval = F}
+```{r gen_2, eval = F}
 library(help = 'base')
 ```
 

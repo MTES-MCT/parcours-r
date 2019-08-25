@@ -3,7 +3,7 @@
 ## Package ggplot2
 Pour réaliser des graphiques, nous choisissons de nous servir du package `ggplot2`, qui permet de faire de meilleures réalisations que les fonctions basiques. Il est intégré dans le méta-package `tidyverse` donc il n'est pas utile de le re-charger dans notre session. Mais si vous devez le faire, le code est le suivant :
 
-```{r, eval=FALSE}
+```{r graph_1, eval=FALSE}
 install.packages("ggplot2")
 library("ggplot2")
 require(dplyr)
@@ -11,7 +11,7 @@ require(dplyr)
 
 La fonction `ggplot()` fonctionne d'une manière particulière. La structure ressemble à ceci :
 
-```{r, eval=FALSE}
+```{r graph_2, eval=FALSE}
 ggplot(TableEnEntree, aes(VariablesATracer)) + geom_FonctionAChoisir()
 ```
 
@@ -30,7 +30,7 @@ La fonction `aes()` (pour "aesthetics"), utilisée dans l'instrution `ggplot()` 
 ## Histogramme
 Si on désire un histogramme de log_SUPERF, on fera appel à la fonction `geom_histogram()`. Ce graphique ne présente qu'une seule dimension (la variable quanti dont on veut visualiser la distribution)
 
-```{r, message=FALSE, warning=FALSE}
+```{r graph_3, message=FALSE, warning=FALSE}
 rm(list = ls())
 
 base <- read.csv(file = "data/Base_synth_territoires.csv",
@@ -49,7 +49,7 @@ ggplot(base, aes(x = log_SUPERF)) + geom_histogram()
 
 Selon les graphiques que l'on veut tracer, on peut renseigner plusieurs variables. Dans le cas d'un nuage de points, par exemple, on croise 2 variables quantitatives :
 
-```{r, message=FALSE, warning=FALSE}
+```{r graph_4, message=FALSE, warning=FALSE}
 ggplot(base, aes(x = P14_EMPLT, y = MED13)) + geom_point(colour = "blue")
 ggplot(base, aes(x = log (P14_EMPLT), y = log(MED13))) + geom_point(colour = "blue")
 ```
@@ -76,12 +76,11 @@ g <- ggplot(data = base, aes(x = REG, fill = REG)) +
   geom_bar()
 
 ggplotly(g)
-
 ```
 
 ## Exercices : créer des graphiques
 
-A l'aide de l'aide mémoire `ggplot2` :
+À l'aide de l'aide mémoire `ggplot2` :
 
 - Réaliser un histogramme de la population communale
 - Transformer les données avec la fonction log pour y voir plus clair
@@ -90,39 +89,39 @@ A l'aide de l'aide mémoire `ggplot2` :
 - Réaliser un graphique (nuage de points) croisant la densité de population et le taux de mortalité
 - Ajouter une dimension supplémentaire avec la couleur des points (paramètre color de `aes()`)
 
-```{r}
+```{r graph_5}
 ggplot(data = base, aes(x = P14_POP)) +
   geom_histogram()
 ```
 
 Ce n'est pas très informatif, mais on peut faire une transformation log pour y voir plus clair !
 
-```{r}
+```{r graph_6}
 ggplot(data = base, aes(x = log(P14_POP))) +
   geom_histogram()
 ```
 
-Faites maintenant un barplot (qui n'est pas un histogramme !!!! ) du nombre de communes par type ZAU
+Faites maintenant un barplot (qui n'est pas un histogramme !!!!) du nombre de communes par type ZAU.
 
-```{r}
+```{r graph_7}
 ggplot(data = base, aes(x = REG)) +
   geom_bar()
 ```
 
 On va essayer d'y voir plus clair avec le paramètre `fill`
 
-```{r}
+```{r graph_8}
 ggplot(data = base, aes(x = REG, fill = REG)) +
   geom_bar()
 ```
 
 
-```{r}
+```{r graph_9}
 ggplot(data = base, aes(x = log(P14_POP), y = log(P14_LOGVAC))) +
   geom_point()
 ```
 
-```{r}
+```{r graph_10}
 ggplot(data = base, aes(x = densite, y = tx_mort, color = REG)) +
   geom_point()
 ```
@@ -131,7 +130,7 @@ Là encore il faudrait faire une transformation logarithmique, mais tout ça est
 
 **Note** : avec les fonctions de base, on peut obtenir de nombreux graphiques avec très peu de code, mais moins jolis :
 
-```{r}
+```{r graph_11}
 plot(iris)
 ```
 

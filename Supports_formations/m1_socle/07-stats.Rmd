@@ -4,18 +4,18 @@
 
 La fonction `summary()` peut s'appliquer à une table entière ou un vecteur. Appliquée sur un tableau, elle donne les statistiques principales sur chacune des variables, en s'adaptant au type de celles-ci (numerique ou texte).
 
-```{r}
+```{r stat_1}
 base_extrait <- select(base, 1, 3, 5, 7:12)
 summary(base_extrait)
 ```
 
 - Les variables quantitatives
-```{r}
+```{r stat_2}
 summary(pull(base_extrait, NAIS0914))
 ```
 
 - Les variables qualitatives
-```{r}
+```{r stat_3}
 summary(pull(base_extrait, ZAU))
 ```
 
@@ -24,7 +24,7 @@ summary(pull(base_extrait, ZAU))
 Les fonctions `sum()`, `mean()`, `median()`, `min()`, `max()`, `var()`, `sd()`... résument l'information pour en donner une statistique.
 La fonction `quantile()` renvoie les quartiles de la variables (ou bien tout autre découpage qu'on lui renseigne).
 
-```{r}
+```{r stat_4}
 sum(pull(base_extrait, P14_POP), na.rm = T)
 mean(pull(base_extrait, P14_POP), na.rm = T)
 median(pull(base_extrait, P14_POP), na.rm = T)
@@ -41,11 +41,11 @@ Ces fonctions retournent une valeur, ou bien un ensemble de valeur (pour `quanti
 
 La fonction `summarise()` permet d'aggréger des données, en appliquant une fonction sur les variables pour construire une statistique sur les observations de la table. C'est une fonction dite de “résumé”.
 
-```{r, eval=FALSE}
+```{r stat_5, eval=FALSE}
 summarise (TableEnEntree, NomVariableAgregee = Fonction(NomVariableEtude))
 ```
 
-```{r}
+```{r stat_6}
 base_med <- base_extrait %>%
   summarise(population_med = median(P14_POP, na.rm = T))
 ```
@@ -64,7 +64,7 @@ summarise (TableauGroupes, NomVariableAgregee = Fonction (NomVariableEtude))
 ```
 
 Par exemple, si on veut avoir la médiane de la variable P14_POP, pour chaque ZAU et chaque région :
-```{r}
+```{r stat_7}
 base_reg_ann <- group_by (base_extrait, ZAU, REG) %>%
   summarise (population_med = median (P14_POP, na.rm = T))
 ```
@@ -73,7 +73,7 @@ base_reg_ann <- group_by (base_extrait, ZAU, REG) %>%
 ## Tableau de contingence
 
 La fonction `table()` calcule les effectifs d'un tableau croisé :
-```{r}
+```{r stat_8}
 t <- table(base_extrait$ZAU, base_extrait$REG)
 print(t)
 ```
@@ -82,7 +82,7 @@ print(t)
 
 La fonction `prop.table()` prend en entrée un objet `table` (tableau de contingence avec les effectifs) et calcule les pourcentages (total, ligne, colonne) associés $\rightarrow$ `?prop.table`
 
-```{r}
+```{r stat_9}
 (prop.table(t) * 100) %>% round(digits = 1)
 ```
 
@@ -100,7 +100,7 @@ Tableaux croisés :
 - Calculer le nombre de communes par région et type d'espace, et les pourcentages associés
 
 
-```{r}
+```{r stat_10}
 df <- base %>% 
   select(1:24) %>% 
   mutate(densite = P14_POP / SUPERF,
@@ -112,7 +112,7 @@ summary(df)
 ```
 
 
-```{r, eval = F}
+```{r stat_11, eval = F}
 df %>% pull(densite) %>% mean()
 df %>% pull(densite) %>% sd()
 df %>% pull(densite) %>% median()
@@ -121,7 +121,7 @@ df %>% pull(densite) %>% var()
 
 On a des NA car les valeurs manquantes sont absorbantes !
 
-```{r, eval = F}
+```{r stat_12, eval = F}
 df %>% pull(densite) %>% mean(na.rm = T)
 df %>% pull(densite) %>% sd(na.rm = T)
 df %>% pull(densite) %>% median(na.rm = T)
@@ -129,35 +129,33 @@ df %>% pull(densite) %>% var(na.rm = T)
 ```
 
 
-```{r}
+```{r stat_13}
 df <- df %>% 
   mutate(std_dens = (densite - mean(densite, na.rm = T)) / sd(densite, na.rm = T))
 ```
 
 Avantage des variables centrées réduites : on élimine les effets d'unité (d'ordre de grandeur), et on peut donc comparer les distributions de deux variables qui ont des unités différentes (voir module 3)
 
-```{r}
+```{r stat_14}
 df %>% pull(densite) %>% quantile(na.rm = T)
 ```
 
-```{r}
+```{r stat_15}
 seq(0, 1, 0.1) # vérifier la séquence qu'on souhaite
 df %>% pull(densite) %>% quantile(probs = seq(0, 1, 0.1), na.rm = T)
 ```
 
-```{r}
+```{r stat_16}
 t <- table(df$ZAU2)
 t
 100 * prop.table(t) %>% round(digits = 4)
 ```
 
 - Deux variables
-```{r}
+```{r stat_17}
 t <- table(df$REG, df$ZAU2)
 t
 100 * prop.table(t) %>% round(digits = 4)
 ```
 
-Pour aller plus loin et ajouter des variables de pondération, calculer les profils-ligne ou profils-colonne, rendez-vous au [module 3 "Statistiques descriptives"](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html), ou demandez à votre GF (Gentil Formateur).
-
-
+Pour aller plus loin et ajouter des variables de pondération, calculer les profils-ligne ou profils-colonne, rendez-vous au [module 3 "Statistiques descriptives"](https://rawgit.com/MTES-MCT/parcours-r/master/Supports_formations/m3_stats_desc/_book/index.html) ou demander à un GF (Gentil Formateur).

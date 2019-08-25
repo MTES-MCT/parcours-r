@@ -28,7 +28,7 @@ Le package est prêt à être utilisé !
 
 ## Importation de données 
 
-Conseil : exporter les données au format .csv ; c'est le format le plus interopérable (supporté par tous les logiciels stat). Utiliser ensuite la fonction `read.csv` après avoir défini le répertoire de travail (ou en donnant le chemin complet)
+Conseil : exporter les données au format CSV ; c'est le format le plus interopérable (supporté par tous les logiciels stat). Utiliser ensuite la fonction `read.csv` après avoir défini le répertoire de travail (ou en donnant le chemin complet)
 
 ```{r lecturecsv}
 base <- read.csv (file = "data/Base_synth_territoires.csv",

@@ -1,6 +1,6 @@
 # Bien commencer
 
-## Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.
+## Créer un projet sous Rstudio pour vous permettre de recenser vos travaux.
 
 Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
 
@@ -58,7 +58,7 @@ Commencer par rajouter un script dans le répertoire `/src` à votre projet qui 
 - charger les données dont vous aurez besoin.
 
 
-```{r eval=T, warning=FALSE, message=FALSE}
+```{r gs_1, eval=T, warning=FALSE, message=FALSE}
 library (tidyverse)
 library (FactoMineR)
 library (factoextra)
@@ -76,9 +76,7 @@ taille <- read.csv2 ("data/Effet_taille.csv", header = TRUE,
 data (iris)
 
 data (hobbies)
-
 ```
-
 
 ## Bien structurer ses projets *data*
 
@@ -91,6 +89,6 @@ En voici quelques uns :
 - https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html
 - http://projecttemplate.net/architecture.html
 
-A partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à conserver toujours la même arborescence dans vos projets afin de vous y retrouver plus simplement.
+À partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à conserver toujours la même arborescence dans vos projets afin de vous y retrouver plus simplement.
 
 

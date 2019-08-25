@@ -8,14 +8,14 @@
 
 - Le but est de fournir une approche unique pour produire quasiment **toute valorisation graphique** de données que l'on peut trouver dans des revues scientifiques, les journaux, dans l'analyse statistique ou la data visualisation.
 
-- Ce Package aujourd'hui s'inscrit dans R dans le **framework tidyverse** qui propose une approche cohérente entre l'importation et la préparation des données, leur analyse et leur valorisation.
+- Ce package s'inscrit aujourd'hui dans R par le **framework tidyverse** qui propose une approche cohérente entre l'importation et la préparation des données, leur analyse et leur valorisation.
 
 ## Le Tidyverse
 ![le tidyverse](pic/tidyverse.png "le tidyverse"){#id .class width=800}
 
 ## ggplot 2 : les concepts clefs
 
-Pour construire un graphique avec ggplot il va falloir lui définir plusieurs éléments : 
+Pour construire un graphique avec ggplot, il va falloir lui définir plusieurs éléments : 
 
 - **la donnée** : ggplot2 permet de travailler sur des vecteurs, des dataframes, des tibbles, ou des données spatiales ;
 
@@ -23,7 +23,7 @@ Pour construire un graphique avec ggplot il va falloir lui définir plusieurs é
 
 - les **paramètres** : on définit les autres paramètres qui dépendent de constantes (par exemple : je veux que toutes mes lignes soient rouge ou de taille 2 pixels) ;
 
-- le **layer ("forme géométrique")** : on définie sous quelle représentation graphique on représente les paramètres précédents. Sous ggplot, ces fonctions sont de la forme geom_XX ;
+- le **layer ("forme géométrique")** : on définie sous quelle représentation graphique on représente les paramètres précédents. Sous `ggplot`, ces fonctions sont de la forme `geom_XX` ;
 
 L'écriture type d'un graphique sera donc: 
 

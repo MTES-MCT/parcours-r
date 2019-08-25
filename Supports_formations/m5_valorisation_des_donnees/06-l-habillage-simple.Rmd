@@ -2,9 +2,9 @@
 
 ## Titre et libellé des axes
 
-Chaque nouvel élément graphique est à rajouter sous forme de layer, ici nous utilisons la fonction **labs** qui permet de labelliser tout les éléments possibles de l'aesthétic, ainsi que le titre (*title*), le sous titre (*subtitle*) et le bas de page (*caption*)
+Chaque nouvel élément graphique est à rajouter sous forme de layer. Ici, nous utilisons la fonction **labs** qui permet de labelliser tous les éléments possibles de l'aesthétic, ainsi que le titre (*title*), le sous titre (*subtitle*) et le bas de page (*caption*)
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg6_1, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -16,14 +16,14 @@ ggplot(graphique1) +
        caption="Source : ODD / ONU")
 ```
 
-A noter qu'il existe plusieurs autres façons de spécifier ces élèments par des couches spécifiques: ggtitle, xlab, ylab,...
+À noter qu'il existe plusieurs autres façons de spécifier ces élèments par des couches spécifiques: `ggtitle`, `xlab`, `ylab`,...
 
 ## Légende
 
 Les fonctions `guide()` et `guides` permettent de modifier finement la légende.
-Les guides peuvent être spécifiées dans chaque scale_* ou dans une instruction `guides`.
+Les guides peuvent être spécifiés dans chaque scale_* ou dans une instruction `guides`.
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg6_2, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -46,7 +46,7 @@ ggplot(graphique1) +
 
 Il est aussi possible de rajouter des annotations de type texte, par exemple, "à la volée".
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg6_3, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -59,9 +59,9 @@ ggplot(graphique1) +
   annotate("text", x = 6, y = 2, label = "je rajoute mon texte",color="blue")
 ```
 
-La fonction **annotate** permet aussi d'ajouter d'autre type d'annotation comme par exemple des rectangles:
+La fonction **annotate** permet aussi d'ajouter d'autres types d'annotation comme par exemple des rectangles :
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg6_4, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -73,5 +73,4 @@ ggplot(graphique1) +
        caption="Source : ODD / ONU")+
    annotate("rect", xmin = 10, xmax = Inf, ymin = -Inf, ymax = Inf,fill="red",alpha=0.2)+
    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 2,fill="green",alpha=0.2)
-
 ```

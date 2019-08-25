@@ -8,9 +8,9 @@ Le package [gganimate](https://gganimate.com/) permet d'enrichir ggplot avec des
 
 Nous allons voir comment animer notre premier graphique sur la répartition des pays en fonction du taux de mortalité et du PIB, en regardant comment celui ci évolue avec les années.
 
-Pour cela nous partons des même données mais définies pour l'ensemble des années depuis 1990.
+Pour cela, nous partons des même données mais définies pour l'ensemble des années depuis 1990.
 
-```{r gganimate1}
+```{r gganim_1}
 ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -23,11 +23,11 @@ ggplot(data = graphique_anime) +
 
 ```
 
-Le graphique précédent est bien sur illisible, un même pays voit ces données affichées pour toutes les années.
-Nous allons utiliser la fonction ***transition_states()*** du package gganimate pour lui définir l'année comme la frame de notre graphique animé.
+Le graphique précédent est bien sûr illisible, un même pays voit ces données affichées pour toutes les années.
+Nous allons utiliser la fonction ***transition_states()*** du package `gganimate` pour lui définir l'année comme la frame de notre graphique animé.
 
 
-```{r gganimate2,,warning = FALSE,message = FALSE,error=FALSE, cache=TRUE}
+```{r gganim_2,,warning = FALSE,message = FALSE,error=FALSE, cache=TRUE}
 anim <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -43,7 +43,7 @@ anim <- ggplot(data = graphique_anime) +
 anim
 ```
 
-***Transition_states()*** peut s'assimiler à la création de facette, mais qui vont être ensuite utilisée pour créer une animation. Les options permettant de paramétrer cette animation:
+***Transition_states()*** peut s'assimiler à la création de facettes, mais qui vont être ensuite utilisées pour créer une animation. Les options permettant de paramétrer cette animation:
 
 - states: le nom de la colonne qui va définir nos états
 - transition_length : la durée relative de la transition
@@ -52,16 +52,15 @@ anim
 
 La variable *closest state" nous permet d'utiliser ici l'état pour l'afficher en sous-titre.
 
-gganimate possède encore bien d'autres fonctionnalités pour définir son animation,notamment :
+gganimate possède encore bien d'autres fonctionnalités pour définir son animation, notamment :
 
 - ***ease_aes()*** permet de définir comment le graphique change entre deux états : progression linaire, progression qui accélère entre le début et la fin...
 
 - ***enter_xx()*** et ***exit_xx()*** permette de définir comment les objets apparaissent et disparaissent quand on change d'état.
 
-
 On peut utiliser gganimate avec des facettes.
 
-```{r gganimate3,warning = FALSE,message = FALSE,error=FALSE,cache=TRUE}
+```{r gganim_3,warning = FALSE,message = FALSE,error=FALSE,cache=TRUE}
 anim_facet <- ggplot(data = graphique_anime) + 
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -80,15 +79,15 @@ anim_facet
 
 ## Paramétrer l'animation
 
-La fonction animate() permet de paramétrer notre animation.Notamment:
+La fonction `animate()` permet de paramétrer notre animation. Notamment:
 - le moteur de rendu 
-- le nombre de frame à créer
+- le nombre de frames à créer
 - le frame rate
 - la durée
 
 Ici par exemple, nous paramétrons le rendu pour supprimer la boucle d'animation (*loop=FALSE*)
 
-```{r gganimate4,warning = FALSE,message = FALSE,error=FALSE}
+```{r  gganim_4,warning = FALSE,message = FALSE,error=FALSE}
 animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"), 
                                       loop = FALSE,
                                    width = NULL,
@@ -99,23 +98,20 @@ animate(anim,renderer=gifski_renderer(file = tempfile(fileext = ".gif"),
 ## Exporter une animation
 
 La fonction ***anime_save()*** permet de sauvegarder nos animations sous différent format à définir via le moteur de rendu.
-Par défaut elle sauvegarde la dernière animation.
+Par défaut, elle sauvegarde la dernière animation.
 
-```{r gganimate5,warning = FALSE,message = FALSE,error=FALSE}
+```{r gganim_,warning = FALSE,message = FALSE,error=FALSE}
 anim_save("figures/ma_super_animation.gif")
 ```
 
-
-
 ## Exercice 6
 
-
-Produire le nuage de point du croisement de la part communale des logements ayant une étiquette A,B,C en fonction de la part communale du parc récent.
+Produire le nuage de points du croisement de la part communale des logements ayant une étiquette A,B,C en fonction de la part communale du parc récent.
 Créer une animation par département uniquement pour ceux de la région Centre-Val de Loire.
 
 Le résultat attendu : 
 
-```{r eval=T,message=F,warning=F,echo=FALSE}
+```{r  gganim_6, eval=T,message=F,warning=F,echo=FALSE}
 rpls <- rpls_aggrege_large %>% 
   filter(nReg_2017=="Centre-Val de Loire" & TypeZone=="Communes") %>% 
   mutate(nDep_2017=fct_drop(nDep_2017))
@@ -132,5 +128,4 @@ anim <- ggplot(data =rpls ) +
                     transition_length = 1,
                     state_length = 2)
 anim
-
 ```

@@ -1,7 +1,5 @@
 # Bien commencer
 
-
-
 ## Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.
 
 Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
@@ -10,7 +8,7 @@ Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
 
 > **Fini les `setwd("chemin/qui/marche/uniquement/sur/mon/poste")` !** 
 
-- Toujours sur la portabilité, un projet peut être utiliser avec un outil comme packrat qui va vous internaliser en interne au projet l'ensemble des packages dont vous aurez besoin dans votre projet. Cela permet donc à votre collègue à qui vous passer votre projet de ne pas avoir à les installer et surtout si vous mettez à jour votre environnement R, votre projet restera toujours avec les versions des packages avec lesquelles vous avez fait tourné votre projet à l'époque. Cela évite d'avoir à surbir les effets d'une mise à jour important d'un package qui casserait votre code.
+- Toujours sur la portabilité, un projet peut être utilisé avec un outil comme packrat qui va internaliser dans le projet l'ensemble des packages dont vous aurez besoin pour celui-ci. Cela permet donc à votre collègue, à qui vous passez votre projet, de ne pas avoir à les installer et surtout si vous mettez à jour votre environnement R, votre projet restera toujours avec les versions des packages avec lesquelles vous avez fait tourné votre projet à l'époque. Cela évite d'avoir à surbir les effets d'une mise à jour important d'un package qui casserait votre code.
 
 Pour activer packrat sur un projet, aller dans `Tools/Project Options->Packrat`
 
@@ -19,7 +17,7 @@ Pour activer packrat sur un projet, aller dans `Tools/Project Options->Packrat`
 ![](pic/creerprojet4.png){#id .class width=500}
 
 
-- Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tous ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications... et donc y compris package avec packrat.
+- Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tout ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications... et donc y compris package avec packrat.
 
 - On peut travailler sur plusieurs projets en même temps, Rstudio ouvre autant de sessions que de projet dans ce cas.
 
@@ -40,7 +38,7 @@ Pour activer packrat sur un projet, aller dans `Tools/Project Options->Packrat`
 
 Une bonne pratique est de créer un sous répertoire `/data` pour stocker les données sur lesquelles vous aurez à travailler. 
 
-Vous pouvez le faire de l'explorateur de fichier de votre système d'exploitation ou directement à partir de l'explorateur de fichier de RStudio.
+Vous pouvez le faire de l'explorateur de fichiers de votre système d'exploitation ou directement à partir de l'explorateur de fichiers de RStudio.
 
 ![](pic/creerprojet3.png){#id .class width=500}
 
@@ -96,6 +94,4 @@ En voici quelques uns :
 - https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html
 - http://projecttemplate.net/architecture.html
 
-A partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à garder toujours la même structure dans vos projets afin de vous y retrouver plus simplement.
-
-
+À partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à garder toujours la même structure dans vos projets afin de vous y retrouver plus simplement.

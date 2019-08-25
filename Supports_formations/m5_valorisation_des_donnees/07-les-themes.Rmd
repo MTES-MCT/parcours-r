@@ -1,24 +1,24 @@
 # Les thèmes
 
-Pour modifier simplement la position de la légende,c'est la fonction [theme()](http://ggplot2.tidyverse.org/reference/theme.html) qu'il faut utiliser.
-***theme*** permet de créer des templates, c'est à dire de définir tout ce qui n'est pas lié directement aux données sur un graphique, notamment: 
+Pour modifier simplement la position de la légende, c'est la fonction [theme()](http://ggplot2.tidyverse.org/reference/theme.html) qu'il faut utiliser.
+***theme*** permet de créer des templates, c'est-à-dire de définir tout ce qui n'est pas lié directement aux données sur un graphique, notamment: 
 
-- la position, taille,couleur,police des éléments textuel
+- la position, taille, couleur, police des éléments textuels
 
 - la couleur des grilles primaires et secondaires du graphique
 
 
-Il existe des [thèmes prédéfinis](http://ggplot2.tidyverse.org/reference/index.html#section-themes) dans ggplot que l'on peut déjà utiliser.
-Par exemple: theme_classic(), theme_bw(), theme_dark(), ...
+Il existe des [thèmes prédéfinis](http://ggplot2.tidyverse.org/reference/index.html#section-themes) dans `ggplot` que l'on peut déjà utiliser.
+Par exemple : `theme_classic()`, `theme_bw()`, `theme_dark()`, ...
 
-Des packages externe permettent d'enrichir cette collection de thèmes, par exemple ggthemes ou hrbethemes.
+Des packages externes permettent d'enrichir cette collection de thèmes, par exemple `ggthemes` ou `hrbrthemes`.
 
 Lorsque l'on souhaite garder une cohérence entre plusieurs graphiques, le mieux est d'en définir un à part pour l'appeler ensuite.
 
 
 ## Les fonctions "élément"
 
-Elle utilise 4 types de fonctions:
+Elle utilise 4 types de fonctions :
 
 - ***element_text()*** : pour toutes les étiquettes
 
@@ -57,7 +57,7 @@ lineend | le type de fin de ligne ("round", "butt" ou "square")
 ## Les composantes
 
 Il s'agit des différents éléments modifiables dans le thème.
-Par exemple:
+Par exemple :
 
 **Axes**
 axis.line, axis.text.x, axis.text.y, axis.ticks, axis.title.x, axis.title.y,...
@@ -74,7 +74,7 @@ panel.background, panel.border, panel.grid.major, panel.grid.minor,...
 
 - Changer le fond du graphique ***panel_background***
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg7_1, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -89,7 +89,7 @@ ggplot(graphique1) +
 
 - Changer l'apparence du quadrillage ***panel_background***
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg7_2, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -104,7 +104,7 @@ ggplot(graphique1) +
 
 - Changer l'apparence des étiquettes des axes ***axis_xxx()***
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg7_3, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -121,7 +121,7 @@ ggplot(graphique1) +
 Certains changements de paramètres ne nécessitent pas l'utilisation de fonction ***element_()*** .
 Par exemple, pour changer la position de la légende ***legend.xxx()***
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg7_4, echo=T,eval=T,fig.height=5,fig.width=10}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),
@@ -138,7 +138,7 @@ ggplot(graphique1) +
 
 La fonction theme_set() vous permet de définir un thème par défaut pour l'ensemble de vos graphiques.
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=10}
+```{r fg7_5, echo=T,eval=T,fig.height=5,fig.width=10}
 theme_set(theme_dark())
 
 ggplot(graphique1) +
@@ -155,10 +155,10 @@ ggplot(graphique1) +
 
 ## Créer son propre thème
 
-Un thème est une fonction R qui va prendre ne paramètre des éléments que vous souhaitez pouvoir faire varier et fixer des éléments que vous souhaitez avoir comme rendu par défaut.
-Créons ici un thème avec un fond vert pour le ministère de la transition écologique et solidaire. On rajoute un paramètre pour la taille de la police du titre du graphique.
+Un thème est une fonction R qui va prendre en paramètre des éléments que vous souhaitez pouvoir faire varier et fixer des éléments que vous souhaitez avoir comme rendu par défaut.
+Créons un thème avec un fond vert pour le ministère de la transition écologique et solidaire. On rajoute un paramètre pour la taille de la police du titre du graphique.
 
-```{r}
+```{r fg7_6}
 library(hrbrthemes)
 theme_mtes<-function(taille_police=14){
   theme_bw()+
@@ -198,7 +198,7 @@ ggplot(graphique1) +
 
 Le résultat attendu
 
-```{r eval=T,echo=F,message=F,warning=F}
+```{r  fg7_7, eval=T,echo=F,message=F,warning=F}
 ggplot(graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),

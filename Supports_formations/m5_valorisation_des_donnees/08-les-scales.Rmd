@@ -4,14 +4,14 @@ Les fonctions **scales** permettent globalement de paramétrer les éléments re
 
 - Si je veux un gradient de couleur fonction d'une variable continue : quelle palette de couleur je choisie, comment je cale mon dégradé en fonction de cette variable continue ?
 
-- Si je met une variable continue en ordonnée, comment je définis le minimum et maximum de cette axe, sa position, les valeurs que j'affiche sur l'échelle...
+- Si je mets une variable continue en ordonnée, comment je définis le minimum et maximum de cette axe, sa position, les valeurs que j'affiche sur l'échelle...
 
 
 L'ensemble des scales possibles peuvent se décrire sous forme suivante:
 
-scale_xx_yy
+`scale_xx_yy`
 
-ou xx peut être un des paramètre de l'aesthétic : 
+ou `xx` peut être un des paramètres de l'aesthétic : 
 
 xx|description
 -----------------|---
@@ -65,16 +65,16 @@ ggplot(graphique1) +
 ## Formatage spécifique
 
 - Transformation en pourcentage;
-```{r, echo=T,eval=F}
+```{r fg8_1, echo=T,eval=F}
   scale_y_continuous(labels=scales::percent)
 ```
 - Ajout du séparateurs des milliers;
-```{r, echo=T,eval=F}
+```{r fg8_2, echo=T,eval=F}
   scale_y_continuous(labels=function(x) format(x,big.mark=" ",scientific = FALSE))
 ```
 - Ajout du symbole €;
 
-```{r, echo=T,eval=F}
+```{r fg8_3, echo=T,eval=F}
   scale_y_continuous(labels=function(x) paste(x," €"))
 ```
 
@@ -91,7 +91,7 @@ ggplot(graphique1) +
 
 Le résultat attendu
 
-```{r eval=T,message=F,echo=F,warning=F}
+```{r  fg8_4,eval=T,message=F,echo=F,warning=F}
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,

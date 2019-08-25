@@ -1,8 +1,8 @@
 # Les facettes
 
-Lorsque l'on veut pouvoir réaliser un graphique pour plusieurs sous ensemble, les facettes sont alors très utiles. On va ici l'illustrer avec la réalisation du même graphique ci dessus mais pour plusieurs années différentes.
+Lorsque l'on veut pouvoir réaliser un graphique pour plusieurs sous ensemble, les facettes sont alors très utiles. On va ici l'illustrer avec la réalisation du même graphique ci-dessus, mais pour plusieurs années différentes.
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=8}
+```{r f7_1, echo=T,eval=T,fig.height=5,fig.width=8}
 indicateur311 %>%
   filter(Type_Zone != "Pays",
          Age_group=="All age ranges or no breakdown by age",
@@ -26,13 +26,13 @@ indicateur311 %>%
   facet_wrap(~Year)
 ```
 
-L'exemple pris ici "scinde" notre table en fonction d'une seule variable, mais on peut le faire sur plusieurs variables également.
+Cet exemple "scinde" notre table en fonction d'une seule variable, mais on peut le faire sur plusieurs variables également.
 
 On peut choisir avec facet_wrap : 
-- le nombre de colonnes ou de ligne sur lesquel on veut voir s'afficher le graphique
+- le nombre de colonnes ou de lignes sur lesquel on veut voir s'afficher le graphique
 - si on veut fixer l'échelle de l'un ou l'autre des axes ou les deux
 
-```{r, echo=T,eval=T,fig.height=5,fig.width=12}
+```{r f7_2, echo=T,eval=T,fig.height=5,fig.width=12}
 indicateur311 %>%
   filter(Type_Zone != "Pays",
          Age_group=="All age ranges or no breakdown by age",
@@ -72,20 +72,20 @@ Pour avoir la liste des modalités dune variable :
  
 - Variables caractères ou factorielles :
 
-```{r eval=F}
+```{r  f7_3, eval=F}
 unique(rpls_aggrege$Indicateur)
 ```
 
 - Variables factorielles :
 
-```{r eval=F}
+```{r f7_4, eval=F}
 levels(rpls_aggrege$Indicateur)
 ```
 
 Résultat attendu
 
 
-```{r eval=T,fig.height=8,fig.width=12,message=F,warning=F,echo=FALSE}
+```{r  f7_5,eval=T,fig.height=8,fig.width=12,message=F,warning=F,echo=FALSE}
 rpls_aggrege  %>% 
   filter(TypeZone=="Régions",
          Indicateur %in% c("3 et 4 pièces_pourcent",

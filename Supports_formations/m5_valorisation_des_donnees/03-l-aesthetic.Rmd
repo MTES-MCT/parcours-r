@@ -2,7 +2,7 @@
 
 ## Les paramètres du mapping
 
-Dans l'exemple qui suit, la représentation géographique utilisée est le nuage de point **geom_point**.
+Dans l'exemple qui suit, la représentation géographique utilisée est le nuage de points **geom_point**.
 D'autres types de représentations géographiques sont présentés dans la partie suivante.
 
 L'aesthetic sert à identifier les variables que l'on souhaite représenter.
@@ -28,9 +28,9 @@ ggplot(data = graphique1) +
 ## Les "autres" paramètres
 
 Il est possible de spécifier des paramètres qui seront valables pour l'ensemble du graphique. 
-On retrouve entre autre les mêmes paramètres que proposés dans l'aes mais il faut alors les passer **en dehors de l'aesthetic**.
+On retrouve entre autre les mêmes paramètres proposés dans l'aes, mais il faut alors les passer **en dehors de l'aesthetic**.
 
-Par exemple si l'on souhaite modifier la transparance et la taille de l'ensemble des points du graphique précédent:
+Par exemple, si l'on souhaite modifier la transparance et la taille de l'ensemble des points du graphique précédent:
 
 ```{r, fig.height=3.5}
 ggplot(data = graphique1) + 
@@ -38,7 +38,7 @@ ggplot(data = graphique1) +
              alpha=0.5,size=1.9)
 ```
 
-De même si l'on souhaite modifier la couleur générale:
+De même si l'on souhaite modifier la couleur générale :
 
 ```{r, fig.height=3.5}
 ggplot(data = graphique1) + 
@@ -51,9 +51,7 @@ Il est installable comme n'importe quel package.
 Pour plus d'informations: https://github.com/daattali/colourpicker
 
 
-
 ## Exercice 1
-
 
 > A partir des données de la table rpls_aggrege_large (dans le data_exercices_formation.RData), 
 >

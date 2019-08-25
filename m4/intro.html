@@ -24,7 +24,7 @@
 <meta name="author" content="Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-23" />
+<meta name="date" content="2019-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="comment-synthetiser" class="section level2">
 <h2><span class="header-section-number">2.2</span> Comment synthétiser ?</h2>
 <ul>
-<li>On souhaite passer d’un espace trop grand, non visualisable (<span class="math inline">\(p\)</span> dimensions) à une dimension plus petite.</li>
+<li>On souhaite passer d’un espace trop grand, non visualisable (<span class="math inline">\(p\)</span> dimensions) à un espace plus petit (moins de dimension).</li>
 <li>Mais on souhaite conserver l’essentiel de la variabilité entre individus <span class="math inline">\(\Rightarrow\)</span> Concept <strong>d’inertie du nuage de points</strong>.</li>
 </ul>
 <p><strong>Solution</strong> : On construit un nouvel espace, dans lequel l’inertie est concentrée sur les premiers axes factoriels. Autrement dit, on construit des nouvelles variables (qui définissent le nouvel espace), combinaisons linéaires des variables initiales, pour lesquelle l’inertie est maximale sur le nombre le plus réduit possible.</p>
@@ -289,10 +289,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Toutes visent à diminuer la dimension de l’espace d’analyse et à résumer au mieux l’information.</li>
 <li>Elles se basent toutes sur le critère d’inertie, autrement dit sur l’hétérogénéité des individus.</li>
-<li>Pour toutes il faut choisir le nombre de variables (ou de classes) à retenir.</li>
+<li>Pour toutes, il faut choisir le nombre de variables (ou de classes) à retenir.</li>
 <li>Les analyses factorielles permettent de repérer les variables qui permettent le plus de résumer l’information.</li>
 <li>La classification permet de regrouper les individus aux caractéristiques proches. C’est la méthode la plus synthétique, donc la plus réductrice.</li>
-<li>Il est souvent utile d’utiliser une analyse factorielle + une méthode de partitionnement en complément pour bien comprendre l’information contenue dans les données.</li>
+<li>Il est souvent pertinent d’utiliser une analyse factorielle + une méthode de partitionnement en complément pour bien comprendre l’information contenue dans les données.</li>
 </ul>
 </div>
 <div id="notion-de-distance" class="section level2">
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="nature-des-variables" class="section level2">
 <h2><span class="header-section-number">2.7</span> Nature des variables</h2>
-<p>On distingue les variables qualitatives des variables quantitatives. Cependant cette distinction n’est pas absolument évidente.</p>
+<p>On distingue les variables qualitatives des variables quantitatives. Cependant, cette distinction n’est pas absolument évidente.</p>
 <div id="variables-quantitatives" class="section level3">
 <h3><span class="header-section-number">2.7.1</span> Variables quantitatives</h3>
 <p>Une variable <strong>quantitative</strong> permet de mesurer une grandeur (quantité). Elle peut être :</p>
@@ -364,12 +364,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - 2 : Plutôt satisfait
 - 3 : Très satisfait
 Dans un tel cas, ce n’est pas très élégant car ça dépebd du codage choisi, mais on peut calculer des indices de satisfaction “moyens” par exemple pour comparer des groupes.</p>
-<p>A l’inverse, on peut discrétiser une variable quantitative pour la transformer en variable qualitative, avec la fonction <code>cut</code> et en précisant les bornes du découpage. En discrétisant, on perd une part de l’information (l’information intra-classe), donc c’est à éviter autant que possible en privilégiant les méthodes applicables aux variables quantitatives.</p>
+<p>À l’inverse, on peut discrétiser une variable quantitative pour la transformer en variable qualitative, avec la fonction <code>cut</code> et en précisant les bornes du découpage. En discrétisant, on perd une part de l’information (l’information intra-classe), donc c’est à éviter autant que possible en privilégiant les méthodes applicables aux variables quantitatives.</p>
 </div>
 </div>
 <div id="le-package-factominer" class="section level2">
 <h2><span class="header-section-number">2.8</span> Le package FactoMineR</h2>
-<p>Il existe de nombreux packages R pour les analyses multivariées (ex : ade4, vegan, cluster, Hmisc …). Il a bien fallu choisir.</p>
+<p>Il existe de nombreux packages R pour les analyses multivariées : <code>ade4</code>, <code>vegan</code>, <code>cluster</code>, <code>Hmisc</code>, etc. Il a bien fallu choisir.</p>
 <p>Le package <code>FactoMineR</code> est décrit dans <a href="https://www.jstatsoft.org/index.php/jss/article/view/v025i01/v25i01.pdf">cet article du J. Stat. Software de 2008</a>. Il a donc fait ses preuves. Il est très employé : en décembre 2018, <a href="">l’article est cité plus de 1800 fois depuis 2008 dans Google Scholar</a><a href="https://scholar.google.fr/scholar?as_q=factominer&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=husson&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;hl=fr&amp;as_sdt=0%2C5">https://scholar.google.fr/scholar?as_q=factominer&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=husson&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;hl=fr&amp;as_sdt=0%2C5</a>.</p>
 <p>Il permet de réaliser toutes les analyses multivariées usuelles et fournit de nombreuses aides graphiques à l’interprétation <span class="math inline">\(\Rightarrow\)</span> “école française de l’analyse multivariée”.</p>
 <p>Deux de ses fonctionnalités sont particulièrement intéressantes :</p>

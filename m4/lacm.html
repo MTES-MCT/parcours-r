@@ -24,7 +24,7 @@
 <meta name="author" content="Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-23" />
+<meta name="date" content="2019-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Principe de l’ACM</h2>
 <p>L’ACM permet d’analyser les liens entre <span class="math inline">\(p\)</span> variables <strong>qualitatives</strong>. C’est une généralisation de l’AFC pour <span class="math inline">\(p &gt; 2\)</span> variables qualitatives.</p>
 <p>On peut y mettre des variable quantitatives, à condition de les discrétiser (donc de les transformer en variables qualitatives).</p>
-<p>L’ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu’une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu’une autre avec peu de modalités. A l’inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument <code>row.w</code> de la fonction <code>MCA</code>).</p>
+<p>L’ACM est une AFC faite sur le tableau disjonctif complet (ou le tableau de Burt, non traité ici). Le poids de chacune des variables est donc le nombre de ses modalités moins 1. Cela signifie qu’une variable avec un grand nombre de modalités pèsera plus dans la constitution des axes qu’une autre avec peu de modalités. À l’inverse, le poids des individus (lignes) peut être spécifié dans FactoMiner (argument <code>row.w</code> de la fonction <code>MCA</code>).</p>
 <p>Le résultat d’une ACM, comme pour les autres analyses factorielles, est consitué des coordonnées des individus et des variables dans le nouvel espace construit. On peut donc utiliser cette technique pour <strong>transformer des variables qualitatives en variables continues</strong>.</p>
 <div id="le-tableau-disjonctif-complet" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Le tableau disjonctif complet</h3>
@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb60-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span> (<span class="st">&quot;Eboulis des valeurs propres&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb60-5" data-line-number="5"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.title =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></a>
 <a class="sourceLine" id="cb60-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> mm)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-29-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_10-1.png" width="576" /></p>
 <p>Dans une ACM, on n’a pas forcément de “décrochage” évident dans l’éboulis des valeurs propres : il est plus difficile de concentrer l’inertie de variables qualitatives que quantitatives. On doit donc généralement retenir plus d’axes ou renoncer à une part significative de l’inertie.</p>
 <p>En raison de cette dilution de l’information dans l’ACM, quand on dispose de variables qualitatives et quantitatives, il est souvent préférable de faire une ACP en introduisant les variable qualitatives en variables illustratives (si elles ne sont pas cruciales, évidemment).</p>
 <p>On peut aussi retenir un nombre d’axes assez élevé, puis dans un second temps ne conserver que ceux qui sont bien interprétables.</p>
@@ -407,9 +407,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Travelling        | 0.355 0.000 0.000 |
 ## Playing music     | 0.209 0.005 0.002 |</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/summary_acm-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_12-1.png" width="576" /></p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">selectMod =</span> <span class="st">&quot;cos2 15&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/summary_acm-2.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_12-2.png" width="576" /></p>
 <p>Les résultats sur le premier plan factoriel sont assez parlants : le premier axe sépare les modalités “pratique” versus “non pratique” de l’acitivité. Le second axe semble opposer les activités manuelles ou physiques (coordonnées positives sur l’axe 2) aux activités plus culturelles (cinéma, musique…).</p>
 <p>Sur le deuxième plan factoriel, l’axe 3 permet de distinguer les individus qui pêchent et écoutent de la musique des individus qui font de la couture et de la cuisine. Le 4^ème axe factoriel met en évidence les individus qui ne regardent pas la télévision et qui s’impliquent dans le volontariat.</p>
 </div>
@@ -419,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dans cet exemple, il est particulièrement judicieux d’utiliser les variables concernant les individus comme variables supplémentaires pour voir quel type de personne a quel type de hooby. On voit notamment que ce sont les moins qualifiés et les plus âgés qui ont moins de hobby, alors que les managers sont plutôt dans le cadrant des loisirs “culturels”.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">acm &lt;-<span class="st"> </span><span class="kw">MCA</span>(hobbies,<span class="dt">quali.sup =</span> <span class="dv">19</span><span class="op">:</span><span class="dv">22</span>,<span class="dt">quanti.sup =</span> <span class="dv">23</span>,<span class="dt">ncp=</span><span class="dv">4</span>,<span class="dt">graph =</span> F)</a>
 <a class="sourceLine" id="cb66-2" data-line-number="2"><span class="kw">plot.MCA</span>(acm,<span class="dt">axes=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">cex=</span>.<span class="dv">7</span>,<span class="dt">selectMod =</span> <span class="st">&quot;cos2 10&quot;</span>,<span class="dt">select =</span> <span class="st">&quot;contrib 10&quot;</span>, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-31-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_13-1.png" width="576" /></p>
 <p>Les sorties de la fonction <code>summary</code> donnent en outre les coordonnées sur les axes factoriels des modalités des variables ainsi que sa qualité, sa contribution et le test de significativité associé (est-elle non nulle ?)
 Elle donne également le rapport de corrélation (eta2, voir module 3 pour un rappel de ce qu’il signifie) entre le facteur et chacune de ces variables, ce qui permet d’apprécier l’intensité du lien entre la variable, toutes modalités confondues, et chaque facteur.</p>
 </div>
@@ -435,12 +435,12 @@ Elle donne également le rapport de corrélation (eta2, voir module 3 pour un ra
 <li>Refaites l’ACM en ajoutant la variable sexe en variable active. Que constatez-vous ?</li>
 </ul>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">invisible =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;contrib 50&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/plot_acm-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_14-1.png" width="576" /></p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">plot.MCA</span> (acm, <span class="dt">axes =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">invisible =</span> <span class="st">&quot;var&quot;</span>, <span class="dt">select =</span> <span class="st">&quot;contrib 50&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/plot_acm-2.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_14-2.png" width="576" /></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">acm2 &lt;-<span class="st"> </span><span class="kw">MCA</span> (hobbies, <span class="dt">quali.sup =</span> <span class="dv">20</span><span class="op">:</span><span class="dv">22</span>, <span class="dt">quanti.sup =</span> <span class="dv">23</span>, <span class="dt">graph =</span> F)</a>
 <a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">plot.MCA</span> (acm2, <span class="dt">invisible =</span> <span class="st">&quot;ind&quot;</span>, <span class="dt">selectMod =</span> <span class="st">&quot;contrib 20&quot;</span>)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/plot_acm-3.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/acm_14-3.png" width="576" /></p>
 <p><em>Elément de réponse à la dernière question : rajouter la variable change complètement l’analyse et l’opposition H/F emporte une bonne partie de l’inertie</em> <span class="math inline">\(\Rightarrow\)</span> <em>il faut bien réfléchir à ce qu’on introduit comme variable dans l’analyse et la problématique à laquelle on veut répondre. Ici, on centre l’analyse sur les pratiques en termes de loisirs, donc introduire des variables sur les individus n’est pas pertinent</em>.</p>
 
 </div>

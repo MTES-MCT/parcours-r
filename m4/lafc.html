@@ -24,7 +24,7 @@
 <meta name="author" content="Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-23" />
+<meta name="date" content="2019-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -364,7 +364,7 @@ Pour un cours en pdf, rendez-vous sur <a href="http://factominer.free.fr/docs/co
 <a class="sourceLine" id="cb40-6" data-line-number="6"><span class="st">  </span><span class="kw">ggtitle</span> (<span class="st">&quot;Eboulis des valeurs propres&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb40-7" data-line-number="7"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">axis.title =</span> <span class="kw">element_blank</span> ())<span class="op">+</span></a>
 <a class="sourceLine" id="cb40-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_hline</span> (<span class="dt">yintercept =</span> mm)</a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/unnamed-chunk-18-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/afc_3-1.png" width="576" /></p>
 </div>
 <div id="interpretation-des-axes" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Interprétation des axes</h3>
@@ -376,12 +376,12 @@ Pour un cours en pdf, rendez-vous sur <a href="http://factominer.free.fr/docs/co
 </ul>
 <p>Si une modalité soit graphiquement très éloignée des autres, c’est qu’elle possède dans le tableau de départ un profil tout à fait spécifique. Sa position dans le plan factoriel étant isolée, elle empêche une étude précise des positions des autres points qui se retrouvent « en paquet ». Il est recommandé dans ce cas de rendre cette modalité inactive (on la met en individu et variable supplémentaire), ce qui revient à réaliser l’AFC du tableau de départ en éliminant la ligne ou la colonne représentant cette modalité.</p>
 <p>Remarque : La position moyenne des modalités de chacun des <em>caractères</em> est au centre du plan factoriel, quel que soit le couple d’axes représenté (ex : <span class="math inline">\(F_1, F_2\)</span>).</p>
-<p>On peut s’aider des graphiques avec sélections des profils lignes/colonne selon leur contribution et qualité de représentation.</p>
+<p>On peut s’aider des graphiques avec sélection des profils lignes/colonne selon leur contribution et qualité de représentation.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">plot.CA</span> (afc, <span class="dt">selectRow =</span> <span class="st">&quot;contrib 10&quot;</span>)  </a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/plot_ca-1.png" width="576" /></p>
+<p><img src="exploration_avancee_files/figure-html/afc_4-1.png" width="576" /></p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">plot.CA</span> (afc, <span class="dt">selectRow =</span> <span class="st">&quot;cos2 10&quot;</span>)  </a></code></pre></div>
-<p><img src="exploration_avancee_files/figure-html/plot_ca-2.png" width="576" /></p>
-<p>Et approfondir avec dimdesc et le contenu des éléments de l’objet résultat :</p>
+<p><img src="exploration_avancee_files/figure-html/afc_4-2.png" width="576" /></p>
+<p>Et approfondir avec <code>dimdesc</code> et le contenu des éléments de l’objet résultat :</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">dimdesc</span> (afc, <span class="dt">axes =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2">a<span class="op">$</span><span class="st">`</span><span class="dt">Dim 1</span><span class="st">`</span><span class="op">$</span>col</a></code></pre></div>
 <pre><code>##                                coord
@@ -621,7 +621,7 @@ Pour un cours en pdf, rendez-vous sur <a href="http://factominer.free.fr/docs/co
 <li>Les modalités fortement contributives à la formation des deux premiers axes ont presque toutes une bonne qualité de représentation (ce n’est pas toujours le cas).</li>
 <li>Concernant les modalités du “type de voiture”, on remarque une distinction nette entre les cabriolets d’un côté, et les “autres” d’un… autre côté.</li>
 <li>Concernant les modalités “département”, on remarque une opposition entre les départements du nord et de l’Île de France (quart sud-ouest), les Alpes Maritimes et le Var (quart nord ouest), mais également la Savoie et la Haute-Savoie (Est).</li>
-<li>Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les “autres” (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloignés des types “standard”. On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu’ils comptent peu des autres types).</li>
+<li>Concernant le croisement des deux modalités, il apparaît immédiatement une proximité entre le type cabriolet et les départements du pourtour méditerranéen, les “autres” (sans doute type SUV ou 4x4) avec les départements de montagne. Paris est également très atypique, le département le plus éloigné des types “standard”. On peut également dire que les départements du nord parisien ont une sur-repréentation marquée des conduites intérieures (ce qui revient à dire qu’ils comptent peu des autres types).</li>
 <li>Les types conduite intérieure, break et véhicules pour handicapés sont proches du barycentre du nuage, ce qui en fait un type “standard”, sans appartenance géographique particulière.</li>
 </ul>
 </div>

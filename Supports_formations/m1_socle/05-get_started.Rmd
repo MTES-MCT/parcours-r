@@ -53,7 +53,7 @@ Cela marche bien quand on a un seul type de données, mais en général on va av
 
 Commencer par rajouter un script dans le répertoire `/src` à votre projet qui commencera par : 
 
-- activer l'ensemble des packages nécessaires
+- activer l'ensemble des packages nécessaires (pour la formation, un [script](https://mtes-mct.github.io/parcours-r/documents/preparation_pack_install_libraries.R) permet d'installer tous les packages nécessaires)
 
 - charger les données dont vous aurez besoin.
 
@@ -80,6 +80,6 @@ En voici quelques uns :
 - https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html
 - http://projecttemplate.net/architecture.html
 
-A partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à conserver toujours la même arborescence dans vos projets afin de vous y retrouver plus simplement.
+À partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d'attirance plus forte pour l'une ou l'autre solution. L'important est de vous tenir ensuite à conserver toujours la même arborescence dans vos projets afin de vous y retrouver plus simplement.
 
 

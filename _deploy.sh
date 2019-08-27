@@ -29,7 +29,7 @@ mv ./output/_book ./output/m5
 cp -r ./Supports_formations/m5_valorisation_des_donnees/_bookdown_files ./output/m5/
 
 
-cp -r ./assets ./semantic index.html ./output/
+cp -r ./documents ./assets ./semantic index.html ./output/
 
 cd output
 git add --all -f ./*

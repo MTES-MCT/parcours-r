@@ -3,8 +3,7 @@
 set -ev
 
 # Compilation du module 1
-./_render_book_maybe.R -f bookdown::gitbook    ./Supports_formations/m1_socle/
-./_render_book_maybe.R -f bookdown::epub_book  ./Supports_formations/m1_socle/
+./_render_book_maybe.R -f all ./Supports_formations/m1_socle/
 
 # Compilation du module 2
 ./_render_book_maybe.R -f bookdown::gitbook  ./Supports_formations/m2_preparation_donnees/

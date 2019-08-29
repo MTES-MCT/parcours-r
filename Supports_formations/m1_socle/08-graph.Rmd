@@ -49,7 +49,7 @@ ggplot(base, aes(x = log_SUPERF)) + geom_histogram()
 
 Selon les graphiques que l'on veut tracer, on peut renseigner plusieurs variables. Dans le cas d'un nuage de points, par exemple, on croise 2 variables quantitatives :
 
-```{r graph_4, message=FALSE, warning=FALSE}
+```{r graph_4, message=FALSE, warning=FALSE, cache=TRUE}
 ggplot(base, aes(x = P14_EMPLT, y = MED13)) + geom_point(colour = "blue")
 ggplot(base, aes(x = log (P14_EMPLT), y = log(MED13))) + geom_point(colour = "blue")
 ```
@@ -59,7 +59,7 @@ ggplot(base, aes(x = log (P14_EMPLT), y = log(MED13))) + geom_point(colour = "bl
 
 Pour explorer son jeu de données, on peut réaliser un nuage de points pour plusieurs croisements de variables possibles. Ici, en conservant quelques variables quantitatives, on peut réaliser un ensemble de graphiques. Cette "matrice" de nuages fonctionne avec le package `GGally`. 
 
-```{r ggpairs, message=FALSE, warning=FALSE}
+```{r ggpairs, message=FALSE, warning=FALSE, cache=TRUE}
 # install.packages("GGally")
 library("GGally") 
 num <- select(base, P14_LOGVAC:PIMP13) %>% sample_n(10000) %>% log() 

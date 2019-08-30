@@ -31,7 +31,7 @@ mv ./output/_book ./output/m5
 cp -r ./Supports_formations/m5_valorisation_des_donnees/_bookdown_files ./output/m5/
 
 # Copie des fichiers communs
-cp -r ./documents ./assets ./semantic index.html ./output/
+cp -r ./documents ./front/assets ./front/semantic ./front/index.html ./output/
 
 # Publication des fichiers sur la branche "gh-pages" de GitHub
 cd output

@@ -102,7 +102,7 @@
   }
   
   render_book_maybe(
-    input = ".", output_format = opt$output_format, 
+    input = "index.Rmd", output_format = opt$output_format, 
     output_dir = opt$output_dir, config_file = config_file
   )
 })()

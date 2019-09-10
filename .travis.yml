@@ -30,6 +30,7 @@ before_script:
   - chmod +x ./_render_book_maybe.R
   - chmod +x ./_build.sh
   - chmod +x ./_deploy.sh
+  - Rscript -e "webshot::install_phantomjs()"
       
 script:
   - ./_build.sh

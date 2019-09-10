@@ -3,13 +3,14 @@
 (function() {
   
   "Usage: 
-  render_book_maybe.R [-h] [-x] [--config_file=FILE] [--output_format=FORMAT] [--output_dir=DIR] [<dir>]
+  render_book_maybe.R [-h] [-x] [--input=FILE] [--output_format=FORMAT] [--config_file=FILE] [--output_dir=DIR] [<dir>]
   
   -h --help                         show this help text
   -x --usage                        show help and short example usage
   dir                               directory of bookdown source files, current directory if omitted
-  -c FILE --config_file=FILE        configuration file in dir
+  -i FILE --input=FILE              input filename, default: index.Rmd
   -f FORMAT --output_format=FORMAT  output format passed to bookdown::render_book()
+  -c FILE --config_file=FILE        configuration file in dir
   -o DIR --output_dir=DIR           output directory passed to bookdown::render_book(), default: _book" -> doc
   
   opt <- docopt::docopt(doc)
@@ -25,6 +26,7 @@
     q("no")
   }
   
+  input <- if (is.null(opt$input)) "index.Rmd" else opt$input
   wd <- if (is.null(opt$dir)) "." else opt$dir
   config_file <- if (is.null(opt$config_file)) "_bookdown.yml" else opt$config_file
   
@@ -102,7 +104,7 @@
   }
   
   render_book_maybe(
-    input = "index.Rmd", output_format = opt$output_format, 
+    input = input, output_format = opt$output_format, 
     output_dir = opt$output_dir, config_file = config_file
   )
 })()

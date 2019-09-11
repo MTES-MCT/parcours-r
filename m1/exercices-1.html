@@ -24,7 +24,7 @@
 <meta name="author" content="Thierry Zorn, Murielle Lethrosne, Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-30" />
+<meta name="date" content="2019-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -463,7 +463,7 @@ Ces exercices nécessitent les packages de base et le package <code>tidyverse</c
 ##  [8,]  0.03787526  0.165534671 -0.171006519
 ##  [9,]  0.18839908  0.127498977 -0.271005757
 ## [10,] -0.01127292  0.008445112  0.338925198</code></pre>
-<p><strong>Le coin du capitaine [ ]</strong> <img src="../Figures/CapHookImage.png" style="width:10.0%" /></p>
+<p><strong>Le coin du capitaine [ ]</strong> <img src="images/CapHookImage.png" style="width:10.0%" /></p>
 <p>Le crochet, c’est comme le capitaine du même nom : personne ne l’aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s’en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.</p>
 <ul>
 <li>Matrices et arrays</li>
@@ -915,7 +915,7 @@ où <span class="math inline">\(\epsilon\)</span> est le résidu de la régressi
 <p>On peut combiner les opérations en une seule ligne à l’aide du pipe <code>%&gt;%</code> :</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">selection &lt;-<span class="st"> </span><span class="kw">select</span>(df,CODGEO,ZAU,REG,DEP,densite,tx_natal,tx_mort) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb264-2" data-line-number="2"><span class="st">             </span><span class="kw">filter</span>(DEP<span class="op">==</span><span class="st">&quot;62&quot;</span>)</a></code></pre></div>
-<p><strong>Le coin du capitaine [ ]</strong> <img src="../Figures/CapHookImage.png" style="width:10.0%" /></p>
+<p><strong>Le coin du capitaine [ ]</strong> <img src="images/CapHookImage.png" style="width:10.0%" /></p>
 <p>Pour sélectionner les données, on peut également utiliser les crochets couplés aux dollars et aux <code>c()</code>, sans passer par les numéros de lignes et colonnes ! On rencontre assez souvent cette syntaxe sur les forums.</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">selection &lt;-<span class="st"> </span>df[df<span class="op">$</span>DEP<span class="op">==</span><span class="st">&quot;62&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;CODGEO&quot;</span>,<span class="st">&quot;ZAU&quot;</span>,<span class="st">&quot;REG&quot;</span>,<span class="st">&quot;DEP&quot;</span>,<span class="st">&quot;densite&quot;</span>,<span class="st">&quot;tx_natal&quot;</span>,<span class="st">&quot;tx_mort&quot;</span>)]</a></code></pre></div>
 <p><em>Note</em> : dans la syntaxe <code>tidyverse</code>, on ne met pas (obligatoirement) de guillemets pour les noms de variable, alors qu’on le fait pour la version [ ]</p>

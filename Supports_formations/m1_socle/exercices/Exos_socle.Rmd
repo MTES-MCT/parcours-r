@@ -111,7 +111,7 @@ apply(arr,MARGIN = 3,FUN=mean)
 apply(arr,MARGIN = c(2,3),FUN = mean)
 ```
 
-**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+**Le coin du capitaine [ ]**  ![ ](images/CapHookImage.png){ width=10% }
 
 Le crochet, c'est comme le capitaine du même nom : personne ne l'aime, mais sans lui, pas de Peter Pan, pas de Neverland ! Moralité, on s'en sert beacoup pour pimenter les codes ! On peut utiliser les crochets pour accéder aux éléments des matrices/arrays et dataframe/listes.
 
@@ -250,7 +250,7 @@ selection <- select(df,CODGEO,ZAU,REG,DEP,densite,tx_natal,tx_mort) %>%
              filter(DEP=="62")
 ```
 
-**Le coin du capitaine [ ]**  ![ ](../Figures/CapHookImage.png){ width=10% }
+**Le coin du capitaine [ ]**  ![ ](images/CapHookImage.png){ width=10% }
 
 Pour sélectionner les données, on peut également utiliser les crochets couplés aux dollars et aux `c()`, sans passer par les numéros de lignes et colonnes ! On rencontre assez souvent cette syntaxe sur les forums.
 

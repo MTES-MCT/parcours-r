@@ -7,7 +7,7 @@ output: bookdown::gitbook
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-description: "Module de formation aux statistiques descriptives avec R"
+description: "Statistiques descriptives avec R (module 3)"
 ---
 
 
@@ -43,7 +43,7 @@ Si vous souhaitez accéder aux sources et aux données mobilisées pendant les f
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/). Vous pouvez vous y abonner pour recevoir les annonces qui vous intéressent.
 
-Il existe une liste pour diffuser de l'information, échanger autour de R ou lever des points de blocage. Pour s'insrire, envoyer un message vide avec le titre "subscribe labo.communaute-r" à l'adresse sympa@developpement-durable.gouv.fr.
+Il existe une liste pour diffuser de l'information, échanger autour de R ou lever des points de blocage. Pour s'inscrire, envoyer un message vide avec le titre "subscribe labo.communaute-r" à l'adresse sympa@developpement-durable.gouv.fr.
 
 
 ## Objectif du module 3

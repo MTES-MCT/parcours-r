@@ -8,3 +8,8 @@
       after: |
         <li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download: ["pdf", "epub"]
+bookdown::epub_book:
+  stylesheet: style.css
+bookdown::pdf_book:
+  latex_engine: xelatex

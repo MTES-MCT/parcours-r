@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Module de formation à la préparation des données avec R"
+description: "Préparation des données avec R et le Tidyverse (module 2)"
 ---
 
 <style> 
@@ -70,4 +70,4 @@ On estime qu'un scientifique de la donnée passe en général ***la moitié de s
 
 ![](images/cover.png)
 
-Sous R, comme souvent, il y a plusieurs façons d'aborder cette question. Nous choisirons, lors de ce module de formation, d'explorer principalement les packages du framework *tidyverse*, qui ont l'avantage d'aborder ces différentes questions d'une façon intégrée et cohérente, d'une part entre elles, mais également avec d'autres.
+Sous R, comme souvent, il y a plusieurs façons d'aborder cette question. Ce module de formation privilègie l'exploration des packages du framework *tidyverse*, qui ont l'avantage d'aborder les différentes phases de préparation des données d'une façon intégrée et cohérente, que ce soit entre elles, ou avec d'autres.

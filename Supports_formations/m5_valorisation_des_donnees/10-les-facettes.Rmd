@@ -13,7 +13,7 @@ indicateur311 %>%
   filter(Year %in% c(2000,2005,2010,2015)) %>%
   ggplot()+
   geom_bar(aes(x=Country_or_Area_Name,weight=Value,fill=Country_or_Area_Name))+
-  theme_ipsum()+
+  theme_minimal()+
   scale_fill_ipsum()+
   coord_flip()+
   labs(title="Mortalité maternelle sur quelques zones du globe",
@@ -43,7 +43,7 @@ indicateur311 %>%
   filter(Year %in% c(2000,2005,2010,2015)) %>%
   ggplot()+
   geom_bar(aes(x=Country_or_Area_Name,weight=Value,fill=Country_or_Area_Name))+
-  theme_ipsum()+
+  theme_minimal()+
   scale_fill_ipsum()+
   coord_flip()+
   labs(title="Mortalité maternelle sur quelques zones du globe",
@@ -102,7 +102,7 @@ rpls_aggrege  %>%
   #On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence
   geom_bar(aes(x=nReg_2017,weight=Valeur,fill=Indicateur,alpha=r52))+
   coord_flip()+
-  theme_ipsum()+
+  theme_minimal()+
   scale_fill_ipsum()+
   #On défini les valeurs maximum et minimum de transparence que l'on veut voir
   scale_alpha_continuous(range=c(.65,1))+

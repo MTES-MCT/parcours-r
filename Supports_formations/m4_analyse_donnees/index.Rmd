@@ -8,7 +8,7 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "Parcours de formation R - module 4"
+description: "Parcours de formation R (module 4)"
 ---
 
 <!-- bibliography: [book.bib, packages.bib] -->

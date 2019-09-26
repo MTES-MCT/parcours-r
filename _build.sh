@@ -15,4 +15,4 @@ set -ev
 ./_render_book_maybe.R -f all  ./Supports_formations/m4_analyse_donnees/
 
 # Compilation du module 5
-./_render_book_maybe.R -f bookdown::gitbook  ./Supports_formations/m5_valorisation_des_donnees/
+./_render_book_maybe.R -f all  ./Supports_formations/m5_valorisation_des_donnees/

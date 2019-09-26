@@ -216,14 +216,14 @@ C'est la représentation la plus classique, qui permet d'observer la fréquence 
 Beaucoup de confusions entre ces deux types de graphiques, même dans des journaux "de référence" comme dans [cet article de la rubrique "Les décodeurs" du Monde](https://www.lemonde.fr/les-decodeurs/article/2018/05/22/sept-conseils-pour-ne-pas-se-faire-avoir-par-les-representations-graphiques_5302680_4355770.html) et dans Excel\circledR.
 
 <center>
-![](Figures/fake_histo2.jpg)
+![](images/fake_histo2.jpg)
 
 </center>
 
 ... ou dans l'*arboretum* des Barres, là où ont été formés la plupart des ingénieurs forestiers des ministères de l'agriculture et de l'environnement.
 
 <center>
-![](Figures/fake_histo.png)
+![](images/fake_histo.png)
 </center>
 
 Ça c’est un diagramme en bâtons, contrairement à ce qu'indique la légende.

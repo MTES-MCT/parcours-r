@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Une variable qualitative | Statistiques descriptives</title>
-  <meta name="description" content="Module de formation aux statistiques descriptives avec R" />
+  <meta name="description" content="Chapitre 4 Une variable qualitative | Statistiques descriptives avec R (module 3)" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Une variable qualitative | Statistiques descriptives" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Module de formation aux statistiques descriptives avec R" />
+  <meta property="og:description" content="Chapitre 4 Une variable qualitative | Statistiques descriptives avec R (module 3)" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapitre 4 Une variable qualitative | Statistiques descriptives" />
   
-  <meta name="twitter:description" content="Module de formation aux statistiques descriptives avec R" />
+  <meta name="twitter:description" content="Chapitre 4 Une variable qualitative | Statistiques descriptives avec R (module 3)" />
   
 
 <meta name="author" content="Solène Colin, Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,10 +49,10 @@
 
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.8/datatables.js"></script>
-<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.9/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <script src="libs/plotly-binding-4.9.0/plotly.js"></script>
@@ -61,7 +61,7 @@
 <script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
-<script src="libs/visNetwork-binding-2.0.7/visNetwork.js"></script>
+<script src="libs/visNetwork-binding-2.0.8/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -270,6 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -340,8 +341,8 @@ et <span class="math inline">\(N = \sum_c w_i\)</span>, où c est l’ensemble d
 <a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">table</span> () <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb46-4" data-line-number="4"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Nombre&quot;</span>))</a></code></pre></div>
-<div id="htmlwidget-c4fbdae94d697949dbe8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c4fbdae94d697949dbe8">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[3285,12297,3962,456,815,888,582,7021,7383]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Nombre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c247bc295045ea9bd29e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c247bc295045ea9bd29e">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[3285,12297,3962,456,815,888,582,7021,7383]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Nombre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="comptage-pondere" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Comptage pondéré</h3>
@@ -349,8 +350,8 @@ et <span class="math inline">\(N = \sum_c w_i\)</span>, où c est l’ensemble d
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">xtabs</span> (<span class="dt">formula =</span> P14_POP <span class="op">~</span><span class="st"> </span>ZAU, <span class="dt">data =</span> dat) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Population&quot;</span>))</a></code></pre></div>
-<div id="htmlwidget-c6582fd7e256e8ce611b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c6582fd7e256e8ce611b">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[38738103,12437519,3414201,1931948,359717,2422164,167718,3415222,3020568]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-30250589333df479a5ec" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-30250589333df479a5ec">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[38738103,12437519,3414201,1931948,359717,2422164,167718,3415222,3020568]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="frequences" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Fréquences</h3>
@@ -362,8 +363,8 @@ et <span class="math inline">\(N = \sum_c w_i\)</span>, où c est l’ensemble d
 <a class="sourceLine" id="cb48-5" data-line-number="5"><span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb48-6" data-line-number="6"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span> (<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;Fréquence&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb48-7" data-line-number="7"><span class="st">  </span><span class="kw">formatPercentage</span> (<span class="st">&#39;Freq&#39;</span>, <span class="dv">1</span>)</a></code></pre></div>
-<div id="htmlwidget-a9031ea2c20341ea9226" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a9031ea2c20341ea9226">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[0.09,0.335,0.108,0.012,0.022,0.024,0.016,0.191,0.201]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Fréquence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, \",\", \".\");\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-f4b6e1713c589c88daa3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f4b6e1713c589c88daa3">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[0.09,0.335,0.108,0.012,0.022,0.024,0.016,0.191,0.201]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>Fréquence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, \",\", \".\");\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="frequences-ponderees" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Fréquences pondérées</h3>
@@ -374,8 +375,8 @@ et <span class="math inline">\(N = \sum_c w_i\)</span>, où c est l’ensemble d
 <a class="sourceLine" id="cb49-4" data-line-number="4"><span class="st">  </span><span class="kw">as.data.frame</span> () <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb49-5" data-line-number="5"><span class="st">  </span><span class="kw">datatable</span> (<span class="dt">rownames =</span> <span class="ot">FALSE</span>, <span class="dt">colnames =</span> <span class="kw">c</span>(<span class="st">&quot;ZAU&quot;</span>, <span class="st">&quot;% de la Population&quot;</span>))<span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb49-6" data-line-number="6"><span class="st">  </span><span class="kw">formatPercentage</span>(<span class="st">&#39;Freq&#39;</span>, <span class="dv">1</span>)</a></code></pre></div>
-<div id="htmlwidget-1d44abc5d27eb08a16f4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1d44abc5d27eb08a16f4">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[0.588,0.189,0.052,0.029,0.005,0.037,0.003,0.052,0.046]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>% de la Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, \",\", \".\");\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-6055bc90f84017236a77" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6055bc90f84017236a77">{"x":{"filter":"none","data":[["111 - Grand p<f4>le (plus de 10 000 emplois)","112 - Couronne d'un grand p<f4>le","120 - Multipolaris<e9>e des grandes aires urbaines","211 - Moyen p<f4>le (5 000 <e0> 10 000 emplois)","212 - Couronne d'un moyen p<f4>le","221 - Petit p<f4>le (de 1 500 <e0> 5 000 emplois)","222 - Couronne d'un petit p<f4>le","300 - Autre commune multipolaris<e9>e","400 - Commune isol<e9>e hors influence des p<f4>les"],[0.588,0.189,0.052,0.029,0.005,0.037,0.003,0.052,0.046]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ZAU<\/th>\n      <th>% de la Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 1, 1, 3, \",\", \".\");\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="graphiques" class="section level2">
@@ -465,7 +466,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Statistiques-descriptives.pdf", "Statistiques-descriptives.epub"],
 "toc": {
 "collapse": "subsection"
 }

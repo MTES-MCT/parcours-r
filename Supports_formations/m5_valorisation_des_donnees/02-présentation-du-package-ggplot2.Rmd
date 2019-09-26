@@ -11,7 +11,7 @@
 - Ce package s'inscrit aujourd'hui dans R par le **framework tidyverse** qui propose une approche cohérente entre l'importation et la préparation des données, leur analyse et leur valorisation.
 
 ## Le Tidyverse
-![le tidyverse](pic/tidyverse.png "le tidyverse"){#id .class width=800}
+![le tidyverse](images/tidyverse.png "le tidyverse"){#id .class width=800}
 
 ## Les concepts clefs
 

@@ -14,7 +14,7 @@ Pour activer packrat sur un projet, aller dans `Tools/Project Options->Packrat`
 
 [En savoir plus sur Packrat](https://www.rstudio.com/resources/webinars/managing-package-dependencies-in-r-with-packrat/)
 
-![](pic/creerprojet4.png){#id .class width=500}
+![](images/creerprojet4.png){#id .class width=500}
 
 
 - Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tout ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications... et donc y compris package avec packrat.
@@ -27,11 +27,11 @@ Pour activer packrat sur un projet, aller dans `Tools/Project Options->Packrat`
 
 - Cliquez sur *Project* en haut à droite puis *New Project*.
 
-![](pic/creerprojet1.png){#id .class width=500}
+![](images/creerprojet1.png){#id .class width=500}
 
 - Cliquez sur *New Directory*.
 
-![](pic/creerprojet2.png){#id .class width=500}
+![](images/creerprojet2.png){#id .class width=500}
 
 
 ## Intégrer vos données
@@ -40,7 +40,7 @@ Une bonne pratique est de créer un sous répertoire `/data` pour stocker les do
 
 Vous pouvez le faire de l'explorateur de fichiers de votre système d'exploitation ou directement à partir de l'explorateur de fichiers de RStudio.
 
-![](pic/creerprojet3.png){#id .class width=500}
+![](images/creerprojet3.png){#id .class width=500}
 
 Cela marche bien quand on a un seul type de données, mais en général on va avoir à travailler sur des données brutes que l'on va retravailler ensuite et vouloir stocker à part. Si par la suite vous souhaitez avoir des exemples de bonnes pratiques sur comment structurer vos données, vous pouvez vous référer au [chapitre data](http://r-pkgs.had.co.nz/data.html) du livre d'Hadley Wickham sur la construction de package R (tout package R étant aussi un projet !)
 

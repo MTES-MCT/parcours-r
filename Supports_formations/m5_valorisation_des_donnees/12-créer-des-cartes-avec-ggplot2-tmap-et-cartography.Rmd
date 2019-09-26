@@ -217,7 +217,7 @@ tm_shape(tt %>% filter(Year==2015))+
 
 La fonction `tmap_save()` permet d'exporter une carte tmap en fichier image.
 
-```{r carto_11, echo=T,eval=T,fig.height=5,fig.width=8,warning=F,message=F}
+```{r carto_11, echo=T,eval=F,fig.height=5,fig.width=8,warning=F,message=F}
 carte<-tm_shape(tt %>% filter(Year==2015))+
   tm_polygons()+
   tm_bubbles(size="Value",col="Value",

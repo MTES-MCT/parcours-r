@@ -123,7 +123,7 @@ rpls_aggrege  %>%
   #On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence
   geom_bar(aes(x=nReg_2017,weight=Valeur,fill=Indicateur,alpha=r52))+
   coord_flip()+
-  theme_ipsum()+
+  theme_minimal()+
   scale_fill_ipsum()+
   #On défini les valeurs maximum et minimum de transparence que l'on veut voir
   scale_alpha_continuous(range=c(.65,1))+
@@ -200,7 +200,7 @@ Produire un tableau du nombre de logements collectifs et individuels (RPLS) par 
 
 ```{r exo_10, eval=T}
 rpls_DEP_R24  <- rpls_aggrege_large %>% 
-  filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
+  filte(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
   arrange(TypeZone,Zone) %>%
   select(Zone,Logements_collectifs,Logements_individuels)%>% 
   setNames(c("Zone","Nombre de logements collectifs","Nombre de logements individuels")) %>% 

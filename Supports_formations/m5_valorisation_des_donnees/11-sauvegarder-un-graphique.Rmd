@@ -13,7 +13,7 @@ p<-indicateur311 %>%
   filter(Year %in% c(2000,2005,2010,2015)) %>%
   ggplot()+
   geom_bar(aes(x=Country_or_Area_Name,weight=Value,fill=Country_or_Area_Name))+
-  theme_ipsum()+
+  theme_minimal()+
   scale_fill_ipsum()+
   coord_flip()+
   labs(title="Mortalité maternelle sur quelques zones du globe",

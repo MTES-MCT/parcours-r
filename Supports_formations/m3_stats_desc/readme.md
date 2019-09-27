@@ -1,1 +1,1 @@
-Contenu du module 3
+[Code source module 3](https://mtes-mct.github.io/parcours-r/m3/index.html)

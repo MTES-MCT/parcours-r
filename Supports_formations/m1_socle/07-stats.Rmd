@@ -74,7 +74,7 @@ base_reg_ann <- group_by (base_extrait, ZAU, REG) %>%
 
 La fonction `table()` calcule les effectifs d'un tableau croisé :
 ```{r stat_8}
-t <- table(base_extrait$ZAU, base_extrait$REG)
+t <- select(base_extrait, ZAU, REG) %>% table
 print(t)
 ```
 

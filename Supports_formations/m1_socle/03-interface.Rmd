@@ -111,11 +111,11 @@ Adopter des règles de nommage cohérentes, par exemples [celles-ci](http://adv-
 - Le modifier plus rapidement pour l'adapter
 - Pouvoir le réutiliser avec de nouvelles données
 
-Nouvelles fonctions                               |Attention
---------------------------------------------------|----------------------------------------
-`#` pour des commentaires explicatifs du code     |Importance de bien commenter 
-`print()` pour afficher sur la console            |.
-`Ctrl+R` pour lancer un script ligne par ligne    |.
+Nouvelles fonctions                                 |Attention
+--------------------------------------------------- |----------------------------------------
+`#` pour des commentaires explicatifs du code       |Importance de bien commenter 
+`print()` pour afficher sur la console              |.
+`Ctrl+Entrée` pour lancer un script ligne par ligne |.
 
 
 Utilisation simple de R $\rightarrow$ mode console. Chaque ordre, bout de code est rentré et exécuté au fur et à mesure sur la console.

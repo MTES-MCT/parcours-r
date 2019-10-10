@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 8 Les thèmes | Valoriser ses données avec R</title>
+  <meta name="description" content="Valorisation des données sous R (module 5)" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 8 Les thèmes | Valoriser ses données avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Valorisation des données sous R (module 5)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 8 Les thèmes | Valoriser ses données avec R" />
+  
+  <meta name="twitter:description" content="Valorisation des données sous R (module 5)" />
+  
+
+<meta name="author" content="Maël Theulière &amp; Murielle Lethrosne" />
+
+
+<meta name="date" content="2019-10-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lhabillage-simple.html"/>
+<link rel="next" href="les-scales.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-7.0.1/css/motion.css" rel="stylesheet" />
+<link href="libs/highcharts-7.0.1/css/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highcharts-7.0.1/highcharts.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-3d.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-more.js"></script>
+<script src="libs/highcharts-7.0.1/modules/stock.js"></script>
+<script src="libs/highcharts-7.0.1/modules/map.js"></script>
+<script src="libs/highcharts-7.0.1/modules/annotations.js"></script>
+<script src="libs/highcharts-7.0.1/modules/boost.js"></script>
+<script src="libs/highcharts-7.0.1/modules/data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drag-panes.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drilldown.js"></script>
+<script src="libs/highcharts-7.0.1/modules/item-series.js"></script>
+<script src="libs/highcharts-7.0.1/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-7.0.1/modules/exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/export-data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/funnel.js"></script>
+<script src="libs/highcharts-7.0.1/modules/heatmap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/treemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sankey.js"></script>
+<script src="libs/highcharts-7.0.1/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-7.0.1/modules/streamgraph.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sunburst.js"></script>
+<script src="libs/highcharts-7.0.1/modules/vector.js"></script>
+<script src="libs/highcharts-7.0.1/modules/wordcloud.js"></script>
+<script src="libs/highcharts-7.0.1/modules/xrange.js"></script>
+<script src="libs/highcharts-7.0.1/modules/tilemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/venn.js"></script>
+<script src="libs/highcharts-7.0.1/modules/gantt.js"></script>
+<script src="libs/highcharts-7.0.1/modules/timeline.js"></script>
+<script src="libs/highcharts-7.0.1/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/motion.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/multicolor_series.js"></script>
+<script src="libs/highcharts-7.0.1/custom/reset.js"></script>
+<script src="libs/highcharts-7.0.1/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-7.0.1/custom/text-symbols.js"></script>
+<script src="libs/highchart-binding-0.7.0/highchart.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><p style="text-align:center;"><img src="../assets/images/logo_marianne_fond_blanc.png" style="width:100px;"/></p></li>
+<li><a href="./">Valoriser ses données avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="une-typologie-des-représentations-graphiques.html"><a href="une-typologie-des-représentations-graphiques.html"><i class="fa fa-check"></i><b>2</b> Une typologie des représentations graphiques</a></li>
+<li class="chapter" data-level="3" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>3</b> Bien commencer</a><ul>
+<li class="chapter" data-level="3.1" data-path="bien-commencer.html"><a href="bien-commencer.html#créer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>3.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="3.2" data-path="bien-commencer.html"><a href="bien-commencer.html#intégrer-vos-données"><i class="fa fa-check"></i><b>3.2</b> Intégrer vos données</a></li>
+<li class="chapter" data-level="3.3" data-path="bien-commencer.html"><a href="bien-commencer.html#créer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>3.3</b> Créer votre arborescence de projet</a></li>
+<li class="chapter" data-level="3.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-nécessaires"><i class="fa fa-check"></i><b>3.4</b> Activer les packages nécessaires</a></li>
+<li class="chapter" data-level="3.5" data-path="bien-commencer.html"><a href="bien-commencer.html#bien-structurer-ses-projets-data"><i class="fa fa-check"></i><b>3.5</b> Bien structurer ses projets data</a></li>
+</ul></li>
+<li class="part"><span><b>I Créer des graphiques sous R avec ggplot 2</b></span></li>
+<li class="chapter" data-level="4" data-path="package-ggplot2.html"><a href="package-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Package ggplot2</a><ul>
+<li class="chapter" data-level="4.1" data-path="package-ggplot2.html"><a href="package-ggplot2.html#présentation-de-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Présentation de ggplot2</a></li>
+<li class="chapter" data-level="4.2" data-path="package-ggplot2.html"><a href="package-ggplot2.html#le-tidyverse"><i class="fa fa-check"></i><b>4.2</b> Le Tidyverse</a></li>
+<li class="chapter" data-level="4.3" data-path="package-ggplot2.html"><a href="package-ggplot2.html#les-concepts-clefs"><i class="fa fa-check"></i><b>4.3</b> Les concepts clefs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="le-mapping.html"><a href="le-mapping.html"><i class="fa fa-check"></i><b>5</b> Le mapping</a><ul>
+<li class="chapter" data-level="5.1" data-path="le-mapping.html"><a href="le-mapping.html#les-paramètres-du-mapping"><i class="fa fa-check"></i><b>5.1</b> Les paramètres du mapping</a></li>
+<li class="chapter" data-level="5.2" data-path="le-mapping.html"><a href="le-mapping.html#les-autres-paramètres"><i class="fa fa-check"></i><b>5.2</b> Les “autres” paramètres</a></li>
+<li class="chapter" data-level="5.3" data-path="le-mapping.html"><a href="le-mapping.html#exercice-1"><i class="fa fa-check"></i><b>5.3</b> Exercice 1</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="les-formes-géométriques.html"><a href="les-formes-géométriques.html"><i class="fa fa-check"></i><b>6</b> Les formes géométriques</a></li>
+<li class="chapter" data-level="7" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html"><i class="fa fa-check"></i><b>7</b> L’habillage simple</a><ul>
+<li class="chapter" data-level="7.1" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#titre-et-libellé-des-axes"><i class="fa fa-check"></i><b>7.1</b> Titre et libellé des axes</a></li>
+<li class="chapter" data-level="7.2" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#légende"><i class="fa fa-check"></i><b>7.2</b> Légende</a></li>
+<li class="chapter" data-level="7.3" data-path="lhabillage-simple.html"><a href="lhabillage-simple.html#annotation"><i class="fa fa-check"></i><b>7.3</b> Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="les-thèmes.html"><a href="les-thèmes.html"><i class="fa fa-check"></i><b>8</b> Les thèmes</a><ul>
+<li class="chapter" data-level="8.1" data-path="les-thèmes.html"><a href="les-thèmes.html#les-fonctions-élément"><i class="fa fa-check"></i><b>8.1</b> Les fonctions “élément”</a></li>
+<li class="chapter" data-level="8.2" data-path="les-thèmes.html"><a href="les-thèmes.html#les-composantes"><i class="fa fa-check"></i><b>8.2</b> Les composantes</a></li>
+<li class="chapter" data-level="8.3" data-path="les-thèmes.html"><a href="les-thèmes.html#quelques-exemples"><i class="fa fa-check"></i><b>8.3</b> Quelques exemples</a></li>
+<li class="chapter" data-level="8.4" data-path="les-thèmes.html"><a href="les-thèmes.html#modifier-le-thème-par-défaut"><i class="fa fa-check"></i><b>8.4</b> Modifier le thème par défaut</a></li>
+<li class="chapter" data-level="8.5" data-path="les-thèmes.html"><a href="les-thèmes.html#créer-son-propre-thème"><i class="fa fa-check"></i><b>8.5</b> Créer son propre thème</a></li>
+<li class="chapter" data-level="8.6" data-path="les-thèmes.html"><a href="les-thèmes.html#exercice-2"><i class="fa fa-check"></i><b>8.6</b> Exercice 2</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="les-scales.html"><a href="les-scales.html"><i class="fa fa-check"></i><b>9</b> Les scales</a><ul>
+<li class="chapter" data-level="9.1" data-path="les-scales.html"><a href="les-scales.html#formatage-spécifique"><i class="fa fa-check"></i><b>9.1</b> Formatage spécifique</a></li>
+<li class="chapter" data-level="9.2" data-path="les-scales.html"><a href="les-scales.html#exercice-3"><i class="fa fa-check"></i><b>9.2</b> Exercice 3</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="la-mise-en-page-de-plusieurs-graphiques.html"><a href="la-mise-en-page-de-plusieurs-graphiques.html"><i class="fa fa-check"></i><b>10</b> La mise en page de plusieurs graphiques</a></li>
+<li class="chapter" data-level="11" data-path="les-facettes.html"><a href="les-facettes.html"><i class="fa fa-check"></i><b>11</b> Les facettes</a><ul>
+<li class="chapter" data-level="11.1" data-path="les-facettes.html"><a href="les-facettes.html#exercice-4"><i class="fa fa-check"></i><b>11.1</b> Exercice 4</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="exporter-un-graphique.html"><a href="exporter-un-graphique.html"><i class="fa fa-check"></i><b>12</b> Exporter un graphique</a></li>
+<li class="part"><span><b>II Créer des cartes sous R</b></span></li>
+<li class="chapter" data-level="13" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html"><i class="fa fa-check"></i><b>13</b> Créer des cartes avec ggplot2, tmap</a><ul>
+<li class="chapter" data-level="13.1" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#faire-des-cartes-avec-ggplot2"><i class="fa fa-check"></i><b>13.1</b> Faire des cartes avec ggplot2</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#les-cartes-choroplèthes"><i class="fa fa-check"></i><b>13.1.1</b> Les cartes choroplèthes</a></li>
+<li class="chapter" data-level="13.1.2" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#les-cartes-à-ronds-proportionnels"><i class="fa fa-check"></i><b>13.1.2</b> Les cartes à ronds proportionnels</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#les-cartes-avec-tmap"><i class="fa fa-check"></i><b>13.2</b> Les cartes avec Tmap</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#exemple-de-carte-choroplèthe"><i class="fa fa-check"></i><b>13.2.1</b> Exemple de carte choroplèthe</a></li>
+<li class="chapter" data-level="13.2.2" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#exemple-de-carte-à-ronds-proportionnels"><i class="fa fa-check"></i><b>13.2.2</b> Exemple de carte à ronds proportionnels</a></li>
+<li class="chapter" data-level="13.2.3" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#exemples-de-cartes-avec-facet"><i class="fa fa-check"></i><b>13.2.3</b> Exemples de cartes avec facet</a></li>
+<li class="chapter" data-level="13.2.4" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#gestion-des-palettes"><i class="fa fa-check"></i><b>13.2.4</b> Gestion des palettes</a></li>
+<li class="chapter" data-level="13.2.5" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#la-mise-en-page"><i class="fa fa-check"></i><b>13.2.5</b> La mise en page</a></li>
+<li class="chapter" data-level="13.2.6" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#export-dun-graphique"><i class="fa fa-check"></i><b>13.2.6</b> Export d’un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="créer-des-cartes-avec-ggplot2-tmap.html"><a href="créer-des-cartes-avec-ggplot2-tmap.html#exercice-5"><i class="fa fa-check"></i><b>13.3</b> Exercice 5</a></li>
+</ul></li>
+<li class="part"><span><b>III Graphiques animés</b></span></li>
+<li class="chapter" data-level="14" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html"><i class="fa fa-check"></i><b>14</b> Animer ses graphiques ggplot avec gganimate</a><ul>
+<li class="chapter" data-level="14.1" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#produire-une-animation"><i class="fa fa-check"></i><b>14.1</b> Produire une animation</a></li>
+<li class="chapter" data-level="14.2" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#paramétrer-lanimation"><i class="fa fa-check"></i><b>14.2</b> Paramétrer l’animation</a></li>
+<li class="chapter" data-level="14.3" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#exporter-une-animation"><i class="fa fa-check"></i><b>14.3</b> Exporter une animation</a></li>
+<li class="chapter" data-level="14.4" data-path="animer-ses-graphiques-ggplot-avec-gganimate.html"><a href="animer-ses-graphiques-ggplot-avec-gganimate.html#exercice-6"><i class="fa fa-check"></i><b>14.4</b> Exercice 6</a></li>
+</ul></li>
+<li class="part"><span><b>IV Dataviz pour le web</b></span></li>
+<li class="chapter" data-level="15" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html"><i class="fa fa-check"></i><b>15</b> Créer des graphiques et cartes pour le web</a><ul>
+<li class="chapter" data-level="15.1" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#highcharter"><i class="fa fa-check"></i><b>15.1</b> Highcharter</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#exemple-type-de-graphique"><i class="fa fa-check"></i><b>15.1.1</b> Exemple type de graphique</a></li>
+<li class="chapter" data-level="15.1.2" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#les-facettes-1"><i class="fa fa-check"></i><b>15.1.2</b> Les facettes</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#les-cartes-leaflet"><i class="fa fa-check"></i><b>15.2</b> Les cartes Leaflet</a></li>
+<li class="chapter" data-level="15.3" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#exporter-une-sortie-html"><i class="fa fa-check"></i><b>15.3</b> Exporter une sortie html</a></li>
+<li class="chapter" data-level="15.4" data-path="créer-des-graphiques-et-cartes-pour-le-web.html"><a href="créer-des-graphiques-et-cartes-pour-le-web.html#exercice-7"><i class="fa fa-check"></i><b>15.4</b> Exercice 7</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="créer-des-tableaux-avec-kable-et-kable-extra.html"><a href="créer-des-tableaux-avec-kable-et-kable-extra.html"><i class="fa fa-check"></i><b>16</b> Créer des tableaux avec kable et kable extra</a><ul>
+<li class="chapter" data-level="16.1" data-path="créer-des-tableaux-avec-kable-et-kable-extra.html"><a href="créer-des-tableaux-avec-kable-et-kable-extra.html#exercice-8"><i class="fa fa-check"></i><b>16.1</b> Exercice 8</a></li>
+</ul></li>
+<li class="part"><span><b>V Ressources et correction</b></span></li>
+<li class="chapter" data-level="17" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i><b>17</b> Ressources</a><ul>
+<li class="chapter" data-level="17.1" data-path="ressources.html"><a href="ressources.html#dataviz"><i class="fa fa-check"></i><b>17.1</b> dataviz</a></li>
+<li class="chapter" data-level="17.2" data-path="ressources.html"><a href="ressources.html#ggplot2"><i class="fa fa-check"></i><b>17.2</b> ggplot2</a></li>
+<li class="chapter" data-level="17.3" data-path="ressources.html"><a href="ressources.html#tmap"><i class="fa fa-check"></i><b>17.3</b> tmap</a></li>
+<li class="chapter" data-level="17.4" data-path="ressources.html"><a href="ressources.html#highcharter-1"><i class="fa fa-check"></i><b>17.4</b> highcharter</a></li>
+<li class="chapter" data-level="17.5" data-path="ressources.html"><a href="ressources.html#kable-et-kableextra"><i class="fa fa-check"></i><b>17.5</b> kable et kableExtra</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html"><i class="fa fa-check"></i><b>18</b> Exercices et corrections</a><ul>
+<li class="chapter" data-level="18.1" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-1-1"><i class="fa fa-check"></i><b>18.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="18.2" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-2-1"><i class="fa fa-check"></i><b>18.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="18.3" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-3-1"><i class="fa fa-check"></i><b>18.3</b> Exercice 3</a></li>
+<li class="chapter" data-level="18.4" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-4-1"><i class="fa fa-check"></i><b>18.4</b> Exercice 4</a></li>
+<li class="chapter" data-level="18.5" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-5-1"><i class="fa fa-check"></i><b>18.5</b> Exercice 5</a></li>
+<li class="chapter" data-level="18.6" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-6-1"><i class="fa fa-check"></i><b>18.6</b> Exercice 6</a></li>
+<li class="chapter" data-level="18.7" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-7-1"><i class="fa fa-check"></i><b>18.7</b> Exercice 7</a></li>
+<li class="chapter" data-level="18.8" data-path="exercices-et-corrections.html"><a href="exercices-et-corrections.html#exercice-8-1"><i class="fa fa-check"></i><b>18.8</b> Exercice 8</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://mtes-mct.github.io/parcours-r/">Liste des formations R</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Valoriser ses données avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="les-thèmes" class="section level1">
+<h1><span class="header-section-number">Chapitre 8</span> Les thèmes</h1>
+<p>Pour modifier simplement la position de la légende, c’est la fonction <a href="http://ggplot2.tidyverse.org/reference/theme.html">theme()</a> qu’il faut utiliser.
+<strong><em>theme</em></strong> permet de créer des templates, c’est-à-dire de définir tout ce qui n’est pas lié directement aux données sur un graphique, notamment:</p>
+<ul>
+<li><p>la position, taille, couleur, police des éléments textuels</p></li>
+<li><p>la couleur des grilles primaires et secondaires du graphique</p></li>
+</ul>
+<p>Il existe des <a href="http://ggplot2.tidyverse.org/reference/index.html#section-themes">thèmes prédéfinis</a> dans <code>ggplot</code> que l’on peut déjà utiliser.
+Par exemple : <code>theme_classic()</code>, <code>theme_bw()</code>, <code>theme_dark()</code>, …</p>
+<p>Des packages externes permettent d’enrichir cette collection de thèmes, par exemple <code>ggthemes</code> ou <code>hrbrthemes</code>.</p>
+<p>Lorsque l’on souhaite garder une cohérence entre plusieurs graphiques, le mieux est d’en définir un à part pour l’appeler ensuite.</p>
+<div id="les-fonctions-élément" class="section level2">
+<h2><span class="header-section-number">8.1</span> Les fonctions “élément”</h2>
+<p>Elle utilise 4 types de fonctions :</p>
+<ul>
+<li><strong><em>element_text()</em></strong> : pour toutes les étiquettes</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>family</td>
+<td>la famille de la police</td>
+</tr>
+<tr class="even">
+<td>face</td>
+<td>le type de police (“plain”, “italic”, “bold”, “bold.italic”)</td>
+</tr>
+<tr class="odd">
+<td>colour</td>
+<td>couleur</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>taille en points</td>
+</tr>
+<tr class="odd">
+<td>hjust</td>
+<td>justification horizontale, dans [0, 1]</td>
+</tr>
+<tr class="even">
+<td>vjust</td>
+<td>justification verticale, dans [0, 1]</td>
+</tr>
+<tr class="odd">
+<td>angle</td>
+<td>angle, dans [0, 360]</td>
+</tr>
+<tr class="even">
+<td>lineheight</td>
+<td>hauteur de ligne (pour l’espacement entre les lignes)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_rect()</em></strong> : pour les fonds et les cadres,</li>
+</ul>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fill</td>
+<td>la couleur de remplissage</td>
+</tr>
+<tr class="even">
+<td>colour</td>
+<td>la couleur de la bordure</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>la taille de la bordure</td>
+</tr>
+<tr class="even">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, &quot;twodash)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_line()</em></strong> : pour toutes les lignes tracées,</li>
+</ul>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PARAMÈTRE</th>
+<th>VALEUR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>colour</td>
+<td>la couleur de ligne</td>
+</tr>
+<tr class="even">
+<td>size</td>
+<td>la taille</td>
+</tr>
+<tr class="odd">
+<td>linetype</td>
+<td>le type de ligne (“blank”, “solid”, “dashed”, “dotted”, “dotdash”,“longdash”, &quot;twodash)</td>
+</tr>
+<tr class="even">
+<td>lineend</td>
+<td>le type de fin de ligne (“round”, “butt” ou “square”)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>element_blank()</em></strong> : permet de ne rien dessiner.</li>
+</ul>
+</div>
+<div id="les-composantes" class="section level2">
+<h2><span class="header-section-number">8.2</span> Les composantes</h2>
+<p>Il s’agit des différents éléments modifiables dans le thème.
+Par exemple :</p>
+<p><strong>Axes</strong>
+axis.line, axis.text.x, axis.text.y, axis.ticks, axis.title.x, axis.title.y,…</p>
+<p><strong>Légende</strong>
+legend.background, legend.key, legend.text, legend.title,…</p>
+<p><strong>Fond de graphe</strong>
+panel.background, panel.border, panel.grid.major, panel.grid.minor,…</p>
+<p>etc</p>
+</div>
+<div id="quelques-exemples" class="section level2">
+<h2><span class="header-section-number">8.3</span> Quelques exemples</h2>
+<ul>
+<li>Changer le fond du graphique <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;Lavender&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_1-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence du quadrillage <strong><em>panel_background</em></strong></li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-10" data-line-number="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="fl">0.5</span>,<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_2-1.png" width="960" /></p>
+<ul>
+<li>Changer l’apparence des étiquettes des axes <strong><em>axis_xxx()</em></strong></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">angle =</span> <span class="dv">45</span>),</a>
+<a class="sourceLine" id="cb19-11" data-line-number="11">        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_3-1.png" width="960" /></p>
+<p>Certains changements de paramètres ne nécessitent pas l’utilisation de fonction <strong><em>element_()</em></strong> .
+Par exemple, pour changer la position de la légende <strong><em>legend.xxx()</em></strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-10" data-line-number="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;left&quot;</span>,<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_4-1.png" width="960" /></p>
+</div>
+<div id="modifier-le-thème-par-défaut" class="section level2">
+<h2><span class="header-section-number">8.4</span> Modifier le thème par défaut</h2>
+<p>La fonction theme_set() vous permet de définir un thème par défaut pour l’ensemble de vos graphiques.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">theme_set</span>(<span class="kw">theme_dark</span>())</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb21-11" data-line-number="11">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_5-1.png" width="960" /></p>
+</div>
+<div id="créer-son-propre-thème" class="section level2">
+<h2><span class="header-section-number">8.5</span> Créer son propre thème</h2>
+<p>Un thème est une fonction R qui va prendre en paramètre des éléments que vous souhaitez pouvoir faire varier et fixer des éléments que vous souhaitez avoir comme rendu par défaut.
+Créons un thème avec un fond vert pour le ministère de la transition écologique et solidaire. On rajoute un paramètre pour la taille de la police du titre du graphique.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">library</span>(hrbrthemes)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">theme_mtes&lt;-<span class="cf">function</span>(<span class="dt">taille_police=</span><span class="dv">14</span>){</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">  <span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,<span class="dt">size=</span>taille_police,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">        <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>),</a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>),</a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;lightgreen&quot;</span>),</a>
+<a class="sourceLine" id="cb22-8" data-line-number="8">        <span class="dt">plot.background=</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;#006400&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;lightgreen&quot;</span>),</a>
+<a class="sourceLine" id="cb22-9" data-line-number="9">        <span class="dt">legend.background =</span>  <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>,<span class="dt">colour=</span><span class="st">&quot;lightgreen&quot;</span>),</a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">        <span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb22-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb22-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb22-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb22-14" data-line-number="14"><span class="kw">ggplot</span>(graphique1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">log</span>(Gross_Domestic_Product_GDP),</a>
+<a class="sourceLine" id="cb22-16" data-line-number="16">                 <span class="dt">y=</span><span class="kw">log</span>(Maternal_mortality_ratio),</a>
+<a class="sourceLine" id="cb22-17" data-line-number="17">                 <span class="dt">color=</span>Continent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb22-18" data-line-number="18"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mortalité maternelle en fonction du PIB par habitant&quot;</span>,</a>
+<a class="sourceLine" id="cb22-19" data-line-number="19">       <span class="dt">subtitle=</span><span class="st">&quot;En 2015&quot;</span>,</a>
+<a class="sourceLine" id="cb22-20" data-line-number="20">       <span class="dt">x=</span><span class="st">&quot;PIB&quot;</span>,</a>
+<a class="sourceLine" id="cb22-21" data-line-number="21">       <span class="dt">y=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>,</a>
+<a class="sourceLine" id="cb22-22" data-line-number="22">       <span class="dt">caption=</span><span class="st">&quot;Source : ODD / ONU&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb22-23" data-line-number="23"><span class="st">  </span><span class="kw">theme_mtes</span>()</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_6-1.png" width="672" /></p>
+</div>
+<div id="exercice-2" class="section level2">
+<h2><span class="header-section-number">8.6</span> Exercice 2</h2>
+<blockquote>
+<p>A partir des données de la table graphique 1, reprendre le nuage de point obtenu à partir des données ODD : taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
+<p>En modifier le thème:</p>
+<ul>
+<li>Insérer un titre de couleur, en gras, centré par rapport au graphe.</li>
+<li>Indiquer la source (ODD) et modifier sa taille</li>
+<li>Changer les titres des axes et leurs tailles.</li>
+<li>modifier la couleur de fond du graphe</li>
+<li>modifier le type de gadrillage (pointillés)</li>
+</ul>
+</blockquote>
+<p>Le résultat attendu</p>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/fg7_7-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lhabillage-simple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="les-scales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

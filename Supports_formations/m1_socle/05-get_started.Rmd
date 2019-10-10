@@ -1,6 +1,6 @@
 # Bien commencer
 
-## Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.
+## Créer un projet sous Rstudio pour vous permettre de recenser vos travaux.
 
 Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
 

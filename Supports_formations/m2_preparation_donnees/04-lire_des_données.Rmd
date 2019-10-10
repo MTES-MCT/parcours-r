@@ -38,7 +38,7 @@ Exemple sur les données SEQUOIA de l'ACOSS :
 url <- "http://www.acoss.fr/files/Donnees_statistiques/SEQUOIA_TRIM_REGION.zip"
 download.file (url, destfile = "SEQUOIA_TRIM_REGION.zip", method = "auto")
 unzip (zipfile = "SEQUOIA_TRIM_REGION.zip")
-SEQUOIA <- read_excel ("SEQUOIA_TRIM_REGION_BRUT.xls", sheet = "PAYS_DE_LA_LOIRE")
+SEQUOIA <- read_excel ("SEQUOIA_TRIM_REGION_BRUT.xlsx", sheet = "PAYS_DE_LA_LOIRE")
 datatable (SEQUOIA)
 ```
 

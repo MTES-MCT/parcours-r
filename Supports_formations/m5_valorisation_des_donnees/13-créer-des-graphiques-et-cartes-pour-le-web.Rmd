@@ -229,7 +229,7 @@ carte_rond_proportionnel<-leaflet(ttc) %>%
 
 La foncion `saveWidget` permet d'exporter une sotie d'un html Widget en html.
 
-```{r, eval=T}
+```{r, eval=F}
 saveWidget(widget=carte_rond_proportionnel,file="Taux de décès des mères à la naissance.html")
 ```
 

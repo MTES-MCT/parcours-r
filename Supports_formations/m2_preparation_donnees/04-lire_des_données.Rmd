@@ -11,6 +11,7 @@ La fonction `read_excel()` permet d'importer les données d'un fichier Excel. On
 
 ```{r lire_1}
 library(readxl)
+library(DT)
 sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
                     col_types = c ("text","text","numeric","numeric","numeric","numeric"))
 datatable (sitadel)
@@ -46,7 +47,7 @@ datatable (SEQUOIA)
 
 Le package `sf` (pour simple feature) permet d'importer dans R un fichier ayant une dimension spatiale. Après importation, le fichier est un dataframe avec une variable d'un type nouveau : la géométrie. Deux exemples ici pour lire des données au format shape et geojson.
 
-```{r lire_3, eval = F, message = F,warning = F}
+```{r lire_3, eval = F, message = F, warning = F}
 Carte_EPCI_France <- st_read (dsn = "data/refgeo2017", layer = "Contour_epci_2017_region")
 plot (Carte_EPCI_France)
 
@@ -55,7 +56,7 @@ plot (communes2017)
 ```
 
 Le package `sf` contient l'ensemble des fonctions permettant des manipulations sur fichiers géomatiques.
-On ne traitera pas ici de toutes ces fonctions en détail, mais la [documentation du package](https://r-spatial.github.io/sf/).
+On ne traitera pas ici de toutes ces fonctions en détail, mais la [documentation du package](https://r-spatial.github.io/sf/) est très bien faite.
 
 A noter que `sf` étant complètement compatible avec les packages du `tidyverse`, la géométrie se conçoit comme une une donnée comme une autre, sur laquelle par exemple on peut réaliser des aggrégations.
 

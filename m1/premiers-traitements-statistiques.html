@@ -24,7 +24,7 @@
 <meta name="author" content="Thierry Zorn, Murielle Lethrosne, Vivien Roussez &amp; Pascal Irz" />
 
 
-<meta name="date" content="2019-10-10" />
+<meta name="date" content="2019-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="mon-premier-jeu-de-données.html"><a href="mon-premier-jeu-de-données.html#exercice-importer-les-données-et-premier-coup-doeil"><i class="fa fa-check"></i><b>4.7</b> Exercice : Importer les données et premier coup d’oeil</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="bien-commencer.html"><a href="bien-commencer.html"><i class="fa fa-check"></i><b>5</b> Bien commencer</a><ul>
-<li class="chapter" data-level="5.1" data-path="bien-commencer.html"><a href="bien-commencer.html#créer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux."><i class="fa fa-check"></i><b>5.1</b> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</a></li>
+<li class="chapter" data-level="5.1" data-path="bien-commencer.html"><a href="bien-commencer.html#créer-un-projet-sous-rstudio-pour-vous-permettre-de-recenser-vos-travaux."><i class="fa fa-check"></i><b>5.1</b> Créer un projet sous Rstudio pour vous permettre de recenser vos travaux.</a></li>
 <li class="chapter" data-level="5.2" data-path="bien-commencer.html"><a href="bien-commencer.html#intégrer-vos-données"><i class="fa fa-check"></i><b>5.2</b> Intégrer vos données</a></li>
 <li class="chapter" data-level="5.3" data-path="bien-commencer.html"><a href="bien-commencer.html#créer-votre-arborescence-de-projet"><i class="fa fa-check"></i><b>5.3</b> Créer votre arborescence de projet</a></li>
 <li class="chapter" data-level="5.4" data-path="bien-commencer.html"><a href="bien-commencer.html#activer-les-packages-nécessaires"><i class="fa fa-check"></i><b>5.4</b> Activer les packages nécessaires</a></li>
@@ -384,10 +384,10 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 <div id="tableau-de-contingence" class="section level2">
 <h2><span class="header-section-number">7.4</span> Tableau de contingence</h2>
 <p>La fonction <code>table()</code> calcule les effectifs d’un tableau croisé :</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">t &lt;-<span class="st"> </span><span class="kw">table</span>(base_extrait<span class="op">$</span>ZAU, base_extrait<span class="op">$</span>REG)</a>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">t &lt;-<span class="st"> </span><span class="kw">select</span>(base_extrait, ZAU, REG) <span class="op">%&gt;%</span><span class="st"> </span>table</a>
 <a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">print</span>(t)</a></code></pre></div>
-<pre><code>##                                                      
-##                                                          1    2    3    4
+<pre><code>##                                                      REG
+## ZAU                                                      1    2    3    4
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)          17   16    3   10
 ##   112 - Couronne d&#39;un grand p\xf4le                      6    0    3    3
 ##   120 - Multipolaris\xe9e des grandes aires urbaines     1    4    0    4
@@ -397,8 +397,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                      0    0    0    0
 ##   300 - Autre commune multipolaris\xe9e                  2    4    0    1
 ##   400 - Commune isol\xe9e hors influence des p\xf4les    3    5   13    4
-##                                                      
-##                                                         11   24   27   28
+##                                                      REG
+## ZAU                                                     11   24   27   28
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)         413  103  140  216
 ##   112 - Couronne d&#39;un grand p\xf4le                    853  734 1299 1126
 ##   120 - Multipolaris\xe9e des grandes aires urbaines     3  188  336  488
@@ -408,8 +408,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                      0   19  137   29
 ##   300 - Autre commune multipolaris\xe9e                  7  375  737  762
 ##   400 - Commune isol\xe9e hors influence des p\xf4les    0  275  969  396
-##                                                      
-##                                                         32   44   52   53
+##                                                      REG
+## ZAU                                                     32   44   52   53
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)         481  322  108   89
 ##   112 - Couronne d&#39;un grand p\xf4le                   1505 1721  535  415
 ##   120 - Multipolaris\xe9e des grandes aires urbaines   729  822  186  152
@@ -419,8 +419,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                     18  118    8    1
 ##   300 - Autre commune multipolaris\xe9e                711 1155  386  325
 ##   400 - Commune isol\xe9e hors influence des p\xf4les  289  815  143  181
-##                                                      
-##                                                         75   76   84   93
+##                                                      REG
+## ZAU                                                     75   76   84   93
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)         333  258  548  220
 ##   112 - Couronne d&#39;un grand p\xf4le                   1161 1124 1484  229
 ##   120 - Multipolaris\xe9e des grandes aires urbaines   254  333  390   69
@@ -430,8 +430,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                     81   89   47    6
 ##   300 - Autre commune multipolaris\xe9e               1002  877  517  107
 ##   400 - Commune isol\xe9e hors influence des p\xf4les 1379 1527  963  269
-##                                                      
-##                                                         94
+##                                                      REG
+## ZAU                                                     94
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)           8
 ##   112 - Couronne d&#39;un grand p\xf4le                     99
 ##   120 - Multipolaris\xe9e des grandes aires urbaines     3
@@ -446,8 +446,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 <h2><span class="header-section-number">7.5</span> Tableau de proportions</h2>
 <p>La fonction <code>prop.table()</code> prend en entrée un objet <code>table</code> (tableau de contingence avec les effectifs) et calcule les pourcentages (total, ligne, colonne) associés <span class="math inline">\(\rightarrow\)</span> <code>?prop.table</code></p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">(<span class="kw">prop.table</span>(t) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</a></code></pre></div>
-<pre><code>##                                                      
-##                                                         1   2   3   4  11
+<pre><code>##                                                      REG
+## ZAU                                                     1   2   3   4  11
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)        0.0 0.0 0.0 0.0 1.1
 ##   112 - Couronne d&#39;un grand p\xf4le                   0.0 0.0 0.0 0.0 2.3
 ##   120 - Multipolaris\xe9e des grandes aires urbaines  0.0 0.0 0.0 0.0 0.0
@@ -457,8 +457,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                   0.0 0.0 0.0 0.0 0.0
 ##   300 - Autre commune multipolaris\xe9e               0.0 0.0 0.0 0.0 0.0
 ##   400 - Commune isol\xe9e hors influence des p\xf4les 0.0 0.0 0.0 0.0 0.0
-##                                                      
-##                                                        24  27  28  32  44
+##                                                      REG
+## ZAU                                                    24  27  28  32  44
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)        0.3 0.4 0.6 1.3 0.9
 ##   112 - Couronne d&#39;un grand p\xf4le                   2.0 3.5 3.1 4.1 4.7
 ##   120 - Multipolaris\xe9e des grandes aires urbaines  0.5 0.9 1.3 2.0 2.2
@@ -468,8 +468,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                   0.1 0.4 0.1 0.0 0.3
 ##   300 - Autre commune multipolaris\xe9e               1.0 2.0 2.1 1.9 3.1
 ##   400 - Commune isol\xe9e hors influence des p\xf4les 0.7 2.6 1.1 0.8 2.2
-##                                                      
-##                                                        52  53  75  76  84
+##                                                      REG
+## ZAU                                                    52  53  75  76  84
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)        0.3 0.2 0.9 0.7 1.5
 ##   112 - Couronne d&#39;un grand p\xf4le                   1.5 1.1 3.2 3.1 4.0
 ##   120 - Multipolaris\xe9e des grandes aires urbaines  0.5 0.4 0.7 0.9 1.1
@@ -479,8 +479,8 @@ La fonction <code>quantile()</code> renvoie les quartiles de la variables (ou bi
 ##   222 - Couronne d&#39;un petit p\xf4le                   0.0 0.0 0.2 0.2 0.1
 ##   300 - Autre commune multipolaris\xe9e               1.1 0.9 2.7 2.4 1.4
 ##   400 - Commune isol\xe9e hors influence des p\xf4les 0.4 0.5 3.8 4.2 2.6
-##                                                      
-##                                                        93  94
+##                                                      REG
+## ZAU                                                    93  94
 ##   111 - Grand p\xf4le (plus de 10 000 emplois)        0.6 0.0
 ##   112 - Couronne d&#39;un grand p\xf4le                   0.6 0.3
 ##   120 - Multipolaris\xe9e des grandes aires urbaines  0.2 0.0

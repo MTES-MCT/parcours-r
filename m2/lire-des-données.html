@@ -282,7 +282,7 @@ Exemple sur les données SEQUOIA de l’ACOSS :</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">url &lt;-<span class="st"> &quot;http://www.acoss.fr/files/Donnees_statistiques/SEQUOIA_TRIM_REGION.zip&quot;</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">download.file</span> (url, <span class="dt">destfile =</span> <span class="st">&quot;SEQUOIA_TRIM_REGION.zip&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;auto&quot;</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">unzip</span> (<span class="dt">zipfile =</span> <span class="st">&quot;SEQUOIA_TRIM_REGION.zip&quot;</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">SEQUOIA &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;SEQUOIA_TRIM_REGION_BRUT.xls&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;PAYS_DE_LA_LOIRE&quot;</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">SEQUOIA &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;SEQUOIA_TRIM_REGION_BRUT.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;PAYS_DE_LA_LOIRE&quot;</span>)</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">datatable</span> (SEQUOIA)</a></code></pre></div>
 </div>
 <div id="lire-des-fichiers-avec-une-dimension-spatiale" class="section level2">

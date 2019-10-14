@@ -84,8 +84,8 @@ postgresqlpqExec (con, "SET client_encoding = 'windows-1252'")
 #Téléchargement de la table analyse du schéma pesticide
 parametre <- dbGetQuery (con, "SELECT * FROM pesticides.parametre") 
 
-#Téléchargement de données avec dimension spatiale via la fonction st_read_db du package simple feature
-station = st_read_db (con, query = "SELECT * FROM pesticides.station")
+#Téléchargement de données avec dimension spatiale via la fonction st_read du package simple feature
+station = st_read (con, query = "SELECT * FROM pesticides.station")
 ```
 
 On voit que pour importer notre table analyse, on a simplement lancé une requête SQL.

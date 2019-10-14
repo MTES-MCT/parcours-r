@@ -24,7 +24,7 @@
 <meta name="author" content="Maël Theulière &amp; Bruno Terseur" />
 
 
-<meta name="date" content="2019-10-11" />
+<meta name="date" content="2019-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -319,8 +319,8 @@ On ne traitera pas ici de toutes ces fonctions en détail, mais la <a href="http
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#Téléchargement de la table analyse du schéma pesticide</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12">parametre &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span> (con, <span class="st">&quot;SELECT * FROM pesticides.parametre&quot;</span>) </a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#Téléchargement de données avec dimension spatiale via la fonction st_read_db du package simple feature</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">station =<span class="st"> </span><span class="kw">st_read_db</span> (con, <span class="dt">query =</span> <span class="st">&quot;SELECT * FROM pesticides.station&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#Téléchargement de données avec dimension spatiale via la fonction st_read du package simple feature</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">station =<span class="st"> </span><span class="kw">st_read</span> (con, <span class="dt">query =</span> <span class="st">&quot;SELECT * FROM pesticides.station&quot;</span>)</a></code></pre></div>
 <p>On voit que pour importer notre table analyse, on a simplement lancé une requête SQL.
 On peut bien sûr avec la même fonction lancer n’importe quelle requête sur la base et recueillir le résultat.</p>
 </div>

@@ -55,7 +55,7 @@ Comment passer facilement d'un format *non tidy* à un format *tidy* ? C'est là
 
 <center>![](images/spread.png)</center>
 
-<center>![](images/pivot_xx.gif)</center>
+Pour avoir un apperçu illustré de ces fonctions, voir [cette animation](https://www.dropbox.com/s/a6o75zj443b2rv3/tidyr-longer-wider-modified.gif?dl=0)
 
 Reprenons notre table Insee d'estimation de population. Comment donc passer cette table en format tidy ?
 

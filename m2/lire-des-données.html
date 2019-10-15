@@ -24,7 +24,7 @@
 <meta name="author" content="Maël Theulière &amp; Bruno Terseur" />
 
 
-<meta name="date" content="2019-10-14" />
+<meta name="date" content="2019-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.9/datatables.js"></script>
@@ -280,9 +282,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Il est possible, directement depuis R, de télécharger ces données et, si nécessaire, de les décompresser (dans le répertoire de travail).
 Exemple sur les données SEQUOIA de l’ACOSS :</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">url &lt;-<span class="st"> &quot;http://www.acoss.fr/files/Donnees_statistiques/SEQUOIA_TRIM_REGION.zip&quot;</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">download.file</span> (url, <span class="dt">destfile =</span> <span class="st">&quot;SEQUOIA_TRIM_REGION.zip&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;auto&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">unzip</span> (<span class="dt">zipfile =</span> <span class="st">&quot;SEQUOIA_TRIM_REGION.zip&quot;</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">SEQUOIA &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;SEQUOIA_TRIM_REGION_BRUT.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;PAYS_DE_LA_LOIRE&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">download.file</span> (url, <span class="dt">destfile =</span> <span class="st">&quot;data/SEQUOIA_TRIM_REGION.zip&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;auto&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">unzip</span> (<span class="dt">zipfile =</span> <span class="st">&quot;data/SEQUOIA_TRIM_REGION.zip&quot;</span>,<span class="dt">exdir =</span> <span class="st">&quot;data&quot;</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">SEQUOIA &lt;-<span class="st"> </span><span class="kw">read_excel</span> (<span class="st">&quot;data/SEQUOIA_TRIM_REGION_BRUT.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;PAYS_DE_LA_LOIRE&quot;</span>)</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">datatable</span> (SEQUOIA)</a></code></pre></div>
 </div>
 <div id="lire-des-fichiers-avec-une-dimension-spatiale" class="section level2">

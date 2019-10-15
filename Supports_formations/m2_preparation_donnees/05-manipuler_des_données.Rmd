@@ -25,19 +25,21 @@ On va travailler sur ce module principalement à partir des données sitadel en 
 ## Chargement des données
 
 ```{r manip_1, echo = F, warning = F, error = F, eval = F}
-drv <- dbDriver ("PostgreSQL")
-con <- dbConnect (drv, dbname = "production", host = "10.44.128.174", port = 5432,
-                  user = "dreal", password = "rtIX>7d[5P/0")
-postgresqlpqExec (con, "SET client_encoding = 'windows-1252'")
+drv <- dbDriver("PostgreSQL")
+con <- dbConnect(drv,
+  dbname = "production", host = "10.44.128.174", port = 5432,
+  user = "dreal", password = "rtIX>7d[5P/0"
+)
+postgresqlpqExec(con, "SET client_encoding = 'windows-1252'")
 
 analyse <- dbGetQuery(con, "SELECT * FROM pesticides.analyse")
 parametre <- dbGetQuery(con, "SELECT * FROM pesticides.parametre")
 prelevement <- dbGetQuery(con, "SELECT * FROM pesticides.prelevement")
-station <- st_read_db(con,query="SELECT * FROM pesticides.station")
+station <- st_read_db(con, query = "SELECT * FROM pesticides.station")
 ```
 
 ```{r manip_2, include = TRUE}
-load (file = "data/FormationPreparationDesDonnées.RData")
+load(file = "data/FormationPreparationDesDonnées.RData")
 ```
 
 ## Les verbes clefs de `dplyr` pour manipuler une table
@@ -48,12 +50,14 @@ load (file = "data/FormationPreparationDesDonnées.RData")
 Nous allons ici sélectionner un ensemble de variables de la table des prélèvements.
 
 ```{r manip_3, warning = F}
-prelevementb <- select (prelevement, date_prelevement, code_prelevement,
-                        code_reseau, code_station)
-datatable (prelevementb)
+prelevementb <- select(
+  prelevement, date_prelevement, code_prelevement,
+  code_reseau, code_station
+)
+datatable(prelevementb)
 
-prelevementb <- select (prelevement, -commentaire)
-names (prelevementb)
+prelevementb <- select(prelevement, -commentaire)
+names(prelevementb)
 ```
 
 `select()` possède ce qu'on appelle des [helpers](http://dplyr.tidyverse.org/reference/select_helpers.html) qui permettent de gagner du temps dans l'écriture de notre select. A partir du moment où les conventions de nommage sont correctement effectuées, cela permet de gagner également en reproductibilité d'une année sur l'autre.
@@ -61,33 +65,35 @@ names (prelevementb)
 Exemple : sélectionner toutes les variables qui commencent par "code_" : 
 
 ```{r manip_4}
-prelevementb <- select (prelevement, starts_with ("code_"))
+prelevementb <- select(prelevement, starts_with("code_"))
 ```
 
 Exemple : sélectionner les variables dont les noms sont contenus dans un vecteur de chaînes de caractères :
 
 ```{r manip_5}
-mes_variables <- c ("code_prelevement", "code_intervenant", "code_reseau", "date_prelevement")
-prelevementb <- select (prelevement, one_of (mes_variables))
+mes_variables <- c("code_prelevement", "code_intervenant", "code_reseau", "date_prelevement")
+prelevementb <- select(prelevement, one_of(mes_variables))
 ```
 
 ### Trier une table : `arrange()`
 
 ```{r  manip_6}
-prelevementb <- arrange (prelevementb, date_prelevement)
+prelevementb <- arrange(prelevementb, date_prelevement)
 ```
 
 ### Renommer une variable : `rename()`
 
 ```{r  manip_7}
-prelevementb <- rename (prelevementb, date_p = date_prelevement)
+prelevementb <- rename(prelevementb, date_p = date_prelevement)
 ```
 
 On peut aussi directement renommer une variable dans l'opération `select()`
 
 ```{r  manip_8}
-prelevementb <- select (prelevement, date_p = date_prelevement, code_prelevement,
-                        code_reseau, code_station)
+prelevementb <- select(prelevement,
+  date_p = date_prelevement, code_prelevement,
+  code_reseau, code_station
+)
 ```
 
 ### Filter une table : `filter()`
@@ -96,7 +102,7 @@ prelevementb <- select (prelevement, date_p = date_prelevement, code_prelevement
 On va ici récupérer les analyses produites par l'ARS
 
 ```{r filtrer}
-ars <- filter (prelevement, code_reseau == "ARS")
+ars <- filter(prelevement, code_reseau == "ARS")
 ```
 
 L'exemple ci-dessus n'exerce un filtre que sur une condition unique.
@@ -104,19 +110,19 @@ L'exemple ci-dessus n'exerce un filtre que sur une condition unique.
 Pour des conditions cumulatives (toutes les conditions doivent être remplies), le "&" ou la ","
 
 ```{r manip_9}
-ars <- filter (prelevement, code_reseau == "ARS", code_intervenant == "44")
+ars <- filter(prelevement, code_reseau == "ARS", code_intervenant == "44")
 ```
 
 Pour des conditions non cumulatives (au moins une des conditions doit être remplie), le "|"
 
 ```{r manip_10}
-ars <- filter (prelevement, code_reseau == "ARS" | code_reseau == "FREDON")
+ars <- filter(prelevement, code_reseau == "ARS" | code_reseau == "FREDON")
 ```
 
 Si une condition non cumulative s'applique sur une même variable, privilégier un test de sélection dans une liste avec le `%in%`
 
 ```{r manip_11}
-ars <- filter (prelevement, code_reseau %in% c ("ARS", "FREDON"))
+ars <- filter(prelevement, code_reseau %in% c("ARS", "FREDON"))
 ```
 
 Pour sélectionner des observations qui ne répondent pas à la condition, le !
@@ -124,7 +130,7 @@ Pour sélectionner des observations qui ne répondent pas à la condition, le !
 Toutes les observations ayant été réalisées par un autre réseau que l'ARS :
 
 ```{r manip_12}
-non_ars <- filter (prelevement, !(code_reseau == "ARS"))
+non_ars <- filter(prelevement, !(code_reseau == "ARS"))
 ```
 
 ### Modifier/rajouter une variable : `mutate()`
@@ -135,16 +141,18 @@ non_ars <- filter (prelevement, !(code_reseau == "ARS"))
 
 Création de nouvelles variables
 ```{r manip_13}
-prelevementb <- mutate (prelevementb,
-                        code_prelevement_caract = as.character (code_prelevement),
-                        code_reseau_fact = as.factor (code_reseau))
+prelevementb <- mutate(prelevementb,
+  code_prelevement_caract = as.character(code_prelevement),
+  code_reseau_fact = as.factor(code_reseau)
+)
 ```
 
 Modification de variables existantes
 ```{r manip_14}
-prelevementb <- mutate (prelevementb,
-                        code_prelevement = as.character (code_prelevement),
-                        code_reseau = as.factor (code_reseau))
+prelevementb <- mutate(prelevementb,
+  code_prelevement = as.character(code_prelevement),
+  code_reseau = as.factor(code_reseau)
+)
 ```
 
 
@@ -157,8 +165,8 @@ prelevementb <- mutate (prelevementb,
 `pull()` permet d'extraire sous forme de vecteur une variable d'un *dataframe.*
 
 ```{r manip_15}
-stations_de_la_table_prelevement <- pull (prelevement, code_station)
-stations_de_la_table_prelevement <- unique (stations_de_la_table_prelevement)
+stations_de_la_table_prelevement <- pull(prelevement, code_station)
+stations_de_la_table_prelevement <- unique(stations_de_la_table_prelevement)
 ```
 
 ## La boîte à outils pour créer et modifier des variables avec R
@@ -176,12 +184,12 @@ Vous pouvez utiliser beaucoup de fonction pour créer des variables avec `mutate
 - Navigations entre les lignes : `lead()` et `lag()` qui permettent d'avoir accès à la valeur suivante et précédente d'une variable.
 
 ```{r, echo = TRUE, eval=TRUE}
-x <- sample (1:10)
-lagx <- lag (x)
-leadx <- lead (x)
-lag2x <- lag (x, n = 2)
-lead2x <- lead (x, n = 2)
-cbind (x = x, lagx = lagx, lag2x = lag2x, leadx = leadx, lead2x = lead2x)
+x <- sample(1:10)
+lagx <- lag(x)
+leadx <- lead(x)
+lag2x <- lag(x, n = 2)
+lead2x <- lead(x, n = 2)
+cbind(x = x, lagx = lagx, lag2x = lag2x, leadx = leadx, lead2x = lead2x)
 ```
 
 - opérations cumulatives ou glissantes : 
@@ -193,16 +201,16 @@ cbind (x = x, lagx = lagx, lag2x = lag2x, leadx = leadx, lead2x = lead2x)
 Exemple de somme glissante sur un pas de 2 observations.
 
 ```{r manip_16, eval=T}
-x <- sample (1:10)
-cumsumx <- cumsum (x)
-rollsumx <- roll_sum (x, n=2)
+x <- sample(1:10)
+cumsumx <- cumsum(x)
+rollsumx <- roll_sum(x, n = 2)
 rollsumx
 ```
 
 La fonction `roll_sumr()` fait en sorte d'obtenir un vecteur de même dimension que l'entrée x
 
 ```{r manip_17, eval=T}
-rollsumrx <- roll_sumr (x, n=2)
+rollsumrx <- roll_sumr(x, n = 2)
 rollsumrx
 length(rollsumrx) == length(x)
 ```
@@ -210,7 +218,7 @@ length(rollsumrx) == length(x)
 Nous pouvons obtenir une matrice des différentes valeurs calculées :
 
 ```{r manip_18,eval=T}
-  cbind (x = x, cumsumx = cumsum (x), rollsumx = rollsumx, rollsumrx = roll_sumr (x, n=2))
+cbind(x = x, cumsumx = cumsum(x), rollsumx = rollsumx, rollsumrx = roll_sumr(x, n = 2))
 ```
 
 
@@ -224,9 +232,11 @@ Nous pouvons obtenir une matrice des différentes valeurs calculées :
 Exemple : création d'une variable résultat pour savoir si les résultats de nos analyses sont bons, ou non.
 
 ```{r manip_19}
-analyseb <- mutate (analyse,
-                    resultat_ok = ifelse (code_remarque %in% c (1,2,7,10),
-                                          yes = TRUE, no = FALSE))
+analyseb <- mutate(analyse,
+  resultat_ok = ifelse(code_remarque %in% c(1, 2, 7, 10),
+    yes = TRUE, no = FALSE
+  )
+)
 ```
 
 - `case_when()` permet d'étendre la logique de ifelse à des cas plus complexes.
@@ -234,14 +244,14 @@ Les conditions mises dans un `case_when()` ne sont pas exclusives. De ce fait, i
 Exemple: On va ici recalculer des seuils fictifs sur les analyses.
 
 ```{r manip_20}
-analyseb <- mutate (analyse, classe_resultat_analyse = case_when (
-                        resultat_analyse == 0  ~ "1",
-                        resultat_analyse <= 0.001  ~ "2",
-                        resultat_analyse <= 0.01  ~ "3",
-                        resultat_analyse <= 0.1  ~ "4",
-                        resultat_analyse > 0.1  ~ "5",
-                        TRUE ~ ""
-                    ))
+analyseb <- mutate(analyse, classe_resultat_analyse = case_when(
+  resultat_analyse == 0 ~ "1",
+  resultat_analyse <= 0.001 ~ "2",
+  resultat_analyse <= 0.01 ~ "3",
+  resultat_analyse <= 0.1 ~ "4",
+  resultat_analyse > 0.1 ~ "5",
+  TRUE ~ ""
+))
 ```
 
 ### Exercice : Les données mensuelles sitadel
@@ -255,8 +265,10 @@ analyseb <- mutate (analyse, classe_resultat_analyse = case_when (
 - la part de ce cumul dans celui de l'ensemble des logements autorisés (log_AUT), en pourcentage
 
 ```{r manip_21}
-sitadel <- read_excel ("data/ROES_201702.xls", sheet = "AUT_REG",
-                    col_types = c ("text","text","numeric","numeric","numeric","numeric"))
+sitadel <- read_excel("data/ROES_201702.xls",
+  sheet = "AUT_REG",
+  col_types = c("text", "text", "numeric", "numeric", "numeric", "numeric")
+)
 ```
 
 
@@ -272,27 +284,27 @@ Le framework tidyverse propose le package `lubridate` qui permet de gérer ces i
 - gestion des dates :
 
 ```{r manip_22, echo = TRUE, eval = T, results = 'hide'}
-dmy ("jeudi 21 novembre 2017")
-dmy ("21112017")
-ymd ("20171121")
+dmy("jeudi 21 novembre 2017")
+dmy("21112017")
+ymd("20171121")
 ```
 
 - gestion des dates/heures : 
 
 ```{r, echo = TRUE, eval = T, results = 'hide'}
-dmy_hms ("mardi 21 novembre 2017 9:30:00")
+dmy_hms("mardi 21 novembre 2017 9:30:00")
 ```
 
 - combien de jours avant Noël ?
 
 ```{r, echo = TRUE, eval = T, results = 'hide'}
-dmy ("25 décembre 2018") - dmy ("16 avril 2018")
+dmy("25 décembre 2018") - dmy("16 avril 2018")
 ```
 
 - le jour de la semaine d'une date : 
 
 ```{r, echo = TRUE, eval = T, results = 'hide'}
-wday (dmy ("19012038"), label = TRUE)
+wday(dmy("19012038"), label = TRUE)
 ```
 
 Les fonctions `make_date()` et `make_datetime()` vous permettent de transformer un ensemble de variables en un format date ou date - heure. Utile par exemple lorsque l'on a des variables séparées pour l'année, le mois et le jour.
@@ -315,7 +327,7 @@ On peut diviser les manipulations de chaîne de caractère en 4 catégories :
 Obtenir la longueur d'une chaîne
 
 ```{r}
-str_length ("abc")
+str_length("abc")
 ```
 
 Extraire une chaîne de caractère
@@ -324,15 +336,15 @@ Extraire une chaîne de caractère
 Les positions peuvent être positives, et dans ce cas, on compte à partir de la gauche, ou négatives, et dans ce cas on compte à partir de la droite.
 
 ```{r}
-x <- c ("abcdefg", "hijklmnop")
-str_sub (string = x, start = 3, end = 4)
-str_sub (string = x, start = 3, end = -2)
+x <- c("abcdefg", "hijklmnop")
+str_sub(string = x, start = 3, end = 4)
+str_sub(string = x, start = 3, end = -2)
 ```
 
 `str_sub()` peut être utilisé pour remplacer un caractère
 
 ```{r}
-str_sub (x, start = 3, end = 4) <- "CC"
+str_sub(x, start = 3, end = 4) <- "CC"
 x
 ```
 
@@ -342,7 +354,7 @@ La fonction `str_pad()` permet de compléter une chaîne de caractère pour qu'e
 
 ```{r}
 code_insee <- 1001
-str_pad (code_insee, 5, pad = "0")
+str_pad(code_insee, 5, pad = "0")
 ```
 
 On peut choisir de compléter à gauche, à droite, et on peut choisir le "pad". Par défaut, celui-ci est l'espace.
@@ -351,21 +363,20 @@ La fonction inverse de `str_pad()` est `str_trim()` qui permet de supprimer les 
 
 ```{r}
 proust <- "   Les paradoxes d'aujourd'hui sont les préjugés de demain.  "
-str_trim (proust)
-str_trim (proust, side = "left")
+str_trim(proust)
+str_trim(proust, side = "left")
 ```
 
 Les **expressions régulières** permettent la détection de "patterns" sur des chaîne de caractères.
 
 
 ```{r}
-txt <- c ("voiture","train", "voilier", "bus", "avion", "tram", "trotinette")
-str_detect (string = txt, pattern = "^tr") # les éléments qui commencent pas les lettre "tr"
-txt [str_detect (string = txt, pattern = "^tr")]
+txt <- c("voiture", "train", "voilier", "bus", "avion", "tram", "trotinette")
+str_detect(string = txt, pattern = "^tr") # les éléments qui commencent pas les lettre "tr"
+txt [str_detect(string = txt, pattern = "^tr")]
 
-str_detect (string = txt, pattern = "e$") # les éléments qui terminent par la lettre e
-txt [str_detect (string = txt, pattern = "e$")]
-
+str_detect(string = txt, pattern = "e$") # les éléments qui terminent par la lettre e
+txt [str_detect(string = txt, pattern = "e$")]
 ```
 
 
@@ -376,24 +387,24 @@ La gestion des majuscules/minuscules :
 
 ```{r}
 proust <- "Les paradoxes d'aujourd'hui sont LES préjugés de Demain."
-str_to_upper (proust)
-str_to_lower (proust)
-str_to_title (proust)
+str_to_upper(proust)
+str_to_lower(proust)
+str_to_title(proust)
 ```
 
 La gestion de l'ordre : 
 
 ```{r}
-x <- c ("y", "i", "k")
-str_order (x)
-str_sort (x)
+x <- c("y", "i", "k")
+str_order(x)
+str_sort(x)
 ```
 
 Suppression des accents (base::iconv) : 
 
 ```{r}
 proust2 <- "Les paradoxes d'aujourd'hui sont les préjugés de demain ; et ça c'est embêtant"
-iconv (proust2, to = "ASCII//TRANSLIT")
+iconv(proust2, to = "ASCII//TRANSLIT")
 ```
 
 Malgré des tentatives d'humour discutables un petit aide-mémoire illustré, assez visuel, est dispo [ici](http://perso.ens-lyon.fr/lise.vaudor/manipuler-des-strings-avec-r/). 
@@ -409,13 +420,13 @@ Les fonctions du module [forcats](https://cran.r-project.org/web/packages/forcat
 On va ici utiliser cette fonction pour modifier le tri des stations en fonction de leur fréquence d'apparition dans la table "prelevement"
 
 ```{r, echo = F, warning = F, results = 'hide'}
-library (forcats)
-prelevementb <- mutate (prelevement, code_station = factor (code_station))
-head (levels (prelevementb$code_station))
-prelevementb <- mutate (prelevementb,
-                        code_station = fct_infreq (code_station)
-                        )
-head (levels (prelevementb$code_station))
+library(forcats)
+prelevementb <- mutate(prelevement, code_station = factor(code_station))
+head(levels(prelevementb$code_station))
+prelevementb <- mutate(prelevementb,
+  code_station = fct_infreq(code_station)
+)
+head(levels(prelevementb$code_station))
 ```
 
 `forcats` permet beaucoup d'autres possibilités de tri : 
@@ -440,19 +451,19 @@ fonction des régions).
 Exemple : ordonner les modalités d'un facteur pour améliorer l'aspect d'un graphique
 
 ```{r, echo = TRUE}
-library (ggplot2)
-library (forcats)
-num <- c (1, 8, 4, 3, 6, 7, 5, 2, 11, 3)
-cat <- c (letters [1:10])
-data <- data.frame (num, cat) 
+library(ggplot2)
+library(forcats)
+num <- c(1, 8, 4, 3, 6, 7, 5, 2, 11, 3)
+cat <- c(letters [1:10])
+data <- data.frame(num, cat)
 
-ggplot (data, aes (x = cat, num)) +
-  geom_bar (stat = "identity") +
-    xlab (label = "Facteur") + ylab (label ="Valeur")
+ggplot(data, aes(x = cat, num)) +
+  geom_bar(stat = "identity") +
+  xlab(label = "Facteur") + ylab(label = "Valeur")
 
-ggplot (data, aes (x = fct_reorder (cat, -num), num)) +
-  geom_bar (stat = "identity") +
-  xlab (label = "Facteur ordonné") + ylab (label ="Valeur")
+ggplot(data, aes(x = fct_reorder(cat, -num), num)) +
+  geom_bar(stat = "identity") +
+  xlab(label = "Facteur ordonné") + ylab(label = "Valeur")
 ```
 
 
@@ -468,17 +479,18 @@ La fonction `summarise()` permet d'aggréger des données, en appliquant une fon
 La syntaxe de summarise est classique. Le resultat est un dataframe
 
 ```{r, echo = T,results='hide'}
-summarise (exercice, 
-           mesure_moyenne = mean (resultat_analyse, na.rm = T))
+summarise(exercice,
+  mesure_moyenne = mean(resultat_analyse, na.rm = T)
+)
 ```
 
 On peut calculer plusieurs statistiques sur une aggrégation
 
 ```{r, echo = T,results='hide'}
-summarise (exercice, 
-          mesure_moyenne = mean (resultat_analyse, na.rm = T),
-          mesure_total = sum (resultat_analyse, na.rm = T)
-          )
+summarise(exercice,
+  mesure_moyenne = mean(resultat_analyse, na.rm = T),
+  mesure_total = sum(resultat_analyse, na.rm = T)
+)
 ```
 
 ### Quelques fonctions d'aggrégations utiles
@@ -513,15 +525,16 @@ Découper un jeu de données pour réaliser des opérations sur chacun des sous-
 Exemple pour calculer les statistiques précédentes par mois : 
 
 ```{r, echo = TRUE}
-exercice <- mutate (exercice,
-                    annee = year (date_prelevement))
+exercice <- mutate(exercice,
+  annee = year(date_prelevement)
+)
 
-paran <- group_by (exercice, annee)
+paran <- group_by(exercice, annee)
 
-summarise (paran, 
-           mesure_moyenne = mean (resultat_analyse, na.rm = T),
-           mesure_total = sum (resultat_analyse, na.rm = T)
-          )
+summarise(paran,
+  mesure_moyenne = mean(resultat_analyse, na.rm = T),
+  mesure_total = sum(resultat_analyse, na.rm = T)
+)
 ```
 
 Pour reprendre des traitements "table entière", il faut mettre fin au `group_by()` par un `ungroup()`
@@ -542,27 +555,29 @@ Quand on enchaîne plusieurs verbes, l'avantage devient encore plus évident :
 En reprenant l'exemple précédent, sans passer par les étapes intermédiaires, le code aurait cette tête :
 
 ```{r, echo = TRUE,eval=T}
-summarise (
-  group_by (
-    mutate (
+summarise(
+  group_by(
+    mutate(
       exercice,
-      annee = year (date_prelevement)
-            ),
-      annee
-            ), 
-          mesure_moyenne = mean (resultat_analyse, na.rm = T),
-          mesure_total = sum (resultat_analyse, na.rm = T)
-          )
+      annee = year(date_prelevement)
+    ),
+    annee
+  ),
+  mesure_moyenne = mean(resultat_analyse, na.rm = T),
+  mesure_total = sum(resultat_analyse, na.rm = T)
+)
 ```
 
 Avec l'utilisation du pipe (raccourci clavier CTrl + Maj + M), il devient : 
 
 ```{r, echo = TRUE,eval=T}
 exercice %>%
-  mutate (annee = year (date_prelevement)) %>%
-  group_by (annee) %>%
-    summarise (mesure_moyenne = mean (resultat_analyse, na.rm = T),
-               mesure_total = sum (resultat_analyse, na.rm = T))
+  mutate(annee = year(date_prelevement)) %>%
+  group_by(annee) %>%
+  summarise(
+    mesure_moyenne = mean(resultat_analyse, na.rm = T),
+    mesure_total = sum(resultat_analyse, na.rm = T)
+  )
 ```
 
 ## La magie des opérations groupées
@@ -606,7 +621,7 @@ Nous venons de voir les verbes de manipulation d'une table les plus fréquents d
 
 
 La syntaxe diffère un peu sur ces versions.
-On peut la globaliser ainsi :  fonction(***selectiondevariables***,***funs(opérationaréalisersurcesvariables)***)
+On peut la globaliser ainsi :  fonction(***selectiondevariables***,***list(opérationaréalisersurcesvariables)***)
 La sélection de variable diffère ensuite des fonctions : 
 
 - `xx_at()`, on donne une liste de variables
@@ -618,11 +633,11 @@ La sélection de variable diffère ensuite des fonctions :
 Exemple sur l'exercice sur les données sitadel.
 
 ```{r, echo = TRUE, eval = T}
-sitadel <- read_excel ("data/ROES_201702.xls", "AUT_REG") %>%
-  group_by (REG) %>%
-  mutate_if (is.numeric, funs (cumul12 = roll_sumr (., n = 12))) %>%
-  mutate_at (vars (ends_with ("cumul12")), funs (evo = 100 * . / lag (., 12) - 100)) %>%
-  mutate_at (vars (ends_with ("cumul12")), funs (part = 100 *./ log_AUT_cumul12))
+sitadel <- read_excel("data/ROES_201702.xls", "AUT_REG") %>%
+  group_by(REG) %>%
+  mutate_if(is.numeric, list(cumul12 = ~ roll_sumr(., n = 12))) %>%
+  mutate_at(vars(ends_with("cumul12")), list(evo = ~ 100 * . / lag(., 12) - 100)) %>%
+  mutate_at(vars(ends_with("cumul12")), list(part = ~ 100 * . / log_AUT_cumul12))
 ```
 
 Les verbes ayant ces variantes sont les suivants : *select(), arrange(), rename(), filter(), mutate(), transmute(), group_by(), summarise()*.

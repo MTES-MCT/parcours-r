@@ -28,7 +28,7 @@ En quoi ce fichier n'est pas *tidy* ?
 
 On retrouve 4 variables dans notre fichier : le territoire, le genre, l'âge et la population, et nos colonnes ne correspondent pas à ces variables.
 
-Quel serait la verison *tidy* de notre fichier ?
+Quelle serait la version *tidy* de notre fichier ?
 
 ```{r tidyr_intr_deux, echo=F}
 estim_pop_tidy <- read_excel('data/estim-pop-dep-sexe-gca-2019.xls') %>% 
@@ -57,24 +57,24 @@ Comment passer facilement d'un format *non tidy* à un format *tidy* ? C'est là
 
 Pour avoir un apperçu illustré de ces fonctions, voir [cette animation](https://www.dropbox.com/s/a6o75zj443b2rv3/tidyr-longer-wider-modified.gif?dl=0)
 
-Reprenons notre table Insee d'estimation de population. Comment donc passer cette table en format tidy ?
+Reprenons notre table Insee d'estimation de population. Comment faire pour passer cette table dans le format *tidy* ?
 
-Première étape, retrouvons notre colonne `population`. Pour cela il nous faut passer notre table au *format long*, grace à `pivot_longer()`.
+Première étape, retrouvons notre colonne `population`. Pour cela, il nous faut passer notre table au *format long*, grace à `pivot_longer()`.
 
 ```{r, echo = TRUE,eval=T}
 estim_pop_tidy <- read_excel('data/estim-pop-dep-sexe-gca-2019.xls') %>% 
   pivot_longer(-c(dep,lib_dep), values_to = "nombre_individus", names_to = "genre_age")
 ```
 
-Si nous voulions retrouver le format *large* nous pourrions utiliser `pivot_wider()`
+Si nous voulions retrouver le format *large*, nous pourrions utiliser `pivot_wider()`
 
 ```{r}
 estim_pop_nontidy <- estim_pop_tidy %>% 
   pivot_wider(names_from = genre_age, values_from = nombre_individus)
 ```
 
-Nous n'avons pas encore retrouvé nos deux variables `genre` et `age` mais une seule variable mélange les deux.
-Pour cela nous pouvons utiliser `separate()` du package `tidyr` également.
+Nous n'avons pas encore retrouvé nos deux variables `genre` et `age`, mais une seule variable mélange les deux.
+Pour cela, nous pouvons utiliser `separate()` du package `tidyr`.
 
 ```{r}
 estim_pop_tidy<- estim_pop_tidy %>% 
@@ -96,5 +96,5 @@ estim_pop_nontidy <- estim_pop_tidy %>%
 ```
 
 
-Vous retrouverez une introduction complète de tidyr dans un [article très bien fait](https://tidyr.tidyverse.org/articles/pivot.html) de la documentation du package (en anglais). 
+Vous retrouverez une introduction complète de *tidyr* dans un [article très bien fait](https://tidyr.tidyverse.org/articles/pivot.html) de la documentation du package (en anglais). 
 `tidyr` permet également de transformer des données sous forme de listes en dataframe *tidy* très simplement.

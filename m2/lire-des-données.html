@@ -24,7 +24,7 @@
 <meta name="author" content="Maël Theulière &amp; Bruno Terseur" />
 
 
-<meta name="date" content="2019-11-05" />
+<meta name="date" content="2019-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -355,15 +355,15 @@ Pour importer la table, on utile la fonction <code>collect()</code></p>
 </div>
 <div id="lire-des-données-du-webservice-insee" class="section level2">
 <h2><span class="header-section-number">4.6</span> Lire des données du webservice Insee</h2>
-<p>L’Insee met à disposition un webservice d’accès à des données de référence sous un format appelé <a href="https://sdmx.org/">sdmx</a>.
-Un package R, <a href="https://github.com/opensdmx/rsdmx">rsdmx</a> permet de se connecter directement à ces données.
+<p>L’Insee met à disposition un webservice d’accès (API) à des données de référence sous le format <a href="https://sdmx.org/">sdmx</a>.
+Le package <a href="https://github.com/opensdmx/rsdmx">rsdmx</a> permet de se connecter directement à ces données.
 Deux approches sont possibles. La première permet d’accéder à une série particulière.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471&quot;</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">datainsee &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (<span class="kw">readSDMX</span> (url))</a></code></pre></div>
-<p>Cette approche peut être utilisée pour télécharger plusieurs séries en même temps. Ici par exemple nous téléchargeons l’ensemble des données sur les créations et défaillances d’entreprises pour les secteurs de la construction et de l’immobilier sur les Pays de la Loire.</p>
+<p>Cette approche permet également de télécharger plusieurs séries en une seule requête. Par exemple : nous téléchargeons l’ensemble des données sur les créations et défaillances d’entreprises pour les secteurs de la construction et de l’immobilier sur les Pays de la Loire.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001564471+001564503+001564799+001564823+001582441+001582578+001582597+001582745+001656155+001656161+001655989+001655995&quot;</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">datainsee &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (<span class="kw">readSDMX</span> (url))</a></code></pre></div>
-<p>L’autre approche permet de télécharger un ensemble de données d’une thématique appelé <em>dataflow.</em> Ici, par exemple, on va télécharger l’ensemble des données relatives à la construction neuve :</p>
+<p>L’autre approche permet de télécharger un ensemble de données d’une thématique appelé <em>dataflow.</em> Ici, par exemple, on télécharge l’ensemble des données relatives à la construction neuve :</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://bdm.insee.fr/series/sdmx/data/CONSTRUCTION-LOGEMENTS&quot;</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">datainsee &lt;-<span class="st"> </span><span class="kw">as.data.frame</span> (<span class="kw">readSDMX</span> (url))</a></code></pre></div>
 

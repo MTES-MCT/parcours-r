@@ -125,7 +125,7 @@ Si une condition non cumulative s'applique sur une même variable, privilégier 
 ars <- filter(prelevement, code_reseau %in% c("ARS", "FREDON"))
 ```
 
-Pour sélectionner des observations qui ne répondent pas à la condition, le !
+Pour sélectionner des observations qui ne répondent pas à la condition, le `!` (la négation d'un test)
 
 Toutes les observations ayant été réalisées par un autre réseau que l'ARS :
 
@@ -158,7 +158,7 @@ prelevementb <- mutate(prelevementb,
 
 
 
-`mutate()` possède une variante, `transmute()`, qui fonctionne de la même façon, mais ne conserve que les variables modifiées ou crées par le verbe.
+`mutate()` possède une variante, `transmute()`, qui fonctionne de la même façon, mais ne conserve que les variables modifiées ou créées par le verbe.
 
 ### Extraire un vecteur : `pull()`
 

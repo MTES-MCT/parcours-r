@@ -78,6 +78,7 @@ library(waffle)
 library(glue)
 library(gganimate)
 library(htmlwidgets)
+library(ggspatial)
 load("data/data_exercices_formation.RData")
 load("data/ODD.RData")
 ```

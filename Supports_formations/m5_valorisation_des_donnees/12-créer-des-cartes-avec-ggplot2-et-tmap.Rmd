@@ -67,6 +67,76 @@ ggplot(data=tt)+
   labs(fill="Log du taux de mortalité infantile")+
   facet_wrap(~Year,drop=T)
 ```
+## Les cartes à ronds proportionnels
+
+La fonction ***stat_sf_coordinates()*** permet d'extraire les coordonnées d'un objet 'sf'.
+Ainsi un rond proportionnel peut être attrivuer à un polygone.
+
+```{r cart_1, echo=T,eval=T,fig.height=5,fig.width=12, cache=TRUE}
+data("World")
+
+tt<-World %>%
+rename(Country_or_Area_Code=iso_a3) %>%
+  inner_join(indicateur311 %>%
+              filter(Age_group=="All age ranges or no breakdown by age",
+                     Sex=="Both sexes or no breakdown by sex",
+                     Type_Zone=="Pays",
+                   is.na(Value_type)) %>%
+              group_by(Country_or_Area_Code) %>%
+              filter(!is.na(Value)) %>%
+              filter(Year==max(Year)))
+
+ggplot(data=tt)+
+  geom_sf(fill="grey97")+
+  stat_sf_coordinates(aes(size=Value,fill=Value),color = "black",shape=21)+
+  scale_fill_gradient2(name = "Valeur",
+                       low = "darkblue", mid = "white", high = "darkred")+
+  scale_size_area(name = "Valeur", max_size = 10)
+```
+
+## Les facettes
+
+On peut exploiter de la même façon les différents fonctions vues précédement. Par exemple : avec un peu de thème et de facet.
+
+```{r cart_2, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
+data("World")
+World<-st_as_sf(World)
+
+tt<-World %>%
+rename(Country_or_Area_Code=iso_a3) %>%
+inner_join(indicateur311 %>%
+            filter(Age_group=="All age ranges or no breakdown by age",
+                   Sex=="Both sexes or no breakdown by sex",
+                   Type_Zone=="Pays",
+                   is.na(Value_type)) %>%
+            group_by(Country_or_Area_Code) %>%
+            filter(!is.na(Value)) %>% 
+            filter(Year %in% c(1990,2000,2010,2015)) %>% 
+            ungroup() %>% 
+  complete(Year)
+          )
+
+ggplot(data=tt)+
+  geom_sf(aes(fill=log(Value)))+
+  theme_minimal()+
+  scale_fill_viridis(option = "magma",
+                   direction=1,
+                   breaks=c(0,1,2,3,4,5,6,7))+
+  guides(colour=F,
+         order=0,
+         fill=guide_legend(direction="horizontal",
+                           keyheight=unit(2,units="mm"),
+                           keywidth=unit(20,units="mm"),
+                           order=1,
+                           title.position="top",
+                           title.hjust=0.5,
+                           nrow=1,
+                           label.position="bottom",
+                           label.hjust=1))+
+  theme(legend.position = "bottom")+
+  labs(fill="Log du taux de mortalité infantile")+
+  facet_wrap(~Year,drop=T)
+```
 
 ## Ajouter une barre d'échelle et la flèche du nord
 

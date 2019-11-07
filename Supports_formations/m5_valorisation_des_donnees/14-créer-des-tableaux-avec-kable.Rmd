@@ -37,6 +37,31 @@ Description des fonctions utilisées :
 - ***add_indent()*** permet de définir sur un vecteur de lignes (ici les lignes 2 à 5) une identation.
 
 
+## Sauvegarde
+
+Le tableau ainsi produit peut être sauvegardé sous plusieurs formats (html, png, pdf, etc..) grâce à la fonction ***save_kable***.
+Cette fonction nécessite le chargement du package ***magick***
+
+```{r kabble_2}
+indicateur311 %>%
+  filter(Type_Zone != "Pays",
+         Age_group=="All age ranges or no breakdown by age",
+         Sex=="Both sexes or no breakdown by sex",
+         Location=="Total (national level)",
+         is.na(Value_type)
+  ) %>%
+  group_by(Country_or_Area_Code) %>%
+  filter(Year==max(Year)) %>%
+  ungroup %>% 
+  select(Country_or_Area_Name,Year,Value) %>% 
+  setNames(c("Zone","Année","Nombre de décès pour 100 000 Naissance")) %>% 
+  kable("html",caption="Mortalité de la mère à la naissance pour quelques grandes zones du globe") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  row_spec(1, bold = T, color = "white", background = "grey")%>%
+  add_indent(c(2:5)) %>% 
+  save_kable("montableau.png")
+```
+
 ## Exercice 8
 
 Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.

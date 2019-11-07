@@ -2,7 +2,7 @@ Package: Parcours-R
 Type: Book
 Title: Formations à R
 Version: 0.1.0
-Imports: rmarkdown, htmltools, tidyverse, cartography, sf, GGally, dplyr, plotly, bookdown, RcppRoll, DT, RPostgreSQL, rsdmx, XML, lsr, ggmosaic, visNetwork, FactoMineR, factoextra, ggExtra, kableExtra, hrbrthemes, tmap, highcharter, waffle, gganimate, svglite, cowplot, gifski, docopt, webshot
+Imports: rmarkdown, htmltools, tidyverse, cartography, sf, GGally, dplyr, plotly, bookdown, RcppRoll, DT, RPostgreSQL, rsdmx, XML, lsr, ggmosaic, visNetwork, FactoMineR, factoextra, ggExtra, kableExtra, hrbrthemes, tmap, highcharter, waffle, gganimate, svglite, cowplot, gifski, docopt, webshot, ggspatial
 License: MIT
 Description: Valise pédagogique pour la formation à R
 Authors@R: person("Stéphane", "Trainel", role = c("ctb", "cre"), email = "stephane.trainel@gmail.com", comment = c(ORCID = "0000-0002-4473-3121"))

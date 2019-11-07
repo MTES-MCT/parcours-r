@@ -72,7 +72,7 @@ ggplot(data=tt)+
 La fonction ***stat_sf_coordinates()*** permet d'extraire les coordonnées d'un objet 'sf'.
 Ainsi un rond proportionnel peut être attrivuer à un polygone.
 
-```{r cart_1, echo=T,eval=T,fig.height=5,fig.width=12, cache=TRUE}
+```{r cart_3, echo=T,eval=T,fig.height=5,fig.width=12, cache=TRUE}
 data("World")
 
 tt<-World %>%
@@ -98,7 +98,7 @@ ggplot(data=tt)+
 
 On peut exploiter de la même façon les différents fonctions vues précédement. Par exemple : avec un peu de thème et de facet.
 
-```{r cart_2, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
+```{r cart_4, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
 data("World")
 World<-st_as_sf(World)
 
@@ -146,7 +146,7 @@ Les deux fonctions qui permettent cela sont `annotation_scale()` et `annotation_
 
 L'utilisation de ces fonctions nécessitent un système de coordonnées géographiques.
 
-```{r cart_3, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
+```{r cart_5, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
 data("World")
 
 tt<-World %>%
@@ -171,7 +171,7 @@ annotation_scale(location = "br", line_width = .5) +
 Les 2 fonctions **geom_sf_text()** et **geom_sf_label()** permettent respectivement d'afficher du texte et des étiquettes sur des objets de types **sf**
 
 
-```{r cart_4, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
+```{r cart_6, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
 data("World")
 
 tt<-World %>%
@@ -197,7 +197,7 @@ ggplot(data=tt %>% filter(continent=="Africa"))+
 
 Résultat attendu
 
-```{r cart_14,eval=T,echo=F,message=F,warning=F}
+```{r cart_7,eval=T,echo=F,message=F,warning=F}
 tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 

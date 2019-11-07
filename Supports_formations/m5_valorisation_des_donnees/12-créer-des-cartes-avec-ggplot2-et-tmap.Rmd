@@ -165,6 +165,32 @@ ggplot(data=tt %>% filter(continent=="Africa"))+
 annotation_scale(location = "br", line_width = .5) +
   annotation_north_arrow(location = "bl", height = unit(0.7, "cm"), width = unit(0.7, "cm"))
 ```
+
+## Ajouter des étiquettes et du texte
+
+Les 2 fonctions **geom_sf_text()** et **geom_sf_label()** permettent respectivement d'afficher du texte et des étiquettes sur des objets de types **sf**
+
+
+```{r cart_4, echo=T,eval=T,fig.height=12,fig.width=12,warning=F, cache=TRUE}
+data("World")
+
+tt<-World %>%
+rename(Country_or_Area_Code=iso_a3) %>%
+  inner_join(indicateur311 %>%
+              filter(Age_group=="All age ranges or no breakdown by age",
+                     Sex=="Both sexes or no breakdown by sex",
+                     Type_Zone=="Pays",
+                   is.na(Value_type)) %>%
+              group_by(Country_or_Area_Code) %>%
+              filter(!is.na(Value)) %>%
+              filter(Year==max(Year)))
+
+ggplot(data=tt %>% filter(continent=="Africa"))+
+  geom_sf(aes(fill=Value))+
+  geom_sf_text(aes(label = name),vjust=-0.5,check_overlap=TRUE,fontface="italic",colour="white")
+```
+
+
 ## Exercice 5 
 
 > Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.

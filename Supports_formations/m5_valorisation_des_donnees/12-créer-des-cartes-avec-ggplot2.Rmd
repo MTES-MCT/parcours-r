@@ -67,6 +67,8 @@ ggplot(data=tt)+
   labs(fill="Log du taux de mortalité infantile")+
   facet_wrap(~Year,drop=T)
 ```
+
+
 ## Les cartes à ronds proportionnels
 
 La fonction ***stat_sf_coordinates()*** permet d'extraire les coordonnées d'un objet 'sf'.

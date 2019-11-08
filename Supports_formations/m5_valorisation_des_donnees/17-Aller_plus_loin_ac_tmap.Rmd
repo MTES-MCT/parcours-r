@@ -1,0 +1,149 @@
+# Cartographie avec tmap
+
+## Les cartes avec Tmap
+
+`Tmap` est un package dédié à la réalisation de cartes sous R. La syntaxe est très proche de ggplot, avec l'opérateur `+` pour enchaîner les options.
+
+L'équivalent des `geom_xx()` dans tmap sont les fonctions suivantes : 
+`tm_lines()` : afficher des lignes
+`tm_polygons()` : afficher des polygones
+`tm_raster()` : afficher un raster
+`tm_bubbles()` : afficher des ronds proportionnels
+`tm_markers()` : afficher des marqueurs
+`tm_text()` : afficher du texte
+
+Pour charger une donnée géométrique, il faut utiliser la fonction `*tm_shape()`.
+
+Les différences :
+
+- Les variables s'appellent avec des cotes ""
+
+- Le facetting peut se faire sur un format de données large (une carte par colonne et non une carte par modalité d'une variable)
+
+- La grande différence entre les `tm_xx()` et les `geom_xx()` : les `tm_xx()` inclut la définition des *classes* (nombre de classes, définition des classes et des palettes) sans passer par une fonction `scale()`  dont l'équivalent n'existe pas.
+
+La mise en page se définit avec la fonction `tm_layout()`, la légende avec `tm_legend()`.
+
+
+### Exemple de carte choroplèthe
+
+```{r cart_8, echo=T,eval=T,fig.height=5,fig.width=12}
+data("World")
+
+tt<-World %>%
+rename(Country_or_Area_Code=iso_a3) %>%
+  inner_join(indicateur311 %>%
+              filter(Age_group=="All age ranges or no breakdown by age",
+                     Sex=="Both sexes or no breakdown by sex",
+                     Type_Zone=="Pays",
+                   is.na(Value_type)) %>%
+              group_by(Country_or_Area_Code) %>%
+              filter(!is.na(Value)) %>%
+              filter(Year==max(Year)))
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value")
+```
+
+L'option `n=` permet de sélectionner le nombre de classes souhaitées, lorsque l'on réalise une carte sur une variable continue.
+
+```{r cart_9, echo=T,eval=T,fig.height=5,fig.width=12}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value",n=2)
+```
+
+### Exemple de carte à ronds proportionnels
+
+```{r cart_10, echo=T,eval=T,fig.height=5,fig.width=12}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons()+
+  tm_bubbles(size="Value",col="Value")
+```
+
+### Exemples de cartes avec facet
+
+```{r cart_11, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt)+
+  tm_polygons("Value")+
+  tm_facets("Year")
+```
+
+```{r cart_12, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value")+
+  tm_facets("Continent")
+```
+
+### Gestion des palettes
+
+La fonction *tmaptools::palette_explorer()* permet d'accéder à une interface très simple de définition d'une palette de couleurs à partir des palettes *brewer*.
+
+```{r cart_13, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value",palette=get_brewer_pal("OrRd", n = 5, contrast = c(0.2, 1)))
+```
+
+On peut également utiliser n'importe quelle palette. Par exemple, la palette viridis, mais sans l'interface proposée par palette_explorer() : 
+
+```{r cart_14, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value",palette=viridis(5, alpha = 1, begin = 0, end = 1, direction = 1, option = "D"))
+```
+
+### La mise en page
+
+***tm_layout()*** permet de contrôler les polices, la légende, les marges, les couleurs.
+L'option `design.mode=T` permet de voir visuellement les marges, la position de la légende.
+Le titre de la légende ne se définit pas dans `tm_layout()`, mais dans `tm_polygons()`. L'option `title` de ces fonctions est l'équivalent d'un libellé de la variable mise dans l'aesthetic.
+
+```{r cart_15, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons("Value",palette=viridis(5, alpha = 1, begin = 0, end = 1, direction = 1, option = "D"),
+              title="Taux de mortalité de la mère \n(pour 100 000 naissances)")+
+  tm_layout(main.title="Taux de mortalité de la mère \n(pour 100 000 naissances) dans le monde",
+            main.title.size=1.2,
+            outer.margins=c(0,0,0,0),
+            legend.position=c("left","bottom"),
+            legend.outside = F,
+            main.title.position = "center",
+            inner.margins = c(0, 0, 0, 0))
+```
+
+Avec les cartes en ronds proportionnels, on peut spécifier un titre pour la couleur et la taille du rond.
+
+```{r cart_16, echo=T,eval=T,fig.height=5,fig.width=8}
+tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons()+
+  tm_bubbles(size="Value",col="Value",
+             palette=viridis(5, alpha = 1, begin = 0, end = 1, direction = 1, option = "D"),
+              title.col="",
+              title.size="Taux de mortalité de la mère \n(pour 100 000 naissances)")+
+  tm_layout(main.title="Taux de mortalité de la mère \n(pour 100 000 naissances) dans le monde",
+            main.title.size=1.2,
+            outer.margins=c(0,0,0,0),
+            legend.position=c("left","bottom"),
+            legend.outside = F,
+            main.title.position = "center",
+            inner.margins = c(0, 0, 0, 0))
+```
+
+### Export d'un graphique
+
+La fonction `tmap_save()` permet d'exporter une carte tmap en un fichier image.
+
+```{r cart_17, echo=T,eval=F,fig.height=5,fig.width=8}
+carte<-tm_shape(tt %>% filter(Year==2015))+
+  tm_polygons()+
+  tm_bubbles(size="Value",col="Value",
+             palette=viridis(5, alpha = 1, begin = 0, end = 1, direction = 1, option = "D"),
+              title.col="",
+              title.size="Taux de mortalité de la mère \n(pour 100 000 naissances)")+
+  tm_layout(main.title="Taux de mortalité de la mère \n(pour 100 000 naissances) dans le monde",
+            main.title.size=1.2,
+            outer.margins=c(0,0,0,0),
+            legend.position=c("left","bottom"),
+            legend.outside = F,
+            main.title.position = "center",
+            inner.margins = c(0, 0, 0, 0))
+
+tmap_save(carte,filename="figures/Taux de mortalité de la mère dans le monde.png")
+```

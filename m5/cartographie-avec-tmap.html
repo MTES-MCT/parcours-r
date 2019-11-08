@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 3 Bien commencer | Valoriser ses données avec R</title>
+  <title>Chapitre 19 Cartographie avec tmap | Valoriser ses données avec R</title>
   <meta name="description" content="Valorisation des données sous R (module 5)" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 3 Bien commencer | Valoriser ses données avec R" />
+  <meta property="og:title" content="Chapitre 19 Cartographie avec tmap | Valoriser ses données avec R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 3 Bien commencer | Valoriser ses données avec R" />
+  <meta name="twitter:title" content="Chapitre 19 Cartographie avec tmap | Valoriser ses données avec R" />
   
   <meta name="twitter:description" content="Valorisation des données sous R (module 5)" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="une-typologie-des-représentations-graphiques.html"/>
-<link rel="next" href="package-ggplot2.html"/>
+<link rel="prev" href="exercices-et-corrections.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -303,106 +303,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bien-commencer" class="section level1">
-<h1><span class="header-section-number">Chapitre 3</span> Bien commencer</h1>
-<div id="créer-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux." class="section level2">
-<h2><span class="header-section-number">3.1</span> Créer un projet sous Rstudio pour vous permettre de recencer vos travaux.</h2>
-<p>Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?</p>
+<div id="cartographie-avec-tmap" class="section level1">
+<h1><span class="header-section-number">Chapitre 19</span> Cartographie avec tmap</h1>
+<div id="les-cartes-avec-tmap" class="section level2">
+<h2><span class="header-section-number">19.1</span> Les cartes avec Tmap</h2>
+<p><code>Tmap</code> est un package dédié à la réalisation de cartes sous R. La syntaxe est très proche de ggplot, avec l’opérateur <code>+</code> pour enchaîner les options.</p>
+<p>L’équivalent des <code>geom_xx()</code> dans tmap sont les fonctions suivantes :
+<code>tm_lines()</code> : afficher des lignes
+<code>tm_polygons()</code> : afficher des polygones
+<code>tm_raster()</code> : afficher un raster
+<code>tm_bubbles()</code> : afficher des ronds proportionnels
+<code>tm_markers()</code> : afficher des marqueurs
+<code>tm_text()</code> : afficher du texte</p>
+<p>Pour charger une donnée géométrique, il faut utiliser la fonction <code>*tm_shape()</code>.</p>
+<p>Les différences :</p>
 <ul>
-<li>Cela permet la portabilité : le répertoire de travail par défaut d’un projet est le répertoire où est ce projet. Si vous transmettez celui-ci à un collègue, le fait de lancer un programme ne dépend pas de l’arborescence de votre machine.</li>
+<li><p>Les variables s’appellent avec des cotes &quot;&quot;</p></li>
+<li><p>Le facetting peut se faire sur un format de données large (une carte par colonne et non une carte par modalité d’une variable)</p></li>
+<li><p>La grande différence entre les <code>tm_xx()</code> et les <code>geom_xx()</code> : les <code>tm_xx()</code> inclut la définition des <em>classes</em> (nombre de classes, définition des classes et des palettes) sans passer par une fonction <code>scale()</code> dont l’équivalent n’existe pas.</p></li>
 </ul>
-<blockquote>
-<p><strong>Fini les <code>setwd(&quot;chemin/qui/marche/uniquement/sur/mon/poste&quot;)</code> !</strong></p>
-</blockquote>
-<ul>
-<li>Toujours sur la portabilité, un projet peut être utilisé avec un outil comme packrat qui va internaliser dans le projet l’ensemble des packages dont vous aurez besoin pour celui-ci. Cela permet donc à votre collègue, à qui vous passez votre projet, de ne pas avoir à les installer et surtout si vous mettez à jour votre environnement R, votre projet restera toujours avec les versions des packages avec lesquelles vous avez fait tourné votre projet à l’époque. Cela évite d’avoir à surbir les effets d’une mise à jour important d’un package qui casserait votre code.</li>
-</ul>
-<p>Pour activer packrat sur un projet, aller dans <code>Tools/Project Options-&gt;Packrat</code></p>
-<p><a href="https://www.rstudio.com/resources/webinars/managing-package-dependencies-in-r-with-packrat/">En savoir plus sur Packrat</a></p>
-<p><img src="images/creerprojet4.png" id="id" class="class" width="500" /></p>
-<ul>
-<li><p>Cela permet de se forcer à travailler en mode projet : on intègre à un seul endroit tout ce qui est lié à un projet : données brutes, données retravaillées, scripts, illustrations, documentations, publications… et donc y compris package avec packrat.</p></li>
-<li><p>On peut travailler sur plusieurs projets en même temps, Rstudio ouvre autant de sessions que de projet dans ce cas.</p></li>
-<li><p>Les projets Rstudio intègrent une interface avec les outils de gestion de version git et svn. Cela veut dire que vous pouvez versionniser votre projet et l’héberger simplement comme répertoire sur des plateformes de gestion de code telle que github ou gitlab.</p></li>
-</ul>
-<p><strong>Pour créer un projet : </strong></p>
-<ul>
-<li>Cliquez sur <em>Project</em> en haut à droite puis <em>New Project</em>.</li>
-</ul>
-<p><img src="images/creerprojet1.png" id="id" class="class" width="500" /></p>
-<ul>
-<li>Cliquez sur <em>New Directory</em>.</li>
-</ul>
-<p><img src="images/creerprojet2.png" id="id" class="class" width="500" /></p>
+<p>La mise en page se définit avec la fonction <code>tm_layout()</code>, la légende avec <code>tm_legend()</code>.</p>
+<div id="exemple-de-carte-choroplèthe" class="section level3">
+<h3><span class="header-section-number">19.1.1</span> Exemple de carte choroplèthe</h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;World&quot;</span>)</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb65-3" data-line-number="3">tt&lt;-World <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="kw">rename</span>(<span class="dt">Country_or_Area_Code=</span>iso_a3) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="st">  </span><span class="kw">inner_join</span>(indicateur311 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="st">              </span><span class="kw">filter</span>(Age_group<span class="op">==</span><span class="st">&quot;All age ranges or no breakdown by age&quot;</span>,</a>
+<a class="sourceLine" id="cb65-7" data-line-number="7">                     Sex<span class="op">==</span><span class="st">&quot;Both sexes or no breakdown by sex&quot;</span>,</a>
+<a class="sourceLine" id="cb65-8" data-line-number="8">                     Type_Zone<span class="op">==</span><span class="st">&quot;Pays&quot;</span>,</a>
+<a class="sourceLine" id="cb65-9" data-line-number="9">                   <span class="kw">is.na</span>(Value_type)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-10" data-line-number="10"><span class="st">              </span><span class="kw">group_by</span>(Country_or_Area_Code) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-11" data-line-number="11"><span class="st">              </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Value)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-12" data-line-number="12"><span class="st">              </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="kw">max</span>(Year)))</a>
+<a class="sourceLine" id="cb65-13" data-line-number="13"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb65-14" data-line-number="14"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_8-1.png" width="1152" /></p>
+<p>L’option <code>n=</code> permet de sélectionner le nombre de classes souhaitées, lorsque l’on réalise une carte sur une variable continue.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>,<span class="dt">n=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_9-1.png" width="1152" /></p>
 </div>
-<div id="intégrer-vos-données" class="section level2">
-<h2><span class="header-section-number">3.2</span> Intégrer vos données</h2>
-<p>Une bonne pratique est de créer un sous répertoire <code>/data</code> pour stocker les données sur lesquelles vous aurez à travailler.</p>
-<p>Vous pouvez le faire de l’explorateur de fichiers de votre système d’exploitation ou directement à partir de l’explorateur de fichiers de RStudio.</p>
-<p><img src="images/creerprojet3.png" id="id" class="class" width="500" /></p>
-<p>Cela marche bien quand on a un seul type de données, mais en général on va avoir à travailler sur des données brutes que l’on va retravailler ensuite et vouloir stocker à part. Si par la suite vous souhaitez avoir des exemples de bonnes pratiques sur comment structurer vos données, vous pouvez vous référer au <a href="http://r-pkgs.had.co.nz/data.html">chapitre data</a> du livre d’Hadley Wickham sur la construction de package R (tout package R étant aussi un projet !)</p>
+<div id="exemple-de-carte-à-ronds-proportionnels" class="section level3">
+<h3><span class="header-section-number">19.1.2</span> Exemple de carte à ronds proportionnels</h3>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_bubbles</span>(<span class="dt">size=</span><span class="st">&quot;Value&quot;</span>,<span class="dt">col=</span><span class="st">&quot;Value&quot;</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_10-1.png" width="1152" /></p>
 </div>
-<div id="créer-votre-arborescence-de-projet" class="section level2">
-<h2><span class="header-section-number">3.3</span> Créer votre arborescence de projet</h2>
-<ul>
-<li>Créer un répertoire <code>/src</code> ou vous mettrez vos scripts R.</li>
-<li>Créer un répertoire <code>/figures</code> ou vous mettrez vos illustrations issues de R.</li>
-</ul>
+<div id="exemples-de-cartes-avec-facet" class="section level3">
+<h3><span class="header-section-number">19.1.3</span> Exemples de cartes avec facet</h3>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">tm_shape</span>(tt)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_facets</span>(<span class="st">&quot;Year&quot;</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_11-1.png" width="768" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_facets</span>(<span class="st">&quot;Continent&quot;</span>)</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_12-1.png" width="768" /></p>
 </div>
-<div id="activer-les-packages-nécessaires" class="section level2">
-<h2><span class="header-section-number">3.4</span> Activer les packages nécessaires</h2>
-<p>Commencer par rajouter un script dans le répertoire <code>/src</code> à votre projet qui commencera par :</p>
-<ul>
-<li><p>activer l’ensemble des packages nécessaires</p></li>
-<li><p>charger les données dont vous aurez besoins.</p></li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(kableExtra)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(hrbrthemes)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(stringr)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">library</span>(tmap)</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">library</span>(viridis)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw">library</span>(highcharter)</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="kw">library</span>(leaflet)</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="kw">library</span>(cowplot)</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="kw">library</span>(waffle)</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="kw">library</span>(glue)</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="kw">library</span>(gganimate)</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="kw">library</span>(htmlwidgets)</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="kw">library</span>(ggspatial)</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="kw">load</span>(<span class="st">&quot;data/data_exercices_formation.RData&quot;</span>)</a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="kw">load</span>(<span class="st">&quot;data/ODD.RData&quot;</span>)</a></code></pre></div>
+<div id="gestion-des-palettes" class="section level3">
+<h3><span class="header-section-number">19.1.4</span> Gestion des palettes</h3>
+<p>La fonction <em>tmaptools::palette_explorer()</em> permet d’accéder à une interface très simple de définition d’une palette de couleurs à partir des palettes <em>brewer</em>.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>,<span class="dt">palette=</span><span class="kw">get_brewer_pal</span>(<span class="st">&quot;OrRd&quot;</span>, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">contrast =</span> <span class="kw">c</span>(<span class="fl">0.2</span>, <span class="dv">1</span>)))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_13-1.png" width="768" /><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_13-2.png" width="768" /></p>
+<p>On peut également utiliser n’importe quelle palette. Par exemple, la palette viridis, mais sans l’interface proposée par palette_explorer() :</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>,<span class="dt">palette=</span><span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">begin =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">1</span>, <span class="dt">direction =</span> <span class="dv">1</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_14-1.png" width="768" /></p>
 </div>
-<div id="bien-structurer-ses-projets-data" class="section level2">
-<h2><span class="header-section-number">3.5</span> Bien structurer ses projets data</h2>
-<p>Plusieurs documents peuvent vous inspirer sur la structuration de vos projets data par la suite.</p>
-<p>En voici quelques uns :</p>
-<ul>
-<li><a href="https://github.com/pavopax/new-project-template" class="uri">https://github.com/pavopax/new-project-template</a></li>
-<li><a href="https://nicercode.github.io/blog/2013-04-05-projects/" class="uri">https://nicercode.github.io/blog/2013-04-05-projects/</a></li>
-<li><a href="https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html" class="uri">https://www.inwt-statistics.com/read-blog/a-meaningful-file-structure-for-r-projects.html</a></li>
-<li><a href="http://projecttemplate.net/architecture.html" class="uri">http://projecttemplate.net/architecture.html</a></li>
-</ul>
-<p>À partir du moment où quelques grands principes sont respectés (un répertoire pour les données brutes en lecture seule par exemple), le reste est surtout une question d’attirance plus forte pour l’une ou l’autre solution. L’important est de vous tenir ensuite à garder toujours la même structure dans vos projets afin de vous y retrouver plus simplement.</p>
+<div id="la-mise-en-page" class="section level3">
+<h3><span class="header-section-number">19.1.5</span> La mise en page</h3>
+<p><strong><em>tm_layout()</em></strong> permet de contrôler les polices, la légende, les marges, les couleurs.
+L’option <code>design.mode=T</code> permet de voir visuellement les marges, la position de la légende.
+Le titre de la légende ne se définit pas dans <code>tm_layout()</code>, mais dans <code>tm_polygons()</code>. L’option <code>title</code> de ces fonctions est l’équivalent d’un libellé de la variable mise dans l’aesthetic.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Value&quot;</span>,<span class="dt">palette=</span><span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">begin =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">1</span>, <span class="dt">direction =</span> <span class="dv">1</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>),</a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">              <span class="dt">title=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">main.title=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances) dans le monde&quot;</span>,</a>
+<a class="sourceLine" id="cb72-5" data-line-number="5">            <span class="dt">main.title.size=</span><span class="fl">1.2</span>,</a>
+<a class="sourceLine" id="cb72-6" data-line-number="6">            <span class="dt">outer.margins=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb72-7" data-line-number="7">            <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb72-8" data-line-number="8">            <span class="dt">legend.outside =</span> F,</a>
+<a class="sourceLine" id="cb72-9" data-line-number="9">            <span class="dt">main.title.position =</span> <span class="st">&quot;center&quot;</span>,</a>
+<a class="sourceLine" id="cb72-10" data-line-number="10">            <span class="dt">inner.margins =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_15-1.png" width="768" /></p>
+<p>Avec les cartes en ronds proportionnels, on peut spécifier un titre pour la couleur et la taille du rond.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_bubbles</span>(<span class="dt">size=</span><span class="st">&quot;Value&quot;</span>,<span class="dt">col=</span><span class="st">&quot;Value&quot;</span>,</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4">             <span class="dt">palette=</span><span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">begin =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">1</span>, <span class="dt">direction =</span> <span class="dv">1</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>),</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5">              <span class="dt">title.col=</span><span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6">              <span class="dt">title.size=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">main.title=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances) dans le monde&quot;</span>,</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8">            <span class="dt">main.title.size=</span><span class="fl">1.2</span>,</a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">            <span class="dt">outer.margins=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb73-10" data-line-number="10">            <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb73-11" data-line-number="11">            <span class="dt">legend.outside =</span> F,</a>
+<a class="sourceLine" id="cb73-12" data-line-number="12">            <span class="dt">main.title.position =</span> <span class="st">&quot;center&quot;</span>,</a>
+<a class="sourceLine" id="cb73-13" data-line-number="13">            <span class="dt">inner.margins =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a></code></pre></div>
+<p><img src="Valorisation-des-donn%C3%A9es_files/figure-html/cart_16-1.png" width="768" /></p>
+</div>
+<div id="export-dun-graphique" class="section level3">
+<h3><span class="header-section-number">19.1.6</span> Export d’un graphique</h3>
+<p>La fonction <code>tmap_save()</code> permet d’exporter une carte tmap en un fichier image.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">carte&lt;-<span class="kw">tm_shape</span>(tt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">==</span><span class="dv">2015</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="st">  </span><span class="kw">tm_polygons</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_bubbles</span>(<span class="dt">size=</span><span class="st">&quot;Value&quot;</span>,<span class="dt">col=</span><span class="st">&quot;Value&quot;</span>,</a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">             <span class="dt">palette=</span><span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">begin =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">1</span>, <span class="dt">direction =</span> <span class="dv">1</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>),</a>
+<a class="sourceLine" id="cb74-5" data-line-number="5">              <span class="dt">title.col=</span><span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb74-6" data-line-number="6">              <span class="dt">title.size=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">main.title=</span><span class="st">&quot;Taux de mortalité de la mère </span><span class="ch">\n</span><span class="st">(pour 100 000 naissances) dans le monde&quot;</span>,</a>
+<a class="sourceLine" id="cb74-8" data-line-number="8">            <span class="dt">main.title.size=</span><span class="fl">1.2</span>,</a>
+<a class="sourceLine" id="cb74-9" data-line-number="9">            <span class="dt">outer.margins=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb74-10" data-line-number="10">            <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">            <span class="dt">legend.outside =</span> F,</a>
+<a class="sourceLine" id="cb74-12" data-line-number="12">            <span class="dt">main.title.position =</span> <span class="st">&quot;center&quot;</span>,</a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">            <span class="dt">inner.margins =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb74-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb74-15" data-line-number="15"><span class="kw">tmap_save</span>(carte,<span class="dt">filename=</span><span class="st">&quot;figures/Taux de mortalité de la mère dans le monde.png&quot;</span>)</a></code></pre></div>
 
 </div>
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="une-typologie-des-représentations-graphiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="package-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercices-et-corrections.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

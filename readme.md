@@ -7,6 +7,11 @@
 Ce dépôt contient les supports pédagogiques de la formation R en version Rmd. Il permet aux référents R de construire et mettre à jour les modules de formation. L'outil Travis-Ci est utilisé pour compiler les fichiers Rmd en support au format HTML. Ces supports sont ensuite copiés sur la branche `gh-pages`.
 
 ## Journal
+
+09/12/2020
+* ajout d'un repo pour chaque module de formation
+* modification de la marianne
+
 30/08/2019
 * ajout d'un script pour ne compiler les modules dont les sources ont évolué
 * ajout d'un répertoire front pour la page d'accueil (index.html) et les éléments associés

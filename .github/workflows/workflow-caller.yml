@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - main
-
+      - master
 jobs:
   call-workflow:
-    uses: jdlom/parcours-r/.github/workflows/workflow1.yml@refs/heads/worflow_reutilisable
+    uses: jdlom/parcours-r/.github/workflows/workflow1.yml@70e21495ade811645527734a09862a5d064670fe

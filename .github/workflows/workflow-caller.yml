@@ -1,0 +1,10 @@
+name: Call a reusable workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  call-workflow:
+    uses: jdlom/parcours-r/.github/workflows/workflow-A.yml@worflow_reutilisable

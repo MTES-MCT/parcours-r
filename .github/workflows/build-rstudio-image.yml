@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
   
     - name: Branch name
-      run: echo running on branch ${{github.ref_name}} for ${{matrix.r_version}}
+      run: echo running on branch ${{ github.ref_name }} for ${{ matrix.r_version }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -36,6 +36,7 @@ jobs:
         push: true
         pull: true
         build-args: |
-            R_VERSION=${{matrix.r_version}}
+            R_VERSION=${{ matrix.r_version }}
         tags: |
-          ghcr.io/${{github.repository}}:${{matrix.r_version}}
+          ghcr.io/${{ github.repository }}-${{ matrix.r_version }}:latest
+          ghcr.io/${{ github.repository }}-${{ matrix.r_version }}:${{ github.sha }}

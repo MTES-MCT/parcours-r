@@ -29,8 +29,8 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     
     - name: set lower case repo name (Bug when repository is in UPPERCASE)
-        run: |
-          echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+      run: |
+        echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
 
     - name: Build and push
       uses: docker/build-push-action@v2

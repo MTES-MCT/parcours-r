@@ -27,6 +27,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: set lower case repo name (Bug when repository is in UPPERCASE)
+        run: |
+          echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
 
     - name: Build and push
       uses: docker/build-push-action@v2
@@ -38,5 +42,5 @@ jobs:
         build-args: |
             R_VERSION=${{ matrix.r_version }}
         tags: |
-          ghcr.io/${{ github.repository }}-${{ matrix.r_version }}:latest
-          ghcr.io/${{ github.repository }}-${{ matrix.r_version }}:${{ github.sha }}
+          ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:latest
+          ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:${{ github.sha }}

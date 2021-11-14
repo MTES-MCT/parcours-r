@@ -41,6 +41,11 @@ jobs:
 
     - name: Build site
       run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+      
+    - name: Rsync install (Deploy action needs rsync)
+      run: |
+        apt update
+        apt install -y rsync
 
     - name: Deploy to GitHub pages 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.4

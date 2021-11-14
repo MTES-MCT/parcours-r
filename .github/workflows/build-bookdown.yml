@@ -11,17 +11,20 @@ jobs:
   get-image-repository:
     name: Get image repository
     runs-on: ubuntu-latest
+    outputs:
+      image_repository: ${{ steps.lower_repo.outputs.image_repository }}
     steps:
-    - name: set lower case repo name (Bug when repository is in UPPERCASE)
+    - id : lower_repo
+      name: set lower case repo name (Bug when repository is in UPPERCASE)
       run: |
-        echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+        run: echo "::set-output name=image_repository::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
   bookdown:
     name: Build and deploy bookdown
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     needs: get-image-repository
-    container:  ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ inputs.r_version }}:latest
+    container:  ghcr.io/${{ needs.get-image-repository.outputs.image_repository }}-${{ inputs.r_version }}:latest
     steps:
     - uses: actions/checkout@v2
 

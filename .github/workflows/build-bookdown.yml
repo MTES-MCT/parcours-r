@@ -1,0 +1,43 @@
+name: Build Bookdown And Deploy
+
+on:
+  workflow_call:
+    inputs:
+      r_version:
+        required: true
+        type: string   
+
+jobs:
+  get-image-repository:
+    name: Get image repository
+    runs-on: ubuntu-latest
+    - name: set lower case repo name (Bug when repository is in UPPERCASE)
+      run: |
+        echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+ bookdown:
+  runs-on: ubuntu-latest
+  needs: get-image-repository
+  container:  ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ inputs.r_version }}:latest
+  steps:
+  - uses: actions/checkout@v2
+  
+  - name: Restore packages
+    shell: Rscript {0}
+    run: |
+      renv::restore()
+  
+  - name: Cache bookdown results
+      uses: actions/cache@v2
+      with:
+        path: _bookdown_files
+        key: bookdown-${{ hashFiles('**/*Rmd') }}
+        restore-keys: bookdown-
+
+  - name: Build site
+    run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+
+  - name: Deploy to GitHub pages 🚀
+    uses: JamesIves/github-pages-deploy-action@4.1.4
+    with:
+      branch: gh-pages
+      folder: _book

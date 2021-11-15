@@ -1,4 +1,4 @@
-name: Build Bookdown And Deploy
+name: Build Bookdown And Deploy With Docker Image
 
 on:
   workflow_call:

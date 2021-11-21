@@ -32,7 +32,7 @@ jobs:
 
       - name: Render Readme.Rmd
         run: |
-          Rscript -e 'rmarkdown::render(input = "README.md", output_format = "github_document")'
+          Rscript -e 'rmarkdown::render(input = "README.Rmd", output_format = "github_document")'
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         env:

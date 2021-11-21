@@ -58,16 +58,18 @@ formations <- tribble(
 formations %>% 
   filter(statut_deploiement == "Déployé" )%>% 
   glue::glue_data(
-    "#### { label_formation }
-    <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
+"
+#### { label_formation }
+<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
     
-    Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
+Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
     
-    Statut : **{statut_deploiement}**
+Statut : **{statut_deploiement}**
     
-    [![Déploiement de {formation}](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml)
-    &nbsp;
+[![Déploiement de {formation}](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml)
     
+&nbsp;
+
     "
 )
 
@@ -80,16 +82,17 @@ formations %>%
 formations %>% 
   filter(statut_deploiement != "Déployé" )%>% 
   glue::glue_data(
-    "#### { label_formation }
-    <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
+"
+#### { label_formation }
+<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
     
-    Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
+Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
+
+Statut : **{statut_deploiement}**
     
-    Statut : **{statut_deploiement}**
-    
-    &nbsp;
-    
-    "
+&nbsp;
+
+"
 )
 
 ```

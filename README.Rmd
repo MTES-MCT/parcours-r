@@ -1,0 +1,127 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Parcours R - Supports pédagogiques pour la formation à R au sein du MTES/MCTRCT (et au-délà)
+
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+
+## Se former à R
+
+Ce dépôt contient les supports pédagogiques de la formation R en version Rmd. Il permet aux référents R de construire et mettre à jour les modules de formation. L'outil Github Action est utilisé pour compiler les fichiers Rmd en support au format HTML. Ces supports sont ensuite copiés sur la branche `gh-pages`.
+
+## Modules de formations
+
+```{r library, include=FALSE}
+library(tibble)
+library(dplyr)
+library(glue)
+```
+
+
+```{r Formations, include=FALSE}
+
+formations <- tribble(
+  ~formation, ~label_formation, ~statut_deploiement, ~img,
+  "parcours_r_socle_introduction", "Module 1 : « Socle : Premier programme en R »", "Déployé", "grenouille.jpg",
+  "parcours_r_socle_preparation_des_donnees", "Module 2 : « Socle : Préparation des données »", "Déployé", "martin.jpg",
+  "parcours_r_module_statistiques_descriptives", "Module 3 : « Statistiques descriptives »", "Déployé", "pollinisateur.jpg",
+  "parcours_r_module_analyse_multi_dimensionnelles", "Module 4 : « Analyse des données multi-dimensionnelles »", "Déployé", "crabe.jpg",
+  "parcours_r_module_datavisualisation", "Module 5 : « Datavisualisation : produire des graphiques, des cartes et des tableaux »", "Déployé", "renard.jpg",
+  "parcours_r_module_publication_rmarkdown", "Module 6 : « Publications reproductibles avec RMarkdown »", "En construction", "vipere.jpg",
+  "parcours_r_module_analyse_spatiale", "Module 7 : « Analyse spatiale »", "Déployé", "odonate.jpg",
+  "parcours_r_module_big_data", "Module 8 : « Big data et optimisation du code »", "En construction", "papillon.jpg",
+  "parcours_r_module_applications_shiny", "Module 9 : « Applications interactives avec Shiny »", "En construction", "Triaenodon_obesus.jpg"
+)
+
+```
+
+
+### Formations déployées
+
+```{r Presentation des formations depl, echo= FALSE, results='asis'}
+
+formations %>% 
+  filter(statut_deploiement == "Déployé" )%>% 
+  glue::glue_data(
+    "#### { label_formation }
+    <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
+    
+    Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
+    
+    Statut : **{statut_deploiement}**
+    
+    [![Déploiement de {formation}](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/{formation}/actions/workflows/rstudio-image-build.yml)
+    &nbsp;
+    
+    "
+)
+
+```
+
+### Formations en construction
+
+```{r Presentation des formations en construction, echo= FALSE, results='asis'}
+
+formations %>% 
+  filter(statut_deploiement != "Déployé" )%>% 
+  glue::glue_data(
+    "#### { label_formation }
+    <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
+    
+    Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
+    
+    Statut : **{statut_deploiement}**
+    
+    &nbsp;
+    
+    "
+)
+
+```
+
+
+
+## Journal
+
+21/11/2021
+
+* ajout vue d'ensemble des modules de formations (image docker et déploiement des modules)
+
+09/12/2020
+
+* ajout d'un repo pour chaque module de formation
+* modification de la marianne
+
+30/08/2019
+
+* ajout d'un script pour ne compiler les modules dont les sources ont évolué
+* ajout d'un répertoire front pour la page d'accueil (index.html) et les éléments associés
+
+23/08/2019
+* optimisation de la création des supports : activation des caches `knitr` et travis-ci
+
+16/08/2019
+
+* gérer la fermeture de rawgit : mise en place d'un branche `gh-pages` qui contient les supports HTML/PDF/ePub générés à partir des `Rmd`
+* nettoyage de l'arborescence : suppression des fichiers de la branche `master` rendus inutiles
+
+15/02/2019
+
+* init (modules socle et à la carte : de 1 à 5)
+* ajout d'une page index de présentation
+

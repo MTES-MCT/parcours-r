@@ -21,7 +21,7 @@ copiés sur la branche `gh-pages`.
 
 #### Module 1 : « Socle : Premier programme en R »
 
-<img src="docs/assets/images/grenouille.jpg" alt="grenouille.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/grenouille.jpg" alt="grenouille.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_socle\_introduction](https://github.com/MTES-MCT/parcours_r_socle_introduction)
@@ -31,11 +31,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_socle\_introduction](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml)
 
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M1-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+
  
 
 #### Module 2 : « Socle : Préparation des données »
 
-<img src="docs/assets/images/martin.jpg" alt="martin.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/martin.jpg" alt="martin.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_socle\_preparation\_des\_donnees](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees)
@@ -45,11 +47,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_socle\_preparation\_des\_donnees](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees/actions/workflows/rstudio-image-build.yml)
 
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M2-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M2»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_preparation_des_donnees-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+
  
 
 #### Module 3 : « Statistiques descriptives »
 
-<img src="docs/assets/images/pollinisateur.jpg" alt="pollinisateur.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/pollinisateur.jpg" alt="pollinisateur.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_statistiques\_descriptives](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives)
@@ -59,11 +63,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_module\_statistiques\_descriptives](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives/actions/workflows/rstudio-image-build.yml)
 
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M3-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M3»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_statistiques_descriptives-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+
  
 
 #### Module 4 : « Analyse des données multi-dimensionnelles »
 
-<img src="docs/assets/images/crabe.jpg" alt="crabe.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/crabe.jpg" alt="crabe.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_analyse\_multi\_dimensionnelles](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles)
@@ -73,11 +79,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_module\_analyse\_multi\_dimensionnelles](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles/actions/workflows/rstudio-image-build.yml)
 
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M4-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M4»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_multi_dimensionnelles-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+
  
 
 #### Module 5 : « Datavisualisation : produire des graphiques, des cartes et des tableaux »
 
-<img src="docs/assets/images/renard.jpg" alt="renard.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/renard.jpg" alt="renard.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_datavisualisation](https://github.com/MTES-MCT/parcours_r_module_datavisualisation)
@@ -87,11 +95,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_module\_datavisualisation](https://github.com/MTES-MCT/parcours_r_module_datavisualisation/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_datavisualisation/actions/workflows/rstudio-image-build.yml)
 
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M5-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M5»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_datavisualisation-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+
  
 
 #### Module 7 : « Analyse spatiale »
 
-<img src="docs/assets/images/odonate.jpg" alt="odonate.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/odonate.jpg" alt="odonate.jpg" align="left" style="width:100px;;margin:20px"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_analyse\_spatiale](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale)
@@ -100,6 +110,8 @@ Statut : **Déployé**
 
 [![Déploiement de
 parcours\_r\_module\_analyse\_spatiale](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale/actions/workflows/rstudio-image-build.yml)
+
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M7-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M7»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_spatiale-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
 
  
 
@@ -139,6 +151,10 @@ Statut : **En construction**
  
 
 ## Journal
+
+28/11/2021
+
+  - ajout des liens de parcours de formations (sspcloud)
 
 21/11/2021
 

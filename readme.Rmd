@@ -56,7 +56,7 @@ formations %>%
   glue::glue_data(
 "
 #### { label_formation }
-<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;margin:20px\"/>
+<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"right\" style=\"width:150px;\"/>
     
 Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
     
@@ -82,7 +82,7 @@ formations %>%
   glue::glue_data(
 "
 #### { label_formation }
-<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:0 20px 20px 20px\"/>
+<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"right\" style=\"width:150px;\"/>
     
 Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
 

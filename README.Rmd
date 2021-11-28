@@ -36,7 +36,10 @@ library(glue)
 
 ```{r Formations, include=FALSE}
 
-formations <- read_csv("formations.csv")
+formations <- read_delim("formations.csv",
+                         ";",
+                         escape_double = FALSE,
+                         trim_ws = TRUE)
 
 ```
 

@@ -93,6 +93,10 @@ Statut : **{statut_deploiement}**
 
 ## Journal
 
+28/11/2021
+
+* ajout des liens de parcours de formations (sspcloud)
+
 21/11/2021
 
 * ajout vue d'ensemble des modules de formations (image docker et déploiement des modules)

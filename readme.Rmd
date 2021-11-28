@@ -1,5 +1,8 @@
 ---
-output: github_document
+output:
+  github_document:
+    toc: true
+  
 ---
 
 <!-- README.md est généré à partir du README.Rmd. Merci d'éditer ce fichier -->

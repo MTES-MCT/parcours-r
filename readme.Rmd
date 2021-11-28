@@ -53,7 +53,7 @@ formations %>%
   glue::glue_data(
 "
 #### { label_formation }
-<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;;margin:20px\"/>
+<img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"left\" style=\"width:100px;margin:20px\"/>
     
 Lien vers le dépôt : [{ formation }](https://github.com/MTES-MCT/{formation})
     
@@ -65,7 +65,7 @@ Statut : **{statut_deploiement}**
 
 &nbsp;
 
-    "
+"
 )
 
 ```

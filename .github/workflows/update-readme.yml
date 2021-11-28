@@ -1,11 +1,11 @@
 on:
   push:
     paths:
-      - README.Rmd
+      - readme.Rmd
       - formations.csv
   workflow_dispatch:
     paths:
-      - README.Rmd
+      - readme.Rmd
       - formations.csv
 
 name: render-README
@@ -34,7 +34,7 @@ jobs:
 
       - name: Render Readme.Rmd
         run: |
-          Rscript -e 'rmarkdown::render(input = "README.Rmd", output_format = "github_document")'
+          Rscript -e 'rmarkdown::render(input = "readme.Rmd", output_format = "github_document", output_file = "README.md")'
       
       - name: Track README.md
         run: |

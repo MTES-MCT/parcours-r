@@ -8,6 +8,6 @@ Thumbs.db
 .Ruserdata
 _book
 _bookdown_files
-README.html
-README.md
+*.html
+readme.md
 *.icloud

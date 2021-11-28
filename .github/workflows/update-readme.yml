@@ -2,9 +2,11 @@ on:
   push:
     paths:
       - README.Rmd
+      - formations.csv
   workflow_dispatch:
     paths:
       - README.Rmd
+      - formations.csv
 
 name: render-README
 

@@ -90,7 +90,6 @@ Statut : **{statut_deploiement}**
 ```
 
 
-
 ## Journal
 
 28/11/2021

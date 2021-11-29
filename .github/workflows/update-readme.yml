@@ -1,0 +1,44 @@
+on:
+  push:
+    paths:
+      - readme.Rmd
+      - formations.csv
+  workflow_dispatch:
+    paths:
+      - readme.Rmd
+      - formations.csv
+
+name: render-README
+
+jobs:
+  render-rmarkdown:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: '4.0.4'
+          use-public-rspm: true
+
+      - name: Install dependencies
+        run: |
+          Rscript -e 'install.packages(c("rmarkdown", "tidyverse", "glue", "readr"))'
+
+      - name: Render Readme.Rmd
+        run: |
+          Rscript -e 'rmarkdown::render(input = "readme.Rmd", output_format = "github_document", output_file = "README.md")'
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commit_message: Update generated README
+          branch: maj-readme

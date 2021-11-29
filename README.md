@@ -1,9 +1,19 @@
 
+  - [Parcours R - Supports pédagogiques pour la formation à R au sein du
+    MTES/MCTRCT (et
+    au-délà)](#parcours-r---supports-pédagogiques-pour-la-formation-à-r-au-sein-du-mtesmctrct-et-au-délà)
+      - [Se former à R](#se-former-à-r)
+      - [Modules de formations](#modules-de-formations)
+          - [Formations déployées](#formations-déployées)
+          - [Formations en construction](#formations-en-construction)
+      - [Journal](#journal)
+
 <!-- README.md est généré à partir du README.Rmd. Merci d'éditer ce fichier -->
 
 # Parcours R - Supports pédagogiques pour la formation à R au sein du MTES/MCTRCT (et au-délà)
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 ## Se former à R
@@ -20,7 +30,7 @@ copiés sur la branche `gh-pages`.
 
 #### Module 1 : « Socle : Premier programme en R »
 
-<img src="docs/assets/images/grenouille.jpg" alt="grenouille.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/grenouille.jpg" alt="grenouille.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_socle\_introduction](https://github.com/MTES-MCT/parcours_r_socle_introduction)
@@ -36,7 +46,7 @@ parcours\_r\_socle\_introduction](https://github.com/MTES-MCT/parcours_r_socle_i
 
 #### Module 2 : « Socle : Préparation des données »
 
-<img src="docs/assets/images/martin.jpg" alt="martin.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/martin.jpg" alt="martin.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_socle\_preparation\_des\_donnees](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees)
@@ -52,7 +62,7 @@ parcours\_r\_socle\_preparation\_des\_donnees](https://github.com/MTES-MCT/parco
 
 #### Module 3 : « Statistiques descriptives »
 
-<img src="docs/assets/images/pollinisateur.jpg" alt="pollinisateur.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/pollinisateur.jpg" alt="pollinisateur.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_statistiques\_descriptives](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives)
@@ -68,7 +78,7 @@ parcours\_r\_module\_statistiques\_descriptives](https://github.com/MTES-MCT/par
 
 #### Module 4 : « Analyse des données multi-dimensionnelles »
 
-<img src="docs/assets/images/crabe.jpg" alt="crabe.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/crabe.jpg" alt="crabe.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_analyse\_multi\_dimensionnelles](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles)
@@ -84,7 +94,7 @@ parcours\_r\_module\_analyse\_multi\_dimensionnelles](https://github.com/MTES-MC
 
 #### Module 5 : « Datavisualisation : produire des graphiques, des cartes et des tableaux »
 
-<img src="docs/assets/images/renard.jpg" alt="renard.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/renard.jpg" alt="renard.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_datavisualisation](https://github.com/MTES-MCT/parcours_r_module_datavisualisation)
@@ -100,7 +110,7 @@ parcours\_r\_module\_datavisualisation](https://github.com/MTES-MCT/parcours_r_m
 
 #### Module 7 : « Analyse spatiale »
 
-<img src="docs/assets/images/odonate.jpg" alt="odonate.jpg" align="left" style="width:100px;margin:20px"/>
+<img src="docs/assets/images/odonate.jpg" alt="odonate.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_analyse\_spatiale](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale)
@@ -118,7 +128,7 @@ parcours\_r\_module\_analyse\_spatiale](https://github.com/MTES-MCT/parcours_r_m
 
 #### Module 6 : « Publications reproductibles avec RMarkdown »
 
-<img src="docs/assets/images/vipere.jpg" alt="vipere.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/vipere.jpg" alt="vipere.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_publication\_rmarkdown](https://github.com/MTES-MCT/parcours_r_module_publication_rmarkdown)
@@ -129,7 +139,7 @@ Statut : **En construction**
 
 #### Module 8 : « Big data et optimisation du code »
 
-<img src="docs/assets/images/papillon.jpg" alt="papillon.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/papillon.jpg" alt="papillon.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_big\_data](https://github.com/MTES-MCT/parcours_r_module_big_data)
@@ -140,7 +150,7 @@ Statut : **En construction**
 
 #### Module 9 : « Applications interactives avec Shiny »
 
-<img src="docs/assets/images/Triaenodon_obesus.jpg" alt="Triaenodon_obesus.jpg" align="left" style="width:100px;;margin:0 20px 20px 20px"/>
+<img src="docs/assets/images/Triaenodon_obesus.jpg" alt="Triaenodon_obesus.jpg" align="right" style="width:150px;"/>
 
 Lien vers le dépôt :
 [parcours\_r\_module\_applications\_shiny](https://github.com/MTES-MCT/parcours_r_module_applications_shiny)
@@ -153,23 +163,23 @@ Statut : **En construction**
 
 28/11/2021
 
--   ajout des liens de parcours de formations (sspcloud)
+  - ajout des liens de parcours de formations (sspcloud)
 
 21/11/2021
 
--   ajout vue d’ensemble des modules de formations (image docker et
+  - ajout vue d’ensemble des modules de formations (image docker et
     déploiement des modules)
 
 09/12/2020
 
--   ajout d’un repo pour chaque module de formation
--   modification de la marianne
+  - ajout d’un repo pour chaque module de formation
+  - modification de la marianne
 
 30/08/2019
 
--   ajout d’un script pour ne compiler les modules dont les sources ont
+  - ajout d’un script pour ne compiler les modules dont les sources ont
     évolué
--   ajout d’un répertoire front pour la page d’accueil (index.html) et
+  - ajout d’un répertoire front pour la page d’accueil (index.html) et
     les éléments associés
 
 23/08/2019 \* optimisation de la création des supports : activation des
@@ -177,12 +187,12 @@ caches `knitr` et travis-ci
 
 16/08/2019
 
--   gérer la fermeture de rawgit : mise en place d’un branche `gh-pages`
+  - gérer la fermeture de rawgit : mise en place d’un branche `gh-pages`
     qui contient les supports HTML/PDF/ePub générés à partir des `Rmd`
--   nettoyage de l’arborescence : suppression des fichiers de la branche
+  - nettoyage de l’arborescence : suppression des fichiers de la branche
     `master` rendus inutiles
 
 15/02/2019
 
--   init (modules socle et à la carte : de 1 à 5)
--   ajout d’une page index de présentation
+  - init (modules socle et à la carte : de 1 à 5)
+  - ajout d’une page index de présentation

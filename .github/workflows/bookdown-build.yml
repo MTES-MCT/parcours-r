@@ -45,5 +45,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: site-${{ github.ref_name }}-${{ github.sha }}
-        path: site/
+        path: _book/
         retention-days: 3

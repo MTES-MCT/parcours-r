@@ -18,7 +18,7 @@ jobs:
       name: set lower case repo name (Bug when repository is in UPPERCASE)
       run: echo "::set-output name=image_repository::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
   bookdown:
-    name: Build and deploy bookdown
+    name: Build and upload bookdown site as artifact
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -40,3 +40,10 @@ jobs:
 
     - name: Build site
       run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+      
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: site-${{ github.ref_name }}-${{ github.sha }}
+        path: site/
+        retention-days: 3

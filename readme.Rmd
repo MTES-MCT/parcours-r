@@ -27,6 +27,11 @@ knitr::opts_chunk$set(
 
 Ce dépôt contient les supports pédagogiques de la formation R en version Rmd. Il permet aux référents R de construire et mettre à jour les modules de formation. L'outil Github Action est utilisé pour compiler les fichiers Rmd en support au format HTML. Ces supports sont ensuite copiés sur la branche `gh-pages`.
 
+## Contribuer
+
+Si vous avez déjà configuré votre compte sspcloud pour contribuer, cliquez simplement sur un lien de contribution.
+Sinon rendez-vous sur [CONTRIBUTING.md](https://github.com/MTES-MCT/parcours-r/blob/master/CONTRIBUTING.md)
+
 ## Modules de formations
 
 ```{r library, include=FALSE}

@@ -34,4 +34,4 @@ https://docs.sspcloud.fr/onyxia-guide/gestion-des-secrets
 Seule la variable GH_TOKEN est nécessaire puisque vous pouvez aussi utiliser l' identifiant git et le token github
 si vous les avez configurés sur la page : https://datalab.sspcloud.fr/account/third-party-integration
 
-#### Se rendre sur la page d'accueil du projet et lancer un service par lien de contribution
+### Se rendre sur la page d'accueil du projet et lancer un service par lien de contribution

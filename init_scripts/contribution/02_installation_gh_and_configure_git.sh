@@ -16,4 +16,4 @@ runuser -l $THE_USER -c 'git config --global credential.helper "store --file ~/g
 
 #authenticate
 #need GH_TOKEN
-runuser -l $THE_USER -c 'gh auth login'
+runuser -l $THE_USER -c "gh auth login --with-token $GH_TOKEN"

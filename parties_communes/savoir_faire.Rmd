@@ -1,0 +1,14 @@
+Pour faciliter le déroulé de ce module, l'ensemble des exercices (énoncés, corrigés et données) a été intégré à un package réalisé par le groupe des référents R : `{savoirfR}`
+
+```{r, eval=F}
+remotes::install_github("MTES-MCT/savoirfR")
+```
+
+Pour l'utiliser, il suffit de créer un nouveau projet dans un nouveau répertoire, en sélectionnant le "Project Type" **Exercice Parcours R MTES-MCT**.
+
+![](images/projetsavoirfR1.PNG){#id .class width=500}
+
+Remplissez et sélectionnez le module suivi.
+
+![](images/projetsavoirfR2.PNG){#id .class width=500}
+

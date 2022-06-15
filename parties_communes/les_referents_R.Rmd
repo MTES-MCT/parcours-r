@@ -1,0 +1,32 @@
+```{r part_communes_gen_1, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(COGiter)
+```
+
+
+- Un groupe pour structurer une offre de formations sur R
+- Un réseau d'entraide 
+
+```{r part_communes_mapg2r, echo=FALSE, message=FALSE, warning=FALSE}
+
+df <- tribble(
+  ~ref, ~REG,
+  "Laurent \nBeltran", "02", 
+  "Caroline \nCoudrin", "04",
+  "Olivier \nChantrel", "24",
+  "JD. Lomenede \n M. Morin \n N. Torterotot", "28",
+  "Thierry Zorn", "44",
+  "Regis Cadre", "84",
+  "Bruno\n Terseur", "93",
+  "Juliette \n Engelaere-\nLefebvre", "52"
+  ) %>% 
+  full_join(regions_geo, ., by = "REG")
+
+
+ggplot(df) +
+  geom_sf(color = "white") + 
+  geom_sf_text(aes(label = ref), check_overlap = TRUE, size = 3.5) +
+  theme_void()
+
+```

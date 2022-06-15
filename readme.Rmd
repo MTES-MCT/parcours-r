@@ -98,6 +98,10 @@ Statut : **{statut_deploiement}**
 
 ## Journal
 
+15/06/2022
+
+  - Ajout partie communes (présentation du parcours R)
+
 28/11/2021
 
 * ajout des liens de parcours de formations (sspcloud)

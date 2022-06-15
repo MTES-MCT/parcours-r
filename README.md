@@ -1,7 +1,6 @@
 
-  - [Parcours R - Supports pédagogiques pour la formation à R au sein du
-    MTES/MCTRCT (et
-    au-délà)](#parcours-r---supports-pédagogiques-pour-la-formation-à-r-au-sein-du-mtesmctrct-et-au-délà)
+  - [Parcours R - Supports pédagogiques pour la formation à R au sein du MTECT-MTE (et
+    au-délà)](#parcours-r---supports-pédagogiques-pour-la-formation-à-r-au-sein-du-mtect-mte-et-au-délà)
       - [Se former à R](#se-former-à-r)
       - [Modules de formations](#modules-de-formations)
           - [Formations déployées](#formations-déployées)
@@ -10,7 +9,7 @@
 
 <!-- README.md est généré à partir du README.Rmd. Merci d'éditer ce fichier -->
 
-# Parcours R - Supports pédagogiques pour la formation à R au sein du MTES/MCTRCT (et au-délà)
+# Parcours R - Supports pédagogiques pour la formation à R au sein du MTECT/MTE (et au-délà)
 
 <!-- badges: start -->
 
@@ -160,6 +159,10 @@ Statut : **En construction**
  
 
 ## Journal
+
+15/06/2022
+
+  - Ajout partie communes (présentation du parcours R)
 
 28/11/2021
 

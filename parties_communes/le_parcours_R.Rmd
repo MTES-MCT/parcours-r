@@ -1,0 +1,26 @@
+Ce dispositif de formation vise à faire monter en compétence les agents du MTECT (Ministère de la Transition écologique et de la Cohésion des territoires) et du MTE (Ministère de la Transition énergétique) dans le domaine de la science de la donnée avec le logiciel R. Il est conçu pour être déployé à l'échelle nationale par le réseau des CVRH (Centre de Valorisation des Ressources Humaines).
+
+Le parcours proposé est structuré en modules de 2 jours chacun. Avoir suivi les deux premiers (ou disposer d'un niveau équivalent) est un pré-requis pour suivre les suivants qui sont proposés "à la carte" :
+
+-   Module 1 : Socle - Premier programme en R
+-   Module 2 : Socle - Préparation des données
+-   Module 3 : Statistiques descriptives
+-   Module 4 : Analyse des données multi-dimensionnelles
+-   Module 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux
+-   Module 6 : Publications reproductibles avec RMarkdown (à venir)
+-   Module 7 : Analyse spatiale
+-   Module 8 : Big data et optimisation du code (à venir)
+-   Module 9 : Applications interactives avec RShiny (à venir)
+
+La mise à disposition des supports de formation se fait désormais par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
+
+Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du pôle ministériel](https://github.com/MTES-MCT?q=parcours_r&type=&language=).
+
+Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2 et 5 seulement pour l'instant).
+
+Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/) (un accès intranet MTECT-MTE est nécessaire). Vous pouvez vous y abonner pour recevoir les annonces de formation qui vous intéressent.
+
+Pour échanger de l'information, discuter autour de R ou encore faire part de difficultés et trouver ensemble les solutions, il existe deux canaux d'entraide :   
+
+- s'inscrire en envoyant un message vide à l'adresse [sympa\@developpement-durable.gouv.fr](mailto:sympa@developpement-durable.gouv.fr?Subject=subscribe%20labo.communaute-r) ;  
+- rejoindre le fil Ariane [#utilisateurs_r](https://ariane.din.developpement-durable.gouv.fr/channel/utilisateurs_r).  

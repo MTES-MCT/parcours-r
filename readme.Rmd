@@ -16,10 +16,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Parcours R - Supports pédagogiques pour la formation à R au sein du MTES/MCTRCT (et au-délà)
+# Parcours R - Supports pédagogiques pour la formation à R au sein du MTECT/MTE (et au-délà)
 
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 
@@ -97,6 +98,10 @@ Statut : **{statut_deploiement}**
 
 
 ## Journal
+
+15/06/2022
+
+  - Ajout partie communes (présentation du parcours R)
 
 28/11/2021
 

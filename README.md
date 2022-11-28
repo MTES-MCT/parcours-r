@@ -40,7 +40,7 @@ Statut : **Déployé**
 [![Déploiement de
 parcours\_r\_socle\_introduction](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M1-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/SSPCloud-ParcoursR_M1-blue)](https://datalab.sspcloud.fr/launcher/inseefrlab-helm-charts-datascience/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.0.4»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
  
 

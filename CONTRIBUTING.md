@@ -28,8 +28,11 @@ https://docs.sspcloud.fr/onyxia-guide/gestion-des-secrets
 
   | Nom de la variable | Valeur                                                                                 |
   |--------------------|----------------------------------------------------------------------------------------|
-  | URL_GITHUB         | `https://<username>:<token_github>@github.com`                                      |
   | GH_TOKEN           | `<gh_token>`                                                                           |
+  | URL_GITHUB         | `https://<username>:$GH_TOKEN>@github.com`                                             |
+
+<img width="1056" alt="Jwj0HSReG5" src="https://user-images.githubusercontent.com/8641271/204505532-dda5cd3d-6981-4e2f-a2d6-33ae18ac55c7.png">
+
 
 Seule la variable GH_TOKEN est nécessaire puisque vous pouvez aussi utiliser l' identifiant git et le token github
 si vous les avez configurés sur la page : https://datalab.sspcloud.fr/account/third-party-integration

@@ -2,4 +2,4 @@
 
 #fix permission problem
 
-chown -R $THE_USER:$THE_USER /usr/local/lib/R
+chown -R $THE_USER:users /usr/local/lib/R

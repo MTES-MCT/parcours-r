@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-mkdir -p /home/$THE_USER/parcours-r && \
-    cd /home/$THE_USER/parcours-r
+mkdir -p /home/$THE_USER/work/parcours-r && \
+    cd /home/$THE_USER/work/parcours-r
 
 #authenticate
 gh auth login --with-token $GH_TOKEN
@@ -22,4 +22,4 @@ echo -n $REPOS | xargs -t -d ' ' -I _repo gh repo sync _repo
 # dev branch
 echo -n $REPOS | xargs -t -d ' ' -I _repo gh repo sync --branch dev _repo
 
-chown -R $THE_USER:$THE_USER /home/$THE_USER/parcours-r
+chown -R $THE_USER:users /home/$THE_USER/

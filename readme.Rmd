@@ -36,9 +36,7 @@ Sinon rendez-vous sur [CONTRIBUTING.md](https://github.com/MTES-MCT/parcours-r/b
 ## Modules de formations
 
 ```{r library, include=FALSE}
-library(tibble)
-library(dplyr)
-library(readr)
+library(tidyverse)
 library(glue)
 ```
 
@@ -58,8 +56,8 @@ formations <- read_delim("formations.csv",
 ```{r Presentation des formations depl, echo= FALSE, results='asis'}
 
 formations %>% 
-  filter(statut_deploiement == "Déployé" )%>% 
-  glue::glue_data(
+  filter(statut_deploiement == "Déployé") %>% 
+  glue_data(
 "
 #### { label_formation }
 <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"right\" style=\"width:150px;\"/>
@@ -87,8 +85,8 @@ Statut : **{statut_deploiement}**
 ```{r Presentation des formations en construction, echo= FALSE, results='asis'}
 
 formations %>% 
-  filter(statut_deploiement != "Déployé" )%>% 
-  glue::glue_data(
+  filter(statut_deploiement != "Déployé") %>% 
+  glue_data(
 "
 #### { label_formation }
 <img src=\"docs/assets/images/{img}\" alt=\"{img}\" align=\"right\" style=\"width:150px;\"/>
@@ -105,7 +103,11 @@ Statut : **{statut_deploiement}**
 ```
 
 
-## Journal
+## Journal  
+
+26/12/2022   
+
+- Ménage de noël (suppression ancien scripts .sh...)
 
 15/06/2022
 

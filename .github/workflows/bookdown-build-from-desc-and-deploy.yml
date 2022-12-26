@@ -27,8 +27,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install remotes
+      run: Rscript -e 'install.packages("remotes")'
+      
+    - name: Test env un
+      run: Rscript -e 'require("COGiter")'
+   
+    - name: Test env deux
+      run: Rscript -e 'list.files()'
+      
     - name: Install packages from DESCRIPTION
-      run: Rscript -e 'install.packages("remotes");remotes::install_deps(dependencies = TRUE)'
+      run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
     - name: Cache bookdown results
       uses: actions/cache@v2
@@ -38,7 +47,7 @@ jobs:
         restore-keys: bookdown-
 
     - name: Build site
-      run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+      run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = FALSE)'
       
     - name: Rsync install (Deploy action needs rsync)
       run: |

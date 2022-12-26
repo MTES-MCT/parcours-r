@@ -8,9 +8,9 @@ remotes::install_github("MTES-MCT/savoirfR")
 
 Pour l'utiliser, il suffit de créer un nouveau projet dans un nouveau répertoire, en sélectionnant le "Project Type" **Exercice Parcours R MTES-MCT**.
 
-![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/parties_communes/parties_communes/images/projetsavoirfR1.PNG){#id .class width=500}
+![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/master/parties_communes/images/projetsavoirfR1.PNG){#id .class width=500}
 
 Remplissez et sélectionnez le module suivi.
 
-![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/parties_communes/parties_communes/images/projetsavoirfR2.PNG){#id .class width=500}
+![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/master/parties_communes/images/projetsavoirfR2.PNG){#id .class width=500}
 

@@ -24,11 +24,11 @@ En cours de travail sur le projet, la commande `renv::snapshot()` permet de fair
 
 - Cliquez sur *Project* en haut à droite puis *New Project*.
 
-![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/parties_communes/parties_communes/images/creerprojet1.png){#id .class width=500}
+![](https://raw.githubusercontent.com/MTES-MCT/master/parties_communes/parties_communes/images/creerprojet1.png){#id .class width=500}
 
 - Cliquez sur *New Directory*.
 
-![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/parties_communes/parties_communes/images/creerprojet2.png){#id .class width=500}
+![](https://raw.githubusercontent.com/MTES-MCT/parcours-r/master/parties_communes/images/creerprojet2.png){#id .class width=500}
 
 
 

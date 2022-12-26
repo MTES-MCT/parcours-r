@@ -1,4 +1,4 @@
-name: Build Bookdown from DESCRIPTION With Docker Image
+name: Build Bookdown from DESCRIPTION And Deploy With Docker Image
 
 on:
   workflow_call:
@@ -18,7 +18,7 @@ jobs:
       name: set lower case repo name (Bug when repository is in UPPERCASE)
       run: echo "::set-output name=image_repository::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
   bookdown:
-    name: Build and upload bookdown site as artifact
+    name: Build and deploy bookdown
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +29,7 @@ jobs:
 
     - name: Install packages from DESCRIPTION
       run: Rscript -e 'install.packages("remotes");remotes::install_deps(dependencies = TRUE)'
-      
+
     - name: Cache bookdown results
       uses: actions/cache@v2
       with:
@@ -40,9 +40,13 @@ jobs:
     - name: Build site
       run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
       
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
+    - name: Rsync install (Deploy action needs rsync)
+      run: |
+        apt update
+        apt install -y rsync
+
+    - name: Deploy to GitHub pages 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
-        name: site-${{ github.sha }}
-        path: _book/
-        retention-days: 3
+        branch: gh-pages
+        folder: _book

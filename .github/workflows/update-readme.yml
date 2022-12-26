@@ -42,3 +42,4 @@ jobs:
         with:
           commit_message: Update generated README
           branch: master
+          file_pattern: "README.md"

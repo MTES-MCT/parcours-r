@@ -3,10 +3,12 @@ on:
     paths:
       - readme.Rmd
       - formations.csv
+      - .github/workflows/update-readme.yml
   workflow_dispatch:
     paths:
       - readme.Rmd
       - formations.csv
+      - .github/workflows/update-readme.yml
 
 name: render-README
 

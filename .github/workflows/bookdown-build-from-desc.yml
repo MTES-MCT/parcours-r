@@ -30,12 +30,6 @@ jobs:
     - name: Install remotes
       run: Rscript -e 'install.packages("remotes")'
       
-    - name: Test env un
-      run: Rscript -e 'require("COGiter")'
-   
-    - name: Test env deux
-      run: Rscript -e 'list.files()'
-      
     - name: Install packages from DESCRIPTION
       run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
       

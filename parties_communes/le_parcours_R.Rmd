@@ -12,9 +12,9 @@ Le parcours proposé est structuré en modules de 2 jours chacun. Avoir suivi le
 -   Module 8 : Big data et optimisation du code (à venir)
 -   Module 9 : Applications interactives avec RShiny (à venir)
 
-La mise à disposition des supports de formation se fait désormais par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
+La mise à disposition des supports de formation se fait par la [page d'accueil du parcours de formation](https://mtes-mct.github.io/parcours-r/). Ces supports sont en [licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf).
 
-Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les formations, il faut directement les télécharger depuis le [Github du pôle ministériel](https://github.com/MTES-MCT?q=parcours_r&type=&language=).
+Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les formations, vous pouvez directement les télécharger depuis le [Github du pôle ministériel](https://github.com/MTES-MCT?q=parcours_r&type=&language=).
 
 Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2 et 5 seulement pour l'instant).
 

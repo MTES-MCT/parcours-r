@@ -16,7 +16,7 @@ La mise à disposition des supports de formation se fait par la [page d'accueil 
 
 Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les formations, vous pouvez directement les télécharger depuis le [Github du pôle ministériel](https://github.com/MTES-MCT?q=parcours_r&type=&language=).
 
-Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2 et 5 seulement pour l'instant).
+Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2, 5 et 7 seulement pour l'instant).
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/) (un accès intranet MTECT-MTE est nécessaire). Vous pouvez vous y abonner pour recevoir les annonces de formation qui vous intéressent.
 

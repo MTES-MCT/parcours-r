@@ -18,7 +18,6 @@ df <- tribble(
   "JD. Lomenede \n M. Morin \n N. Torterotot", "28",
   "Thierry Zorn", "44",
   "Regis Cadre", "84",
-  "Bruno\n Terseur", "93",
   "Juliette \n Engelaere-\nLefebvre", "52"
   ) %>% 
   full_join(regions_geo, ., by = "REG")

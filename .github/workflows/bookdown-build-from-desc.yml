@@ -25,7 +25,7 @@ jobs:
     needs: get-image-repository
     container:  ghcr.io/${{ needs.get-image-repository.outputs.image_repository }}-${{ inputs.r_version }}:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install remotes
       run: Rscript -e 'install.packages("remotes")'

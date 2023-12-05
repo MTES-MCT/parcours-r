@@ -16,7 +16,7 @@ jobs:
     steps:
     - id : lower_repo
       name: set lower case repo name (Bug when repository is in UPPERCASE)
-      run: echo "name=image_repository::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+      run: echo "image_repository=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
   bookdown:
     name: Build and upload bookdown site as artifact
     runs-on: ubuntu-latest

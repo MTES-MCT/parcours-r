@@ -34,7 +34,7 @@ jobs:
       run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
       
     - name: Cache bookdown results
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: _bookdown_files
         key: bookdown-${{ hashFiles('**/*Rmd') }}
@@ -44,7 +44,7 @@ jobs:
       run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = FALSE)'
       
     - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: site-${{ github.sha }}
         path: _book/

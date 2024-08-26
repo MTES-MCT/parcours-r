@@ -23,4 +23,4 @@ Pour vous tenir au courant de l'offre de formation proposée par le réseau des 
 Pour échanger de l'information, discuter autour de R ou encore faire part de difficultés et trouver ensemble les solutions, il existe deux canaux d'entraide :   
 
 - s'inscrire en envoyant un message vide à l'adresse [sympa\@developpement-durable.gouv.fr](mailto:sympa@developpement-durable.gouv.fr?Subject=subscribe%20labo.communaute-r) ;  
-- rejoindre le fil Ariane [#utilisateurs_r](https://ariane.din.developpement-durable.gouv.fr/channel/utilisateurs_r).  
+- rejoindre le salon Tchap [#utilisateurs_r](https://matrix.to/#/#utilisateurs_r:agent.dev-durable.tchap.gouv.fr).  

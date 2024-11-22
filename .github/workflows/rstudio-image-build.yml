@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        r_version: [ 4.2.1, 4.2.2 ]
+        r_version: [ 4.4.1, 4.4.0 ]
     steps:
     - uses: actions/checkout@v4
   

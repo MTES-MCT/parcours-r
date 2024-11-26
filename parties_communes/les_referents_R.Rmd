@@ -12,10 +12,9 @@ library(COGiter)
 
 df <- tribble(
   ~ref, ~REG,
-  "Laurent \nBeltran", "02", 
   "Caroline \nCoudrin", "04",
   "Olivier \nChantrel", "24",
-  "JD. Lomenede \n M. Morin \n N. Torterotot", "28",
+  "M. Morin \n N. Torterotot", "28",
   "Thierry Zorn", "44",
   "Regis Cadre", "84",
   "Juliette \n Engelaere-\nLefebvre", "52"

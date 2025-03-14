@@ -18,7 +18,7 @@ Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les f
 
 Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2, 5 et 7 seulement pour l'instant).
 
-Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme OUPS](http://oups-cmvrh.e2.rie.gouv.fr/) (un accès intranet MTECT-MTE est nécessaire). Vous pouvez vous y abonner pour recevoir les annonces de formation qui vous intéressent.
+Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme formation-ecologie.e2.rie.gouv.fr](https://formation-ecologie.e2.rie.gouv.fr/recherche/?q=&domaine=42&sous_domaine=85&start_date=&end_date=&stage_type=&page=1&size=10) (un accès intranet MTECT-MTE est nécessaire). Vous pouvez vous abonner au flux RSS pour recevoir les annonces de formation qui vous intéressent.
 
 Pour échanger de l'information, discuter autour de R ou encore faire part de difficultés et trouver ensemble les solutions, il existe deux canaux d'entraide :   
 

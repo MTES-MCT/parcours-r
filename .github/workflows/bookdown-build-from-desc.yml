@@ -44,7 +44,7 @@ jobs:
       run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = FALSE)'
       
     - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: site-${{ github.sha }}
         path: _book/

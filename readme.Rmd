@@ -105,13 +105,17 @@ Statut : **{statut_deploiement}**
 
 ## Journal  
 
+18/11/2025   
+
+- Mise à jour parties communes (Départ Caroline du groupe de référents)
+
 26/12/2022   
 
 - Ménage de noël (suppression ancien scripts .sh...)
 
 15/06/2022
 
-  - Ajout partie communes (présentation du parcours R)
+- Ajout partie communes (présentation du parcours R)
 
 28/11/2021
 

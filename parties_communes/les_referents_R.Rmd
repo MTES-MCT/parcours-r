@@ -12,7 +12,6 @@ library(COGiter)
 
 df <- tribble(
   ~ref, ~REG,
-  "Caroline \nCoudrin", "04",
   "Olivier \nChantrel", "24",
   "M. Morin \n N. Torterotot", "28",
   "Thierry Zorn", "44",

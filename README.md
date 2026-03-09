@@ -179,6 +179,10 @@ Statut : **En construction**
 
 ## Journal
 
+09/03/2026
+
+- Ajout lien vers support Module 6
+
 18/11/2025
 
 - Mise à jour parties communes (Départ Caroline du groupe de référents)

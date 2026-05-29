@@ -14,6 +14,7 @@
 # Parcours R - Supports pédagogiques pour la formation à R au sein du MTECT/MTE (et au-délà)
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 ## Se former à R
@@ -46,9 +47,9 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_socle_introduction](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_socle_introduction/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M1-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M1-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M1-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_socle_introduction»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M1-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M1_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_introduction-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_socle_introduction»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
@@ -64,9 +65,9 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_socle_preparation_des_donnees](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_socle_preparation_des_donnees/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M2-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M2»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_preparation_des_donnees-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M2-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M2»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_preparation_des_donnees-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M2-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M2_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_preparation_des_donnees-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_socle_preparation_des_donnees»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M2-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M2_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_socle_preparation_des_donnees-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_socle_preparation_des_donnees»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
@@ -82,9 +83,9 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_module_statistiques_descriptives](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_statistiques_descriptives/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M3-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M3»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_statistiques_descriptives-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M3-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M3»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_statistiques_descriptives-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M3-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M3_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_statistiques_descriptives-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_statistiques_descriptives»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M3-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M3_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_statistiques_descriptives-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_statistiques_descriptives»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
@@ -100,9 +101,9 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_module_analyse_multi_dimensionnelles](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_analyse_multi_dimensionnelles/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M4-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M4»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_multi_dimensionnelles-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M4-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M4»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_multi_dimensionnelles-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M4-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M4_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_multi_dimensionnelles-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_analyse_multi_dimensionnelles»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M4-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M4_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_multi_dimensionnelles-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_analyse_multi_dimensionnelles»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
@@ -118,9 +119,27 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_module_datavisualisation](https://github.com/MTES-MCT/parcours_r_module_datavisualisation/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_datavisualisation/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M5-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M5»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_datavisualisation-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M5-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M5»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_datavisualisation-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M5-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M5_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_datavisualisation-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_datavisualisation»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M5-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M5_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_datavisualisation-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_datavisualisation»&vault.secret=«parcours_r%2Ftokens»)
+
+ 
+
+#### Module 6 : « Publications reproductibles avec RMarkdown »
+
+<img src="docs/assets/images/vipere.jpg" alt="vipere.jpg" align="right" style="width:150px;"/>
+
+Lien vers le dépôt :
+[parcours_r_module_publication_rmarkdown](https://github.com/MTES-MCT/parcours_r_module_publication_rmarkdown)
+
+Statut : **Déployé**
+
+[![Déploiement de
+parcours_r_module_publication_rmarkdown](https://github.com/MTES-MCT/parcours_r_module_publication_rmarkdown/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_publication_rmarkdown/actions/workflows/rstudio-image-build.yml)
+
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M6-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M6»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_publication_rmarkdown-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M6-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M6_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_publication_rmarkdown-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_publication_rmarkdown»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
@@ -136,24 +155,13 @@ Statut : **Déployé**
 [![Déploiement de
 parcours_r_module_analyse_spatiale](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale/actions/workflows/rstudio-image-build.yml/badge.svg)](https://github.com/MTES-MCT/parcours_r_module_analyse_spatiale/actions/workflows/rstudio-image-build.yml)
 
-[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M7-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M7»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_spatiale-4.2.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
+[![](https://img.shields.io/badge/Formation_SSPCloud-ParcoursR_M7-blue)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M7»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_spatiale-4.4.1»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fformation%2Finit_script_formation.sh»)
 
-[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M7-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M7_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_spatiale-4.2.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_analyse_spatiale»&vault.secret=«parcours_r%2Ftokens»)
+[![](https://img.shields.io/badge/Contribution_SSPCloud-ParcoursR_M7-green)](https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=true&onyxia.friendlyName=«ParcoursR_M7_contrib»&service.image.custom.enabled=true&service.image.custom.version=«ghcr.io%2Fmtes-mct%2Fparcours_r_module_analyse_spatiale-4.4.1»&service.image.pullPolicy=«Always»&security.allowlist.enabled=false&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FMTES-MCT%2Fparcours-r%2Fmaster%2Finit_scripts%2Fcontribution%2Finit_script.sh»&init.personalInitArgs=«parcours_r_module_analyse_spatiale»&vault.secret=«parcours_r%2Ftokens»)
 
  
 
 ### Formations en construction
-
-#### Module 6 : « Publications reproductibles avec RMarkdown »
-
-<img src="docs/assets/images/vipere.jpg" alt="vipere.jpg" align="right" style="width:150px;"/>
-
-Lien vers le dépôt :
-[parcours_r_module_publication_rmarkdown](https://github.com/MTES-MCT/parcours_r_module_publication_rmarkdown)
-
-Statut : **En construction**
-
- 
 
 #### Module 8 : « Big data et optimisation du code »
 
@@ -178,6 +186,14 @@ Statut : **En construction**
  
 
 ## Journal
+
+28/05/2026
+
+- Déploiement support Module 6
+
+09/03/2026
+
+- Ajout lien vers support Module 6
 
 18/11/2025
 

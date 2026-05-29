@@ -25,7 +25,7 @@ jobs:
     needs: get-image-repository
     container:  ghcr.io/${{ needs.get-image-repository.outputs.image_repository }}-${{ inputs.r_version }}:latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Install remotes
       run: Rscript -e 'install.packages("remotes")'
@@ -34,7 +34,7 @@ jobs:
       run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
     - name: Cache bookdown results
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       with:
         path: _bookdown_files
         key: bookdown-${{ hashFiles('**/*Rmd') }}

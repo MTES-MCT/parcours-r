@@ -47,7 +47,7 @@ formations <- read_delim("formations.csv",
                          ";",
                          escape_double = FALSE,
                          trim_ws = TRUE)
-v_R_docker <- "4.4.1"
+v_R_docker <- "4.6.0"
 ```
 
 

@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        r_version: [ 4.4.1, 4.4.0 ]
+        r_version: [ 4.6.0, 4.5.3 ]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
   
     - name: Branch name
       run: echo running on branch ${{ github.ref_name }} for ${{ matrix.r_version }}

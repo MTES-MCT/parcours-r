@@ -2,7 +2,8 @@ name: Build Rstudio Docker Image CI
 
 on:
   workflow_call:
-
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest

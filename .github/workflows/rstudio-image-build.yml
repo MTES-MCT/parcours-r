@@ -34,6 +34,10 @@ jobs:
     - name: set lower case repo name (Bug when repository is in UPPERCASE)
       run: |
         echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+        
+    - name: Configure git to use GitHub token
+      run: |
+         git config --global url."https://${{ secrets.GITHUB_TOKEN }}:@github.com/".insteadOf "https://github.com/"
 
     - name: Build and push
       uses: docker/build-push-action@v5

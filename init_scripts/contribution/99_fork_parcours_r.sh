@@ -14,7 +14,7 @@ gh repo list MTES-MCT -L 3000 |
 
 # sync already forked repo
 REPOS=`gh repo list -L 3000 |
-    grep -e parcours-r -e savoirfR -e $REPO |
+    grep -e parcours_r -e savoirfR -e $REPO |
     awk '{print $1}'`
 
 # master or main branch

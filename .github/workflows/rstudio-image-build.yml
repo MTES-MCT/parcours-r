@@ -35,10 +35,6 @@ jobs:
       run: |
         echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
         
-    - name: Configure git to use GitHub token
-      run: |
-         git config --global url."https://${{ secrets.GITHUB_TOKEN }}:@github.com/".insteadOf "https://github.com/"
-
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
@@ -48,6 +44,7 @@ jobs:
         pull: true
         build-args: |
             R_VERSION=${{ matrix.r_version }}
+            GITHUB_PAT=${{ secrets.GITHUB_TOKEN }}
         tags: |
           ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:latest
           ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:${{ github.sha }}

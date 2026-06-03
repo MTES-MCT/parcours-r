@@ -187,12 +187,6 @@ Statut : **En construction**
 
 ## Journal
 
-03/06/2026
-
-- Mise à jour des github actions :  
-    - passage à pak au lieu de remotes pour l'installation des dépendances  
-    - passage à ubuntu 24 et R 4.6.0 par défaut
-
 28/05/2026
 
 - Déploiement support Module 6

@@ -27,11 +27,11 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
-    - name: Install remotes
-      run: Rscript -e 'install.packages("remotes")'
+    - name: Install pak
+      run: Rscript -e 'Sys.info();install.packages("pak")'
       
     - name: Install packages from DESCRIPTION
-      run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+      run: Rscript -e "pak::local_install_deps(upgrade = FALSE, ask = FALSE)"
 
     - name: Cache bookdown results
       uses: actions/cache@v5

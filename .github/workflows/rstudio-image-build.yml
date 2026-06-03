@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
     strategy:
       matrix:
         r_version: [ 4.6.0, 4.5.3 ]
@@ -44,7 +44,7 @@ jobs:
         pull: true
         build-args: |
             R_VERSION=${{ matrix.r_version }}
-            GITHUB_PAT=${{ secrets.GITHUB_TOKEN }}
+            GITHUB_PAT=${{ secrets.GH_PAT }}
         tags: |
           ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:latest
           ghcr.io/${{ env.IMAGE_REPOSITORY }}-${{ matrix.r_version }}:${{ github.sha }}

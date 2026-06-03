@@ -21,7 +21,7 @@ jobs:
     name: Build and upload bookdown site as artifact
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
     needs: get-image-repository
     container:  ghcr.io/${{ needs.get-image-repository.outputs.image_repository }}-${{ inputs.r_version }}:latest
     steps:

@@ -12,12 +12,13 @@ echo user detected is $THE_USER
 
 ORGANIZATION='MTES-MCT'
 MAIN_REPO='parcours-r'
-BRANCH='contribution'
+BRANCH='master'
 git clone https://github.com/$ORGANIZATION/$MAIN_REPO/ /tmp/$MAIN_REPO/
 cd /tmp/$MAIN_REPO/
 git checkout $BRANCH
 
 INIT_FOLDER='init_scripts/contribution'
 for f in $(ls -I init_script.sh $INIT_FOLDER); do
+echo "Lancement $f"
 bash "$INIT_FOLDER/$f"
 done

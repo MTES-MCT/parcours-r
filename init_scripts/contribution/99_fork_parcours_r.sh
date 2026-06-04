@@ -19,7 +19,5 @@ REPOS=`gh repo list -L 3000 |
 
 # master or main branch
 echo -n $REPOS | xargs -t -d ' ' -I _repo gh repo sync _repo
-# dev branch
-echo -n $REPOS | xargs -t -d ' ' -I _repo gh repo sync --branch dev _repo
 
 chown -R $THE_USER:users /home/$THE_USER/

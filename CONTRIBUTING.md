@@ -20,7 +20,7 @@ https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/c
 #### Enregistrer les tokens sous le sspcloud
 
 La documentation explique pas à pas comment créer des secrets sur le sspcloud :
-https://docs.sspcloud.fr/onyxia-guide/gestion-des-secrets
+[Tuto SSP Cloud gestion des secrets](https://www.sspcloud.fr/document?path=SSPCloud%E2%90%A3Documentation%E2%80%BAUsing%E2%90%A3the%E2%90%A3Datalab%E2%80%BAManaging%E2%90%A3secrets)
 
 1. Créer un dossier `parcours_r` dans les secrets
 

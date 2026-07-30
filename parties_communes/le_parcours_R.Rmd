@@ -7,7 +7,7 @@ Le parcours proposé est structuré en modules de 2 jours chacun. Avoir suivi le
 -   Module 3 : Statistiques descriptives
 -   Module 4 : Analyse des données multi-dimensionnelles
 -   Module 5 : Datavisualisation : Produire des graphiques, des cartes et des tableaux
--   Module 6 : Publications reproductibles avec RMarkdown (à venir)
+-   Module 6 : Publications reproductibles avec RMarkdown
 -   Module 7 : Analyse spatiale
 -   Module 8 : Big data et optimisation du code (à venir)
 -   Module 9 : Applications interactives avec RShiny (à venir)
@@ -16,7 +16,7 @@ La mise à disposition des supports de formation se fait par la [page d'accueil 
 
 Si vous souhaitez accéder aux sources ou aux données mobilisées pendant les formations, vous pouvez directement les télécharger depuis le [Github du pôle ministériel](https://github.com/MTES-MCT?q=parcours_r&type=&language=).
 
-Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2, 5 et 7 seulement pour l'instant).
+Un package d'exercices, [{savoirfR}](https://github.com/MTES-MCT/savoirfR) rassemble toutes les données et les consignes d'exercices de ce parcours de formation (Modules 1, 2, 5, 6 et 7 seulement pour l'instant).
 
 Pour vous tenir au courant de l'offre de formation proposée par le réseau des CVRH, [consultez la plateforme formation-ecologie.e2.rie.gouv.fr](https://formation-ecologie.e2.rie.gouv.fr/recherche/?q=&domaine=42&sous_domaine=85&start_date=&end_date=&stage_type=&page=1&size=10) (un accès intranet MTECT-MTE est nécessaire). Vous pouvez vous abonner au flux RSS pour recevoir les annonces de formation qui vous intéressent.
 
